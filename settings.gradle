@@ -1,0 +1,2 @@
+rootProject.name='C.A.T.S. City Calculator'
+include ':app'
