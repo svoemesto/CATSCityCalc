@@ -18,6 +18,14 @@
 
         >
 
+        <ImageView
+            android:id="@+id/iv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            app:srcCompat="@drawable/stub_city">
+
+        </ImageView>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -266,7 +274,12 @@
             android:textSize="14sp"
             />
 
+        <ListView
+            android:id="@+id/lv_files"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </ListView>
 
     </LinearLayout>
 
