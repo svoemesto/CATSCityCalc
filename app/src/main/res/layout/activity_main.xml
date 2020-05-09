@@ -30,25 +30,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
+            >
 
             <TextView
-                android:id="@+id/tv_time_left"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Оставшееся время"
+                android:text="+ нам"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
 
-            <EditText
-                android:id="@+id/et_time_left"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:text="Время"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="12:00"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+ им"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
                 />
 
         </LinearLayout>
@@ -57,212 +62,241 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
             >
 
+            <EditText
+                android:id="@+id/et_in_plus_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="56"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+            <EditText
+                android:id="@+id/et_in_time_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23:45"
+                android:inputType="time"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+            <EditText
+                android:id="@+id/et_in_plus_they"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
             <TextView
-                android:id="@+id/tv_instant_vic"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Наши очки"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Для досрочки"
-                android:layout_weight="2"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Их очки"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <EditText
+                android:id="@+id/et_in_total_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="521"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
                 />
 
             <EditText
-                android:id="@+id/et_instant_vic"
-                android:layout_width="match_parent"
+                android:id="@+id/et_in_instant_vic"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:text="129000"
                 android:inputType="number"
-                android:gravity="center"
-                android:text="120000"
-
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
                 />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_plus_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="+ нам" />
-
-                <EditText
-                    android:id="@+id/et_plus_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:text="200"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2"
-                >
-
-                <TextView
-                    android:id="@+id/tv_total_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Наши очки"
-                    android:gravity="center"
-                    />
-                <EditText
-                    android:id="@+id/et_total_us"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:gravity="center"
-                    android:text="30000"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="2"
-                >
-
-                <TextView
-                    android:id="@+id/tv_total_they"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Их очки"
-                    android:gravity="center"
-                    />
-                <EditText
-                    android:id="@+id/et_total_they"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:gravity="center"
-                    android:text="10000"
-                    />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_weight="3"
-                >
-
-                <TextView
-                    android:id="@+id/tv_plus_they"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+ Им"
-                    android:gravity="center"
-                    />
-                <EditText
-                    android:id="@+id/et_plus_they"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:gravity="center"
-                    android:text="400"
-                    />
-
-
-            </LinearLayout>
+            <EditText
+                android:id="@+id/et_in_total_they"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:inputType="number"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
 
         </LinearLayout>
 
+        <Switch
+            android:id="@+id/sw_sync_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Синхронизировать с временем скриншота"
+            />
+
+
+
+        <Button
+            android:id="@+id/bt_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="старт!"
+            />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingBottom="10dp"
             >
 
-
             <TextView
-                android:id="@+id/tv_result_us"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Наши очки"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Наша победа"
-                android:textSize="25sp"
-
                 />
 
             <TextView
-                android:id="@+id/tv_result_they"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Их победа"
+                android:text="Время"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:textSize="25sp"
-
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Их очки"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="10dp"
             >
 
+            <TextView
+                android:id="@+id/tv_calc_total_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="521"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
 
             <TextView
-                android:id="@+id/tv_result"
-                android:layout_width="match_parent"
+                android:id="@+id/tv_calc_time_left"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="23:45"
+                android:gravity="center_horizontal"
                 android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Результат"
-                android:textSize="25sp"
+                />
 
+            <TextView
+                android:id="@+id/tv_calc_total_they"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
                 />
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/tv_calc_status_us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Наш статус"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/tv_calc_status_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Статус игры"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:id="@+id/tv_calc_status_they"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Их статус"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_result"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="Результат"
+            android:textSize="25sp"
+
+            />
+
 
         <TextView
             android:id="@+id/tv_test"
@@ -277,7 +311,7 @@
         <ListView
             android:id="@+id/lv_files"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp">
 
         </ListView>
 
