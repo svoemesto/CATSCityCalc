@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         btStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isTimerRunning) {
+                if (!isTimerRunning) {
 
                     try {
                         timeStartTimer = Calendar.getInstance().getTime();  // текущее время старта таймера
@@ -203,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
         timeLeftInMillis = Calendar.getInstance().getTime().getTime() - timeStartGame.getTime(); // кол-во миллисекунд, прошедшех от начала игры до текущего времени
         currentTotalUs = (int)(timeLeftInMillis / 60000) * initPlusUs + initTotalUs;            // на данный момент очков у нас
         currentTotalThey = (int)(timeLeftInMillis / 60000) * initPlusThey + initTotalThey;      // на данный момент очков у них
-        int leftMillsToInstantUs = ((initInstantVic - currentTotalUs) / initPlusUs) * 60000;            // осталось миллисекунд до досрочной победы нам
-        int leftMillsToInstantThey = ((initInstantVic - currentTotalThey) / initPlusThey) * 60000;      // осталось миллисекунд до досрочной победы им
+        int leftMillsToInstantUs = initPlusUs == 0 ? Integer.MAX_VALUE : ((initInstantVic - currentTotalUs) / initPlusUs) * 60000;            // осталось миллисекунд до досрочной победы нам
+        int leftMillsToInstantThey = initPlusThey == 0 ? Integer.MAX_VALUE : ((initInstantVic - currentTotalThey) / initPlusThey) * 60000;      // осталось миллисекунд до досрочной победы им
         int leftMillsToEndGame = (int)(timeEndGame.getTime() - Calendar.getInstance().getTime().getTime()); // осталось миллисекунд до окончания игры по времени
         int willTotalUs = currentTotalUs + initPlusUs * (leftMillsToEndGame / 60000);   // будет очков у нас по окончании игры по времени
         int willTotalThey = currentTotalThey + initPlusThey * (leftMillsToEndGame / 60000);   // будет очков у них по окончании игры по времени
@@ -324,6 +324,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void run() {
+
+//            if (isTimerRunning) {
+//                calculate();
+//            }
+
             MainActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
