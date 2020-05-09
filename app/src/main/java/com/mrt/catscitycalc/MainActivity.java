@@ -203,8 +203,8 @@ public class MainActivity extends AppCompatActivity {
         timeLeftInMillis = Calendar.getInstance().getTime().getTime() - timeStartGame.getTime(); // кол-во миллисекунд, прошедшех от начала игры до текущего времени
         currentTotalUs = (int)(timeLeftInMillis / 60000) * initPlusUs + initTotalUs;            // на данный момент очков у нас
         currentTotalThey = (int)(timeLeftInMillis / 60000) * initPlusThey + initTotalThey;      // на данный момент очков у них
-        int leftMillsToInstantUs = initPlusUs == 0 ? Integer.MAX_VALUE : ((initInstantVic - currentTotalUs) / initPlusUs) * 60000;            // осталось миллисекунд до досрочной победы нам
-        int leftMillsToInstantThey = initPlusThey == 0 ? Integer.MAX_VALUE : ((initInstantVic - currentTotalThey) / initPlusThey) * 60000;      // осталось миллисекунд до досрочной победы им
+        int leftMillsToInstantUs = initPlusUs == 0 ? 25*60*60*1000 : ((initInstantVic - currentTotalUs) / initPlusUs) * 60000;            // осталось миллисекунд до досрочной победы нам
+        int leftMillsToInstantThey = initPlusThey == 0 ? 25*60*60*1000 : ((initInstantVic - currentTotalThey) / initPlusThey) * 60000;      // осталось миллисекунд до досрочной победы им
         int leftMillsToEndGame = (int)(timeEndGame.getTime() - Calendar.getInstance().getTime().getTime()); // осталось миллисекунд до окончания игры по времени
         int willTotalUs = currentTotalUs + initPlusUs * (leftMillsToEndGame / 60000);   // будет очков у нас по окончании игры по времени
         int willTotalThey = currentTotalThey + initPlusThey * (leftMillsToEndGame / 60000);   // будет очков у них по окончании игры по времени
@@ -262,15 +262,21 @@ public class MainActivity extends AppCompatActivity {
             int secondsToEnd = (leftMillsToEndGame - hoursToEnd * (1000 * 60 * 60) - minutesToEnd * (1000 * 60)) / 1000;
             String strTimeToEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToEnd, minutesToEnd, secondsToEnd);
 
+            tvCalcTotalUs.setText(String.valueOf(currentTotalUs));
+            tvCalcTotalThey.setText(String.valueOf(currentTotalThey));
+
             if (leftMillsToEndGame - leftMillsToInstantUs > 0 || leftMillsToEndGame - leftMillsToInstantThey > 0) {
                 // если игра закончится досрочно
-                int leftMillsToInstanceEndGame = Math.min(leftMillsToInstantUs, leftMillsToInstantThey);
+                int leftMillsToInstanceEndGame = Math.min(leftMillsToInstantUs, leftMillsToInstantThey) + leftMillsToEndGame % 60000;
                 int hoursToInstanceEnd = leftMillsToInstanceEndGame / (1000 * 60 * 60);
                 int minutesToInstanceEnd = (leftMillsToInstanceEndGame - hoursToInstanceEnd * (1000 * 60 * 60)) / (1000 * 60);
                 int secondsToInstanceEnd = (leftMillsToInstanceEndGame - hoursToInstanceEnd * (1000 * 60 * 60) - minutesToInstanceEnd * (1000 * 60)) / 1000;
                 String strTimeToInstanceEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToInstanceEnd, minutesToInstanceEnd, secondsToInstanceEnd);
 
                 calcStatusGame = strTimeToEnd + " / " + strTimeToInstanceEnd;
+
+
+                tvCalcTimeLeft.setText(calcStatusGame);
 
                 if (leftMillsToInstantUs < leftMillsToInstantThey) {
                     // Мы победим досрочно
@@ -292,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 // если игра закончится по времени
                 calcStatusGame = strTimeToEnd;
+
+                tvCalcTimeLeft.setText(calcStatusGame);
 
                 if (willTotalUs > willTotalThey) {
                     // Мы победим
