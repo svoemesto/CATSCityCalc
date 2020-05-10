@@ -27,3 +27,9 @@ hs_err_pid*
 gradle/
 app/local.properties
 local.properties
+build.gradle
+gradle.properties
+gradlew
+gradlew.bat
+settings.gradle
+
