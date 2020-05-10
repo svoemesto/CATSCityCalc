@@ -41,7 +41,7 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
+    private static final int MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE = 1;
 
     private ImageView ivCity; // кропнутая картинка
 
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
             strTotalThey = strTotalThey.equals("") ? "??" : strTotalThey.trim();
             strInstanceVic = strInstanceVic.equals("") ? "??" : strInstanceVic.trim();
             strTotalTime = strTotalTime.equals("") ? "??:??" : strTotalTime.trim();
-            
+
             etInPlusUs.setText(strPlusUs);
             etInPlusThey.setText(strPlusThey);
             etInTotalUs.setText(strTotalUs);
@@ -273,21 +273,13 @@ public class MainActivity extends AppCompatActivity {
             etInTimeLeft.setText(strTotalTime);
             etInInstantVic.setText(strInstanceVic);
 
-            // Здесь надо разобраться, как сохранять буффередимадж в файл
-//
-//        File file = new File(PATH_TO_CROPPED_FILE + ".png");
-//
-//        FileOutputStream ostream = null;
-//        try {
-//            file.createNewFile();
-//            ostream = new FileOutputStream(file);
-//            croppingBitmap.compress(Bitmap.CompressFormat.PNG, 100, ostream);
-//            ostream.close();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+            tvCalcTotalUs.setText("");
+            tvCalcTotalThey.setText("");
+            tvCalcTimeLeft.setText("");
+            tvCalcStatusUs.setText("");
+            tvCalcStatusThey.setText("");
+            tvCalcStatusGame.setText("");
+            tvResult.setText("");
         }
 
 
@@ -319,6 +311,19 @@ public class MainActivity extends AppCompatActivity {
         tvTest =  findViewById(R.id.tv_test);
         lvFiles = findViewById(R.id.lv_files);
 
+        etInTimeLeft.setText("00:00");
+        etInPlusUs.setText("0");
+        etInPlusThey.setText("0");
+        etInTotalUs.setText("0");
+        etInTotalThey.setText("0");
+        etInInstantVic.setText("0");
+        tvCalcTotalUs.setText("");
+        tvCalcTotalThey.setText("");
+        tvCalcTimeLeft.setText("");
+        tvCalcStatusUs.setText("");
+        tvCalcStatusThey.setText("");
+        tvCalcStatusGame.setText("");
+        tvResult.setText("");
 
 
         final List<File> listFiles = getListFiles();
@@ -513,10 +518,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
 
-//            if (isTimerRunning) {
-//                calculate();
-//            }
-
             MainActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
@@ -559,94 +560,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void showResult() {
-
-//        if (!isTimerRunning) startTimer();
-//
-//        String textTimeLeft = etTimeLeft.getText().toString();
-//
-//        String textUsState = "";
-//        String textTheyState = "";
-//        String result = "";
-//
-//        int minutesToEndGame = 0;
-//        int plusUs = 0;
-//        int instantVic = 0;
-//        int totalUs = 0;
-//        int totalThey = 0;
-//        int plusThey = 0;
-//        try {
-//            minutesToEndGame = parseTimeLeft(textTimeLeft);
-//            plusUs = Integer.parseInt(etPlusUs.getText().toString());
-//            instantVic = Integer.parseInt(etInstantVic.getText().toString());
-//            totalUs = Integer.parseInt(etTotalUs.getText().toString());
-//            totalThey = Integer.parseInt(etTotalThey.getText().toString());
-//            plusThey = Integer.parseInt(etPlusThey.getText().toString());
-//        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-//            textUsState = "";
-//            textTheyState = "";
-//            result = "Ошибка ввода";
-//            tvResult.setText(result);
-//            tvResultUs.setText(textUsState);
-//            tvResultThey.setText(textTheyState);
-//            return;
-//        }
-//
-//
-//
-//        int minutesUsToInstantWin = (instantVic-totalUs)/(plusUs == 0 ? 1 : plusUs);
-//        int minutesTheyToInstantWin = (instantVic-totalThey)/(plusThey == 0 ? 1 : plusThey);
-//
-//        String textMinUsToFinalWin =  String.format(Locale.getDefault(), "%02d:%02d",  minutesUsToInstantWin/60, minutesUsToInstantWin % 60);
-//        String textMinTheyToFinalWin = String.format(Locale.getDefault(), "%02d:%02d",  minutesTheyToInstantWin/60, minutesTheyToInstantWin % 60);
-//        String textMinToEndGame = String.format(Locale.getDefault(), "%02d:%02d",  minutesToEndGame/60, minutesToEndGame % 60);
-//
-//        boolean isGameOver = (minutesUsToInstantWin*minutesTheyToInstantWin*minutesToEndGame) == 0;
-//
-//        boolean isIvstanceWin = minutesToEndGame > minutesUsToInstantWin || minutesToEndGame > minutesTheyToInstantWin;
-//        boolean isNoOne = minutesUsToInstantWin == minutesTheyToInstantWin;
-//
-//        if (isNoOne) {
-//            textUsState = "Мы не выиграем";
-//            textTheyState = "Они не выиграют";
-//            result = "Будет ничья";
-//        } else {
-//            if (isIvstanceWin) {
-//                if (minutesUsToInstantWin < minutesTheyToInstantWin) {
-//                    textUsState =  "Наша досрочная победа через: " + textMinUsToFinalWin;
-//                    textTheyState = "Они не выиграют досрочно";
-//                    result = textUsState;
-//                } else {
-//                    textUsState = "Мы не выиграем досрочно";
-//                    textTheyState =  "Их досрочная победа через: " + textMinTheyToFinalWin;
-//                    result = textTheyState;
-//                }
-//            } else {
-//                if (minutesUsToInstantWin < minutesTheyToInstantWin) {
-//                    textUsState =  "Наша победа через: " + textMinToEndGame;
-//                    textTheyState = "Они не выиграют";
-//                    result = textUsState;
-//                } else {
-//                    textUsState = "Мы не выиграем";
-//                    textTheyState =  "Их победа через: " + textMinToEndGame;
-//                    result = textTheyState;
-//                }
-//            }
-//        }
-//
-//        tvResult.setText(result);
-//        tvResultUs.setText(textUsState);
-//        tvResultThey.setText(textTheyState);
-//
-//        if (isGameOver) {
-//            isTimerRunning = false;
-//            countDownTimer.cancel();
-////            etTimeLeft.setText("00:00");
-//        }
-
-    }
-
     private List<File> getListFiles() {
+
+        List<File> result = new ArrayList<>();
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -659,28 +575,26 @@ public class MainActivity extends AppCompatActivity {
                 // sees the explanation, try again to request the permission.
             } else {
                 // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE is an
                 // app-defined int constant. The callback method gets the
                 // result of the request.
             }
         } else {
             // Permission has already been granted
-        }
 
+            pathToScreenshotDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Screenshots" ;
+            File dir = new File(pathToScreenshotDir);
 
+            File[] files = dir.listFiles();
 
-        pathToScreenshotDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Screenshots" ;
-        File dir = new File(pathToScreenshotDir);
-
-        File[] files = dir.listFiles();
-        List<File> result = new ArrayList<>();
-
-        if (files != null) {
-            for (File file : files) {
-                result.add(file);
+            if (files != null) {
+                for (File file : files) {
+                    result.add(file);
+                }
             }
+
         }
 
         return result;
