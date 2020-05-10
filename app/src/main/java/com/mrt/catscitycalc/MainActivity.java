@@ -35,6 +35,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -139,6 +140,18 @@ public class MainActivity extends AppCompatActivity {
         }
         return result;
     }
+
+    private String cutNotNumericSymbols(String str) {
+        String result = "";
+        for (char ch : str.toCharArray()) {
+            if (ch >= '0' && ch <='9') {
+                result = result + ch;
+            }
+        }
+        return result;
+    }
+
+
     private void cutPicture() {
 
         if (fileScreenshot != null) {
@@ -147,53 +160,53 @@ public class MainActivity extends AppCompatActivity {
             int widthSource = sourceBitmap.getWidth();
             int heightSource = sourceBitmap.getHeight();
 
-            int x1 =(int)((double) widthSource / 2 + XD1 * heightSource);
-            int x2 =(int)((double) widthSource / 2 + XD2 * heightSource);
-            int y1 =(int)((double) heightSource / 2 + YD1 * ((double) heightSource / 2));
-            int y2 =(int)((double) heightSource / 2 + YD2 * ((double) heightSource / 2));
+            int x1 = (int) ((double) widthSource / 2 + XD1 * heightSource);
+            int x2 = (int) ((double) widthSource / 2 + XD2 * heightSource);
+            int y1 = (int) ((double) heightSource / 2 + YD1 * ((double) heightSource / 2));
+            int y2 = (int) ((double) heightSource / 2 + YD2 * ((double) heightSource / 2));
 
             if (x1 < 0) x1 = 0;
             if ((x2 > widthSource)) x2 = widthSource;
-            
-            int x1totalus =(int)((double) widthSource / 2 + XD1_TOTALUS * heightSource);
-            int x2totalus =(int)((double) widthSource / 2 + XD2_TOTALUS * heightSource);
-            int y1totalus =(int)((double) heightSource / 2 + YD1_TOTALUS * ((double) heightSource / 2));
-            int y2totalus =(int)((double) heightSource / 2 + YD2_TOTALUS * ((double) heightSource / 2));
+
+            int x1totalus = (int) ((double) widthSource / 2 + XD1_TOTALUS * heightSource);
+            int x2totalus = (int) ((double) widthSource / 2 + XD2_TOTALUS * heightSource);
+            int y1totalus = (int) ((double) heightSource / 2 + YD1_TOTALUS * ((double) heightSource / 2));
+            int y2totalus = (int) ((double) heightSource / 2 + YD2_TOTALUS * ((double) heightSource / 2));
 
             if (x1totalus < 0) x1totalus = 0;
             if ((x2totalus > widthSource)) x2totalus = widthSource;
 
-            int x1totalthey =(int)((double) widthSource / 2 + XD1_TOTALTHEY * heightSource);
-            int x2totalthey =(int)((double) widthSource / 2 + XD2_TOTALTHEY * heightSource);
-            int y1totalthey =(int)((double) heightSource / 2 + YD1_TOTALTHEY * ((double) heightSource / 2));
-            int y2totalthey =(int)((double) heightSource / 2 + YD2_TOTALTHEY * ((double) heightSource / 2));
+            int x1totalthey = (int) ((double) widthSource / 2 + XD1_TOTALTHEY * heightSource);
+            int x2totalthey = (int) ((double) widthSource / 2 + XD2_TOTALTHEY * heightSource);
+            int y1totalthey = (int) ((double) heightSource / 2 + YD1_TOTALTHEY * ((double) heightSource / 2));
+            int y2totalthey = (int) ((double) heightSource / 2 + YD2_TOTALTHEY * ((double) heightSource / 2));
 
             if (x1totalthey < 0) x1totalthey = 0;
             if ((x2totalthey > widthSource)) x2totalthey = widthSource;
 
-            int x1totaltime =(int)((double) widthSource / 2 + XD1_TOTALTIME * heightSource);
-            int x2totaltime =(int)((double) widthSource / 2 + XD2_TOTALTIME * heightSource);
-            int y1totaltime =(int)((double) heightSource / 2 + YD1_TOTALTIME * ((double) heightSource / 2));
-            int y2totaltime =(int)((double) heightSource / 2 + YD2_TOTALTIME * ((double) heightSource / 2));
+            int x1totaltime = (int) ((double) widthSource / 2 + XD1_TOTALTIME * heightSource);
+            int x2totaltime = (int) ((double) widthSource / 2 + XD2_TOTALTIME * heightSource);
+            int y1totaltime = (int) ((double) heightSource / 2 + YD1_TOTALTIME * ((double) heightSource / 2));
+            int y2totaltime = (int) ((double) heightSource / 2 + YD2_TOTALTIME * ((double) heightSource / 2));
 
             if (x1totaltime < 0) x1totaltime = 0;
             if ((x2totaltime > widthSource)) x2totaltime = widthSource;
 
-            int x1instancevic =(int)((double) widthSource / 2 + XD1_INSTANCEVIN * heightSource);
-            int x2instancevic =(int)((double) widthSource / 2 + XD2_INSTANCEVIN * heightSource);
-            int y1instancevic =(int)((double) heightSource / 2 + YD1_INSTANCEVIN * ((double) heightSource / 2));
-            int y2instancevic =(int)((double) heightSource / 2 + YD2_INSTANCEVIN * ((double) heightSource / 2));
+            int x1instancevic = (int) ((double) widthSource / 2 + XD1_INSTANCEVIN * heightSource);
+            int x2instancevic = (int) ((double) widthSource / 2 + XD2_INSTANCEVIN * heightSource);
+            int y1instancevic = (int) ((double) heightSource / 2 + YD1_INSTANCEVIN * ((double) heightSource / 2));
+            int y2instancevic = (int) ((double) heightSource / 2 + YD2_INSTANCEVIN * ((double) heightSource / 2));
 
             if (x1instancevic < 0) x1instancevic = 0;
             if ((x2instancevic > widthSource)) x2instancevic = widthSource;
 
-            
-            Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2-x1, y2-y1);
-            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus-x1totalus, y2totalus-y1totalus);
-            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey-x1totalthey, y2totalthey-y1totalthey);
-            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime-x1totaltime, y2totaltime-y1totaltime);
-            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic-x1instancevic, y2instancevic-y1instancevic);
-            
+
+            Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
+            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus - x1totalus, y2totalus - y1totalus);
+            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey);
+            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime);
+            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic);
+
             ivCity.setImageBitmap(croppingBitmap);
 
             String strTotalUs = "0";
@@ -205,68 +218,80 @@ public class MainActivity extends AppCompatActivity {
             String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);
             String strTotalTime = recognizePicture(croppingBitmapTotalTime);
             String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);
-            
-            String[] arrTotalUs = strTotalUsAndPlus.split(" ");
-            if (arrTotalUs != null) {
-                if (arrTotalUs.length > 0) {
-                    if (arrTotalUs.length == 1) {
-                        strPlusUs = "0";
-                        strTotalUs = arrTotalUs[0];
-                    } else if (arrTotalUs.length == 2) {
 
-                        if  (arrTotalUs[0].charAt(0) == '+') {
-                            strPlusUs = arrTotalUs[0].substring(1);
-                        } else {
-                            strPlusUs = arrTotalUs[0];
-                        }
 
-                        strTotalUs = arrTotalUs[1];
-                    }
+            String[] arrTotalUs = strTotalUsAndPlus.split("\\D");
+
+            List<String> listToUs = new ArrayList<>();
+            for (int i = 0; i < arrTotalUs.length; i++) {
+                if (!arrTotalUs[i].equals("")) {
+                    listToUs.add(arrTotalUs[i]);
                 }
             }
 
-            String[] arrTotalThey = strTotalTheyAndPlus.split("\\+");
-            if (arrTotalThey != null) {
-                if (arrTotalThey.length > 0) {
-                    if (arrTotalThey.length == 1) {
-                        strPlusThey = "0";
-                        strTotalThey = arrTotalThey[0];
-                    } else if (arrTotalThey.length == 2) {
-                        strPlusThey = arrTotalThey[1];
-                        strTotalThey = arrTotalThey[0];
-                    }
+            if (listToUs.size() > 0) {
+                if (listToUs.size() == 1) {
+                    strPlusUs = "0";
+                    strTotalUs = listToUs.get(0);
+                } else if (listToUs.size() == 2) {
+                    strPlusUs = listToUs.get(0);
+                    strTotalUs = listToUs.get(1);
                 }
             }
 
-            if (strInstanceVic.equals("")) strInstanceVic = "0";
+
+            String[] arrTotalThey = strTotalTheyAndPlus.split("\\D");
+
+            List<String> listToThey = new ArrayList<>();
+            for (int i = 0; i < arrTotalThey.length; i++) {
+                if (!arrTotalThey[i].equals("")) {
+                    listToThey.add(arrTotalThey[i]);
+                }
+            }
+
+            if (listToThey.size() > 0) {
+                if (listToThey.size() == 1) {
+                    strPlusThey = "0";
+                    strTotalThey = listToThey.get(0);
+                } else if (listToThey.size() == 2) {
+                    strPlusThey = listToThey.get(1);
+                    strTotalThey = listToThey.get(0);
+                }
+            }
+
+            if (strInstanceVic.equals("")) {
+                strInstanceVic = "0";
+            } else {
+                strInstanceVic = cutNotNumericSymbols(strInstanceVic);
+            }
 
 
             String[] arrTotalTime = strTotalTime.split(" ");
-            if (arrTotalTime != null) {
-                if (arrTotalTime.length > 0) {
-                    if (arrTotalTime.length == 2) {
-                        String hours = arrTotalTime[0];
-                        String minutes = arrTotalTime[1];
-                        if (hours.length() > 1) {
-                            hours = hours.substring(0, hours.length()-1);
-                        } else {
-                            hours = "00";
-                        }
-                        if (minutes.length() > 1) {
-                            minutes = minutes.substring(0, minutes.length()-1);
-                        } else {
-                            minutes = "00";
-                        }
-                        strTotalTime = hours + ":" + minutes;
-                    } else {
-                        strTotalTime = "00:00";
+
+            List<String> listTotalTime = new ArrayList<>();
+            for (int i = 0; i < arrTotalTime.length; i++) {
+                if (!arrTotalTime[i].equals("")) {
+                    listTotalTime.add(arrTotalTime[i].substring(0, arrTotalTime[i].length()-1));
+                }
+            }
+
+
+            if (listTotalTime.size() > 0) {
+                if (listTotalTime.size() == 2) {
+                    String hours = listTotalTime.get(0);
+                    String minutes = listTotalTime.get(1);
+
+                    if (minutes.length() == 1) {
+                        minutes = "0" + minutes;
                     }
+                    strTotalTime = hours + ":" + minutes;
                 } else {
                     strTotalTime = "00:00";
                 }
             } else {
                 strTotalTime = "00:00";
             }
+
 
             strPlusUs = strPlusUs.equals("") ? "??" : strPlusUs.trim();
             strPlusThey = strPlusThey.equals("") ? "??" : strPlusThey.trim();
@@ -682,20 +707,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-            // Permission is not granted
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
             } else {
-                // No explanation needed; request the permission
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
-
-                // MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         } else {
             // Permission has already been granted
