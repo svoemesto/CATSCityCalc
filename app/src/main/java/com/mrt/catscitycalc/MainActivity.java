@@ -44,10 +44,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     private ImageView ivCity; // кропнутая картинка
-    private ImageView ivTotalUs; // кропнутая картинка
-    private ImageView ivTotalThey; // кропнутая картинка
-    private ImageView ivTotalTime; // кропнутая картинка
-    private ImageView ivInstantVic; // кропнутая картинка
 
     private TextView etInTimeLeft;  // время до конца игры (по скриншоту)
     private TextView etInPlusUs; // прирост очков у нас (по скриншоту)
@@ -196,10 +192,6 @@ public class MainActivity extends AppCompatActivity {
             Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic-x1instancevic, y2instancevic-y1instancevic);
             
             ivCity.setImageBitmap(croppingBitmap);
-            ivTotalUs.setImageBitmap(croppingBitmapTotalUs);
-            ivTotalThey.setImageBitmap(croppingBitmapTotalThey);
-            ivTotalTime.setImageBitmap(croppingBitmapTotalTime);
-            ivInstantVic.setImageBitmap(croppingBitmapInstanceVic);
 
             String strTotalUs = "0";
             String strPlusUs = "0";
@@ -239,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (strInstanceVic.equals("")) strInstanceVic = "0";
 
+
             String[] arrTotalTime = strTotalTime.split(" ");
             if (arrTotalTime != null) {
                 if (arrTotalTime.length > 0) {
@@ -266,6 +259,13 @@ public class MainActivity extends AppCompatActivity {
                 strTotalTime = "00:00";
             }
 
+            strPlusUs = strPlusUs.equals("") ? "??" : strPlusUs.trim();
+            strPlusThey = strPlusThey.equals("") ? "??" : strPlusThey.trim();
+            strTotalUs = strTotalUs.equals("") ? "??" : strTotalUs.trim();
+            strTotalThey = strTotalThey.equals("") ? "??" : strTotalThey.trim();
+            strInstanceVic = strInstanceVic.equals("") ? "??" : strInstanceVic.trim();
+            strTotalTime = strTotalTime.equals("") ? "??:??" : strTotalTime.trim();
+            
             etInPlusUs.setText(strPlusUs);
             etInPlusThey.setText(strPlusThey);
             etInTotalUs.setText(strTotalUs);
@@ -300,10 +300,6 @@ public class MainActivity extends AppCompatActivity {
 
         // привязка контролов
         ivCity = findViewById(R.id.iv_city);
-        ivTotalUs = findViewById(R.id.iv_total_us);
-        ivTotalThey = findViewById(R.id.iv_total_they);
-        ivTotalTime = findViewById(R.id.iv_total_time);
-        ivInstantVic = findViewById(R.id.iv_instant_vic);
 
         etInTimeLeft = findViewById(R.id.et_in_time_left);
         etInPlusUs = findViewById(R.id.et_in_plus_us);
