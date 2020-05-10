@@ -211,7 +211,6 @@ public class MainActivity extends AppCompatActivity {
         long willTotalUs = currentTotalUs + initPlusUs * (leftMillsToEndGame / 60000);   // будет очков у нас по окончании игры по времени
         long willTotalThey = currentTotalThey + initPlusThey * (leftMillsToEndGame / 60000);   // будет очков у них по окончании игры по времени
 
-        System.out.println(leftMillsToInstantUs + " | " + leftMillsToInstantThey +  " | " + leftMillsToEndGame);
         boolean isGameOver = (leftMillsToInstantUs - 1000) <= 0 || (leftMillsToInstantThey - 1000) <= 0 || leftMillsToEndGame <= 0; // закончилась ли игра?
         boolean isGameOverInstance = (leftMillsToInstantUs - 1000) <= 0 ||  (leftMillsToInstantThey - 1000) <= 0; // закончилась ли игра досрочно?
 

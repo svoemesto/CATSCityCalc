@@ -33,3 +33,9 @@ gradlew
 gradlew.bat
 settings.gradle
 
+.idea/workspace.xml
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+*.lock
+.gradle/5.6.4/javaCompile/classAnalysis.bin
+.gradle/5.6.4/fileHashes/fileHashes.bin
+.gradle/5.6.4/executionHistory/executionHistory.bin
