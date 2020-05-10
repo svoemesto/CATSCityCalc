@@ -1,5 +1,6 @@
 package com.mrt.catscitycalc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.core.app.ActivityCompat;
@@ -16,6 +17,8 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isTimerRunning;
     private long timeLeftInMillis = 0;
     private long timeLeftInMinutesGlobal = 0;
-    private String pathToScreenshotDir;
+    private String pathToScreenshotDir = "";
 
     private static final double XD1 = -0.565d;
     private static final double XD2 = +0.565d;
@@ -80,23 +83,23 @@ public class MainActivity extends AppCompatActivity {
 
     private static final double XD1_TOTALUS = -0.565d;
     private static final double XD2_TOTALUS = -0.180d;
-    private static final double YD1_TOTALUS = -0.600d;
-    private static final double YD2_TOTALUS = -0.480d;
+    private static final double YD1_TOTALUS = -0.610d;
+    private static final double YD2_TOTALUS = -0.470d;
 
     private static final double XD1_TOTALTHEY = +0.180d;
     private static final double XD2_TOTALTHEY = +0.565d;
-    private static final double YD1_TOTALTHEY = -0.600d;
-    private static final double YD2_TOTALTHEY = -0.480d;
+    private static final double YD1_TOTALTHEY = -0.610d;
+    private static final double YD2_TOTALTHEY = -0.470d;
 
     private static final double XD1_TOTALTIME = -0.130d;
     private static final double XD2_TOTALTIME = +0.060d;
-    private static final double YD1_TOTALTIME = -0.770d;
-    private static final double YD2_TOTALTIME = -0.670d;
+    private static final double YD1_TOTALTIME = -0.780d;
+    private static final double YD2_TOTALTIME = -0.660d;
 
     private static final double XD1_INSTANCEVIN = -0.170d;
     private static final double XD2_INSTANCEVIN = +0.170d;
-    private static final double YD1_INSTANCEVIN = -0.560d;
-    private static final double YD2_INSTANCEVIN = -0.460d;
+    private static final double YD1_INSTANCEVIN = -0.570d;
+    private static final double YD2_INSTANCEVIN = -0.450d;
 
     
     private Date timeStartGame;
@@ -210,20 +213,26 @@ public class MainActivity extends AppCompatActivity {
                         strPlusUs = "0";
                         strTotalUs = arrTotalUs[0];
                     } else if (arrTotalUs.length == 2) {
-                        strPlusUs = arrTotalUs[0].substring(1);
+
+                        if  (arrTotalUs[0].charAt(0) == '+') {
+                            strPlusUs = arrTotalUs[0].substring(1);
+                        } else {
+                            strPlusUs = arrTotalUs[0];
+                        }
+
                         strTotalUs = arrTotalUs[1];
                     }
                 }
             }
 
-            String[] arrTotalThey = strTotalTheyAndPlus.split(" ");
+            String[] arrTotalThey = strTotalTheyAndPlus.split("\\+");
             if (arrTotalThey != null) {
                 if (arrTotalThey.length > 0) {
                     if (arrTotalThey.length == 1) {
                         strPlusThey = "0";
                         strTotalThey = arrTotalThey[0];
                     } else if (arrTotalThey.length == 2) {
-                        strPlusThey = arrTotalThey[1].substring(1);
+                        strPlusThey = arrTotalThey[1];
                         strTotalThey = arrTotalThey[0];
                     }
                 }
@@ -285,6 +294,106 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    private File getLastFileInFolder(String pathToFolder) {
+
+        File dir = new File(pathToFolder);
+        File[] files = dir.listFiles();
+        List<File> listFiles = new ArrayList<>();
+
+        if (files != null) {
+            for (File file : files) {
+                listFiles.add(file);
+            }
+        }
+
+        if  (listFiles.size() > 0) {
+
+            long maxLastModified = 0;
+            File temp = null;
+            for (File file : listFiles) {
+                if (file.lastModified() > maxLastModified) {
+                    maxLastModified = file.lastModified();
+                    temp = file;
+                }
+            }
+
+            return temp;
+
+        } else {
+            return null;
+        }
+
+    }
+
+    private void selectScreenshot() {
+
+        OpenFileDialog fileDialog = new OpenFileDialog(this)
+                .setFilter(".*\\.png")
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    public void OnSelectedFile(String fileName) {
+                        Toast.makeText(getApplicationContext(), fileName, Toast.LENGTH_LONG).show();
+                        fileScreenshot = new File(fileName);
+                        cutPicture();
+                        tvTest.setText((new Date(fileScreenshot.lastModified())).toString());
+                    }
+                });
+        fileDialog.show();
+
+    }
+
+    private void selectScreenshotFolder() {
+
+        OpenFileDialog fileDialog = new OpenFileDialog(this)
+                .setOnlyFoldersFilter()
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    public void OnSelectedFile(String fileName) {
+                        Toast.makeText(getApplicationContext(), fileName, Toast.LENGTH_LONG).show();
+                        pathToScreenshotDir = fileName;
+                        final List<File> listFiles = getListFiles();
+
+                        ArrayAdapter arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, listFiles);
+                        lvFiles.setAdapter(arrayAdapter);
+                    }
+                });
+        fileDialog.show();
+
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch(id){
+            case R.id.menu_open_screenshot :
+                Toast.makeText(this, "Выбор скриншота", Toast.LENGTH_SHORT).show();
+                selectScreenshot();
+                return true;
+            case R.id.menu_set_screenshot_folder :
+                Toast.makeText(this, "Выбор папки скриншотов", Toast.LENGTH_SHORT).show();
+                selectScreenshotFolder();
+                return true;
+            case R.id.menu_about:
+                Toast.makeText(this, "О программе", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_exit:
+                Toast.makeText(this, "Выход", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -339,6 +448,13 @@ public class MainActivity extends AppCompatActivity {
                 tvTest.setText((new Date(fileScreenshot.lastModified())).toString());
             }
         });
+
+        File initFile = getLastFileInFolder(pathToScreenshotDir);
+        if (initFile != null) {
+            fileScreenshot = initFile;
+            cutPicture();
+            tvTest.setText((new Date(fileScreenshot.lastModified())).toString());
+        }
 
         // событие нажатие кнопки "Старт"
         btStart.setOnClickListener(new View.OnClickListener() {
@@ -584,7 +700,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // Permission has already been granted
 
-            pathToScreenshotDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Screenshots" ;
+            if (pathToScreenshotDir.equals("")) {
+                pathToScreenshotDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Pictures/Screenshots" ;
+            }
+
             File dir = new File(pathToScreenshotDir);
 
             File[] files = dir.listFiles();
