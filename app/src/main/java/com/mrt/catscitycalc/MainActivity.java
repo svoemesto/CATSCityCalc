@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,6 +25,10 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -35,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     private ImageView ivCity; // кропнутая картинка
+    private ImageView ivTotalUs; // кропнутая картинка
+    private ImageView ivTotalThey; // кропнутая картинка
+    private ImageView ivTotalTime; // кропнутая картинка
+    private ImageView ivInstantVic; // кропнутая картинка
+
     private TextView etInTimeLeft;  // время до конца игры (по скриншоту)
     private TextView etInPlusUs; // прирост очков у нас (по скриншоту)
     private TextView etInPlusThey; // прирост очков у них (по скриншоту)
@@ -68,6 +82,27 @@ public class MainActivity extends AppCompatActivity {
     private static final double YD1 = -0.800d;
     private static final double YD2 = -0.450d;
 
+    private static final double XD1_TOTALUS = -0.565d;
+    private static final double XD2_TOTALUS = -0.180d;
+    private static final double YD1_TOTALUS = -0.600d;
+    private static final double YD2_TOTALUS = -0.480d;
+
+    private static final double XD1_TOTALTHEY = +0.180d;
+    private static final double XD2_TOTALTHEY = +0.565d;
+    private static final double YD1_TOTALTHEY = -0.600d;
+    private static final double YD2_TOTALTHEY = -0.480d;
+
+    private static final double XD1_TOTALTIME = -0.130d;
+    private static final double XD2_TOTALTIME = +0.060d;
+    private static final double YD1_TOTALTIME = -0.770d;
+    private static final double YD2_TOTALTIME = -0.670d;
+
+    private static final double XD1_INSTANCEVIN = -0.170d;
+    private static final double XD2_INSTANCEVIN = +0.170d;
+    private static final double YD1_INSTANCEVIN = -0.560d;
+    private static final double YD2_INSTANCEVIN = -0.460d;
+
+    
     private Date timeStartGame;
     private Date timeEndGame;
     private Date timeStartTimer;
@@ -89,6 +124,22 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String PATH_TO_CROPPED_FILE = "@drawable/crop_city";
 
+    private String recognizePicture(Bitmap bitmap) {
+
+        String result = "";
+        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
+        if (!textRecognizer.isOperational()) {
+            System.out.println("Не могу распознать текст");
+        } else {
+            Frame frame = new Frame.Builder().setBitmap(bitmap).build();
+            SparseArray<TextBlock> items = textRecognizer.detect(frame);
+            for (int i = 0; i < items.size(); ++i) {
+                result = result + items.valueAt(i).getValue() + " ";
+//                System.out.println(items.valueAt(i).getValue());
+            }
+        }
+        return result;
+    }
     private void cutPicture() {
 
         if (fileScreenshot != null) {
@@ -104,10 +155,123 @@ public class MainActivity extends AppCompatActivity {
 
             if (x1 < 0) x1 = 0;
             if ((x2 > widthSource)) x2 = widthSource;
+            
+            int x1totalus =(int)((double) widthSource / 2 + XD1_TOTALUS * heightSource);
+            int x2totalus =(int)((double) widthSource / 2 + XD2_TOTALUS * heightSource);
+            int y1totalus =(int)((double) heightSource / 2 + YD1_TOTALUS * ((double) heightSource / 2));
+            int y2totalus =(int)((double) heightSource / 2 + YD2_TOTALUS * ((double) heightSource / 2));
 
+            if (x1totalus < 0) x1totalus = 0;
+            if ((x2totalus > widthSource)) x2totalus = widthSource;
+
+            int x1totalthey =(int)((double) widthSource / 2 + XD1_TOTALTHEY * heightSource);
+            int x2totalthey =(int)((double) widthSource / 2 + XD2_TOTALTHEY * heightSource);
+            int y1totalthey =(int)((double) heightSource / 2 + YD1_TOTALTHEY * ((double) heightSource / 2));
+            int y2totalthey =(int)((double) heightSource / 2 + YD2_TOTALTHEY * ((double) heightSource / 2));
+
+            if (x1totalthey < 0) x1totalthey = 0;
+            if ((x2totalthey > widthSource)) x2totalthey = widthSource;
+
+            int x1totaltime =(int)((double) widthSource / 2 + XD1_TOTALTIME * heightSource);
+            int x2totaltime =(int)((double) widthSource / 2 + XD2_TOTALTIME * heightSource);
+            int y1totaltime =(int)((double) heightSource / 2 + YD1_TOTALTIME * ((double) heightSource / 2));
+            int y2totaltime =(int)((double) heightSource / 2 + YD2_TOTALTIME * ((double) heightSource / 2));
+
+            if (x1totaltime < 0) x1totaltime = 0;
+            if ((x2totaltime > widthSource)) x2totaltime = widthSource;
+
+            int x1instancevic =(int)((double) widthSource / 2 + XD1_INSTANCEVIN * heightSource);
+            int x2instancevic =(int)((double) widthSource / 2 + XD2_INSTANCEVIN * heightSource);
+            int y1instancevic =(int)((double) heightSource / 2 + YD1_INSTANCEVIN * ((double) heightSource / 2));
+            int y2instancevic =(int)((double) heightSource / 2 + YD2_INSTANCEVIN * ((double) heightSource / 2));
+
+            if (x1instancevic < 0) x1instancevic = 0;
+            if ((x2instancevic > widthSource)) x2instancevic = widthSource;
+
+            
             Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2-x1, y2-y1);
-
+            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus-x1totalus, y2totalus-y1totalus);
+            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey-x1totalthey, y2totalthey-y1totalthey);
+            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime-x1totaltime, y2totaltime-y1totaltime);
+            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic-x1instancevic, y2instancevic-y1instancevic);
+            
             ivCity.setImageBitmap(croppingBitmap);
+            ivTotalUs.setImageBitmap(croppingBitmapTotalUs);
+            ivTotalThey.setImageBitmap(croppingBitmapTotalThey);
+            ivTotalTime.setImageBitmap(croppingBitmapTotalTime);
+            ivInstantVic.setImageBitmap(croppingBitmapInstanceVic);
+
+            String strTotalUs = "0";
+            String strPlusUs = "0";
+            String strTotalThey = "0";
+            String strPlusThey = "0";
+
+            String strTotalUsAndPlus = recognizePicture(croppingBitmapTotalUs);
+            String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);
+            String strTotalTime = recognizePicture(croppingBitmapTotalTime);
+            String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);
+            
+            String[] arrTotalUs = strTotalUsAndPlus.split(" ");
+            if (arrTotalUs != null) {
+                if (arrTotalUs.length > 0) {
+                    if (arrTotalUs.length == 1) {
+                        strPlusUs = "0";
+                        strTotalUs = arrTotalUs[0];
+                    } else if (arrTotalUs.length == 2) {
+                        strPlusUs = arrTotalUs[0].substring(1);
+                        strTotalUs = arrTotalUs[1];
+                    }
+                }
+            }
+
+            String[] arrTotalThey = strTotalTheyAndPlus.split(" ");
+            if (arrTotalThey != null) {
+                if (arrTotalThey.length > 0) {
+                    if (arrTotalThey.length == 1) {
+                        strPlusThey = "0";
+                        strTotalThey = arrTotalThey[0];
+                    } else if (arrTotalThey.length == 2) {
+                        strPlusThey = arrTotalThey[1].substring(1);
+                        strTotalThey = arrTotalThey[0];
+                    }
+                }
+            }
+
+            if (strInstanceVic.equals("")) strInstanceVic = "0";
+
+            String[] arrTotalTime = strTotalTime.split(" ");
+            if (arrTotalTime != null) {
+                if (arrTotalTime.length > 0) {
+                    if (arrTotalTime.length == 2) {
+                        String hours = arrTotalTime[0];
+                        String minutes = arrTotalTime[1];
+                        if (hours.length() > 1) {
+                            hours = hours.substring(0, hours.length()-1);
+                        } else {
+                            hours = "00";
+                        }
+                        if (minutes.length() > 1) {
+                            minutes = minutes.substring(0, minutes.length()-1);
+                        } else {
+                            minutes = "00";
+                        }
+                        strTotalTime = hours + ":" + minutes;
+                    } else {
+                        strTotalTime = "00:00";
+                    }
+                } else {
+                    strTotalTime = "00:00";
+                }
+            } else {
+                strTotalTime = "00:00";
+            }
+
+            etInPlusUs.setText(strPlusUs);
+            etInPlusThey.setText(strPlusThey);
+            etInTotalUs.setText(strTotalUs);
+            etInTotalThey.setText(strTotalThey);
+            etInTimeLeft.setText(strTotalTime);
+            etInInstantVic.setText(strInstanceVic);
 
             // Здесь надо разобраться, как сохранять буффередимадж в файл
 //
@@ -136,6 +300,11 @@ public class MainActivity extends AppCompatActivity {
 
         // привязка контролов
         ivCity = findViewById(R.id.iv_city);
+        ivTotalUs = findViewById(R.id.iv_total_us);
+        ivTotalThey = findViewById(R.id.iv_total_they);
+        ivTotalTime = findViewById(R.id.iv_total_time);
+        ivInstantVic = findViewById(R.id.iv_instant_vic);
+
         etInTimeLeft = findViewById(R.id.et_in_time_left);
         etInPlusUs = findViewById(R.id.et_in_plus_us);
         etInPlusThey = findViewById(R.id.et_in_plus_they);
@@ -153,6 +322,8 @@ public class MainActivity extends AppCompatActivity {
         tvResult =  findViewById(R.id.tv_result);
         tvTest =  findViewById(R.id.tv_test);
         lvFiles = findViewById(R.id.lv_files);
+
+
 
         final List<File> listFiles = getListFiles();
 
@@ -197,6 +368,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     private void calculate() {
 
