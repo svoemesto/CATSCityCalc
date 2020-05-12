@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_open_screenshot"
+        android:id="@+id/menu_open_settings"
         android:orderInCategory="1"
-        android:title="Открыть скриншот" />
+        android:title="@string/settings" />
     <item
-        android:id="@+id/menu_set_screenshot_folder"
+        android:id="@+id/menu_open_screenshot"
         android:orderInCategory="2"
-        android:title="Задать папку скриншотов" />
-    <item
-        android:id="@+id/menu_about"
-        android:orderInCategory="3"
-        android:title="О программе" />
-    <item
-        android:id="@+id/menu_exit"
-        android:orderInCategory="4"
-        android:title="Выход" />
+        android:title="@string/open_scriinshot" />
+
 </menu>

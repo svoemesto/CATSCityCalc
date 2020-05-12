@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Скриншоты">
+
+        <SwitchPreferenceCompat
+            android:key="pref_sync_time"
+            android:title="Синхронизировать время начала игры с учетом времени создания скриншота"
+            android:defaultValue="false"/>
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

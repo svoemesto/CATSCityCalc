@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">C.A.T.S. City Calculator</string>
+    <string name="plus_us">+ нам</string>
+    <string name="time">Время</string>
+    <string name="plus_they">+ им</string>
+    <string name="score_us">Наши очки</string>
+    <string name="for_instance">Для досрочки</string>
+    <string name="score_they">Их очки</string>
+    <string name="sync_to_screenshot_time">Синхронизировать с временем скриншота</string>
+    <string name="start">старт!</string>
+    <string name="time_or_instance">Время / Досрочно</string>
+    <string name="status_us">Наш статус</string>
+    <string name="status_game">Статус игры</string>
+    <string name="status_they">Их статус</string>
+    <string name="result">Результат</string>
+    <string name="settings">Настройки</string>
+    <string name="open_scriinshot">Открыть скриншот</string>
+    <string name="set_screenthot_folder">Задать папку скриншотов</string>
+    <string name="about_us">О программе</string>
+    <string name="exit">Выход</string>
+    <string name="title_activity_settings">Настройки</string>
+
+
+    <string name="pref_preferences_file">PREF_PREFERENCES_FILE</string>
+    <string name="pref_screenshot_folder">PREF_SCREENSHOT_FOLDER</string>
+    <string name="pref_listen_last_file">PREF_LISTEN_LAST_FILE</string>
+
 </resources>

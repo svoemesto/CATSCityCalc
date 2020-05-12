@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+ нам"
+                android:text="@string/plus_us"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -42,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Время"
+                android:text="@string/time"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -50,7 +50,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+ им"
+                android:text="@string/plus_they"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -67,7 +67,6 @@
                 android:id="@+id/et_in_plus_us"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="56"
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -77,7 +76,6 @@
                 android:id="@+id/et_in_time_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23:45"
                 android:inputType="time"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -87,7 +85,6 @@
                 android:id="@+id/et_in_plus_they"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -104,7 +101,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Наши очки"
+                android:text="@string/score_us"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -112,7 +109,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Для досрочки"
+                android:text="@string/for_instance"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -120,7 +117,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Их очки"
+                android:text="@string/score_they"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
                 />
@@ -137,7 +134,6 @@
                 android:id="@+id/et_in_total_us"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="521"
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -147,7 +143,6 @@
                 android:id="@+id/et_in_instant_vic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="129000"
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -157,7 +152,6 @@
                 android:id="@+id/et_in_total_they"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0"
                 android:inputType="number"
                 android:gravity="center_horizontal"
                 android:layout_weight="1"
@@ -166,124 +160,13 @@
         </LinearLayout>
 
         <Switch
-            android:id="@+id/sw_sync_time"
+            android:id="@+id/sw_listen_new_file"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Синхронизировать с временем скриншота"
+            android:text="Отслеживать файлы в папке скриншотов"
             />
 
 
-
-        <Button
-            android:id="@+id/bt_start"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="старт!"
-            />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Наши очки"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Время / Досрочно"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Их очки"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:id="@+id/tv_calc_total_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="521"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/tv_calc_time_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="23:45"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/tv_calc_total_they"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:id="@+id/tv_calc_status_us"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Наш статус"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/tv_calc_status_game"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Статус игры"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-            <TextView
-                android:id="@+id/tv_calc_status_they"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Их статус"
-                android:gravity="center_horizontal"
-                android:layout_weight="1"
-                />
-
-        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_result"
@@ -291,29 +174,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Результат"
-            android:textSize="25sp"
+            android:text="@string/result"
+            android:textSize="20sp"
 
             />
 
 
-        <TextView
-            android:id="@+id/tv_test"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="Просто текст"
-            android:textSize="14sp"
-            />
-
-        <ListView
-            android:id="@+id/lv_files"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-        </ListView>
 
     </LinearLayout>
 

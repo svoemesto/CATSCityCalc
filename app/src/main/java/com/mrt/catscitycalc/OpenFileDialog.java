@@ -78,8 +78,11 @@ public class OpenFileDialog extends AlertDialog.Builder {
         }
     }
 
-    public OpenFileDialog(Context context) {
+    public OpenFileDialog(Context context, String initPath) {
         super(context);
+        if (!initPath.equals("")) {
+            currentPath = initPath;
+        }
         isOnlyFoldersFilter = false;
         title = createTitle(context);
         changeTitle();
