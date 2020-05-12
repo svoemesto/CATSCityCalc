@@ -34,6 +34,7 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -431,6 +432,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
+            }
+        }
+
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         // привязка контролов
@@ -571,6 +579,10 @@ public class MainActivity extends AppCompatActivity {
                 int secondsToEnd = (int)(((leftMillsToEndGame - 1000) - hoursToEnd * (1000 * 60 * 60) - minutesToEnd * (1000 * 60)) / 1000);
                 String strTimeToEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToEnd, minutesToEnd, secondsToEnd);
 
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+
+                long timeEndGame = currentTime.getTime() + leftMillsToEndGame;
+                String strTimeEndGame = simpleDateFormat.format(new Date(timeEndGame));
 
                 if (leftMillsToEndGame - leftMillsToInstanceUs > 0 || leftMillsToEndGame - leftMillsToInstanceThey > 0) {
                     // если игра закончится досрочно
@@ -580,6 +592,9 @@ public class MainActivity extends AppCompatActivity {
                     int secondsToInstanceEnd = (int)(((leftMillsToInstanceEndGame - 1000) - hoursToInstanceEnd * (1000 * 60 * 60) - minutesToInstanceEnd * (1000 * 60)) / 1000);
                     String strTimeToInstanceEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToInstanceEnd, minutesToInstanceEnd, secondsToInstanceEnd);
 
+                    long timeEndGameInstance = currentTime.getTime() + leftMillsToInstanceEndGame;
+                    String strTimeEndGameInstance = simpleDateFormat.format(new Date(timeEndGameInstance));
+
                     calcStatusGame = strTimeToEnd + " / " + strTimeToInstanceEnd;
 
 
@@ -587,16 +602,16 @@ public class MainActivity extends AppCompatActivity {
                         // Мы победим досрочно
                         calcStatusUs = "Мы победим досрочно";
                         calcStatusThey = "Они проиграют досрочно";
-                        calcResult = strTimeToInstanceEnd + " " + calcStatusUs + " с разницей в " + (willTotalInstanceUs - willTotalInstanceThey) + " очков";
+                        calcResult = strTimeToInstanceEnd + " " + calcStatusUs + " с разницей в " + (willTotalInstanceUs - willTotalInstanceThey) + " очков " + strTimeEndGameInstance;
                     } else if (leftMillsToInstanceUs > leftMillsToInstanceThey) {
                         // Мы проиграем досрочно
                         calcStatusUs = "Мы проиграем досрочно";
                         calcStatusThey = "Они победят досрочно";
-                        calcResult = strTimeToInstanceEnd + " " + calcStatusThey + " с разницей в " + (willTotalInstanceThey - willTotalInstanceUs) + " очков";
+                        calcResult = strTimeToInstanceEnd + " " + calcStatusThey + " с разницей в " + (willTotalInstanceThey - willTotalInstanceUs) + " очков " + strTimeEndGameInstance;
                     } else {
                         // Будет досрочная ничья
-                        calcStatusUs = "Будет досрочная ничья";
-                        calcStatusThey = "Будет досрочная ничья";
+                        calcStatusUs = "Будет досрочная ничья "  + strTimeEndGameInstance;
+                        calcStatusThey = "Будет досрочная ничья "  + strTimeEndGameInstance;
                         calcResult = calcStatusUs + " через " + strTimeToInstanceEnd;
                     }
 
@@ -609,17 +624,17 @@ public class MainActivity extends AppCompatActivity {
                         // Мы победим
                         calcStatusUs = "Мы победим";
                         calcStatusThey = "Они проиграют";
-                        calcResult = strTimeToEnd + " " + calcStatusUs + " с разницей в " + (willTotalUs - willTotalThey) + " очков";
+                        calcResult = strTimeToEnd + " " + calcStatusUs + " с разницей в " + (willTotalUs - willTotalThey) + " очков " + strTimeEndGame;
                     } else if (willTotalUs < willTotalThey) {
                         // Мы проиграем
                         calcStatusUs = "Мы проиграем";
                         calcStatusThey = "Они победят";
-                        calcResult = strTimeToEnd + " " + calcStatusThey + " с разницей в " + (willTotalThey - willTotalUs) + " очков";
+                        calcResult = strTimeToEnd + " " + calcStatusThey + " с разницей в " + (willTotalThey - willTotalUs) + " очков " + strTimeEndGame;
                     } else {
                         // Будет ничья
                         calcStatusUs = "Будет ничья";
                         calcStatusThey = "Будет ничья";
-                        calcResult = calcStatusUs + " через " + strTimeToEnd;
+                        calcResult = strTimeToEnd + calcStatusUs + " " + strTimeEndGame;
                     }
                 }
 
