@@ -37,6 +37,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -45,6 +46,8 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100;
+
+    private static final Date DATE_EXPIRED = new GregorianCalendar(2020, 5, 1).getTime();;
 
     private static final int MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE = 1;
 
@@ -119,9 +122,6 @@ public class MainActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private static final int NOTIFY_ID = 1;
     private static final String CHANNEL_ID = "chan1";
-
-//    private NotificationHelper noti;
-//    NotificationCompat.Builder nb;
 
     private String recognizePicture(Bitmap bitmap) {
 
@@ -418,22 +418,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (Calendar.getInstance().getTime().after(DATE_EXPIRED)) {
+            Toast.makeText(MainActivity.this,"Программа устарела", Toast.LENGTH_SHORT).show();
+            onBackPressed();
+            return;
+        }
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
             }
         }
-
-//        noti = new NotificationHelper(this);
-
-
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            Intent i = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-//            i.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-//            i.putExtra(Settings.EXTRA_CHANNEL_ID, NotificationHelper.SOUND_OFF);
-//            startActivity(i);
-//        }
 
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -643,12 +639,7 @@ public class MainActivity extends AppCompatActivity {
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder notificationBuilder =
-//       nb =
                 new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-//                new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-
-
-//        nb = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                         .setAutoCancel(false)
                         .setSmallIcon(R.drawable.ic_launcher_foreground)
                         .setWhen(System.currentTimeMillis())
@@ -658,12 +649,6 @@ public class MainActivity extends AppCompatActivity {
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(calcResult));
                 createChannelIfNeeded(notificationManager);
                 notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
-
-//        nb = noti.getNotification(false, "sound_off");
-//        if (nb != null) {
-//            noti.notify(false, nb);
-//        }
-
 
     }
 
