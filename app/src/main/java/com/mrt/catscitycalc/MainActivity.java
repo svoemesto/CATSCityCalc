@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.Settings;
 import android.util.SparseArray;
 import android.view.Menu;
@@ -34,6 +35,10 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private long timeLeftInMillis = 0;
     private long timeLeftInMinutesGlobal = 0;
     private String pathToScreenshotDir = "";
+    private String pathToCATScalcFolder = "";
     private boolean isListenToNewFileInFolder;
     private boolean isAllFieldsCorrect;
 
@@ -205,6 +211,46 @@ public class MainActivity extends AppCompatActivity {
             Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey);
             Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime);
             Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic);
+
+            try {
+
+                File fileCity = new File(pathToCATScalcFolder, "city.PNG");
+                OutputStream fOutCity = new FileOutputStream(fileCity);
+                croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);
+                fOutCity.flush();
+                fOutCity.close();
+
+                File fileTotalUs = new File(pathToCATScalcFolder, "totalus.PNG");
+                OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);
+                croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);
+                fOutTotalUs.flush();
+                fOutTotalUs.close();
+
+                File fileTotalThey = new File(pathToCATScalcFolder, "totalthey.PNG");
+                OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);
+                croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey);
+                fOutTotalThey.flush();
+                fOutTotalThey.close();
+
+                File fileTotalTime = new File(pathToCATScalcFolder, "totaltime.PNG");
+                OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);
+                croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime);
+                fOutTotalTime.flush();
+                fOutTotalTime.close();
+
+                File fileInstanceVic = new File(pathToCATScalcFolder, "instainevic.PNG");
+                OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);
+                croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic);
+                fOutInstanceVic.flush();
+                fOutInstanceVic.close();
+
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             ivCity.setImageBitmap(croppingBitmap);
 
@@ -437,6 +483,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
             }
+        }
+
+        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+        File tempDir = new File(pathToCATScalcFolder);
+        if (!tempDir.exists()) {
+            tempDir.mkdir();
         }
 
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
