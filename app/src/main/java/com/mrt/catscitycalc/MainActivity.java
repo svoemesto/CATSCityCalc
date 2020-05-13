@@ -859,7 +859,8 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                         .setAutoCancel(false)
-                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setSmallIcon(R.drawable.ic_catscalciconsmall)
+//                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_catscalcicon))
                         .setWhen(System.currentTimeMillis())
                         .setContentIntent(pendingIntent)
 //                        .setContentTitle("Заголовок")
