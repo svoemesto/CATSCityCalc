@@ -33,6 +33,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
@@ -45,6 +51,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -52,6 +59,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -149,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView dbgTvUs;
     private ImageView dbgIvThey;
     private TextView dbgTvThey;
+
+    private AdView mAdView;
 
     private String recognizePicture(Bitmap bitmap) {
 
@@ -350,19 +362,31 @@ public class MainActivity extends AppCompatActivity {
             String[] arrTotalTime = strTotalTime.split(" ");
 
             List<String> listTotalTime = new ArrayList<>();
+
             for (int i = 0; i < arrTotalTime.length; i++) {
                 if (!arrTotalTime[i].equals("")) {
-                    listTotalTime.add(arrTotalTime[i].substring(0, arrTotalTime[i].length()-1));
+                    listTotalTime.add(arrTotalTime[i]);
+//                    listTotalTime.add(arrTotalTime[i].substring(0, arrTotalTime[i].length() - 1));
                 }
             }
 
+            if (listTotalTime.size() > 1) {
+                for (int i = 0; i < listTotalTime.size(); i++) {
+                    listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1));
+                }
+            }
 
             if (listTotalTime.size() > 0) {
                 if (listTotalTime.size() == 1) {
-                    String hours = listTotalTime.get(0);
-                    String minutes = "00";
-
-                    strTotalTime = hours + ":" + minutes;
+                    if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {
+                        String hours = "00";
+                        String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);
+                        strTotalTime = hours + ":" + minutes;
+                    } else {
+                        String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);
+                        String minutes = "00";
+                        strTotalTime = hours + ":" + minutes;
+                    }
                 } else if (listTotalTime.size() == 2) {
                     String hours = listTotalTime.get(0);
                     String minutes = listTotalTime.get(1);
@@ -371,13 +395,12 @@ public class MainActivity extends AppCompatActivity {
                         minutes = "0" + minutes;
                     }
                     strTotalTime = hours + ":" + minutes;
-                } else {
+                } else if (listTotalTime.size() == 0) {
                     strTotalTime = "00:00";
                 }
             } else {
                 strTotalTime = "00:00";
             }
-
 
             strPlusUs = strPlusUs.equals("") ? "??" : strPlusUs.trim();
             strPlusThey = strPlusThey.equals("") ? "??" : strPlusThey.trim();
@@ -513,6 +536,53 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+//        MobileAds.setRequestConfiguration(
+//                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
+//                        .build());
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                // Code to be executed when an ad request fails.
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                // Code to be executed when the user has left the app.
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+
         if (Calendar.getInstance().getTime().after(DATE_EXPIRED)) {
             Toast.makeText(MainActivity.this,"Программа устарела", Toast.LENGTH_SHORT).show();
             onBackPressed();
@@ -530,6 +600,13 @@ public class MainActivity extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
+            }
+        }
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
             }
         }
 

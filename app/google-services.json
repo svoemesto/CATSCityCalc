@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "673705586362",
+    "firebase_url": "https://catscalc.firebaseio.com",
+    "project_id": "catscalc",
+    "storage_bucket": "catscalc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673705586362:android:79080489d564bc6bbb5c83",
+        "android_client_info": {
+          "package_name": "com.mrt.catscitycalc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673705586362-72j7j03d5ou9jcflk6itpjq5irfnvb60.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mrt.catscitycalc",
+            "certificate_hash": "c171e9f25d65c8eb6f4db401dfcc46649bcf133a"
+          }
+        },
+        {
+          "client_id": "673705586362-o8iq1070ctubl2lou8k989b0nc2c8o0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTsKmcjxMKWPBbVCDBC0pejVfOqInBNDs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673705586362-o8iq1070ctubl2lou8k989b0nc2c8o0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
