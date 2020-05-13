@@ -1,27 +1,17 @@
 package com.mrt.catscitycalc;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
-
-import java.io.File;
-import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -101,6 +91,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void selectScreenshotFolder(View view) {
         OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)
                 .setOnlyFoldersFilter()
+                .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))
+                .setFileIcon(getResources().getDrawable(R.drawable.ic_file))
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     public void OnSelectedFile(String fileName) {

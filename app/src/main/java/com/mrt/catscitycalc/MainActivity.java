@@ -461,6 +461,8 @@ public class MainActivity extends AppCompatActivity {
     private void selectScreenshot() {
 
         OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)
+                .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))
+                .setFileIcon(getResources().getDrawable(R.drawable.ic_file))
 //                .setFilter(".*\\.png, .*\\jpg")
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
