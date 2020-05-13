@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -39,6 +40,7 @@ import com.google.android.gms.vision.text.TextRecognizer;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
@@ -223,12 +225,14 @@ public class MainActivity extends AppCompatActivity {
             if (x1instancevic < 0) x1instancevic = 0;
             if ((x2instancevic > widthSource)) x2instancevic = widthSource;
 
+            Matrix matrix = new Matrix();
+            matrix.postScale(4.0f, 4.0f);
 
             Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
-            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus - x1totalus, y2totalus - y1totalus);
-            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey);
-            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime);
-            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic);
+            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus - x1totalus, y2totalus - y1totalus, matrix, false);
+            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey, matrix, false);
+            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime, matrix, false);
+            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic, matrix, false);
 
             try {
 
@@ -354,7 +358,12 @@ public class MainActivity extends AppCompatActivity {
 
 
             if (listTotalTime.size() > 0) {
-                if (listTotalTime.size() == 2) {
+                if (listTotalTime.size() == 1) {
+                    String hours = listTotalTime.get(0);
+                    String minutes = "00";
+
+                    strTotalTime = hours + ":" + minutes;
+                } else if (listTotalTime.size() == 2) {
                     String hours = listTotalTime.get(0);
                     String minutes = listTotalTime.get(1);
 
@@ -393,7 +402,12 @@ public class MainActivity extends AppCompatActivity {
     private File getLastFileInFolder(String pathToFolder) {
 
         File dir = new File(pathToFolder);
-        File[] files = dir.listFiles();
+        File[] files = dir.listFiles(new FilenameFilter() {
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png");
+            }
+        });
         List<File> listFiles = new ArrayList<>();
 
         if (files != null) {
@@ -689,7 +703,7 @@ public class MainActivity extends AppCompatActivity {
                 int secondsToEnd = (int)(((leftMillsToEndGame - 1000) - hoursToEnd * (1000 * 60 * 60) - minutesToEnd * (1000 * 60)) / 1000);
                 String strTimeToEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToEnd, minutesToEnd, secondsToEnd);
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
                 long timeEndGame = currentTime.getTime() + leftMillsToEndGame;
                 String strTimeEndGame = simpleDateFormat.format(new Date(timeEndGame));
