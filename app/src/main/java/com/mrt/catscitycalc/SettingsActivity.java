@@ -29,6 +29,8 @@ public class SettingsActivity extends AppCompatActivity {
     boolean listenLastFile;
     TextView tvScreenshotFolder;
     Switch swListenLastFile;
+    Switch swLDebugMode;
+    boolean isDebugMode;
     Button btnSelectScreenshotFolder;
 
     @Override
@@ -59,13 +61,17 @@ public class SettingsActivity extends AppCompatActivity {
 
         tvScreenshotFolder = findViewById(R.id.tv_screenshotfolder);
         swListenLastFile = findViewById(R.id.sw_get_last_screenshot);
+        swLDebugMode = findViewById(R.id.sw_debug_mode);
         btnSelectScreenshotFolder = findViewById(R.id.btn_select_screenshot_folder);
 
         SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
         listenLastFile = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
+        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
         tvScreenshotFolder.setText(pathToScreenshotDir);
         swListenLastFile.setChecked(listenLastFile);
+        swLDebugMode.setChecked(isDebugMode);
+
 
         swListenLastFile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -73,6 +79,16 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
+                editor.apply();
+            }
+        });
+
+        swLDebugMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(getString(R.string.pref_debug_mode), isChecked);
                 editor.apply();
             }
         });

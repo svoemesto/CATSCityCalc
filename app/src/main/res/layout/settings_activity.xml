@@ -24,4 +24,11 @@
         android:text="Отслеживать файлы в папке скриншотов"
         android:defaultValue="false"/>
 
+    <Switch
+        android:id="@+id/sw_debug_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Debug mode"
+        android:defaultValue="false"/>
+
 </LinearLayout>

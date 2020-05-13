@@ -18,8 +18,10 @@ import android.provider.Settings;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,6 +131,22 @@ public class MainActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private static final int NOTIFY_ID = 1;
     private static final String CHANNEL_ID = "chan1";
+
+
+    // DEBUG MODE
+    private boolean isDebugMode;
+    private LinearLayout dbgLayout;
+    private TextView dbgTvHeader;
+    private TextView dbgTvFileName;
+    private TextView dbgTvFileDate;
+    private ImageView dbgIvTime;
+    private TextView dbgTvTime;
+    private ImageView dbgIvInstanceVic;
+    private TextView dbgTvInstanceVic;
+    private ImageView dbgIvUs;
+    private TextView dbgTvUs;
+    private ImageView dbgIvThey;
+    private TextView dbgTvThey;
 
     private String recognizePicture(Bitmap bitmap) {
 
@@ -244,8 +262,6 @@ public class MainActivity extends AppCompatActivity {
                 fOutInstanceVic.flush();
                 fOutInstanceVic.close();
 
-
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -263,6 +279,22 @@ public class MainActivity extends AppCompatActivity {
             String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);
             String strTotalTime = recognizePicture(croppingBitmapTotalTime);
             String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);
+
+//            if (isDebugMode) {
+                dbgIvTime.setImageBitmap(croppingBitmapTotalTime);
+                dbgIvInstanceVic.setImageBitmap(croppingBitmapInstanceVic);
+                dbgIvUs.setImageBitmap(croppingBitmapTotalUs);
+                dbgIvThey.setImageBitmap(croppingBitmapTotalThey);
+
+                dbgTvTime.setText(strTotalTime);
+                dbgTvInstanceVic.setText(strInstanceVic);
+                dbgTvUs.setText(strTotalUsAndPlus);
+                dbgTvThey.setText(strTotalTheyAndPlus);
+
+                dbgTvFileName.setText(fileScreenshot.getName());
+                dbgTvFileDate.setText("" + new Date(fileScreenshot.lastModified()));
+
+//            }
 
 
             String[] arrTotalUs = strTotalUsAndPlus.split("\\D");
@@ -455,7 +487,9 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
             isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
+            isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
             swListenNewFiles.setChecked(isListenToNewFileInFolder);
+            dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
 
         }
     }
@@ -513,12 +547,36 @@ public class MainActivity extends AppCompatActivity {
         etInInstantVic.setText("0");
         tvResult.setText("");
 
+        dbgLayout = findViewById(R.id.dbg_layout);
+        dbgTvHeader = findViewById(R.id.dbg_tv_header);
+        dbgTvFileName = findViewById(R.id.dbg_tv_file_name);
+        dbgTvFileDate = findViewById(R.id.dbg_tv_file_date);
+        dbgIvTime = findViewById(R.id.dbg_img_time);
+        dbgTvTime = findViewById(R.id.dbg_tv_time);
+        dbgIvInstanceVic = findViewById(R.id.dbg_img_instance_vic);
+        dbgTvInstanceVic = findViewById(R.id.dbg_tv_instance_vic);
+        dbgIvUs = findViewById(R.id.dbg_img_us);
+        dbgTvUs = findViewById(R.id.dbg_tv_us);
+        dbgIvThey = findViewById(R.id.dbg_img_they);
+        dbgTvThey = findViewById(R.id.dbg_tv_they);
+
+
+
+
+
+
+
+
+
         startTimer();
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
         isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
+        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
         swListenNewFiles.setChecked(isListenToNewFileInFolder);
+
+        dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
 
         swListenNewFiles.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
