@@ -213,7 +213,7 @@
                 <ImageView
                     android:id="@+id/dbg_img_time"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/stub_total_time"/>
 
@@ -222,6 +222,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="Распознанное время"/>
 
             </LinearLayout>
@@ -235,7 +236,7 @@
                 <ImageView
                     android:id="@+id/dbg_img_instance_vic"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/stub_instance_vic"/>
 
@@ -244,6 +245,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="Распознанное вол-во очков для победы"/>
 
             </LinearLayout>
@@ -257,7 +259,7 @@
                 <ImageView
                     android:id="@+id/dbg_img_us"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/stub_total_us"/>
 
@@ -266,6 +268,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="Распознанные наши очки"/>
 
             </LinearLayout>
@@ -279,7 +282,7 @@
                 <ImageView
                     android:id="@+id/dbg_img_they"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@drawable/stub_total_they"/>
 
@@ -288,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:text="Распознанные их очки"/>
 
             </LinearLayout>
