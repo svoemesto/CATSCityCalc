@@ -432,6 +432,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private File getLastFileInFolder(String pathToFolder) {
 
+        File temp = null;           // временный файл
+        File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
         File dir = new File(pathToFolder); // папка
         File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
             @Override
@@ -448,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
 
         if  (listFiles.size() > 0) {    // если в листе есть файлы
             long maxLastModified = 0;   // максимальная дата (ноль для начала)
-            File temp = null;           // временный файл
+
             for (File file : listFiles) {   // цикл по листу
                 if (file.lastModified() > maxLastModified) {    // если дата создания файла из листа больше максимальной
                     maxLastModified = file.lastModified();      // максимальная дата = дате файла из листа
@@ -464,7 +466,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (widthSource < heightSource) {
                         if (fileLastInFolder == null) {
-                            temp = new File(pathToCATScalcFolder, "last_screenshot.PNG");
+                            temp = lastScreenshot;
+                            if (!temp.exists()) temp = null;
                         } else {
                             temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
                         }
@@ -474,12 +477,11 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             }
-            return temp;    // возвращаем временный файл
-
-        } else {    // если файлов в папке нет
-            return null;    // возвращаем нулл
         }
 
+        if (temp == null && lastScreenshot.exists()) return lastScreenshot;
+
+        return temp;
     }
 
     /**
