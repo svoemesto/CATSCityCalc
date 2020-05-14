@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvResult; // результат игры
 
     private File fileScreenshot;    // текущий файл скриншота
+    private File fileScreenshotPrevious;    // предыдущий файл скриншота
     private File fileLastInFolder;    // последний файл в папке
 
     private Timer timer;                        // таймер
@@ -189,8 +190,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void cutPicture() {
 
-        if (fileScreenshot != null) {  // если текущий скриншот не нулл
+        if (fileScreenshot != null && !fileScreenshot.equals(fileScreenshotPrevious)) {  // если текущий скриншот не нулл
 
+            fileScreenshotPrevious = fileScreenshot;
             Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
             int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
             int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
