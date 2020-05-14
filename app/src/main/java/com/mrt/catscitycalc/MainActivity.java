@@ -287,6 +287,12 @@ public class MainActivity extends AppCompatActivity {
                 fOutInstanceVic.flush();                                                            // сохраняем данные из потока
                 fOutInstanceVic.close();                                                            // закрываем поток
 
+                File fileScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutScreenshot = new FileOutputStream(fileScreenshot);                   // аутпутстрим на файл
+                sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+                fOutScreenshot.flush();                                                            // сохраняем данные из потока
+                fOutScreenshot.close();                                                            // закрываем поток
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -455,8 +461,17 @@ public class MainActivity extends AppCompatActivity {
                     Bitmap sourceBitmap = BitmapFactory.decodeFile(temp.getAbsolutePath());   // получаем битмап из файла скриншота
                     int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
                     int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
-                    fileLastInFolder = temp;    // последний найденный файл - текущий найденный
-                    if (widthSource < heightSource) temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
+
+                    if (widthSource < heightSource) {
+                        if (fileLastInFolder == null) {
+                            temp = new File(pathToCATScalcFolder, "last_screenshot.PNG");
+                        } else {
+                            temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
+                        }
+                    } else {
+                        fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                    }
+
                 }
             }
             return temp;    // возвращаем временный файл
@@ -703,29 +718,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         startTimer();   // стартуем таймер
-
-//        File initFile = getLastFileInFolder(pathToScreenshotDir);
-//        if (initFile != null) {
-//            fileScreenshot = initFile;
-//            cutPicture();
-//
-//            try {
-//                timeStartTimer = Calendar.getInstance().getTime();  // текущее время старта таймера
-//                timeStartGame = new Date(fileScreenshot.lastModified()); // время начала игры
-//                initMinutesToEndGame = parseTimeLeft(etInTimeLeft.getText().toString());
-//                timeEndGame = new Date(timeStartGame.getTime() + ((long)initMinutesToEndGame*60*1000)); // время окончания игры (по времени)
-//                initPlusUs = Integer.parseInt(etInPlusUs.getText().toString());
-//                initInstantVic = Integer.parseInt(etInInstantVic.getText().toString());
-//                initTotalUs = Integer.parseInt(etInTotalUs.getText().toString());
-//                initTotalThey = Integer.parseInt(etInTotalThey.getText().toString());
-//                initPlusThey = Integer.parseInt(etInPlusThey.getText().toString());
-//                isAllFieldsCorrect = true;
-//            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-////                Toast.makeText(MainActivity.this,"Ошибка ввода данных, невозможно запустить таймер.", Toast.LENGTH_SHORT).show();
-//                isAllFieldsCorrect = false;
-//            }
-//
-//        }
 
     }
 
