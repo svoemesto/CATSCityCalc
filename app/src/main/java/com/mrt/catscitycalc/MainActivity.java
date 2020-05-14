@@ -1,10 +1,12 @@
 package com.mrt.catscitycalc;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -52,8 +54,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
     private static final Date DATE_EXPIRED = new GregorianCalendar(2020, 5, 1).getTime();   // дата окончания жизни программы. После нее она не будет запускаться
     private static final int MY_PERMISSIONS_REQUESTREAD_READ_EXTERNAL_STORAGE = 1;   // код пермишенса (хз зачем)
-    private static final int MY_PERMISSIONS_REQUESTREAD_WRITE_EXTERNAL_STORAGE = 1;   // код пермишенса (хз зачем)
-    private static final int MY_PERMISSIONS_REQUESTREAD_INTERNET = 1;   // код пермишенса (хз зачем)
+    private static final int MY_PERMISSIONS_REQUESTREAD_WRITE_EXTERNAL_STORAGE = 2;   // код пермишенса (хз зачем)
+    private static final int MY_PERMISSIONS_REQUESTREAD_INTERNET = 3;   // код пермишенса (хз зачем)
+    private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенса (хз зачем)
 
     private ImageView ivCity; // кропнутая картинка
 
@@ -133,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int NOTIFY_ID = 1;             // айди нотификатора
     private static final String CHANNEL_ID = "chan1";   // канал нотификатора
 
+    private static boolean allPermissionsIsGranted;
+    private static boolean permReadIsGranted;
+    private static boolean permWriteIsGranted;
+    private static boolean permInternetIsGranted;
 
     // DEBUG MODE - контролы
     private boolean isDebugMode;
@@ -533,35 +542,62 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+//        while (true) {
 
-        // запрос разрешения на чтение файловой системы
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_READ_EXTERNAL_STORAGE);
-            }
-        }
+        List<String> permissionsNeeded = new ArrayList<String>();
 
-        // запрос разрешения на запись файловой системы
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_WRITE_EXTERNAL_STORAGE);
-            }
-        }
+        final List<String> permissionsList = new ArrayList<String>();
+        if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE))
+            permissionsNeeded.add("Read External Storage");
+        if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            permissionsNeeded.add("Write External Storage");
+        if (!addPermission(permissionsList, Manifest.permission.INTERNET))
+            permissionsNeeded.add("Internet");
 
-        // запрос разрешения на интернет
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
-            } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, MY_PERMISSIONS_REQUESTREAD_INTERNET);
+        if (permissionsList.size() > 0) {
+            if (permissionsNeeded.size() > 0) {
+                // Need Rationale
+                String message = "You need to grant access to " + permissionsNeeded.get(0);
+                for (int i = 1; i < permissionsNeeded.size(); i++)
+                    message = message + ", " + permissionsNeeded.get(i);
+                showMessageOKCancel(message,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
+                                        MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS);
+                            }
+                        });
+//                return;
             }
+//            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS);
+//            return;
         }
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
         pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
         File tempDir = new File(pathToCATScalcFolder);
-        if (!tempDir.exists()) tempDir.mkdir();
+        if (!tempDir.exists()) {
+            tempDir.mkdir();
+        }
+
+        if (tempDir.exists()) {
+            File tmp = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+            if (!tmp.exists()) {
+                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);
+                try {
+                    OutputStream fOutScreenshot = new FileOutputStream(tmp);
+                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+                    fOutScreenshot.flush();                                                            // сохраняем данные из потока
+                    fOutScreenshot.close();// закрываем поток
+                    fileScreenshot = tmp;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                fileScreenshot = tmp;
+            }
+        }
 
         // нотификейшт менеджер
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -629,6 +665,84 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
+    }
+
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+            // Check for Rationale Option
+            if (!shouldShowRequestPermissionRationale(permission))
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS:
+            {
+                Map<String, Integer> perms = new HashMap<String, Integer>();
+                // Initial
+                perms.put(Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+                perms.put(Manifest.permission.INTERNET, PackageManager.PERMISSION_GRANTED);
+                // Fill with results
+                for (int i = 0; i < permissions.length; i++)
+                    perms.put(permissions[i], grantResults[i]);
+                // Check for ACCESS_FINE_LOCATION
+                if (perms.get(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                        && perms.get(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
+                    // All Permissions Granted
+
+                    Toast.makeText(MainActivity.this, "All Permission is Granted", Toast.LENGTH_SHORT)
+                            .show();
+
+                    // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
+                    pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+                    File tempDir = new File(pathToCATScalcFolder);
+                    if (!tempDir.exists()) {
+                        tempDir.mkdir();
+                    }
+
+                    if (tempDir.exists()) {
+                        File tmp = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+                        if (!tmp.exists()) {
+                            Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);
+                            try {
+                                OutputStream fOutScreenshot = new FileOutputStream(tmp);
+                                sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+                                fOutScreenshot.flush();                                                            // сохраняем данные из потока
+                                fOutScreenshot.close();// закрываем поток
+                                fileScreenshot = tmp;
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            fileScreenshot = tmp;
+                        }
+                    }
+
+
+                } else {
+                    // Permission Denied
+                    Toast.makeText(MainActivity.this, "Some Permission is Denied", Toast.LENGTH_SHORT)
+                            .show();
+                }
+            }
+            break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
     /**
      * Калькулятор
      */
@@ -770,6 +884,8 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void run() {
+
+
 
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки

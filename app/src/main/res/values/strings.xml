@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_version">Version: 1.0.7 (14/05/2020)</string>
     <string name="app_name">C.A.T.S. City Calculator</string>
     <string name="plus_us">+ нам</string>
     <string name="time">Время</string>
