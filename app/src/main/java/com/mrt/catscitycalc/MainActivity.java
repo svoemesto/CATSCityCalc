@@ -82,41 +82,42 @@ public class MainActivity extends AppCompatActivity {
     public Switch swListenNewFiles; // переключатель "Отслеживать новые файлы"
     private TextView tvResult; // результат игры
 
-    private File fileScreenshot;    // текущий файл скриншота
-    private File fileScreenshotPrevious;    // предыдущий файл скриншота
-    private File fileLastInFolder;    // последний файл в папке
+    public static  File fileScreenshot;    // текущий файл скриншота
+    public static  File fileScreenshotPrevious;    // предыдущий файл скриншота
+    public static  File fileLastInFolder;    // последний файл в папке
 
     private Timer timer;                        // таймер
     private String pathToScreenshotDir = "";    // путь к папке скриншотов
-    private String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
+    public static String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
     private boolean isListenToNewFileInFolder;  // флаг "Следить за новыми файлами в папке"
     private boolean isAllFieldsCorrect;         // флаг "Все поля заполнены правильно"
+    public static int calibrate;                              // калибровка
 
     // коэффициэнты кропа картинки
-    private static final double XD1 = -0.565d;
-    private static final double XD2 = +0.565d;
-    private static final double YD1 = -0.800d;
-    private static final double YD2 = -0.450d;
+    public static final double XD1 = -0.565d;
+    public static final double XD2 = +0.565d;
+    public static final double YD1 = -0.800d;
+    public static final double YD2 = -0.450d;
 
-    private static final double XD1_TOTALUS = -0.565d;
-    private static final double XD2_TOTALUS = -0.180d;
-    private static final double YD1_TOTALUS = -0.610d;
-    private static final double YD2_TOTALUS = -0.470d;
+    public static final double XD1_TOTALUS = -0.565d;
+    public static final double XD2_TOTALUS = -0.180d;
+    public static final double YD1_TOTALUS = -0.610d;
+    public static final double YD2_TOTALUS = -0.470d;
 
-    private static final double XD1_TOTALTHEY = +0.180d;
-    private static final double XD2_TOTALTHEY = +0.565d;
-    private static final double YD1_TOTALTHEY = -0.610d;
-    private static final double YD2_TOTALTHEY = -0.470d;
+    public static final double XD1_TOTALTHEY = +0.180d;
+    public static final double XD2_TOTALTHEY = +0.565d;
+    public static final double YD1_TOTALTHEY = -0.610d;
+    public static final double YD2_TOTALTHEY = -0.470d;
 
-    private static final double XD1_TOTALTIME = -0.130d;
-    private static final double XD2_TOTALTIME = +0.060d;
-    private static final double YD1_TOTALTIME = -0.780d;
-    private static final double YD2_TOTALTIME = -0.660d;
+    public static final double XD1_TOTALTIME = -0.130d;
+    public static final double XD2_TOTALTIME = +0.060d;
+    public static final double YD1_TOTALTIME = -0.780d;
+    public static final double YD2_TOTALTIME = -0.660d;
 
-    private static final double XD1_INSTANCEVIN = -0.170d;
-    private static final double XD2_INSTANCEVIN = +0.170d;
-    private static final double YD1_INSTANCEVIN = -0.570d;
-    private static final double YD2_INSTANCEVIN = -0.450d;
+    public static final double XD1_INSTANCEVIN = -0.170d;
+    public static final double XD2_INSTANCEVIN = +0.170d;
+    public static final double YD1_INSTANCEVIN = -0.570d;
+    public static final double YD2_INSTANCEVIN = -0.450d;
 
     private Date timeStartGame;         // дата начала игры
     private Date timeEndGame;           // дата конца игры
@@ -188,118 +189,18 @@ public class MainActivity extends AppCompatActivity {
      * Вырезание картинок
      */
 
-    private void cutPicture() {
+    public void cutPicture() {
 
         if (fileScreenshot != null && !fileScreenshot.equals(fileScreenshotPrevious)) {  // если текущий скриншот не нулл
 
+
+
             fileScreenshotPrevious = fileScreenshot;
             Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
-            int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
-            int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
 
-            // координаты для вырезания картинки информации об игре
-            int x1 = (int) ((double) widthSource / 2 + XD1 * heightSource);
-            int x2 = (int) ((double) widthSource / 2 + XD2 * heightSource);
-            int y1 = (int) ((double) heightSource / 2 + YD1 * ((double) heightSource / 2));
-            int y2 = (int) ((double) heightSource / 2 + YD2 * ((double) heightSource / 2));
+            CuttedPictures cuttedPictures = CutPicture.cutPictire(sourceBitmap);
 
-            // если координаты вылезаю за границы скриншота - приводим их к границам
-            x1 = Math.max(x1, 0); x2 = Math.min(x2, widthSource);
-            y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
-
-            // координаты для вырезания картинки Наши очки
-            int x1totalus = (int) ((double) widthSource / 2 + XD1_TOTALUS * heightSource);
-            int x2totalus = (int) ((double) widthSource / 2 + XD2_TOTALUS * heightSource);
-            int y1totalus = (int) ((double) heightSource / 2 + YD1_TOTALUS * ((double) heightSource / 2));
-            int y2totalus = (int) ((double) heightSource / 2 + YD2_TOTALUS * ((double) heightSource / 2));
-
-            // если координаты вылезаю за границы скриншота - приводим их к границам
-            x1totalus = Math.max(x1totalus, 0); x2totalus = Math.min(x2totalus, widthSource);
-            y1totalus = Math.max(y1totalus, 0);  y2totalus = Math.min(y2totalus, heightSource);
-
-            // координаты для вырезания картинки Их очки
-            int x1totalthey = (int) ((double) widthSource / 2 + XD1_TOTALTHEY * heightSource);
-            int x2totalthey = (int) ((double) widthSource / 2 + XD2_TOTALTHEY * heightSource);
-            int y1totalthey = (int) ((double) heightSource / 2 + YD1_TOTALTHEY * ((double) heightSource / 2));
-            int y2totalthey = (int) ((double) heightSource / 2 + YD2_TOTALTHEY * ((double) heightSource / 2));
-
-            // если координаты вылезаю за границы скриншота - приводим их к границам
-            x1totalthey = Math.max(x1totalthey, 0); x2totalthey = Math.min(x2totalthey, widthSource);
-            y1totalthey = Math.max(y1totalthey, 0);  y2totalthey = Math.min(y2totalthey, heightSource);
-
-            // координаты для вырезания картинки Время
-            int x1totaltime = (int) ((double) widthSource / 2 + XD1_TOTALTIME * heightSource);
-            int x2totaltime = (int) ((double) widthSource / 2 + XD2_TOTALTIME * heightSource);
-            int y1totaltime = (int) ((double) heightSource / 2 + YD1_TOTALTIME * ((double) heightSource / 2));
-            int y2totaltime = (int) ((double) heightSource / 2 + YD2_TOTALTIME * ((double) heightSource / 2));
-
-            // если координаты вылезаю за границы скриншота - приводим их к границам
-            x1totaltime = Math.max(x1totaltime, 0); x2totaltime = Math.min(x2totaltime, widthSource);
-            y1totaltime = Math.max(y1totaltime, 0);  y2totaltime = Math.min(y2totaltime, heightSource);
-
-            // координаты для вырезания картинки Досрочка
-            int x1instancevic = (int) ((double) widthSource / 2 + XD1_INSTANCEVIN * heightSource);
-            int x2instancevic = (int) ((double) widthSource / 2 + XD2_INSTANCEVIN * heightSource);
-            int y1instancevic = (int) ((double) heightSource / 2 + YD1_INSTANCEVIN * ((double) heightSource / 2));
-            int y2instancevic = (int) ((double) heightSource / 2 + YD2_INSTANCEVIN * ((double) heightSource / 2));
-
-            // если координаты вылезаю за границы скриншота - приводим их к границам
-            x1instancevic = Math.max(x1instancevic, 0); x2instancevic = Math.min(x2instancevic, widthSource);
-            y1instancevic = Math.max(y1instancevic, 0);  y2instancevic = Math.min(y2instancevic, heightSource);
-
-            Matrix matrix = new Matrix();           // матрица ресайза
-            matrix.postScale(4.0f, 4.0f);   // будем ресайзать в 4 раза
-
-            // создаем вырезанные и ресайзные картинки
-            Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
-            Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus - x1totalus, y2totalus - y1totalus, matrix, false);
-            Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey, matrix, false);
-            Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime, matrix, false);
-            Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic, matrix, false);
-
-            try {
-
-                File fileCity = new File(pathToCATScalcFolder, "city.PNG");                   // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutCity = new FileOutputStream(fileCity);                             // аутпутстрим на файл
-                croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);           // сжимаем картинку в ПНГ с качеством 90%
-                fOutCity.flush();                                                                   // сохраняем данные из потока
-                fOutCity.close();                                                                   // закрываем поток
-
-                File fileTotalUs = new File(pathToCATScalcFolder, "totalus.PNG");             // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);                       // аутпутстрим на файл
-                croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);  // сжимаем картинку в ПНГ с качеством 90%
-                fOutTotalUs.flush();                                                                // сохраняем данные из потока
-                fOutTotalUs.close();                                                                // закрываем поток
-
-                File fileTotalThey = new File(pathToCATScalcFolder, "totalthey.PNG");           // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);                       // аутпутстрим на файл
-                croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey); // сжимаем картинку в ПНГ с качеством 90%
-                fOutTotalThey.flush();                                                               // сохраняем данные из потока
-                fOutTotalThey.close();                                                              // закрываем поток
-
-                File fileTotalTime = new File(pathToCATScalcFolder, "totaltime.PNG");           // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);                       // аутпутстрим на файл
-                croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime); // сжимаем картинку в ПНГ с качеством 90%
-                fOutTotalTime.flush();                                                              // сохраняем данные из потока
-                fOutTotalTime.close();                                                              // закрываем поток
-
-                File fileInstanceVic = new File(pathToCATScalcFolder, "instainevic.PNG");       // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);                   // аутпутстрим на файл
-                croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic); // сжимаем картинку в ПНГ с качеством 90%
-                fOutInstanceVic.flush();                                                            // сохраняем данные из потока
-                fOutInstanceVic.close();                                                            // закрываем поток
-
-                File fileScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-                OutputStream fOutScreenshot = new FileOutputStream(fileScreenshot);                   // аутпутстрим на файл
-                sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-                fOutScreenshot.flush();                                                            // сохраняем данные из потока
-                fOutScreenshot.close();                                                            // закрываем поток
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            ivCity.setImageBitmap(croppingBitmap);  // выводим битмат игры в контрол
+            ivCity.setImageBitmap(cuttedPictures.croppingBitmap);  // выводим битмат игры в контрол
 
             // стартовые занчения переменных
             String strTotalUs = "0";
@@ -307,17 +208,17 @@ public class MainActivity extends AppCompatActivity {
             String strTotalThey = "0";
             String strPlusThey = "0";
 
-            String strTotalUsAndPlus = recognizePicture(croppingBitmapTotalUs);         // распознаем "Наши очки"
-            String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);     // распознаем "Их очки"
-            String strTotalTime = recognizePicture(croppingBitmapTotalTime);            // распознаем "Время"
-            String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);        // распознаем "Досрочка"
+            String strTotalUsAndPlus = recognizePicture(cuttedPictures.croppingBitmapTotalUs);         // распознаем "Наши очки"
+            String strTotalTheyAndPlus = recognizePicture(cuttedPictures.croppingBitmapTotalThey);     // распознаем "Их очки"
+            String strTotalTime = recognizePicture(cuttedPictures.croppingBitmapTotalTime);            // распознаем "Время"
+            String strInstanceVic = recognizePicture(cuttedPictures.croppingBitmapInstanceVic);        // распознаем "Досрочка"
 
             if (isDebugMode) { // если включен дебаг-мод
                 // выводим битмапы и распознанные данные в контрлы дебаг-мода
-                dbgIvTime.setImageBitmap(croppingBitmapTotalTime);
-                dbgIvInstanceVic.setImageBitmap(croppingBitmapInstanceVic);
-                dbgIvUs.setImageBitmap(croppingBitmapTotalUs);
-                dbgIvThey.setImageBitmap(croppingBitmapTotalThey);
+                dbgIvTime.setImageBitmap(cuttedPictures.croppingBitmapTotalTime);
+                dbgIvInstanceVic.setImageBitmap(cuttedPictures.croppingBitmapInstanceVic);
+                dbgIvUs.setImageBitmap(cuttedPictures.croppingBitmapTotalUs);
+                dbgIvThey.setImageBitmap(cuttedPictures.croppingBitmapTotalThey);
 
                 dbgTvTime.setText(strTotalTime);
                 dbgTvInstanceVic.setText(strInstanceVic);
@@ -559,6 +460,8 @@ public class MainActivity extends AppCompatActivity {
             isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
             swListenNewFiles.setChecked(isListenToNewFileInFolder);
             dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
+            fileScreenshotPrevious = null;
+            cutPicture();
         }
     }
 
@@ -703,6 +606,7 @@ public class MainActivity extends AppCompatActivity {
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
         isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
         isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
+        calibrate = sharedPreferences.getInt(getString(R.string.pref_calibrate),0);
         swListenNewFiles.setChecked(isListenToNewFileInFolder);
 
         // устанавливаем видимость группы контролов дебаг-мода, если он включен
@@ -731,8 +635,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate() {
 
-        String calcStatusUs;    // наш статус
-        String calcStatusThey;  // их статус
         String calcResult;      // результат
 
         if (isAllFieldsCorrect) {   // если все поля заполненны верно

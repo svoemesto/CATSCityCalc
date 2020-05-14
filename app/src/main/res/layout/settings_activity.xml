@@ -1,4 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -30,5 +32,73 @@
         android:layout_height="wrap_content"
         android:text="Debug mode"
         android:defaultValue="false"/>
+    <TextView
+        android:id="@+id/tv_calibrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Калибровка центра скриншота"/>
+
+    <Button
+        android:id="@+id/btn_calibrate_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сброс в ноль"
+        android:onClick="calibrateReset"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_minus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep10"
+            android:onClick="calibrateMinus10"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_minus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep1"
+            android:onClick="calibrateMinus1"
+            />
+        <EditText
+            android:id="@+id/et_calibrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            />
+        <ImageButton
+            android:id="@+id/btn_calibrate_plus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep1"
+            android:onClick="calibratePlus1"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_plus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep10"
+            android:onClick="calibratePlus10"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_calibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        app:srcCompat="@drawable/stub_city"/>
 
 </LinearLayout>

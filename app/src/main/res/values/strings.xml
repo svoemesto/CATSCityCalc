@@ -25,7 +25,8 @@
     <string name="pref_screenshot_folder">PREF_SCREENSHOT_FOLDER</string>
     <string name="pref_listen_last_file">PREF_LISTEN_LAST_FILE</string>
     <string name="pref_debug_mode">PREF_DEBUG_MODE</string>
-    
+    <string name="pref_calibrate">PREF_CALIBRATE</string>
+
     <string name="banner_ad_unit_id">ca-app-pub-7202594993908077/4449120245</string>
 
 </resources>
