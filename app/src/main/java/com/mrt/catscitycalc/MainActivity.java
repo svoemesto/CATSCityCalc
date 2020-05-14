@@ -1,7 +1,6 @@
 package com.mrt.catscitycalc;
 
 import android.Manifest;
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -15,7 +14,6 @@ import android.graphics.Matrix;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
 import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,11 +32,11 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
@@ -51,7 +49,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -59,17 +56,19 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
+
+/**
+ * MainActivity
+ */
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final int REQUEST_CODE_SECOND_ACTIVITY = 100;
-
-    private static final Date DATE_EXPIRED = new GregorianCalendar(2020, 5, 1).getTime();;
-
-    private static final int MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE = 1;
+    public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
+    private static final Date DATE_EXPIRED = new GregorianCalendar(2020, 5, 1).getTime();   // дата окончания жизни программы. После нее она не будет запускаться
+    private static final int MY_PERMISSIONS_REQUESTREAD_READ_EXTERNAL_STORAGE = 1;   // код пермишенса (хз зачем)
+    private static final int MY_PERMISSIONS_REQUESTREAD_WRITE_EXTERNAL_STORAGE = 1;   // код пермишенса (хз зачем)
+    private static final int MY_PERMISSIONS_REQUESTREAD_INTERNET = 1;   // код пермишенса (хз зачем)
 
     private ImageView ivCity; // кропнутая картинка
 
@@ -83,16 +82,16 @@ public class MainActivity extends AppCompatActivity {
     public Switch swListenNewFiles; // переключатель "Отслеживать новые файлы"
     private TextView tvResult; // результат игры
 
-    private File fileScreenshot;
+    private File fileScreenshot;    // текущий файл скриншота
+    private File fileLastInFolder;    // последний файл в папке
 
-    private Timer timer;
-    private long timeLeftInMillis = 0;
-    private long timeLeftInMinutesGlobal = 0;
-    private String pathToScreenshotDir = "";
-    private String pathToCATScalcFolder = "";
-    private boolean isListenToNewFileInFolder;
-    private boolean isAllFieldsCorrect;
+    private Timer timer;                        // таймер
+    private String pathToScreenshotDir = "";    // путь к папке скриншотов
+    private String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
+    private boolean isListenToNewFileInFolder;  // флаг "Следить за новыми файлами в папке"
+    private boolean isAllFieldsCorrect;         // флаг "Все поля заполнены правильно"
 
+    // коэффициэнты кропа картинки
     private static final double XD1 = -0.565d;
     private static final double XD2 = +0.565d;
     private static final double YD1 = -0.800d;
@@ -118,37 +117,24 @@ public class MainActivity extends AppCompatActivity {
     private static final double YD1_INSTANCEVIN = -0.570d;
     private static final double YD2_INSTANCEVIN = -0.450d;
 
-    
-    private Date timeStartGame;
-    private Date timeEndGame;
-    private Date timeStartTimer;
+    private Date timeStartGame;         // дата начала игры
+    private Date timeEndGame;           // дата конца игры
 
-    private int initMinutesToEndGame;
-    private int initPlusUs;
-    private int initInstantVic;
-    private int initTotalUs;
-    private int initTotalThey;
-    private int initPlusThey;
+    private int initMinutesToEndGame;   // инитное значение кол-ва минут до конца игры
+    private int initPlusUs;             // инитное значение ПлюсНам
+    private int initInstantVic;         // инитное значение очков до досрочки
+    private int initTotalUs;            // инитное значение НашиОчки
+    private int initTotalThey;          // инитное значение ИхОчки
+    private int initPlusThey;           // инитное значение ПлюсИм
 
-    private int currentTotalUs;
-    private int currentTotalThey;
-
-    private String calcStatusUs;
-    private String calcStatusThey;
-    private String calcStatusGame;
-    private String calcResult;
-
-    private static final String PATH_TO_CROPPED_FILE = "@drawable/crop_city";
-
-    private NotificationManager notificationManager;
-    private static final int NOTIFY_ID = 1;
-    private static final String CHANNEL_ID = "chan1";
+    private NotificationManager notificationManager;    // нотификатор
+    private static final int NOTIFY_ID = 1;             // айди нотификатора
+    private static final String CHANNEL_ID = "chan1";   // канал нотификатора
 
 
-    // DEBUG MODE
+    // DEBUG MODE - контролы
     private boolean isDebugMode;
     private LinearLayout dbgLayout;
-    private TextView dbgTvHeader;
     private TextView dbgTvFileName;
     private TextView dbgTvFileDate;
     private ImageView dbgIvTime;
@@ -160,86 +146,109 @@ public class MainActivity extends AppCompatActivity {
     private ImageView dbgIvThey;
     private TextView dbgTvThey;
 
-    private AdView mAdView;
+
+    /**
+     *  Распознование картинки
+     *  На входе - битмап
+     *  На выходе - строка
+     */
 
     private String recognizePicture(Bitmap bitmap) {
 
-        String result = "";
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build();
-        if (!textRecognizer.isOperational()) {
-//            System.out.println("Не могу распознать текст");
-        } else {
-            Frame frame = new Frame.Builder().setBitmap(bitmap).build();
-            SparseArray<TextBlock> items = textRecognizer.detect(frame);
-            for (int i = 0; i < items.size(); ++i) {
-                result = result + items.valueAt(i).getValue() + " ";
+        String result = ""; // результат
+        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build(); // создаем текстрекогнайзер
+        if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
+            Frame frame = new Frame.Builder().setBitmap(bitmap).build();    // создаем фрейм на основе переданного битмапа
+            SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
+            for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
+                result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
             }
         }
-        return result;
+        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
     }
+
+
+    /**
+     *  Вырезаем из строки все не-числовые символы и возвращаем результат
+     */
 
     private String cutNotNumericSymbols(String str) {
-        String result = "";
-        for (char ch : str.toCharArray()) {
-            if (ch >= '0' && ch <='9') {
-                result = result + ch;
+        String result = "";                 // результат
+        for (char ch : str.toCharArray()) { // цикл по символам строки
+            if (ch >= '0' && ch <='9') {    // если символ - числовой
+                result = result + ch;       // приклеиваем его к результату
             }
         }
-        return result;
+        return result;                      // возвращаем результат
     }
 
+
+    /**
+     * Вырезание картинок
+     */
 
     private void cutPicture() {
 
-        if (fileScreenshot != null) {
+        if (fileScreenshot != null) {  // если текущий скриншот не нулл
 
-            Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
-            int widthSource = sourceBitmap.getWidth();
-            int heightSource = sourceBitmap.getHeight();
+            Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
+            int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
+            int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
 
+            // координаты для вырезания картинки информации об игре
             int x1 = (int) ((double) widthSource / 2 + XD1 * heightSource);
             int x2 = (int) ((double) widthSource / 2 + XD2 * heightSource);
             int y1 = (int) ((double) heightSource / 2 + YD1 * ((double) heightSource / 2));
             int y2 = (int) ((double) heightSource / 2 + YD2 * ((double) heightSource / 2));
 
-            if (x1 < 0) x1 = 0;
-            if ((x2 > widthSource)) x2 = widthSource;
+            // если координаты вылезаю за границы скриншота - приводим их к границам
+            x1 = Math.max(x1, 0); x2 = Math.min(x2, widthSource);
+            y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
 
+            // координаты для вырезания картинки Наши очки
             int x1totalus = (int) ((double) widthSource / 2 + XD1_TOTALUS * heightSource);
             int x2totalus = (int) ((double) widthSource / 2 + XD2_TOTALUS * heightSource);
             int y1totalus = (int) ((double) heightSource / 2 + YD1_TOTALUS * ((double) heightSource / 2));
             int y2totalus = (int) ((double) heightSource / 2 + YD2_TOTALUS * ((double) heightSource / 2));
 
-            if (x1totalus < 0) x1totalus = 0;
-            if ((x2totalus > widthSource)) x2totalus = widthSource;
+            // если координаты вылезаю за границы скриншота - приводим их к границам
+            x1totalus = Math.max(x1totalus, 0); x2totalus = Math.min(x2totalus, widthSource);
+            y1totalus = Math.max(y1totalus, 0);  y2totalus = Math.min(y2totalus, heightSource);
 
+            // координаты для вырезания картинки Их очки
             int x1totalthey = (int) ((double) widthSource / 2 + XD1_TOTALTHEY * heightSource);
             int x2totalthey = (int) ((double) widthSource / 2 + XD2_TOTALTHEY * heightSource);
             int y1totalthey = (int) ((double) heightSource / 2 + YD1_TOTALTHEY * ((double) heightSource / 2));
             int y2totalthey = (int) ((double) heightSource / 2 + YD2_TOTALTHEY * ((double) heightSource / 2));
 
-            if (x1totalthey < 0) x1totalthey = 0;
-            if ((x2totalthey > widthSource)) x2totalthey = widthSource;
+            // если координаты вылезаю за границы скриншота - приводим их к границам
+            x1totalthey = Math.max(x1totalthey, 0); x2totalthey = Math.min(x2totalthey, widthSource);
+            y1totalthey = Math.max(y1totalthey, 0);  y2totalthey = Math.min(y2totalthey, heightSource);
 
+            // координаты для вырезания картинки Время
             int x1totaltime = (int) ((double) widthSource / 2 + XD1_TOTALTIME * heightSource);
             int x2totaltime = (int) ((double) widthSource / 2 + XD2_TOTALTIME * heightSource);
             int y1totaltime = (int) ((double) heightSource / 2 + YD1_TOTALTIME * ((double) heightSource / 2));
             int y2totaltime = (int) ((double) heightSource / 2 + YD2_TOTALTIME * ((double) heightSource / 2));
 
-            if (x1totaltime < 0) x1totaltime = 0;
-            if ((x2totaltime > widthSource)) x2totaltime = widthSource;
+            // если координаты вылезаю за границы скриншота - приводим их к границам
+            x1totaltime = Math.max(x1totaltime, 0); x2totaltime = Math.min(x2totaltime, widthSource);
+            y1totaltime = Math.max(y1totaltime, 0);  y2totaltime = Math.min(y2totaltime, heightSource);
 
+            // координаты для вырезания картинки Досрочка
             int x1instancevic = (int) ((double) widthSource / 2 + XD1_INSTANCEVIN * heightSource);
             int x2instancevic = (int) ((double) widthSource / 2 + XD2_INSTANCEVIN * heightSource);
             int y1instancevic = (int) ((double) heightSource / 2 + YD1_INSTANCEVIN * ((double) heightSource / 2));
             int y2instancevic = (int) ((double) heightSource / 2 + YD2_INSTANCEVIN * ((double) heightSource / 2));
 
-            if (x1instancevic < 0) x1instancevic = 0;
-            if ((x2instancevic > widthSource)) x2instancevic = widthSource;
+            // если координаты вылезаю за границы скриншота - приводим их к границам
+            x1instancevic = Math.max(x1instancevic, 0); x2instancevic = Math.min(x2instancevic, widthSource);
+            y1instancevic = Math.max(y1instancevic, 0);  y2instancevic = Math.min(y2instancevic, heightSource);
 
-            Matrix matrix = new Matrix();
-            matrix.postScale(4.0f, 4.0f);
+            Matrix matrix = new Matrix();           // матрица ресайза
+            matrix.postScale(4.0f, 4.0f);   // будем ресайзать в 4 раза
 
+            // создаем вырезанные и ресайзные картинки
             Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
             Bitmap croppingBitmapTotalUs = Bitmap.createBitmap(sourceBitmap, x1totalus, y1totalus, x2totalus - x1totalus, y2totalus - y1totalus, matrix, false);
             Bitmap croppingBitmapTotalThey = Bitmap.createBitmap(sourceBitmap, x1totalthey, y1totalthey, x2totalthey - x1totalthey, y2totalthey - y1totalthey, matrix, false);
@@ -248,55 +257,55 @@ public class MainActivity extends AppCompatActivity {
 
             try {
 
-                File fileCity = new File(pathToCATScalcFolder, "city.PNG");
-                OutputStream fOutCity = new FileOutputStream(fileCity);
-                croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);
-                fOutCity.flush();
-                fOutCity.close();
+                File fileCity = new File(pathToCATScalcFolder, "city.PNG");                   // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutCity = new FileOutputStream(fileCity);                             // аутпутстрим на файл
+                croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);           // сжимаем картинку в ПНГ с качеством 90%
+                fOutCity.flush();                                                                   // сохраняем данные из потока
+                fOutCity.close();                                                                   // закрываем поток
 
-                File fileTotalUs = new File(pathToCATScalcFolder, "totalus.PNG");
-                OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);
-                croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);
-                fOutTotalUs.flush();
-                fOutTotalUs.close();
+                File fileTotalUs = new File(pathToCATScalcFolder, "totalus.PNG");             // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);                       // аутпутстрим на файл
+                croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);  // сжимаем картинку в ПНГ с качеством 90%
+                fOutTotalUs.flush();                                                                // сохраняем данные из потока
+                fOutTotalUs.close();                                                                // закрываем поток
 
-                File fileTotalThey = new File(pathToCATScalcFolder, "totalthey.PNG");
-                OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);
-                croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey);
-                fOutTotalThey.flush();
-                fOutTotalThey.close();
+                File fileTotalThey = new File(pathToCATScalcFolder, "totalthey.PNG");           // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);                       // аутпутстрим на файл
+                croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey); // сжимаем картинку в ПНГ с качеством 90%
+                fOutTotalThey.flush();                                                               // сохраняем данные из потока
+                fOutTotalThey.close();                                                              // закрываем поток
 
-                File fileTotalTime = new File(pathToCATScalcFolder, "totaltime.PNG");
-                OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);
-                croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime);
-                fOutTotalTime.flush();
-                fOutTotalTime.close();
+                File fileTotalTime = new File(pathToCATScalcFolder, "totaltime.PNG");           // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);                       // аутпутстрим на файл
+                croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime); // сжимаем картинку в ПНГ с качеством 90%
+                fOutTotalTime.flush();                                                              // сохраняем данные из потока
+                fOutTotalTime.close();                                                              // закрываем поток
 
-                File fileInstanceVic = new File(pathToCATScalcFolder, "instainevic.PNG");
-                OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);
-                croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic);
-                fOutInstanceVic.flush();
-                fOutInstanceVic.close();
+                File fileInstanceVic = new File(pathToCATScalcFolder, "instainevic.PNG");       // файл картинки - путь к папке программы + имя файла
+                OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);                   // аутпутстрим на файл
+                croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic); // сжимаем картинку в ПНГ с качеством 90%
+                fOutInstanceVic.flush();                                                            // сохраняем данные из потока
+                fOutInstanceVic.close();                                                            // закрываем поток
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-            ivCity.setImageBitmap(croppingBitmap);
+            ivCity.setImageBitmap(croppingBitmap);  // выводим битмат игры в контрол
 
+            // стартовые занчения переменных
             String strTotalUs = "0";
             String strPlusUs = "0";
             String strTotalThey = "0";
             String strPlusThey = "0";
 
-            String strTotalUsAndPlus = recognizePicture(croppingBitmapTotalUs);
-            String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);
-            String strTotalTime = recognizePicture(croppingBitmapTotalTime);
-            String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);
+            String strTotalUsAndPlus = recognizePicture(croppingBitmapTotalUs);         // распознаем "Наши очки"
+            String strTotalTheyAndPlus = recognizePicture(croppingBitmapTotalThey);     // распознаем "Их очки"
+            String strTotalTime = recognizePicture(croppingBitmapTotalTime);            // распознаем "Время"
+            String strInstanceVic = recognizePicture(croppingBitmapInstanceVic);        // распознаем "Досрочка"
 
-//            if (isDebugMode) {
+            if (isDebugMode) { // если включен дебаг-мод
+                // выводим битмапы и распознанные данные в контрлы дебаг-мода
                 dbgIvTime.setImageBitmap(croppingBitmapTotalTime);
                 dbgIvInstanceVic.setImageBitmap(croppingBitmapInstanceVic);
                 dbgIvUs.setImageBitmap(croppingBitmapTotalUs);
@@ -309,106 +318,96 @@ public class MainActivity extends AppCompatActivity {
 
                 dbgTvFileName.setText(fileScreenshot.getName());
                 dbgTvFileDate.setText("" + new Date(fileScreenshot.lastModified()));
+            }
 
-//            }
 
-
-            String[] arrTotalUs = strTotalUsAndPlus.split("\\D");
-
-            List<String> listToUs = new ArrayList<>();
-            for (int i = 0; i < arrTotalUs.length; i++) {
-                if (!arrTotalUs[i].equals("")) {
-                    listToUs.add(arrTotalUs[i]);
+            // парсинг "Наши очки"
+            String[] arrTotalUs = strTotalUsAndPlus.split("\\D");   // парсим с разделителем "не цифра"
+            List<String> listToUs = new ArrayList<>();      // лист значений
+            for (int i = 0; i < arrTotalUs.length; i++) {   // проходим по распарсенному массиву
+                if (!arrTotalUs[i].equals("")) {            // если элемент массива не пустой
+                    listToUs.add(arrTotalUs[i]);            // добавляем текущий элемент массива в лист
                 }
             }
 
-            if (listToUs.size() > 0) {
-                if (listToUs.size() == 1) {
-                    strPlusUs = "0";
-                    strTotalUs = listToUs.get(0);
-                } else if (listToUs.size() == 2) {
-                    strPlusUs = listToUs.get(0);
-                    strTotalUs = listToUs.get(1);
+            if (listToUs.size() > 0) {                      // если в списке есть элементы
+                if (listToUs.size() == 1) {                 // если в списке один элемент
+                    strPlusUs = "0";                        // "ПлюсНам" = 0
+                    strTotalUs = listToUs.get(0);           // "НашиОчки" = первый и единственный элемнет из списка
+                } else {                                     // если в списке больше одного элемента
+                    strPlusUs = listToUs.get(0);            // "ПлюсНам" = первый элемнет из списка
+                    strTotalUs = listToUs.get(1);           // "НашиОчки" = второй элемнет из списка
                 }
             }
 
-
-            String[] arrTotalThey = strTotalTheyAndPlus.split("\\D");
-
-            List<String> listToThey = new ArrayList<>();
-            for (int i = 0; i < arrTotalThey.length; i++) {
-                if (!arrTotalThey[i].equals("")) {
-                    listToThey.add(arrTotalThey[i]);
+            // парсинг "Их очки"
+            String[] arrTotalThey = strTotalTheyAndPlus.split("\\D"); // парсим с разделителем "не цифра"
+            List<String> listToThey = new ArrayList<>();     // лист значений
+            for (int i = 0; i < arrTotalThey.length; i++) {  // проходим по распарсенному массиву
+                if (!arrTotalThey[i].equals("")) {           // если элемент массива не пустой
+                    listToThey.add(arrTotalThey[i]);        // добавляем текущий элемент массива в лист
                 }
             }
 
-            if (listToThey.size() > 0) {
-                if (listToThey.size() == 1) {
-                    strPlusThey = "0";
-                    strTotalThey = listToThey.get(0);
-                } else if (listToThey.size() == 2) {
-                    strPlusThey = listToThey.get(1);
-                    strTotalThey = listToThey.get(0);
+            if (listToThey.size() > 0) {                // если в списке есть элементы
+                if (listToThey.size() == 1) {           // если в списке один элемент
+                    strPlusThey = "0";                  // "ПлюсИм" = 0
+                    strTotalThey = listToThey.get(0);   // "ИхОчки" = первый и единственный элемнет из списка
+                } else {                                // если в списке больше одного элемента
+                    strPlusThey = listToThey.get(1);    // "ПлюсИм" = первый элемнет из списка
+                    strTotalThey = listToThey.get(0);   // "ИхОчки" = второй элемнет из списка
                 }
             }
 
-            if (strInstanceVic.equals("")) {
-                strInstanceVic = "0";
-            } else {
-                strInstanceVic = cutNotNumericSymbols(strInstanceVic);
-            }
+            // парсинг "Досрочка" - если строка не пустая - вырезаем из нее не числовые символы
+            strInstanceVic = strInstanceVic.equals("") ? "0" : cutNotNumericSymbols(strInstanceVic);
 
-
-            String[] arrTotalTime = strTotalTime.split(" ");
-
-            List<String> listTotalTime = new ArrayList<>();
-
-            for (int i = 0; i < arrTotalTime.length; i++) {
-                if (!arrTotalTime[i].equals("")) {
-                    listTotalTime.add(arrTotalTime[i]);
-//                    listTotalTime.add(arrTotalTime[i].substring(0, arrTotalTime[i].length() - 1));
+            // парсинг "Время"
+            String[] arrTotalTime = strTotalTime.split(" ");    // парсим с разделителем "пробел"
+            List<String> listTotalTime = new ArrayList<>();            // лист значений
+            for (int i = 0; i < arrTotalTime.length; i++) {             // проходим по распарсенному массиву
+                if (!arrTotalTime[i].equals("")) {                      // если элемент массива не пустой
+                    listTotalTime.add(arrTotalTime[i]);                 // добавляем текущий элемент массива в лист
                 }
             }
 
-            if (listTotalTime.size() > 1) {
-                for (int i = 0; i < listTotalTime.size(); i++) {
-                    listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1));
+            if (listTotalTime.size() > 1) {                         // если в списке больше 1 элемента
+                for (int i = 0; i < listTotalTime.size(); i++) {    // проходим по списку
+                    listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
                 }
             }
 
-            if (listTotalTime.size() > 0) {
-                if (listTotalTime.size() == 1) {
-                    if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {
-                        String hours = "00";
-                        String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);
-                        strTotalTime = hours + ":" + minutes;
-                    } else {
-                        String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);
-                        String minutes = "00";
-                        strTotalTime = hours + ":" + minutes;
+            if (listTotalTime.size() > 0) {     // если в списке есть элементы
+                if (listTotalTime.size() == 1) {    // если в списке 1 элемент
+                    if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {    // если последний символ элемента равен букве "М"
+                        String hours = "00";    // часы = "00"
+                        String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);    // минуты = элемент без последнего символа
+                        if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
+                        strTotalTime = hours + ":" + minutes;   // время = часы : минуты
+                    } else {    // если последний символ элемента не равен букве "М"
+                        String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);  // часы = элемент без последнего символа
+                        String minutes = "00";  // минуты = "00"
+                        strTotalTime = hours + ":" + minutes; // время = часы : минуты
                     }
-                } else if (listTotalTime.size() == 2) {
-                    String hours = listTotalTime.get(0);
-                    String minutes = listTotalTime.get(1);
-
-                    if (minutes.length() == 1) {
-                        minutes = "0" + minutes;
-                    }
-                    strTotalTime = hours + ":" + minutes;
-                } else if (listTotalTime.size() == 0) {
-                    strTotalTime = "00:00";
+                } else {    // если в списке больше 1 элемента
+                    String hours = listTotalTime.get(0);    // часы - первый элемент из списка
+                    String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
+                    if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
+                    strTotalTime = hours + ":" + minutes; // время = часы : минуты
                 }
-            } else {
-                strTotalTime = "00:00";
+            } else { // если в списке нет элементов
+                strTotalTime = "00:00"; // время нулевое
             }
 
-            strPlusUs = strPlusUs.equals("") ? "??" : strPlusUs.trim();
-            strPlusThey = strPlusThey.equals("") ? "??" : strPlusThey.trim();
-            strTotalUs = strTotalUs.equals("") ? "??" : strTotalUs.trim();
-            strTotalThey = strTotalThey.equals("") ? "??" : strTotalThey.trim();
-            strInstanceVic = strInstanceVic.equals("") ? "??" : strInstanceVic.trim();
-            strTotalTime = strTotalTime.equals("") ? "??:??" : strTotalTime.trim();
+            // если значения пустые - выводим в них "??", если нет - удаляем лишние пробелы в начале и в конце
+            strPlusUs = strPlusUs.equals("") ? "?" : strPlusUs.trim();
+            strPlusThey = strPlusThey.equals("") ? "?" : strPlusThey.trim();
+            strTotalUs = strTotalUs.equals("") ? "?" : strTotalUs.trim();
+            strTotalThey = strTotalThey.equals("") ? "?" : strTotalThey.trim();
+            strInstanceVic = strInstanceVic.equals("") ? "?" : strInstanceVic.trim();
+            strTotalTime = strTotalTime.equals("") ? "?:?" : strTotalTime.trim();
 
+            // выводим распознанные данные в контролы
             etInPlusUs.setText(strPlusUs);
             etInPlusThey.setText(strPlusThey);
             etInTotalUs.setText(strTotalUs);
@@ -418,105 +417,117 @@ public class MainActivity extends AppCompatActivity {
             tvResult.setText("");
         }
 
-
     }
 
-
+    /**
+     *  Получение самого свежего файла из папки
+     *  На вход - папка
+     *  На выход - файл
+     */
     private File getLastFileInFolder(String pathToFolder) {
 
-        File dir = new File(pathToFolder);
-        File[] files = dir.listFiles(new FilenameFilter() {
+        File dir = new File(pathToFolder); // папка
+        File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
             @Override
             public boolean accept(File dir, String name) {
-                return name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png");
+                return name.toLowerCase().endsWith(".jpg") || name.toLowerCase().endsWith(".png");  // фильтр по JPG и PNG
             }
         });
-        List<File> listFiles = new ArrayList<>();
-
-        if (files != null) {
-            for (File file : files) {
-                listFiles.add(file);
+        List<File> listFiles = new ArrayList<>(); // лист
+        if (files != null) {    // если файлы в папке есть
+            for (File file : files) {   // цикл по файлам
+                listFiles.add(file);    // добавляем файл в лист
             }
         }
 
-        if  (listFiles.size() > 0) {
-
-            long maxLastModified = 0;
-            File temp = null;
-            for (File file : listFiles) {
-                if (file.lastModified() > maxLastModified) {
-                    maxLastModified = file.lastModified();
-                    temp = file;
+        if  (listFiles.size() > 0) {    // если в листе есть файлы
+            long maxLastModified = 0;   // максимальная дата (ноль для начала)
+            File temp = null;           // временный файл
+            for (File file : listFiles) {   // цикл по листу
+                if (file.lastModified() > maxLastModified) {    // если дата создания файла из листа больше максимальной
+                    maxLastModified = file.lastModified();      // максимальная дата = дате файла из листа
+                    temp = file;    // временный файл равен файлу из листа
                 }
             }
 
-            return temp;
+            if (temp != null) { // если найден самый свежий файл
+                if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                    Bitmap sourceBitmap = BitmapFactory.decodeFile(temp.getAbsolutePath());   // получаем битмап из файла скриншота
+                    int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
+                    int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
+                    fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                    if (widthSource < heightSource) temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
+                }
+            }
+            return temp;    // возвращаем временный файл
 
-        } else {
-            return null;
+        } else {    // если файлов в папке нет
+            return null;    // возвращаем нулл
         }
 
     }
 
+    /**
+     *  Выбор скриншота
+     */
     private void selectScreenshot() {
 
-        OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)
-                .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))
-                .setFileIcon(getResources().getDrawable(R.drawable.ic_file))
-//                .setFilter(".*\\.png, .*\\jpg")
+        OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)   // диалог выбора скриншота по переданному пути
+                .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))            // иконка папки
+                .setFileIcon(getResources().getDrawable(R.drawable.ic_file))                // иконка файла
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     public void OnSelectedFile(String fileName) {
-//                        Toast.makeText(getApplicationContext(), fileName, Toast.LENGTH_LONG).show();
-                        fileScreenshot = new File(fileName);
-
-                        isListenToNewFileInFolder = false; // sharedPreferences.getBoolean("pref_get_last_screenshot",false);
-                        swListenNewFiles.setChecked(isListenToNewFileInFolder);
-
-                        cutPicture();
+                        fileScreenshot = new File(fileName); // файл скриншота - возавращенный из диалога
+                        isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
+                        swListenNewFiles.setChecked(false); // устанавливаем контрол флажка
+                        fileLastInFolder = null;    // сбрасываем последний файл в папке
+                        cutPicture();   // вырезаем картинку
                     }
                 });
         fileDialog.show();
 
     }
 
-
+    /**
+     * Открытие Настроек
+     */
     private void openSettings() {
-
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);
+        Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
+    /**
+     *  Созданием меню
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);  // создаем меню
         return true;
     }
 
+    /**
+     * Выбор элементов меню
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
+        int id = item.getItemId();  // айди элемента меню
         switch(id){
-            case R.id.menu_open_settings :
-//                Toast.makeText(this, "Настройки", Toast.LENGTH_SHORT).show();
+            case R.id.menu_open_settings :  // "Настройки"
                 openSettings();
                 return true;
-            case R.id.menu_open_screenshot :
-//                Toast.makeText(this, "Выбор скриншота", Toast.LENGTH_SHORT).show();
+            case R.id.menu_open_screenshot :    // "Открыть скриншотк"
                 selectScreenshot();
                 return true;
-//            case R.id.menu_about:
-////                Toast.makeText(this, "О программе", Toast.LENGTH_SHORT).show();
-//                return true;
-//            case R.id.menu_exit:
-////                Toast.makeText(this, "Выход", Toast.LENGTH_SHORT).show();
-//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
     }
+
+    /**
+     * Возврат в текущую активность из какой-то другой активности
+     */
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -529,15 +540,18 @@ public class MainActivity extends AppCompatActivity {
             isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
             swListenNewFiles.setChecked(isListenToNewFileInFolder);
             dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
-
         }
     }
 
+    /**
+     * Инициализация текущей активности
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // инициализирукм контентвью
 
+        // РЕКЛАМА
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -547,7 +561,8 @@ public class MainActivity extends AppCompatActivity {
 //                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList("ABCDEF012345"))
 //                        .build());
 
-        mAdView = findViewById(R.id.adView);
+        // рекламный блок
+        AdView mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -585,39 +600,48 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // конец рекламы
+
+
+
+        // если "программа устарела" - выходим
         if (Calendar.getInstance().getTime().after(DATE_EXPIRED)) {
             Toast.makeText(MainActivity.this,"Программа устарела", Toast.LENGTH_SHORT).show();
             onBackPressed();
             return;
         }
 
+
+        // запрос разрешения на чтение файловой системы
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_READ_EXTERNAL_STORAGE);
             }
         }
 
+        // запрос разрешения на запись файловой системы
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUESTREAD_WRITE_EXTERNAL_STORAGE);
             }
         }
 
+        // запрос разрешения на интернет
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.INTERNET)) {
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, MY_PERMISSIONS_REQUESTREAD_EXTERNAL_STORAGE);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET}, MY_PERMISSIONS_REQUESTREAD_INTERNET);
             }
         }
 
+        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
         pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
         File tempDir = new File(pathToCATScalcFolder);
-        if (!tempDir.exists()) {
-            tempDir.mkdir();
-        }
+        if (!tempDir.exists()) tempDir.mkdir();
 
+        // нотификейшт менеджер
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         // привязка контролов
@@ -632,6 +656,7 @@ public class MainActivity extends AppCompatActivity {
         swListenNewFiles = findViewById(R.id.sw_listen_new_file);
         tvResult =  findViewById(R.id.tv_result);
 
+        // инитные значения контролов
         etInTimeLeft.setText("00:00");
         etInPlusUs.setText("0");
         etInPlusThey.setText("0");
@@ -640,8 +665,9 @@ public class MainActivity extends AppCompatActivity {
         etInInstantVic.setText("0");
         tvResult.setText("");
 
+        // контролы дебаг-мода
         dbgLayout = findViewById(R.id.dbg_layout);
-        dbgTvHeader = findViewById(R.id.dbg_tv_header);
+        TextView dbgTvHeader = findViewById(R.id.dbg_tv_header);
         dbgTvFileName = findViewById(R.id.dbg_tv_file_name);
         dbgTvFileDate = findViewById(R.id.dbg_tv_file_date);
         dbgIvTime = findViewById(R.id.dbg_img_time);
@@ -653,27 +679,21 @@ public class MainActivity extends AppCompatActivity {
         dbgIvThey = findViewById(R.id.dbg_img_they);
         dbgTvThey = findViewById(R.id.dbg_tv_they);
 
-
-
-
-
-
-
-
-
-        startTimer();
-
+        // считываем преференцы, пихаем их в переменные и в контролы
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
         isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
         isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
         swListenNewFiles.setChecked(isListenToNewFileInFolder);
 
+        // устанавливаем видимость группы контролов дебаг-мода, если он включен
         dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
 
+        // отслеживание изменения свича "Следить за файлами в папке"
         swListenNewFiles.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключили
+                // обновляем соответствующий пермишн и переменную
                 SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
@@ -682,42 +702,50 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        startTimer();   // стартуем таймер
 
-        File initFile = getLastFileInFolder(pathToScreenshotDir);
-        if (initFile != null) {
-            fileScreenshot = initFile;
-            cutPicture();
-
-            try {
-                timeStartTimer = Calendar.getInstance().getTime();  // текущее время старта таймера
-                timeStartGame = new Date(fileScreenshot.lastModified()); // время начала игры
-                initMinutesToEndGame = parseTimeLeft(etInTimeLeft.getText().toString());
-                timeEndGame = new Date(timeStartGame.getTime() + ((long)initMinutesToEndGame*60*1000)); // время окончания игры (по времени)
-                initPlusUs = Integer.parseInt(etInPlusUs.getText().toString());
-                initInstantVic = Integer.parseInt(etInInstantVic.getText().toString());
-                initTotalUs = Integer.parseInt(etInTotalUs.getText().toString());
-                initTotalThey = Integer.parseInt(etInTotalThey.getText().toString());
-                initPlusThey = Integer.parseInt(etInPlusThey.getText().toString());
-                isAllFieldsCorrect = true;
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-//                Toast.makeText(MainActivity.this,"Ошибка ввода данных, невозможно запустить таймер.", Toast.LENGTH_SHORT).show();
-                isAllFieldsCorrect = false;
-            }
-
-        }
+//        File initFile = getLastFileInFolder(pathToScreenshotDir);
+//        if (initFile != null) {
+//            fileScreenshot = initFile;
+//            cutPicture();
+//
+//            try {
+//                timeStartTimer = Calendar.getInstance().getTime();  // текущее время старта таймера
+//                timeStartGame = new Date(fileScreenshot.lastModified()); // время начала игры
+//                initMinutesToEndGame = parseTimeLeft(etInTimeLeft.getText().toString());
+//                timeEndGame = new Date(timeStartGame.getTime() + ((long)initMinutesToEndGame*60*1000)); // время окончания игры (по времени)
+//                initPlusUs = Integer.parseInt(etInPlusUs.getText().toString());
+//                initInstantVic = Integer.parseInt(etInInstantVic.getText().toString());
+//                initTotalUs = Integer.parseInt(etInTotalUs.getText().toString());
+//                initTotalThey = Integer.parseInt(etInTotalThey.getText().toString());
+//                initPlusThey = Integer.parseInt(etInPlusThey.getText().toString());
+//                isAllFieldsCorrect = true;
+//            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+////                Toast.makeText(MainActivity.this,"Ошибка ввода данных, невозможно запустить таймер.", Toast.LENGTH_SHORT).show();
+//                isAllFieldsCorrect = false;
+//            }
+//
+//        }
 
     }
 
-
+    /**
+     * Калькулятор
+     */
 
     private void calculate() {
 
-        if (isAllFieldsCorrect) {
+        String calcStatusUs;    // наш статус
+        String calcStatusThey;  // их статус
+        String calcResult;      // результат
+
+        if (isAllFieldsCorrect) {   // если все поля заполненны верно
+
             Date currentTime = Calendar.getInstance().getTime();    // текущее время
-            timeLeftInMillis = currentTime.getTime() - timeStartGame.getTime(); // кол-во миллисекунд, прошедшех от начала игры до текущего времени
+            long timeLeftInMillis = currentTime.getTime() - timeStartGame.getTime(); // кол-во миллисекунд, прошедшех от начала игры до текущего времени
             long currentSecsAndMillis = 60000 - timeLeftInMillis % 60_000; // кол-во секунд и миллисекунд (в миллисекундах)
-            currentTotalUs = (int)((timeLeftInMillis / 60000) * initPlusUs + initTotalUs);            // на данный момент очков у нас
-            currentTotalThey = (int)((timeLeftInMillis / 60000) * initPlusThey + initTotalThey);      // на данный момент очков у них
+            int currentTotalUs = (int) ((timeLeftInMillis / 60000) * initPlusUs + initTotalUs);            // на данный момент очков у нас
+            int currentTotalThey = (int) ((timeLeftInMillis / 60000) * initPlusThey + initTotalThey);      // на данный момент очков у них
             long leftMillsToInstanceUs = initPlusUs == 0 ? 25*60*60*1000 : ((initInstantVic - currentTotalUs) / initPlusUs) * 60000 + currentSecsAndMillis;            // осталось миллисекунд до досрочной победы нам
             long leftMillsToInstanceThey = initPlusThey == 0 ? 25*60*60*1000 : ((initInstantVic - currentTotalThey) / initPlusThey) * 60000 + currentSecsAndMillis;      // осталось миллисекунд до досрочной победы им
             long leftMillsToInstanceGame = Math.min(leftMillsToInstanceUs, leftMillsToInstanceThey);
@@ -729,129 +757,81 @@ public class MainActivity extends AppCompatActivity {
             boolean isGameOver = (leftMillsToInstanceUs - 1000) <= 0 || (leftMillsToInstanceThey - 1000) <= 0 || leftMillsToEndGame <= 0; // закончилась ли игра?
             boolean isGameOverInstance = (leftMillsToInstanceUs - 1000) <= 0 ||  (leftMillsToInstanceThey - 1000) <= 0; // закончилась ли игра досрочно?
 
-            if (isGameOver) {
-                // если игра закончилась
-                currentTotalUs += initPlusUs;
-                currentTotalThey += initPlusThey;
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm"); // форматтер строки даты
 
-                if (isGameOverInstance) {
-                    // если игра закончилась досрочно
-                    calcStatusGame = "Досрочное окончание";
-                    if (currentTotalUs > currentTotalThey) {
-                        // досрочно выиграли мы
-                        calcStatusUs = "Досрочно выиграли";
-                        calcStatusThey = "Досрочно проиграли";
+            if (isGameOver) {   // если игра закончилась
+                currentTotalUs += initPlusUs;       // наши текущие очки
+                currentTotalThey += initPlusThey;   // их текущие очки
+
+                if (isGameOverInstance) {   // если игра закончилась досрочно
+                    if (currentTotalUs > currentTotalThey) {    // досрочно выиграли мы
                         calcResult = "Мы досрочно выиграли";
-                    } else if (currentTotalUs < currentTotalThey) {
-                        // досрочно выиграли они
-                        calcStatusUs = "Досрочно проиграли";
-                        calcStatusThey = "Досрочно выиграли";
+                    } else if (currentTotalUs < currentTotalThey) { // досрочно выиграли они
                         calcResult = "Мы досрочно проиграли";
-                    } else {
-                        // досрочная ничья
-                        calcStatusUs = "Досрочная ничья";
-                        calcStatusThey = "Досрочная ничья";
+                    } else { // досрочная ничья
                         calcResult = "Досрочная ничья";
                     }
-                } else {
-                    // если игра закончилась по времени
-                    calcStatusGame = "Игра окончена";
-                    if (currentTotalUs > currentTotalThey) {
-                        // выиграли мы
-                        calcStatusUs = "Выиграли";
-                        calcStatusThey = "Проиграли";
+                } else { // если игра закончилась по времени
+                    if (currentTotalUs > currentTotalThey) { // выиграли мы
                         calcResult = "Мы выиграли";
-                    } else if (currentTotalUs < currentTotalThey) {
-                        // выиграли они
-                        calcStatusUs = "Проиграли";
-                        calcStatusThey = "Выиграли";
+                    } else if (currentTotalUs < currentTotalThey) { // выиграли они
                         calcResult = "Мы проиграли";
-                    } else {
-                        // ничья
-                        calcStatusUs = "Ничья";
-                        calcStatusThey = "Ничья";
+                    } else { // ничья
                         calcResult = "Ничья";
                     }
                 }
 
-            } else {
-                // если игра не закончилась
-
+            } else { // если игра не закончилась
+                // часы, минуты, секунды и общее время до конца игры
                 int hoursToEnd = (int)((leftMillsToEndGame - 1000) / (1000 * 60 * 60));
                 int minutesToEnd = (int)(((leftMillsToEndGame - 1000) - hoursToEnd * (1000 * 60 * 60)) / (1000 * 60));
                 int secondsToEnd = (int)(((leftMillsToEndGame - 1000) - hoursToEnd * (1000 * 60 * 60) - minutesToEnd * (1000 * 60)) / 1000);
                 String strTimeToEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToEnd, minutesToEnd, secondsToEnd);
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
+                // время окончания игры (локальное)
                 long timeEndGame = currentTime.getTime() + leftMillsToEndGame;
                 String strTimeEndGame = simpleDateFormat.format(new Date(timeEndGame));
 
-                if (leftMillsToEndGame - leftMillsToInstanceUs > 0 || leftMillsToEndGame - leftMillsToInstanceThey > 0) {
-                    // если игра закончится досрочно
-                    long leftMillsToInstanceEndGame = Math.min((leftMillsToInstanceUs), (leftMillsToInstanceThey));
+                if (leftMillsToEndGame - leftMillsToInstanceUs > 0 || leftMillsToEndGame - leftMillsToInstanceThey > 0) { // если игра закончится досрочно
+
+
+                    long leftMillsToInstanceEndGame = Math.min((leftMillsToInstanceUs), (leftMillsToInstanceThey)); // осталось миллисекунд до досрочного окончания
+                    // часы, минуты, секунды и общее время до досрочного конца игры
                     int hoursToInstanceEnd = (int)((leftMillsToInstanceEndGame - 1000) / (1000 * 60 * 60));
                     int minutesToInstanceEnd = (int)(((leftMillsToInstanceEndGame - 1000) - hoursToInstanceEnd * (1000 * 60 * 60)) / (1000 * 60));
                     int secondsToInstanceEnd = (int)(((leftMillsToInstanceEndGame - 1000) - hoursToInstanceEnd * (1000 * 60 * 60) - minutesToInstanceEnd * (1000 * 60)) / 1000);
                     String strTimeToInstanceEnd = String.format(Locale.getDefault(), "%02d:%02d:%02d", hoursToInstanceEnd, minutesToInstanceEnd, secondsToInstanceEnd);
 
+                    // время досрочного окончания игры (локальное)
                     long timeEndGameInstance = currentTime.getTime() + leftMillsToInstanceEndGame;
                     String strTimeEndGameInstance = simpleDateFormat.format(new Date(timeEndGameInstance));
 
-                    calcStatusGame = strTimeToEnd + " / " + strTimeToInstanceEnd;
-
-
-                    if (leftMillsToInstanceUs < leftMillsToInstanceThey) {
-                        // Мы победим досрочно
-                        calcStatusUs = "Мы победим досрочно";
-                        calcStatusThey = "Они проиграют досрочно";
-                        calcResult = strTimeToInstanceEnd + " " + calcStatusUs + " с разницей в " + (willTotalInstanceUs - willTotalInstanceThey) + " очков " + strTimeEndGameInstance;
-                    } else if (leftMillsToInstanceUs > leftMillsToInstanceThey) {
-                        // Мы проиграем досрочно
-                        calcStatusUs = "Мы проиграем досрочно";
-                        calcStatusThey = "Они победят досрочно";
-                        calcResult = strTimeToInstanceEnd + " " + calcStatusThey + " с разницей в " + (willTotalInstanceThey - willTotalInstanceUs) + " очков " + strTimeEndGameInstance;
-                    } else {
-                        // Будет досрочная ничья
-                        calcStatusUs = "Будет досрочная ничья "  + strTimeEndGameInstance;
-                        calcStatusThey = "Будет досрочная ничья "  + strTimeEndGameInstance;
-                        calcResult = calcStatusUs + " через " + strTimeToInstanceEnd;
+                    if (leftMillsToInstanceUs < leftMillsToInstanceThey) { // Мы победим досрочно
+                        calcResult = strTimeToInstanceEnd + " Мы победим досрочно с разницей в " + (willTotalInstanceUs - willTotalInstanceThey) + " очков " + strTimeEndGameInstance;
+                    } else if (leftMillsToInstanceUs > leftMillsToInstanceThey) { // Мы проиграем досрочно
+                        calcResult = strTimeToInstanceEnd + " Мы проиграем досрочно с разницей в " + (willTotalInstanceThey - willTotalInstanceUs) + " очков " + strTimeEndGameInstance;
+                    } else { // Будет досрочная ничья
+                        calcResult = "Будет досрочная ничья через " + strTimeToInstanceEnd;
                     }
 
-                } else {
-                    // если игра закончится по времени
-                    calcStatusGame = strTimeToEnd;
-
-
-                    if (willTotalUs > willTotalThey) {
-                        // Мы победим
-                        calcStatusUs = "Мы победим";
-                        calcStatusThey = "Они проиграют";
-                        calcResult = strTimeToEnd + " " + calcStatusUs + " с разницей в " + (willTotalUs - willTotalThey) + " очков " + strTimeEndGame;
-                    } else if (willTotalUs < willTotalThey) {
-                        // Мы проиграем
-                        calcStatusUs = "Мы проиграем";
-                        calcStatusThey = "Они победят";
-                        calcResult = strTimeToEnd + " " + calcStatusThey + " с разницей в " + (willTotalThey - willTotalUs) + " очков " + strTimeEndGame;
-                    } else {
-                        // Будет ничья
-                        calcStatusUs = "Будет ничья";
-                        calcStatusThey = "Будет ничья";
-                        calcResult = strTimeToEnd + calcStatusUs + " " + strTimeEndGame;
+                } else { // если игра закончится по времени
+                    if (willTotalUs > willTotalThey) { // Мы победим
+                        calcResult = strTimeToEnd + " Мы победим с разницей в " + (willTotalUs - willTotalThey) + " очков " + strTimeEndGame;
+                    } else if (willTotalUs < willTotalThey) { // Мы проиграем
+                        calcResult = strTimeToEnd + " Мы проиграем с разницей в " + (willTotalThey - willTotalUs) + " очков " + strTimeEndGame;
+                    } else { // Будет ничья
+                        calcResult = strTimeToEnd + " Будет ничья " + strTimeEndGame;
                     }
                 }
 
             }
-        } else {
-            calcStatusUs = "";
-            calcStatusThey = "";
-            calcStatusGame = "";
+        } else { // если не все поля заполненны верно
             calcResult = "Ошибка ввода данных";
         }
 
+        tvResult.setText(calcResult); // выводим текс результата в контрол
 
-        tvResult.setText(calcResult);
-
+        // Создаем нотификейшен
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -860,10 +840,8 @@ public class MainActivity extends AppCompatActivity {
                 new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                         .setAutoCancel(false)
                         .setSmallIcon(R.drawable.ic_catscalciconsmall)
-//                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_catscalcicon))
                         .setWhen(System.currentTimeMillis())
                         .setContentIntent(pendingIntent)
-//                        .setContentTitle("Заголовок")
                         .setContentText(calcResult)
                         .setStyle(new NotificationCompat.BigTextStyle().bigText(calcResult));
                 createChannelIfNeeded(notificationManager);
@@ -871,12 +849,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Создание канала нотификации
+     */
     public static void createChannelIfNeeded(NotificationManager manager) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(notificationChannel);
         }
     }
+
+    /**
+     * Класс задачи таймера
+     */
+
     class firstTask extends TimerTask {
 
         @Override
@@ -887,21 +873,21 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    if (isListenToNewFileInFolder) {
-                        File tmpFile = getLastFileInFolder(pathToScreenshotDir);
-                        if (tmpFile != null) {
-                            if (!tmpFile.equals(fileScreenshot)) {
-                                fileScreenshot = tmpFile;
-                                cutPicture();
+                    if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
+                        File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
+                        if (tmpFile != null) {  // если он не пустой
+                            if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
+                                fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+                                cutPicture();               // вырезам картинки
                             }
                         }
 
                     }
 
-                    if (fileScreenshot != null) {
+                    if (fileScreenshot != null) {   // если скринщот выбран
 
                         try {
-                            timeStartTimer = Calendar.getInstance().getTime();  // текущее время старта таймера
+                            // считываем переменные из контролов и если не возникло ошибки устанавливаем флажок "Данные введены верно"
                             timeStartGame = new Date(fileScreenshot.lastModified()); // время начала игры
                             initMinutesToEndGame = parseTimeLeft(etInTimeLeft.getText().toString());
                             timeEndGame = new Date(timeStartGame.getTime() + ((long)initMinutesToEndGame*60*1000)); // время окончания игры (по времени)
@@ -912,32 +898,35 @@ public class MainActivity extends AppCompatActivity {
                             initPlusThey = Integer.parseInt(etInPlusThey.getText().toString());
                             isAllFieldsCorrect = true;
                         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-//                        Toast.makeText(MainActivity.this,"Ошибка ввода данных.", Toast.LENGTH_SHORT).show();
+                            // если возникла ощибка считывания из контролов - сбрасываем флажок "Данные введены верно"
                             isAllFieldsCorrect = false;
                         }
 
-                        calculate();
+                        calculate();    // вызываем калькулятор
                     }
-
 
                 }
             });
         }
     };
 
+    /**
+     * Стартуем таймер
+     */
     private void startTimer() {
 
-        if (timer == null) {
-            timer = new Timer();
-            timer.schedule(new firstTask(), 1000,1000);
+        if (timer == null) {    // если таймер не запущен
+            timer = new Timer();    // запускаем таймер
+            timer.schedule(new firstTask(), 1000,1000); // запускаем такс таймера
         }
 
     }
 
-
+    /**
+     * Парсим время
+     */
     private int parseTimeLeft(String str) {
         int result  = 0;
-
         String[] words = str.split(":");
         result = Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]);
         return result;
