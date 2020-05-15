@@ -41,9 +41,12 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -202,6 +205,23 @@ public class MainActivity extends AppCompatActivity {
 
             fileScreenshotPrevious = fileScreenshot;
             Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
+
+            try {
+                File output = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");
+                if (!output.equals(fileScreenshot)) {
+                    InputStream in = new FileInputStream(fileScreenshot);
+                    OutputStream out = new FileOutputStream(output);
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = in.read(buf)) > 0) {
+                        out.write(buf, 0, len);
+                    }
+                    in.close();
+                    out.close();
+                }
+            } catch (IOException ignored) {
+            }
+
 
             CuttedPictures cuttedPictures = CutPicture.cutPictire(sourceBitmap);
 

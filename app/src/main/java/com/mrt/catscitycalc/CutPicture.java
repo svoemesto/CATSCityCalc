@@ -75,47 +75,47 @@ public class CutPicture {
         Bitmap croppingBitmapTotalTime = Bitmap.createBitmap(sourceBitmap, x1totaltime, y1totaltime, x2totaltime - x1totaltime, y2totaltime - y1totaltime, matrix, false);
         Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic, matrix, false);
 
-        try {
+//        try {
 
-            File fileCity = new File(MainActivity.pathToCATScalcFolder, "city.PNG");                   // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutCity = new FileOutputStream(fileCity);                             // аутпутстрим на файл
-            croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);           // сжимаем картинку в ПНГ с качеством 90%
-            fOutCity.flush();                                                                   // сохраняем данные из потока
-            fOutCity.close();                                                                   // закрываем поток
+//            File fileCity = new File(MainActivity.pathToCATScalcFolder, "city.PNG");                   // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutCity = new FileOutputStream(fileCity);                             // аутпутстрим на файл
+//            croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);           // сжимаем картинку в ПНГ с качеством 90%
+//            fOutCity.flush();                                                                   // сохраняем данные из потока
+//            fOutCity.close();                                                                   // закрываем поток
+//
+//            File fileTotalUs = new File(MainActivity.pathToCATScalcFolder, "totalus.PNG");             // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);                       // аутпутстрим на файл
+//            croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);  // сжимаем картинку в ПНГ с качеством 90%
+//            fOutTotalUs.flush();                                                                // сохраняем данные из потока
+//            fOutTotalUs.close();                                                                // закрываем поток
+//
+//            File fileTotalThey = new File(MainActivity.pathToCATScalcFolder, "totalthey.PNG");           // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);                       // аутпутстрим на файл
+//            croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey); // сжимаем картинку в ПНГ с качеством 90%
+//            fOutTotalThey.flush();                                                               // сохраняем данные из потока
+//            fOutTotalThey.close();                                                              // закрываем поток
+//
+//            File fileTotalTime = new File(MainActivity.pathToCATScalcFolder, "totaltime.PNG");           // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);                       // аутпутстрим на файл
+//            croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime); // сжимаем картинку в ПНГ с качеством 90%
+//            fOutTotalTime.flush();                                                              // сохраняем данные из потока
+//            fOutTotalTime.close();                                                              // закрываем поток
+//
+//            File fileInstanceVic = new File(MainActivity.pathToCATScalcFolder, "instainevic.PNG");       // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);                   // аутпутстрим на файл
+//            croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic); // сжимаем картинку в ПНГ с качеством 90%
+//            fOutInstanceVic.flush();                                                            // сохраняем данные из потока
+//            fOutInstanceVic.close();                                                            // закрываем поток
 
-            File fileTotalUs = new File(MainActivity.pathToCATScalcFolder, "totalus.PNG");             // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutTotalUs = new FileOutputStream(fileTotalUs);                       // аутпутстрим на файл
-            croppingBitmapTotalUs.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalUs);  // сжимаем картинку в ПНГ с качеством 90%
-            fOutTotalUs.flush();                                                                // сохраняем данные из потока
-            fOutTotalUs.close();                                                                // закрываем поток
+//            File fileScreenshot = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+//            OutputStream fOutScreenshot = new FileOutputStream(fileScreenshot);                   // аутпутстрим на файл
+//            sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+//            fOutScreenshot.flush();                                                            // сохраняем данные из потока
+//            fOutScreenshot.close();                                                            // закрываем поток
 
-            File fileTotalThey = new File(MainActivity.pathToCATScalcFolder, "totalthey.PNG");           // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutTotalThey = new FileOutputStream(fileTotalThey);                       // аутпутстрим на файл
-            croppingBitmapTotalThey.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalThey); // сжимаем картинку в ПНГ с качеством 90%
-            fOutTotalThey.flush();                                                               // сохраняем данные из потока
-            fOutTotalThey.close();                                                              // закрываем поток
-
-            File fileTotalTime = new File(MainActivity.pathToCATScalcFolder, "totaltime.PNG");           // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutTotalTime = new FileOutputStream(fileTotalTime);                       // аутпутстрим на файл
-            croppingBitmapTotalTime.compress(Bitmap.CompressFormat.PNG, 90, fOutTotalTime); // сжимаем картинку в ПНГ с качеством 90%
-            fOutTotalTime.flush();                                                              // сохраняем данные из потока
-            fOutTotalTime.close();                                                              // закрываем поток
-
-            File fileInstanceVic = new File(MainActivity.pathToCATScalcFolder, "instainevic.PNG");       // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutInstanceVic = new FileOutputStream(fileInstanceVic);                   // аутпутстрим на файл
-            croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic); // сжимаем картинку в ПНГ с качеством 90%
-            fOutInstanceVic.flush();                                                            // сохраняем данные из потока
-            fOutInstanceVic.close();                                                            // закрываем поток
-
-            File fileScreenshot = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-            OutputStream fOutScreenshot = new FileOutputStream(fileScreenshot);                   // аутпутстрим на файл
-            sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-            fOutScreenshot.flush();                                                            // сохраняем данные из потока
-            fOutScreenshot.close();                                                            // закрываем поток
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         CuttedPictures cuttedPictures = new CuttedPictures();
         cuttedPictures.croppingBitmap = croppingBitmap;
