@@ -12,7 +12,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,9 +28,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -44,7 +41,6 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -537,7 +533,7 @@ public class MainActivity extends AppCompatActivity {
 
         // если "программа устарела" - выходим
         if (Calendar.getInstance().getTime().after(DATE_EXPIRED)) {
-            Toast.makeText(MainActivity.this,"Программа устарела", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, R.string.programm_depricated, Toast.LENGTH_SHORT).show();
             onBackPressed();
             return;
         }
@@ -548,16 +544,16 @@ public class MainActivity extends AppCompatActivity {
 
         final List<String> permissionsList = new ArrayList<String>();
         if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE))
-            permissionsNeeded.add("Read External Storage");
+            permissionsNeeded.add(getString(R.string.read_external_storage));
         if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE))
-            permissionsNeeded.add("Write External Storage");
+            permissionsNeeded.add(getString(R.string.write_external_storage));
         if (!addPermission(permissionsList, Manifest.permission.INTERNET))
-            permissionsNeeded.add("Internet");
+            permissionsNeeded.add(getString(R.string.internet));
 
         if (permissionsList.size() > 0) {
             if (permissionsNeeded.size() > 0) {
                 // Need Rationale
-                String message = "You need to grant access to " + permissionsNeeded.get(0);
+                String message = getString(R.string.you_need_to_grant_access_to) + " " + permissionsNeeded.get(0);
                 for (int i = 1; i < permissionsNeeded.size(); i++)
                     message = message + ", " + permissionsNeeded.get(i);
                 showMessageOKCancel(message,
@@ -668,8 +664,8 @@ public class MainActivity extends AppCompatActivity {
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(MainActivity.this)
                 .setMessage(message)
-                .setPositiveButton("OK", okListener)
-                .setNegativeButton("Cancel", null)
+                .setPositiveButton(R.string.ok, okListener)
+                .setNegativeButton(R.string.cancel, null)
                 .create()
                 .show();
     }
@@ -703,7 +699,7 @@ public class MainActivity extends AppCompatActivity {
                         && perms.get(Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED) {
                     // All Permissions Granted
 
-                    Toast.makeText(MainActivity.this, "All Permission is Granted", Toast.LENGTH_SHORT)
+                    Toast.makeText(MainActivity.this, R.string.all_perm_is_granted, Toast.LENGTH_SHORT)
                             .show();
 
                     // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
@@ -734,7 +730,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     // Permission Denied
-                    Toast.makeText(MainActivity.this, "Some Permission is Denied", Toast.LENGTH_SHORT)
+                    Toast.makeText(MainActivity.this, R.string.some_perm_is_denied, Toast.LENGTH_SHORT)
                             .show();
                 }
             }
@@ -777,19 +773,19 @@ public class MainActivity extends AppCompatActivity {
 
                 if (isGameOverInstance) {   // если игра закончилась досрочно
                     if (currentTotalUs > currentTotalThey) {    // досрочно выиграли мы
-                        calcResult = "Мы досрочно выиграли";
+                        calcResult = getString(R.string.we_instance_win);
                     } else if (currentTotalUs < currentTotalThey) { // досрочно выиграли они
-                        calcResult = "Мы досрочно проиграли";
+                        calcResult = getString(R.string.we_instance_lose);
                     } else { // досрочная ничья
-                        calcResult = "Досрочная ничья";
+                        calcResult = getString(R.string.instance_nowinner);
                     }
                 } else { // если игра закончилась по времени
                     if (currentTotalUs > currentTotalThey) { // выиграли мы
-                        calcResult = "Мы выиграли";
+                        calcResult = getString(R.string.we_win);
                     } else if (currentTotalUs < currentTotalThey) { // выиграли они
-                        calcResult = "Мы проиграли";
+                        calcResult = getString(R.string.we_lost);
                     } else { // ничья
-                        calcResult = "Ничья";
+                        calcResult = getString(R.string.nowin);
                     }
                 }
 
@@ -819,26 +815,26 @@ public class MainActivity extends AppCompatActivity {
                     String strTimeEndGameInstance = simpleDateFormat.format(new Date(timeEndGameInstance));
 
                     if (leftMillsToInstanceUs < leftMillsToInstanceThey) { // Мы победим досрочно
-                        calcResult = strTimeToInstanceEnd + " Мы победим досрочно с разницей в " + (willTotalInstanceUs - willTotalInstanceThey) + " очков " + strTimeEndGameInstance;
+                        calcResult = strTimeToInstanceEnd + " " + getString(R.string.we_will_instance_win_with_diff_in) + " " + (willTotalInstanceUs - willTotalInstanceThey) + " " + getString(R.string.points) + " " + strTimeEndGameInstance;
                     } else if (leftMillsToInstanceUs > leftMillsToInstanceThey) { // Мы проиграем досрочно
-                        calcResult = strTimeToInstanceEnd + " Мы проиграем досрочно с разницей в " + (willTotalInstanceThey - willTotalInstanceUs) + " очков " + strTimeEndGameInstance;
+                        calcResult = strTimeToInstanceEnd + " " + getString(R.string.we_will_instance_lose_with_diff_in) + " " + (willTotalInstanceThey - willTotalInstanceUs) + " " + getString(R.string.points) + " " + strTimeEndGameInstance;
                     } else { // Будет досрочная ничья
-                        calcResult = "Будет досрочная ничья через " + strTimeToInstanceEnd;
+                        calcResult = getString(R.string.will_instance_nowin_after) + " " + strTimeToInstanceEnd;
                     }
 
                 } else { // если игра закончится по времени
                     if (willTotalUs > willTotalThey) { // Мы победим
-                        calcResult = strTimeToEnd + " Мы победим с разницей в " + (willTotalUs - willTotalThey) + " очков " + strTimeEndGame;
+                        calcResult = strTimeToEnd + " " + getString(R.string.we_will_win_with_diff_in) + " " + (willTotalUs - willTotalThey) + " " + getString(R.string.points) + " " + strTimeEndGame;
                     } else if (willTotalUs < willTotalThey) { // Мы проиграем
-                        calcResult = strTimeToEnd + " Мы проиграем с разницей в " + (willTotalThey - willTotalUs) + " очков " + strTimeEndGame;
+                        calcResult = strTimeToEnd + " " + getString(R.string.we_will_lose_with_diff_in) + " " + (willTotalThey - willTotalUs) + " " + getString(R.string.points) + " " + strTimeEndGame;
                     } else { // Будет ничья
-                        calcResult = strTimeToEnd + " Будет ничья " + strTimeEndGame;
+                        calcResult = strTimeToEnd + " " + getString(R.string.will_nowin) + " " + strTimeEndGame;
                     }
                 }
 
             }
         } else { // если не все поля заполненны верно
-            calcResult = "Ошибка ввода данных";
+            calcResult = getString(R.string.error_entered_data);
         }
 
         tvResult.setText(calcResult); // выводим текс результата в контрол

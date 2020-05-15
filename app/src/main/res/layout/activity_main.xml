@@ -22,8 +22,7 @@
         <ImageView
             android:id="@+id/iv_city"
             android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            app:srcCompat="@drawable/stub_city"/>
+            android:layout_height="64dp"/>
 
 
         <LinearLayout
@@ -164,7 +163,7 @@
             android:id="@+id/sw_listen_new_file"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Отслеживать файлы в папке скриншотов"
+            android:text="@string/sett_listen_files_in_screeenshot_folder"
             />
 
 
@@ -200,20 +199,18 @@
                 android:id="@+id/dbg_tv_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Debug mode"
+                android:text="@string/debug_mode"
                 android:gravity="center_horizontal"
                 />
             <TextView
                 android:id="@+id/dbg_tv_file_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="File information"/>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:id="@+id/dbg_tv_file_date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="File information"/>
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
                 android:id="@+id/dbg_lay_time"
@@ -225,16 +222,14 @@
                     android:id="@+id/dbg_img_time"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/stub_total_time"/>
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/dbg_tv_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Распознанное время"/>
+                    android:gravity="center_vertical"/>
 
             </LinearLayout>
 
@@ -248,16 +243,14 @@
                     android:id="@+id/dbg_img_instance_vic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/stub_instance_vic"/>
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/dbg_tv_instance_vic"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Распознанное кол-во очков для победы"/>
+                    android:gravity="center_vertical"/>
 
             </LinearLayout>
 
@@ -271,16 +264,14 @@
                     android:id="@+id/dbg_img_us"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/stub_total_us"/>
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/dbg_tv_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Распознанные наши очки"/>
+                    android:gravity="center_vertical"/>
 
             </LinearLayout>
 
@@ -294,16 +285,14 @@
                     android:id="@+id/dbg_img_they"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/stub_total_they"/>
+                    android:layout_weight="1"/>
 
                 <TextView
                     android:id="@+id/dbg_tv_they"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:text="Распознанные их очки"/>
+                    android:gravity="center_vertical"/>
 
             </LinearLayout>
 

@@ -16,40 +16,40 @@
         android:id="@+id/btn_select_screenshot_folder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="выбрать папку скриншотов"
+        android:text="@string/set_screenshot_folder"
         android:onClick="selectScreenshotFolder"
         />
     <TextView
         android:id="@+id/tv_screenshotfolder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="папка скриншотов"/>
+        android:text="@string/sett_screenshot_folder"/>
 
     <Switch
         android:id="@+id/sw_get_last_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Отслеживать файлы в папке скриншотов"
+        android:text="@string/sett_listen_files_in_screeenshot_folder"
         android:defaultValue="false"/>
 
     <Switch
         android:id="@+id/sw_debug_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Debug mode"
+        android:text="@string/debug_mode"
         android:defaultValue="false"/>
     <TextView
         android:id="@+id/tv_calibrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Калибровка центра скриншота"/>
+        android:text="@string/sett_calibrate_center_screen"/>
 
     <Button
         android:id="@+id/btn_calibrate_reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Сброс в ноль"
+        android:text="@string/sett_reset_to_zero"
         android:onClick="calibrateReset"
         />
     <LinearLayout
