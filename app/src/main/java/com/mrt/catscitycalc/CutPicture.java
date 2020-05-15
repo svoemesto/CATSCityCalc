@@ -1,12 +1,19 @@
 package com.mrt.catscitycalc;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class CutPicture {
 
@@ -68,7 +75,7 @@ public class CutPicture {
         y1instancevic = Math.max(y1instancevic, 0);  y2instancevic = Math.min(y2instancevic, heightSource);
 
         Matrix matrix = new Matrix();           // матрица ресайза
-        matrix.postScale(4.0f, 4.0f);   // будем ресайзать в 4 раза
+        matrix.postScale(5.0f, 4.0f);   // будем ресайзать в 4 раза
 
         // создаем вырезанные и ресайзные картинки
         Bitmap croppingBitmap = Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
@@ -78,7 +85,7 @@ public class CutPicture {
         Bitmap croppingBitmapInstanceVic = Bitmap.createBitmap(sourceBitmap, x1instancevic, y1instancevic, x2instancevic - x1instancevic, y2instancevic - y1instancevic, matrix, false);
 
 //        try {
-
+//
 //            File fileCity = new File(MainActivity.pathToCATScalcFolder, "city.PNG");                   // файл картинки - путь к папке программы + имя файла
 //            OutputStream fOutCity = new FileOutputStream(fileCity);                             // аутпутстрим на файл
 //            croppingBitmap.compress(Bitmap.CompressFormat.PNG, 90, fOutCity);           // сжимаем картинку в ПНГ с качеством 90%
@@ -108,13 +115,13 @@ public class CutPicture {
 //            croppingBitmapInstanceVic.compress(Bitmap.CompressFormat.PNG, 90, fOutInstanceVic); // сжимаем картинку в ПНГ с качеством 90%
 //            fOutInstanceVic.flush();                                                            // сохраняем данные из потока
 //            fOutInstanceVic.close();                                                            // закрываем поток
-
+//
 //            File fileScreenshot = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
 //            OutputStream fOutScreenshot = new FileOutputStream(fileScreenshot);                   // аутпутстрим на файл
 //            sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
 //            fOutScreenshot.flush();                                                            // сохраняем данные из потока
 //            fOutScreenshot.close();                                                            // закрываем поток
-
+//
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
@@ -122,14 +129,153 @@ public class CutPicture {
         CuttedPictures cuttedPictures = new CuttedPictures();
         cuttedPictures.croppingBitmap = croppingBitmap;
         cuttedPictures.croppingBitmapInstanceVic = croppingBitmapInstanceVic;
-        cuttedPictures.croppingBitmapTotalUs = croppingBitmapTotalUs;
-        cuttedPictures.croppingBitmapTotalThey = croppingBitmapTotalThey;
+//        cuttedPictures.croppingBitmapTotalUs = croppingBitmapTotalUs;
+        cuttedPictures.croppingBitmapTotalUs = adjustedContrast(croppingBitmapTotalUs,100);
+//        cuttedPictures.croppingBitmapTotalThey = croppingBitmapTotalThey;
+        cuttedPictures.croppingBitmapTotalThey = adjustedContrast(croppingBitmapTotalThey, 100);
         cuttedPictures.croppingBitmapTotalTime = croppingBitmapTotalTime;
+//        int contrast = 250;
+//        int threshold = 10;
+//
+//        cuttedPictures.croppingBitmap = croppingBitmap;
+//        cuttedPictures.croppingBitmapTotalTime = bitmapToBW(croppingBitmapTotalTime, contrast,255, 255, 255, true,threshold);
+//        cuttedPictures.croppingBitmapInstanceVic = bitmapToBW(croppingBitmapInstanceVic, contrast,255, 255, 255, true,threshold);
+//        cuttedPictures.croppingBitmapTotalUs = bitmapToBW(croppingBitmapTotalUs, contrast,67, 122, 215, true,threshold);
+//        cuttedPictures.croppingBitmapTotalThey = bitmapToBW(croppingBitmapTotalThey, contrast,246, 79, 73, true,threshold);
+
+
 
         return cuttedPictures;
 
 
     }
 
+    private static Bitmap bitmapToBW(Bitmap src, int value, int chR, int chG, int chB, boolean invert, int threshold)
+    {
+        // image size
+        int width = src.getWidth();
+        int height = src.getHeight();
+        // create output bitmap
+
+        // create a mutable empty bitmap
+        Bitmap bmOut = Bitmap.createBitmap(width, height, src.getConfig());
+
+        // create a canvas so that we can draw the bmOut Bitmap from source bitmap
+        Canvas c = new Canvas();
+        c.setBitmap(bmOut);
+
+        // draw bitmap to bmOut from src bitmap so we can modify it
+//        c.drawBitmap(src, 0, 0, new Paint(Color.BLACK));
+
+
+        // color information
+        int A, R, G, B;
+        int pixel;
+
+//        Map<String, String> map = new TreeMap<>();
+
+
+        // scan through all pixels
+        for(int x = 0; x < width; ++x) {
+             for(int y = 0; y < height; ++y) {
+                // get pixel color
+                pixel = src.getPixel(x, y);
+                A = Color.alpha(pixel);
+                // apply filter contrast for every channel R, G, B
+                R = Color.red(pixel);
+                G = Color.green(pixel);
+                B = Color.blue(pixel);
+
+//                 map.put(String.format(Locale.getDefault(),"%03d.%03d.%03d",R,G,B),"");
+
+                if ((R > (chR - threshold) && R < (chR + threshold)) && (G > (chG - threshold) && G < (chG + threshold)) && (B > (chB - threshold) && B < (chB + threshold))) {
+                    if (!invert) {
+                        R=255;
+                        G=255;
+                        B=255;
+                    } else {
+                        R=0;
+                        G=0;
+                        B=0;
+                    }
+                } else {
+                    if (!invert) {
+                        R=0;
+                        G=0;
+                        B=0;
+                    } else {
+                        R=255;
+                        G=255;
+                        B=255;
+                    }
+                }
+
+//                R = R < value ? 255 : 0;
+//                G = G < value ? 255 : 0;
+//                B = B < value ? 255 : 0;
+//                A = 0;
+
+                // set new pixel color to output bitmap
+//                bmOut.setPixel(x, y, Color.argb(A, R, G, B));
+                bmOut.setPixel(x, y, Color.rgb(R, G, B));
+            }
+        }
+//        if (invert) System.out.println(map);
+        return bmOut;
+    }
+
+    private static Bitmap adjustedContrast(Bitmap src, double value)
+    {
+        // image size
+        int width = src.getWidth();
+        int height = src.getHeight();
+        // create output bitmap
+
+        // create a mutable empty bitmap
+        Bitmap bmOut = Bitmap.createBitmap(width, height, src.getConfig());
+
+        // create a canvas so that we can draw the bmOut Bitmap from source bitmap
+        Canvas c = new Canvas();
+        c.setBitmap(bmOut);
+
+        // draw bitmap to bmOut from src bitmap so we can modify it
+        c.drawBitmap(src, 0, 0, new Paint(Color.BLACK));
+
+
+        // color information
+        int A, R, G, B;
+        int pixel;
+        // get contrast value
+        double contrast = Math.pow((100 + value) / 100, 2);
+
+        // scan through all pixels
+        for(int x = 0; x < width; ++x) {
+            for(int y = 0; y < height; ++y) {
+                // get pixel color
+                pixel = src.getPixel(x, y);
+                A = Color.alpha(pixel);
+                // apply filter contrast for every channel R, G, B
+                R = Color.red(pixel);
+                R = (int)(((((R / 255.0) - 0.5) * contrast) + 0.5) * 255.0);
+                if(R < 0) { R = 0; }
+                else if(R > 255) { R = 255; }
+
+                G = Color.green(pixel);
+                G = (int)(((((G / 255.0) - 0.5) * contrast) + 0.5) * 255.0);
+                if(G < 0) { G = 0; }
+                else if(G > 255) { G = 255; }
+
+                B = Color.blue(pixel);
+                B = (int)(((((B / 255.0) - 0.5) * contrast) + 0.5) * 255.0);
+                if(B < 0) { B = 0; }
+                else if(B > 255) { B = 255; }
+
+                // set new pixel color to output bitmap
+                bmOut.setPixel(x, y, Color.argb(A, R, G, B));
+//                bmOut.setPixel(x, y, Color.rgb(R, G, B));
+            }
+        }
+        return bmOut;
+    }
 
 }
