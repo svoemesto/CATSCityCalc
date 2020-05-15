@@ -15,9 +15,11 @@ public class CutPicture {
         int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
         int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
 
+        int realCalibrate = (widthSource / 2) > Math.abs(MainActivity.calibrate) ? MainActivity.calibrate : 0;
+
         // координаты для вырезания картинки информации об игре
-        int x1 = (int) ((double) widthSource / 2 + MainActivity.XD1 * heightSource) + MainActivity.calibrate;
-        int x2 = (int) ((double) widthSource / 2 + MainActivity.XD2 * heightSource) + MainActivity.calibrate;
+        int x1 = (int) ((double) widthSource / 2 + MainActivity.XD1 * heightSource) + realCalibrate;
+        int x2 = (int) ((double) widthSource / 2 + MainActivity.XD2 * heightSource) + realCalibrate;
         int y1 = (int) ((double) heightSource / 2 + MainActivity.YD1 * ((double) heightSource / 2));
         int y2 = (int) ((double) heightSource / 2 + MainActivity.YD2 * ((double) heightSource / 2));
 
@@ -26,8 +28,8 @@ public class CutPicture {
         y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
 
         // координаты для вырезания картинки Наши очки
-        int x1totalus = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALUS * heightSource) + MainActivity.calibrate;
-        int x2totalus = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALUS * heightSource) + MainActivity.calibrate;
+        int x1totalus = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALUS * heightSource) + realCalibrate;
+        int x2totalus = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALUS * heightSource) + realCalibrate;
         int y1totalus = (int) ((double) heightSource / 2 + MainActivity.YD1_TOTALUS * ((double) heightSource / 2));
         int y2totalus = (int) ((double) heightSource / 2 + MainActivity.YD2_TOTALUS * ((double) heightSource / 2));
 
@@ -36,8 +38,8 @@ public class CutPicture {
         y1totalus = Math.max(y1totalus, 0);  y2totalus = Math.min(y2totalus, heightSource);
 
         // координаты для вырезания картинки Их очки
-        int x1totalthey = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALTHEY * heightSource) + MainActivity.calibrate;
-        int x2totalthey = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALTHEY * heightSource) + MainActivity.calibrate;
+        int x1totalthey = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALTHEY * heightSource) + realCalibrate;
+        int x2totalthey = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALTHEY * heightSource) + realCalibrate;
         int y1totalthey = (int) ((double) heightSource / 2 + MainActivity.YD1_TOTALTHEY * ((double) heightSource / 2));
         int y2totalthey = (int) ((double) heightSource / 2 + MainActivity.YD2_TOTALTHEY * ((double) heightSource / 2));
 
@@ -46,8 +48,8 @@ public class CutPicture {
         y1totalthey = Math.max(y1totalthey, 0);  y2totalthey = Math.min(y2totalthey, heightSource);
 
         // координаты для вырезания картинки Время
-        int x1totaltime = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALTIME * heightSource) + MainActivity.calibrate;
-        int x2totaltime = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALTIME * heightSource) + MainActivity.calibrate;
+        int x1totaltime = (int) ((double) widthSource / 2 + MainActivity.XD1_TOTALTIME * heightSource) + realCalibrate;
+        int x2totaltime = (int) ((double) widthSource / 2 + MainActivity.XD2_TOTALTIME * heightSource) + realCalibrate;
         int y1totaltime = (int) ((double) heightSource / 2 + MainActivity.YD1_TOTALTIME * ((double) heightSource / 2));
         int y2totaltime = (int) ((double) heightSource / 2 + MainActivity.YD2_TOTALTIME * ((double) heightSource / 2));
 
@@ -56,8 +58,8 @@ public class CutPicture {
         y1totaltime = Math.max(y1totaltime, 0);  y2totaltime = Math.min(y2totaltime, heightSource);
 
         // координаты для вырезания картинки Досрочка
-        int x1instancevic = (int) ((double) widthSource / 2 + MainActivity.XD1_INSTANCEVIN * heightSource) + MainActivity.calibrate;
-        int x2instancevic = (int) ((double) widthSource / 2 + MainActivity.XD2_INSTANCEVIN * heightSource) + MainActivity.calibrate;
+        int x1instancevic = (int) ((double) widthSource / 2 + MainActivity.XD1_INSTANCEVIN * heightSource) + realCalibrate;
+        int x2instancevic = (int) ((double) widthSource / 2 + MainActivity.XD2_INSTANCEVIN * heightSource) + realCalibrate;
         int y1instancevic = (int) ((double) heightSource / 2 + MainActivity.YD1_INSTANCEVIN * ((double) heightSource / 2));
         int y2instancevic = (int) ((double) heightSource / 2 + MainActivity.YD2_INSTANCEVIN * ((double) heightSource / 2));
 
