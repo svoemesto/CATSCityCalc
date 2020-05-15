@@ -442,6 +442,20 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+//        Toast.makeText(this, "onNewIntent",Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+//        Toast.makeText(this, "onRestart",Toast.LENGTH_LONG).show();
+    }
+
     /**
      *  Созданием меню
      */
@@ -653,17 +667,6 @@ public class MainActivity extends AppCompatActivity {
         dbgIvThey = findViewById(R.id.dbg_img_they);
         dbgTvThey = findViewById(R.id.dbg_tv_they);
 
-        // считываем преференцы, пихаем их в переменные и в контролы
-        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
-        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
-        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
-        calibrate = sharedPreferences.getInt(getString(R.string.pref_calibrate),0);
-        swListenNewFiles.setChecked(isListenToNewFileInFolder);
-
-        // устанавливаем видимость группы контролов дебаг-мода, если он включен
-        dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
-
         // отслеживание изменения свича "Следить за файлами в папке"
         swListenNewFiles.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -676,6 +679,18 @@ public class MainActivity extends AppCompatActivity {
                 isListenToNewFileInFolder = isChecked;
             }
         });
+
+
+        // считываем преференцы, пихаем их в переменные и в контролы
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
+        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
+        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
+        calibrate = sharedPreferences.getInt(getString(R.string.pref_calibrate),0);
+        swListenNewFiles.setChecked(isListenToNewFileInFolder);
+
+        // устанавливаем видимость группы контролов дебаг-мода, если он включен
+        dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
 
         startTimer();   // стартуем таймер
 
@@ -860,9 +875,18 @@ public class MainActivity extends AppCompatActivity {
         tvResult.setText(calcResult); // выводим текс результата в контрол
 
         // Создаем нотификейшен
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY | Intent.FLAG_ACTIVITY_NEW_TASK);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
@@ -876,6 +900,8 @@ public class MainActivity extends AppCompatActivity {
                 notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
 
     }
+
+
 
     /**
      * Создание канала нотификации
