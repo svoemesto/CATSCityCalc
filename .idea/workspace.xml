@@ -26,19 +26,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/app-release.apk" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/output.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/mrt/catscitycalc/ExampleInstrumentedTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/CutPicture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/CuttedPictures.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/NotificationHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/OpenFileDialog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/SettingsActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/mrt/catscitycalc/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.10.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.11.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.12.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.6.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.7.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.8.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v1.0.9.apk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/app-release.aab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,7 +115,6 @@
     <option name="KEY_STORE_PATH" value="D:\Dropbox\keystores\android.jks" />
     <option name="KEY_ALIAS" value="SmAndroidKey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -135,12 +131,10 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-15T08:33:13.528Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
-    <property name="ExportApk.SignV1" value="true" />
-    <property name="ExportApk.SignV2" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/encripted_key" />
+    <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
