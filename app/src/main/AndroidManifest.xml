@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrt.catscitycalc"
+    package="com.svoemestodev.catscitycalc"
     >
 
 
@@ -21,7 +21,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7202594993908077~9154652015"
+            android:value="ca-app-pub-2870168293382158~9528759362"
 
             />
 
