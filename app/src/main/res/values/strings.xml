@@ -1,13 +1,67 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.12 (15/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.14 (16/05/2020)</string>
+
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
+
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
     <string name="pref_preferences_file" translatable="false">PREF_PREFERENCES_FILE</string>
     <string name="pref_screenshot_folder" translatable="false">PREF_SCREENSHOT_FOLDER</string>
     <string name="pref_listen_last_file" translatable="false">PREF_LISTEN_LAST_FILE</string>
     <string name="pref_debug_mode" translatable="false">PREF_DEBUG_MODE</string>
-    <string name="pref_calibrate" translatable="false">PREF_CALIBRATE</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
+
+    <string name="pref_calibrate_x" translatable="false">PREF_CALIBRATE_X</string>
+    <string name="pref_calibrate_y" translatable="false">PREF_CALIBRATE_Y</string>
+
+    <string name="pref_cut_city_x1" translatable="false">PREF_CUT_CITY_X1</string>
+    <string name="pref_cut_city_x2" translatable="false">PREF_CUT_CITY_X2</string>
+    <string name="pref_cut_city_y1" translatable="false">PREF_CUT_CITY_Y1</string>
+    <string name="pref_cut_city_y2" translatable="false">PREF_CUT_CITY_Y2</string>
+
+    <string name="pref_cut_total_us_x1" translatable="false">PREF_CUT_TOTAL_US_X1</string>
+    <string name="pref_cut_total_us_x2" translatable="false">PREF_CUT_TOTAL_US_X2</string>
+    <string name="pref_cut_total_us_y1" translatable="false">PREF_CUT_TOTAL_US_Y1</string>
+    <string name="pref_cut_total_us_y2" translatable="false">PREF_CUT_TOTAL_US_Y2</string>
+
+    <string name="pref_cut_total_they_x1" translatable="false">PREF_CUT_TOTAL_THEY_X1</string>
+    <string name="pref_cut_total_they_x2" translatable="false">PREF_CUT_TOTAL_THEY_X2</string>
+    <string name="pref_cut_total_they_y1" translatable="false">PREF_CUT_TOTAL_THEY_Y1</string>
+    <string name="pref_cut_total_they_y2" translatable="false">PREF_CUT_TOTAL_THEY_Y2</string>
+
+    <string name="pref_cut_total_time_x1" translatable="false">PREF_CUT_TOTAL_TIME_X1</string>
+    <string name="pref_cut_total_time_x2" translatable="false">PREF_CUT_TOTAL_TIME_X2</string>
+    <string name="pref_cut_total_time_y1" translatable="false">PREF_CUT_TOTAL_TIME_Y1</string>
+    <string name="pref_cut_total_time_y2" translatable="false">PREF_CUT_TOTAL_TIME_Y2</string>
+
+    <string name="pref_cut_early_win_x1" translatable="false">PREF_CUT_EARLY_WIN_X1</string>
+    <string name="pref_cut_early_win_x2" translatable="false">PREF_CUT_EARLY_WIN_X2</string>
+    <string name="pref_cut_early_win_y1" translatable="false">PREF_CUT_EARLY_WIN_Y1</string>
+    <string name="pref_cut_early_win_y2" translatable="false">PREF_CUT_EARLY_WIN_Y2</string>
+
+    <string name="pref_rgb_total_us" translatable="false">PREF_RGB_TOTAL_US</string>
+    <string name="pref_rgb_total_us_threshold_plus" translatable="false">PREF_RGB_TOTAL_US_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_total_us_threshold_minus" translatable="false">PREF_RGB_TOTAL_US_THRESHOLD_MINUS</string>
+
+    <string name="pref_rgb_plus_us" translatable="false">PREF_RGB_PLUS_US</string>
+    <string name="pref_rgb_plus_us_threshold_plus" translatable="false">PREF_RGB_PLUS_US_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_plus_us_threshold_minus" translatable="false">PREF_RGB_PLUS_US_THRESHOLD_MINUS</string>
+
+    <string name="pref_rgb_total_they" translatable="false">PREF_RGB_TOTAL_THEY</string>
+    <string name="pref_rgb_total_they_threshold_plus" translatable="false">PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_total_they_threshold_minus" translatable="false">PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS</string>
+
+    <string name="pref_rgb_plus_they" translatable="false">PREF_RGB_PLUS_THEY</string>
+    <string name="pref_rgb_plus_they_threshold_plus" translatable="false">PREF_RGB_PLUS_THEY_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_plus_they_threshold_minus" translatable="false">PREF_RGB_PLUS_THEY_THRESHOLD_MINUS</string>
+
+    <string name="pref_rgb_total_time" translatable="false">PREF_RGB_TOTAL_TIME</string>
+    <string name="pref_rgb_total_time_threshold_plus" translatable="false">PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_total_time_threshold_minus" translatable="false">PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS</string>
+
+    <string name="pref_rgb_early_win" translatable="false">PREF_RGB_EARLY_WIN</string>
+    <string name="pref_rgb_early_win_threshold_plus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_PLUS</string>
+    <string name="pref_rgb_early_win_threshold_minus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_MINUS</string>
+
 
     <string name="plus_us">+ us</string>
     <string name="time">Time</string>
@@ -28,11 +82,11 @@
     <string name="about_us">About</string>
     <string name="exit">Exit</string>
     <string name="sett_screenshot_folder">screenshot folder</string>
-    <string name="sett_listen_files_in_screeenshot_folder">Listen files in screenshot folder</string>
+    <string name="sett_listen_files_in_screenshot_folder">Listen files in screenshot folder</string>
     <string name="debug_mode">Debug mode</string>
     <string name="sett_calibrate_center_screen">Calibrate screenshot center</string>
     <string name="sett_reset_to_zero">Reset to 0</string>
-    <string name="programm_depricated">Programm is out of date</string>
+    <string name="program_depricated">Program is out of date</string>
     <string name="read_external_storage">Read External Storage</string>
     <string name="write_external_storage">Write External Storage</string>
     <string name="internet">Internet</string>
@@ -55,5 +109,35 @@
     <string name="we_will_lose_with_diff_in">We will lose with a difference</string>
     <string name="will_nowin">Will draw</string>
     <string name="error_entered_data">Error data</string>
+    <string name="offset_center_x">Offset the center of the screenshot along the vertical axis</string>
+    <string name="offset_center_y">Offset the center of the screenshot along the horizontal axis</string>
+    <string name="sett_borders">Borders settings</string>
+    <string name="borders_city">City</string>
+    <string name="borders_time">Time</string>
+    <string name="borders_scores_to_early_win">Scores to early win</string>
+    <string name="borders_our_scores">Our scores</string>
+    <string name="borders_enemy_scores">Enemy\'s scores</string>
+    <string name="reset_x1_to_default">Reset X1 to default</string>
+    <string name="reset_x2_to_default">Reset X2 to default</string>
+    <string name="reset_y1_to_default">Reset Y1 to default</string>
+    <string name="reset_y2_to_default">Reset X2 to default</string>
+    <string name="border_x1">Offset X left</string>
+    <string name="border_x2">Offset X rigth</string>
+    <string name="border_y1">Offset Y top</string>
+    <string name="border_y2">Offset Y bottom</string>
+    <string name="sett_colors">Colors detect settings</string>
+    <string name="colors_plus_us">Our increase</string>
+    <string name="colors_plus_they">Enemy\'s increase</string>
+    <string name="red" translatable="false">RED</string>
+    <string name="green" translatable="false">GREEN</string>
+    <string name="blue" translatable="false">BLUE</string>
+    <string name="minus_threshold">Minus threshold</string>
+    <string name="plus_threshold">Plus threshold</string>
+    <string name="color_stub" translatable="false">██████████</string>
+    <string name="original_picture">Original picture</string>
+    <string name="processed_picture">Processed picture</string>
+    <string name="recognized_symbols">Recognized symbols</string>
+    <string name="color_code">RGB code</string>
+    <string name="sett_default">Set default</string>
 
 </resources>

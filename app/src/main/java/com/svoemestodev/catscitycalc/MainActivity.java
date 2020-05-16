@@ -42,7 +42,6 @@ import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -91,37 +90,113 @@ public class MainActivity extends AppCompatActivity {
     public static  File fileLastInFolder;    // последний файл в папке
 
     private Timer timer;                        // таймер
-    private String pathToScreenshotDir = "";    // путь к папке скриншотов
+    public static String pathToScreenshotDir = "";    // путь к папке скриншотов
     public static String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
-    private boolean isListenToNewFileInFolder;  // флаг "Следить за новыми файлами в папке"
-    private boolean isAllFieldsCorrect;         // флаг "Все поля заполнены правильно"
-    public static int calibrate;                              // калибровка
+    public static boolean isListenToNewFileInFolder;  // флаг "Следить за новыми файлами в папке"
+    public static boolean isAllFieldsCorrect;         // флаг "Все поля заполнены правильно"
+    public static int calibrateX;                              // калибровка
+    public static int calibrateY;                              // калибровка
 
     // коэффициэнты кропа картинки
-    public static final double XD1 = -0.565d;
-    public static final double XD2 = +0.565d;
-    public static final double YD1 = -0.800d;
-    public static final double YD2 = -0.450d;
+    public static final float DEFAULT_PREF_CUT_CITY_X1 = -0.565f;
+    public static final float DEFAULT_PREF_CUT_CITY_X2 = +0.565f;
+    public static final float DEFAULT_PREF_CUT_CITY_Y1 = -0.800f;
+    public static final float DEFAULT_PREF_CUT_CITY_Y2 = -0.450f;
 
-    public static final double XD1_TOTALUS = -0.565d;
-    public static final double XD2_TOTALUS = -0.180d;
-    public static final double YD1_TOTALUS = -0.610d;
-    public static final double YD2_TOTALUS = -0.470d;
+    public static final float DEFAULT_PREF_CUT_TOTAL_US_X1 = -0.565f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_US_X2 = -0.180f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_US_Y1 = -0.610f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_US_Y2 = -0.470f;
 
-    public static final double XD1_TOTALTHEY = +0.180d;
-    public static final double XD2_TOTALTHEY = +0.565d;
-    public static final double YD1_TOTALTHEY = -0.610d;
-    public static final double YD2_TOTALTHEY = -0.470d;
+    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_X1 = +0.180f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_X2 = +0.565f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_Y1 = -0.610f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_Y2 = -0.470f;
 
-    public static final double XD1_TOTALTIME = -0.130d;
-    public static final double XD2_TOTALTIME = +0.060d;
-    public static final double YD1_TOTALTIME = -0.780d;
-    public static final double YD2_TOTALTIME = -0.660d;
+    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_X1 = -0.130f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_X2 = +0.060f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_Y1 = -0.780f;
+    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_Y2 = -0.660f;
 
-    public static final double XD1_INSTANCEVIN = -0.170d;
-    public static final double XD2_INSTANCEVIN = +0.170d;
-    public static final double YD1_INSTANCEVIN = -0.570d;
-    public static final double YD2_INSTANCEVIN = -0.450d;
+    public static final float DEFAULT_PREF_CUT_EARLY_WIN_X1 = -0.170f;
+    public static final float DEFAULT_PREF_CUT_EARLY_WIN_X2 = +0.170f;
+    public static final float DEFAULT_PREF_CUT_EARLY_WIN_Y1 = -0.570f;
+    public static final float DEFAULT_PREF_CUT_EARLY_WIN_Y2 = -0.450f;
+
+    public static final int DEFAULT_PREF_RGB_TOTAL_US = 0x437AD7;
+    public static final int DEFAULT_PREF_RGB_PLUS_US = 0xD3DDF6;
+    public static final int DEFAULT_PREF_RGB_TOTAL_THEY = 0xF64F49;
+    public static final int DEFAULT_PREF_RGB_PLUS_THEY = 0xFDD5D3;
+    public static final int DEFAULT_PREF_RGB_TOTAL_TIME = 0xFFFFFF;
+    public static final int DEFAULT_PREF_RGB_EARLY_WIN = 0xFFFFFF;
+
+    public static final int DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_PLUS = 4;
+    public static final int DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_MINUS = 1;
+
+    public static final int DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_PLUS = 4;
+    public static final int DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_MINUS = 13;
+
+    public static final int DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS = 24;
+    public static final int DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS = 8;
+
+    public static final int DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_PLUS = 5;
+    public static final int DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_MINUS = 5;
+
+    public static final int DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS = 1;
+    public static final int DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS = 20;
+
+    public static final int DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_PLUS = 1;
+    public static final int DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_MINUS = 20;
+
+    public static int rgb_total_us;
+    public static int rgb_total_us_threshold_plus;
+    public static int rgb_total_us_threshold_minus;
+
+    public static int rgb_plus_us;
+    public static int rgb_plus_us_threshold_plus;
+    public static int rgb_plus_us_threshold_minus;
+
+    public static int rgb_total_they;
+    public static int rgb_total_they_threshold_plus;
+    public static int rgb_total_they_threshold_minus;
+
+    public static int rgb_plus_they;
+    public static int rgb_plus_they_threshold_plus;
+    public static int rgb_plus_they_threshold_minus;
+
+    public static int rgb_total_time;
+    public static int rgb_total_time_threshold_plus;
+    public static int rgb_total_time_threshold_minus;
+
+    public static int rgb_early_win;
+    public static int rgb_early_win_threshold_plus;
+    public static int rgb_early_win_threshold_minus;
+
+    public static float cut_city_x1;
+    public static float cut_city_x2;
+    public static float cut_city_y1;
+    public static float cut_city_y2;
+
+    public static float cut_total_us_x1;
+    public static float cut_total_us_x2;
+    public static float cut_total_us_y1;
+    public static float cut_total_us_y2;
+
+    public static float cut_total_they_x1;
+    public static float cut_total_they_x2;
+    public static float cut_total_they_y1;
+    public static float cut_total_they_y2;
+
+    public static float cut_total_time_x1;
+    public static float cut_total_time_x2;
+    public static float cut_total_time_y1;
+    public static float cut_total_time_y2;
+
+    public static float cut_early_win_x1;
+    public static float cut_early_win_x2;
+    public static float cut_early_win_y1;
+    public static float cut_early_win_y2;
+
 
     private Date timeStartGame;         // дата начала игры
     private Date timeEndGame;           // дата конца игры
@@ -143,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
     private static boolean permInternetIsGranted;
 
     // DEBUG MODE - контролы
-    private boolean isDebugMode;
+    public static boolean isDebugMode;
     private LinearLayout dbgLayout;
     private TextView dbgTvFileName;
     private TextView dbgTvFileDate;
@@ -151,17 +226,144 @@ public class MainActivity extends AppCompatActivity {
     private TextView dbgTvTime;
     private ImageView dbgIvInstanceVic;
     private TextView dbgTvInstanceVic;
-    private ImageView dbgIvUs;
-    private TextView dbgTvUs;
-    private ImageView dbgIvThey;
-    private TextView dbgTvThey;
-
+    private ImageView dbgIvTotalUs;
+    private TextView dbgTvTotalUs;
+    private ImageView dbgIvPlusUs;
+    private TextView dbgTvPlusUs;
+    private ImageView dbgIvTotalThey;
+    private TextView dbgTvTotalThey;
+    private ImageView dbgIvPlusThey;
+    private TextView dbgTvPlusThey;
 
     /**
      *  Распознование картинки
      *  На входе - битмап
      *  На выходе - строка
      */
+
+    public void readPreferences() {
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+
+        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
+        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
+        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
+        calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),0);
+        calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),0);
+
+        rgb_total_us = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us),DEFAULT_PREF_RGB_TOTAL_US);
+        rgb_total_us_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us_threshold_plus),DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_PLUS);
+        rgb_total_us_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us_threshold_minus),DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_MINUS);
+
+        rgb_total_they = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they),DEFAULT_PREF_RGB_TOTAL_THEY);
+        rgb_total_they_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they_threshold_plus),DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS);
+        rgb_total_they_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they_threshold_minus),DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS);
+
+        rgb_plus_us = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us),DEFAULT_PREF_RGB_PLUS_US);
+        rgb_plus_us_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us_threshold_plus),DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_PLUS);
+        rgb_plus_us_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us_threshold_minus),DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_MINUS);
+
+        rgb_plus_they = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they),DEFAULT_PREF_RGB_PLUS_THEY);
+        rgb_plus_they_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they_threshold_plus),DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_PLUS);
+        rgb_plus_they_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they_threshold_minus),DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_MINUS);
+
+        rgb_total_time = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time),DEFAULT_PREF_RGB_TOTAL_TIME);
+        rgb_total_time_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time_threshold_plus),DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS);
+        rgb_total_time_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time_threshold_minus),DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS);
+
+        rgb_early_win = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win), DEFAULT_PREF_RGB_EARLY_WIN);
+        rgb_early_win_threshold_plus = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win_threshold_plus),DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_PLUS);
+        rgb_early_win_threshold_minus = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win_threshold_minus),DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_MINUS);
+
+        cut_city_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_x1), DEFAULT_PREF_CUT_CITY_X1);
+        cut_city_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_x2), DEFAULT_PREF_CUT_CITY_X2);
+        cut_city_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_y1), DEFAULT_PREF_CUT_CITY_Y1);
+        cut_city_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_y2), DEFAULT_PREF_CUT_CITY_Y2);
+
+        cut_total_us_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_us_x1), DEFAULT_PREF_CUT_TOTAL_US_X1);
+        cut_total_us_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_us_x2), DEFAULT_PREF_CUT_TOTAL_US_X2);
+        cut_total_us_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_us_y1), DEFAULT_PREF_CUT_TOTAL_US_Y1);
+        cut_total_us_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_us_y2), DEFAULT_PREF_CUT_TOTAL_US_Y2);
+
+        cut_total_they_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_they_x1), DEFAULT_PREF_CUT_TOTAL_THEY_X1);
+        cut_total_they_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_they_x2), DEFAULT_PREF_CUT_TOTAL_THEY_X2);
+        cut_total_they_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_they_y1), DEFAULT_PREF_CUT_TOTAL_THEY_Y1);
+        cut_total_they_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_they_y2), DEFAULT_PREF_CUT_TOTAL_THEY_Y2);
+
+        cut_total_time_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_x1), DEFAULT_PREF_CUT_TOTAL_TIME_X1);
+        cut_total_time_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_x2), DEFAULT_PREF_CUT_TOTAL_TIME_X2);
+        cut_total_time_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_y1), DEFAULT_PREF_CUT_TOTAL_TIME_Y1);
+        cut_total_time_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_y2), DEFAULT_PREF_CUT_TOTAL_TIME_Y2);
+
+        cut_early_win_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_x1), DEFAULT_PREF_CUT_EARLY_WIN_X1);
+        cut_early_win_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_x2), DEFAULT_PREF_CUT_EARLY_WIN_X2);
+        cut_early_win_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_y1), DEFAULT_PREF_CUT_EARLY_WIN_Y1);
+        cut_early_win_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_y2), DEFAULT_PREF_CUT_EARLY_WIN_Y2);
+
+    }
+
+    public void writePreferences() {
+
+        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(getString(R.string.pref_screenshot_folder), pathToScreenshotDir);
+        editor.putBoolean(getString(R.string.pref_listen_last_file), isListenToNewFileInFolder);
+        editor.putBoolean(getString(R.string.pref_debug_mode), isDebugMode);
+        editor.putInt(getString(R.string.pref_calibrate_x), calibrateX);
+        editor.putInt(getString(R.string.pref_calibrate_y), calibrateY);
+
+        editor.putInt(getString(R.string.pref_rgb_total_us), rgb_total_us);
+        editor.putInt(getString(R.string.pref_rgb_total_us_threshold_plus), rgb_total_us_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_total_us_threshold_minus), rgb_total_us_threshold_minus);
+
+        editor.putInt(getString(R.string.pref_rgb_total_they), rgb_total_they);
+        editor.putInt(getString(R.string.pref_rgb_total_they_threshold_plus), rgb_total_they_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_total_they_threshold_minus), rgb_total_they_threshold_minus);
+
+        editor.putInt(getString(R.string.pref_rgb_plus_us), rgb_plus_us);
+        editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_plus), rgb_plus_us_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_minus), rgb_plus_us_threshold_minus);
+
+        editor.putInt(getString(R.string.pref_rgb_plus_they), rgb_plus_they);
+        editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_plus), rgb_plus_they_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_minus), rgb_plus_they_threshold_minus);
+
+        editor.putInt(getString(R.string.pref_rgb_total_time), rgb_total_time);
+        editor.putInt(getString(R.string.pref_rgb_total_time_threshold_plus), rgb_total_time_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_total_time_threshold_minus), rgb_total_time_threshold_minus);
+
+        editor.putInt(getString(R.string.pref_rgb_early_win), rgb_early_win);
+        editor.putInt(getString(R.string.pref_rgb_early_win_threshold_plus), rgb_early_win_threshold_plus);
+        editor.putInt(getString(R.string.pref_rgb_early_win_threshold_minus), rgb_early_win_threshold_minus);
+
+        editor.putFloat(getString(R.string.pref_cut_city_x1), cut_city_x1);
+        editor.putFloat(getString(R.string.pref_cut_city_x2), cut_city_x2);
+        editor.putFloat(getString(R.string.pref_cut_city_y1), cut_city_y1);
+        editor.putFloat(getString(R.string.pref_cut_city_y2), cut_city_y2);
+
+        editor.putFloat(getString(R.string.pref_cut_total_us_x1), cut_total_us_x1);
+        editor.putFloat(getString(R.string.pref_cut_total_us_x2), cut_total_us_x2);
+        editor.putFloat(getString(R.string.pref_cut_total_us_y1), cut_total_us_y1);
+        editor.putFloat(getString(R.string.pref_cut_total_us_y2), cut_total_us_y2);
+
+        editor.putFloat(getString(R.string.pref_cut_total_they_x1), cut_total_they_x1);
+        editor.putFloat(getString(R.string.pref_cut_total_they_x2), cut_total_they_x2);
+        editor.putFloat(getString(R.string.pref_cut_total_they_y1), cut_total_they_y1);
+        editor.putFloat(getString(R.string.pref_cut_total_they_y2), cut_total_they_y2);
+
+        editor.putFloat(getString(R.string.pref_cut_total_time_x1), cut_total_time_x1);
+        editor.putFloat(getString(R.string.pref_cut_total_time_x2), cut_total_time_x2);
+        editor.putFloat(getString(R.string.pref_cut_total_time_y1), cut_total_time_y1);
+        editor.putFloat(getString(R.string.pref_cut_total_time_y2), cut_total_time_y2);
+
+        editor.putFloat(getString(R.string.pref_cut_early_win_x1), cut_early_win_x1);
+        editor.putFloat(getString(R.string.pref_cut_early_win_x2), cut_early_win_x2);
+        editor.putFloat(getString(R.string.pref_cut_early_win_y1), cut_early_win_y1);
+        editor.putFloat(getString(R.string.pref_cut_early_win_y2), cut_early_win_y2);
+
+        editor.apply();
+
+    }
 
     private String recognizePicture(Bitmap bitmap) {
 
@@ -227,73 +429,37 @@ public class MainActivity extends AppCompatActivity {
 
             ivCity.setImageBitmap(cuttedPictures.croppingBitmap);  // выводим битмат игры в контрол
 
-            // стартовые занчения переменных
-            String strTotalUs = "0";
-            String strPlusUs = "0";
-            String strTotalThey = "0";
-            String strPlusThey = "0";
-
-            String strTotalUsAndPlus = recognizePicture(cuttedPictures.croppingBitmapTotalUs);         // распознаем "Наши очки"
-            String strTotalTheyAndPlus = recognizePicture(cuttedPictures.croppingBitmapTotalThey);     // распознаем "Их очки"
+            String strTotalUs = recognizePicture(cuttedPictures.croppingBitmapTotalUs);         // распознаем "Наши очки"
+            String strPlusUs = recognizePicture(cuttedPictures.croppingBitmapPlusUs);         // распознаем "Наши очки"
+            String strTotalThey = recognizePicture(cuttedPictures.croppingBitmapTotalThey);     // распознаем "Их очки"
+            String strPlusThey = recognizePicture(cuttedPictures.croppingBitmapPlusThey);     // распознаем "Их очки"
             String strTotalTime = recognizePicture(cuttedPictures.croppingBitmapTotalTime);            // распознаем "Время"
-            String strInstanceVic = recognizePicture(cuttedPictures.croppingBitmapInstanceVic);        // распознаем "Досрочка"
+            String strInstanceVic = recognizePicture(cuttedPictures.croppingBitmapEarlyWin);        // распознаем "Досрочка"
 
             if (isDebugMode) { // если включен дебаг-мод
                 // выводим битмапы и распознанные данные в контрлы дебаг-мода
                 dbgIvTime.setImageBitmap(cuttedPictures.croppingBitmapTotalTime);
-                dbgIvInstanceVic.setImageBitmap(cuttedPictures.croppingBitmapInstanceVic);
-                dbgIvUs.setImageBitmap(cuttedPictures.croppingBitmapTotalUs);
-                dbgIvThey.setImageBitmap(cuttedPictures.croppingBitmapTotalThey);
+                dbgIvInstanceVic.setImageBitmap(cuttedPictures.croppingBitmapEarlyWin);
+                dbgIvTotalUs.setImageBitmap(cuttedPictures.croppingBitmapTotalUs);
+                dbgIvPlusUs.setImageBitmap(cuttedPictures.croppingBitmapPlusUs);
+                dbgIvTotalThey.setImageBitmap(cuttedPictures.croppingBitmapTotalThey);
+                dbgIvPlusThey.setImageBitmap(cuttedPictures.croppingBitmapPlusThey);
 
                 dbgTvTime.setText(strTotalTime);
                 dbgTvInstanceVic.setText(strInstanceVic);
-                dbgTvUs.setText(strTotalUsAndPlus);
-                dbgTvThey.setText(strTotalTheyAndPlus);
+                dbgTvTotalUs.setText(strTotalUs);
+                dbgTvPlusUs.setText(strPlusUs);
+                dbgTvTotalThey.setText(strTotalThey);
+                dbgTvPlusThey.setText(strPlusThey);
 
                 dbgTvFileName.setText(fileScreenshot.getName());
                 dbgTvFileDate.setText("" + new Date(fileScreenshot.lastModified()));
             }
 
-
-            // парсинг "Наши очки"
-            String[] arrTotalUs = strTotalUsAndPlus.split("\\D");   // парсим с разделителем "не цифра"
-            List<String> listToUs = new ArrayList<>();      // лист значений
-            for (int i = 0; i < arrTotalUs.length; i++) {   // проходим по распарсенному массиву
-                if (!arrTotalUs[i].equals("")) {            // если элемент массива не пустой
-                    listToUs.add(arrTotalUs[i]);            // добавляем текущий элемент массива в лист
-                }
-            }
-
-            if (listToUs.size() > 0) {                      // если в списке есть элементы
-                if (listToUs.size() == 1) {                 // если в списке один элемент
-                    strPlusUs = "0";                        // "ПлюсНам" = 0
-                    strTotalUs = listToUs.get(0);           // "НашиОчки" = первый и единственный элемнет из списка
-                } else {                                     // если в списке больше одного элемента
-                    strPlusUs = listToUs.get(0);            // "ПлюсНам" = первый элемнет из списка
-                    strTotalUs = listToUs.get(1);           // "НашиОчки" = второй элемнет из списка
-                }
-            }
-
-            // парсинг "Их очки"
-            String[] arrTotalThey = strTotalTheyAndPlus.split("\\D"); // парсим с разделителем "не цифра"
-            List<String> listToThey = new ArrayList<>();     // лист значений
-            for (int i = 0; i < arrTotalThey.length; i++) {  // проходим по распарсенному массиву
-                if (!arrTotalThey[i].equals("")) {           // если элемент массива не пустой
-                    listToThey.add(arrTotalThey[i]);        // добавляем текущий элемент массива в лист
-                }
-            }
-
-            if (listToThey.size() > 0) {                // если в списке есть элементы
-                if (listToThey.size() == 1) {           // если в списке один элемент
-                    strPlusThey = "0";                  // "ПлюсИм" = 0
-                    strTotalThey = listToThey.get(0);   // "ИхОчки" = первый и единственный элемнет из списка
-                } else {                                // если в списке больше одного элемента
-                    strPlusThey = listToThey.get(1);    // "ПлюсИм" = первый элемнет из списка
-                    strTotalThey = listToThey.get(0);   // "ИхОчки" = второй элемнет из списка
-                }
-            }
-
-            // парсинг "Досрочка" - если строка не пустая - вырезаем из нее не числовые символы
+            strTotalUs = strTotalUs.equals("") ? "0" : cutNotNumericSymbols(strTotalUs);
+            strPlusUs = strPlusUs.equals("") ? "0" : cutNotNumericSymbols(strPlusUs);
+            strTotalThey = strTotalThey.equals("") ? "0" : cutNotNumericSymbols(strTotalThey);
+            strPlusThey = strPlusThey.equals("") ? "0" : cutNotNumericSymbols(strPlusThey);
             strInstanceVic = strInstanceVic.equals("") ? "0" : cutNotNumericSymbols(strInstanceVic);
 
             // парсинг "Время"
@@ -493,10 +659,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         // если произошел возврат со страницы настрок - обновляем контролы в текущей активности
         if (requestCode == REQUEST_CODE_SECOND_ACTIVITY) {
-            SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
-            isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
-            isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
+
+            readPreferences();
+
             swListenNewFiles.setChecked(isListenToNewFileInFolder);
             dbgLayout.setVisibility(isDebugMode ? View.VISIBLE : View.INVISIBLE);
             fileScreenshotPrevious = null;
@@ -567,7 +732,7 @@ public class MainActivity extends AppCompatActivity {
 
         // если "программа устарела" - выходим
         if (Calendar.getInstance().getTime().after(DATE_EXPIRED)) {
-            Toast.makeText(MainActivity.this, R.string.programm_depricated, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, R.string.program_depricated, Toast.LENGTH_SHORT).show();
             onBackPressed();
             return;
         }
@@ -658,14 +823,24 @@ public class MainActivity extends AppCompatActivity {
         TextView dbgTvHeader = findViewById(R.id.dbg_tv_header);
         dbgTvFileName = findViewById(R.id.dbg_tv_file_name);
         dbgTvFileDate = findViewById(R.id.dbg_tv_file_date);
+
         dbgIvTime = findViewById(R.id.dbg_img_time);
         dbgTvTime = findViewById(R.id.dbg_tv_time);
+
         dbgIvInstanceVic = findViewById(R.id.dbg_img_instance_vic);
         dbgTvInstanceVic = findViewById(R.id.dbg_tv_instance_vic);
-        dbgIvUs = findViewById(R.id.dbg_img_us);
-        dbgTvUs = findViewById(R.id.dbg_tv_us);
-        dbgIvThey = findViewById(R.id.dbg_img_they);
-        dbgTvThey = findViewById(R.id.dbg_tv_they);
+
+        dbgIvTotalUs = findViewById(R.id.dbg_img_total_us);
+        dbgIvPlusUs = findViewById(R.id.dbg_img_plus_us);
+
+        dbgTvTotalUs = findViewById(R.id.dbg_tv_total_us);
+        dbgTvPlusUs = findViewById(R.id.dbg_tv_plus_us);
+
+        dbgIvTotalThey = findViewById(R.id.dbg_img_total_they);
+        dbgIvPlusThey = findViewById(R.id.dbg_img_plus_they);
+
+        dbgTvTotalThey = findViewById(R.id.dbg_tv_total_they);
+        dbgTvPlusThey = findViewById(R.id.dbg_tv_plus_they);
 
         // отслеживание изменения свича "Следить за файлами в папке"
         swListenNewFiles.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -682,11 +857,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         // считываем преференцы, пихаем их в переменные и в контролы
-        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
-        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
-        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
-        calibrate = sharedPreferences.getInt(getString(R.string.pref_calibrate),0);
+
+        readPreferences();
+
         swListenNewFiles.setChecked(isListenToNewFileInFolder);
 
         // устанавливаем видимость группы контролов дебаг-мода, если он включен

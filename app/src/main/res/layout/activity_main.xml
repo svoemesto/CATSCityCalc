@@ -164,7 +164,7 @@
             android:id="@+id/sw_listen_new_file"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/sett_listen_files_in_screeenshot_folder"
+            android:text="@string/sett_listen_files_in_screenshot_folder"
             />
 
 
@@ -256,19 +256,19 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/dbg_lay_us"
+                android:id="@+id/dbg_lay_total_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/dbg_img_us"
+                    android:id="@+id/dbg_img_total_us"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
                 <TextView
-                    android:id="@+id/dbg_tv_us"
+                    android:id="@+id/dbg_tv_total_us"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -277,19 +277,61 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/dbg_lay_they"
+                android:id="@+id/dbg_lay_plus_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/dbg_img_they"
+                    android:id="@+id/dbg_img_plus_us"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
                 <TextView
-                    android:id="@+id/dbg_tv_they"
+                    android:id="@+id/dbg_tv_plus_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dbg_lay_total_they"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dbg_img_total_they"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/dbg_tv_total_they"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dbg_lay_plus_they"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/dbg_img_plus_they"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/dbg_tv_plus_they"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

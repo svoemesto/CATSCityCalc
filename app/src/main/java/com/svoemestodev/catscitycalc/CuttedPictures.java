@@ -6,8 +6,10 @@ public class CuttedPictures {
 
     Bitmap croppingBitmap;
     Bitmap croppingBitmapTotalUs;
+    Bitmap croppingBitmapPlusUs;
     Bitmap croppingBitmapTotalThey;
+    Bitmap croppingBitmapPlusThey;
     Bitmap croppingBitmapTotalTime;
-    Bitmap croppingBitmapInstanceVic;
+    Bitmap croppingBitmapEarlyWin;
 
 }

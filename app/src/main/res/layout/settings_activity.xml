@@ -16,6 +16,7 @@
         android:id="@+id/btn_select_screenshot_folder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/set_screenshot_folder"
         android:onClick="selectScreenshotFolder"
         />
@@ -29,7 +30,8 @@
         android:id="@+id/sw_get_last_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sett_listen_files_in_screeenshot_folder"
+        android:layout_marginTop="10dp"
+        android:text="@string/sett_listen_files_in_screenshot_folder"
         android:defaultValue="false"/>
 
     <Switch
@@ -38,73 +40,30 @@
         android:layout_height="wrap_content"
         android:text="@string/debug_mode"
         android:defaultValue="false"/>
-    <TextView
-        android:id="@+id/tv_calibrate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/sett_calibrate_center_screen"/>
 
     <Button
-        android:id="@+id/btn_calibrate_reset"
+        android:id="@+id/btn_open_calibrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sett_reset_to_zero"
-        android:onClick="calibrateReset"
+        android:layout_marginTop="10dp"
+        android:text="@string/sett_calibrate_center_screen"
+        android:onClick="openCalibrate"
         />
-    <LinearLayout
+
+    <Button
+        android:id="@+id/btn_open_borders_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="@string/sett_borders"
+        android:onClick="openBordersSettings"
+        />
 
-        <ImageButton
-            android:id="@+id/btn_calibrate_minus10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_backstep10"
-            android:onClick="calibrateMinus10"
-            />
-
-        <ImageButton
-            android:id="@+id/btn_calibrate_minus1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_backstep1"
-            android:onClick="calibrateMinus1"
-            />
-        <EditText
-            android:id="@+id/et_calibrate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            />
-        <ImageButton
-            android:id="@+id/btn_calibrate_plus1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_frontstep1"
-            android:onClick="calibratePlus1"
-            />
-
-        <ImageButton
-            android:id="@+id/btn_calibrate_plus10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_frontstep10"
-            android:onClick="calibratePlus10"
-            />
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/iv_calibrate"
-        android:layout_width="wrap_content"
-        android:layout_height="64dp"
-        app:srcCompat="@drawable/stub_city"/>
+    <Button
+        android:id="@+id/btn_open_colors_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sett_colors"
+        android:onClick="openColorsdetectSettings"
+        />
 
 </LinearLayout>

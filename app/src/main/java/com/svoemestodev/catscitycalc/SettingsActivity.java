@@ -27,22 +27,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    String pathToScreenshotDir = "";    // путь к папке скриншотов
-    boolean listenLastFile;             // флаг "следить за последним файлом в папке"
+//    String pathToScreenshotDir = "";    // путь к папке скриншотов
+//    boolean listenLastFile;             // флаг "следить за последним файлом в папке"
     TextView tvScreenshotFolder;        // текствью пути к папке скриншотов
     Switch swListenLastFile;            // свич "следить за последним файлом в папке"
     Switch swLDebugMode;                // свич "дебаг мод"
-    boolean isDebugMode;                // флаг "дебаг мод"
+//    boolean isDebugMode;                // флаг "дебаг мод"
     Button btnSelectScreenshotFolder;   // кнопка "Выбрать папку скриншотов"
+    Button btnOpenCalibrate;   // кнопка "Выбрать папку скриншотов"
+    Button btnOpenBorder;   // кнопка "Выбрать папку скриншотов"
+    Button btnOpenColors;   // кнопка "Выбрать папку скриншотов"
 
-    TextView tvCalibrate;               // вьюшка надписи "Калибровка..."
-    Button btnCalibrateReset;           // кнопка "Сброс калибровки"
-    ImageButton btnCalibrateMinus10;         // кнопка шаг -10
-    ImageButton btnCalibrateMinus1;          // кнопка шаг -1
-    ImageButton btnCalibratePlus1;           // кнопка шаг +1
-    ImageButton btnCalibratePlus10;           // кнопка шаг +10
-    EditText etCalibrate;               // текстовое поле калибровки
-    ImageView ivCalibrate;              // иможвьюшка калибровки
 
 
     /**
@@ -78,50 +73,19 @@ public class SettingsActivity extends AppCompatActivity {
         swListenLastFile = findViewById(R.id.sw_get_last_screenshot);
         swLDebugMode = findViewById(R.id.sw_debug_mode);
         btnSelectScreenshotFolder = findViewById(R.id.btn_select_screenshot_folder);
-        tvCalibrate = findViewById(R.id.tv_calibrate);
-        etCalibrate = findViewById(R.id.et_calibrate);
-        ivCalibrate = findViewById(R.id.iv_calibrate);
-        btnCalibrateReset = findViewById(R.id.btn_calibrate_reset);
-        btnCalibrateMinus10 = findViewById(R.id.btn_calibrate_minus10);
-        btnCalibrateMinus1 = findViewById(R.id.btn_calibrate_minus1);
-        btnCalibratePlus1 = findViewById(R.id.btn_calibrate_plus1);
-        btnCalibratePlus10 = findViewById(R.id.btn_calibrate_plus10);
+        btnOpenCalibrate = findViewById(R.id.btn_open_calibrate);
+        btnOpenBorder = findViewById(R.id.btn_open_borders_settings);
+        btnOpenColors = findViewById(R.id.btn_open_colors_settings);
 
-        // считываем проперти в соответствующие переменные
-        SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
-        listenLastFile = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
-        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
-        MainActivity.calibrate = sharedPreferences.getInt(getString(R.string.pref_calibrate), 0);
 
-        // устанавливаем значения контролов
-        tvScreenshotFolder.setText(pathToScreenshotDir);
-        swListenLastFile.setChecked(listenLastFile);
-        swLDebugMode.setChecked(isDebugMode);
-        etCalibrate.setText(String.valueOf(MainActivity.calibrate));
+                // устанавливаем значения контролов
+        tvScreenshotFolder.setText(MainActivity.pathToScreenshotDir);
+        swListenLastFile.setChecked(MainActivity.isListenToNewFileInFolder);
+        swLDebugMode.setChecked(MainActivity.isDebugMode);
 
-        etCalibrate.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                try {
-                    MainActivity.calibrate = Integer.parseInt(String.valueOf(s));
-                } catch (NumberFormatException e) {
-                    MainActivity.calibrate = 0;
-                }
-                // изменяем проперти PREF_CALIBRATE ввыдкнным значением
-                SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt(getString(R.string.pref_calibrate), MainActivity.calibrate);
-                editor.apply();
-                showCalibratedImage();
-            }
-        });
+        btnOpenCalibrate.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        btnOpenBorder.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        btnOpenColors.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
 
         // лисенер на переключение свича "Следить за последним файлом"
         swListenLastFile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -132,6 +96,7 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
                 editor.apply();
+                MainActivity.isListenToNewFileInFolder = isChecked;
             }
         });
 
@@ -144,17 +109,21 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_debug_mode), isChecked);
                 editor.apply();
+                MainActivity.isDebugMode = isChecked;
+                btnOpenCalibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                btnOpenBorder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                btnOpenColors.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
             }
         });
 
-        showCalibratedImage();
+
 
     }
 
     // метод выбора папки скриншотов (вызов прописан в XML)
     public void selectScreenshotFolder(View view) {
         // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
-        OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)
+        OpenFileDialog fileDialog = new OpenFileDialog(this, MainActivity.pathToScreenshotDir)
                 .setOnlyFoldersFilter()                                             // показывать только папки
                 .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))    // икнока для папок
                 .setFileIcon(getResources().getDrawable(R.drawable.ic_file))        // иконка для файлов
@@ -167,38 +136,25 @@ public class SettingsActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(getString(R.string.pref_screenshot_folder), fileName);
                         editor.apply();
-                        pathToScreenshotDir = fileName;                     // устанавливаем переменную новым значением
-                        tvScreenshotFolder.setText(pathToScreenshotDir);    // устанавливаем текс контрола
+                        MainActivity.pathToScreenshotDir = fileName;                     // устанавливаем переменную новым значением
+                        tvScreenshotFolder.setText(MainActivity.pathToScreenshotDir);    // устанавливаем текс контрола
                     }
                 });
         fileDialog.show();
     }
 
-    private void showCalibratedImage() {
-
-        Bitmap sourceBitmap = BitmapFactory.decodeFile(MainActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
-        CuttedPictures cuttedPictures = CutPicture.cutPictire(sourceBitmap);
-        ivCalibrate.setImageBitmap(cuttedPictures.croppingBitmap);
-
+    public void openCalibrate(View view) {
+        Intent intent = new Intent(this, CalibrateActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
-    public void calibrateReset(View view) {
-        etCalibrate.setText(String.valueOf(0));
+    public void openBordersSettings(View view) {
+        Intent intent = new Intent(this, BordersActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
-    public void calibrateMinus10(View view) {
-        etCalibrate.setText(String.valueOf(MainActivity.calibrate - 10));
-    }
-
-    public void calibrateMinus1(View view) {
-        etCalibrate.setText(String.valueOf(MainActivity.calibrate - 1));
-    }
-
-    public void calibratePlus1(View view) {
-        etCalibrate.setText(String.valueOf(MainActivity.calibrate + 1));
-    }
-
-    public void calibratePlus10(View view) {
-        etCalibrate.setText(String.valueOf(MainActivity.calibrate + 10));
+    public void openColorsdetectSettings(View view) {
+        Intent intent = new Intent(this, ColorsdetectActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 }

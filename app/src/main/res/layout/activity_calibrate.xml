@@ -1,0 +1,144 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_calibrate_x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/offset_center_x"/>
+
+    <Button
+        android:id="@+id/btn_calibrate_x_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sett_reset_to_zero"
+        android:onClick="calibrateResetX"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_x_minus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep10"
+            android:onClick="calibrateMinus10x"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_x_minus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep1"
+            android:onClick="calibrateMinus1x"
+            />
+        <EditText
+            android:id="@+id/et_calibrate_x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            />
+        <ImageButton
+            android:id="@+id/btn_calibrate_x_plus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep1"
+            android:onClick="calibratePlus1x"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_x_plus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep10"
+            android:onClick="calibratePlus10x"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_calibrate_y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/offset_center_y"/>
+
+    <Button
+        android:id="@+id/btn_calibrate_y_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sett_reset_to_zero"
+        android:onClick="calibrateResetY"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_y_minus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep10"
+            android:onClick="calibrateMinus10y"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_y_minus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_backstep1"
+            android:onClick="calibrateMinus1y"
+            />
+        <EditText
+            android:id="@+id/et_calibrate_y"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            />
+        <ImageButton
+            android:id="@+id/btn_calibrate_y_plus1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep1"
+            android:onClick="calibratePlus1y"
+            />
+
+        <ImageButton
+            android:id="@+id/btn_calibrate_y_plus10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_frontstep10"
+            android:onClick="calibratePlus10y"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_calibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/stub_city"/>
+
+</LinearLayout>
