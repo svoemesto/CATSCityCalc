@@ -54,6 +54,40 @@
     <string name="borders_scores_to_early_win">Очки до досрочной победы</string>
     <string name="borders_our_scores">Наши очки</string>
     <string name="borders_enemy_scores">Очки противника</string>
+
+    <string name="borders_our_team_name">Наша команда</string>
+    <string name="borders_enemy_team_name">Команда противника</string>
+    <string name="borders_blt">Здание слева-вверху (BLT)</string>
+    <string name="borders_blt_name">BLT Название</string>
+    <string name="borders_blt_increase">BLT Прирост</string>
+    <string name="borders_blt_slots">BLT слоты</string>
+    <string name="borders_blt_progress">BLT прогресс</string>
+    <string name="borders_blc">Здание слева-центр (BLC)</string>
+    <string name="borders_blc_name">BLC Название</string>
+    <string name="borders_blc_increase">BLC Прирост</string>
+    <string name="borders_blc_slots">BLC слоты</string>
+    <string name="borders_blc_progress">BLC прогресс</string>
+    <string name="borders_blb">Здание слева-внизу (BLB)</string>
+    <string name="borders_blb_name">BLB Название</string>
+    <string name="borders_blb_increase">BLB Прирост</string>
+    <string name="borders_blb_slots">BLB слоты</string>
+    <string name="borders_blb_progress">BLB прогресс</string>
+    <string name="borders_brt">Здание справа-вверху (BRT)</string>
+    <string name="borders_brt_name">BRT Название</string>
+    <string name="borders_brt_increase">BRT Прирост</string>
+    <string name="borders_brt_slots">BRT слоты</string>
+    <string name="borders_brt_progress">BRT прогресс</string>
+    <string name="borders_brc">Здание справа-центр (BRC)</string>
+    <string name="borders_brc_name">BRC Название</string>
+    <string name="borders_brc_increase">BRC Прирост</string>
+    <string name="borders_brc_slots">BRC слоты</string>
+    <string name="borders_brc_progress">BRC прогресс</string>
+    <string name="borders_brb">Здание справа-внизу (BRB)</string>
+    <string name="borders_brb_name">BRB Название</string>
+    <string name="borders_brb_increase">BRB Прирост</string>
+    <string name="borders_brb_slots">BRB слоты</string>
+    <string name="borders_brb_progress">BRB прогресс</string>
+
     <string name="reset_x1_to_default">X1 по-умолчанию</string>
     <string name="reset_x2_to_default">X2 по-умолчанию</string>
     <string name="reset_y1_to_default">Y1 по-умолчанию</string>
@@ -79,6 +113,38 @@
         <item>Очки до досрочной победы</item>
         <item>Наши очки</item>
         <item>Очки противника</item>
+        <item>Наша команда</item>
+        <item>Команда противника</item>
+        <item>Здание слева-вверху (BLT)</item>
+        <item>BLT Название</item>
+        <item>BLT Прирост</item>
+        <item>BLT слоты</item>
+        <item>BLT прогресс</item>
+        <item>Здание слева-центр (BLC)</item>
+        <item>BLC Название</item>
+        <item>BLC Прирост</item>
+        <item>BLC слоты</item>
+        <item>BLC прогресс</item>
+        <item>Здание слева-внизу (BLB)</item>
+        <item>BLB Название</item>
+        <item>BLB Прирост</item>
+        <item>BLB слоты</item>
+        <item>BLB прогресс</item>
+        <item>Здание справа-вверху (BRT)</item>
+        <item>BRT Название</item>
+        <item>BRT Прирост</item>
+        <item>BRT слоты</item>
+        <item>BRT прогресс</item>
+        <item>Здание справа-центр (BRC)</item>
+        <item>BRC Название</item>
+        <item>BRC Прирост</item>
+        <item>BRC слоты</item>
+        <item>BRC прогресс</item>
+        <item>Здание справа-внизу (BRB)</item>
+        <item>BRB Название</item>
+        <item>BRB Прирост</item>
+        <item>BRB слоты</item>
+        <item>BRB прогресс</item>
     </string-array>
 
     <string-array name="pref_borders_values">
@@ -87,7 +153,40 @@
         <item>Очки до досрочной победы</item>
         <item>Наши очки</item>
         <item>Очки противника</item>
+        <item>Наша команда</item>
+        <item>Команда противника</item>
+        <item>Здание слева-вверху (BLT)</item>
+        <item>BLT Название</item>
+        <item>BLT Прирост</item>
+        <item>BLT слоты</item>
+        <item>BLT прогресс</item>
+        <item>Здание слева-центр (BLC)</item>
+        <item>BLC Название</item>
+        <item>BLC Прирост</item>
+        <item>BLC слоты</item>
+        <item>BLC прогресс</item>
+        <item>Здание слева-внизу (BLB)</item>
+        <item>BLB Название</item>
+        <item>BLB Прирост</item>
+        <item>BLB слоты</item>
+        <item>BLB прогресс</item>
+        <item>Здание справа-вверху (BRT)</item>
+        <item>BRT Название</item>
+        <item>BRT Прирост</item>
+        <item>BRT слоты</item>
+        <item>BRT прогресс</item>
+        <item>Здание справа-центр (BRC)</item>
+        <item>BRC Название</item>
+        <item>BRC Прирост</item>
+        <item>BRC слоты</item>
+        <item>BRC прогресс</item>
+        <item>Здание справа-внизу (BRB)</item>
+        <item>BRB Название</item>
+        <item>BRB Прирост</item>
+        <item>BRB слоты</item>
+        <item>BRB прогресс</item>
     </string-array>
+
     <string name="pref_bordersAreaName">Название области</string>
     <string name="pref_bordersAreaName_dialog_title">Выберите область</string>
     <string name="pref_bordersAreaName_default_value">Город</string>
@@ -114,6 +213,7 @@
         <item>Наша прибавка</item>
         <item>Очки противника</item>
         <item>Прибавка противника</item>
+
     </string-array>
 
 </resources>

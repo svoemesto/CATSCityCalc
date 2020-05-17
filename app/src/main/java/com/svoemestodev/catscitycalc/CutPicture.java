@@ -27,20 +27,20 @@ public class CutPicture {
         y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
 
         // координаты для вырезания картинки Наши очки
-        int x1totalus = (int) ((double) widthSource / 2 + MainActivity.cut_total_us_x1 * heightSource) + realCalibrateX;
-        int x2totalus = (int) ((double) widthSource / 2 + MainActivity.cut_total_us_x2 * heightSource) + realCalibrateX;
-        int y1totalus = (int) ((double) heightSource / 2 + MainActivity.cut_total_us_y1 * ((double) heightSource / 2)) + realCalibrateY;
-        int y2totalus = (int) ((double) heightSource / 2 + MainActivity.cut_total_us_y2 * ((double) heightSource / 2)) + realCalibrateY;
+        int x1totalus = (int) ((double) widthSource / 2 + MainActivity.cut_points_and_increase_our_x1 * heightSource) + realCalibrateX;
+        int x2totalus = (int) ((double) widthSource / 2 + MainActivity.cut_points_and_increase_our_x2 * heightSource) + realCalibrateX;
+        int y1totalus = (int) ((double) heightSource / 2 + MainActivity.cut_points_and_increase_our_y1 * ((double) heightSource / 2)) + realCalibrateY;
+        int y2totalus = (int) ((double) heightSource / 2 + MainActivity.cut_points_and_increase_our_y2 * ((double) heightSource / 2)) + realCalibrateY;
 
         // если координаты вылезаю за границы скриншота - приводим их к границам
         x1totalus = Math.max(x1totalus, 0); x2totalus = Math.min(x2totalus, widthSource);
         y1totalus = Math.max(y1totalus, 0);  y2totalus = Math.min(y2totalus, heightSource);
 
         // координаты для вырезания картинки Их очки
-        int x1totalthey = (int) ((double) widthSource / 2 + MainActivity.cut_total_they_x1 * heightSource) + realCalibrateX;
-        int x2totalthey = (int) ((double) widthSource / 2 + MainActivity.cut_total_they_x2 * heightSource) + realCalibrateX;
-        int y1totalthey = (int) ((double) heightSource / 2 + MainActivity.cut_total_they_y1 * ((double) heightSource / 2)) + realCalibrateY;
-        int y2totalthey = (int) ((double) heightSource / 2 + MainActivity.cut_total_they_y2 * ((double) heightSource / 2)) + realCalibrateY;
+        int x1totalthey = (int) ((double) widthSource / 2 + MainActivity.cut_points_and_increase_enemy_x1 * heightSource) + realCalibrateX;
+        int x2totalthey = (int) ((double) widthSource / 2 + MainActivity.cut_points_and_increase_enemy_x2 * heightSource) + realCalibrateX;
+        int y1totalthey = (int) ((double) heightSource / 2 + MainActivity.cut_points_and_increase_enemy_y1 * ((double) heightSource / 2)) + realCalibrateY;
+        int y2totalthey = (int) ((double) heightSource / 2 + MainActivity.cut_points_and_increase_enemy_y2 * ((double) heightSource / 2)) + realCalibrateY;
 
         // если координаты вылезаю за границы скриншота - приводим их к границам
         x1totalthey = Math.max(x1totalthey, 0); x2totalthey = Math.min(x2totalthey, widthSource);
@@ -117,12 +117,12 @@ public class CutPicture {
 
         CuttedPictures cuttedPictures = new CuttedPictures();
         cuttedPictures.croppingBitmap = croppingBitmap;
-        cuttedPictures.croppingBitmapEarlyWin = doProcess(croppingBitmapInstanceVic, Color.red(MainActivity.rgb_early_win), Color.green(MainActivity.rgb_early_win), Color.blue(MainActivity.rgb_early_win), MainActivity.rgb_early_win_threshold_minus, MainActivity.rgb_early_win_threshold_plus);
-        cuttedPictures.croppingBitmapTotalTime = doProcess(croppingBitmapTotalTime, Color.red(MainActivity.rgb_total_time), Color.green(MainActivity.rgb_total_time), Color.blue(MainActivity.rgb_total_time), MainActivity.rgb_total_time_threshold_minus, MainActivity.rgb_total_time_threshold_plus);
-        cuttedPictures.croppingBitmapTotalUs = doProcess(croppingBitmapTotalUs, Color.red(MainActivity.rgb_total_us), Color.green(MainActivity.rgb_total_us), Color.blue(MainActivity.rgb_total_us), MainActivity.rgb_total_us_threshold_minus, MainActivity.rgb_total_us_threshold_plus);
-        cuttedPictures.croppingBitmapTotalThey = doProcess(croppingBitmapTotalThey, Color.red(MainActivity.rgb_total_they), Color.green(MainActivity.rgb_total_they), Color.blue(MainActivity.rgb_total_they), MainActivity.rgb_total_they_threshold_minus, MainActivity.rgb_total_they_threshold_plus);
-        cuttedPictures.croppingBitmapPlusUs = doProcess(croppingBitmapTotalUs, Color.red(MainActivity.rgb_plus_us), Color.green(MainActivity.rgb_plus_us), Color.blue(MainActivity.rgb_plus_us), MainActivity.rgb_plus_us_threshold_minus, MainActivity.rgb_plus_us_threshold_plus);
-        cuttedPictures.croppingBitmapPlusThey = doProcess(croppingBitmapTotalThey, Color.red(MainActivity.rgb_plus_they), Color.green(MainActivity.rgb_plus_they), Color.blue(MainActivity.rgb_plus_they), MainActivity.rgb_plus_they_threshold_minus, MainActivity.rgb_plus_they_threshold_plus);
+        cuttedPictures.croppingBitmapEarlyWin = doProcess(croppingBitmapInstanceVic, Color.red(MainActivity.rgb_early_win), Color.green(MainActivity.rgb_early_win), Color.blue(MainActivity.rgb_early_win), MainActivity.rgb_early_win_thm, MainActivity.rgb_early_win_thp);
+        cuttedPictures.croppingBitmapTotalTime = doProcess(croppingBitmapTotalTime, Color.red(MainActivity.rgb_total_time), Color.green(MainActivity.rgb_total_time), Color.blue(MainActivity.rgb_total_time), MainActivity.rgb_total_time_thm, MainActivity.rgb_total_time_thp);
+        cuttedPictures.croppingBitmapTotalUs = doProcess(croppingBitmapTotalUs, Color.red(MainActivity.rgb_points_our), Color.green(MainActivity.rgb_points_our), Color.blue(MainActivity.rgb_points_our), MainActivity.rgb_points_our_thm, MainActivity.rgb_points_our_thp);
+        cuttedPictures.croppingBitmapTotalThey = doProcess(croppingBitmapTotalThey, Color.red(MainActivity.rgb_points_enemy), Color.green(MainActivity.rgb_points_enemy), Color.blue(MainActivity.rgb_points_enemy), MainActivity.rgb_points_enemy_thm, MainActivity.rgb_points_enemy_thp);
+        cuttedPictures.croppingBitmapPlusUs = doProcess(croppingBitmapTotalUs, Color.red(MainActivity.rgb_increase_our), Color.green(MainActivity.rgb_increase_our), Color.blue(MainActivity.rgb_increase_our), MainActivity.rgb_increase_our_thm, MainActivity.rgb_increase_our_thp);
+        cuttedPictures.croppingBitmapPlusThey = doProcess(croppingBitmapTotalThey, Color.red(MainActivity.rgb_increase_enemy), Color.green(MainActivity.rgb_increase_enemy), Color.blue(MainActivity.rgb_increase_enemy), MainActivity.rgb_increase_enemy_thm, MainActivity.rgb_increase_enemy_thp);
 
         return cuttedPictures;
 

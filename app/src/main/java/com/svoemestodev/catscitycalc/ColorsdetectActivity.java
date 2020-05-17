@@ -11,7 +11,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -22,10 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
@@ -70,8 +66,8 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         if (areaName.get().equals(getString(R.string.borders_time))) {
 
-            color_THM = MainActivity.rgb_total_time_threshold_minus;
-            color_THP = MainActivity.rgb_total_time_threshold_plus;
+            color_THM = MainActivity.rgb_total_time_thm;
+            color_THP = MainActivity.rgb_total_time_thp;
             int value = MainActivity.rgb_total_time;
             color_RGB = value;
             color_R = Color.red(value);
@@ -85,8 +81,8 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
 
-            color_THM = MainActivity.rgb_early_win_threshold_minus;
-            color_THP = MainActivity.rgb_early_win_threshold_plus;
+            color_THM = MainActivity.rgb_early_win_thm;
+            color_THP = MainActivity.rgb_early_win_thp;
             int value = MainActivity.rgb_early_win;
             color_RGB = value;
             color_R = Color.red(value);
@@ -100,63 +96,63 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
 
-            color_THM = MainActivity.rgb_total_us_threshold_minus;
-            color_THP = MainActivity.rgb_total_us_threshold_plus;
-            int value = MainActivity.rgb_total_us;
+            color_THM = MainActivity.rgb_points_our_thm;
+            color_THP = MainActivity.rgb_points_our_thp;
+            int value = MainActivity.rgb_points_our;
             color_RGB = value;
             color_R = Color.red(value);
             color_G = Color.green(value);
             color_B = Color.blue(value);
 
-            cut_x1 = MainActivity.cut_total_us_x1;
-            cut_x2 = MainActivity.cut_total_us_x2;
-            cut_y1 = MainActivity.cut_total_us_y1;
-            cut_y2 = MainActivity.cut_total_us_y2;
+            cut_x1 = MainActivity.cut_points_and_increase_our_x1;
+            cut_x2 = MainActivity.cut_points_and_increase_our_x2;
+            cut_y1 = MainActivity.cut_points_and_increase_our_y1;
+            cut_y2 = MainActivity.cut_points_and_increase_our_y2;
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
 
-            color_THM = MainActivity.rgb_plus_us_threshold_minus;
-            color_THP = MainActivity.rgb_plus_us_threshold_plus;
-            int value = MainActivity.rgb_plus_us;
+            color_THM = MainActivity.rgb_increase_our_thm;
+            color_THP = MainActivity.rgb_increase_our_thp;
+            int value = MainActivity.rgb_increase_our;
             color_RGB = value;
             color_R = Color.red(value);
             color_G = Color.green(value);
             color_B = Color.blue(value);
 
-            cut_x1 = MainActivity.cut_total_us_x1;
-            cut_x2 = MainActivity.cut_total_us_x2;
-            cut_y1 = MainActivity.cut_total_us_y1;
-            cut_y2 = MainActivity.cut_total_us_y2;
+            cut_x1 = MainActivity.cut_points_and_increase_our_x1;
+            cut_x2 = MainActivity.cut_points_and_increase_our_x2;
+            cut_y1 = MainActivity.cut_points_and_increase_our_y1;
+            cut_y2 = MainActivity.cut_points_and_increase_our_y2;
 
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
 
-            color_THM = MainActivity.rgb_total_they_threshold_minus;
-            color_THP = MainActivity.rgb_total_they_threshold_plus;
-            int value = MainActivity.rgb_total_they;
+            color_THM = MainActivity.rgb_points_enemy_thm;
+            color_THP = MainActivity.rgb_points_enemy_thp;
+            int value = MainActivity.rgb_points_enemy;
             color_RGB = value;
             color_R = Color.red(value);
             color_G = Color.green(value);
             color_B = Color.blue(value);
 
-            cut_x1 = MainActivity.cut_total_they_x1;
-            cut_x2 = MainActivity.cut_total_they_x2;
-            cut_y1 = MainActivity.cut_total_they_y1;
-            cut_y2 = MainActivity.cut_total_they_y2;
+            cut_x1 = MainActivity.cut_points_and_increase_enemy_x1;
+            cut_x2 = MainActivity.cut_points_and_increase_enemy_x2;
+            cut_y1 = MainActivity.cut_points_and_increase_enemy_y1;
+            cut_y2 = MainActivity.cut_points_and_increase_enemy_y2;
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
 
-            color_THM = MainActivity.rgb_plus_they_threshold_minus;
-            color_THP = MainActivity.rgb_plus_they_threshold_plus;
-            int value = MainActivity.rgb_plus_they;
+            color_THM = MainActivity.rgb_increase_enemy_thm;
+            color_THP = MainActivity.rgb_increase_enemy_thp;
+            int value = MainActivity.rgb_increase_enemy;
             color_RGB = value;
             color_R = Color.red(value);
             color_G = Color.green(value);
             color_B = Color.blue(value);
 
-            cut_x1 = MainActivity.cut_total_they_x1;
-            cut_x2 = MainActivity.cut_total_they_x2;
-            cut_y1 = MainActivity.cut_total_they_y1;
-            cut_y2 = MainActivity.cut_total_they_y2;
+            cut_x1 = MainActivity.cut_points_and_increase_enemy_x1;
+            cut_x2 = MainActivity.cut_points_and_increase_enemy_x2;
+            cut_y1 = MainActivity.cut_points_and_increase_enemy_y1;
+            cut_y2 = MainActivity.cut_points_and_increase_enemy_y2;
 
         }
 
@@ -318,7 +314,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
 
-                        MainActivity.rgb_total_us = color_RGB;
+                        MainActivity.rgb_points_our = color_RGB;
                         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.pref_rgb_total_us), color_RGB);
@@ -326,7 +322,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
 
-                        MainActivity.rgb_plus_us = color_RGB;
+                        MainActivity.rgb_increase_our = color_RGB;
                         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.pref_rgb_plus_us), color_RGB);
@@ -334,7 +330,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
 
-                        MainActivity.rgb_total_they = color_RGB;
+                        MainActivity.rgb_points_enemy = color_RGB;
                         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.pref_rgb_total_they), color_RGB);
@@ -342,7 +338,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
 
-                        MainActivity.rgb_plus_they = color_RGB;
+                        MainActivity.rgb_increase_enemy = color_RGB;
                         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt(getString(R.string.pref_rgb_plus_they), color_RGB);
@@ -438,7 +434,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         if (areaName.get().equals(getString(R.string.borders_time))) {
 
-            MainActivity.rgb_total_time_threshold_minus = color_THM;
+            MainActivity.rgb_total_time_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_time_threshold_minus), color_THM);
@@ -446,7 +442,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
 
-            MainActivity.rgb_early_win_threshold_minus = color_THM;
+            MainActivity.rgb_early_win_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_early_win_threshold_minus), color_THM);
@@ -454,7 +450,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
 
-            MainActivity.rgb_total_us_threshold_minus = color_THM;
+            MainActivity.rgb_points_our_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_us_threshold_minus), color_THM);
@@ -462,7 +458,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
 
-            MainActivity.rgb_plus_us_threshold_minus = color_THM;
+            MainActivity.rgb_increase_our_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_minus), color_THM);
@@ -470,7 +466,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
 
-            MainActivity.rgb_total_they_threshold_minus = color_THM;
+            MainActivity.rgb_points_enemy_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_they_threshold_minus), color_THM);
@@ -478,7 +474,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
 
-            MainActivity.rgb_plus_they_threshold_minus = color_THM;
+            MainActivity.rgb_increase_enemy_thm = color_THM;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_minus), color_THM);
@@ -494,7 +490,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         if (areaName.get().equals(getString(R.string.borders_time))) {
 
-            MainActivity.rgb_total_time_threshold_plus = color_THP;
+            MainActivity.rgb_total_time_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_time_threshold_plus), color_THP);
@@ -502,7 +498,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
 
-            MainActivity.rgb_early_win_threshold_plus = color_THP;
+            MainActivity.rgb_early_win_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_early_win_threshold_plus), color_THP);
@@ -510,7 +506,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
 
-            MainActivity.rgb_total_us_threshold_plus = color_THP;
+            MainActivity.rgb_points_our_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_us_threshold_plus), color_THP);
@@ -518,7 +514,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
 
-            MainActivity.rgb_plus_us_threshold_plus = color_THP;
+            MainActivity.rgb_increase_our_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_plus), color_THP);
@@ -526,7 +522,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
 
-            MainActivity.rgb_total_they_threshold_plus = color_THP;
+            MainActivity.rgb_points_enemy_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_total_they_threshold_plus), color_THP);
@@ -534,7 +530,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
 
-            MainActivity.rgb_plus_they_threshold_plus = color_THP;
+            MainActivity.rgb_increase_enemy_thp = color_THP;
             SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_plus), color_THP);

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.15 (17/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.16 (17/05/2020)</string>
 
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
 
@@ -18,15 +18,15 @@
     <string name="pref_cut_city_y1" translatable="false">PREF_CUT_CITY_Y1</string>
     <string name="pref_cut_city_y2" translatable="false">PREF_CUT_CITY_Y2</string>
 
-    <string name="pref_cut_total_us_x1" translatable="false">PREF_CUT_TOTAL_US_X1</string>
-    <string name="pref_cut_total_us_x2" translatable="false">PREF_CUT_TOTAL_US_X2</string>
-    <string name="pref_cut_total_us_y1" translatable="false">PREF_CUT_TOTAL_US_Y1</string>
-    <string name="pref_cut_total_us_y2" translatable="false">PREF_CUT_TOTAL_US_Y2</string>
+    <string name="pref_cut_points_and_increase_our_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
+    <string name="pref_cut_points_and_increase_our_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X2</string>
+    <string name="pref_cut_points_and_increase_our_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y1</string>
+    <string name="pref_cut_points_and_increase_our_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y2</string>
 
-    <string name="pref_cut_total_they_x1" translatable="false">PREF_CUT_TOTAL_THEY_X1</string>
-    <string name="pref_cut_total_they_x2" translatable="false">PREF_CUT_TOTAL_THEY_X2</string>
-    <string name="pref_cut_total_they_y1" translatable="false">PREF_CUT_TOTAL_THEY_Y1</string>
-    <string name="pref_cut_total_they_y2" translatable="false">PREF_CUT_TOTAL_THEY_Y2</string>
+    <string name="pref_cut_points_and_increase_enemy_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X1</string>
+    <string name="pref_cut_points_and_increase_enemy_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X2</string>
+    <string name="pref_cut_points_and_increase_enemy_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y1</string>
+    <string name="pref_cut_points_and_increase_enemy_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y2</string>
 
     <string name="pref_cut_total_time_x1" translatable="false">PREF_CUT_TOTAL_TIME_X1</string>
     <string name="pref_cut_total_time_x2" translatable="false">PREF_CUT_TOTAL_TIME_X2</string>
@@ -38,6 +38,166 @@
     <string name="pref_cut_early_win_y1" translatable="false">PREF_CUT_EARLY_WIN_Y1</string>
     <string name="pref_cut_early_win_y2" translatable="false">PREF_CUT_EARLY_WIN_Y2</string>
 
+    <string name="pref_cut_team_name_our_x1" translatable="false">PREF_CUT_TEAM_NAME_OUR_X1</string>
+    <string name="pref_cut_team_name_our_x2" translatable="false">PREF_CUT_TEAM_NAME_OUR_X2</string>
+    <string name="pref_cut_team_name_our_y1" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y1</string>
+    <string name="pref_cut_team_name_our_y2" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y2</string>
+
+    <string name="pref_cut_team_name_enemy_x1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X1</string>
+    <string name="pref_cut_team_name_enemy_x2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X2</string>
+    <string name="pref_cut_team_name_enemy_y1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y1</string>
+    <string name="pref_cut_team_name_enemy_y2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y2</string>
+
+    <string name="pref_cut_building_lt_x1" translatable="false">PREF_CUT_BUILDING_LT_X1</string>
+    <string name="pref_cut_building_lt_x2" translatable="false">PREF_CUT_BUILDING_LT_X2</string>
+    <string name="pref_cut_building_lt_y1" translatable="false">PREF_CUT_BUILDING_LT_Y1</string>
+    <string name="pref_cut_building_lt_y2" translatable="false">PREF_CUT_BUILDING_LT_Y2</string>
+
+    <string name="pref_cut_building_lt_name_x1" translatable="false">PREF_CUT_BUILDING_LT_NAME_X1</string>
+    <string name="pref_cut_building_lt_name_x2" translatable="false">PREF_CUT_BUILDING_LT_NAME_X2</string>
+    <string name="pref_cut_building_lt_name_y1" translatable="false">PREF_CUT_BUILDING_LT_NAME_Y1</string>
+    <string name="pref_cut_building_lt_name_y2" translatable="false">PREF_CUT_BUILDING_LT_NAME_Y2</string>
+
+    <string name="pref_cut_building_lt_increase_x1" translatable="false">PREF_CUT_BUILDING_LT_INCREASE_X1</string>
+    <string name="pref_cut_building_lt_increase_x2" translatable="false">PREF_CUT_BUILDING_LT_INCREASE_X2</string>
+    <string name="pref_cut_building_lt_increase_y1" translatable="false">PREF_CUT_BUILDING_LT_INCREASE_Y1</string>
+    <string name="pref_cut_building_lt_increase_y2" translatable="false">PREF_CUT_BUILDING_LT_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_lt_slots_x1" translatable="false">PREF_CUT_BUILDING_LT_SLOTS_X1</string>
+    <string name="pref_cut_building_lt_slots_x2" translatable="false">PREF_CUT_BUILDING_LT_SLOTS_X2</string>
+    <string name="pref_cut_building_lt_slots_y1" translatable="false">PREF_CUT_BUILDING_LT_SLOTS_Y1</string>
+    <string name="pref_cut_building_lt_slots_y2" translatable="false">PREF_CUT_BUILDING_LT_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_lt_progress_x1" translatable="false">PREF_CUT_BUILDING_LT_PROGRESS_X1</string>
+    <string name="pref_cut_building_lt_progress_x2" translatable="false">PREF_CUT_BUILDING_LT_PROGRESS_X2</string>
+    <string name="pref_cut_building_lt_progress_y1" translatable="false">PREF_CUT_BUILDING_LT_PROGRESS_Y1</string>
+    <string name="pref_cut_building_lt_progress_y2" translatable="false">PREF_CUT_BUILDING_LT_PROGRESS_Y2</string>
+
+    <string name="pref_cut_building_lc_x1" translatable="false">PREF_CUT_BUILDING_LC_X1</string>
+    <string name="pref_cut_building_lc_x2" translatable="false">PREF_CUT_BUILDING_LC_X2</string>
+    <string name="pref_cut_building_lc_y1" translatable="false">PREF_CUT_BUILDING_LC_Y1</string>
+    <string name="pref_cut_building_lc_y2" translatable="false">PREF_CUT_BUILDING_LC_Y2</string>
+
+    <string name="pref_cut_building_lc_name_x1" translatable="false">PREF_CUT_BUILDING_LC_NAME_X1</string>
+    <string name="pref_cut_building_lc_name_x2" translatable="false">PREF_CUT_BUILDING_LC_NAME_X2</string>
+    <string name="pref_cut_building_lc_name_y1" translatable="false">PREF_CUT_BUILDING_LC_NAME_Y1</string>
+    <string name="pref_cut_building_lc_name_y2" translatable="false">PREF_CUT_BUILDING_LC_NAME_Y2</string>
+
+    <string name="pref_cut_building_lc_increase_x1" translatable="false">PREF_CUT_BUILDING_LC_INCREASE_X1</string>
+    <string name="pref_cut_building_lc_increase_x2" translatable="false">PREF_CUT_BUILDING_LC_INCREASE_X2</string>
+    <string name="pref_cut_building_lc_increase_y1" translatable="false">PREF_CUT_BUILDING_LC_INCREASE_Y1</string>
+    <string name="pref_cut_building_lc_increase_y2" translatable="false">PREF_CUT_BUILDING_LC_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_lc_slots_x1" translatable="false">PREF_CUT_BUILDING_LC_SLOTS_X1</string>
+    <string name="pref_cut_building_lc_slots_x2" translatable="false">PREF_CUT_BUILDING_LC_SLOTS_X2</string>
+    <string name="pref_cut_building_lc_slots_y1" translatable="false">PREF_CUT_BUILDING_LC_SLOTS_Y1</string>
+    <string name="pref_cut_building_lc_slots_y2" translatable="false">PREF_CUT_BUILDING_LC_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_lc_progress_x1" translatable="false">PREF_CUT_BUILDING_LC_PROGRESS_X1</string>
+    <string name="pref_cut_building_lc_progress_x2" translatable="false">PREF_CUT_BUILDING_LC_PROGRESS_X2</string>
+    <string name="pref_cut_building_lc_progress_y1" translatable="false">PREF_CUT_BUILDING_LC_PROGRESS_Y1</string>
+    <string name="pref_cut_building_lc_progress_y2" translatable="false">PREF_CUT_BUILDING_LC_PROGRESS_Y2</string>
+
+    <string name="pref_cut_building_lb_x1" translatable="false">PREF_CUT_BUILDING_LB_X1</string>
+    <string name="pref_cut_building_lb_x2" translatable="false">PREF_CUT_BUILDING_LB_X2</string>
+    <string name="pref_cut_building_lb_y1" translatable="false">PREF_CUT_BUILDING_LB_Y1</string>
+    <string name="pref_cut_building_lb_y2" translatable="false">PREF_CUT_BUILDING_LB_Y2</string>
+
+    <string name="pref_cut_building_lb_name_x1" translatable="false">PREF_CUT_BUILDING_LB_NAME_X1</string>
+    <string name="pref_cut_building_lb_name_x2" translatable="false">PREF_CUT_BUILDING_LB_NAME_X2</string>
+    <string name="pref_cut_building_lb_name_y1" translatable="false">PREF_CUT_BUILDING_LB_NAME_Y1</string>
+    <string name="pref_cut_building_lb_name_y2" translatable="false">PREF_CUT_BUILDING_LB_NAME_Y2</string>
+
+    <string name="pref_cut_building_lb_increase_x1" translatable="false">PREF_CUT_BUILDING_LB_INCREASE_X1</string>
+    <string name="pref_cut_building_lb_increase_x2" translatable="false">PREF_CUT_BUILDING_LB_INCREASE_X2</string>
+    <string name="pref_cut_building_lb_increase_y1" translatable="false">PREF_CUT_BUILDING_LB_INCREASE_Y1</string>
+    <string name="pref_cut_building_lb_increase_y2" translatable="false">PREF_CUT_BUILDING_LB_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_lb_slots_x1" translatable="false">PREF_CUT_BUILDING_LB_SLOTS_X1</string>
+    <string name="pref_cut_building_lb_slots_x2" translatable="false">PREF_CUT_BUILDING_LB_SLOTS_X2</string>
+    <string name="pref_cut_building_lb_slots_y1" translatable="false">PREF_CUT_BUILDING_LB_SLOTS_Y1</string>
+    <string name="pref_cut_building_lb_slots_y2" translatable="false">PREF_CUT_BUILDING_LB_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_lb_progress_x1" translatable="false">PREF_CUT_BUILDING_LB_PROGRESS_X1</string>
+    <string name="pref_cut_building_lb_progress_x2" translatable="false">PREF_CUT_BUILDING_LB_PROGRESS_X2</string>
+    <string name="pref_cut_building_lb_progress_y1" translatable="false">PREF_CUT_BUILDING_LB_PROGRESS_Y1</string>
+    <string name="pref_cut_building_lb_progress_y2" translatable="false">PREF_CUT_BUILDING_LB_PROGRESS_Y2</string>
+
+    <string name="pref_cut_building_rt_x1" translatable="false">PREF_CUT_BUILDING_RT_X1</string>
+    <string name="pref_cut_building_rt_x2" translatable="false">PREF_CUT_BUILDING_RT_X2</string>
+    <string name="pref_cut_building_rt_y1" translatable="false">PREF_CUT_BUILDING_RT_Y1</string>
+    <string name="pref_cut_building_rt_y2" translatable="false">PREF_CUT_BUILDING_RT_Y2</string>
+
+    <string name="pref_cut_building_rt_name_x1" translatable="false">PREF_CUT_BUILDING_RT_NAME_X1</string>
+    <string name="pref_cut_building_rt_name_x2" translatable="false">PREF_CUT_BUILDING_RT_NAME_X2</string>
+    <string name="pref_cut_building_rt_name_y1" translatable="false">PREF_CUT_BUILDING_RT_NAME_Y1</string>
+    <string name="pref_cut_building_rt_name_y2" translatable="false">PREF_CUT_BUILDING_RT_NAME_Y2</string>
+
+    <string name="pref_cut_building_rt_increase_x1" translatable="false">PREF_CUT_BUILDING_RT_INCREASE_X1</string>
+    <string name="pref_cut_building_rt_increase_x2" translatable="false">PREF_CUT_BUILDING_RT_INCREASE_X2</string>
+    <string name="pref_cut_building_rt_increase_y1" translatable="false">PREF_CUT_BUILDING_RT_INCREASE_Y1</string>
+    <string name="pref_cut_building_rt_increase_y2" translatable="false">PREF_CUT_BUILDING_RT_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_rt_slots_x1" translatable="false">PREF_CUT_BUILDING_RT_SLOTS_X1</string>
+    <string name="pref_cut_building_rt_slots_x2" translatable="false">PREF_CUT_BUILDING_RT_SLOTS_X2</string>
+    <string name="pref_cut_building_rt_slots_y1" translatable="false">PREF_CUT_BUILDING_RT_SLOTS_Y1</string>
+    <string name="pref_cut_building_rt_slots_y2" translatable="false">PREF_CUT_BUILDING_RT_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_rt_progress_x1" translatable="false">PREF_CUT_BUILDING_RT_PROGRESS_X1</string>
+    <string name="pref_cut_building_rt_progress_x2" translatable="false">PREF_CUT_BUILDING_RT_PROGRESS_X2</string>
+    <string name="pref_cut_building_rt_progress_y1" translatable="false">PREF_CUT_BUILDING_RT_PROGRESS_Y1</string>
+    <string name="pref_cut_building_rt_progress_y2" translatable="false">PREF_CUT_BUILDING_RT_PROGRESS_Y2</string>
+
+    <string name="pref_cut_building_rc_x1" translatable="false">PREF_CUT_BUILDING_RC_X1</string>
+    <string name="pref_cut_building_rc_x2" translatable="false">PREF_CUT_BUILDING_RC_X2</string>
+    <string name="pref_cut_building_rc_y1" translatable="false">PREF_CUT_BUILDING_RC_Y1</string>
+    <string name="pref_cut_building_rc_y2" translatable="false">PREF_CUT_BUILDING_RC_Y2</string>
+
+    <string name="pref_cut_building_rc_name_x1" translatable="false">PREF_CUT_BUILDING_RC_NAME_X1</string>
+    <string name="pref_cut_building_rc_name_x2" translatable="false">PREF_CUT_BUILDING_RC_NAME_X2</string>
+    <string name="pref_cut_building_rc_name_y1" translatable="false">PREF_CUT_BUILDING_RC_NAME_Y1</string>
+    <string name="pref_cut_building_rc_name_y2" translatable="false">PREF_CUT_BUILDING_RC_NAME_Y2</string>
+
+    <string name="pref_cut_building_rc_increase_x1" translatable="false">PREF_CUT_BUILDING_RC_INCREASE_X1</string>
+    <string name="pref_cut_building_rc_increase_x2" translatable="false">PREF_CUT_BUILDING_RC_INCREASE_X2</string>
+    <string name="pref_cut_building_rc_increase_y1" translatable="false">PREF_CUT_BUILDING_RC_INCREASE_Y1</string>
+    <string name="pref_cut_building_rc_increase_y2" translatable="false">PREF_CUT_BUILDING_RC_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_rc_slots_x1" translatable="false">PREF_CUT_BUILDING_RC_SLOTS_X1</string>
+    <string name="pref_cut_building_rc_slots_x2" translatable="false">PREF_CUT_BUILDING_RC_SLOTS_X2</string>
+    <string name="pref_cut_building_rc_slots_y1" translatable="false">PREF_CUT_BUILDING_RC_SLOTS_Y1</string>
+    <string name="pref_cut_building_rc_slots_y2" translatable="false">PREF_CUT_BUILDING_RC_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_rc_progress_x1" translatable="false">PREF_CUT_BUILDING_RC_PROGRESS_X1</string>
+    <string name="pref_cut_building_rc_progress_x2" translatable="false">PREF_CUT_BUILDING_RC_PROGRESS_X2</string>
+    <string name="pref_cut_building_rc_progress_y1" translatable="false">PREF_CUT_BUILDING_RC_PROGRESS_Y1</string>
+    <string name="pref_cut_building_rc_progress_y2" translatable="false">PREF_CUT_BUILDING_RC_PROGRESS_Y2</string>
+
+    <string name="pref_cut_building_rb_x1" translatable="false">PREF_CUT_BUILDING_RB_X1</string>
+    <string name="pref_cut_building_rb_x2" translatable="false">PREF_CUT_BUILDING_RB_X2</string>
+    <string name="pref_cut_building_rb_y1" translatable="false">PREF_CUT_BUILDING_RB_Y1</string>
+    <string name="pref_cut_building_rb_y2" translatable="false">PREF_CUT_BUILDING_RB_Y2</string>
+
+    <string name="pref_cut_building_rb_name_x1" translatable="false">PREF_CUT_BUILDING_RB_NAME_X1</string>
+    <string name="pref_cut_building_rb_name_x2" translatable="false">PREF_CUT_BUILDING_RB_NAME_X2</string>
+    <string name="pref_cut_building_rb_name_y1" translatable="false">PREF_CUT_BUILDING_RB_NAME_Y1</string>
+    <string name="pref_cut_building_rb_name_y2" translatable="false">PREF_CUT_BUILDING_RB_NAME_Y2</string>
+
+    <string name="pref_cut_building_rb_increase_x1" translatable="false">PREF_CUT_BUILDING_RB_INCREASE_X1</string>
+    <string name="pref_cut_building_rb_increase_x2" translatable="false">PREF_CUT_BUILDING_RB_INCREASE_X2</string>
+    <string name="pref_cut_building_rb_increase_y1" translatable="false">PREF_CUT_BUILDING_RB_INCREASE_Y1</string>
+    <string name="pref_cut_building_rb_increase_y2" translatable="false">PREF_CUT_BUILDING_RB_INCREASE_Y2</string>
+
+    <string name="pref_cut_building_rb_slots_x1" translatable="false">PREF_CUT_BUILDING_RB_SLOTS_X1</string>
+    <string name="pref_cut_building_rb_slots_x2" translatable="false">PREF_CUT_BUILDING_RB_SLOTS_X2</string>
+    <string name="pref_cut_building_rb_slots_y1" translatable="false">PREF_CUT_BUILDING_RB_SLOTS_Y1</string>
+    <string name="pref_cut_building_rb_slots_y2" translatable="false">PREF_CUT_BUILDING_RB_SLOTS_Y2</string>
+
+    <string name="pref_cut_building_rb_progress_x1" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_X1</string>
+    <string name="pref_cut_building_rb_progress_x2" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_X2</string>
+    <string name="pref_cut_building_rb_progress_y1" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_Y1</string>
+    <string name="pref_cut_building_rb_progress_y2" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_Y2</string>
+    
     <string name="pref_rgb_total_us" translatable="false">PREF_RGB_TOTAL_US</string>
     <string name="pref_rgb_total_us_threshold_plus" translatable="false">PREF_RGB_TOTAL_US_THRESHOLD_PLUS</string>
     <string name="pref_rgb_total_us_threshold_minus" translatable="false">PREF_RGB_TOTAL_US_THRESHOLD_MINUS</string>
@@ -61,7 +221,6 @@
     <string name="pref_rgb_early_win" translatable="false">PREF_RGB_EARLY_WIN</string>
     <string name="pref_rgb_early_win_threshold_plus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_PLUS</string>
     <string name="pref_rgb_early_win_threshold_minus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_MINUS</string>
-
 
 
 
@@ -119,6 +278,39 @@
     <string name="borders_scores_to_early_win">Scores to early win</string>
     <string name="borders_our_scores">Our scores</string>
     <string name="borders_enemy_scores">Enemy\'s scores</string>
+    <string name="borders_our_team_name">Our team name</string>
+    <string name="borders_enemy_team_name">Enemy\'s team name</string>
+    <string name="borders_blt">Building left-top (BLT)</string>
+    <string name="borders_blt_name">BLT name</string>
+    <string name="borders_blt_increase">BLT increase</string>
+    <string name="borders_blt_slots">BLT slots</string>
+    <string name="borders_blt_progress">BLT progress</string>
+    <string name="borders_blc">Building left-center (BLC)</string>
+    <string name="borders_blc_name">BLC name</string>
+    <string name="borders_blc_increase">BLC increase</string>
+    <string name="borders_blc_slots">BLC slots</string>
+    <string name="borders_blc_progress">BLC progress</string>
+    <string name="borders_blb">Building left-bottom (BLB)</string>
+    <string name="borders_blb_name">BLB name</string>
+    <string name="borders_blb_increase">BLB increase</string>
+    <string name="borders_blb_slots">BLB slots</string>
+    <string name="borders_blb_progress">BLB progress</string>
+    <string name="borders_brt">Building right-top (BRT)</string>
+    <string name="borders_brt_name">BRT name</string>
+    <string name="borders_brt_increase">BRT increase</string>
+    <string name="borders_brt_slots">BRT slots</string>
+    <string name="borders_brt_progress">BRT progress</string>
+    <string name="borders_brc">Building right-center (BRC)</string>
+    <string name="borders_brc_name">BRC name</string>
+    <string name="borders_brc_increase">BRC increase</string>
+    <string name="borders_brc_slots">BRC slots</string>
+    <string name="borders_brc_progress">BRC progress</string>
+    <string name="borders_brb">Building right-bottom (BRB)</string>
+    <string name="borders_brb_name">BRB name</string>
+    <string name="borders_brb_increase">BRB increase</string>
+    <string name="borders_brb_slots">BRB slots</string>
+    <string name="borders_brb_progress">BRB progress</string>
+
     <string name="reset_x1_to_default">Reset X1 to default</string>
     <string name="reset_x2_to_default">Reset X2 to default</string>
     <string name="reset_y1_to_default">Reset Y1 to default</string>
@@ -153,6 +345,38 @@
         <item>Scores to early win</item>
         <item>Our scores</item>
         <item>Enemy\'s scores</item>
+        <item>Our team name</item>
+        <item>Enemy\'s team name</item>
+        <item>Building left-top (BLT)</item>
+        <item>BLT name</item>
+        <item>BLT increase</item>
+        <item>BLT slots</item>
+        <item>BLT progress</item>
+        <item>Building left-center (BLC)</item>
+        <item>BLC name</item>
+        <item>BLC increase</item>
+        <item>BLC slots</item>
+        <item>BLC progress</item>
+        <item>Building left-bottom (BLB)</item>
+        <item>BLB name</item>
+        <item>BLB increase</item>
+        <item>BLB slots</item>
+        <item>BLB progress</item>
+        <item>Building right-top (BRT)</item>
+        <item>BRT name</item>
+        <item>BRT increase</item>
+        <item>BRT slots</item>
+        <item>BRT progress</item>
+        <item>Building right-center (BRC)</item>
+        <item>BRC name</item>
+        <item>BRC increase</item>
+        <item>BRC slots</item>
+        <item>BRC progress</item>
+        <item>Building right-bottom (BRB)</item>
+        <item>BRB name</item>
+        <item>BRB increase</item>
+        <item>BRB slots</item>
+        <item>BRB progress</item>
     </string-array>
 
     <string-array name="pref_borders_values">
@@ -161,6 +385,38 @@
         <item>Scores to early win</item>
         <item>Our scores</item>
         <item>Enemy\'s scores</item>
+        <item>Our team name</item>
+        <item>Enemy\'s team name</item>
+        <item>Building left-top (BLT)</item>
+        <item>BLT name</item>
+        <item>BLT increase</item>
+        <item>BLT slots</item>
+        <item>BLT progress</item>
+        <item>Building left-center (BLC)</item>
+        <item>BLC name</item>
+        <item>BLC increase</item>
+        <item>BLC slots</item>
+        <item>BLC progress</item>
+        <item>Building left-bottom (BLB)</item>
+        <item>BLB name</item>
+        <item>BLB increase</item>
+        <item>BLB slots</item>
+        <item>BLB progress</item>
+        <item>Building right-top (BRT)</item>
+        <item>BRT name</item>
+        <item>BRT increase</item>
+        <item>BRT slots</item>
+        <item>BRT progress</item>
+        <item>Building right-center (BRC)</item>
+        <item>BRC name</item>
+        <item>BRC increase</item>
+        <item>BRC slots</item>
+        <item>BRC progress</item>
+        <item>Building right-bottom (BRB)</item>
+        <item>BRB name</item>
+        <item>BRB increase</item>
+        <item>BRB slots</item>
+        <item>BRB progress</item>
     </string-array>
 
     <string name="pref_colorsAreaName">Area name</string>
