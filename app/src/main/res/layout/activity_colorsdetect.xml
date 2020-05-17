@@ -12,52 +12,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <RadioGroup
-            android:id="@+id/rg_colors"
+        <FrameLayout
+            android:id="@+id/frame_colors"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <RadioButton
-                android:id="@+id/rb_colors_total_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:onClick="checkButton"
-                android:text="@string/borders_time" />
-            <RadioButton
-                android:id="@+id/rb_colors_early_win"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="checkButton"
-                android:text="@string/borders_scores_to_early_win" />
-            <RadioButton
-                android:id="@+id/rb_colors_total_us"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="checkButton"
-                android:text="@string/borders_our_scores" />
-            <RadioButton
-                android:id="@+id/rb_colors_plus_us"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="checkButton"
-                android:text="@string/colors_plus_us" />
-            <RadioButton
-                android:id="@+id/rb_colors_total_they"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="checkButton"
-                android:text="@string/borders_enemy_scores" />
-            <RadioButton
-                android:id="@+id/rb_colors_plus_they"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="checkButton"
-                android:text="@string/colors_plus_they" />
-
-        </RadioGroup>
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/btl_color_setdef"
@@ -361,7 +319,7 @@
         <ImageView
             android:id="@+id/iv_original_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="60dp"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -372,7 +330,7 @@
         <ImageView
             android:id="@+id/iv_processed_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="60dp"/>
 
         <TextView
             android:layout_width="match_parent"

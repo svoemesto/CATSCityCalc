@@ -3,24 +3,24 @@ package com.svoemestodev.catscitycalc;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.preference.PreferenceManager;
 
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 public class BordersActivity extends AppCompatActivity {
 
-    public RadioGroup radioGroup;
-    public RadioButton radioButton;
     public EditText etX1;
     public EditText etX2;
     public EditText etY1;
@@ -31,7 +31,48 @@ public class BordersActivity extends AppCompatActivity {
     public static float cut_y1;
     public static float cut_y2;
 
+    public static ObservableString areaName = new ObservableString();
+
     public static Bitmap fullBitmap;
+
+    public static final String PREF_BORDERS_AREA = "pref_borders_area";
+
+    public void loadArea() {
+
+        if (areaName.get().equals(getString(R.string.borders_city))) {
+            cut_x1 = MainActivity.cut_city_x1;
+            cut_x2 = MainActivity.cut_city_x2;
+            cut_y1 = MainActivity.cut_city_y1;
+            cut_y2 = MainActivity.cut_city_y2;
+        } else if (areaName.get().equals(getString(R.string.borders_time))) {
+            cut_x1 = MainActivity.cut_total_time_x1;
+            cut_x2 = MainActivity.cut_total_time_x2;
+            cut_y1 = MainActivity.cut_total_time_y1;
+            cut_y2 = MainActivity.cut_total_time_y2;
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
+            cut_x1 = MainActivity.cut_early_win_x1;
+            cut_x2 = MainActivity.cut_early_win_x2;
+            cut_y1 = MainActivity.cut_early_win_y1;
+            cut_y2 = MainActivity.cut_early_win_y2;
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
+            cut_x1 = MainActivity.cut_total_us_x1;
+            cut_x2 = MainActivity.cut_total_us_x2;
+            cut_y1 = MainActivity.cut_total_us_y1;
+            cut_y2 = MainActivity.cut_total_us_y2;
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
+            cut_x1 = MainActivity.cut_total_they_x1;
+            cut_x2 = MainActivity.cut_total_they_x2;
+            cut_y1 = MainActivity.cut_total_they_y1;
+            cut_y2 = MainActivity.cut_total_they_y2;
+        }
+
+        etX1.setText(String.valueOf(cut_x1));
+        etX2.setText(String.valueOf(cut_x2));
+        etY1.setText(String.valueOf(cut_y1));
+        etY2.setText(String.valueOf(cut_y2));
+        ivPicture.setImageBitmap(cutBorders());  // выводим битмат игры в контрол
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +84,13 @@ public class BordersActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);  // показываем кнопку "<-"
         }
 
-        radioGroup = findViewById(R.id.rg_borders);
+        if (findViewById(R.id.frame_borders) != null) {
+            if (savedInstanceState != null) return;
+            getFragmentManager().beginTransaction().add(R.id.frame_borders, new BordersFragment()).commit();
+
+        }
+        PreferenceManager.setDefaultValues(this, R.xml.pref_borders, true);
+
         etX1 = findViewById(R.id.et_border_x1);
         etX2 = findViewById(R.id.et_border_x2);
         etY1 = findViewById(R.id.et_border_y1);
@@ -52,7 +99,19 @@ public class BordersActivity extends AppCompatActivity {
 
         fullBitmap = BitmapFactory.decodeFile(MainActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
 
-        checkButton(radioGroup);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        areaName.set(sharedPreferences.getString(PREF_BORDERS_AREA, String.valueOf(R.string.pref_bordersAreaName_default_value)));
+
+        areaName.setOnStringChangeListener(new OnStringChangeListener()
+        {
+            @Override
+            public void onStringChanged(String newValue)
+            {
+                loadArea();
+            }
+        });
+
+        loadArea();
 
         etX1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -66,34 +125,32 @@ public class BordersActivity extends AppCompatActivity {
                 try {
                     float value = Float.parseFloat(s.toString());
                     cut_x1 = value;
-                    int radioId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = findViewById(radioId);
-                    String text = String.valueOf(radioButton.getText());
-                    if (text.equals(getString(R.string.borders_city))) {
+
+                    if (areaName.get().equals(getString(R.string.borders_city))) {
                         MainActivity.cut_city_x1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_city_x1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_time))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         MainActivity.cut_total_time_x1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_time_x1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
                         MainActivity.cut_early_win_x1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_early_win_x1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_our_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
                         MainActivity.cut_total_us_x1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_us_x1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
                         MainActivity.cut_total_they_x1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -119,34 +176,31 @@ public class BordersActivity extends AppCompatActivity {
                 try {
                     float value = Float.parseFloat(s.toString());
                     cut_x2 = value;
-                    int radioId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = findViewById(radioId);
-                    String text = String.valueOf(radioButton.getText());
-                    if (text.equals(getString(R.string.borders_city))) {
+                    if (areaName.get().equals(getString(R.string.borders_city))) {
                         MainActivity.cut_city_x2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_city_x2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_time))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         MainActivity.cut_total_time_x2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_time_x2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
                         MainActivity.cut_early_win_x2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_early_win_x2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_our_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
                         MainActivity.cut_total_us_x2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_us_x2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
                         MainActivity.cut_total_they_x2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -172,34 +226,31 @@ public class BordersActivity extends AppCompatActivity {
                 try {
                     float value = Float.parseFloat(s.toString());
                     cut_y1 = value;
-                    int radioId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = findViewById(radioId);
-                    String text = String.valueOf(radioButton.getText());
-                    if (text.equals(getString(R.string.borders_city))) {
+                    if (areaName.get().equals(getString(R.string.borders_city))) {
                         MainActivity.cut_city_y1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_city_y1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_time))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         MainActivity.cut_total_time_y1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_time_y1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
                         MainActivity.cut_early_win_y1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_early_win_y1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_our_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
                         MainActivity.cut_total_us_y1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_us_y1), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
                         MainActivity.cut_total_they_y1 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -225,34 +276,31 @@ public class BordersActivity extends AppCompatActivity {
                 try {
                     float value = Float.parseFloat(s.toString());
                     cut_y2 = value;
-                    int radioId = radioGroup.getCheckedRadioButtonId();
-                    radioButton = findViewById(radioId);
-                    String text = String.valueOf(radioButton.getText());
-                    if (text.equals(getString(R.string.borders_city))) {
+                    if (areaName.get().equals(getString(R.string.borders_city))) {
                         MainActivity.cut_city_y2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_city_y2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_time))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         MainActivity.cut_total_time_y2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_time_y2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
                         MainActivity.cut_early_win_y2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_early_win_y2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_our_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
                         MainActivity.cut_total_us_y2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putFloat(getString(R.string.pref_cut_total_us_y2), value);
                         editor.apply();
-                    } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+                    } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
                         MainActivity.cut_total_they_y2 = value;
                         SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -306,18 +354,15 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetX1(View view) {
 
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        String text = String.valueOf(radioButton.getText());
-        if (text.equals(getString(R.string.borders_city))) {
+        if (areaName.get().equals(getString(R.string.borders_city))) {
             cut_x1 = MainActivity.DEFAULT_PREF_CUT_CITY_X1;
-        } else if (text.equals(getString(R.string.borders_time))) {
+        } else if (areaName.get().equals(getString(R.string.borders_time))) {
             cut_x1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_TIME_X1;
-        } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             cut_x1 = MainActivity.DEFAULT_PREF_CUT_EARLY_WIN_X1;
-        } else if (text.equals(getString(R.string.borders_our_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
             cut_x1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_US_X1;
-        } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
             cut_x1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_THEY_X1;
         }
         etX1.setText(String.valueOf(cut_x1));
@@ -326,18 +371,15 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetX2(View view) {
 
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        String text = String.valueOf(radioButton.getText());
-        if (text.equals(getString(R.string.borders_city))) {
+        if (areaName.get().equals(getString(R.string.borders_city))) {
             cut_x2 = MainActivity.DEFAULT_PREF_CUT_CITY_X2;
-        } else if (text.equals(getString(R.string.borders_time))) {
+        } else if (areaName.get().equals(getString(R.string.borders_time))) {
             cut_x2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_TIME_X2;
-        } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             cut_x2 = MainActivity.DEFAULT_PREF_CUT_EARLY_WIN_X2;
-        } else if (text.equals(getString(R.string.borders_our_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
             cut_x2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_US_X2;
-        } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
             cut_x2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_THEY_X2;
         }
         etX2.setText(String.valueOf(cut_x2));
@@ -346,18 +388,15 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetY1(View view) {
 
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        String text = String.valueOf(radioButton.getText());
-        if (text.equals(getString(R.string.borders_city))) {
+        if (areaName.get().equals(getString(R.string.borders_city))) {
             cut_y1 = MainActivity.DEFAULT_PREF_CUT_CITY_Y1;
-        } else if (text.equals(getString(R.string.borders_time))) {
+        } else if (areaName.get().equals(getString(R.string.borders_time))) {
             cut_y1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_TIME_Y1;
-        } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             cut_y1 = MainActivity.DEFAULT_PREF_CUT_EARLY_WIN_Y1;
-        } else if (text.equals(getString(R.string.borders_our_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
             cut_y1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_US_Y1;
-        } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
             cut_y1 = MainActivity.DEFAULT_PREF_CUT_TOTAL_THEY_Y1;
         }
         etY1.setText(String.valueOf(cut_y1));
@@ -366,18 +405,15 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetY2(View view) {
 
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        String text = String.valueOf(radioButton.getText());
-        if (text.equals(getString(R.string.borders_city))) {
+        if (areaName.get().equals(getString(R.string.borders_city))) {
             cut_y2 = MainActivity.DEFAULT_PREF_CUT_CITY_Y2;
-        } else if (text.equals(getString(R.string.borders_time))) {
+        } else if (areaName.get().equals(getString(R.string.borders_time))) {
             cut_y2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_TIME_Y2;
-        } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             cut_y2 = MainActivity.DEFAULT_PREF_CUT_EARLY_WIN_Y2;
-        } else if (text.equals(getString(R.string.borders_our_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
             cut_y2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_US_Y2;
-        } else if (text.equals(getString(R.string.borders_enemy_scores))) {
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
             cut_y2 = MainActivity.DEFAULT_PREF_CUT_TOTAL_THEY_Y2;
         }
         etY2.setText(String.valueOf(cut_y2));
@@ -515,45 +551,43 @@ public class BordersActivity extends AppCompatActivity {
 
     }
 
-    public void checkButton(View view) {
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        String text = String.valueOf(radioButton.getText());
 
-        if (text.equals(getString(R.string.borders_city))) {
-            cut_x1 = MainActivity.cut_city_x1;
-            cut_x2 = MainActivity.cut_city_x2;
-            cut_y1 = MainActivity.cut_city_y1;
-            cut_y2 = MainActivity.cut_city_y2;
-        } else if (text.equals(getString(R.string.borders_time))) {
-            cut_x1 = MainActivity.cut_total_time_x1;
-            cut_x2 = MainActivity.cut_total_time_x2;
-            cut_y1 = MainActivity.cut_total_time_y1;
-            cut_y2 = MainActivity.cut_total_time_y2;
-        } else if (text.equals(getString(R.string.borders_scores_to_early_win))) {
-            cut_x1 = MainActivity.cut_early_win_x1;
-            cut_x2 = MainActivity.cut_early_win_x2;
-            cut_y1 = MainActivity.cut_early_win_y1;
-            cut_y2 = MainActivity.cut_early_win_y2;
-        } else if (text.equals(getString(R.string.borders_our_scores))) {
-            cut_x1 = MainActivity.cut_total_us_x1;
-            cut_x2 = MainActivity.cut_total_us_x2;
-            cut_y1 = MainActivity.cut_total_us_y1;
-            cut_y2 = MainActivity.cut_total_us_y2;
-        } else if (text.equals(getString(R.string.borders_enemy_scores))) {
-            cut_x1 = MainActivity.cut_total_they_x1;
-            cut_x2 = MainActivity.cut_total_they_x2;
-            cut_y1 = MainActivity.cut_total_they_y1;
-            cut_y2 = MainActivity.cut_total_they_y2;
+    public static class BordersFragment extends PreferenceFragment {
+
+        public static final String PREF_BORDERS_AREA = "pref_borders_area";
+        private SharedPreferences.OnSharedPreferenceChangeListener onSharedPreferenceChangeListener;
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.pref_borders);
+
+            onSharedPreferenceChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+                @Override
+                public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                    if (key.equals(PREF_BORDERS_AREA)) {
+                        Preference preference = findPreference(key);
+                        preference.setSummary(sharedPreferences.getString(key, String.valueOf(R.string.pref_bordersAreaName_default_value)));
+                        BordersActivity.areaName.set(sharedPreferences.getString(key, String.valueOf(R.string.pref_bordersAreaName_default_value)));
+                    }
+                }
+            };
+
         }
 
-        etX1.setText(String.valueOf(cut_x1));
-        etX2.setText(String.valueOf(cut_x2));
-        etY1.setText(String.valueOf(cut_y1));
-        etY2.setText(String.valueOf(cut_y2));
-        ivPicture.setImageBitmap(cutBorders());  // выводим битмат игры в контрол
+        @Override
+        public void onResume() {
+            super.onResume();
+            getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener);
+            Preference preference = findPreference(PREF_BORDERS_AREA);
+            preference.setSummary(getPreferenceScreen().getSharedPreferences().getString(PREF_BORDERS_AREA, String.valueOf(R.string.pref_bordersAreaName_default_value)));
+        }
 
+        @Override
+        public void onPause() {
+            super.onPause();
+            getPreferenceScreen().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(onSharedPreferenceChangeListener);
+        }
     }
 
-
 }
+

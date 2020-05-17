@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.14 (16/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.15 (17/05/2020)</string>
 
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
 
@@ -61,6 +61,8 @@
     <string name="pref_rgb_early_win" translatable="false">PREF_RGB_EARLY_WIN</string>
     <string name="pref_rgb_early_win_threshold_plus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_PLUS</string>
     <string name="pref_rgb_early_win_threshold_minus" translatable="false">PREF_RGB_EARLY_WIN_THRESHOLD_MINUS</string>
+
+
 
 
     <string name="plus_us">+ us</string>
@@ -139,5 +141,49 @@
     <string name="recognized_symbols">Recognized symbols</string>
     <string name="color_code">RGB code</string>
     <string name="sett_default">Set default</string>
+
+    <string name="pref_bordersAreaName">Area name</string>
+    <string name="pref_bordersAreaName_dialog_title">Select Area</string>
+    <string name="pref_bordersAreaName_default_value">City</string>
+    <string name="pref_bordersAreaName_summary">City</string>
+
+    <string-array name="pref_borders_entries">
+        <item>City</item>
+        <item>Time</item>
+        <item>Scores to early win</item>
+        <item>Our scores</item>
+        <item>Enemy\'s scores</item>
+    </string-array>
+
+    <string-array name="pref_borders_values">
+        <item>City</item>
+        <item>Time</item>
+        <item>Scores to early win</item>
+        <item>Our scores</item>
+        <item>Enemy\'s scores</item>
+    </string-array>
+
+    <string name="pref_colorsAreaName">Area name</string>
+    <string name="pref_colorsAreaName_dialog_title">Select Area</string>
+    <string name="pref_colorsAreaName_default_value">Time</string>
+    <string name="pref_colorsAreaName_summary">Time</string>
+
+    <string-array name="pref_colors_entries">
+        <item>Time</item>
+        <item>Scores to early win</item>
+        <item>Our scores</item>
+        <item>Our increas</item>
+        <item>Enemy\'s scores</item>
+        <item>Enemy\'s increase</item>
+    </string-array>
+
+    <string-array name="pref_colors_values">
+        <item>Time</item>
+        <item>Scores to early win</item>
+        <item>Our scores</item>
+        <item>Our increas</item>
+        <item>Enemy\'s scores</item>
+        <item>Enemy\'s increase</item>
+    </string-array>
 
 </resources>

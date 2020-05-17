@@ -6,48 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <RadioGroup
-        android:id="@+id/rg_borders"
+    <FrameLayout
+        android:id="@+id/frame_borders"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content"/>
 
-        <RadioButton
-            android:id="@+id/rb_border_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="checkButton"
-            android:text="@string/borders_city" />
-        <RadioButton
-            android:id="@+id/rb_border_total_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/borders_time" />
-        <RadioButton
-            android:id="@+id/rb_border_early_win"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/borders_scores_to_early_win" />
-        <RadioButton
-            android:id="@+id/rb_border_us"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/borders_our_scores" />
-        <RadioButton
-            android:id="@+id/rb_border_they"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="@string/borders_enemy_scores" />
-
-
-
-    </RadioGroup>
 
     <LinearLayout
         android:layout_marginTop="10dp"

@@ -72,4 +72,48 @@
     <string name="recognized_symbols">Распознанные символы</string>
     <string name="color_code">Код RGB</string>
     <string name="sett_default">По-умолчанию</string>
+
+    <string-array name="pref_borders_entries">
+        <item>Город</item>
+        <item>Время</item>
+        <item>Очки до досрочной победы</item>
+        <item>Наши очки</item>
+        <item>Очки противника</item>
+    </string-array>
+
+    <string-array name="pref_borders_values">
+        <item>Город</item>
+        <item>Время</item>
+        <item>Очки до досрочной победы</item>
+        <item>Наши очки</item>
+        <item>Очки противника</item>
+    </string-array>
+    <string name="pref_bordersAreaName">Название области</string>
+    <string name="pref_bordersAreaName_dialog_title">Выберите область</string>
+    <string name="pref_bordersAreaName_default_value">Город</string>
+    <string name="pref_bordersAreaName_summary">Город</string>
+
+    <string name="pref_colorsAreaName">Название области</string>
+    <string name="pref_colorsAreaName_dialog_title">Выберите область</string>
+    <string name="pref_colorsAreaName_default_value">Время</string>
+    <string name="pref_colorsAreaName_summary">Время</string>
+
+    <string-array name="pref_colors_entries">
+        <item>Время</item>
+        <item>Очки до досрочной победы</item>
+        <item>Наши очки</item>
+        <item>Наша прибавка</item>
+        <item>Очки противника</item>
+        <item>Прибавка противника</item>
+    </string-array>
+
+    <string-array name="pref_colors_values">
+        <item>Время</item>
+        <item>Очки до досрочной победы</item>
+        <item>Наши очки</item>
+        <item>Наша прибавка</item>
+        <item>Очки противника</item>
+        <item>Прибавка противника</item>
+    </string-array>
+
 </resources>
