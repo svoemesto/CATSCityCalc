@@ -26,7 +26,7 @@ public class PictureProcessor extends Activity {
      */
     public static Bitmap[] splitBitmap(Bitmap sourceBitmap, int color, int thm, int thp, float maxSensitivity, float minSensitivity, PictureProcessorDirection direction) {
         Bitmap[] arrBitmap = null;
-
+        Bitmap firstBitmap, secondBitmap;
         if (sourceBitmap != null) {
 
             int sourceWidth = sourceBitmap.getWidth();      // ширина исходной картинки
@@ -110,8 +110,8 @@ public class PictureProcessor extends Activity {
                 int secondPicWidth = horizontalMove ? secondPicEnd - secondPicStart : sourceWidth;
                 int secondPicHeight = horizontalMove ? sourceHeight : secondPicEnd - secondPicStart;
 
-                Bitmap firstBitmap = Bitmap.createBitmap(firstPicWidth, firstPicHeight, sourceBitmap.getConfig());
-                Bitmap secondBitmap = Bitmap.createBitmap(secondPicWidth, secondPicHeight, sourceBitmap.getConfig());
+                firstBitmap = Bitmap.createBitmap(firstPicWidth, firstPicHeight, sourceBitmap.getConfig());
+                secondBitmap = Bitmap.createBitmap(secondPicWidth, secondPicHeight, sourceBitmap.getConfig());
 
                 for (x = 0; x < firstPicWidth; x++) {
                     for (y = 0; y < firstPicHeight; y++) {
@@ -151,9 +151,19 @@ public class PictureProcessor extends Activity {
                     }
                 }
 
-                arrBitmap = new Bitmap[] {firstBitmap, secondBitmap};
 
+
+            } else {
+                firstBitmap = Bitmap.createBitmap(sourceWidth, sourceHeight, sourceBitmap.getConfig());
+                for (x = 0; x < sourceWidth; x++) {
+                    for (y = 0; y < sourceHeight; y++) {
+                        firstBitmap.setPixel(x, y, 0xFFFFFFFF);
+                    }
+                }
+                secondBitmap = sourceBitmap;
             }
+
+            arrBitmap = new Bitmap[] {firstBitmap, secondBitmap};
 
         }
 

@@ -236,63 +236,63 @@
     <string name="def_rgb_total_time_main" translatable="false">ffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">4e6881</string>
     <string name="def_rgb_total_time_back2" translatable="false">6b839b</string>
-    <string name="def_rgb_total_time_thm" translatable="false">20</string>
-    <string name="def_rgb_total_time_thp" translatable="false">10</string>
+    <string name="def_rgb_total_time_thm" translatable="false">13</string>
+    <string name="def_rgb_total_time_thp" translatable="false">13</string>
 
     <string name="def_rgb_early_win_main" translatable="false">ffffff</string>
     <string name="def_rgb_early_win_back" translatable="false">91a7bf</string>
-    <string name="def_rgb_early_win_thm" translatable="false">20</string>
-    <string name="def_rgb_early_win_thp" translatable="false">10</string>
+    <string name="def_rgb_early_win_thm" translatable="false">13</string>
+    <string name="def_rgb_early_win_thp" translatable="false">13</string>
 
     <string name="def_rgb_points_our_main" translatable="false">437ad7</string>
     <string name="def_rgb_points_our_back1" translatable="false">ffffff</string>
     <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
-    <string name="def_rgb_points_our_thm" translatable="false">10</string>
-    <string name="def_rgb_points_our_thp" translatable="false">10</string>
+    <string name="def_rgb_points_our_thm" translatable="false">13</string>
+    <string name="def_rgb_points_our_thp" translatable="false">13</string>
 
     <string name="def_rgb_increase_our_main" translatable="false">d3def4</string>
     <string name="def_rgb_increase_our_back" translatable="false">4179d8</string>
-    <string name="def_rgb_increase_our_thm" translatable="false">10</string>
-    <string name="def_rgb_increase_our_thp" translatable="false">10</string>
+    <string name="def_rgb_increase_our_thm" translatable="false">13</string>
+    <string name="def_rgb_increase_our_thp" translatable="false">13</string>
 
     <string name="def_rgb_points_enemy_main" translatable="false">f64f49</string>
     <string name="def_rgb_points_enemy_back1" translatable="false">ffffff</string>
     <string name="def_rgb_points_enemy_back2" translatable="false">f1f1f1</string>
-    <string name="def_rgb_points_enemy_thm" translatable="false">10</string>
-    <string name="def_rgb_points_enemy_thp" translatable="false">10</string>
+    <string name="def_rgb_points_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_points_enemy_thp" translatable="false">13</string>
 
     <string name="def_rgb_increase_enemy_main" translatable="false">fdd5d3</string>
     <string name="def_rgb_increase_enemy_back" translatable="false">eb4c48</string>
-    <string name="def_rgb_increase_enemy_thm" translatable="false">10</string>
-    <string name="def_rgb_increase_enemy_thp" translatable="false">10</string>
+    <string name="def_rgb_increase_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_increase_enemy_thp" translatable="false">13</string>
 
     <string name="def_rgb_building_slot_main" translatable="false">2c3852</string>
     <string name="def_rgb_building_slot_back" translatable="false">ffffff</string>
-    <string name="def_rgb_building_slot_thm" translatable="false">10</string>
-    <string name="def_rgb_building_slot_thp" translatable="false">10</string>
+    <string name="def_rgb_building_slot_thm" translatable="false">13</string>
+    <string name="def_rgb_building_slot_thp" translatable="false">13</string>
 
     <string name="def_rgb_building_points_our_main" translatable="false">ffffff</string>
     <string name="def_rgb_building_points_our_back" translatable="false">4179d8</string>
-    <string name="def_rgb_building_points_our_thm" translatable="false">10</string>
-    <string name="def_rgb_building_points_our_thp" translatable="false">10</string>
+    <string name="def_rgb_building_points_our_thm" translatable="false">13</string>
+    <string name="def_rgb_building_points_our_thp" translatable="false">13</string>
 
     <string name="def_rgb_building_points_enemy_main" translatable="false">ffffff</string>
     <string name="def_rgb_building_points_enemy_back" translatable="false">eb4c48</string>
-    <string name="def_rgb_building_points_enemy_thm" translatable="false">10</string>
-    <string name="def_rgb_building_points_enemy_thp" translatable="false">10</string>
+    <string name="def_rgb_building_points_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_building_points_enemy_thp" translatable="false">13</string>
 
     <string name="def_rgb_building_progress_our" translatable="false">90b3eb</string>
     <string name="def_rgb_building_progress_enemy" translatable="false">ff6565</string>
     <string name="def_rgb_building_progress_empty" translatable="false">5e6a84</string>
-    <string name="def_rgb_building_progress_our_thm" translatable="false">10</string>
-    <string name="def_rgb_building_progress_our_thp" translatable="false">10</string>
-    <string name="def_rgb_building_progress_enemy_thm" translatable="false">10</string>
-    <string name="def_rgb_building_progress_enemy_thp" translatable="false">10</string>
-    <string name="def_rgb_building_progress_empty_thm" translatable="false">10</string>
-    <string name="def_rgb_building_progress_empty_thp" translatable="false">10</string>
+    <string name="def_rgb_building_progress_our_thm" translatable="false">13</string>
+    <string name="def_rgb_building_progress_our_thp" translatable="false">13</string>
+    <string name="def_rgb_building_progress_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_building_progress_enemy_thp" translatable="false">13</string>
+    <string name="def_rgb_building_progress_empty_thm" translatable="false">13</string>
+    <string name="def_rgb_building_progress_empty_thp" translatable="false">13</string>
 
     <string name="def_rgb_building_doublepoints" translatable="false">ebb948</string>
-    <string name="def_rgb_building_doublepoints_thm" translatable="false">10</string>
-    <string name="def_rgb_building_doublepoints_thp" translatable="false">10</string>
+    <string name="def_rgb_building_doublepoints_thm" translatable="false">13</string>
+    <string name="def_rgb_building_doublepoints_thp" translatable="false">13</string>
 
 </resources>

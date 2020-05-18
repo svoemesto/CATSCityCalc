@@ -11,30 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Area.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessorDirection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CutPicture.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CutPicture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" afterDir="false" />
     </list>
@@ -384,18 +371,13 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java</url>
-          <line>198</line>
+          <line>208</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java</url>
-          <line>174</line>
+          <line>184</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

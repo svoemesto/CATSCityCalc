@@ -70,6 +70,7 @@ public class CityCalcArea {
                 result = result + ch;       // приклеиваем его к результату
             }
         }
+        if (result.equals("")) result = "0";
         return result;                      // возвращаем результат
     }
 
