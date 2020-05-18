@@ -40,88 +40,95 @@ public class BordersActivity extends AppCompatActivity {
 
 //        cut_x1 = MainActivity.mapFloats.get();
 
+        CityCalcArea cityCalcArea = null;
 
         if (areaName.get().equals(getString(R.string.borders_city))) {
-            cut_x1 = MainActivity.cut_city_x1; cut_x2 = MainActivity.cut_city_x2; cut_y1 = MainActivity.cut_city_y1; cut_y2 = MainActivity.cut_city_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.CITY);
         } else if (areaName.get().equals(getString(R.string.borders_time))) {
-            cut_x1 = MainActivity.cut_total_time_x1; cut_x2 = MainActivity.cut_total_time_x2; cut_y1 = MainActivity.cut_total_time_y1; cut_y2 = MainActivity.cut_total_time_y2; 
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME); 
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            cut_x1 = MainActivity.cut_early_win_x1; cut_x2 = MainActivity.cut_early_win_x2; cut_y1 = MainActivity.cut_early_win_y1; cut_y2 = MainActivity.cut_early_win_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            cut_x1 = MainActivity.cut_points_and_increase_our_x1; cut_x2 = MainActivity.cut_points_and_increase_our_x2; cut_y1 = MainActivity.cut_points_and_increase_our_y1; cut_y2 = MainActivity.cut_points_and_increase_our_y2; 
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_OUR); 
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            cut_x1 = MainActivity.cut_points_and_increase_enemy_x1; cut_x2 = MainActivity.cut_points_and_increase_enemy_x2; cut_y1 = MainActivity.cut_points_and_increase_enemy_y1; cut_y2 = MainActivity.cut_points_and_increase_enemy_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_ENEMY);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {
-            cut_x1 = MainActivity.cut_team_name_enemy_x1; cut_x2 = MainActivity.cut_team_name_enemy_x2; cut_y1 = MainActivity.cut_team_name_enemy_y1; cut_y2 = MainActivity.cut_team_name_enemy_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
         } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
-            cut_x1 = MainActivity.cut_team_name_our_x1; cut_x2 = MainActivity.cut_team_name_our_x2; cut_y1 = MainActivity.cut_team_name_our_y1; cut_y2 = MainActivity.cut_team_name_our_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
         } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-            cut_x1 = MainActivity.cut_building_lt_x1; cut_x2 = MainActivity.cut_building_lt_x2; cut_y1 = MainActivity.cut_building_lt_y1; cut_y2 = MainActivity.cut_building_lt_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT);
         } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-            cut_x1 = MainActivity.cut_building_lt_name_x1; cut_x2 = MainActivity.cut_building_lt_name_x2; cut_y1 = MainActivity.cut_building_lt_name_y1; cut_y2 = MainActivity.cut_building_lt_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
-            cut_x1 = MainActivity.cut_building_lt_increase_x1; cut_x2 = MainActivity.cut_building_lt_increase_x2; cut_y1 = MainActivity.cut_building_lt_increase_y1; cut_y2 = MainActivity.cut_building_lt_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
-            cut_x1 = MainActivity.cut_building_lt_slots_x1; cut_x2 = MainActivity.cut_building_lt_slots_x2; cut_y1 = MainActivity.cut_building_lt_slots_y1; cut_y2 = MainActivity.cut_building_lt_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
-            cut_x1 = MainActivity.cut_building_lt_progress_x1; cut_x2 = MainActivity.cut_building_lt_progress_x2; cut_y1 = MainActivity.cut_building_lt_progress_y1; cut_y2 = MainActivity.cut_building_lt_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-            cut_x1 = MainActivity.cut_building_lc_x1; cut_x2 = MainActivity.cut_building_lc_x2; cut_y1 = MainActivity.cut_building_lc_y1; cut_y2 = MainActivity.cut_building_lc_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC);
         } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-            cut_x1 = MainActivity.cut_building_lc_name_x1; cut_x2 = MainActivity.cut_building_lc_name_x2; cut_y1 = MainActivity.cut_building_lc_name_y1; cut_y2 = MainActivity.cut_building_lc_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
-            cut_x1 = MainActivity.cut_building_lc_increase_x1; cut_x2 = MainActivity.cut_building_lc_increase_x2; cut_y1 = MainActivity.cut_building_lc_increase_y1; cut_y2 = MainActivity.cut_building_lc_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
-            cut_x1 = MainActivity.cut_building_lc_slots_x1; cut_x2 = MainActivity.cut_building_lc_slots_x2; cut_y1 = MainActivity.cut_building_lc_slots_y1; cut_y2 = MainActivity.cut_building_lc_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
-            cut_x1 = MainActivity.cut_building_lc_progress_x1; cut_x2 = MainActivity.cut_building_lc_progress_x2; cut_y1 = MainActivity.cut_building_lc_progress_y1; cut_y2 = MainActivity.cut_building_lc_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-            cut_x1 = MainActivity.cut_building_lb_x1; cut_x2 = MainActivity.cut_building_lb_x2; cut_y1 = MainActivity.cut_building_lb_y1; cut_y2 = MainActivity.cut_building_lb_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB);
         } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-            cut_x1 = MainActivity.cut_building_lb_name_x1; cut_x2 = MainActivity.cut_building_lb_name_x2; cut_y1 = MainActivity.cut_building_lb_name_y1; cut_y2 = MainActivity.cut_building_lb_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
-            cut_x1 = MainActivity.cut_building_lb_increase_x1; cut_x2 = MainActivity.cut_building_lb_increase_x2; cut_y1 = MainActivity.cut_building_lb_increase_y1; cut_y2 = MainActivity.cut_building_lb_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
-            cut_x1 = MainActivity.cut_building_lb_slots_x1; cut_x2 = MainActivity.cut_building_lb_slots_x2; cut_y1 = MainActivity.cut_building_lb_slots_y1; cut_y2 = MainActivity.cut_building_lb_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
-            cut_x1 = MainActivity.cut_building_lb_progress_x1; cut_x2 = MainActivity.cut_building_lb_progress_x2; cut_y1 = MainActivity.cut_building_lb_progress_y1; cut_y2 = MainActivity.cut_building_lb_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-            cut_x1 = MainActivity.cut_building_rt_x1; cut_x2 = MainActivity.cut_building_rt_x2; cut_y1 = MainActivity.cut_building_rt_y1; cut_y2 = MainActivity.cut_building_rt_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT);
         } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-            cut_x1 = MainActivity.cut_building_rt_name_x1; cut_x2 = MainActivity.cut_building_rt_name_x2; cut_y1 = MainActivity.cut_building_rt_name_y1; cut_y2 = MainActivity.cut_building_rt_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
-            cut_x1 = MainActivity.cut_building_rt_increase_x1; cut_x2 = MainActivity.cut_building_rt_increase_x2; cut_y1 = MainActivity.cut_building_rt_increase_y1; cut_y2 = MainActivity.cut_building_rt_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
-            cut_x1 = MainActivity.cut_building_rt_slots_x1; cut_x2 = MainActivity.cut_building_rt_slots_x2; cut_y1 = MainActivity.cut_building_rt_slots_y1; cut_y2 = MainActivity.cut_building_rt_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
-            cut_x1 = MainActivity.cut_building_rt_progress_x1; cut_x2 = MainActivity.cut_building_rt_progress_x2; cut_y1 = MainActivity.cut_building_rt_progress_y1; cut_y2 = MainActivity.cut_building_rt_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-            cut_x1 = MainActivity.cut_building_rc_x1; cut_x2 = MainActivity.cut_building_rc_x2; cut_y1 = MainActivity.cut_building_rc_y1; cut_y2 = MainActivity.cut_building_rc_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC);
         } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-            cut_x1 = MainActivity.cut_building_rc_name_x1; cut_x2 = MainActivity.cut_building_rc_name_x2; cut_y1 = MainActivity.cut_building_rc_name_y1; cut_y2 = MainActivity.cut_building_rc_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
-            cut_x1 = MainActivity.cut_building_rc_increase_x1; cut_x2 = MainActivity.cut_building_rc_increase_x2; cut_y1 = MainActivity.cut_building_rc_increase_y1; cut_y2 = MainActivity.cut_building_rc_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
-            cut_x1 = MainActivity.cut_building_rc_slots_x1; cut_x2 = MainActivity.cut_building_rc_slots_x2; cut_y1 = MainActivity.cut_building_rc_slots_y1; cut_y2 = MainActivity.cut_building_rc_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
-            cut_x1 = MainActivity.cut_building_rc_progress_x1; cut_x2 = MainActivity.cut_building_rc_progress_x2; cut_y1 = MainActivity.cut_building_rc_progress_y1; cut_y2 = MainActivity.cut_building_rc_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-            cut_x1 = MainActivity.cut_building_rb_x1; cut_x2 = MainActivity.cut_building_rb_x2; cut_y1 = MainActivity.cut_building_rb_y1; cut_y2 = MainActivity.cut_building_rb_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB);
         } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-            cut_x1 = MainActivity.cut_building_rb_name_x1; cut_x2 = MainActivity.cut_building_rb_name_x2; cut_y1 = MainActivity.cut_building_rb_name_y1; cut_y2 = MainActivity.cut_building_rb_name_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
         } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
-            cut_x1 = MainActivity.cut_building_rb_increase_x1; cut_x2 = MainActivity.cut_building_rb_increase_x2; cut_y1 = MainActivity.cut_building_rb_increase_y1; cut_y2 = MainActivity.cut_building_rb_increase_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
-            cut_x1 = MainActivity.cut_building_rb_slots_x1; cut_x2 = MainActivity.cut_building_rb_slots_x2; cut_y1 = MainActivity.cut_building_rb_slots_y1; cut_y2 = MainActivity.cut_building_rb_slots_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_SLOTS);
         } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {
-            cut_x1 = MainActivity.cut_building_rb_progress_x1; cut_x2 = MainActivity.cut_building_rb_progress_x2; cut_y1 = MainActivity.cut_building_rb_progress_y1; cut_y2 = MainActivity.cut_building_rb_progress_y2;
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
         }
 
+        cityCalcArea.doCut();
+        cut_x1 = cityCalcArea.x1;
+        cut_x2 = cityCalcArea.x2;
+        cut_y1 = cityCalcArea.y1;
+        cut_y2 = cityCalcArea.y2;
+        
         etX1.setText(String.valueOf(cut_x1));
         etX2.setText(String.valueOf(cut_x2));
         etY1.setText(String.valueOf(cut_y1));
         etY2.setText(String.valueOf(cut_y2));
-        ivPicture.setImageBitmap(cutBorders());  // выводим битмат игры в контрол
+        ivPicture.setImageBitmap(cityCalcArea.bmpSrc);  // выводим битмап игры в контрол
 
     }
 
@@ -178,125 +185,126 @@ public class BordersActivity extends AppCompatActivity {
                     cut_x1 = value;
                     SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-
+                    CityCalcArea cityCalcArea = null;
+                    
                     if (areaName.get().equals(getString(R.string.borders_city))) {
-                        MainActivity.cut_city_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
-                        MainActivity.cut_total_time_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        MainActivity.cut_early_win_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
                         editor.putFloat(getString(R.string.pref_cut_early_win_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        MainActivity.cut_points_and_increase_our_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_OUR);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        MainActivity.cut_points_and_increase_enemy_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {
-                        MainActivity.cut_team_name_enemy_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_team_name_enemy_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
-                        MainActivity.cut_team_name_our_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        MainActivity.cut_building_lt_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        MainActivity.cut_building_lt_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
-                        MainActivity.cut_building_lt_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
-                        MainActivity.cut_building_lt_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
-                        MainActivity.cut_building_lt_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        MainActivity.cut_building_lc_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        MainActivity.cut_building_lc_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
-                        MainActivity.cut_building_lc_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
-                        MainActivity.cut_building_lc_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
-                        MainActivity.cut_building_lc_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        MainActivity.cut_building_lb_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        MainActivity.cut_building_lb_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
-                        MainActivity.cut_building_lb_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
-                        MainActivity.cut_building_lb_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
-                        MainActivity.cut_building_lb_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        MainActivity.cut_building_rt_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        MainActivity.cut_building_rt_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
-                        MainActivity.cut_building_rt_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
-                        MainActivity.cut_building_rt_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
-                        MainActivity.cut_building_rt_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        MainActivity.cut_building_rc_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        MainActivity.cut_building_rc_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
-                        MainActivity.cut_building_rc_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
-                        MainActivity.cut_building_rc_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
-                        MainActivity.cut_building_rc_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        MainActivity.cut_building_rb_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        MainActivity.cut_building_rb_name_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
-                        MainActivity.cut_building_rb_increase_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_increase_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
-                        MainActivity.cut_building_rb_slots_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_slots_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {
-                        MainActivity.cut_building_rb_progress_x1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_progress_x1), value);
-
-
                     }
-
+                    
                     editor.apply();
-
-                    ivPicture.setImageBitmap(cutBorders());
+                    
+                    cityCalcArea.x1 = value;
+                    cityCalcArea.doCut();
+                    ivPicture.setImageBitmap(cityCalcArea.bmpSrc);
 
                 } catch (NumberFormatException e) {
                 }
@@ -320,122 +328,127 @@ public class BordersActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                    CityCalcArea cityCalcArea = null;
+
                     if (areaName.get().equals(getString(R.string.borders_city))) {
-                        MainActivity.cut_city_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
-                        MainActivity.cut_total_time_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        MainActivity.cut_early_win_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
                         editor.putFloat(getString(R.string.pref_cut_early_win_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        MainActivity.cut_points_and_increase_our_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_OUR);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        MainActivity.cut_points_and_increase_enemy_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {
-                        MainActivity.cut_team_name_enemy_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_team_name_enemy_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
-                        MainActivity.cut_team_name_our_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        MainActivity.cut_building_lt_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        MainActivity.cut_building_lt_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
-                        MainActivity.cut_building_lt_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
-                        MainActivity.cut_building_lt_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
-                        MainActivity.cut_building_lt_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        MainActivity.cut_building_lc_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        MainActivity.cut_building_lc_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
-                        MainActivity.cut_building_lc_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
-                        MainActivity.cut_building_lc_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
-                        MainActivity.cut_building_lc_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        MainActivity.cut_building_lb_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        MainActivity.cut_building_lb_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
-                        MainActivity.cut_building_lb_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
-                        MainActivity.cut_building_lb_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
-                        MainActivity.cut_building_lb_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        MainActivity.cut_building_rt_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        MainActivity.cut_building_rt_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
-                        MainActivity.cut_building_rt_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
-                        MainActivity.cut_building_rt_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
-                        MainActivity.cut_building_rt_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        MainActivity.cut_building_rc_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        MainActivity.cut_building_rc_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
-                        MainActivity.cut_building_rc_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
-                        MainActivity.cut_building_rc_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
-                        MainActivity.cut_building_rc_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        MainActivity.cut_building_rb_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        MainActivity.cut_building_rb_name_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
-                        MainActivity.cut_building_rb_increase_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_increase_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
-                        MainActivity.cut_building_rb_slots_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_slots_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {
-                        MainActivity.cut_building_rb_progress_x2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_progress_x2), value);
                     }
 
                     editor.apply();
 
-                    ivPicture.setImageBitmap(cutBorders());
+                    cityCalcArea.x2 = value;
+                    cityCalcArea.doCut();
+                    ivPicture.setImageBitmap(cityCalcArea.bmpSrc);
+                    
                 } catch (NumberFormatException e) {
                 }
 
@@ -458,123 +471,126 @@ public class BordersActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                    CityCalcArea cityCalcArea = null;
+
                     if (areaName.get().equals(getString(R.string.borders_city))) {
-                        MainActivity.cut_city_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
-                        MainActivity.cut_total_time_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        MainActivity.cut_early_win_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
                         editor.putFloat(getString(R.string.pref_cut_early_win_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        MainActivity.cut_points_and_increase_our_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_OUR);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        MainActivity.cut_points_and_increase_enemy_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {
-                        MainActivity.cut_team_name_enemy_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_team_name_enemy_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
-                        MainActivity.cut_team_name_our_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        MainActivity.cut_building_lt_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        MainActivity.cut_building_lt_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
-                        MainActivity.cut_building_lt_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
-                        MainActivity.cut_building_lt_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
-                        MainActivity.cut_building_lt_progress_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        MainActivity.cut_building_lc_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        MainActivity.cut_building_lc_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
-                        MainActivity.cut_building_lc_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
-                        MainActivity.cut_building_lc_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
-                        MainActivity.cut_building_lc_progress_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        MainActivity.cut_building_lb_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        MainActivity.cut_building_lb_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
-                        MainActivity.cut_building_lb_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
-                        MainActivity.cut_building_lb_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
-                        MainActivity.cut_building_lb_progress_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        MainActivity.cut_building_rt_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        MainActivity.cut_building_rt_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
-                        MainActivity.cut_building_rt_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
-                        MainActivity.cut_building_rt_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
-                        MainActivity.cut_building_rt_progress_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        MainActivity.cut_building_rc_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        MainActivity.cut_building_rc_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
-                        MainActivity.cut_building_rc_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
-                        MainActivity.cut_building_rc_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
-                        MainActivity.cut_building_rc_progress_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        MainActivity.cut_building_rb_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        MainActivity.cut_building_rb_name_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
-                        MainActivity.cut_building_rb_increase_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_increase_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
-                        MainActivity.cut_building_rb_slots_y1 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_slots_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {
-                        MainActivity.cut_building_rb_progress_y1 = value;
-                        editor.putFloat(getString(R.string.pref_cut_building_rb_progress_y1), value);                        
-                        
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
+                        editor.putFloat(getString(R.string.pref_cut_building_rb_progress_y1), value);
                     }
 
                     editor.apply();
 
-                    ivPicture.setImageBitmap(cutBorders());
+                    cityCalcArea.y1 = value;
+                    cityCalcArea.doCut();
+                    ivPicture.setImageBitmap(cityCalcArea.bmpSrc);
                 } catch (NumberFormatException e) {
                 }
 
@@ -597,123 +613,126 @@ public class BordersActivity extends AppCompatActivity {
                     SharedPreferences sharedPreferences = BordersActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                    CityCalcArea cityCalcArea = null;
+
                     if (areaName.get().equals(getString(R.string.borders_city))) {
-                        MainActivity.cut_city_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
-                        MainActivity.cut_total_time_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        MainActivity.cut_early_win_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
                         editor.putFloat(getString(R.string.pref_cut_early_win_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        MainActivity.cut_points_and_increase_our_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_OUR);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        MainActivity.cut_points_and_increase_enemy_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_AND_INCREASE_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {
-                        MainActivity.cut_team_name_enemy_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
                         editor.putFloat(getString(R.string.pref_cut_team_name_enemy_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
-                        MainActivity.cut_team_name_our_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        MainActivity.cut_building_lt_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        MainActivity.cut_building_lt_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
-                        MainActivity.cut_building_lt_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
-                        MainActivity.cut_building_lt_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
-                        MainActivity.cut_building_lt_progress_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lt_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        MainActivity.cut_building_lc_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        MainActivity.cut_building_lc_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
-                        MainActivity.cut_building_lc_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
-                        MainActivity.cut_building_lc_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
-                        MainActivity.cut_building_lc_progress_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lc_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        MainActivity.cut_building_lb_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        MainActivity.cut_building_lb_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
-                        MainActivity.cut_building_lb_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
-                        MainActivity.cut_building_lb_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
-                        MainActivity.cut_building_lb_progress_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_lb_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        MainActivity.cut_building_rt_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        MainActivity.cut_building_rt_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
-                        MainActivity.cut_building_rt_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
-                        MainActivity.cut_building_rt_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
-                        MainActivity.cut_building_rt_progress_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rt_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        MainActivity.cut_building_rc_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        MainActivity.cut_building_rc_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
-                        MainActivity.cut_building_rc_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
-                        MainActivity.cut_building_rc_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
-                        MainActivity.cut_building_rc_progress_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_building_rc_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        MainActivity.cut_building_rb_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        MainActivity.cut_building_rb_name_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
-                        MainActivity.cut_building_rb_increase_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_increase_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
-                        MainActivity.cut_building_rb_slots_y2 = value;
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_SLOTS);
                         editor.putFloat(getString(R.string.pref_cut_building_rb_slots_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {
-                        MainActivity.cut_building_rb_progress_y2 = value;
-                        editor.putFloat(getString(R.string.pref_cut_building_rb_progress_y2), value);                        
-                        
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
+                        editor.putFloat(getString(R.string.pref_cut_building_rb_progress_y2), value);
                     }
 
                     editor.apply();
 
-                    ivPicture.setImageBitmap(cutBorders());
+                    cityCalcArea.y2 = value;
+                    cityCalcArea.doCut();
+                    ivPicture.setImageBitmap(cityCalcArea.bmpSrc);
                 } catch (NumberFormatException e) {
                 }
 
@@ -760,43 +779,43 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetX1(View view) {
 
-        if (areaName.get().equals(getString(R.string.borders_city))) { cut_x1 = MainActivity.def_city_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x1 = MainActivity.def_total_time_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x1 = MainActivity.def_early_win_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x1 = MainActivity.def_points_our_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_x1 = MainActivity.def_points_enemy_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_x1 = MainActivity.def_team_name_enemy_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_x1 = MainActivity.def_team_name_our_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_x1 = MainActivity.def_building_lt_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_x1 = MainActivity.def_building_lt_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_x1 = MainActivity.def_building_lt_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_x1 = MainActivity.def_building_lt_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_x1 = MainActivity.def_building_lt_progress_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_x1 = MainActivity.def_building_lc_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_x1 = MainActivity.def_building_lc_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_x1 = MainActivity.def_building_lc_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_x1 = MainActivity.def_building_lc_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_x1 = MainActivity.def_building_lc_progress_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_x1 = MainActivity.def_building_lb_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_x1 = MainActivity.def_building_lb_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_x1 = MainActivity.def_building_lb_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_x1 = MainActivity.def_building_lb_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_x1 = MainActivity.def_building_lb_progress_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_x1 = MainActivity.def_building_rt_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_x1 = MainActivity.def_building_rt_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_x1 = MainActivity.def_building_rt_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_x1 = MainActivity.def_building_rt_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_x1 = MainActivity.def_building_rt_progress_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_x1 = MainActivity.def_building_rc_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_x1 = MainActivity.def_building_rc_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_x1 = MainActivity.def_building_rc_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_x1 = MainActivity.def_building_rc_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_x1 = MainActivity.def_building_rc_progress_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_x1 = MainActivity.def_building_rb_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_x1 = MainActivity.def_building_rb_name_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_x1 = MainActivity.def_building_rb_increase_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_x1 = MainActivity.def_building_rb_slots_x1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_x1 = MainActivity.def_building_rb_progress_x1;
+        if (areaName.get().equals(getString(R.string.borders_city))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_city_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_total_time_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_early_win_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_enemy_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_team_name_enemy_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_team_name_our_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lt_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lt_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lt_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lt_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lt_progress_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lc_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lc_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lc_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lc_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lc_progress_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lb_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lb_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lb_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lb_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_lb_progress_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rt_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rt_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rt_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rt_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rt_progress_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rc_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rc_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rc_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rc_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rc_progress_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rb_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rb_name_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rb_points_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rb_slots_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_x1 = Float.parseFloat(getString(R.string.def_cut_building_rb_progress_x1));
         }
         etX1.setText(String.valueOf(cut_x1));
 
@@ -804,43 +823,43 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetX2(View view) {
 
-        if (areaName.get().equals(getString(R.string.borders_city))) { cut_x2 = MainActivity.def_city_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x2 = MainActivity.def_total_time_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x2 = MainActivity.def_early_win_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x2 = MainActivity.def_points_our_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_x2 = MainActivity.def_points_enemy_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_x2 = MainActivity.def_team_name_enemy_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_x2 = MainActivity.def_team_name_our_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_x2 = MainActivity.def_building_lt_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_x2 = MainActivity.def_building_lt_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_x2 = MainActivity.def_building_lt_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_x2 = MainActivity.def_building_lt_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_x2 = MainActivity.def_building_lt_progress_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_x2 = MainActivity.def_building_lc_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_x2 = MainActivity.def_building_lc_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_x2 = MainActivity.def_building_lc_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_x2 = MainActivity.def_building_lc_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_x2 = MainActivity.def_building_lc_progress_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_x2 = MainActivity.def_building_lb_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_x2 = MainActivity.def_building_lb_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_x2 = MainActivity.def_building_lb_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_x2 = MainActivity.def_building_lb_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_x2 = MainActivity.def_building_lb_progress_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_x2 = MainActivity.def_building_rt_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_x2 = MainActivity.def_building_rt_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_x2 = MainActivity.def_building_rt_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_x2 = MainActivity.def_building_rt_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_x2 = MainActivity.def_building_rt_progress_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_x2 = MainActivity.def_building_rc_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_x2 = MainActivity.def_building_rc_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_x2 = MainActivity.def_building_rc_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_x2 = MainActivity.def_building_rc_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_x2 = MainActivity.def_building_rc_progress_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_x2 = MainActivity.def_building_rb_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_x2 = MainActivity.def_building_rb_name_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_x2 = MainActivity.def_building_rb_increase_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_x2 = MainActivity.def_building_rb_slots_x2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_x2 = MainActivity.def_building_rb_progress_x2;
+        if (areaName.get().equals(getString(R.string.borders_city))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_city_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_total_time_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_early_win_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_enemy_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_team_name_enemy_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_team_name_our_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lt_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lt_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lt_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lt_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lt_progress_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lc_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lc_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lc_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lc_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lc_progress_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lb_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lb_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lb_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lb_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_lb_progress_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rt_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rt_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rt_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rt_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rt_progress_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rc_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rc_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rc_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rc_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rc_progress_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rb_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rb_name_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rb_points_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rb_slots_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_x2 = Float.parseFloat(getString(R.string.def_cut_building_rb_progress_x2));
         }
         etX2.setText(String.valueOf(cut_x2));
 
@@ -848,43 +867,43 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetY1(View view) {
 
-        if (areaName.get().equals(getString(R.string.borders_city))) { cut_y1 = MainActivity.def_city_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y1 = MainActivity.def_total_time_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y1 = MainActivity.def_early_win_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y1 = MainActivity.def_points_our_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_y1 = MainActivity.def_points_enemy_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_y1 = MainActivity.def_team_name_enemy_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_y1 = MainActivity.def_team_name_our_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_y1 = MainActivity.def_building_lt_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_y1 = MainActivity.def_building_lt_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_y1 = MainActivity.def_building_lt_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_y1 = MainActivity.def_building_lt_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_y1 = MainActivity.def_building_lt_progress_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_y1 = MainActivity.def_building_lc_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_y1 = MainActivity.def_building_lc_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_y1 = MainActivity.def_building_lc_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_y1 = MainActivity.def_building_lc_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_y1 = MainActivity.def_building_lc_progress_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_y1 = MainActivity.def_building_lb_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_y1 = MainActivity.def_building_lb_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_y1 = MainActivity.def_building_lb_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_y1 = MainActivity.def_building_lb_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_y1 = MainActivity.def_building_lb_progress_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_y1 = MainActivity.def_building_rt_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_y1 = MainActivity.def_building_rt_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_y1 = MainActivity.def_building_rt_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_y1 = MainActivity.def_building_rt_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_y1 = MainActivity.def_building_rt_progress_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_y1 = MainActivity.def_building_rc_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_y1 = MainActivity.def_building_rc_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_y1 = MainActivity.def_building_rc_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_y1 = MainActivity.def_building_rc_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_y1 = MainActivity.def_building_rc_progress_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_y1 = MainActivity.def_building_rb_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_y1 = MainActivity.def_building_rb_name_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_y1 = MainActivity.def_building_rb_increase_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_y1 = MainActivity.def_building_rb_slots_y1;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_y1 = MainActivity.def_building_rb_progress_y1;
+        if (areaName.get().equals(getString(R.string.borders_city))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_city_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_total_time_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_early_win_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_enemy_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_team_name_enemy_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_team_name_our_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lt_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lt_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lt_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lt_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lt_progress_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lc_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lc_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lc_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lc_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lc_progress_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lb_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lb_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lb_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lb_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_lb_progress_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rt_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rt_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rt_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rt_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rt_progress_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rc_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rc_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rc_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rc_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rc_progress_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rb_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rb_name_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rb_points_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rb_slots_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_y1 = Float.parseFloat(getString(R.string.def_cut_building_rb_progress_y1));
         }
         etY1.setText(String.valueOf(cut_y1));
 
@@ -892,43 +911,43 @@ public class BordersActivity extends AppCompatActivity {
 
     public void resetY2(View view) {
 
-        if (areaName.get().equals(getString(R.string.borders_city))) { cut_y2 = MainActivity.def_city_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y2 = MainActivity.def_total_time_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y2 = MainActivity.def_early_win_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y2 = MainActivity.def_points_our_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_y2 = MainActivity.def_points_enemy_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_y2 = MainActivity.def_team_name_enemy_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_y2 = MainActivity.def_team_name_our_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_y2 = MainActivity.def_building_lt_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_y2 = MainActivity.def_building_lt_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_y2 = MainActivity.def_building_lt_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_y2 = MainActivity.def_building_lt_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_y2 = MainActivity.def_building_lt_progress_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_y2 = MainActivity.def_building_lc_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_y2 = MainActivity.def_building_lc_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_y2 = MainActivity.def_building_lc_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_y2 = MainActivity.def_building_lc_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_y2 = MainActivity.def_building_lc_progress_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_y2 = MainActivity.def_building_lb_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_y2 = MainActivity.def_building_lb_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_y2 = MainActivity.def_building_lb_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_y2 = MainActivity.def_building_lb_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_y2 = MainActivity.def_building_lb_progress_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_y2 = MainActivity.def_building_rt_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_y2 = MainActivity.def_building_rt_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_y2 = MainActivity.def_building_rt_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_y2 = MainActivity.def_building_rt_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_y2 = MainActivity.def_building_rt_progress_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_y2 = MainActivity.def_building_rc_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_y2 = MainActivity.def_building_rc_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_y2 = MainActivity.def_building_rc_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_y2 = MainActivity.def_building_rc_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_y2 = MainActivity.def_building_rc_progress_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_y2 = MainActivity.def_building_rb_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_y2 = MainActivity.def_building_rb_name_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_y2 = MainActivity.def_building_rb_increase_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_y2 = MainActivity.def_building_rb_slots_y2;
-        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_y2 = MainActivity.def_building_rb_progress_y2;
+        if (areaName.get().equals(getString(R.string.borders_city))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_city_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_total_time_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_early_win_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_enemy_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_team_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_team_name_enemy_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_team_name_our_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lt_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lt_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lt_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lt_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lt_progress_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lc_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lc_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lc_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lc_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lc_progress_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lb_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lb_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lb_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lb_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_lb_progress_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rt_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rt_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rt_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rt_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rt_progress_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rc_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rc_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rc_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rc_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rc_progress_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rb_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rb_name_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rb_points_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rb_slots_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_brb_progress))) {cut_y2 = Float.parseFloat(getString(R.string.def_cut_building_rb_progress_y2));
         }
         etY2.setText(String.valueOf(cut_y2));
 

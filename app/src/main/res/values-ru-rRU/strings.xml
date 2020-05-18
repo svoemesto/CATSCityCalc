@@ -14,7 +14,7 @@
     <string name="status_they">Их статус</string>
     <string name="result">Результат</string>
     <string name="settings">Настройки</string>
-    <string name="open_scriinshot">Открыть скриншот</string>
+    <string name="open_screenshot">Открыть скриншот</string>
     <string name="set_screenshot_folder">Выбрать папку скриншотов</string>
     <string name="about_us">О программе</string>
     <string name="exit">Выход</string>
@@ -99,6 +99,18 @@
     <string name="sett_colors">Настройка определения цветов</string>
     <string name="colors_plus_us">Наша прибавка</string>
     <string name="colors_plus_they">Прибавка противника</string>
+    <string name="colors_blt_increase">BLT прибавка</string>
+    <string name="colors_blt_slots">BLT слоты</string>
+    <string name="colors_blc_increase">BLC прибавка</string>
+    <string name="colors_blc_slots">BLC слоты</string>
+    <string name="colors_blb_increase">BLB прибавка</string>
+    <string name="colors_blb_slots">BLB слоты</string>
+    <string name="colors_brt_increase">BRT прибавка</string>
+    <string name="colors_brt_slots">BRT слоты</string>
+    <string name="colors_brc_increase">BRC прибавка</string>
+    <string name="colors_brc_slots">BRC слоты</string>
+    <string name="colors_brb_increase">BRB прибавка</string>
+    <string name="colors_brb_slots">BRB слоты</string>
     <string name="minus_threshold">Порог в минус</string>
     <string name="plus_threshold">Порог в плюс</string>
     <string name="original_picture">Исходное изображение</string>
@@ -204,6 +216,18 @@
         <item>Наша прибавка</item>
         <item>Очки противника</item>
         <item>Прибавка противника</item>
+<!--        <item>BLT Прирост</item>-->
+<!--        <item>BLT слоты</item>-->
+<!--        <item>BLC Прирост</item>-->
+<!--        <item>BLC слоты</item>-->
+<!--        <item>BLB Прирост</item>-->
+<!--        <item>BLB слоты</item>-->
+<!--        <item>BRT Прирост</item>-->
+<!--        <item>BRT слоты</item>-->
+<!--        <item>BRC Прирост</item>-->
+<!--        <item>BRC слоты</item>-->
+<!--        <item>BRB Прирост</item>-->
+<!--        <item>BRB слоты</item>-->
     </string-array>
 
     <string-array name="pref_colors_values">
@@ -213,7 +237,18 @@
         <item>Наша прибавка</item>
         <item>Очки противника</item>
         <item>Прибавка противника</item>
-
+<!--        <item>BLT Прирост</item>-->
+<!--        <item>BLT слоты</item>-->
+<!--        <item>BLC Прирост</item>-->
+<!--        <item>BLC слоты</item>-->
+<!--        <item>BLB Прирост</item>-->
+<!--        <item>BLB слоты</item>-->
+<!--        <item>BRT Прирост</item>-->
+<!--        <item>BRT слоты</item>-->
+<!--        <item>BRC Прирост</item>-->
+<!--        <item>BRC слоты</item>-->
+<!--        <item>BRB Прирост</item>-->
+<!--        <item>BRB слоты</item>-->
     </string-array>
 
 </resources>

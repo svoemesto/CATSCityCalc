@@ -88,7 +88,8 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_x), MainActivity.calibrateX);
                 editor.apply();
-                showCalibratedImage();
+                MainActivity.mainCityCalc = new CityCalc(MainActivity.fileScreenshot, MainActivity.calibrateX, MainActivity.calibrateY, ivCalibrate.getContext());
+                ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
             }
         });
 
@@ -111,11 +112,13 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_y), MainActivity.calibrateY);
                 editor.apply();
-                showCalibratedImage();
+                MainActivity.mainCityCalc = new CityCalc(MainActivity.fileScreenshot, MainActivity.calibrateX, MainActivity.calibrateY, ivCalibrate.getContext());
+                ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+
             }
         });
 
-        showCalibratedImage();
+        ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
 
     }
 
@@ -133,13 +136,6 @@ public class CalibrateActivity extends AppCompatActivity {
     }
 
 
-    private void showCalibratedImage() {
-
-        Bitmap sourceBitmap = BitmapFactory.decodeFile(MainActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
-        CuttedPictures cuttedPictures = CutPicture.cutPictire(sourceBitmap);
-        ivCalibrate.setImageBitmap(cuttedPictures.croppingBitmap);
-
-    }
 
     public void calibrateResetX(View view) {
         etCalibrateX.setText(String.valueOf(0));

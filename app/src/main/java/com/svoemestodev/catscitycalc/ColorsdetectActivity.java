@@ -50,10 +50,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
     public static int color_THM;
     public static int color_THP;
 
-    public static float cut_x1;
-    public static float cut_x2;
-    public static float cut_y1;
-    public static float cut_y2;
+    public static CityCalcArea cityCalcArea;
 
     public static Bitmap originalBitmap;
     public static Bitmap processedBitmap;
@@ -63,154 +60,42 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
 
     public void loadArea() {
-
+        
         if (areaName.get().equals(getString(R.string.borders_time))) {
-
-            color_THM = MainActivity.rgb_total_time_thm;
-            color_THP = MainActivity.rgb_total_time_thp;
-            int value = MainActivity.rgb_total_time;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_total_time_x1;
-            cut_x2 = MainActivity.cut_total_time_x2;
-            cut_y1 = MainActivity.cut_total_time_y1;
-            cut_y2 = MainActivity.cut_total_time_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-
-            color_THM = MainActivity.rgb_early_win_thm;
-            color_THP = MainActivity.rgb_early_win_thp;
-            int value = MainActivity.rgb_early_win;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_early_win_x1;
-            cut_x2 = MainActivity.cut_early_win_x2;
-            cut_y1 = MainActivity.cut_early_win_y1;
-            cut_y2 = MainActivity.cut_early_win_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-
-            color_THM = MainActivity.rgb_points_our_thm;
-            color_THP = MainActivity.rgb_points_our_thp;
-            int value = MainActivity.rgb_points_our;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_points_and_increase_our_x1;
-            cut_x2 = MainActivity.cut_points_and_increase_our_x2;
-            cut_y1 = MainActivity.cut_points_and_increase_our_y1;
-            cut_y2 = MainActivity.cut_points_and_increase_our_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-
-            color_THM = MainActivity.rgb_increase_our_thm;
-            color_THP = MainActivity.rgb_increase_our_thp;
-            int value = MainActivity.rgb_increase_our;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_points_and_increase_our_x1;
-            cut_x2 = MainActivity.cut_points_and_increase_our_x2;
-            cut_y1 = MainActivity.cut_points_and_increase_our_y1;
-            cut_y2 = MainActivity.cut_points_and_increase_our_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-
-            color_THM = MainActivity.rgb_points_enemy_thm;
-            color_THP = MainActivity.rgb_points_enemy_thp;
-            int value = MainActivity.rgb_points_enemy;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_points_and_increase_enemy_x1;
-            cut_x2 = MainActivity.cut_points_and_increase_enemy_x2;
-            cut_y1 = MainActivity.cut_points_and_increase_enemy_y1;
-            cut_y2 = MainActivity.cut_points_and_increase_enemy_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-
-            color_THM = MainActivity.rgb_increase_enemy_thm;
-            color_THP = MainActivity.rgb_increase_enemy_thp;
-            int value = MainActivity.rgb_increase_enemy;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
-            cut_x1 = MainActivity.cut_points_and_increase_enemy_x1;
-            cut_x2 = MainActivity.cut_points_and_increase_enemy_x2;
-            cut_y1 = MainActivity.cut_points_and_increase_enemy_y1;
-            cut_y2 = MainActivity.cut_points_and_increase_enemy_y2;
-
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
         }
 
+        color_THM = cityCalcArea.ths[0];
+        color_THP = cityCalcArea.ths[1];
+        int value = cityCalcArea.colors[0];
+        color_RGB = value;
+        color_R = Color.red(value);
+        color_G = Color.green(value);
+        color_B = Color.blue(value);
+        
         tvR.setText(String.valueOf(color_R));
         tvG.setText(String.valueOf(color_G));
         tvB.setText(String.valueOf(color_B));
         tvTHM.setText(String.valueOf(color_THM));
         tvTHP.setText(String.valueOf(color_THP));
 
-        originalBitmap = cutBorders();
-        ivOriginal.setImageBitmap(originalBitmap);
+//        originalBitmap = cityCalcArea.bmpSrc;
+//        processedBitmap = cityCalcArea.bmpPrc;
+//        ivOriginal.setImageBitmap(originalBitmap);
+//        ivProcessed.setImageBitmap(processedBitmap);
 
         etRGB.setText(Integer.toHexString(color_RGB).toUpperCase());
-
-
-    }
-
-    public void doProcess() {
-
-        int width = originalBitmap.getWidth();
-        int height = originalBitmap.getHeight();
-        Matrix matrix = new Matrix();           // матрица ресайза
-        matrix.postScale(5.0f, 4.0f);   // будем ресайзать в 4 раза
-
-        Bitmap tmpBitmap = Bitmap.createBitmap(width, height, originalBitmap.getConfig());
-
-        Canvas c = new Canvas();
-        c.setBitmap(tmpBitmap);
-
-        int A, R, G, B;
-        int pixel;
-
-        for(int x = 0; x < width; ++x) {
-            for(int y = 0; y < height; ++y) {
-                pixel = originalBitmap.getPixel(x, y);
-                A = Color.alpha(pixel);
-                R = Color.red(pixel);
-                G = Color.green(pixel);
-                B = Color.blue(pixel);
-
-                if ((R > (color_R - color_THM) && R < (color_R + color_THP)) && (G > (color_G - color_THM) && G < (color_G + color_THP)) && (B > (color_B - color_THM) && B < (color_B + color_THP))) {
-                    R=0;
-                    G=0;
-                    B=0;
-                } else {
-                    R=255;
-                    G=255;
-                    B=255;
-                }
-
-                tmpBitmap.setPixel(x, y, Color.argb(A, R, G, B));
-            }
-        }
-
-        processedBitmap = Bitmap.createBitmap(tmpBitmap, 0, 0, width, height, matrix, false);
-        ivProcessed.setImageBitmap(processedBitmap);
-
-        tvRecognize.setText(recognizePicture(processedBitmap));
+//        tvRecognize.setText(cityCalcArea.ocrText);
 
     }
 
@@ -261,6 +146,20 @@ public class ColorsdetectActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         areaName.set(sharedPreferences.getString(PREF_COLORS_AREA, String.valueOf(R.string.pref_colorsAreaName_default_value)));
 
+        if (areaName.get().equals(getString(R.string.borders_time))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
+        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
+        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
+        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
+        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
+        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
+            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+        }
+        
         areaName.setOnStringChangeListener(new OnStringChangeListener()
         {
             @Override
@@ -296,57 +195,37 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     tvColor.setTextColor(color_ARGB);
 
+                    SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    
                     if (areaName.get().equals(getString(R.string.borders_time))) {
-
-                        MainActivity.rgb_total_time = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_total_time), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
+                        editor.putInt(getString(R.string.pref_rgb_total_time_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-
-                        MainActivity.rgb_early_win = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_early_win), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
+                        editor.putInt(getString(R.string.pref_rgb_early_win_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-
-                        MainActivity.rgb_points_our = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_total_us), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
+                        editor.putInt(getString(R.string.pref_rgb_points_our_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-
-                        MainActivity.rgb_increase_our = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_plus_us), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
+                        editor.putInt(getString(R.string.pref_rgb_increase_our_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-
-                        MainActivity.rgb_points_enemy = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_total_they), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
+                        editor.putInt(getString(R.string.pref_rgb_points_enemy_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-
-                        MainActivity.rgb_increase_enemy = color_RGB;
-                        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putInt(getString(R.string.pref_rgb_plus_they), color_RGB);
-                        editor.apply();
-
+                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+                        editor.putInt(getString(R.string.pref_rgb_increase_enemy_main), color_RGB);
                     }
+                    editor.apply();
+                    cityCalcArea.colors[0] = color_RGB;
+                    cityCalcArea.doORC();
 
-                    doProcess();
+                    originalBitmap = cityCalcArea.bmpSrc;
+                    processedBitmap = cityCalcArea.bmpPrc;
+                    ivOriginal.setImageBitmap(originalBitmap);
+                    ivProcessed.setImageBitmap(processedBitmap);
+                    tvRecognize.setText(cityCalcArea.ocrText);
 
                 } catch (NumberFormatException e) {
                 }
@@ -370,30 +249,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);   // возвращаем супер-метод
     }
-
-    public static Bitmap cutBorders() {
-        int widthSource = fullBitmap.getWidth();      // ширина исходной картинки
-        int heightSource = fullBitmap.getHeight();   // высота исходной картинки
-
-        int realCalibrateX = (widthSource / 2) > Math.abs(MainActivity.calibrateX) ? MainActivity.calibrateX : 0;
-        int realCalibrateY = (heightSource / 2) > Math.abs(MainActivity.calibrateY) ? MainActivity.calibrateY : 0;
-
-        // координаты для вырезания картинки информации об игре
-        int x1 = (int) ((double) widthSource / 2 + cut_x1 * heightSource) + realCalibrateX;
-        int x2 = (int) ((double) widthSource / 2 + cut_x2 * heightSource) + realCalibrateX;
-        int y1 = (int) ((double) heightSource / 2 + cut_y1 * ((double) heightSource / 2)) + realCalibrateY;
-        int y2 = (int) ((double) heightSource / 2 + cut_y2 * ((double) heightSource / 2)) + realCalibrateY;
-
-        // если координаты вылезаю за границы скриншота - приводим их к границам
-        x1 = Math.max(x1, 0); x2 = Math.min(x2, widthSource);
-        y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
-
-        Bitmap croppingBitmap = Bitmap.createBitmap(fullBitmap, x1, y1, x2 - x1, y2 - y1);
-
-        return croppingBitmap;
-
-    }
-
+    
     public void colorRminus(View view) {
         if (color_R > 0) color_R--;
         color_RGB = (color_R << 16) | (color_G << 8) | color_B;
@@ -432,113 +288,66 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
     public void updateTHM() {
 
+        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        
         if (areaName.get().equals(getString(R.string.borders_time))) {
-
-            MainActivity.rgb_total_time_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_time_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_total_time_thm), color_THM);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-
-            MainActivity.rgb_early_win_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_early_win_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_early_win_thm), color_THM);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-
-            MainActivity.rgb_points_our_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_us_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_points_our_thm), color_THM);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-
-            MainActivity.rgb_increase_our_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_increase_our_thm), color_THM);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-
-            MainActivity.rgb_points_enemy_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_they_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_points_enemy_thm), color_THM);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-
-            MainActivity.rgb_increase_enemy_thm = color_THM;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_minus), color_THM);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_increase_enemy_thm), color_THM);
         }
+        
+        cityCalcArea.ths[0] = color_THM;
+        editor.apply();
+        
+        cityCalcArea.doORC();
 
-        doProcess();
+        originalBitmap = cityCalcArea.bmpSrc;
+        processedBitmap = cityCalcArea.bmpPrc;
+        ivOriginal.setImageBitmap(originalBitmap);
+        ivProcessed.setImageBitmap(processedBitmap);
+        tvRecognize.setText(cityCalcArea.ocrText);
 
     }
 
     public void updateTHP() {
 
+        SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         if (areaName.get().equals(getString(R.string.borders_time))) {
-
-            MainActivity.rgb_total_time_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_time_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_total_time_thp), color_THP);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-
-            MainActivity.rgb_early_win_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_early_win_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_early_win_thp), color_THP);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-
-            MainActivity.rgb_points_our_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_us_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_points_our_thp), color_THP);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-
-            MainActivity.rgb_increase_our_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_increase_our_thp), color_THP);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-
-            MainActivity.rgb_points_enemy_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_total_they_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_points_enemy_thp), color_THP);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-
-            MainActivity.rgb_increase_enemy_thp = color_THP;
-            SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_plus), color_THP);
-            editor.apply();
-
+            editor.putInt(getString(R.string.pref_rgb_increase_enemy_thp), color_THP);
         }
 
-        doProcess();
+        cityCalcArea.ths[1] = color_THP;
+        editor.apply();
+
+        cityCalcArea.doORC();
+
+        originalBitmap = cityCalcArea.bmpSrc;
+        processedBitmap = cityCalcArea.bmpPrc;
+        ivOriginal.setImageBitmap(originalBitmap);
+        ivProcessed.setImageBitmap(processedBitmap);
+        tvRecognize.setText(cityCalcArea.ocrText);
+
 
     }
     
@@ -569,67 +378,37 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
     public void setDefaultColor(View view) {
 
+        int value = 0;
         if (areaName.get().equals(getString(R.string.borders_time))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_TOTAL_TIME;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_total_time_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_total_time_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_total_time_main));
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_EARLY_WIN;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_early_win_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_early_win_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_early_win_main));
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_TOTAL_US;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_points_our_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_points_our_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_points_our_main));
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_PLUS_US;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_our_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_our_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_increase_our_main));
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_TOTAL_THEY;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_points_enemy_main));
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-
-            color_THM = MainActivity.DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_MINUS;
-            color_THP = MainActivity.DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_PLUS;
-            int value = MainActivity.DEFAULT_PREF_RGB_PLUS_THEY;
-            color_RGB = value;
-            color_R = Color.red(value);
-            color_G = Color.green(value);
-            color_B = Color.blue(value);
-
+            color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thm));
+            color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thp));
+            value = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_main));
         }
+
+        color_RGB = value;
+        color_R = Color.red(value);
+        color_G = Color.green(value);
+        color_B = Color.blue(value);
 
         tvR.setText(String.valueOf(color_R));
         tvG.setText(String.valueOf(color_G));

@@ -2,297 +2,297 @@
 <resources>
 
     <!--  "Город"  -->
-    <item name="def_cut_city_x1" format="float" type="dimen">-0.565</item>
-    <item name="def_cut_city_x2" format="float" type="dimen">+0.565</item>
-    <item name="def_cut_city_y1" format="float" type="dimen">-0.800</item>
-    <item name="def_cut_city_y2" format="float" type="dimen">-0.450</item>
+    <string name="def_cut_city_x1" translatable="false">-0.565</string>
+    <string name="def_cut_city_x2" translatable="false">+0.565</string>
+    <string name="def_cut_city_y1" translatable="false">-0.800</string>
+    <string name="def_cut_city_y2" translatable="false">-0.450</string>
 
     <!--  "Время"  -->
-    <item name="def_cut_total_time_x1" format="float" type="dimen">-0.130</item>
-    <item name="def_cut_total_time_x2" format="float" type="dimen">+0.060</item>
-    <item name="def_cut_total_time_y1" format="float" type="dimen">-0.780</item>
-    <item name="def_cut_total_time_y2" format="float" type="dimen">-0.660</item>
+    <string name="def_cut_total_time_x1" translatable="false">-0.130</string>
+    <string name="def_cut_total_time_x2" translatable="false">+0.060</string>
+    <string name="def_cut_total_time_y1" translatable="false">-0.780</string>
+    <string name="def_cut_total_time_y2" translatable="false">-0.660</string>
 
     <!--  "Очки для досрочной победы"  -->
-    <item name="def_cut_early_win_x1" format="float" type="dimen">-0.170</item>
-    <item name="def_cut_early_win_x2" format="float" type="dimen">+0.170</item>
-    <item name="def_cut_early_win_y1" format="float" type="dimen">-0.570</item>
-    <item name="def_cut_early_win_y2" format="float" type="dimen">-0.450</item>
+    <string name="def_cut_early_win_x1" translatable="false">-0.170</string>
+    <string name="def_cut_early_win_x2" translatable="false">+0.170</string>
+    <string name="def_cut_early_win_y1" translatable="false">-0.570</string>
+    <string name="def_cut_early_win_y2" translatable="false">-0.450</string>
 
     <!--  "Очки и пророст - наши"  -->
-    <item name="def_cut_points_and_increase_our_x1" format="float" type="dimen">-0.565</item>
-    <item name="def_cut_points_and_increase_our_x2" format="float" type="dimen">-0.180</item>
-    <item name="def_cut_points_and_increase_our_y1" format="float" type="dimen">-0.610</item>
-    <item name="def_cut_points_and_increase_our_y2" format="float" type="dimen">-0.470</item>
+    <string name="def_cut_points_and_increase_our_x1" translatable="false">-0.565</string>
+    <string name="def_cut_points_and_increase_our_x2" translatable="false">-0.180</string>
+    <string name="def_cut_points_and_increase_our_y1" translatable="false">-0.610</string>
+    <string name="def_cut_points_and_increase_our_y2" translatable="false">-0.470</string>
 
     <!--  "Очки и пророст - противника"  -->
-    <item name="def_cut_points_and_increase_enemy_x1" format="float" type="dimen">+0.180</item>
-    <item name="def_cut_points_and_increase_enemy_x2" format="float" type="dimen">+0.565</item>
-    <item name="def_cut_points_and_increase_enemy_y1" format="float" type="dimen">-0.610</item>
-    <item name="def_cut_points_and_increase_enemy_y2" format="float" type="dimen">-0.470</item>
+    <string name="def_cut_points_and_increase_enemy_x1" translatable="false">+0.180</string>
+    <string name="def_cut_points_and_increase_enemy_x2" translatable="false">+0.565</string>
+    <string name="def_cut_points_and_increase_enemy_y1" translatable="false">-0.610</string>
+    <string name="def_cut_points_and_increase_enemy_y2" translatable="false">-0.470</string>
 
     <!--  "Название номанды - нашей"  -->
-    <item name="def_cut_team_name_our_x1" format="float" type="dimen">-0.565</item>
-    <item name="def_cut_team_name_our_x2" format="float" type="dimen">-0.250</item>
-    <item name="def_cut_team_name_our_y1" format="float" type="dimen">-0.760</item>
-    <item name="def_cut_team_name_our_y2" format="float" type="dimen">-0.650</item>
+    <string name="def_cut_team_name_our_x1" translatable="false">-0.565</string>
+    <string name="def_cut_team_name_our_x2" translatable="false">-0.250</string>
+    <string name="def_cut_team_name_our_y1" translatable="false">-0.760</string>
+    <string name="def_cut_team_name_our_y2" translatable="false">-0.650</string>
 
     <!--  "Название номанды - противника"  -->
-    <item name="def_cut_team_name_enemy_x1" format="float" type="dimen">+0.250</item>
-    <item name="def_cut_team_name_enemy_x2" format="float" type="dimen">+0.490</item>
-    <item name="def_cut_team_name_enemy_y1" format="float" type="dimen">-0.760</item>
-    <item name="def_cut_team_name_enemy_y2" format="float" type="dimen">-0.650</item>
+    <string name="def_cut_team_name_enemy_x1" translatable="false">+0.250</string>
+    <string name="def_cut_team_name_enemy_x2" translatable="false">+0.490</string>
+    <string name="def_cut_team_name_enemy_y1" translatable="false">-0.760</string>
+    <string name="def_cut_team_name_enemy_y2" translatable="false">-0.650</string>
 
 
 
 
     <!--  "Здание слева вверху"  -->
-    <item name="def_cut_building_lt_x1" format="float" type="dimen">-0.597</item>
-    <item name="def_cut_building_lt_x2" format="float" type="dimen">-0.238</item>
-    <item name="def_cut_building_lt_y1" format="float" type="dimen">-0.144</item>
-    <item name="def_cut_building_lt_y2" format="float" type="dimen">+0.051</item>
+    <string name="def_cut_building_lt_x1" translatable="false">-0.597</string>
+    <string name="def_cut_building_lt_x2" translatable="false">-0.238</string>
+    <string name="def_cut_building_lt_y1" translatable="false">-0.144</string>
+    <string name="def_cut_building_lt_y2" translatable="false">+0.051</string>
 
     <!--  "Здание слева вверху - прирост"  -->
-    <item name="def_cut_building_lt_increase_x1" format="float" type="dimen">-0.597</item>
-    <item name="def_cut_building_lt_increase_x2" format="float" type="dimen">-0.490</item>
-    <item name="def_cut_building_lt_increase_y1" format="float" type="dimen">-0.144</item>
-    <item name="def_cut_building_lt_increase_y2" format="float" type="dimen">+0.051</item>
+    <string name="def_cut_building_lt_points_x1" translatable="false">-0.597</string>
+    <string name="def_cut_building_lt_points_x2" translatable="false">-0.490</string>
+    <string name="def_cut_building_lt_points_y1" translatable="false">-0.144</string>
+    <string name="def_cut_building_lt_points_y2" translatable="false">+0.051</string>
 
     <!--  "Здание слева вверху - название"  -->
-    <item name="def_cut_building_lt_name_x1" format="float" type="dimen">-0.490</item>
-    <item name="def_cut_building_lt_name_x2" format="float" type="dimen">-0.327</item>
-    <item name="def_cut_building_lt_name_y1" format="float" type="dimen">-0.130</item>
-    <item name="def_cut_building_lt_name_y2" format="float" type="dimen">-0.040</item>
+    <string name="def_cut_building_lt_name_x1" translatable="false">-0.490</string>
+    <string name="def_cut_building_lt_name_x2" translatable="false">-0.327</string>
+    <string name="def_cut_building_lt_name_y1" translatable="false">-0.130</string>
+    <string name="def_cut_building_lt_name_y2" translatable="false">-0.040</string>
 
     <!--  "Здание слева вверху - слоты"  -->
-    <item name="def_cut_building_lt_slots_x1" format="float" type="dimen">-0.290</item>
-    <item name="def_cut_building_lt_slots_x2" format="float" type="dimen">-0.240</item>
-    <item name="def_cut_building_lt_slots_y1" format="float" type="dimen">-0.130</item>
-    <item name="def_cut_building_lt_slots_y2" format="float" type="dimen">-0.040</item>
+    <string name="def_cut_building_lt_slots_x1" translatable="false">-0.290</string>
+    <string name="def_cut_building_lt_slots_x2" translatable="false">-0.240</string>
+    <string name="def_cut_building_lt_slots_y1" translatable="false">-0.130</string>
+    <string name="def_cut_building_lt_slots_y2" translatable="false">-0.040</string>
 
     <!--  "Здание слева вверху - прогресс"  -->
-    <item name="def_cut_building_lt_progress_x1" format="float" type="dimen">-0.486</item>
-    <item name="def_cut_building_lt_progress_x2" format="float" type="dimen">-0.255</item>
-    <item name="def_cut_building_lt_progress_y1" format="float" type="dimen">-0.036</item>
-    <item name="def_cut_building_lt_progress_y2" format="float" type="dimen">+0.016</item>
+    <string name="def_cut_building_lt_progress_x1" translatable="false">-0.486</string>
+    <string name="def_cut_building_lt_progress_x2" translatable="false">-0.255</string>
+    <string name="def_cut_building_lt_progress_y1" translatable="false">-0.036</string>
+    <string name="def_cut_building_lt_progress_y2" translatable="false">+0.016</string>
 
 
 
     <!--  "Здание слева центр"  x-81 y+442  -->
-    <item name="def_cut_building_lc_x1" format="float" type="dimen">-0.678</item>
-    <item name="def_cut_building_lc_x2" format="float" type="dimen">-0.319</item>
-    <item name="def_cut_building_lc_y1" format="float" type="dimen">+0.298</item>
-    <item name="def_cut_building_lc_y2" format="float" type="dimen">+0.493</item>
+    <string name="def_cut_building_lc_x1" translatable="false">-0.678</string>
+    <string name="def_cut_building_lc_x2" translatable="false">-0.319</string>
+    <string name="def_cut_building_lc_y1" translatable="false">+0.298</string>
+    <string name="def_cut_building_lc_y2" translatable="false">+0.493</string>
 
     <!--  "Здание слева центр - прирост"  -->
-    <item name="def_cut_building_lc_increase_x1" format="float" type="dimen">-0.678</item>
-    <item name="def_cut_building_lc_increase_x2" format="float" type="dimen">-0.571</item>
-    <item name="def_cut_building_lc_increase_y1" format="float" type="dimen">+0.298</item>
-    <item name="def_cut_building_lc_increase_y2" format="float" type="dimen">+0.493</item>
+    <string name="def_cut_building_lc_points_x1" translatable="false">-0.678</string>
+    <string name="def_cut_building_lc_points_x2" translatable="false">-0.571</string>
+    <string name="def_cut_building_lc_points_y1" translatable="false">+0.298</string>
+    <string name="def_cut_building_lc_points_y2" translatable="false">+0.493</string>
 
     <!--  "Здание слева центр - название"  -->
-    <item name="def_cut_building_lc_name_x1" format="float" type="dimen">-0.571</item>
-    <item name="def_cut_building_lc_name_x2" format="float" type="dimen">-0.408</item>
-    <item name="def_cut_building_lc_name_y1" format="float" type="dimen">+0.312</item>
-    <item name="def_cut_building_lc_name_y2" format="float" type="dimen">+0.402</item>
+    <string name="def_cut_building_lc_name_x1" translatable="false">-0.571</string>
+    <string name="def_cut_building_lc_name_x2" translatable="false">-0.408</string>
+    <string name="def_cut_building_lc_name_y1" translatable="false">+0.312</string>
+    <string name="def_cut_building_lc_name_y2" translatable="false">+0.402</string>
 
     <!--  "Здание слева центр - слоты"  -->
-    <item name="def_cut_building_lc_slots_x1" format="float" type="dimen">-0.371</item>
-    <item name="def_cut_building_lc_slots_x2" format="float" type="dimen">-0.321</item>
-    <item name="def_cut_building_lc_slots_y1" format="float" type="dimen">+0.312</item>
-    <item name="def_cut_building_lc_slots_y2" format="float" type="dimen">+0.402</item>
+    <string name="def_cut_building_lc_slots_x1" translatable="false">-0.371</string>
+    <string name="def_cut_building_lc_slots_x2" translatable="false">-0.321</string>
+    <string name="def_cut_building_lc_slots_y1" translatable="false">+0.312</string>
+    <string name="def_cut_building_lc_slots_y2" translatable="false">+0.402</string>
 
     <!--  "Здание слева центр - прогресс"  -->
-    <item name="def_cut_building_lc_progress_x1" format="float" type="dimen">-0.567</item>
-    <item name="def_cut_building_lc_progress_x2" format="float" type="dimen">-0.336</item>
-    <item name="def_cut_building_lc_progress_y1" format="float" type="dimen">+0.406</item>
-    <item name="def_cut_building_lc_progress_y2" format="float" type="dimen">+0.458</item>
+    <string name="def_cut_building_lc_progress_x1" translatable="false">-0.567</string>
+    <string name="def_cut_building_lc_progress_x2" translatable="false">-0.336</string>
+    <string name="def_cut_building_lc_progress_y1" translatable="false">+0.406</string>
+    <string name="def_cut_building_lc_progress_y2" translatable="false">+0.458</string>
 
 
     <!--  "Здание слева низ"  x+360 y+264  -->
-    <item name="def_cut_building_lb_x1" format="float" type="dimen">-0.318</item>
-    <item name="def_cut_building_lb_x2" format="float" type="dimen">+0.041</item>
-    <item name="def_cut_building_lb_y1" format="float" type="dimen">+0.562</item>
-    <item name="def_cut_building_lb_y2" format="float" type="dimen">+0.757</item>
+    <string name="def_cut_building_lb_x1" translatable="false">-0.318</string>
+    <string name="def_cut_building_lb_x2" translatable="false">+0.041</string>
+    <string name="def_cut_building_lb_y1" translatable="false">+0.562</string>
+    <string name="def_cut_building_lb_y2" translatable="false">+0.757</string>
 
     <!--  "Здание слева низ - прирост"  -->
-    <item name="def_cut_building_lb_increase_x1" format="float" type="dimen">-0.318</item>
-    <item name="def_cut_building_lb_increase_x2" format="float" type="dimen">-0.211</item>
-    <item name="def_cut_building_lb_increase_y1" format="float" type="dimen">+0.562</item>
-    <item name="def_cut_building_lb_increase_y2" format="float" type="dimen">+0.757</item>
+    <string name="def_cut_building_lb_points_x1" translatable="false">-0.318</string>
+    <string name="def_cut_building_lb_points_x2" translatable="false">-0.211</string>
+    <string name="def_cut_building_lb_points_y1" translatable="false">+0.562</string>
+    <string name="def_cut_building_lb_points_y2" translatable="false">+0.757</string>
 
     <!--  "Здание слева низ - название"  -->
-    <item name="def_cut_building_lb_name_x1" format="float" type="dimen">-0.211</item>
-    <item name="def_cut_building_lb_name_x2" format="float" type="dimen">-0.048</item>
-    <item name="def_cut_building_lb_name_y1" format="float" type="dimen">+0.576</item>
-    <item name="def_cut_building_lb_name_y2" format="float" type="dimen">+0.666</item>
+    <string name="def_cut_building_lb_name_x1" translatable="false">-0.211</string>
+    <string name="def_cut_building_lb_name_x2" translatable="false">-0.048</string>
+    <string name="def_cut_building_lb_name_y1" translatable="false">+0.576</string>
+    <string name="def_cut_building_lb_name_y2" translatable="false">+0.666</string>
 
     <!--  "Здание слева низ - слоты"  -->
-    <item name="def_cut_building_lb_slots_x1" format="float" type="dimen">-0.011</item>
-    <item name="def_cut_building_lb_slots_x2" format="float" type="dimen">+0.039</item>
-    <item name="def_cut_building_lb_slots_y1" format="float" type="dimen">+0.576</item>
-    <item name="def_cut_building_lb_slots_y2" format="float" type="dimen">+0.666</item>
+    <string name="def_cut_building_lb_slots_x1" translatable="false">-0.011</string>
+    <string name="def_cut_building_lb_slots_x2" translatable="false">+0.039</string>
+    <string name="def_cut_building_lb_slots_y1" translatable="false">+0.576</string>
+    <string name="def_cut_building_lb_slots_y2" translatable="false">+0.666</string>
 
     <!--  "Здание слева низ - прогресс"  -->
-    <item name="def_cut_building_lb_progress_x1" format="float" type="dimen">-0.207</item>
-    <item name="def_cut_building_lb_progress_x2" format="float" type="dimen">+0.024</item>
-    <item name="def_cut_building_lb_progress_y1" format="float" type="dimen">+0.670</item>
-    <item name="def_cut_building_lb_progress_y2" format="float" type="dimen">+0.722</item>
+    <string name="def_cut_building_lb_progress_x1" translatable="false">-0.207</string>
+    <string name="def_cut_building_lb_progress_x2" translatable="false">+0.024</string>
+    <string name="def_cut_building_lb_progress_y1" translatable="false">+0.670</string>
+    <string name="def_cut_building_lb_progress_y2" translatable="false">+0.722</string>
 
 
     <!--  "Здание справа вверху" x+959 y-46 -->
-    <item name="def_cut_building_rt_x1" format="float" type="dimen">+0.362</item>
-    <item name="def_cut_building_rt_x2" format="float" type="dimen">+0.721</item>
-    <item name="def_cut_building_rt_y1" format="float" type="dimen">-0.190</item>
-    <item name="def_cut_building_rt_y2" format="float" type="dimen">+0.005</item>
+    <string name="def_cut_building_rt_x1" translatable="false">+0.362</string>
+    <string name="def_cut_building_rt_x2" translatable="false">+0.721</string>
+    <string name="def_cut_building_rt_y1" translatable="false">-0.190</string>
+    <string name="def_cut_building_rt_y2" translatable="false">+0.005</string>
 
     <!--  "Здание справа вверху - прирост"  -->
-    <item name="def_cut_building_rt_increase_x1" format="float" type="dimen">+0.362</item>
-    <item name="def_cut_building_rt_increase_x2" format="float" type="dimen">+0.469</item>
-    <item name="def_cut_building_rt_increase_y1" format="float" type="dimen">-0.190</item>
-    <item name="def_cut_building_rt_increase_y2" format="float" type="dimen">+0.005</item>
+    <string name="def_cut_building_rt_points_x1" translatable="false">+0.362</string>
+    <string name="def_cut_building_rt_points_x2" translatable="false">+0.469</string>
+    <string name="def_cut_building_rt_points_y1" translatable="false">-0.190</string>
+    <string name="def_cut_building_rt_points_y2" translatable="false">+0.005</string>
 
     <!--  "Здание справа вверху - название"  -->
-    <item name="def_cut_building_rt_name_x1" format="float" type="dimen">+0.469</item>
-    <item name="def_cut_building_rt_name_x2" format="float" type="dimen">+0.632</item>
-    <item name="def_cut_building_rt_name_y1" format="float" type="dimen">-0.176</item>
-    <item name="def_cut_building_rt_name_y2" format="float" type="dimen">-0.086</item>
+    <string name="def_cut_building_rt_name_x1" translatable="false">+0.469</string>
+    <string name="def_cut_building_rt_name_x2" translatable="false">+0.632</string>
+    <string name="def_cut_building_rt_name_y1" translatable="false">-0.176</string>
+    <string name="def_cut_building_rt_name_y2" translatable="false">-0.086</string>
 
     <!--  "Здание справа вверху - слоты"  -->
-    <item name="def_cut_building_rt_slots_x1" format="float" type="dimen">+0.669</item>
-    <item name="def_cut_building_rt_slots_x2" format="float" type="dimen">+0.719</item>
-    <item name="def_cut_building_rt_slots_y1" format="float" type="dimen">-0.176</item>
-    <item name="def_cut_building_rt_slots_y2" format="float" type="dimen">-0.086</item>
+    <string name="def_cut_building_rt_slots_x1" translatable="false">+0.669</string>
+    <string name="def_cut_building_rt_slots_x2" translatable="false">+0.719</string>
+    <string name="def_cut_building_rt_slots_y1" translatable="false">-0.176</string>
+    <string name="def_cut_building_rt_slots_y2" translatable="false">-0.086</string>
 
     <!--  "Здание справа вверху - прогресс"  -->
-    <item name="def_cut_building_rt_progress_x1" format="float" type="dimen">+0.473</item>
-    <item name="def_cut_building_rt_progress_x2" format="float" type="dimen">+0.704</item>
-    <item name="def_cut_building_rt_progress_y1" format="float" type="dimen">-0.082</item>
-    <item name="def_cut_building_rt_progress_y2" format="float" type="dimen">-0.030</item>
+    <string name="def_cut_building_rt_progress_x1" translatable="false">+0.473</string>
+    <string name="def_cut_building_rt_progress_x2" translatable="false">+0.704</string>
+    <string name="def_cut_building_rt_progress_y1" translatable="false">-0.082</string>
+    <string name="def_cut_building_rt_progress_y2" translatable="false">-0.030</string>
 
 
     <!--  "Здание справа центр" x+23 y+502 -->
-    <item name="def_cut_building_rc_x1" format="float" type="dimen">+0.385</item>
-    <item name="def_cut_building_rc_x2" format="float" type="dimen">+0.744</item>
-    <item name="def_cut_building_rc_y1" format="float" type="dimen">+0.312</item>
-    <item name="def_cut_building_rc_y2" format="float" type="dimen">+0.507</item>
+    <string name="def_cut_building_rc_x1" translatable="false">+0.385</string>
+    <string name="def_cut_building_rc_x2" translatable="false">+0.744</string>
+    <string name="def_cut_building_rc_y1" translatable="false">+0.312</string>
+    <string name="def_cut_building_rc_y2" translatable="false">+0.507</string>
 
     <!--  "Здание справа центр - прирост"  -->
-    <item name="def_cut_building_rc_increase_x1" format="float" type="dimen">+0.385</item>
-    <item name="def_cut_building_rc_increase_x2" format="float" type="dimen">+0.492</item>
-    <item name="def_cut_building_rc_increase_y1" format="float" type="dimen">+0.312</item>
-    <item name="def_cut_building_rc_increase_y2" format="float" type="dimen">+0.507</item>
+    <string name="def_cut_building_rc_points_x1" translatable="false">+0.385</string>
+    <string name="def_cut_building_rc_points_x2" translatable="false">+0.492</string>
+    <string name="def_cut_building_rc_points_y1" translatable="false">+0.312</string>
+    <string name="def_cut_building_rc_points_y2" translatable="false">+0.507</string>
 
     <!--  "Здание справа центр - название"  -->
-    <item name="def_cut_building_rc_name_x1" format="float" type="dimen">+0.492</item>
-    <item name="def_cut_building_rc_name_x2" format="float" type="dimen">+0.655</item>
-    <item name="def_cut_building_rc_name_y1" format="float" type="dimen">+0.326</item>
-    <item name="def_cut_building_rc_name_y2" format="float" type="dimen">+0.416</item>
+    <string name="def_cut_building_rc_name_x1" translatable="false">+0.492</string>
+    <string name="def_cut_building_rc_name_x2" translatable="false">+0.655</string>
+    <string name="def_cut_building_rc_name_y1" translatable="false">+0.326</string>
+    <string name="def_cut_building_rc_name_y2" translatable="false">+0.416</string>
 
     <!--  "Здание справа центр - слоты"  -->
-    <item name="def_cut_building_rc_slots_x1" format="float" type="dimen">+0.692</item>
-    <item name="def_cut_building_rc_slots_x2" format="float" type="dimen">+0.742</item>
-    <item name="def_cut_building_rc_slots_y1" format="float" type="dimen">+0.326</item>
-    <item name="def_cut_building_rc_slots_y2" format="float" type="dimen">+0.416</item>
+    <string name="def_cut_building_rc_slots_x1" translatable="false">+0.692</string>
+    <string name="def_cut_building_rc_slots_x2" translatable="false">+0.742</string>
+    <string name="def_cut_building_rc_slots_y1" translatable="false">+0.326</string>
+    <string name="def_cut_building_rc_slots_y2" translatable="false">+0.416</string>
 
     <!--  "Здание справа центр - прогресс"  -->
-    <item name="def_cut_building_rc_progress_x1" format="float" type="dimen">+0.496</item>
-    <item name="def_cut_building_rc_progress_x2" format="float" type="dimen">+0.727</item>
-    <item name="def_cut_building_rc_progress_y1" format="float" type="dimen">+0.420</item>
-    <item name="def_cut_building_rc_progress_y2" format="float" type="dimen">+0.472</item>
+    <string name="def_cut_building_rc_progress_x1" translatable="false">+0.496</string>
+    <string name="def_cut_building_rc_progress_x2" translatable="false">+0.727</string>
+    <string name="def_cut_building_rc_progress_y1" translatable="false">+0.420</string>
+    <string name="def_cut_building_rc_progress_y2" translatable="false">+0.472</string>
 
 
     <!--  "Здание справа низ" x-300 y+280 2-->
-    <item name="def_cut_building_rb_x1" format="float" type="dimen">+0.085</item>
-    <item name="def_cut_building_rb_x2" format="float" type="dimen">+0.444</item>
-    <item name="def_cut_building_rb_y1" format="float" type="dimen">+0.592</item>
-    <item name="def_cut_building_rb_y2" format="float" type="dimen">+0.787</item>
+    <string name="def_cut_building_rb_x1" translatable="false">+0.085</string>
+    <string name="def_cut_building_rb_x2" translatable="false">+0.444</string>
+    <string name="def_cut_building_rb_y1" translatable="false">+0.592</string>
+    <string name="def_cut_building_rb_y2" translatable="false">+0.787</string>
 
     <!--  "Здание справа низ - прирост"  -->
-    <item name="def_cut_building_rb_increase_x1" format="float" type="dimen">+0.085</item>
-    <item name="def_cut_building_rb_increase_x2" format="float" type="dimen">+0.192</item>
-    <item name="def_cut_building_rb_increase_y1" format="float" type="dimen">+0.592</item>
-    <item name="def_cut_building_rb_increase_y2" format="float" type="dimen">+0.787</item>
+    <string name="def_cut_building_rb_points_x1" translatable="false">+0.085</string>
+    <string name="def_cut_building_rb_points_x2" translatable="false">+0.192</string>
+    <string name="def_cut_building_rb_points_y1" translatable="false">+0.592</string>
+    <string name="def_cut_building_rb_points_y2" translatable="false">+0.787</string>
 
     <!--  "Здание справа низ - название"  -->
-    <item name="def_cut_building_rb_name_x1" format="float" type="dimen">+0.192</item>
-    <item name="def_cut_building_rb_name_x2" format="float" type="dimen">+0.355</item>
-    <item name="def_cut_building_rb_name_y1" format="float" type="dimen">+0.606</item>
-    <item name="def_cut_building_rb_name_y2" format="float" type="dimen">+0.696</item>
+    <string name="def_cut_building_rb_name_x1" translatable="false">+0.192</string>
+    <string name="def_cut_building_rb_name_x2" translatable="false">+0.355</string>
+    <string name="def_cut_building_rb_name_y1" translatable="false">+0.606</string>
+    <string name="def_cut_building_rb_name_y2" translatable="false">+0.696</string>
 
     <!--  "Здание справа низ - слоты"  -->
-    <item name="def_cut_building_rb_slots_x1" format="float" type="dimen">+0.392</item>
-    <item name="def_cut_building_rb_slots_x2" format="float" type="dimen">+0.442</item>
-    <item name="def_cut_building_rb_slots_y1" format="float" type="dimen">+0.606</item>
-    <item name="def_cut_building_rb_slots_y2" format="float" type="dimen">+0.696</item>
+    <string name="def_cut_building_rb_slots_x1" translatable="false">+0.392</string>
+    <string name="def_cut_building_rb_slots_x2" translatable="false">+0.442</string>
+    <string name="def_cut_building_rb_slots_y1" translatable="false">+0.606</string>
+    <string name="def_cut_building_rb_slots_y2" translatable="false">+0.696</string>
 
     <!--  "Здание справа низ - прогресс"  -->
-    <item name="def_cut_building_rb_progress_x1" format="float" type="dimen">+0.196</item>
-    <item name="def_cut_building_rb_progress_x2" format="float" type="dimen">+0.427</item>
-    <item name="def_cut_building_rb_progress_y1" format="float" type="dimen">+0.700</item>
-    <item name="def_cut_building_rb_progress_y2" format="float" type="dimen">+0.752</item>
+    <string name="def_cut_building_rb_progress_x1" translatable="false">+0.196</string>
+    <string name="def_cut_building_rb_progress_x2" translatable="false">+0.427</string>
+    <string name="def_cut_building_rb_progress_y1" translatable="false">+0.700</string>
+    <string name="def_cut_building_rb_progress_y2" translatable="false">+0.752</string>
 
 
-    <item name="def_rgb_total_time_main" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_total_time_back1" format="integer" type="integer">0x4e6881</item>
-    <item name="def_rgb_total_time_back2" format="integer" type="integer">0x6b839b</item>
-    <item name="def_rgb_total_time_thm" format="integer" type="integer">20</item>
-    <item name="def_rgb_total_time_thp" format="integer" type="integer">1</item>
+    <string name="def_rgb_total_time_main" translatable="false">ffffff</string>
+    <string name="def_rgb_total_time_back1" translatable="false">4e6881</string>
+    <string name="def_rgb_total_time_back2" translatable="false">6b839b</string>
+    <string name="def_rgb_total_time_thm" translatable="false">20</string>
+    <string name="def_rgb_total_time_thp" translatable="false">10</string>
 
-    <item name="def_rgb_early_win_main" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_early_win_back" format="integer" type="integer">0x91a7bf</item>
-    <item name="def_rgb_early_win_thm" format="integer" type="integer">20</item>
-    <item name="def_rgb_early_win_thp" format="integer" type="integer">1</item>
+    <string name="def_rgb_early_win_main" translatable="false">ffffff</string>
+    <string name="def_rgb_early_win_back" translatable="false">91a7bf</string>
+    <string name="def_rgb_early_win_thm" translatable="false">20</string>
+    <string name="def_rgb_early_win_thp" translatable="false">10</string>
 
-    <item name="def_rgb_points_our_main" format="integer" type="integer">0x437ad7</item>
-    <item name="def_rgb_points_our_back1" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_points_our_back2" format="integer" type="integer">0xf1f1f1</item>
-    <item name="def_rgb_points_our_thm" format="integer" type="integer">1</item>
-    <item name="def_rgb_points_our_thp" format="integer" type="integer">4</item>
+    <string name="def_rgb_points_our_main" translatable="false">437ad7</string>
+    <string name="def_rgb_points_our_back1" translatable="false">ffffff</string>
+    <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
+    <string name="def_rgb_points_our_thm" translatable="false">10</string>
+    <string name="def_rgb_points_our_thp" translatable="false">10</string>
 
-    <item name="def_rgb_increase_our_main" format="integer" type="integer">0xd3def4</item>
-    <item name="def_rgb_increase_our_back" format="integer" type="integer">0x4179d8</item>
-    <item name="def_rgb_increase_our_thm" format="integer" type="integer">13</item>
-    <item name="def_rgb_increase_our_thp" format="integer" type="integer">4</item>
+    <string name="def_rgb_increase_our_main" translatable="false">d3def4</string>
+    <string name="def_rgb_increase_our_back" translatable="false">4179d8</string>
+    <string name="def_rgb_increase_our_thm" translatable="false">10</string>
+    <string name="def_rgb_increase_our_thp" translatable="false">10</string>
 
-    <item name="def_rgb_points_enemy_main" format="integer" type="integer">0xf64f49</item>
-    <item name="def_rgb_points_enemy_back1" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_points_enemy_back2" format="integer" type="integer">0xf1f1f1</item>
-    <item name="def_rgb_points_enemy_thm" format="integer" type="integer">8</item>
-    <item name="def_rgb_points_enemy_thp" format="integer" type="integer">24</item>
+    <string name="def_rgb_points_enemy_main" translatable="false">f64f49</string>
+    <string name="def_rgb_points_enemy_back1" translatable="false">ffffff</string>
+    <string name="def_rgb_points_enemy_back2" translatable="false">f1f1f1</string>
+    <string name="def_rgb_points_enemy_thm" translatable="false">10</string>
+    <string name="def_rgb_points_enemy_thp" translatable="false">10</string>
 
-    <item name="def_rgb_increase_enemy_main" format="integer" type="integer">0xfdd5d3</item>
-    <item name="def_rgb_increase_enemy_back" format="integer" type="integer">0xeb4c48</item>
-    <item name="def_rgb_increase_enemy_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_increase_enemy_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_increase_enemy_main" translatable="false">fdd5d3</string>
+    <string name="def_rgb_increase_enemy_back" translatable="false">eb4c48</string>
+    <string name="def_rgb_increase_enemy_thm" translatable="false">10</string>
+    <string name="def_rgb_increase_enemy_thp" translatable="false">10</string>
 
-    <item name="def_rgb_building_slot_main" format="integer" type="integer">0x2c3852</item>
-    <item name="def_rgb_building_slot_back" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_building_slot_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_slot_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_building_slot_main" translatable="false">2c3852</string>
+    <string name="def_rgb_building_slot_back" translatable="false">ffffff</string>
+    <string name="def_rgb_building_slot_thm" translatable="false">10</string>
+    <string name="def_rgb_building_slot_thp" translatable="false">10</string>
 
-    <item name="def_rgb_building_points_our_main" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_building_points_our_back" format="integer" type="integer">0x4179d8</item>
-    <item name="def_rgb_building_points_our_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_points_our_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_building_points_our_main" translatable="false">ffffff</string>
+    <string name="def_rgb_building_points_our_back" translatable="false">4179d8</string>
+    <string name="def_rgb_building_points_our_thm" translatable="false">10</string>
+    <string name="def_rgb_building_points_our_thp" translatable="false">10</string>
 
-    <item name="def_rgb_building_points_enemy_main" format="integer" type="integer">0xffffff</item>
-    <item name="def_rgb_building_points_enemy_back" format="integer" type="integer">0xeb4c48</item>
-    <item name="def_rgb_building_points_enemy_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_points_enemy_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_building_points_enemy_main" translatable="false">ffffff</string>
+    <string name="def_rgb_building_points_enemy_back" translatable="false">eb4c48</string>
+    <string name="def_rgb_building_points_enemy_thm" translatable="false">10</string>
+    <string name="def_rgb_building_points_enemy_thp" translatable="false">10</string>
 
-    <item name="def_rgb_building_progress_our" format="integer" type="integer">0x90b3eb</item>
-    <item name="def_rgb_building_progress_enemy" format="integer" type="integer">0xff6565</item>
-    <item name="def_rgb_building_progress_empty" format="integer" type="integer">0x5e6a84</item>
-    <item name="def_rgb_building_progress_our_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_progress_our_thp" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_progress_enemy_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_progress_enemy_thp" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_progress_empty_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_progress_empty_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_building_progress_our" translatable="false">90b3eb</string>
+    <string name="def_rgb_building_progress_enemy" translatable="false">ff6565</string>
+    <string name="def_rgb_building_progress_empty" translatable="false">5e6a84</string>
+    <string name="def_rgb_building_progress_our_thm" translatable="false">10</string>
+    <string name="def_rgb_building_progress_our_thp" translatable="false">10</string>
+    <string name="def_rgb_building_progress_enemy_thm" translatable="false">10</string>
+    <string name="def_rgb_building_progress_enemy_thp" translatable="false">10</string>
+    <string name="def_rgb_building_progress_empty_thm" translatable="false">10</string>
+    <string name="def_rgb_building_progress_empty_thp" translatable="false">10</string>
 
-    <item name="def_rgb_building_doublepoints" format="integer" type="integer">0xebb948</item>
-    <item name="def_rgb_building_doublepoints_thm" format="integer" type="integer">5</item>
-    <item name="def_rgb_building_doublepoints_thp" format="integer" type="integer">5</item>
+    <string name="def_rgb_building_doublepoints" translatable="false">ebb948</string>
+    <string name="def_rgb_building_doublepoints_thm" translatable="false">10</string>
+    <string name="def_rgb_building_doublepoints_thp" translatable="false">10</string>
 
 </resources>

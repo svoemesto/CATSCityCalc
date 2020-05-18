@@ -57,6 +57,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -98,144 +99,7 @@ public class MainActivity extends AppCompatActivity {
     public static int calibrateX;                              // калибровка
     public static int calibrateY;                              // калибровка
 
-    public static Map<Integer, String> mapStrings = new HashMap<>();
-    public static Map<Integer, Integer> mapInts = new HashMap<>();
-    public static Map<Integer, Float> mapFloats = new HashMap<>();
-
-
-    // коэффициэнты кропа картинки
-//    public static final float DEFAULT_PREF_CUT_CITY_X1 = -0.565f;
-//    public static final float DEFAULT_PREF_CUT_CITY_X2 = +0.565f;
-//    public static final float DEFAULT_PREF_CUT_CITY_Y1 = -0.800f;
-//    public static final float DEFAULT_PREF_CUT_CITY_Y2 = -0.450f;
-//
-//    public static final float DEFAULT_PREF_CUT_TOTAL_US_X1 = -0.565f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_US_X2 = -0.180f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_US_Y1 = -0.610f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_US_Y2 = -0.470f;
-//
-//    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_X1 = +0.180f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_X2 = +0.565f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_Y1 = -0.610f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_THEY_Y2 = -0.470f;
-//
-//    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_X1 = -0.130f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_X2 = +0.060f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_Y1 = -0.780f;
-//    public static final float DEFAULT_PREF_CUT_TOTAL_TIME_Y2 = -0.660f;
-//
-//    public static final float DEFAULT_PREF_CUT_EARLY_WIN_X1 = -0.170f;
-//    public static final float DEFAULT_PREF_CUT_EARLY_WIN_X2 = +0.170f;
-//    public static final float DEFAULT_PREF_CUT_EARLY_WIN_Y1 = -0.570f;
-//    public static final float DEFAULT_PREF_CUT_EARLY_WIN_Y2 = -0.450f;
-
-    public static final int DEFAULT_PREF_RGB_TOTAL_US = 0x437AD7;
-    public static final int DEFAULT_PREF_RGB_PLUS_US = 0xD3DDF6;
-    public static final int DEFAULT_PREF_RGB_TOTAL_THEY = 0xF64F49;
-    public static final int DEFAULT_PREF_RGB_PLUS_THEY = 0xFDD5D3;
-    public static final int DEFAULT_PREF_RGB_TOTAL_TIME = 0xFFFFFF;
-    public static final int DEFAULT_PREF_RGB_EARLY_WIN = 0xFFFFFF;
-
-    public static final int DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_PLUS = 4;
-    public static final int DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_MINUS = 1;
-
-    public static final int DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_PLUS = 4;
-    public static final int DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_MINUS = 13;
-
-    public static final int DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS = 24;
-    public static final int DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS = 8;
-
-    public static final int DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_PLUS = 5;
-    public static final int DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_MINUS = 5;
-
-    public static final int DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS = 1;
-    public static final int DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS = 20;
-
-    public static final int DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_PLUS = 1;
-    public static final int DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_MINUS = 20;
-
-    public static int rgb_points_our, rgb_points_our_thp, rgb_points_our_thm;
-    public static int rgb_increase_our, rgb_increase_our_thp, rgb_increase_our_thm;
-    public static int rgb_points_enemy, rgb_points_enemy_thp, rgb_points_enemy_thm;
-    public static int rgb_increase_enemy, rgb_increase_enemy_thp, rgb_increase_enemy_thm;
-    public static int rgb_total_time, rgb_total_time_thp, rgb_total_time_thm;
-    public static int rgb_early_win, rgb_early_win_thp, rgb_early_win_thm;
-
-    public static float cut_city_x1, cut_city_x2, cut_city_y1, cut_city_y2;
-    public static float cut_points_and_increase_our_x1, cut_points_and_increase_our_x2, cut_points_and_increase_our_y1, cut_points_and_increase_our_y2;
-    public static float cut_points_and_increase_enemy_x1, cut_points_and_increase_enemy_x2, cut_points_and_increase_enemy_y1, cut_points_and_increase_enemy_y2;
-    public static float cut_total_time_x1, cut_total_time_x2, cut_total_time_y1, cut_total_time_y2;
-    public static float cut_early_win_x1, cut_early_win_x2, cut_early_win_y1, cut_early_win_y2;
-    public static float cut_team_name_our_x1, cut_team_name_our_x2, cut_team_name_our_y1, cut_team_name_our_y2;
-    public static float cut_team_name_enemy_x1, cut_team_name_enemy_x2, cut_team_name_enemy_y1, cut_team_name_enemy_y2;
-    public static float cut_building_lt_x1, cut_building_lt_x2, cut_building_lt_y1, cut_building_lt_y2;
-    public static float cut_building_lt_name_x1, cut_building_lt_name_x2, cut_building_lt_name_y1, cut_building_lt_name_y2;
-    public static float cut_building_lt_increase_x1, cut_building_lt_increase_x2, cut_building_lt_increase_y1, cut_building_lt_increase_y2;
-    public static float cut_building_lt_slots_x1, cut_building_lt_slots_x2, cut_building_lt_slots_y1, cut_building_lt_slots_y2;
-    public static float cut_building_lt_progress_x1, cut_building_lt_progress_x2, cut_building_lt_progress_y1, cut_building_lt_progress_y2;
-    public static float cut_building_lc_x1, cut_building_lc_x2, cut_building_lc_y1, cut_building_lc_y2;
-    public static float cut_building_lc_name_x1, cut_building_lc_name_x2, cut_building_lc_name_y1, cut_building_lc_name_y2;
-    public static float cut_building_lc_increase_x1, cut_building_lc_increase_x2, cut_building_lc_increase_y1, cut_building_lc_increase_y2;
-    public static float cut_building_lc_slots_x1, cut_building_lc_slots_x2, cut_building_lc_slots_y1, cut_building_lc_slots_y2;
-    public static float cut_building_lc_progress_x1, cut_building_lc_progress_x2, cut_building_lc_progress_y1, cut_building_lc_progress_y2;
-    public static float cut_building_lb_x1, cut_building_lb_x2, cut_building_lb_y1, cut_building_lb_y2;
-    public static float cut_building_lb_name_x1, cut_building_lb_name_x2, cut_building_lb_name_y1, cut_building_lb_name_y2;
-    public static float cut_building_lb_increase_x1, cut_building_lb_increase_x2, cut_building_lb_increase_y1, cut_building_lb_increase_y2;
-    public static float cut_building_lb_slots_x1, cut_building_lb_slots_x2, cut_building_lb_slots_y1, cut_building_lb_slots_y2;
-    public static float cut_building_lb_progress_x1, cut_building_lb_progress_x2, cut_building_lb_progress_y1, cut_building_lb_progress_y2;
-    public static float cut_building_rt_x1, cut_building_rt_x2, cut_building_rt_y1, cut_building_rt_y2;
-    public static float cut_building_rt_name_x1, cut_building_rt_name_x2, cut_building_rt_name_y1, cut_building_rt_name_y2;
-    public static float cut_building_rt_increase_x1, cut_building_rt_increase_x2, cut_building_rt_increase_y1, cut_building_rt_increase_y2;
-    public static float cut_building_rt_slots_x1, cut_building_rt_slots_x2, cut_building_rt_slots_y1, cut_building_rt_slots_y2;
-    public static float cut_building_rt_progress_x1, cut_building_rt_progress_x2, cut_building_rt_progress_y1, cut_building_rt_progress_y2;
-    public static float cut_building_rc_x1, cut_building_rc_x2, cut_building_rc_y1, cut_building_rc_y2;
-    public static float cut_building_rc_name_x1, cut_building_rc_name_x2, cut_building_rc_name_y1, cut_building_rc_name_y2;
-    public static float cut_building_rc_increase_x1, cut_building_rc_increase_x2, cut_building_rc_increase_y1, cut_building_rc_increase_y2;
-    public static float cut_building_rc_slots_x1, cut_building_rc_slots_x2, cut_building_rc_slots_y1, cut_building_rc_slots_y2;
-    public static float cut_building_rc_progress_x1, cut_building_rc_progress_x2, cut_building_rc_progress_y1, cut_building_rc_progress_y2;
-    public static float cut_building_rb_x1, cut_building_rb_x2, cut_building_rb_y1, cut_building_rb_y2;
-    public static float cut_building_rb_name_x1, cut_building_rb_name_x2, cut_building_rb_name_y1, cut_building_rb_name_y2;
-    public static float cut_building_rb_increase_x1, cut_building_rb_increase_x2, cut_building_rb_increase_y1, cut_building_rb_increase_y2;
-    public static float cut_building_rb_slots_x1, cut_building_rb_slots_x2, cut_building_rb_slots_y1, cut_building_rb_slots_y2;
-    public static float cut_building_rb_progress_x1, cut_building_rb_progress_x2, cut_building_rb_progress_y1, cut_building_rb_progress_y2;
-
-    public static float def_city_x1, def_city_x2, def_city_y1, def_city_y2;
-    public static float def_points_our_x1, def_points_our_x2, def_points_our_y1, def_points_our_y2;
-    public static float def_points_enemy_x1, def_points_enemy_x2, def_points_enemy_y1, def_points_enemy_y2;
-    public static float def_total_time_x1, def_total_time_x2, def_total_time_y1, def_total_time_y2;
-    public static float def_early_win_x1, def_early_win_x2, def_early_win_y1, def_early_win_y2;
-    public static float def_team_name_our_x1, def_team_name_our_x2, def_team_name_our_y1, def_team_name_our_y2;
-    public static float def_team_name_enemy_x1, def_team_name_enemy_x2, def_team_name_enemy_y1, def_team_name_enemy_y2;
-    public static float def_building_lt_x1, def_building_lt_x2, def_building_lt_y1, def_building_lt_y2;
-    public static float def_building_lt_name_x1, def_building_lt_name_x2, def_building_lt_name_y1, def_building_lt_name_y2;
-    public static float def_building_lt_increase_x1, def_building_lt_increase_x2, def_building_lt_increase_y1, def_building_lt_increase_y2;
-    public static float def_building_lt_slots_x1, def_building_lt_slots_x2, def_building_lt_slots_y1, def_building_lt_slots_y2;
-    public static float def_building_lt_progress_x1, def_building_lt_progress_x2, def_building_lt_progress_y1, def_building_lt_progress_y2;
-    public static float def_building_lc_x1, def_building_lc_x2, def_building_lc_y1, def_building_lc_y2;
-    public static float def_building_lc_name_x1, def_building_lc_name_x2, def_building_lc_name_y1, def_building_lc_name_y2;
-    public static float def_building_lc_increase_x1, def_building_lc_increase_x2, def_building_lc_increase_y1, def_building_lc_increase_y2;
-    public static float def_building_lc_slots_x1, def_building_lc_slots_x2, def_building_lc_slots_y1, def_building_lc_slots_y2;
-    public static float def_building_lc_progress_x1, def_building_lc_progress_x2, def_building_lc_progress_y1, def_building_lc_progress_y2;
-    public static float def_building_lb_x1, def_building_lb_x2, def_building_lb_y1, def_building_lb_y2;
-    public static float def_building_lb_name_x1, def_building_lb_name_x2, def_building_lb_name_y1, def_building_lb_name_y2;
-    public static float def_building_lb_increase_x1, def_building_lb_increase_x2, def_building_lb_increase_y1, def_building_lb_increase_y2;
-    public static float def_building_lb_slots_x1, def_building_lb_slots_x2, def_building_lb_slots_y1, def_building_lb_slots_y2;
-    public static float def_building_lb_progress_x1, def_building_lb_progress_x2, def_building_lb_progress_y1, def_building_lb_progress_y2;
-    public static float def_building_rt_x1, def_building_rt_x2, def_building_rt_y1, def_building_rt_y2;
-    public static float def_building_rt_name_x1, def_building_rt_name_x2, def_building_rt_name_y1, def_building_rt_name_y2;
-    public static float def_building_rt_increase_x1, def_building_rt_increase_x2, def_building_rt_increase_y1, def_building_rt_increase_y2;
-    public static float def_building_rt_slots_x1, def_building_rt_slots_x2, def_building_rt_slots_y1, def_building_rt_slots_y2;
-    public static float def_building_rt_progress_x1, def_building_rt_progress_x2, def_building_rt_progress_y1, def_building_rt_progress_y2;
-    public static float def_building_rc_x1, def_building_rc_x2, def_building_rc_y1, def_building_rc_y2;
-    public static float def_building_rc_name_x1, def_building_rc_name_x2, def_building_rc_name_y1, def_building_rc_name_y2;
-    public static float def_building_rc_increase_x1, def_building_rc_increase_x2, def_building_rc_increase_y1, def_building_rc_increase_y2;
-    public static float def_building_rc_slots_x1, def_building_rc_slots_x2, def_building_rc_slots_y1, def_building_rc_slots_y2;
-    public static float def_building_rc_progress_x1, def_building_rc_progress_x2, def_building_rc_progress_y1, def_building_rc_progress_y2;
-    public static float def_building_rb_x1, def_building_rb_x2, def_building_rb_y1, def_building_rb_y2;
-    public static float def_building_rb_name_x1, def_building_rb_name_x2, def_building_rb_name_y1, def_building_rb_name_y2;
-    public static float def_building_rb_increase_x1, def_building_rb_increase_x2, def_building_rb_increase_y1, def_building_rb_increase_y2;
-    public static float def_building_rb_slots_x1, def_building_rb_slots_x2, def_building_rb_slots_y1, def_building_rb_slots_y2;
-    public static float def_building_rb_progress_x1, def_building_rb_progress_x2, def_building_rb_progress_y1, def_building_rb_progress_y2;
+    public static CityCalc mainCityCalc;
     
     private Date timeStartGame;         // дата начала игры
     private Date timeEndGame;           // дата конца игры
@@ -275,225 +139,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView dbgTvPlusThey;
 
 
-    /**
-     *  Распознование картинки
-     *  На входе - битмап
-     *  На выходе - строка
-     */
-
-    public void initMaps() {
-        TypedValue typedValue = new TypedValue();
-        int index;
-        index = R.dimen.def_cut_city_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_city_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_city_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_total_time_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_total_time_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_total_time_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_total_time_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_early_win_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_early_win_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_early_win_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_early_win_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_our_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_our_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_our_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_our_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_enemy_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_enemy_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_enemy_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_points_and_increase_enemy_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_our_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_our_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_our_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_our_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_enemy_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_enemy_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_enemy_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_team_name_enemy_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lt_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lc_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_lb_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rt_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rc_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_increase_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_increase_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_increase_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_increase_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_name_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_name_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_name_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_name_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_slots_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_slots_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_slots_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_slots_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_progress_x1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_progress_x2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_progress_y1; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-        index = R.dimen.def_cut_building_rb_progress_y2; getResources().getValue(index, typedValue, true); mapFloats.put(index,typedValue.getFloat());
-
-        index = R.integer.def_rgb_total_time_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_total_time_back1; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_total_time_back2; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_total_time_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_total_time_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_early_win_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_early_win_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_early_win_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_early_win_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_our_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_our_back1; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_our_back2; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_our_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_our_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_our_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_our_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_our_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_our_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_enemy_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_enemy_back1; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_enemy_back2; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_enemy_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_points_enemy_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_enemy_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_enemy_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_enemy_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_increase_enemy_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_slot_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_slot_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_slot_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_slot_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_our_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_our_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_our_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_our_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_enemy_main; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_enemy_back; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_enemy_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_points_enemy_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_our; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_enemy; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_empty; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_our_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_our_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_enemy_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_enemy_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_empty_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_progress_empty_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_doublepoints; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_doublepoints_thm; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-        index = R.integer.def_rgb_building_doublepoints_thp; getResources().getValue(index, typedValue, true); mapInts.put(index,(int)typedValue.getFloat());
-    }
-
-
     public void readPreferences() {
 
         TypedValue typedValue = new TypedValue();
         int index;
         float value;
-        
-        index = R.dimen.def_cut_city_x1; getResources().getValue(index, typedValue, true); value = typedValue.getFloat();
-        
+
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
 
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
@@ -502,221 +153,7 @@ public class MainActivity extends AppCompatActivity {
         calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),0);
         calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),0);
 
-        rgb_points_our = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us),DEFAULT_PREF_RGB_TOTAL_US);
-        rgb_points_our_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us_threshold_plus),DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_PLUS);
-        rgb_points_our_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_total_us_threshold_minus),DEFAULT_PREF_RGB_TOTAL_US_THRESHOLD_MINUS);
 
-        rgb_points_enemy = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they),DEFAULT_PREF_RGB_TOTAL_THEY);
-        rgb_points_enemy_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they_threshold_plus),DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_PLUS);
-        rgb_points_enemy_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_total_they_threshold_minus),DEFAULT_PREF_RGB_TOTAL_THEY_THRESHOLD_MINUS);
-
-        rgb_increase_our = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us),DEFAULT_PREF_RGB_PLUS_US);
-        rgb_increase_our_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us_threshold_plus),DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_PLUS);
-        rgb_increase_our_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_us_threshold_minus),DEFAULT_PREF_RGB_PLUS_US_THRESHOLD_MINUS);
-
-        rgb_increase_enemy = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they),DEFAULT_PREF_RGB_PLUS_THEY);
-        rgb_increase_enemy_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they_threshold_plus),DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_PLUS);
-        rgb_increase_enemy_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_plus_they_threshold_minus),DEFAULT_PREF_RGB_PLUS_THEY_THRESHOLD_MINUS);
-
-        rgb_total_time = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time),DEFAULT_PREF_RGB_TOTAL_TIME);
-        rgb_total_time_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time_threshold_plus),DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_PLUS);
-        rgb_total_time_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_total_time_threshold_minus),DEFAULT_PREF_RGB_TOTAL_TIME_THRESHOLD_MINUS);
-
-        rgb_early_win = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win), DEFAULT_PREF_RGB_EARLY_WIN);
-        rgb_early_win_thp = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win_threshold_plus),DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_PLUS);
-        rgb_early_win_thm = sharedPreferences.getInt(getString(R.string.pref_rgb_early_win_threshold_minus),DEFAULT_PREF_RGB_EARLY_WIN_THRESHOLD_MINUS);
-
-        getResources().getValue(R.dimen.def_cut_city_x1, typedValue, true); cut_city_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_city_x2, typedValue, true); cut_city_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_city_y1, typedValue, true); cut_city_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_city_y2, typedValue, true); cut_city_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_city_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_points_and_increase_our_x1, typedValue, true); cut_points_and_increase_our_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_our_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_our_x2, typedValue, true); cut_points_and_increase_our_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_our_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_our_y1, typedValue, true); cut_points_and_increase_our_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_our_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_our_y2, typedValue, true); cut_points_and_increase_our_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_our_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_points_and_increase_enemy_x1, typedValue, true); cut_points_and_increase_enemy_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_enemy_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_enemy_x2, typedValue, true); cut_points_and_increase_enemy_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_enemy_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_enemy_y1, typedValue, true); cut_points_and_increase_enemy_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_enemy_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_points_and_increase_enemy_y2, typedValue, true); cut_points_and_increase_enemy_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_points_and_increase_enemy_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_total_time_x1, typedValue, true); cut_total_time_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_total_time_x2, typedValue, true); cut_total_time_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_total_time_y1, typedValue, true); cut_total_time_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_total_time_y2, typedValue, true); cut_total_time_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_total_time_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_early_win_x1, typedValue, true); cut_early_win_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_early_win_x2, typedValue, true); cut_early_win_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_early_win_y1, typedValue, true); cut_early_win_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_early_win_y2, typedValue, true); cut_early_win_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_early_win_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_team_name_our_x1, typedValue, true); cut_team_name_our_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_our_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_our_x2, typedValue, true); cut_team_name_our_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_our_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_our_y1, typedValue, true); cut_team_name_our_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_our_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_our_y2, typedValue, true); cut_team_name_our_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_our_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_team_name_enemy_x1, typedValue, true); cut_team_name_enemy_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_enemy_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_enemy_x2, typedValue, true); cut_team_name_enemy_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_enemy_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_enemy_y1, typedValue, true); cut_team_name_enemy_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_enemy_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_team_name_enemy_y2, typedValue, true); cut_team_name_enemy_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_team_name_enemy_y2), typedValue.getFloat());
-
-        
-        getResources().getValue(R.dimen.def_cut_building_lt_x1, typedValue, true); cut_building_lt_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_x2, typedValue, true); cut_building_lt_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_y1, typedValue, true); cut_building_lt_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_y2, typedValue, true); cut_building_lt_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lt_name_x1, typedValue, true); cut_building_lt_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_name_x2, typedValue, true); cut_building_lt_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_name_y1, typedValue, true); cut_building_lt_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_name_y2, typedValue, true); cut_building_lt_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lt_increase_x1, typedValue, true); cut_building_lt_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_increase_x2, typedValue, true); cut_building_lt_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_increase_y1, typedValue, true); cut_building_lt_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_increase_y2, typedValue, true); cut_building_lt_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lt_slots_x1, typedValue, true); cut_building_lt_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_slots_x2, typedValue, true); cut_building_lt_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_slots_y1, typedValue, true); cut_building_lt_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_slots_y2, typedValue, true); cut_building_lt_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lt_progress_x1, typedValue, true); cut_building_lt_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_progress_x2, typedValue, true); cut_building_lt_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_progress_y1, typedValue, true); cut_building_lt_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lt_progress_y2, typedValue, true); cut_building_lt_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lt_progress_y2), typedValue.getFloat());
-
-
-        getResources().getValue(R.dimen.def_cut_building_lc_x1, typedValue, true); cut_building_lc_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_x2, typedValue, true); cut_building_lc_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_y1, typedValue, true); cut_building_lc_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_y2, typedValue, true); cut_building_lc_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lc_name_x1, typedValue, true); cut_building_lc_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_name_x2, typedValue, true); cut_building_lc_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_name_y1, typedValue, true); cut_building_lc_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_name_y2, typedValue, true); cut_building_lc_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lc_increase_x1, typedValue, true); cut_building_lc_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_increase_x2, typedValue, true); cut_building_lc_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_increase_y1, typedValue, true); cut_building_lc_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_increase_y2, typedValue, true); cut_building_lc_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lc_slots_x1, typedValue, true); cut_building_lc_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_slots_x2, typedValue, true); cut_building_lc_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_slots_y1, typedValue, true); cut_building_lc_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_slots_y2, typedValue, true); cut_building_lc_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lc_progress_x1, typedValue, true); cut_building_lc_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_progress_x2, typedValue, true); cut_building_lc_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_progress_y1, typedValue, true); cut_building_lc_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lc_progress_y2, typedValue, true); cut_building_lc_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lc_progress_y2), typedValue.getFloat());
-
-
-        getResources().getValue(R.dimen.def_cut_building_lb_x1, typedValue, true); cut_building_lb_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_x2, typedValue, true); cut_building_lb_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_y1, typedValue, true); cut_building_lb_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_y2, typedValue, true); cut_building_lb_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lb_name_x1, typedValue, true); cut_building_lb_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_name_x2, typedValue, true); cut_building_lb_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_name_y1, typedValue, true); cut_building_lb_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_name_y2, typedValue, true); cut_building_lb_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lb_increase_x1, typedValue, true); cut_building_lb_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_increase_x2, typedValue, true); cut_building_lb_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_increase_y1, typedValue, true); cut_building_lb_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_increase_y2, typedValue, true); cut_building_lb_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lb_slots_x1, typedValue, true); cut_building_lb_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_slots_x2, typedValue, true); cut_building_lb_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_slots_y1, typedValue, true); cut_building_lb_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_slots_y2, typedValue, true); cut_building_lb_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_lb_progress_x1, typedValue, true); cut_building_lb_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_progress_x2, typedValue, true); cut_building_lb_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_progress_y1, typedValue, true); cut_building_lb_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_lb_progress_y2, typedValue, true); cut_building_lb_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_lb_progress_y2), typedValue.getFloat());
-
-
-        getResources().getValue(R.dimen.def_cut_building_rt_x1, typedValue, true); cut_building_rt_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_x2, typedValue, true); cut_building_rt_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_y1, typedValue, true); cut_building_rt_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_y2, typedValue, true); cut_building_rt_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rt_name_x1, typedValue, true); cut_building_rt_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_name_x2, typedValue, true); cut_building_rt_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_name_y1, typedValue, true); cut_building_rt_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_name_y2, typedValue, true); cut_building_rt_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rt_increase_x1, typedValue, true); cut_building_rt_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_increase_x2, typedValue, true); cut_building_rt_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_increase_y1, typedValue, true); cut_building_rt_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_increase_y2, typedValue, true); cut_building_rt_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rt_slots_x1, typedValue, true); cut_building_rt_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_slots_x2, typedValue, true); cut_building_rt_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_slots_y1, typedValue, true); cut_building_rt_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_slots_y2, typedValue, true); cut_building_rt_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rt_progress_x1, typedValue, true); cut_building_rt_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_progress_x2, typedValue, true); cut_building_rt_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_progress_y1, typedValue, true); cut_building_rt_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rt_progress_y2, typedValue, true); cut_building_rt_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rt_progress_y2), typedValue.getFloat());
-
-
-        getResources().getValue(R.dimen.def_cut_building_rc_x1, typedValue, true); cut_building_rc_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_x2, typedValue, true); cut_building_rc_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_y1, typedValue, true); cut_building_rc_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_y2, typedValue, true); cut_building_rc_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rc_name_x1, typedValue, true); cut_building_rc_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_name_x2, typedValue, true); cut_building_rc_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_name_y1, typedValue, true); cut_building_rc_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_name_y2, typedValue, true); cut_building_rc_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rc_increase_x1, typedValue, true); cut_building_rc_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_increase_x2, typedValue, true); cut_building_rc_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_increase_y1, typedValue, true); cut_building_rc_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_increase_y2, typedValue, true); cut_building_rc_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rc_slots_x1, typedValue, true); cut_building_rc_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_slots_x2, typedValue, true); cut_building_rc_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_slots_y1, typedValue, true); cut_building_rc_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_slots_y2, typedValue, true); cut_building_rc_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rc_progress_x1, typedValue, true); cut_building_rc_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_progress_x2, typedValue, true); cut_building_rc_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_progress_y1, typedValue, true); cut_building_rc_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rc_progress_y2, typedValue, true); cut_building_rc_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rc_progress_y2), typedValue.getFloat());
-
-
-        getResources().getValue(R.dimen.def_cut_building_rb_x1, typedValue, true); cut_building_rb_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_x2, typedValue, true); cut_building_rb_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_y1, typedValue, true); cut_building_rb_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_y2, typedValue, true); cut_building_rb_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rb_name_x1, typedValue, true); cut_building_rb_name_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_name_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_name_x2, typedValue, true); cut_building_rb_name_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_name_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_name_y1, typedValue, true); cut_building_rb_name_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_name_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_name_y2, typedValue, true); cut_building_rb_name_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_name_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rb_increase_x1, typedValue, true); cut_building_rb_increase_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_increase_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_increase_x2, typedValue, true); cut_building_rb_increase_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_increase_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_increase_y1, typedValue, true); cut_building_rb_increase_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_increase_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_increase_y2, typedValue, true); cut_building_rb_increase_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_increase_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rb_slots_x1, typedValue, true); cut_building_rb_slots_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_slots_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_slots_x2, typedValue, true); cut_building_rb_slots_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_slots_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_slots_y1, typedValue, true); cut_building_rb_slots_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_slots_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_slots_y2, typedValue, true); cut_building_rb_slots_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_slots_y2), typedValue.getFloat());
-
-        getResources().getValue(R.dimen.def_cut_building_rb_progress_x1, typedValue, true); cut_building_rb_progress_x1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_progress_x1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_progress_x2, typedValue, true); cut_building_rb_progress_x2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_progress_x2), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_progress_y1, typedValue, true); cut_building_rb_progress_y1 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_progress_y1), typedValue.getFloat());
-        getResources().getValue(R.dimen.def_cut_building_rb_progress_y2, typedValue, true); cut_building_rb_progress_y2 = sharedPreferences.getFloat(getString(R.string.pref_cut_building_rb_progress_y2), typedValue.getFloat());
-        
     }
 
     public void writePreferences() {
@@ -728,55 +165,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putBoolean(getString(R.string.pref_debug_mode), isDebugMode);
         editor.putInt(getString(R.string.pref_calibrate_x), calibrateX);
         editor.putInt(getString(R.string.pref_calibrate_y), calibrateY);
-
-        editor.putInt(getString(R.string.pref_rgb_total_us), rgb_points_our);
-        editor.putInt(getString(R.string.pref_rgb_total_us_threshold_plus), rgb_points_our_thp);
-        editor.putInt(getString(R.string.pref_rgb_total_us_threshold_minus), rgb_points_our_thm);
-
-        editor.putInt(getString(R.string.pref_rgb_total_they), rgb_points_enemy);
-        editor.putInt(getString(R.string.pref_rgb_total_they_threshold_plus), rgb_points_enemy_thp);
-        editor.putInt(getString(R.string.pref_rgb_total_they_threshold_minus), rgb_points_enemy_thm);
-
-        editor.putInt(getString(R.string.pref_rgb_plus_us), rgb_increase_our);
-        editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_plus), rgb_increase_our_thp);
-        editor.putInt(getString(R.string.pref_rgb_plus_us_threshold_minus), rgb_increase_our_thm);
-
-        editor.putInt(getString(R.string.pref_rgb_plus_they), rgb_increase_enemy);
-        editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_plus), rgb_increase_enemy_thp);
-        editor.putInt(getString(R.string.pref_rgb_plus_they_threshold_minus), rgb_increase_enemy_thm);
-
-        editor.putInt(getString(R.string.pref_rgb_total_time), rgb_total_time);
-        editor.putInt(getString(R.string.pref_rgb_total_time_threshold_plus), rgb_total_time_thp);
-        editor.putInt(getString(R.string.pref_rgb_total_time_threshold_minus), rgb_total_time_thm);
-
-        editor.putInt(getString(R.string.pref_rgb_early_win), rgb_early_win);
-        editor.putInt(getString(R.string.pref_rgb_early_win_threshold_plus), rgb_early_win_thp);
-        editor.putInt(getString(R.string.pref_rgb_early_win_threshold_minus), rgb_early_win_thm);
-
-        editor.putFloat(getString(R.string.pref_cut_city_x1), cut_city_x1);
-        editor.putFloat(getString(R.string.pref_cut_city_x2), cut_city_x2);
-        editor.putFloat(getString(R.string.pref_cut_city_y1), cut_city_y1);
-        editor.putFloat(getString(R.string.pref_cut_city_y2), cut_city_y2);
-
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_x1), cut_points_and_increase_our_x1);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_x2), cut_points_and_increase_our_x2);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_y1), cut_points_and_increase_our_y1);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_our_y2), cut_points_and_increase_our_y2);
-
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_x1), cut_points_and_increase_enemy_x1);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_x2), cut_points_and_increase_enemy_x2);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_y1), cut_points_and_increase_enemy_y1);
-        editor.putFloat(getString(R.string.pref_cut_points_and_increase_enemy_y2), cut_points_and_increase_enemy_y2);
-
-        editor.putFloat(getString(R.string.pref_cut_total_time_x1), cut_total_time_x1);
-        editor.putFloat(getString(R.string.pref_cut_total_time_x2), cut_total_time_x2);
-        editor.putFloat(getString(R.string.pref_cut_total_time_y1), cut_total_time_y1);
-        editor.putFloat(getString(R.string.pref_cut_total_time_y2), cut_total_time_y2);
-
-        editor.putFloat(getString(R.string.pref_cut_early_win_x1), cut_early_win_x1);
-        editor.putFloat(getString(R.string.pref_cut_early_win_x2), cut_early_win_x2);
-        editor.putFloat(getString(R.string.pref_cut_early_win_y1), cut_early_win_y1);
-        editor.putFloat(getString(R.string.pref_cut_early_win_y2), cut_early_win_y2);
 
         editor.apply();
 
@@ -818,12 +206,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void cutPicture() {
 
-        if (fileScreenshot != null && !fileScreenshot.equals(fileScreenshotPrevious)) {  // если текущий скриншот не нулл
+        if (fileScreenshot != null && !fileScreenshot.equals(fileScreenshotPrevious) && mainCityCalc != null) {  // если текущий скриншот не нулл
 
-
+//            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY);
 
             fileScreenshotPrevious = fileScreenshot;
-            Bitmap sourceBitmap = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
 
             try {
                 File output = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");
@@ -842,96 +229,39 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            CuttedPictures cuttedPictures = CutPicture.cutPictire(sourceBitmap);
+            if (mainCityCalc != null) {
 
-            ivCity.setImageBitmap(cuttedPictures.croppingBitmap);  // выводим битмат игры в контрол
+                if (isDebugMode) { // если включен дебаг-мод
+                    // выводим битмапы и распознанные данные в контрлы дебаг-мода
+                    dbgIvTime.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.TOTAL_TIME)).bmpSrc);
+                    dbgIvInstanceVic.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.EARLY_WIN)).bmpSrc);
+                    dbgIvTotalUs.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_OUR)).bmpSrc);
+                    dbgIvPlusUs.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_OUR)).bmpSrc);
+                    dbgIvTotalThey.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_ENEMY)).bmpSrc);
+                    dbgIvPlusThey.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY)).bmpSrc);
 
-            String strTotalUs = recognizePicture(cuttedPictures.croppingBitmapTotalUs);         // распознаем "Наши очки"
-            String strPlusUs = recognizePicture(cuttedPictures.croppingBitmapPlusUs);         // распознаем "Наши очки"
-            String strTotalThey = recognizePicture(cuttedPictures.croppingBitmapTotalThey);     // распознаем "Их очки"
-            String strPlusThey = recognizePicture(cuttedPictures.croppingBitmapPlusThey);     // распознаем "Их очки"
-            String strTotalTime = recognizePicture(cuttedPictures.croppingBitmapTotalTime);            // распознаем "Время"
-            String strInstanceVic = recognizePicture(cuttedPictures.croppingBitmapEarlyWin);        // распознаем "Досрочка"
+                    dbgTvTime.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.TOTAL_TIME)).ocrText);
+                    dbgTvInstanceVic.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.EARLY_WIN)).ocrText);
+                    dbgTvTotalUs.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_OUR)).ocrText);
+                    dbgTvPlusUs.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_OUR)).ocrText);
+                    dbgTvTotalThey.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_ENEMY)).ocrText);
+                    dbgTvPlusThey.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY)).ocrText);
 
-            if (isDebugMode) { // если включен дебаг-мод
-                // выводим битмапы и распознанные данные в контрлы дебаг-мода
-                dbgIvTime.setImageBitmap(cuttedPictures.croppingBitmapTotalTime);
-                dbgIvInstanceVic.setImageBitmap(cuttedPictures.croppingBitmapEarlyWin);
-                dbgIvTotalUs.setImageBitmap(cuttedPictures.croppingBitmapTotalUs);
-                dbgIvPlusUs.setImageBitmap(cuttedPictures.croppingBitmapPlusUs);
-                dbgIvTotalThey.setImageBitmap(cuttedPictures.croppingBitmapTotalThey);
-                dbgIvPlusThey.setImageBitmap(cuttedPictures.croppingBitmapPlusThey);
-
-                dbgTvTime.setText(strTotalTime);
-                dbgTvInstanceVic.setText(strInstanceVic);
-                dbgTvTotalUs.setText(strTotalUs);
-                dbgTvPlusUs.setText(strPlusUs);
-                dbgTvTotalThey.setText(strTotalThey);
-                dbgTvPlusThey.setText(strPlusThey);
-
-                dbgTvFileName.setText(fileScreenshot.getName());
-                dbgTvFileDate.setText("" + new Date(fileScreenshot.lastModified()));
-            }
-
-            strTotalUs = strTotalUs.equals("") ? "0" : cutNotNumericSymbols(strTotalUs);
-            strPlusUs = strPlusUs.equals("") ? "0" : cutNotNumericSymbols(strPlusUs);
-            strTotalThey = strTotalThey.equals("") ? "0" : cutNotNumericSymbols(strTotalThey);
-            strPlusThey = strPlusThey.equals("") ? "0" : cutNotNumericSymbols(strPlusThey);
-            strInstanceVic = strInstanceVic.equals("") ? "0" : cutNotNumericSymbols(strInstanceVic);
-
-            // парсинг "Время"
-            String[] arrTotalTime = strTotalTime.split(" ");    // парсим с разделителем "пробел"
-            List<String> listTotalTime = new ArrayList<>();            // лист значений
-            for (int i = 0; i < arrTotalTime.length; i++) {             // проходим по распарсенному массиву
-                if (!arrTotalTime[i].equals("")) {                      // если элемент массива не пустой
-                    listTotalTime.add(arrTotalTime[i]);                 // добавляем текущий элемент массива в лист
+                    dbgTvFileName.setText(fileScreenshot.getName());
+                    dbgTvFileDate.setText("" + new Date(fileScreenshot.lastModified()));
                 }
+
+                // выводим распознанные данные в контролы
+                etInPlusUs.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_OUR)).finText);
+                etInPlusThey.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY)).finText);
+                etInTotalUs.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_OUR)).finText);
+                etInTotalThey.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.POINTS_ENEMY)).finText);
+                etInTimeLeft.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.TOTAL_TIME)).finText);
+                etInInstantVic.setText(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.EARLY_WIN)).finText);
+                tvResult.setText("");
             }
 
-            if (listTotalTime.size() > 1) {                         // если в списке больше 1 элемента
-                for (int i = 0; i < listTotalTime.size(); i++) {    // проходим по списку
-                    listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
-                }
-            }
 
-            if (listTotalTime.size() > 0) {     // если в списке есть элементы
-                if (listTotalTime.size() == 1) {    // если в списке 1 элемент
-                    if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {    // если последний символ элемента равен букве "М"
-                        String hours = "00";    // часы = "00"
-                        String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);    // минуты = элемент без последнего символа
-                        if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                        strTotalTime = hours + ":" + minutes;   // время = часы : минуты
-                    } else {    // если последний символ элемента не равен букве "М"
-                        String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);  // часы = элемент без последнего символа
-                        String minutes = "00";  // минуты = "00"
-                        strTotalTime = hours + ":" + minutes; // время = часы : минуты
-                    }
-                } else {    // если в списке больше 1 элемента
-                    String hours = listTotalTime.get(0);    // часы - первый элемент из списка
-                    String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
-                    if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                    strTotalTime = hours + ":" + minutes; // время = часы : минуты
-                }
-            } else { // если в списке нет элементов
-                strTotalTime = "00:00"; // время нулевое
-            }
-
-            // если значения пустые - выводим в них "??", если нет - удаляем лишние пробелы в начале и в конце
-            strPlusUs = strPlusUs.equals("") ? "?" : strPlusUs.trim();
-            strPlusThey = strPlusThey.equals("") ? "?" : strPlusThey.trim();
-            strTotalUs = strTotalUs.equals("") ? "?" : strTotalUs.trim();
-            strTotalThey = strTotalThey.equals("") ? "?" : strTotalThey.trim();
-            strInstanceVic = strInstanceVic.equals("") ? "?" : strInstanceVic.trim();
-            strTotalTime = strTotalTime.equals("") ? "?:?" : strTotalTime.trim();
-
-            // выводим распознанные данные в контролы
-            etInPlusUs.setText(strPlusUs);
-            etInPlusThey.setText(strPlusThey);
-            etInTotalUs.setText(strTotalUs);
-            etInTotalThey.setText(strTotalThey);
-            etInTimeLeft.setText(strTotalTime);
-            etInInstantVic.setText(strInstanceVic);
-            tvResult.setText("");
         }
 
     }
@@ -1010,6 +340,8 @@ public class MainActivity extends AppCompatActivity {
                         isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                         swListenNewFiles.setChecked(false); // устанавливаем контрол флажка
                         fileLastInFolder = null;    // сбрасываем последний файл в папке
+                        mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, ivCity.getContext());
+                        ivCity.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
                         cutPicture();   // вырезаем картинку
                     }
                 });
@@ -1093,8 +425,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); // инициализирукм контентвью
-
-        initMaps();
 
         // РЕКЛАМА
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -1276,7 +606,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         // считываем преференцы, пихаем их в переменные и в контролы
-
         readPreferences();
 
         swListenNewFiles.setChecked(isListenToNewFileInFolder);
@@ -1519,13 +848,24 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-
-
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
                         if (tmpFile != null) {  // если он не пустой
                             if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
                                 fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, ivCity.getContext());
+                                ivCity.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
+                                cutPicture();               // вырезам картинки
+                            }
+                        }
+
+                    } else {
+                        if (fileScreenshot == null) {
+                            File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+                            if (lastScreenshot.exists()) {
+                                fileScreenshot = lastScreenshot;
+                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, ivCity.getContext());
+                                ivCity.setImageBitmap(Objects.requireNonNull(mainCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
                                 cutPicture();               // вырезам картинки
                             }
                         }
