@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".GameActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Switch
+            android:id="@+id/sw_ga_listen_new_file"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:text="@string/sett_listen_files_in_screenshot_folder"
+            />
+
+        <TextView
+            android:id="@+id/tv_ga_start_game_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/black"
+            android:text="Игра началась: 12:30, 19 мая 2020"/>
+
+        <TextView
+            android:id="@+id/tv_ga_end_game_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/black"
+            android:text="Игра закончится: 12:30, 20 мая 2020"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_ga_our_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/stub_our_team_name"/>
+
+            <TextView
+                android:id="@+id/tv_ga_vs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:text="vs."/>
+
+            <ImageView
+                android:id="@+id/iv_ga_enemy_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/stub_enemy_team_name"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_our_increase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_our_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:gravity="start|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#4179d8"
+                    android:background="#f0f0f0"
+                    android:text="00000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_total_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#4e6881"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_enemy_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="10dp"
+                    android:gravity="end|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#eb4c48"
+                    android:background="#f0f0f0"
+                    android:text="00000"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_enemy_increase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_our_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#90b3eb"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_early_win"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#91a7bf"
+                    android:text="00000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_ga_enemy_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#ff8e98"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_ga_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:text="Результат игры"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_ga_blt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blt_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brt_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blt_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blt_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blt_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blt_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blt_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brt_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_ga_blc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blc_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brc_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blc_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blc_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blc_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blc_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blc_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brc_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_ga_blb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blb_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brb_name"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blb_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blb_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blb_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_blb_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_blb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_ga_brb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_ga_blb_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_ga_brb_progress"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_progress"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            />
+        
+        
+        
+    </LinearLayout>
+
+</ScrollView>

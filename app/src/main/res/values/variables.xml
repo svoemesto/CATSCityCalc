@@ -244,7 +244,7 @@
     <string name="def_rgb_early_win_thm" translatable="false">13</string>
     <string name="def_rgb_early_win_thp" translatable="false">13</string>
 
-    <string name="def_rgb_points_our_main" translatable="false">437ad7</string>
+    <string name="def_rgb_points_our_main" translatable="false">ff437ad7</string>
     <string name="def_rgb_points_our_back1" translatable="false">ffffff</string>
     <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
     <string name="def_rgb_points_our_thm" translatable="false">13</string>
@@ -255,7 +255,7 @@
     <string name="def_rgb_increase_our_thm" translatable="false">13</string>
     <string name="def_rgb_increase_our_thp" translatable="false">13</string>
 
-    <string name="def_rgb_points_enemy_main" translatable="false">f64f49</string>
+    <string name="def_rgb_points_enemy_main" translatable="false">fff64f49</string>
     <string name="def_rgb_points_enemy_back1" translatable="false">ffffff</string>
     <string name="def_rgb_points_enemy_back2" translatable="false">f1f1f1</string>
     <string name="def_rgb_points_enemy_thm" translatable="false">13</string>
@@ -291,7 +291,7 @@
     <string name="def_rgb_building_progress_empty_thm" translatable="false">13</string>
     <string name="def_rgb_building_progress_empty_thp" translatable="false">13</string>
 
-    <string name="def_rgb_building_doublepoints" translatable="false">ebb948</string>
+    <string name="def_rgb_building_doublepoints" translatable="false">ffebb948</string>
     <string name="def_rgb_building_doublepoints_thm" translatable="false">13</string>
     <string name="def_rgb_building_doublepoints_thp" translatable="false">13</string>
 

@@ -14,10 +14,22 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".GameActivity"
+            android:launchMode="singleInstance">
+            <meta-data
+                android:name="com.google.android.gms.vision.DEPENDENCIES"
+                android:value="orc" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".ColorsdetectActivity"
-            android:label="@string/sett_colors"
-            />
+            android:label="@string/sett_colors" />
         <activity
             android:name=".BordersActivity"
             android:label="@string/sett_borders" />
@@ -33,17 +45,10 @@
             android:name=".SettingsActivity"
             android:label="@string/settings" />
         <activity
-            android:name=".MainActivity"
-            android:launchMode="singleInstance">
+            android:name=".MainActivity">
             <meta-data
                 android:name="com.google.android.gms.vision.DEPENDENCIES"
                 android:value="orc" />
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

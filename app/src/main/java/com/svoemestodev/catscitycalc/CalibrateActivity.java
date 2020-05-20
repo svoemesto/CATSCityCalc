@@ -55,7 +55,7 @@ public class CalibrateActivity extends AppCompatActivity {
         btnCalibrateMinus1x = findViewById(R.id.btn_calibrate_x_minus1);
         btnCalibratePlus1x = findViewById(R.id.btn_calibrate_x_plus1);
         btnCalibratePlus10x = findViewById(R.id.btn_calibrate_x_plus10);
-        etCalibrateX.setText(String.valueOf(MainActivity.calibrateX));
+        etCalibrateX.setText(String.valueOf(GameActivity.calibrateX));
 
         tvCalibrateY = findViewById(R.id.tv_calibrate_y);
         etCalibrateY = findViewById(R.id.et_calibrate_y);
@@ -64,7 +64,7 @@ public class CalibrateActivity extends AppCompatActivity {
         btnCalibrateMinus1y = findViewById(R.id.btn_calibrate_y_minus1);
         btnCalibratePlus1y = findViewById(R.id.btn_calibrate_y_plus1);
         btnCalibratePlus10y = findViewById(R.id.btn_calibrate_y_plus10);
-        etCalibrateY.setText(String.valueOf(MainActivity.calibrateY));
+        etCalibrateY.setText(String.valueOf(GameActivity.calibrateY));
 
         ivCalibrate = findViewById(R.id.iv_calibrate);
 
@@ -79,17 +79,17 @@ public class CalibrateActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    MainActivity.calibrateX = Integer.parseInt(String.valueOf(s));
+                    GameActivity.calibrateX = Integer.parseInt(String.valueOf(s));
                 } catch (NumberFormatException e) {
-                    MainActivity.calibrateX = 0;
+                    GameActivity.calibrateX = 0;
                 }
                 // изменяем проперти PREF_CALIBRATE ввыдкнным значением
                 SharedPreferences sharedPreferences = CalibrateActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt(getString(R.string.pref_calibrate_x), MainActivity.calibrateX);
+                editor.putInt(getString(R.string.pref_calibrate_x), GameActivity.calibrateX);
                 editor.apply();
-                MainActivity.mainCityCalc = new CityCalc(MainActivity.fileScreenshot, MainActivity.calibrateX, MainActivity.calibrateY, ivCalibrate.getContext());
-                ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+                GameActivity.mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, ivCalibrate.getContext());
+                ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
             }
         });
 
@@ -103,22 +103,22 @@ public class CalibrateActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 try {
-                    MainActivity.calibrateY = Integer.parseInt(String.valueOf(s));
+                    GameActivity.calibrateY = Integer.parseInt(String.valueOf(s));
                 } catch (NumberFormatException e) {
-                    MainActivity.calibrateY = 0;
+                    GameActivity.calibrateY = 0;
                 }
                 // изменяем проперти PREF_CALIBRATE ввыдкнным значением
                 SharedPreferences sharedPreferences = CalibrateActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt(getString(R.string.pref_calibrate_y), MainActivity.calibrateY);
+                editor.putInt(getString(R.string.pref_calibrate_y), GameActivity.calibrateY);
                 editor.apply();
-                MainActivity.mainCityCalc = new CityCalc(MainActivity.fileScreenshot, MainActivity.calibrateX, MainActivity.calibrateY, ivCalibrate.getContext());
-                ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+                GameActivity.mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, ivCalibrate.getContext());
+                ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
 
             }
         });
 
-        ivCalibrate.setImageBitmap(MainActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+        ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
 
     }
 
@@ -142,19 +142,19 @@ public class CalibrateActivity extends AppCompatActivity {
     }
 
     public void calibrateMinus10x(View view) {
-        etCalibrateX.setText(String.valueOf(MainActivity.calibrateX - 10));
+        etCalibrateX.setText(String.valueOf(GameActivity.calibrateX - 10));
     }
 
     public void calibrateMinus1x(View view) {
-        etCalibrateX.setText(String.valueOf(MainActivity.calibrateX - 1));
+        etCalibrateX.setText(String.valueOf(GameActivity.calibrateX - 1));
     }
 
     public void calibratePlus1x(View view) {
-        etCalibrateX.setText(String.valueOf(MainActivity.calibrateX + 1));
+        etCalibrateX.setText(String.valueOf(GameActivity.calibrateX + 1));
     }
 
     public void calibratePlus10x(View view) {
-        etCalibrateX.setText(String.valueOf(MainActivity.calibrateX + 10));
+        etCalibrateX.setText(String.valueOf(GameActivity.calibrateX + 10));
     }
 
     public void calibrateResetY(View view) {
@@ -162,18 +162,18 @@ public class CalibrateActivity extends AppCompatActivity {
     }
 
     public void calibrateMinus10y(View view) {
-        etCalibrateY.setText(String.valueOf(MainActivity.calibrateY - 10));
+        etCalibrateY.setText(String.valueOf(GameActivity.calibrateY - 10));
     }
 
     public void calibrateMinus1y(View view) {
-        etCalibrateY.setText(String.valueOf(MainActivity.calibrateY - 1));
+        etCalibrateY.setText(String.valueOf(GameActivity.calibrateY - 1));
     }
 
     public void calibratePlus1y(View view) {
-        etCalibrateY.setText(String.valueOf(MainActivity.calibrateY + 1));
+        etCalibrateY.setText(String.valueOf(GameActivity.calibrateY + 1));
     }
 
     public void calibratePlus10y(View view) {
-        etCalibrateY.setText(String.valueOf(MainActivity.calibrateY + 10));
+        etCalibrateY.setText(String.valueOf(GameActivity.calibrateY + 10));
     }
 }

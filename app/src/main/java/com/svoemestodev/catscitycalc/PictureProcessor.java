@@ -174,12 +174,14 @@ public class PictureProcessor extends Activity {
 
     public static String doOCR(Bitmap sourceBitmap, Context context) {
         String result = ""; // результат
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
-        if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
-            Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
-            SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
-            for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
-                result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
+        if (sourceBitmap!= null) {
+            TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
+            if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
+                Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
+                SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
+                for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
+                    result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
+                }
             }
         }
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
@@ -222,6 +224,25 @@ public class PictureProcessor extends Activity {
         int colB = Color.blue(color);
 
         return ((pixR >= (colR - thm) && pixR <= (colR + thp)) && (pixG >= (colG - thm) && pixG <= (colG + thp)) && (pixB >= (colB - thm) && pixB <= (colB + thp)));
+
+    }
+
+    public static float frequencyPixelInBitmap(Bitmap picture, int color) {
+
+        if (picture != null) {
+            int width = picture.getWidth();      // ширина исходной картинки
+            int height = picture.getHeight();    // высота исходной картинки
+            int countTruePixels = 0;
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int pixel = picture.getPixel(x , y);
+                    countTruePixels += isPixelTrue(pixel, color, 10,10) ? 1 : 0;
+                }
+            }
+            return (float)countTruePixels / (width * height);
+        } else {
+            return 0;
+        }
 
     }
 

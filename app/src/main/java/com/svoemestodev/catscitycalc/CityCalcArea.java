@@ -51,8 +51,12 @@ public class CityCalcArea {
     }
 
     public void doORC() {
+        doORC(0,0,1);
+    }
+
+    public void doORC(int colorIndex, int thmIndex, int thpIndex) {
         if (this.needOcr) {
-            this.bmpPrc = PictureProcessor.doBW(this.bmpSrc, this.colors[0], this.ths[0], this.ths[1]);
+            this.bmpPrc = PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]);
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.context);
 
             if (area.equals(Area.TOTAL_TIME)) {
@@ -144,5 +148,6 @@ public class CityCalcArea {
     public void doCut() {
         this.bmpSrc = cutSrc();
     }
+
 
 }

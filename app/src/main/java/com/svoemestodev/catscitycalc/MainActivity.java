@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     public Switch swListenNewFiles; // переключатель "Отслеживать новые файлы"
     private TextView tvResult; // результат игры
 
-    public static  File fileScreenshot;    // текущий файл скриншота
+    public static File fileScreenshot;    // текущий файл скриншота
     public static  File fileScreenshotPrevious;    // предыдущий файл скриншота
     public static  File fileLastInFolder;    // последний файл в папке
 

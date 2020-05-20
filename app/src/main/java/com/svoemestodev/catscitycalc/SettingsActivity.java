@@ -79,9 +79,9 @@ public class SettingsActivity extends AppCompatActivity {
 
 
                 // устанавливаем значения контролов
-        tvScreenshotFolder.setText(MainActivity.pathToScreenshotDir);
-        swListenLastFile.setChecked(MainActivity.isListenToNewFileInFolder);
-        swLDebugMode.setChecked(MainActivity.isDebugMode);
+        tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);
+        swListenLastFile.setChecked(GameActivity.isListenToNewFileInFolder);
+        swLDebugMode.setChecked(GameActivity.isDebugMode);
 
         btnOpenCalibrate.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
         btnOpenBorder.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
@@ -96,7 +96,7 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
                 editor.apply();
-                MainActivity.isListenToNewFileInFolder = isChecked;
+                GameActivity.isListenToNewFileInFolder = isChecked;
             }
         });
 
@@ -109,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_debug_mode), isChecked);
                 editor.apply();
-                MainActivity.isDebugMode = isChecked;
+                GameActivity.isDebugMode = isChecked;
                 btnOpenCalibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                 btnOpenBorder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                 btnOpenColors.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
@@ -123,7 +123,7 @@ public class SettingsActivity extends AppCompatActivity {
     // метод выбора папки скриншотов (вызов прописан в XML)
     public void selectScreenshotFolder(View view) {
         // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
-        OpenFileDialog fileDialog = new OpenFileDialog(this, MainActivity.pathToScreenshotDir)
+        OpenFileDialog fileDialog = new OpenFileDialog(this, GameActivity.pathToScreenshotDir)
                 .setOnlyFoldersFilter()                                             // показывать только папки
                 .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))    // икнока для папок
                 .setFileIcon(getResources().getDrawable(R.drawable.ic_file))        // иконка для файлов
@@ -136,8 +136,8 @@ public class SettingsActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString(getString(R.string.pref_screenshot_folder), fileName);
                         editor.apply();
-                        MainActivity.pathToScreenshotDir = fileName;                     // устанавливаем переменную новым значением
-                        tvScreenshotFolder.setText(MainActivity.pathToScreenshotDir);    // устанавливаем текс контрола
+                        GameActivity.pathToScreenshotDir = fileName;                     // устанавливаем переменную новым значением
+                        tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);    // устанавливаем текс контрола
                     }
                 });
         fileDialog.show();

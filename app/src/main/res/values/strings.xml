@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.18 (18/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.19 (20/05/2020)</string>
 
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
 
@@ -197,7 +197,7 @@
     <string name="pref_cut_building_rb_progress_x2" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_X2</string>
     <string name="pref_cut_building_rb_progress_y1" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_Y1</string>
     <string name="pref_cut_building_rb_progress_y2" translatable="false">PREF_CUT_BUILDING_RB_PROGRESS_Y2</string>
-    
+
     <string name="pref_rgb_points_our_main" translatable="false">PREF_RGB_POINTS_OUR_MAIN</string>
     <string name="pref_rgb_points_our_back1" translatable="false">PREF_RGB_POINTS_OUR_BACK1</string>
     <string name="pref_rgb_points_our_back2" translatable="false">PREF_RGB_POINTS_OUR_BACK2</string>
@@ -260,6 +260,10 @@
     <string name="pref_rgb_building_doublepoints_thm" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
     <string name="pref_rgb_building_doublepoints_thp" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
 
+    <string name="start_game_at">Start game</string>
+    <string name="end_game_at">End game</string>
+
+
 
     <string name="plus_us">+ us</string>
     <string name="time">Time</string>
@@ -293,15 +297,16 @@
     <string name="cancel">Cancel</string>
     <string name="all_perm_is_granted">All Permission is Granted</string>
     <string name="some_perm_is_denied">Some Permission is Denied</string>
-    <string name="we_instance_win">We won ahead of schedule</string>
-    <string name="we_instance_lose">We lost early</string>
+    <string name="we_instance_win">We won ahead of schedule with a difference</string>
+    <string name="we_instance_lose">We lost early with a difference</string>
     <string name="instance_nowinner">Early draw</string>
-    <string name="we_win">We won</string>
-    <string name="we_lost">We lost</string>
+    <string name="we_win">We won with a difference</string>
+    <string name="we_lost">We lost with a difference</string>
     <string name="nowin">Draw</string>
     <string name="we_will_instance_win_with_diff_in">We will win early with a difference</string>
     <string name="we_will_instance_lose_with_diff_in">We will lose early with a difference</string>
     <string name="points">points</string>
+    <string name="after">after</string>
     <string name="will_instance_nowin_after">Will early draw via</string>
     <string name="we_will_win_with_diff_in">We will win with a difference</string>
     <string name="we_will_lose_with_diff_in">We will lose with a difference</string>
@@ -480,18 +485,18 @@
         <item>Our increas</item>
         <item>Enemy\'s scores</item>
         <item>Enemy\'s increase</item>
-<!--        <item>BLT increase</item>-->
-<!--        <item>BLT slots</item>-->
-<!--        <item>BLC increase</item>-->
-<!--        <item>BLC slots</item>-->
-<!--        <item>BLB increase</item>-->
-<!--        <item>BLB slots</item>-->
-<!--        <item>BRT increase</item>-->
-<!--        <item>BRT slots</item>-->
-<!--        <item>BRC increase</item>-->
-<!--        <item>BRC slots</item>-->
-<!--        <item>BRB increase</item>-->
-<!--        <item>BRB slots</item>-->
+        <!--        <item>BLT increase</item>-->
+        <!--        <item>BLT slots</item>-->
+        <!--        <item>BLC increase</item>-->
+        <!--        <item>BLC slots</item>-->
+        <!--        <item>BLB increase</item>-->
+        <!--        <item>BLB slots</item>-->
+        <!--        <item>BRT increase</item>-->
+        <!--        <item>BRT slots</item>-->
+        <!--        <item>BRC increase</item>-->
+        <!--        <item>BRC slots</item>-->
+        <!--        <item>BRB increase</item>-->
+        <!--        <item>BRB slots</item>-->
     </string-array>
 
     <string-array name="pref_colors_values">
@@ -501,18 +506,18 @@
         <item>Our increas</item>
         <item>Enemy\'s scores</item>
         <item>Enemy\'s increase</item>
-<!--        <item>BLT increase</item>-->
-<!--        <item>BLT slots</item>-->
-<!--        <item>BLC increase</item>-->
-<!--        <item>BLC slots</item>-->
-<!--        <item>BLB increase</item>-->
-<!--        <item>BLB slots</item>-->
-<!--        <item>BRT increase</item>-->
-<!--        <item>BRT slots</item>-->
-<!--        <item>BRC increase</item>-->
-<!--        <item>BRC slots</item>-->
-<!--        <item>BRB increase</item>-->
-<!--        <item>BRB slots</item>-->
+        <!--        <item>BLT increase</item>-->
+        <!--        <item>BLT slots</item>-->
+        <!--        <item>BLC increase</item>-->
+        <!--        <item>BLC slots</item>-->
+        <!--        <item>BLB increase</item>-->
+        <!--        <item>BLB slots</item>-->
+        <!--        <item>BRT increase</item>-->
+        <!--        <item>BRT slots</item>-->
+        <!--        <item>BRC increase</item>-->
+        <!--        <item>BRC slots</item>-->
+        <!--        <item>BRB increase</item>-->
+        <!--        <item>BRB slots</item>-->
     </string-array>
 
 </resources>

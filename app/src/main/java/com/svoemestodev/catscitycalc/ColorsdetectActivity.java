@@ -62,17 +62,17 @@ public class ColorsdetectActivity extends AppCompatActivity {
     public void loadArea() {
         
         if (areaName.get().equals(getString(R.string.borders_time))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
         }
 
         color_THM = cityCalcArea.ths[0];
@@ -141,23 +141,23 @@ public class ColorsdetectActivity extends AppCompatActivity {
         ivProcessed = findViewById(R.id.iv_processed_image);
         tvRecognize = findViewById(R.id.tv_recognized);
 
-        fullBitmap = BitmapFactory.decodeFile(MainActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
+        fullBitmap = BitmapFactory.decodeFile(GameActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         areaName.set(sharedPreferences.getString(PREF_COLORS_AREA, String.valueOf(R.string.pref_colorsAreaName_default_value)));
 
         if (areaName.get().equals(getString(R.string.borders_time))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
         }
         
         areaName.setOnStringChangeListener(new OnStringChangeListener()
@@ -199,22 +199,22 @@ public class ColorsdetectActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     
                     if (areaName.get().equals(getString(R.string.borders_time))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putInt(getString(R.string.pref_rgb_total_time_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
                         editor.putInt(getString(R.string.pref_rgb_early_win_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
                         editor.putInt(getString(R.string.pref_rgb_points_our_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
                         editor.putInt(getString(R.string.pref_rgb_increase_our_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
                         editor.putInt(getString(R.string.pref_rgb_points_enemy_main), color_RGB);
                     } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-                        cityCalcArea = MainActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
                         editor.putInt(getString(R.string.pref_rgb_increase_enemy_main), color_RGB);
                     }
                     editor.apply();
