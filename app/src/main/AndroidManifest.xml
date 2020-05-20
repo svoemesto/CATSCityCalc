@@ -16,7 +16,9 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".GameActivity"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            >
             <meta-data
                 android:name="com.google.android.gms.vision.DEPENDENCIES"
                 android:value="orc" />
