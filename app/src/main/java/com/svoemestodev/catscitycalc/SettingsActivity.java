@@ -1,5 +1,6 @@
 package com.svoemestodev.catscitycalc;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 /**
 * Класс активити "Настройки"
@@ -38,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
     Button btnOpenBorder;   // кнопка "Выбрать папку скриншотов"
     Button btnOpenColors;   // кнопка "Выбрать папку скриншотов"
 
-
+    public Context context;
 
     /**
      * Событие нажатия какой-то кнопки в шапке
@@ -77,6 +79,7 @@ public class SettingsActivity extends AppCompatActivity {
         btnOpenBorder = findViewById(R.id.btn_open_borders_settings);
         btnOpenColors = findViewById(R.id.btn_open_colors_settings);
 
+        context = tvScreenshotFolder.getContext();
 
                 // устанавливаем значения контролов
         tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);
@@ -125,8 +128,8 @@ public class SettingsActivity extends AppCompatActivity {
         // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
         OpenFileDialog fileDialog = new OpenFileDialog(this, GameActivity.pathToScreenshotDir)
                 .setOnlyFoldersFilter()                                             // показывать только папки
-                .setFolderIcon(getResources().getDrawable(R.drawable.ic_folder))    // икнока для папок
-                .setFileIcon(getResources().getDrawable(R.drawable.ic_file))        // иконка для файлов
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))    // икнока для папок
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))        // иконка для файлов
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     // когда диалог выбора папки вернул новое значение

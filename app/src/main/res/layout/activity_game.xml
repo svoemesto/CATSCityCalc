@@ -20,26 +20,37 @@
             android:text="@string/sett_listen_files_in_screenshot_folder"
             />
 
-        <TextView
-            android:id="@+id/tv_ga_start_game_time"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="@android:color/black"
-            android:text="Игра началась: 12:30, 19 мая 2020"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_ga_end_game_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
-            android:layout_marginBottom="5dp"
-            android:textColor="@android:color/black"
-            android:text="Игра закончится: 12:30, 20 мая 2020"/>
+            <TextView
+                android:id="@+id/tv_ga_start_game_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:text="Начало: 19 мая 12:30"/>
+
+            <TextView
+                android:id="@+id/tv_ga_end_game_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:text="Конец: 20 мая 12:30"/>
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

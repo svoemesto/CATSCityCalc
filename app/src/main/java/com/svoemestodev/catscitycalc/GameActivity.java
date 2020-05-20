@@ -748,7 +748,7 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (tempDir.exists()) { // если папка есть
-            File tmp = new File(MainActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
             if (!tmp.exists()) {    // если файла нет
                 Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
                 try {

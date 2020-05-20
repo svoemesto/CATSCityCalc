@@ -36,7 +36,8 @@ public class CCAGame extends CityCalcArea {
     boolean willNobodyWin;
     int differentPoints;
 
-    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());      // форматтер даты
+//    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());      // форматтер даты
+    public static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM HH:mm", Locale.getDefault());      // форматтер даты
 
     public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr) {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -73,6 +74,14 @@ public class CCAGame extends CityCalcArea {
         ccaOurTeam.updateTime(this);
         ccaEnemyTeam.updateTime(this);
 
+        this.willEarlyWin = (ccaOurTeam.minutesToEarlyWin < this.minutesToEndGame || ccaEnemyTeam.minutesToEarlyWin < this.minutesToEndGame); // будет ли досрочная победа
+        if (this.willEarlyWin) {    // если будет досрочная победа
+            this.minutesToEarlyEndGame = Math.min(ccaOurTeam.minutesToEarlyWin, ccaEnemyTeam.minutesToEarlyWin);
+            if (this.minutesToEarlyEndGame < 0) {
+                this.isTimeOver = true;
+            }
+        }
+
         if (this.isTimeOver && !this.isGameOver) {
             if (this.minutesToEndGame >= 0 && ccaOurTeam.minutesToEarlyWin <= 0) { // если минуты до конца игры не закончились, а наши минуты до досрочной победы уже прошли
                 // наша досрочная победа
@@ -82,8 +91,10 @@ public class CCAGame extends CityCalcArea {
                 this.isEnemyWin = false;
                 this.isNobodyWin = false;
                 ccaOurTeam.points = this.earlyWin;
+                int minutesFromScreenshotToEarlyWin = (this.earlyWin - ccaOurTeam.pointsInScreenshot) / (ccaOurTeam.increase == 0 ? 1 : ccaOurTeam.increase);
+                ccaEnemyTeam.points = ccaEnemyTeam.pointsInScreenshot + minutesFromScreenshotToEarlyWin * ccaEnemyTeam.increase;
 
-                this.endEarlyTime = new Date(this.screenshotTimeCreation.getTime() + ((this.earlyWin - ccaOurTeam.pointsInScreenshot) / (ccaOurTeam.increase == 0 ? 1 : ccaOurTeam.increase) * 60_000));
+                this.endEarlyTime = new Date(this.screenshotTimeCreation.getTime() + minutesFromScreenshotToEarlyWin * 60_000);
                 this.strEarlyEndTime = simpleDateFormat.format(this.endEarlyTime);
 
             } else if (this.minutesToEndGame >= 0 && ccaEnemyTeam.minutesToEarlyWin <= 0) { // если минуты до конца игры не закончились, а минуты до досрочной победы противника уже прошли
@@ -94,8 +105,10 @@ public class CCAGame extends CityCalcArea {
                 this.isEnemyWin = true;
                 this.isNobodyWin = false;
                 ccaEnemyTeam.points = this.earlyWin;
+                int minutesFromScreenshotToEarlyWin = (this.earlyWin - ccaEnemyTeam.pointsInScreenshot) / (ccaEnemyTeam.increase == 0 ? 1 : ccaEnemyTeam.increase);
+                ccaOurTeam.points = ccaOurTeam.pointsInScreenshot + minutesFromScreenshotToEarlyWin * ccaOurTeam.increase;
 
-                this.endEarlyTime = new Date(this.screenshotTimeCreation.getTime() + ((this.earlyWin - ccaEnemyTeam.pointsInScreenshot) / (ccaEnemyTeam.increase == 0 ? 1 : ccaEnemyTeam.increase) * 60_000));
+                this.endEarlyTime = new Date(this.screenshotTimeCreation.getTime() + minutesFromScreenshotToEarlyWin * 60_000);
                 this.strEarlyEndTime = simpleDateFormat.format(this.endEarlyTime);
 
             }

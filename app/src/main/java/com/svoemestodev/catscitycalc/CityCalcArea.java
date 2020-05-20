@@ -1,6 +1,5 @@
 package com.svoemestodev.catscitycalc;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class CityCalcArea {
         this.ths = ths;
         this.needOcr = needOcr;
         doCut();
-        doORC();
+        doOCR();
 
     }
 
@@ -50,11 +49,11 @@ public class CityCalcArea {
         this.needOcr = needOcr;
     }
 
-    public void doORC() {
-        doORC(0,0,1);
+    public void doOCR() {
+        doOCR(0,0,1);
     }
 
-    public void doORC(int colorIndex, int thmIndex, int thpIndex) {
+    public void doOCR(int colorIndex, int thmIndex, int thpIndex) {
         if (this.needOcr) {
             this.bmpPrc = PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]);
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.context);

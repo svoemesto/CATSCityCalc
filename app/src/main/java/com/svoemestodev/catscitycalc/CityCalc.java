@@ -105,7 +105,7 @@ public class CityCalc extends Activity {
                         needOcr = true;
                         ccaPointsOur = new CityCalcArea(this, area, colors, ths, needOcr);
                         ccaPointsOur.bmpSrc = ourPointsAndIncreaseBitmapArray[1];
-                        ccaPointsOur.doORC();
+                        ccaPointsOur.doOCR();
                         mapAreas.put(area, ccaPointsOur);
 
                         area = Area.INCREASE_OUR;
@@ -114,7 +114,7 @@ public class CityCalc extends Activity {
                         needOcr = true;
                         ccaIncreaseOur = new CityCalcArea(this, area, colors, ths, needOcr);
                         ccaIncreaseOur.bmpSrc = ourPointsAndIncreaseBitmapArray[0];
-                        ccaIncreaseOur.doORC();
+                        ccaIncreaseOur.doOCR();
                         mapAreas.put(area, ccaIncreaseOur);
 
                     }
@@ -160,7 +160,7 @@ public class CityCalc extends Activity {
                         needOcr = true;
                         ccaPointsEnemy = new CityCalcArea(this, area, colors, ths, needOcr);
                         ccaPointsEnemy.bmpSrc = enemyPointsAndIncreaseBitmapArray[1];
-                        ccaPointsEnemy.doORC();
+                        ccaPointsEnemy.doOCR();
                         mapAreas.put(area, ccaPointsEnemy);
 
                         area = Area.INCREASE_ENEMY;
@@ -169,7 +169,7 @@ public class CityCalc extends Activity {
                         needOcr = true;
                         ccaIncreaseEnemy = new CityCalcArea(this, area, colors, ths, needOcr);
                         ccaIncreaseEnemy.bmpSrc = enemyPointsAndIncreaseBitmapArray[0];
-                        ccaIncreaseEnemy.doORC();
+                        ccaIncreaseEnemy.doOCR();
                         mapAreas.put(area, ccaIncreaseEnemy);
 
                     }

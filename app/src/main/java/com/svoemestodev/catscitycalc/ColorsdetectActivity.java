@@ -8,9 +8,7 @@ import androidx.preference.PreferenceManager;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -219,7 +217,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
                     }
                     editor.apply();
                     cityCalcArea.colors[0] = color_RGB;
-                    cityCalcArea.doORC();
+                    cityCalcArea.doOCR();
 
                     originalBitmap = cityCalcArea.bmpSrc;
                     processedBitmap = cityCalcArea.bmpPrc;
@@ -308,7 +306,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         cityCalcArea.ths[0] = color_THM;
         editor.apply();
         
-        cityCalcArea.doORC();
+        cityCalcArea.doOCR();
 
         originalBitmap = cityCalcArea.bmpSrc;
         processedBitmap = cityCalcArea.bmpPrc;
@@ -340,7 +338,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         cityCalcArea.ths[1] = color_THP;
         editor.apply();
 
-        cityCalcArea.doORC();
+        cityCalcArea.doOCR();
 
         originalBitmap = cityCalcArea.bmpSrc;
         processedBitmap = cityCalcArea.bmpPrc;

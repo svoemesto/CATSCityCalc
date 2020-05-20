@@ -37,7 +37,7 @@ public class CCABuilding extends CityCalcArea{
 
             if (this.buildingIsOur) {
                 ccaBuildingPoints.needOcr = true;
-                ccaBuildingPoints.doORC(0,0,1);
+                ccaBuildingPoints.doOCR(0,0,1);
                 this.our_points = Integer.parseInt(ccaBuildingPoints.finText);
             } else {
                 this.our_points = 0;
@@ -45,7 +45,7 @@ public class CCABuilding extends CityCalcArea{
 
             if (this.buildingIsEnemy) {
                 ccaBuildingPoints.needOcr = true;
-                ccaBuildingPoints.doORC(2,2,3);
+                ccaBuildingPoints.doOCR(2,2,3);
                 this.enemy_points = Integer.parseInt(ccaBuildingPoints.finText);
             } else {
                 this.enemy_points = 0;
