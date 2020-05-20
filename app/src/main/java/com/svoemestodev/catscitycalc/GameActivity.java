@@ -240,92 +240,145 @@ public class GameActivity extends AppCompatActivity {
         CCABuilding ccaBRB = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB);
 
         if (ccaGame != null) {
-            textStartGameTime = getString(R.string.start_game_at) + ": " + ccaGame.strStartTime;
-            textEndGameTime = getString(R.string.end_game_at) + ": " + ccaGame.strEndTime;
+            textStartGameTime = getString(R.string.start_game_at) + ": " + ccaGame.strStartTime;    // дата/время начала игры
+            textEndGameTime = getString(R.string.end_game_at) + ": " + ccaGame.strEndTime;          // дата/время окончания игры
 
-            tv_ga_status.setText(ccaGame.status);
-            tv_ga_start_game_time.setText(textStartGameTime);
-            tv_ga_end_game_time.setText(textEndGameTime);
-            if (ccaGame.isGameOver) {
-                tv_ga_total_time.setText("");
-            } else {
-                tv_ga_total_time.setText(ccaGame.strTotalTime);
+            tv_ga_status.setText(ccaGame.status);   // статус
+            tv_ga_start_game_time.setText(textStartGameTime);   // дата/время начала игры
+            tv_ga_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
+            if (ccaGame.isGameOver) {   // если игра закончена
+                tv_ga_total_time.setText("");   // время игры - пустое
+            } else { // если игра не закончена
+                tv_ga_total_time.setText(ccaGame.strTotalTime); // время игры
             }
 
-            tv_ga_early_win.setText(String.valueOf(ccaGame.earlyWin));
-            if (ccaOurTeam != null && ccaEnemyTeam != null) {
+            tv_ga_early_win.setText(String.valueOf(ccaGame.earlyWin)); // очки до досрочной победы
+            if (ccaOurTeam != null && ccaEnemyTeam != null) {   // если команды не пустые
 
-                iv_ga_our_team_name.setImageBitmap(ccaOurTeam.bmpSrc);
-                tv_ga_our_increase.setText(ccaOurTeam.increase == 0 ? "" : " +" + ccaOurTeam.increase + " ");
-                tv_ga_our_points.setText(String.valueOf(ccaOurTeam.points));
+                iv_ga_our_team_name.setImageBitmap(ccaOurTeam.bmpSrc);  // имя нашей команды
+                tv_ga_our_increase.setText(ccaOurTeam.increase == 0 ? "" : " +" + ccaOurTeam.increase + " ");   // прирост нашей команды
+                tv_ga_our_points.setText(String.valueOf(ccaOurTeam.points));  // очки нашей команды
 
-                iv_ga_enemy_team_name.setImageBitmap(ccaEnemyTeam.bmpSrc);
-                tv_ga_enemy_increase.setText(ccaEnemyTeam.increase == 0 ? "" : " +" + ccaEnemyTeam.increase + " ");
-                tv_ga_enemy_points.setText(String.valueOf(ccaEnemyTeam.points));
+                iv_ga_enemy_team_name.setImageBitmap(ccaEnemyTeam.bmpSrc);  // имя команды противника
+                tv_ga_enemy_increase.setText(ccaEnemyTeam.increase == 0 ? "" : " +" + ccaEnemyTeam.increase + " "); // прирост команды противника
+                tv_ga_enemy_points.setText(String.valueOf(ccaEnemyTeam.points));    // очки команды противника
 
-                if (ccaGame.isGameOver) {
-                    tv_ga_our_end_time.setText("");
-                    tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));
-                } else {
-                    tv_ga_our_end_time.setText("");
-                    tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));
+                if (ccaGame.isGameOver) {   // если игра закончена
+                    tv_ga_our_end_time.setText(""); // наше время пустое
+                    tv_ga_enemy_end_time.setText(""); // время противника пустое
+                } else { // если игра незакончена
+                    if (ccaGame.willEarlyWin) { // если будет ранняя победа
+                        if (ccaGame.willOurEarlyWin) { // если будет наша ранняя победа
+                            tv_ga_our_end_time.setText(String.valueOf(ccaOurTeam.strTimeToEarlyWin)); // время до нашей ранней победы
+                            tv_ga_enemy_end_time.setText("");   // время противника пустое
+                        } else if (ccaGame.willEnemyEarlyWin) { // если будет ранняя победа противника
+                            tv_ga_our_end_time.setText(""); // наше время пустое
+                            tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));   // время до ранней победы противника
+                        } else if (ccaGame.willNobodyEarlyWin) { // будет досрочная ничья
+                            tv_ga_our_end_time.setText(String.valueOf(ccaOurTeam.strTimeToEarlyWin)); // время до нашей ранней победы
+                            tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));   // время до ранней победы противника
+                        }
+                    } else { // если будет победа по времени
+                        if (ccaGame.willOurWin) {   // будет наша победа
+                            tv_ga_our_end_time.setText(String.valueOf(ccaGame.strTotalTime)); // время до нашей победы
+                            tv_ga_enemy_end_time.setText("");   // время противника пустое
+                        } else if (ccaGame.willEnemyWin) { // будет победа противника
+                            tv_ga_our_end_time.setText(""); // наше время пустое
+                            tv_ga_enemy_end_time.setText(String.valueOf(ccaGame.strTotalTime));   // время до победы противника
+                        } else if (ccaGame.willNobodyWin) { // будет ничья
+                            tv_ga_our_end_time.setText(String.valueOf(ccaGame.strTotalTime)); // время до нашей победы
+                            tv_ga_enemy_end_time.setText(String.valueOf(ccaGame.strTotalTime));   // время до победы противника
+                        }
+                    }
                 }
 
             }
 
             if (ccaBLT != null) {
-                CityCalcArea ccaBLTname = mainCityCalc.mapAreas.get(Area.BLT_NAME);
-                CityCalcArea ccaBLTprogress = mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
-                if (ccaBLTname != null) iv_ga_blt_name.setImageBitmap(ccaBLTname.bmpSrc);
-                if (ccaBLTprogress != null) iv_ga_blt_progress.setImageBitmap(ccaBLTprogress.bmpSrc);
-                tv_ga_blt_slots.setText(String.valueOf(ccaBLT.slots));
-                tv_ga_blt_slots_our.setText(String.valueOf(ccaBLT.slots_our));
-                tv_ga_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
-                tv_ga_blt_slots_enemy.setText(String.valueOf(ccaBLT.slots_enemy));
-                if (ccaBLT.buildingIsOur) {
-                    tv_ga_blt_points.setText("+" + ccaBLT.our_points);
-                    tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                } else if (ccaBLT.buildingIsEnemy) {
-                    tv_ga_blt_points.setText("+" + ccaBLT.enemy_points);
-                    tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                } else if (ccaBLT.buildingIsEmpty) {
-                    tv_ga_blt_points.setText("");
-                    tv_ga_blt_points.setBackgroundColor(0xFFFFFFFF);
-                }
-                if (ccaBLT.isX2) {
-                    tv_ga_blt_x2.setText("X2");
-                    tv_ga_blt_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-                } else {
-                    tv_ga_blt_x2.setText("");
-                    tv_ga_blt_x2.setBackgroundColor(0xFFFFFFFF);
+
+                iv_ga_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_x2.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_points.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_slots.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_slots_our.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_slots_empty.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blt_slots_enemy.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_car_black.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_car_our.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_car_empty.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_car_enemy.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_progress.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                
+                if (ccaBLT.isPresent) {
+                    CityCalcArea ccaBLTname = mainCityCalc.mapAreas.get(Area.BLT_NAME);
+                    CityCalcArea ccaBLTprogress = mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
+                    if (ccaBLTname != null) iv_ga_blt_name.setImageBitmap(ccaBLTname.bmpSrc);
+                    if (ccaBLTprogress != null) iv_ga_blt_progress.setImageBitmap(ccaBLTprogress.bmpSrc);
+                    tv_ga_blt_slots.setText(String.valueOf(ccaBLT.slots));
+                    tv_ga_blt_slots_our.setText(String.valueOf(ccaBLT.slots_our));
+                    tv_ga_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
+                    tv_ga_blt_slots_enemy.setText(String.valueOf(ccaBLT.slots_enemy));
+                    if (ccaBLT.buildingIsOur) {
+                        tv_ga_blt_points.setText("+" + ccaBLT.our_points);
+                        tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    } else if (ccaBLT.buildingIsEnemy) {
+                        tv_ga_blt_points.setText("+" + ccaBLT.enemy_points);
+                        tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    } else if (ccaBLT.buildingIsEmpty) {
+                        tv_ga_blt_points.setText("");
+                        tv_ga_blt_points.setBackgroundColor(0xFFFFFFFF);
+                    }
+                    if (ccaBLT.isX2) {
+                        tv_ga_blt_x2.setText("X2");
+                        tv_ga_blt_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
+                    } else {
+                        tv_ga_blt_x2.setText("");
+                        tv_ga_blt_x2.setBackgroundColor(0xFFFFFFFF);
+                    }
                 }
             }
 
             if (ccaBLC != null) {
-                CityCalcArea ccaBLCname = mainCityCalc.mapAreas.get(Area.BLC_NAME);
-                CityCalcArea ccaBLCprogress = mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
-                if (ccaBLCname != null) iv_ga_blc_name.setImageBitmap(ccaBLCname.bmpSrc);
-                if (ccaBLCprogress != null) iv_ga_blc_progress.setImageBitmap(ccaBLCprogress.bmpSrc);
-                tv_ga_blc_slots.setText(String.valueOf(ccaBLC.slots));
-                tv_ga_blc_slots_our.setText(String.valueOf(ccaBLC.slots_our));
-                tv_ga_blc_slots_empty.setText(String.valueOf(ccaBLC.slots_empty));
-                tv_ga_blc_slots_enemy.setText(String.valueOf(ccaBLC.slots_enemy));
-                if (ccaBLC.buildingIsOur) {
-                    tv_ga_blc_points.setText("+" + ccaBLC.our_points);
-                    tv_ga_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                } else if (ccaBLC.buildingIsEnemy) {
-                    tv_ga_blc_points.setText("+" + ccaBLC.enemy_points);
-                    tv_ga_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                } else if (ccaBLC.buildingIsEmpty) {
-                    tv_ga_blc_points.setText("");
-                    tv_ga_blc_points.setBackgroundColor(0xFFFFFFFF);
-                }
-                if (ccaBLC.isX2) {
-                    tv_ga_blc_x2.setText("X2");
-                    tv_ga_blc_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-                } else {
-                    tv_ga_blc_x2.setText("");
-                    tv_ga_blc_x2.setBackgroundColor(0xFFFFFFFF);
+                iv_ga_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_x2.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_points.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_slots.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_slots_our.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_slots_empty.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                tv_ga_blc_slots_enemy.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_car_black.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_car_our.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_car_empty.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_car_enemy.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_progress.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+
+                if (ccaBLC.isPresent) {
+                    CityCalcArea ccaBLCname = mainCityCalc.mapAreas.get(Area.BLC_NAME);
+                    CityCalcArea ccaBLCprogress = mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
+                    if (ccaBLCname != null) iv_ga_blc_name.setImageBitmap(ccaBLCname.bmpSrc);
+                    if (ccaBLCprogress != null)
+                        iv_ga_blc_progress.setImageBitmap(ccaBLCprogress.bmpSrc);
+                    tv_ga_blc_slots.setText(String.valueOf(ccaBLC.slots));
+                    tv_ga_blc_slots_our.setText(String.valueOf(ccaBLC.slots_our));
+                    tv_ga_blc_slots_empty.setText(String.valueOf(ccaBLC.slots_empty));
+                    tv_ga_blc_slots_enemy.setText(String.valueOf(ccaBLC.slots_enemy));
+                    if (ccaBLC.buildingIsOur) {
+                        tv_ga_blc_points.setText("+" + ccaBLC.our_points);
+                        tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
+                    } else if (ccaBLC.buildingIsEnemy) {
+                        tv_ga_blc_points.setText("+" + ccaBLC.enemy_points);
+                        tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
+                    } else if (ccaBLC.buildingIsEmpty) {
+                        tv_ga_blc_points.setText("");
+                        tv_ga_blc_points.setBackgroundColor(0xFFFFFFFF);
+                    }
+                    if (ccaBLC.isX2) {
+                        tv_ga_blc_x2.setText("X2");
+                        tv_ga_blc_x2.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16));
+                    } else {
+                        tv_ga_blc_x2.setText("");
+                        tv_ga_blc_x2.setBackgroundColor(0xFFFFFFFF);
+                    }
                 }
             }
 
@@ -333,115 +386,179 @@ public class GameActivity extends AppCompatActivity {
 
 
         if (ccaBLB != null) {
-            CityCalcArea ccaBLBname = mainCityCalc.mapAreas.get(Area.BLB_NAME);
-            CityCalcArea ccaBLBprogress = mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
-            if (ccaBLBname != null) iv_ga_blb_name.setImageBitmap(ccaBLBname.bmpSrc);
-            if (ccaBLBprogress != null) iv_ga_blb_progress.setImageBitmap(ccaBLBprogress.bmpSrc);
-            tv_ga_blb_slots.setText(String.valueOf(ccaBLB.slots));
-            tv_ga_blb_slots_our.setText(String.valueOf(ccaBLB.slots_our));
-            tv_ga_blb_slots_empty.setText(String.valueOf(ccaBLB.slots_empty));
-            tv_ga_blb_slots_enemy.setText(String.valueOf(ccaBLB.slots_enemy));
-            if (ccaBLB.buildingIsOur) {
-                tv_ga_blb_points.setText("+" + ccaBLB.our_points);
-                tv_ga_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-            } else if (ccaBLB.buildingIsEnemy) {
-                tv_ga_blb_points.setText("+" + ccaBLB.enemy_points);
-                tv_ga_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-            } else if (ccaBLB.buildingIsEmpty) {
-                tv_ga_blb_points.setText("");
-                tv_ga_blb_points.setBackgroundColor(0xFFFFFFFF);
-            }
-            if (ccaBLB.isX2) {
-                tv_ga_blb_x2.setText("X2");
-                tv_ga_blb_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-            } else {
-                tv_ga_blb_x2.setText("");
-                tv_ga_blb_x2.setBackgroundColor(0xFFFFFFFF);
+            iv_ga_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_x2.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_points.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_slots.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_slots_our.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_slots_empty.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_blb_slots_enemy.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_blb_car_black.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_blb_car_our.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_blb_car_empty.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_blb_car_enemy.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_blb_progress.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+
+            if (ccaBLB.isPresent) {
+                CityCalcArea ccaBLBname = mainCityCalc.mapAreas.get(Area.BLB_NAME);
+                CityCalcArea ccaBLBprogress = mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
+                if (ccaBLBname != null) iv_ga_blb_name.setImageBitmap(ccaBLBname.bmpSrc);
+                if (ccaBLBprogress != null)
+                    iv_ga_blb_progress.setImageBitmap(ccaBLBprogress.bmpSrc);
+                tv_ga_blb_slots.setText(String.valueOf(ccaBLB.slots));
+                tv_ga_blb_slots_our.setText(String.valueOf(ccaBLB.slots_our));
+                tv_ga_blb_slots_empty.setText(String.valueOf(ccaBLB.slots_empty));
+                tv_ga_blb_slots_enemy.setText(String.valueOf(ccaBLB.slots_enemy));
+                if (ccaBLB.buildingIsOur) {
+                    tv_ga_blb_points.setText("+" + ccaBLB.our_points);
+                    tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
+                } else if (ccaBLB.buildingIsEnemy) {
+                    tv_ga_blb_points.setText("+" + ccaBLB.enemy_points);
+                    tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
+                } else if (ccaBLB.buildingIsEmpty) {
+                    tv_ga_blb_points.setText("");
+                    tv_ga_blb_points.setBackgroundColor(0xFFFFFFFF);
+                }
+                if (ccaBLB.isX2) {
+                    tv_ga_blb_x2.setText("X2");
+                    tv_ga_blb_x2.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16));
+                } else {
+                    tv_ga_blb_x2.setText("");
+                    tv_ga_blb_x2.setBackgroundColor(0xFFFFFFFF);
+                }
             }
         }
 
         if (ccaBRT != null) {
-            CityCalcArea ccaBRTname = mainCityCalc.mapAreas.get(Area.BRT_NAME);
-            CityCalcArea ccaBRTprogress = mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
-            if (ccaBRTname != null) iv_ga_brt_name.setImageBitmap(ccaBRTname.bmpSrc);
-            if (ccaBRTprogress != null) iv_ga_brt_progress.setImageBitmap(ccaBRTprogress.bmpSrc);
-            tv_ga_brt_slots.setText(String.valueOf(ccaBRT.slots));
-            tv_ga_brt_slots_our.setText(String.valueOf(ccaBRT.slots_our));
-            tv_ga_brt_slots_empty.setText(String.valueOf(ccaBRT.slots_empty));
-            tv_ga_brt_slots_enemy.setText(String.valueOf(ccaBRT.slots_enemy));
-            if (ccaBRT.buildingIsOur) {
-                tv_ga_brt_points.setText("+" + ccaBRT.our_points);
-                tv_ga_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-            } else if (ccaBRT.buildingIsEnemy) {
-                tv_ga_brt_points.setText("+" + ccaBRT.enemy_points);
-                tv_ga_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-            } else if (ccaBRT.buildingIsEmpty) {
-                tv_ga_brt_points.setText("");
-                tv_ga_brt_points.setBackgroundColor(0xFFFFFFFF);
-            }
-            if (ccaBRT.isX2) {
-                tv_ga_brt_x2.setText("X2");
-                tv_ga_brt_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-            } else {
-                tv_ga_brt_x2.setText("");
-                tv_ga_brt_x2.setBackgroundColor(0xFFFFFFFF);
+            iv_ga_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_x2.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_points.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_slots.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_slots_our.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_slots_empty.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brt_slots_enemy.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brt_car_black.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brt_car_our.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brt_car_empty.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brt_car_enemy.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brt_progress.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+
+            if (ccaBRT.isPresent) {
+                CityCalcArea ccaBRTname = mainCityCalc.mapAreas.get(Area.BRT_NAME);
+                CityCalcArea ccaBRTprogress = mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
+                if (ccaBRTname != null) iv_ga_brt_name.setImageBitmap(ccaBRTname.bmpSrc);
+                if (ccaBRTprogress != null)
+                    iv_ga_brt_progress.setImageBitmap(ccaBRTprogress.bmpSrc);
+                tv_ga_brt_slots.setText(String.valueOf(ccaBRT.slots));
+                tv_ga_brt_slots_our.setText(String.valueOf(ccaBRT.slots_our));
+                tv_ga_brt_slots_empty.setText(String.valueOf(ccaBRT.slots_empty));
+                tv_ga_brt_slots_enemy.setText(String.valueOf(ccaBRT.slots_enemy));
+                if (ccaBRT.buildingIsOur) {
+                    tv_ga_brt_points.setText("+" + ccaBRT.our_points);
+                    tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
+                } else if (ccaBRT.buildingIsEnemy) {
+                    tv_ga_brt_points.setText("+" + ccaBRT.enemy_points);
+                    tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
+                } else if (ccaBRT.buildingIsEmpty) {
+                    tv_ga_brt_points.setText("");
+                    tv_ga_brt_points.setBackgroundColor(0xFFFFFFFF);
+                }
+                if (ccaBRT.isX2) {
+                    tv_ga_brt_x2.setText("X2");
+                    tv_ga_brt_x2.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16));
+                } else {
+                    tv_ga_brt_x2.setText("");
+                    tv_ga_brt_x2.setBackgroundColor(0xFFFFFFFF);
+                }
             }
         }
 
         if (ccaBRC != null) {
-            CityCalcArea ccaBRCname = mainCityCalc.mapAreas.get(Area.BRC_NAME);
-            CityCalcArea ccaBRCprogress = mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
-            if (ccaBRCname != null) iv_ga_brc_name.setImageBitmap(ccaBRCname.bmpSrc);
-            if (ccaBRCprogress != null) iv_ga_brc_progress.setImageBitmap(ccaBRCprogress.bmpSrc);
-            tv_ga_brc_slots.setText(String.valueOf(ccaBRC.slots));
-            tv_ga_brc_slots_our.setText(String.valueOf(ccaBRC.slots_our));
-            tv_ga_brc_slots_empty.setText(String.valueOf(ccaBRC.slots_empty));
-            tv_ga_brc_slots_enemy.setText(String.valueOf(ccaBRC.slots_enemy));
-            if (ccaBRC.buildingIsOur) {
-                tv_ga_brc_points.setText("+" + ccaBRC.our_points);
-                tv_ga_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-            } else if (ccaBRC.buildingIsEnemy) {
-                tv_ga_brc_points.setText("+" + ccaBRC.enemy_points);
-                tv_ga_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-            } else if (ccaBRC.buildingIsEmpty) {
-                tv_ga_brc_points.setText("");
-                tv_ga_brc_points.setBackgroundColor(0xFFFFFF);
-            }
-            if (ccaBRC.isX2) {
-                tv_ga_brc_x2.setText("X2");
-                tv_ga_brc_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-            } else {
-                tv_ga_brc_x2.setText("");
-                tv_ga_brc_x2.setBackgroundColor(0xFFFFFF);
+            iv_ga_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_x2.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_points.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_slots.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_slots_our.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_slots_empty.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brc_slots_enemy.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brc_car_black.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brc_car_our.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brc_car_empty.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brc_car_enemy.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brc_progress.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+
+            if (ccaBRC.isPresent) {
+                CityCalcArea ccaBRCname = mainCityCalc.mapAreas.get(Area.BRC_NAME);
+                CityCalcArea ccaBRCprogress = mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
+                if (ccaBRCname != null) iv_ga_brc_name.setImageBitmap(ccaBRCname.bmpSrc);
+                if (ccaBRCprogress != null)
+                    iv_ga_brc_progress.setImageBitmap(ccaBRCprogress.bmpSrc);
+                tv_ga_brc_slots.setText(String.valueOf(ccaBRC.slots));
+                tv_ga_brc_slots_our.setText(String.valueOf(ccaBRC.slots_our));
+                tv_ga_brc_slots_empty.setText(String.valueOf(ccaBRC.slots_empty));
+                tv_ga_brc_slots_enemy.setText(String.valueOf(ccaBRC.slots_enemy));
+                if (ccaBRC.buildingIsOur) {
+                    tv_ga_brc_points.setText("+" + ccaBRC.our_points);
+                    tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
+                } else if (ccaBRC.buildingIsEnemy) {
+                    tv_ga_brc_points.setText("+" + ccaBRC.enemy_points);
+                    tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
+                } else if (ccaBRC.buildingIsEmpty) {
+                    tv_ga_brc_points.setText("");
+                    tv_ga_brc_points.setBackgroundColor(0xFFFFFF);
+                }
+                if (ccaBRC.isX2) {
+                    tv_ga_brc_x2.setText("X2");
+                    tv_ga_brc_x2.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16));
+                } else {
+                    tv_ga_brc_x2.setText("");
+                    tv_ga_brc_x2.setBackgroundColor(0xFFFFFF);
+                }
             }
         }
 
 
         if (ccaBRB != null) {
-            CityCalcArea ccaBRBname = mainCityCalc.mapAreas.get(Area.BRB_NAME);
-            CityCalcArea ccaBRBprogress = mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
-            if (ccaBRBname != null) iv_ga_brb_name.setImageBitmap(ccaBRBname.bmpSrc);
-            if (ccaBRBprogress != null) iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
-            tv_ga_brb_slots.setText(String.valueOf(ccaBRB.slots));
-            tv_ga_brb_slots_our.setText(String.valueOf(ccaBRB.slots_our));
-            tv_ga_brb_slots_empty.setText(String.valueOf(ccaBRB.slots_empty));
-            tv_ga_brb_slots_enemy.setText(String.valueOf(ccaBRB.slots_enemy));
-            if (ccaBRB.buildingIsOur) {
-                tv_ga_brb_points.setText("+" + ccaBRB.our_points);
-                tv_ga_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-            } else if (ccaBRB.buildingIsEnemy) {
-                tv_ga_brb_points.setText("+" + ccaBRB.enemy_points);
-                tv_ga_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-            } else if (ccaBRB.buildingIsEmpty) {
-                tv_ga_brb_points.setText("");
-                tv_ga_brb_points.setBackgroundColor(0xFFFFFF);
-            }
-            if (ccaBRB.isX2) {
-                tv_ga_brb_x2.setText("X2");
-                tv_ga_brb_x2.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints),16));
-            } else {
-                tv_ga_brb_x2.setText("");
-                tv_ga_brb_x2.setBackgroundColor(0xFFFFFF);
+            iv_ga_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_x2.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_points.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_slots.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_slots_our.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_slots_empty.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            tv_ga_brb_slots_enemy.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brb_car_black.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brb_car_our.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brb_car_empty.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brb_car_enemy.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+            iv_ga_brb_progress.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+
+            if (ccaBRB.isPresent) {
+                CityCalcArea ccaBRBname = mainCityCalc.mapAreas.get(Area.BRB_NAME);
+                CityCalcArea ccaBRBprogress = mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
+                if (ccaBRBname != null) iv_ga_brb_name.setImageBitmap(ccaBRBname.bmpSrc);
+                if (ccaBRBprogress != null)
+                    iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
+                tv_ga_brb_slots.setText(String.valueOf(ccaBRB.slots));
+                tv_ga_brb_slots_our.setText(String.valueOf(ccaBRB.slots_our));
+                tv_ga_brb_slots_empty.setText(String.valueOf(ccaBRB.slots_empty));
+                tv_ga_brb_slots_enemy.setText(String.valueOf(ccaBRB.slots_enemy));
+                if (ccaBRB.buildingIsOur) {
+                    tv_ga_brb_points.setText("+" + ccaBRB.our_points);
+                    tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
+                } else if (ccaBRB.buildingIsEnemy) {
+                    tv_ga_brb_points.setText("+" + ccaBRB.enemy_points);
+                    tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
+                } else if (ccaBRB.buildingIsEmpty) {
+                    tv_ga_brb_points.setText("");
+                    tv_ga_brb_points.setBackgroundColor(0xFFFFFF);
+                }
+                if (ccaBRB.isX2) {
+                    tv_ga_brb_x2.setText("X2");
+                    tv_ga_brb_x2.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16));
+                } else {
+                    tv_ga_brb_x2.setText("");
+                    tv_ga_brb_x2.setBackgroundColor(0xFFFFFF);
+                }
             }
         }
 

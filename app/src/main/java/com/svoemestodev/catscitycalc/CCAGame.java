@@ -149,13 +149,13 @@ public class CCAGame extends CityCalcArea {
             this.willEarlyWin = (ccaOurTeam.minutesToEarlyWin < this.minutesToEndGame || ccaEnemyTeam.minutesToEarlyWin < this.minutesToEndGame); // будет ли досрочная победа
             if (this.willEarlyWin) {    // если будет досрочная победа
 
-                this.differentPoints = Math.abs(ccaOurTeam.willPointsToEndGame - ccaEnemyTeam.willPointsToEndGame);
+                this.minutesToEarlyEndGame = Math.min(ccaOurTeam.minutesToEarlyWin, ccaEnemyTeam.minutesToEarlyWin);
 
                 if (ccaOurTeam.minutesToEarlyWin < this.minutesToEndGame && ccaOurTeam.minutesToEarlyWin < ccaEnemyTeam.minutesToEarlyWin) { // если досрочно победим мы
 
-
-                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaOurTeam.minutesToEarlyWin;
+//                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaOurTeam.minutesToEarlyWin;
                     this.strEarlyTotalTime = String.format(Locale.getDefault(), "%02d:%02d", this.minutesToEarlyEndGame / 60, this.minutesToEarlyEndGame % 60);
+                    ccaOurTeam.strTimeToEarlyWin = this.strEarlyTotalTime;
                     this.endEarlyTime = new Date(Calendar.getInstance().getTime().getTime() + this.minutesToEarlyEndGame * 60_000);
                     this.strEarlyEndTime = simpleDateFormat.format(this.endEarlyTime);
 
@@ -169,8 +169,9 @@ public class CCAGame extends CityCalcArea {
 
                 } else if (ccaEnemyTeam.minutesToEarlyWin < ccaOurTeam.minutesToEarlyWin) { // если досрочно победит противник
 
-                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaEnemyTeam.minutesToEarlyWin;
+//                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaEnemyTeam.minutesToEarlyWin;
                     this.strEarlyTotalTime = String.format(Locale.getDefault(), "%02d:%02d", this.minutesToEarlyEndGame / 60, this.minutesToEarlyEndGame % 60);
+                    ccaEnemyTeam.strTimeToEarlyWin = this.strEarlyTotalTime;
                     this.endEarlyTime = new Date(Calendar.getInstance().getTime().getTime() + this.minutesToEarlyEndGame * 60_000);
                     this.strEarlyEndTime = simpleDateFormat.format(this.endEarlyTime);
 
@@ -184,8 +185,10 @@ public class CCAGame extends CityCalcArea {
 
                 } else if (ccaEnemyTeam.minutesToEarlyWin == ccaOurTeam.minutesToEarlyWin){ // если будет досрочная ничья
 
-                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaOurTeam.minutesToEarlyWin;
+//                    this.minutesToEarlyEndGame = this.minutesToEndGame - ccaOurTeam.minutesToEarlyWin;
                     this.strEarlyTotalTime = String.format(Locale.getDefault(), "%02d:%02d", this.minutesToEarlyEndGame / 60, this.minutesToEarlyEndGame % 60);
+                    ccaOurTeam.strTimeToEarlyWin = this.strEarlyTotalTime;
+                    ccaEnemyTeam.strTimeToEarlyWin = this.strEarlyTotalTime;
                     this.endEarlyTime = new Date(Calendar.getInstance().getTime().getTime() + this.minutesToEarlyEndGame * 60_000);
                     this.strEarlyEndTime = simpleDateFormat.format(this.endEarlyTime);
 
@@ -198,6 +201,11 @@ public class CCAGame extends CityCalcArea {
                     this.willNobodyEarlyWin = true;
 
                 }
+
+                ccaOurTeam.willPointsToEndGame = ccaOurTeam.points + ccaOurTeam.increase * this.minutesToEarlyEndGame;
+                ccaEnemyTeam.willPointsToEndGame = ccaEnemyTeam.points + ccaEnemyTeam.increase * this.minutesToEarlyEndGame;
+                this.differentPoints = Math.abs(ccaOurTeam.willPointsToEndGame - ccaEnemyTeam.willPointsToEndGame);
+
             } else { // если будет победа по времени
 
                 this.differentPoints = Math.abs(ccaOurTeam.willPointsToEndGame - ccaEnemyTeam.willPointsToEndGame);
