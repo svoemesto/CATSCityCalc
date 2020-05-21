@@ -59,62 +59,14 @@ public class CityCalcArea {
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.context);
 
             if (area.equals(Area.TOTAL_TIME)) {
-                this.finText = parseTime(this.ocrText);
+                this.finText = Utils.parseTime(this.ocrText);
             } else {
-                this.finText = parseNumbers(this.ocrText);
+                this.finText = Utils.parseNumbers(this.ocrText);
             }
         }
     }
 
-    private String parseNumbers(String str) {
-        String result = "";                 // результат
-        for (char ch : str.toCharArray()) { // цикл по символам строки
-            if (ch >= '0' && ch <='9') {    // если символ - числовой
-                result = result + ch;       // приклеиваем его к результату
-            }
-        }
-        if (result.equals("")) result = "0";
-        return result;                      // возвращаем результат
-    }
 
-    private String parseTime(String str) {
-        // парсинг "Время"
-        String[] arrTotalTime = str.split(" ");             // парсим с разделителем "пробел"
-        List<String> listTotalTime = new ArrayList<>();            // лист значений
-        for (int i = 0; i < arrTotalTime.length; i++) {             // проходим по распарсенному массиву
-            if (!arrTotalTime[i].equals("")) {                      // если элемент массива не пустой
-                listTotalTime.add(arrTotalTime[i]);                 // добавляем текущий элемент массива в лист
-            }
-        }
-
-        if (listTotalTime.size() > 1) {                         // если в списке больше 1 элемента
-            for (int i = 0; i < listTotalTime.size(); i++) {    // проходим по списку
-                listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
-            }
-        }
-
-        if (listTotalTime.size() > 0) {     // если в списке есть элементы
-            if (listTotalTime.size() == 1) {    // если в списке 1 элемент
-                if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {    // если последний символ элемента равен букве "М"
-                    String hours = "00";    // часы = "00"
-                    String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);    // минуты = элемент без последнего символа
-                    if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                    return hours + ":" + minutes;   // время = часы : минуты
-                } else {    // если последний символ элемента не равен букве "М"
-                    String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);  // часы = элемент без последнего символа
-                    String minutes = "00";  // минуты = "00"
-                    return hours + ":" + minutes; // время = часы : минуты
-                }
-            } else {    // если в списке больше 1 элемента
-                String hours = listTotalTime.get(0);    // часы - первый элемент из списка
-                String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
-                if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                return hours + ":" + minutes; // время = часы : минуты
-            }
-        } else { // если в списке нет элементов
-            return "00:00"; // время нулевое
-        }
-    }
 
     private Bitmap cutSrc() {
         if (this.cityCalc != null) {

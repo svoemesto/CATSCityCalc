@@ -11,6 +11,7 @@ import java.util.Map;
 
 public class CityCalc extends Activity {
 
+    File fileScreenshot;
     Bitmap bmpScreenshot;       // исходный скриншот
     int calibrateX;             // сдвиг центра по X
     int calibrateY;             // сдвиг центра по Y
@@ -20,6 +21,7 @@ public class CityCalc extends Activity {
     // конструктор
     public CityCalc(File file, int calibrateX, int calibrateY, Context context) {
 
+        this.fileScreenshot = file;
         this.calibrateX = calibrateX;
         this.calibrateY = calibrateY;
         this.context = context;
@@ -74,7 +76,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaEarlyWin = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaEarlyWin);
 
-                    ccaGame.calc(file, ccaTotalTime, ccaEarlyWin);
+                    ccaGame.calc();
 
 
                     // Points And Increase Our Area
@@ -186,7 +188,7 @@ public class CityCalc extends Activity {
                     CCATeam ccaEnemyTeam = new CCATeam(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaEnemyTeam);
 
-                    ccaGame.calcWin(ccaOurTeam, ccaEnemyTeam);
+                    ccaGame.calcWin();
 
                     // BLT Area
                     area = Area.BLT;

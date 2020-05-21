@@ -15,7 +15,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -36,13 +35,14 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -161,7 +161,7 @@ public class GameActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
     public static String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
-    public static File fileScreenshot;    // текущий файл скриншота
+    public static File fileScreenshot = null;    // текущий файл скриншота
     public static File fileScreenshotPrevious;    // предыдущий файл скриншота
     public static File fileLastInFolder;    // последний файл в папке
     private NotificationManager notificationManager;    // нотификатор
@@ -224,7 +224,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void loadDataToViews() {
+    public void loadDataToViews(boolean withNotify) {
 
         String textStartGameTime;
         String textEndGameTime;
@@ -238,58 +238,50 @@ public class GameActivity extends AppCompatActivity {
         CCABuilding ccaBRT = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRT);
         CCABuilding ccaBRC = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRC);
         CCABuilding ccaBRB = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB);
+        String pattern = "dd MMM HH:mm";
 
         if (ccaGame != null) {
-            textStartGameTime = getString(R.string.start_game_at) + ": " + ccaGame.strStartTime;    // дата/время начала игры
-            textEndGameTime = getString(R.string.end_game_at) + ": " + ccaGame.strEndTime;          // дата/время окончания игры
 
-            tv_ga_status.setText(ccaGame.status);   // статус
+            ccaGame.calcWin();
+
+            textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.ccagDateStartGame, pattern);    // дата/время начала игры
+            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.ccagDateFinal, pattern);          // дата/время окончания игры
+
+            tv_ga_status.setText(ccaGame.ccagStatus);   // статус
             tv_ga_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             tv_ga_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
-            if (ccaGame.isGameOver) {   // если игра закончена
+            if (ccaGame.ccagIsGameOver) {   // если игра закончена
                 tv_ga_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
-                tv_ga_total_time.setText(ccaGame.strTotalTime); // время игры
+                tv_ga_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
             }
 
-            tv_ga_early_win.setText(String.valueOf(ccaGame.earlyWin)); // очки до досрочной победы
+            tv_ga_early_win.setText(String.valueOf(ccaGame.ccagEarlyWin)); // очки до досрочной победы
             if (ccaOurTeam != null && ccaEnemyTeam != null) {   // если команды не пустые
 
                 iv_ga_our_team_name.setImageBitmap(ccaOurTeam.bmpSrc);  // имя нашей команды
-                tv_ga_our_increase.setText(ccaOurTeam.increase == 0 ? "" : " +" + ccaOurTeam.increase + " ");   // прирост нашей команды
-                tv_ga_our_points.setText(String.valueOf(ccaOurTeam.points));  // очки нашей команды
+                tv_ga_our_increase.setText(ccaOurTeam.ccatIncrease == 0 ? "" : " +" + ccaOurTeam.ccatIncrease + " ");   // прирост нашей команды
+                tv_ga_our_points.setText(String.valueOf(ccaOurTeam.getPoints()));  // очки нашей команды
 
                 iv_ga_enemy_team_name.setImageBitmap(ccaEnemyTeam.bmpSrc);  // имя команды противника
-                tv_ga_enemy_increase.setText(ccaEnemyTeam.increase == 0 ? "" : " +" + ccaEnemyTeam.increase + " "); // прирост команды противника
-                tv_ga_enemy_points.setText(String.valueOf(ccaEnemyTeam.points));    // очки команды противника
+                tv_ga_enemy_increase.setText(ccaEnemyTeam.ccatIncrease == 0 ? "" : " +" + ccaEnemyTeam.ccatIncrease + " "); // прирост команды противника
+                tv_ga_enemy_points.setText(String.valueOf(ccaEnemyTeam.getPoints()));    // очки команды противника
 
-                if (ccaGame.isGameOver) {   // если игра закончена
+                if (ccaGame.ccagIsGameOver) {   // если игра закончена
                     tv_ga_our_end_time.setText(""); // наше время пустое
                     tv_ga_enemy_end_time.setText(""); // время противника пустое
                 } else { // если игра незакончена
-                    if (ccaGame.willEarlyWin) { // если будет ранняя победа
-                        if (ccaGame.willOurEarlyWin) { // если будет наша ранняя победа
-                            tv_ga_our_end_time.setText(String.valueOf(ccaOurTeam.strTimeToEarlyWin)); // время до нашей ранней победы
-                            tv_ga_enemy_end_time.setText("");   // время противника пустое
-                        } else if (ccaGame.willEnemyEarlyWin) { // если будет ранняя победа противника
-                            tv_ga_our_end_time.setText(""); // наше время пустое
-                            tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));   // время до ранней победы противника
-                        } else if (ccaGame.willNobodyEarlyWin) { // будет досрочная ничья
-                            tv_ga_our_end_time.setText(String.valueOf(ccaOurTeam.strTimeToEarlyWin)); // время до нашей ранней победы
-                            tv_ga_enemy_end_time.setText(String.valueOf(ccaEnemyTeam.strTimeToEarlyWin));   // время до ранней победы противника
-                        }
-                    } else { // если будет победа по времени
-                        if (ccaGame.willOurWin) {   // будет наша победа
-                            tv_ga_our_end_time.setText(String.valueOf(ccaGame.strTotalTime)); // время до нашей победы
-                            tv_ga_enemy_end_time.setText("");   // время противника пустое
-                        } else if (ccaGame.willEnemyWin) { // будет победа противника
-                            tv_ga_our_end_time.setText(""); // наше время пустое
-                            tv_ga_enemy_end_time.setText(String.valueOf(ccaGame.strTotalTime));   // время до победы противника
-                        } else if (ccaGame.willNobodyWin) { // будет ничья
-                            tv_ga_our_end_time.setText(String.valueOf(ccaGame.strTotalTime)); // время до нашей победы
-                            tv_ga_enemy_end_time.setText(String.valueOf(ccaGame.strTotalTime));   // время до победы противника
-                        }
+                    if (ccaGame.ccagWillOurWin) {
+                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время до нашей победы
+                        tv_ga_enemy_end_time.setText("");   // время противника пустое
+                    } else if (ccaGame.ccagWillEnemyWin) {
+                        tv_ga_our_end_time.setText(""); // наше время пустое
+                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));   // время до победы противника
+                    } else if (ccaGame.ccagWillNobodyWin) {
+                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время до нашей победы
+                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));   // время до победы противника
                     }
+
                 }
 
             }
@@ -565,23 +557,25 @@ public class GameActivity extends AppCompatActivity {
 
 
         // нотификация
-        if (ccaGame != null) {
-            Intent intent = new Intent(this, GameActivity.class);
-            intent.setAction(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+        if (withNotify) {
+            if (ccaGame != null) {
+                Intent intent = new Intent(this, GameActivity.class);
+                intent.setAction(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
 
-            NotificationCompat.Builder notificationBuilder =
-                    new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                            .setAutoCancel(false)
-                            .setSmallIcon(R.drawable.ic_catscalciconsmall)
-                            .setWhen(System.currentTimeMillis())
-                            .setContentIntent(pendingIntent)
-                            .setContentText(ccaGame.status)
-                            .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.status));
-            createChannelIfNeeded(notificationManager);
-            notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+                NotificationCompat.Builder notificationBuilder =
+                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                                .setAutoCancel(false)
+                                .setSmallIcon(R.drawable.ic_catscalciconsmall)
+                                .setWhen(System.currentTimeMillis())
+                                .setContentIntent(pendingIntent)
+                                .setContentText(ccaGame.ccagStatus)
+                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.ccagStatus));
+                createChannelIfNeeded(notificationManager);
+                notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+            }
         }
 
     }
@@ -757,11 +751,15 @@ public class GameActivity extends AppCompatActivity {
                     fOutScreenshot.flush();                                                       // сохраняем данные из потока
                     fOutScreenshot.close(); // закрываем поток
                     fileScreenshot = tmp; // файл скриншота - созданный файл
+                    mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                    loadDataToViews(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
                 fileScreenshot = tmp; // файл скриншота - картинка из папки программы
+                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                loadDataToViews(false);
             }
         }
     }
@@ -783,6 +781,7 @@ public class GameActivity extends AppCompatActivity {
         if (timer == null) {    // если таймер не запущен
             timer = new Timer();    // запускаем таймер
             timer.schedule(new firstTask(), 1000,1000); // запускаем такс таймера
+            timer.schedule(new secondTask(), 60000,60000); // запускаем такс таймера
         }
 
     }
@@ -908,11 +907,12 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void OnSelectedFile(String fileName) {
                         fileScreenshot = new File(fileName); // файл скриншота - возавращенный из диалога
+                        if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFileOrDirectory(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
                         isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                         sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                         fileLastInFolder = null;    // сбрасываем последний файл в папке
                         mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                        loadDataToViews();
+                        loadDataToViews(true);
                     }
                 });
         fileDialog.show();
@@ -927,6 +927,8 @@ public class GameActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
+
+
     class firstTask extends TimerTask {
 
         @Override
@@ -937,30 +939,57 @@ public class GameActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
-                        File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
-                        if (tmpFile != null) {  // если он не пустой
-                            if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
-                                fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                loadDataToViews();
-                            }
+                if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
+                    File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
+                    if (tmpFile != null) {  // если он не пустой
+                        if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
+                            fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+                            Utils.copyFileOrDirectory(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                            loadDataToViews(true);
                         }
+                    }
 
-                    } else {
-                        if (fileScreenshot == null) {
-                            File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
-                            if (lastScreenshot.exists()) {
-                                fileScreenshot = lastScreenshot;
-                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                loadDataToViews();
-                            }
+                } else {
+                    if (fileScreenshot == null) {
+                        File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+                        if (lastScreenshot.exists()) {
+                            fileScreenshot = lastScreenshot;
+                            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                            loadDataToViews(true);
                         }
+                    }
 
+                }
+
+                }
+            });
+        }
+    };
+
+
+    class secondTask extends TimerTask {
+
+        @Override
+        public void run() {
+
+            GameActivity.this.runOnUiThread(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    if (mainCityCalc != null) {
+                        CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
+                        if (ccaGame != null) {
+                            ccaGame.calcWin();
+                            loadDataToViews(false);
+                        }
                     }
 
                 }
             });
         }
     };
+
+
 }
