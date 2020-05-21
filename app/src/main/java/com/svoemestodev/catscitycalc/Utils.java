@@ -16,53 +16,27 @@ import java.util.Locale;
 
 public class Utils {
 
-    public static void copyFileOrDirectory(String srcDir, String dstDir) {
+
+    public static void copyFile(String sourcePath, String targetPath) {
+        File sourceLocation = new File(sourcePath);
+        File targetLocation = new File(targetPath);
 
         try {
-            File src = new File(srcDir);
-            File dst = new File(dstDir, src.getName());
+            InputStream in = new FileInputStream(sourceLocation);
+            OutputStream out = new FileOutputStream(targetLocation);
 
-            if (src.isDirectory()) {
-
-                String files[] = src.list();
-                int filesLength = files.length;
-                for (int i = 0; i < filesLength; i++) {
-                    String src1 = (new File(src, files[i]).getPath());
-                    String dst1 = dst.getPath();
-                    copyFileOrDirectory(src1, dst1);
-
-                }
-            } else {
-                copyFile(src, dst);
+            // Copy the bits from instream to outstream
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
             }
-        } catch (Exception e) {
+            in.close();
+            out.close();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
-    public static void copyFile(File sourceFile, File destFile) throws IOException {
-        if (!destFile.getParentFile().exists())
-            destFile.getParentFile().mkdirs();
-
-        if (!destFile.exists()) {
-            destFile.createNewFile();
-        }
-
-        FileChannel source = null;
-        FileChannel destination = null;
-
-        try {
-            source = new FileInputStream(sourceFile).getChannel();
-            destination = new FileOutputStream(destFile).getChannel();
-            destination.transferFrom(source, 0, source.size());
-        } finally {
-            if (source != null) {
-                source.close();
-            }
-            if (destination != null) {
-                destination.close();
-            }
-        }
     }
 
 

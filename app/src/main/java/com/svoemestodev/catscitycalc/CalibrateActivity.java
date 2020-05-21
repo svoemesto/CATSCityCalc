@@ -18,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class CalibrateActivity extends AppCompatActivity {
 
     TextView tvCalibrateX;               // вьюшка надписи "Калибровка..."
@@ -68,7 +70,6 @@ public class CalibrateActivity extends AppCompatActivity {
 
         ivCalibrate = findViewById(R.id.iv_calibrate);
 
-
         etCalibrateX.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -88,8 +89,11 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_x), GameActivity.calibrateX);
                 editor.apply();
-                GameActivity.mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, ivCalibrate.getContext());
-                ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+                CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+                if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
+                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
+                }
+
             }
         });
 
@@ -112,13 +116,18 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_y), GameActivity.calibrateY);
                 editor.apply();
-                GameActivity.mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, ivCalibrate.getContext());
-                ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+                CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+                if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
+                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
+                }
 
             }
         });
 
-        ivCalibrate.setImageBitmap(GameActivity.mainCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+        CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+        if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
+            ivCalibrate.setImageBitmap(calibrateCityCalc.mapAreas.get(Area.CITY).bmpSrc);
+        }
 
     }
 

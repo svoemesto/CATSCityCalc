@@ -766,11 +766,11 @@ public class GameActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
 
-        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),"");
-        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),false);
-        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),false);
-        calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),0);
-        calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),0);
+        pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),sharedPreferences.getString(getString(R.string.pref_def_screenshot_folder),""));
+        isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_last_file),false));
+        isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),sharedPreferences.getBoolean(getString(R.string.pref_def_debug_mode),false));
+        calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_x),0));
+        calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_y),0));
 
     }
 
@@ -861,6 +861,8 @@ public class GameActivity extends AppCompatActivity {
             readPreferences();
             fileScreenshotPrevious = null;
             sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
+            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+            loadDataToViews(false);
 
         }
     }
@@ -905,7 +907,7 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void OnSelectedFile(String fileName) {
                         fileScreenshot = new File(fileName); // файл скриншота - возавращенный из диалога
-                        if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFileOrDirectory(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                        if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
                         isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                         sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                         fileLastInFolder = null;    // сбрасываем последний файл в папке
@@ -942,7 +944,7 @@ public class GameActivity extends AppCompatActivity {
                     if (tmpFile != null) {  // если он не пустой
                         if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
                             fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-                            Utils.copyFileOrDirectory(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
                             mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
                             loadDataToViews(true);
                         }
