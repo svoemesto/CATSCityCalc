@@ -53,8 +53,14 @@ public class CCAGame extends CityCalcArea {
 
     }
 
-    public int getMinutesToEndGame() {
+    public int getMinutesToFinalGame() {
         int minutes = Utils.getMinutesBetweenDates(this.ccagDateCurrent, this.ccagDateFinal);
+        if (minutes < 0) minutes = 0;
+        return minutes;
+    }
+
+    public int getMinutesToEndGame() {
+        int minutes = Utils.getMinutesBetweenDates(this.ccagDateCurrent, this.ccagDateEndGame);
         if (minutes < 0) minutes = 0;
         return minutes;
     }

@@ -35,11 +35,9 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -245,7 +243,7 @@ public class GameActivity extends AppCompatActivity {
             ccaGame.calcWin();
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.ccagDateStartGame, pattern);    // дата/время начала игры
-            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.ccagDateFinal, pattern);          // дата/время окончания игры
+            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.ccagDateEndGame, pattern);          // дата/время окончания игры
 
             tv_ga_status.setText(ccaGame.ccagStatus);   // статус
             tv_ga_start_game_time.setText(textStartGameTime);   // дата/время начала игры
@@ -272,14 +270,14 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_enemy_end_time.setText(""); // время противника пустое
                 } else { // если игра незакончена
                     if (ccaGame.ccagWillOurWin) {
-                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время до нашей победы
+                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
                         tv_ga_enemy_end_time.setText("");   // время противника пустое
                     } else if (ccaGame.ccagWillEnemyWin) {
                         tv_ga_our_end_time.setText(""); // наше время пустое
-                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));   // время до победы противника
+                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                     } else if (ccaGame.ccagWillNobodyWin) {
-                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время до нашей победы
-                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));   // время до победы противника
+                        tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                        tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                     }
 
                 }
