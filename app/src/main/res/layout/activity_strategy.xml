@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".StrategyActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_sa_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:text="Стратегическое планирование"/>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_sa_start_game_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:text="Начало: 19 мая 12:30"/>
+
+            <TextView
+                android:id="@+id/tv_sa_end_game_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/black"
+                android:text="Конец: 20 мая 12:30"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_sa_our_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/stub_our_team_name"/>
+
+            <TextView
+                android:id="@+id/tv_sa_vs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:text="vs."/>
+
+            <ImageView
+                android:id="@+id/iv_sa_enemy_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/stub_enemy_team_name"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_our_increase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_our_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:gravity="start|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#4179d8"
+                    android:background="#f0f0f0"
+                    android:text="00000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_total_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#4e6881"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_enemy_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="10dp"
+                    android:gravity="end|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#eb4c48"
+                    android:background="#f0f0f0"
+                    android:text="00000"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_enemy_increase"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_our_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#90b3eb"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_early_win"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#91a7bf"
+                    android:text="00000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_sa_enemy_end_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:background="#ff8e98"
+                    android:text="00:00"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ad_sa_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_sa_unit_id"
+            />
+
+        <TextView
+            android:id="@+id/tv_sa_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:textColor="@android:color/black"
+            android:text="Результат игры"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_sa_blt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blt_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_brt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brt_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_blt_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blt_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blt_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blt_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_sa_brt_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brt_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brt_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brt_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <SeekBar
+                    android:id="@+id/sb_sa_blt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <SeekBar
+                    android:id="@+id/sb_sa_brt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_sa_blc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blc_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_brc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brc_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_blc_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blc_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blc_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blc_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_sa_brc_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brc_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brc_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brc_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <SeekBar
+                    android:id="@+id/sb_sa_blc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <SeekBar
+                    android:id="@+id/sb_sa_brc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+                <ImageView
+                    android:id="@+id/iv_sa_blb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_blb_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#4179d8"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingStart="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_brb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_brb_name"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000"
+                    android:background="#ebb948"
+                    android:text="x2"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff"
+                    android:background="#eb4c48"
+                    android:text="+0"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_sa_blb_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blb_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blb_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_blb_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_blb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/iv_sa_brb_car_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_black"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#000000"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brb_car_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_our"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#4179d8"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brb_car_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_empty"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#5e6a84"
+                    android:text="0"/>
+
+                <ImageView
+                    android:id="@+id/iv_sa_brb_car_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/stub_car_enemy"/>
+
+                <TextView
+                    android:id="@+id/tv_sa_brb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textColor="#ff6565"
+                    android:text="0"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:paddingEnd="10dp"
+                >
+
+                <SeekBar
+                    android:id="@+id/sb_sa_blb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:layout_weight="1">
+
+                <SeekBar
+                    android:id="@+id/sb_sa_brb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="2"
+                    android:progress="1"
+                    android:thumb="@drawable/ic_car_empty_24dp"
+                    android:layout_weight="1" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</ScrollView>

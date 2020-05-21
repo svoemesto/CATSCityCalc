@@ -10,6 +10,7 @@ public class CCABuilding extends CityCalcArea{
     boolean buildingIsOur;
     boolean buildingIsEnemy;
     boolean buildingIsEmpty;
+    boolean mayX2;
     boolean isX2;
     boolean isPresent;
 
@@ -18,14 +19,15 @@ public class CCABuilding extends CityCalcArea{
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
     }
 
-    public void calc(CityCalcArea ccaBuildingPoints, CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {
+    public void calc(CityCalcArea ccaBuildingName, CityCalcArea ccaBuildingPoints, CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {
 
         this.isPresent = this.buildingIsOur = PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, 0xFFFFFFFF) > 0.2f;
 
         if (this.isPresent) {
             this.buildingIsOur = PictureProcessor.frequencyPixelInBitmap(ccaBuildingPoints.bmpSrc, ccaBuildingPoints.colors[1]) > 0.2f;
             this.buildingIsEnemy = PictureProcessor.frequencyPixelInBitmap(ccaBuildingPoints.bmpSrc, ccaBuildingPoints.colors[3]) > 0.2f;
-            this.isX2 = PictureProcessor.frequencyPixelInBitmap(ccaBuildingPoints.bmpSrc, ccaBuildingPoints.colors[4]) > 0.05f;
+            this.mayX2 = PictureProcessor.frequencyPixelInBitmap(ccaBuildingName.bmpSrc, ccaBuildingPoints.colors[5]) > 0.01f || PictureProcessor.frequencyPixelInBitmap(ccaBuildingName.bmpSrc, ccaBuildingPoints.colors[6]) > 0.01f;
+            this.isX2 = PictureProcessor.frequencyPixelInBitmap(ccaBuildingName.bmpSrc, ccaBuildingPoints.colors[6]) > 0.01f;
             this.buildingIsEmpty = !this.buildingIsOur && !this.buildingIsEnemy;
             this.slots = Integer.parseInt(ccaBuildingSlots.finText);
             float frqOurSlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.bmpSrc, ccaBuildingProgress.colors[0]);

@@ -286,6 +286,15 @@
     <string name="pref_rgb_building_doublepoints_thm" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
     <string name="pref_rgb_building_doublepoints_thp" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
 
+    <string name="pref_rgb_building_mayX2" translatable="false">PREF_RGB_BUILDING_MAYX2</string>
+    <string name="pref_rgb_building_mayX2_thm" translatable="false">PREF_RGB_BUILDING_MAYX2_THM</string>
+    <string name="pref_rgb_building_mayX2_thp" translatable="false">PREF_RGB_BUILDING_MAYX2_THP</string>
+
+    <string name="pref_rgb_building_isX2" translatable="false">PREF_RGB_BUILDING_ISX2</string>
+    <string name="pref_rgb_building_isX2_thm" translatable="false">PREF_RGB_BUILDING_ISX2_THM</string>
+    <string name="pref_rgb_building_isX2_thp" translatable="false">PREF_RGB_BUILDING_ISX2_THP</string>
+
+
 
     <string name="pref_def_preferences_file" translatable="false">PREF_DEF_PREFERENCES_FILE</string>
     <string name="pref_def_screenshot_folder" translatable="false">PREF_DEF_SCREENSHOT_FOLDER</string>
@@ -573,5 +582,11 @@
     <string name="pref_def_rgb_building_doublepoints_thm" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
     <string name="pref_def_rgb_building_doublepoints_thp" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
 
+    <string name="pref_def_rgb_building_mayX2" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2</string>
+    <string name="pref_def_rgb_building_mayX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THM</string>
+    <string name="pref_def_rgb_building_mayX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THP</string>
 
+    <string name="pref_def_rgb_building_isX2" translatable="false">PREF_DEF_RGB_BUILDING_ISX2</string>
+    <string name="pref_def_rgb_building_isX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THM</string>
+    <string name="pref_def_rgb_building_isX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THP</string>
 </resources>

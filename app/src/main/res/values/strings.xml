@@ -1,19 +1,15 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.24 (21/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.25 (22/05/2020)</string>
 
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
+    <string name="banner_ad_ga_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
+    <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
-    
-    
-
-
 
 
     <string name="start_game_at">Start game</string>
     <string name="end_game_at">End game</string>
-
 
 
     <string name="plus_us">+ us</string>
@@ -38,6 +34,7 @@
     <string name="sett_listen_files_in_screenshot_folder">Listen files in screenshot folder</string>
     <string name="debug_mode">Debug mode</string>
     <string name="sett_calibrate_center_screen">Calibrate screenshot center</string>
+    <string name="sett_strategy">Strategy</string>
     <string name="sett_reset_to_zero">Reset to 0</string>
     <string name="program_depricated">Program is out of date</string>
     <string name="read_external_storage">Read External Storage</string>

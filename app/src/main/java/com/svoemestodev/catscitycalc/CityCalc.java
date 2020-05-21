@@ -312,7 +312,9 @@ public class CityCalc extends Activity {
                     int color_building_points_enemy_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_points_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_points_enemy_main), (int)Long.parseLong(context.getString(R.string.def_rgb_building_points_enemy_main), 16)));
                     int color_building_points_enemy_back = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_points_enemy_back1),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_points_enemy_back1), (int)Long.parseLong(context.getString(R.string.def_rgb_building_points_enemy_back1), 16)));
                     int color_building_doublepoints = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_doublepoints),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_doublepoints), (int)Long.parseLong(context.getString(R.string.def_rgb_building_doublepoints), 16)));
-                    
+                    int color_building_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_mayX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_mayX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_mayX2), 16)));
+                    int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
+
                     int thm_building_points_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_points_our_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_points_our_thm), Integer.parseInt(context.getString(R.string.def_rgb_building_points_our_thm))));
                     int thp_building_points_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_points_our_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_points_our_thp), Integer.parseInt(context.getString(R.string.def_rgb_building_points_our_thp))));
                     int thm_building_points_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_points_enemy_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_points_enemy_thm), Integer.parseInt(context.getString(R.string.def_rgb_building_points_enemy_thm))));
@@ -323,7 +325,6 @@ public class CityCalc extends Activity {
 
                     int thm_building_slot = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_slot_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_slot_thm), Integer.parseInt(context.getString(R.string.def_rgb_building_slot_thm))));
                     int thp_building_slot = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_slot_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_slot_thp), Integer.parseInt(context.getString(R.string.def_rgb_building_slot_thp))));
-
                     
                     
                     // BLT Area
@@ -376,7 +377,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_points_y1), Float.parseFloat(context.getString(R.string.def_cut_blt_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_points_y2), Float.parseFloat(context.getString(R.string.def_cut_blt_points_y2))));
                     
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBLTpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -397,7 +398,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBLTslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLTslots);
 
-                    ccaBLT.calc(ccaBLTpoints, ccaBLTslots, ccaBLTprogress);
+                    ccaBLT.calc(ccaBLTname, ccaBLTpoints, ccaBLTslots, ccaBLTprogress);
 
 
 
@@ -452,7 +453,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_points_y1), Float.parseFloat(context.getString(R.string.def_cut_blc_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_points_y2), Float.parseFloat(context.getString(R.string.def_cut_blc_points_y2))));
 
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBLCpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -473,7 +474,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBLCslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLCslots);
 
-                    ccaBLC.calc(ccaBLCpoints, ccaBLCslots, ccaBLCprogress);
+                    ccaBLC.calc(ccaBLCname, ccaBLCpoints, ccaBLCslots, ccaBLCprogress);
 
 
 
@@ -527,7 +528,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_points_y1), Float.parseFloat(context.getString(R.string.def_cut_blb_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_points_y2), Float.parseFloat(context.getString(R.string.def_cut_blb_points_y2))));
 
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBLBpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -548,7 +549,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBLBslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLBslots);
 
-                    ccaBLB.calc(ccaBLBpoints, ccaBLBslots, ccaBLBprogress);
+                    ccaBLB.calc(ccaBLBname, ccaBLBpoints, ccaBLBslots, ccaBLBprogress);
 
 
                     // BRT Area
@@ -601,7 +602,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_points_y1), Float.parseFloat(context.getString(R.string.def_cut_brt_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_points_y2), Float.parseFloat(context.getString(R.string.def_cut_brt_points_y2))));
 
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBRTpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -622,7 +623,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBRTslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRTslots);
 
-                    ccaBRT.calc(ccaBRTpoints, ccaBRTslots, ccaBRTprogress);
+                    ccaBRT.calc(ccaBRTname, ccaBRTpoints, ccaBRTslots, ccaBRTprogress);
 
 
 
@@ -677,7 +678,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_points_y1), Float.parseFloat(context.getString(R.string.def_cut_brc_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_points_y2), Float.parseFloat(context.getString(R.string.def_cut_brc_points_y2))));
 
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBRCpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -698,8 +699,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBRCslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRCslots);
 
-                    ccaBRC.calc(ccaBRCpoints, ccaBRCslots, ccaBRCprogress);
-
+                    ccaBRC.calc(ccaBRCname, ccaBRCpoints, ccaBRCslots, ccaBRCprogress);
 
 
                     // BRB Area
@@ -752,7 +752,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_points_y1), Float.parseFloat(context.getString(R.string.def_cut_brb_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_points_y2), Float.parseFloat(context.getString(R.string.def_cut_brb_points_y2))));
 
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBRBpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -773,7 +773,7 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaBRBslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRBslots);
 
-                    ccaBRB.calc(ccaBRBpoints, ccaBRBslots, ccaBRBprogress);
+                    ccaBRB.calc(ccaBRBname, ccaBRBpoints, ccaBRBslots, ccaBRBprogress);
 
 
 

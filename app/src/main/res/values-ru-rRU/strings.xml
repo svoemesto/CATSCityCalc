@@ -256,5 +256,6 @@
 <!--        <item>BRB Прирост</item>-->
 <!--        <item>BRB слоты</item>-->
     </string-array>
+    <string name="sett_strategy">Стратегия</string>
 
 </resources>
