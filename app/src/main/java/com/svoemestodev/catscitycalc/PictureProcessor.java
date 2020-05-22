@@ -246,4 +246,45 @@ public class PictureProcessor extends Activity {
 
     }
 
+    public static Bitmap replaceColor(Bitmap sourceBitmap,  int colorFrom, int colorTo, int thm, int thp) {
+        if (sourceBitmap != null) {
+            int width = sourceBitmap.getWidth();      // ширина исходной картинки
+            int height = sourceBitmap.getHeight();    // высота исходной картинки
+            Bitmap resultedBitmap = Bitmap.createBitmap(width, height, sourceBitmap.getConfig());
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int pixelSource = sourceBitmap.getPixel(x , y);
+                    int pixelResult = isPixelTrue(pixelSource, colorFrom, thm,thp) ? getNewColorToReplace(pixelSource, colorFrom, colorTo) : pixelSource;
+                    resultedBitmap.setPixel(x, y, pixelResult);
+                }
+            }
+            return resultedBitmap;
+        }
+        return null;
+    }
+
+    private static int getNewColorToReplace(int colorPixel, int colorFrom, int colorTo) {
+
+        int pixA = Color.alpha(colorPixel);
+        int pixR = Color.red(colorPixel);
+        int pixG = Color.green(colorPixel);
+        int pixB = Color.blue(colorPixel);
+
+        int fromR = Color.red(colorFrom);
+        int fromG = Color.green(colorFrom);
+        int fromB = Color.blue(colorFrom);
+
+        int toR = Color.red(colorFrom);
+        int toG = Color.green(colorFrom);
+        int toB = Color.blue(colorFrom);
+
+        int resultR = toR - (pixR - fromR);
+        int resultG = toG - (pixG - fromG);
+        int resultB = toB - (pixB - fromB);
+
+        return Color.argb(pixA, resultR, resultG, resultB);
+
+    }
+
+
 }

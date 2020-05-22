@@ -25,6 +25,8 @@ public class CCAGame extends CityCalcArea {
     boolean ccagWillEnemyWin;
     boolean ccagWillNobodyWin;
 
+    int differentPoints;
+
     String ccagStatus;
 
     public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr) {
@@ -85,6 +87,9 @@ public class CCAGame extends CityCalcArea {
                 this.ccagDateFinal = this.ccagWillOurWin || this.ccagWillNobodyWin ? dateEarlyOutTeam : dateEarlyEnemyTeam;
             } else {
                 this.ccagDateFinal = this.ccagDateEndGame;
+                this.ccagWillOurWin = (ccatOurTeam.getPoints(this.ccagDateFinal) > ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли наша победа
+                this.ccagWillEnemyWin = (ccatOurTeam.getPoints(this.ccagDateFinal) < ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли победа противника
+                this.ccagWillNobodyWin = (ccatOurTeam.getPoints(this.ccagDateFinal) == ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли ничья
             }
 
             this.ccagIsGameOver = this.ccagDateFinal.getTime() <= this.ccagDateCurrent.getTime(); // закончилась ли игра
@@ -96,7 +101,7 @@ public class CCAGame extends CityCalcArea {
                 this.ccagIsWinNobody = ccatOurTeam.getPoints(this.ccagDateFinal) == ccatEnemyTeam.getPoints(this.ccagDateFinal); // была ли ничья
             }
 
-            int differentPoints = Math.abs(ccatOurTeam.getPoints(this.ccagDateFinal) - ccatEnemyTeam.getPoints(this.ccagDateFinal)); // разница в очках на момент окончания игры
+            differentPoints = Math.abs(ccatOurTeam.getPoints(this.ccagDateFinal) - ccatEnemyTeam.getPoints(this.ccagDateFinal)); // разница в очках на момент окончания игры
 
             if (this.ccagIsGameOver) { // игра закончена
                 if (this.ccagIsGameOverEarly) { // игра закончена досрочно

@@ -58,7 +58,16 @@ public class CCATeam extends CityCalcArea {
      */
     public Date getDateEarlyWin() {
         CCAGame ccaGame = (CCAGame) cityCalc.mapAreas.get(Area.CITY);
-        return ccaGame == null ? null : this.ccatIncrease == 0 ? new Date(ccaGame.ccagDateStartGame.getTime() + (long)30*24*60*60*1000) : Utils.addMinutesToDate(ccaGame.ccagDateScreenshot, (ccaGame.ccagEarlyWin - this.ccatPointsInScreenshot) / this.ccatIncrease);
+        if (ccaGame != null) {
+            if (this.ccatIncrease == 0) {
+                return new Date(ccaGame.ccagDateStartGame.getTime() + 25*60*60*1000);
+            } else {
+                return Utils.addMinutesToDate(ccaGame.ccagDateScreenshot, (ccaGame.ccagEarlyWin - this.ccatPointsInScreenshot) / this.ccatIncrease);
+            }
+        } else {
+            return null;
+        }
+//        return ccaGame == null ? null : this.ccatIncrease == 0 ? new Date(ccaGame.ccagDateStartGame.getTime() + 25*60*60*1000) : Utils.addMinutesToDate(ccaGame.ccagDateScreenshot, (ccaGame.ccagEarlyWin - this.ccatPointsInScreenshot) / this.ccatIncrease);
     }
 
 }

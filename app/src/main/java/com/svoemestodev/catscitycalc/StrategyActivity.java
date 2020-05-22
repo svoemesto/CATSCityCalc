@@ -10,10 +10,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -21,8 +23,12 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 public class StrategyActivity extends AppCompatActivity {
 
@@ -133,6 +139,24 @@ public class StrategyActivity extends AppCompatActivity {
     ImageView iv_sa_brb_car_enemy;
     SeekBar sb_sa_brb;
 
+    SeekBar sb_sa_person_our;
+    ImageView iv_sa_person_our;
+    TextView tv_sa_person_our;
+    ImageView iv_sa_car_our;
+    TextView tv_sa_car_our;
+
+    SeekBar sb_sa_person_enemy;
+    ImageView iv_sa_person_enemy;
+    TextView tv_sa_person_enemy;
+    ImageView iv_sa_car_enemy;
+    TextView tv_sa_car_enemy;
+
+    Button bt_sa_calc_timed_win;
+    Button bt_sa_calc_early_win;
+
+    int maxPersons;
+    int personsOur;
+    int personsEnemy;
     int slotsTotal;
     int slotsOur;
     int slotsEnemy;
@@ -170,6 +194,8 @@ public class StrategyActivity extends AppCompatActivity {
 
         initializeViews();
         context = tv_sa_start_game_time.getContext();
+        sb_sa_person_our.setEnabled(false);
+        sb_sa_person_enemy.setEnabled(false);
 
         // инициализация рекламного блока
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
@@ -186,6 +212,10 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_brt.setOnSeekBarChangeListener(brtSeekBarChangeListener);
         sb_sa_brc.setOnSeekBarChangeListener(brcSeekBarChangeListener);
         sb_sa_brb.setOnSeekBarChangeListener(brbSeekBarChangeListener);
+        sb_sa_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
+        sb_sa_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
+
+
 
         mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context);
         CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
@@ -210,7 +240,11 @@ public class StrategyActivity extends AppCompatActivity {
         CCABuilding ccaBRT = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRT);
         CCABuilding ccaBRC = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRC);
         CCABuilding ccaBRB = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB);
-        
+
+        slotsTotal = 0;
+        slotsOur = 0;
+        slotsEnemy = 0;
+
         needUpdateSlots = false;
         
         if (ccaBLT != null) {
@@ -218,6 +252,9 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLT.buildingIsOur) sb_sa_blt.setProgress(0);
                 if (ccaBLT.buildingIsEmpty) sb_sa_blt.setProgress(1);
                 if (ccaBLT.buildingIsEnemy) sb_sa_blt.setProgress(2);
+                slotsTotal += ccaBLT.slots;
+                slotsOur += ccaBLT.slots_our;
+                slotsEnemy += ccaBLT.slots_enemy;
             }
         }
 
@@ -226,6 +263,9 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLC.buildingIsOur) sb_sa_blc.setProgress(0);
                 if (ccaBLC.buildingIsEmpty) sb_sa_blc.setProgress(1);
                 if (ccaBLC.buildingIsEnemy) sb_sa_blc.setProgress(2);
+                slotsTotal += ccaBLC.slots;
+                slotsOur += ccaBLC.slots_our;
+                slotsEnemy += ccaBLC.slots_enemy;
             }
         }
 
@@ -234,6 +274,9 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLB.buildingIsOur) sb_sa_blb.setProgress(0);
                 if (ccaBLB.buildingIsEmpty) sb_sa_blb.setProgress(1);
                 if (ccaBLB.buildingIsEnemy) sb_sa_blb.setProgress(2);
+                slotsTotal += ccaBLB.slots;
+                slotsOur += ccaBLB.slots_our;
+                slotsEnemy += ccaBLB.slots_enemy;
             }
         }
 
@@ -242,6 +285,9 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRT.buildingIsOur) sb_sa_brt.setProgress(0);
                 if (ccaBRT.buildingIsEmpty) sb_sa_brt.setProgress(1);
                 if (ccaBRT.buildingIsEnemy) sb_sa_brt.setProgress(2);
+                slotsTotal += ccaBRT.slots;
+                slotsOur += ccaBRT.slots_our;
+                slotsEnemy += ccaBRT.slots_enemy;
             }
         }
 
@@ -250,6 +296,9 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRC.buildingIsOur) sb_sa_brc.setProgress(0);
                 if (ccaBRC.buildingIsEmpty) sb_sa_brc.setProgress(1);
                 if (ccaBRC.buildingIsEnemy) sb_sa_brc.setProgress(2);
+                slotsTotal += ccaBRC.slots;
+                slotsOur += ccaBRC.slots_our;
+                slotsEnemy += ccaBRC.slots_enemy;
             }
         }
 
@@ -258,8 +307,26 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRB.buildingIsOur) sb_sa_brb.setProgress(0);
                 if (ccaBRB.buildingIsEmpty) sb_sa_brb.setProgress(1);
                 if (ccaBRB.buildingIsEnemy) sb_sa_brb.setProgress(2);
+                slotsTotal += ccaBRB.slots;
+                slotsOur += ccaBRB.slots_our;
+                slotsEnemy += ccaBRB.slots_enemy;
             }
         }
+
+        maxPersons = (int)Math.ceil (slotsTotal / 3.0d);
+        sb_sa_person_our.setMax(maxPersons);
+        sb_sa_person_enemy.setMax(maxPersons);
+
+        personsOur = (int)Math.ceil (slotsOur / 3.0d);
+        personsEnemy = (int)Math.ceil (slotsEnemy / 3.0d);
+
+        sb_sa_person_our.setProgress(personsOur);
+        sb_sa_person_enemy.setProgress(personsEnemy);
+
+        tv_sa_person_our.setText(String.valueOf(personsOur));
+        tv_sa_person_enemy.setText(String.valueOf(personsEnemy));
+        tv_sa_car_our.setText(String.valueOf(personsOur*3));
+        tv_sa_car_enemy.setText(String.valueOf(personsEnemy*3));
 
         needUpdateSlots = true;
         
@@ -280,7 +347,6 @@ public class StrategyActivity extends AppCompatActivity {
             CCABuilding ccaBRC = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRC);
             CCABuilding ccaBRB = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB);
 
-            slotsTotal = 0;
             slotsOur = 0;
             slotsEnemy = 0;
             slotsEmpty = 0;
@@ -323,7 +389,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBLT.slots_our = ccaBLT.buildingIsOur ? (int)Math.ceil(ccaBLT.slots / 2.0d) : 0; 
                     ccaBLT.slots_empty = ccaBLT.buildingIsEmpty ? (int)Math.ceil(ccaBLT.slots / 2.0d) : 0; 
                     ccaBLT.slots_enemy = ccaBLT.buildingIsEnemy ? (int)Math.ceil(ccaBLT.slots / 2.0d) : 0;
-                    slotsTotal += ccaBLT.slots;
                     slotsOur += ccaBLT.slots_our;
                     slotsEmpty += ccaBLT.slots_empty;
                     slotsEnemy += ccaBLT.slots_enemy;
@@ -342,7 +407,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBLC.slots_our = ccaBLC.buildingIsOur ? (int)Math.ceil(ccaBLC.slots / 2.0d) : 0;
                     ccaBLC.slots_empty = ccaBLC.buildingIsEmpty ? (int)Math.ceil(ccaBLC.slots / 2.0d) : 0;
                     ccaBLC.slots_enemy = ccaBLC.buildingIsEnemy ? (int)Math.ceil(ccaBLC.slots / 2.0d) : 0;
-                    slotsTotal += ccaBLC.slots;
                     slotsOur += ccaBLC.slots_our;
                     slotsEmpty += ccaBLC.slots_empty;
                     slotsEnemy += ccaBLC.slots_enemy;
@@ -361,7 +425,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBLB.slots_our = ccaBLB.buildingIsOur ? (int)Math.ceil(ccaBLB.slots / 2.0d) : 0;
                     ccaBLB.slots_empty = ccaBLB.buildingIsEmpty ? (int)Math.ceil(ccaBLB.slots / 2.0d) : 0;
                     ccaBLB.slots_enemy = ccaBLB.buildingIsEnemy ? (int)Math.ceil(ccaBLB.slots / 2.0d) : 0;
-                    slotsTotal += ccaBLB.slots;
                     slotsOur += ccaBLB.slots_our;
                     slotsEmpty += ccaBLB.slots_empty;
                     slotsEnemy += ccaBLB.slots_enemy;
@@ -380,7 +443,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBRT.slots_our = ccaBRT.buildingIsOur ? (int)Math.ceil(ccaBRT.slots / 2.0d) : 0;
                     ccaBRT.slots_empty = ccaBRT.buildingIsEmpty ? (int)Math.ceil(ccaBRT.slots / 2.0d) : 0;
                     ccaBRT.slots_enemy = ccaBRT.buildingIsEnemy ? (int)Math.ceil(ccaBRT.slots / 2.0d) : 0;
-                    slotsTotal += ccaBRT.slots;
                     slotsOur += ccaBRT.slots_our;
                     slotsEmpty += ccaBRT.slots_empty;
                     slotsEnemy += ccaBRT.slots_enemy;
@@ -399,7 +461,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBRC.slots_our = ccaBRC.buildingIsOur ? (int)Math.ceil(ccaBRC.slots / 2.0d) : 0;
                     ccaBRC.slots_empty = ccaBRC.buildingIsEmpty ? (int)Math.ceil(ccaBRC.slots / 2.0d) : 0;
                     ccaBRC.slots_enemy = ccaBRC.buildingIsEnemy ? (int)Math.ceil(ccaBRC.slots / 2.0d) : 0;
-                    slotsTotal += ccaBRC.slots;
                     slotsOur += ccaBRC.slots_our;
                     slotsEmpty += ccaBRC.slots_empty;
                     slotsEnemy += ccaBRC.slots_enemy;
@@ -418,7 +479,6 @@ public class StrategyActivity extends AppCompatActivity {
                     ccaBRB.slots_our = ccaBRB.buildingIsOur ? (int)Math.ceil(ccaBRB.slots / 2.0d) : 0;
                     ccaBRB.slots_empty = ccaBRB.buildingIsEmpty ? (int)Math.ceil(ccaBRB.slots / 2.0d) : 0;
                     ccaBRB.slots_enemy = ccaBRB.buildingIsEnemy ? (int)Math.ceil(ccaBRB.slots / 2.0d) : 0;
-                    slotsTotal += ccaBRB.slots;
                     slotsOur += ccaBRB.slots_our;
                     slotsEmpty += ccaBRB.slots_empty;
                     slotsEnemy += ccaBRB.slots_enemy;
@@ -429,6 +489,15 @@ public class StrategyActivity extends AppCompatActivity {
                 }
             }
 
+//            SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+//            int color_building_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_mayX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_mayX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_mayX2), 16)));
+//            int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
+//            int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_our),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our), 16)));
+//            int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_enemy),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy), 16)));
+//            int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_empty),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty), 16)));
+//            int thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_our_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_our_thm), Integer.parseInt(context.getString(R.string.def_rgb_building_progress_our_thm))));
+//            int thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_our_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_our_thp), Integer.parseInt(context.getString(R.string.def_rgb_building_progress_our_thp))));
+
             if (ccaBLT != null) {
                 if (ccaBLT.isPresent) {
                     ccaBLT.our_points = !ccaBLT.buildingIsOur ? 0 : ccaBLT.slots * (!ccaBLT.mayX2 ? 1 : countMayX2 == countMayX2our ? 2 : 1);
@@ -436,6 +505,13 @@ public class StrategyActivity extends AppCompatActivity {
                     increaseOur += ccaBLT.our_points;
                     increaseEnemy += ccaBLT.enemy_points;
                     ccaBLT.isX2 = ccaBLT.mayX2 && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy);
+//                    if (ccaBLT.mayX2) ccaBLT.bmpSrc = ccaBLT.isX2 ? PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_building_mayX2, color_building_isX2, thm, thp) : PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_building_isX2, color_building_mayX2, thm, thp);
+//                    if (ccaBLT.buildingIsOur) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_enemy, color_progress_our, thm, thp);
+//                    if (ccaBLT.buildingIsOur) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_empty, color_progress_our, thm, thp);
+//                    if (ccaBLT.buildingIsEnemy) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_our, color_progress_enemy, thm, thp);
+//                    if (ccaBLT.buildingIsEnemy) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_empty, color_progress_enemy, thm, thp);
+//                    if (ccaBLT.buildingIsEmpty) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_our, color_progress_empty, thm, thp);
+//                    if (ccaBLT.buildingIsEmpty) ccaBLT.bmpSrc = PictureProcessor.replaceColor(ccaBLT.bmpSrc, color_progress_enemy, color_progress_empty, thm, thp);
                 }
             }
 
@@ -506,6 +582,9 @@ public class StrategyActivity extends AppCompatActivity {
         loadDataToViews();
         
     }
+
+
+
 
     public void loadDataToViews() {
 
@@ -597,6 +676,7 @@ public class StrategyActivity extends AppCompatActivity {
                     tv_sa_blt_slots_our.setText(String.valueOf(ccaBLT.slots_our));
                     tv_sa_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
                     tv_sa_blt_slots_enemy.setText(String.valueOf(ccaBLT.slots_enemy));
+//                    iv_sa_brt_name.setImageBitmap(ccaBLT.bmpSrc);
                     if (ccaBLT.buildingIsOur) {
                         tv_sa_blt_points.setText("+" + ccaBLT.our_points);
                         tv_sa_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
@@ -858,6 +938,18 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                 }
             }
+
+            personsOur = (int)Math.ceil (slotsOur / 3.0d);
+            personsEnemy = (int)Math.ceil (slotsEnemy / 3.0d);
+
+            sb_sa_person_our.setProgress(personsOur);
+            sb_sa_person_enemy.setProgress(personsEnemy);
+
+            tv_sa_person_our.setText(String.valueOf(personsOur));
+            tv_sa_person_enemy.setText(String.valueOf(personsEnemy));
+            tv_sa_car_our.setText(String.valueOf(personsOur*3));
+            tv_sa_car_enemy.setText(String.valueOf(personsEnemy*3));
+
         }
         
 
@@ -972,6 +1064,21 @@ public class StrategyActivity extends AppCompatActivity {
         iv_sa_brb_car_enemy = findViewById(R.id.iv_sa_brb_car_enemy);
         sb_sa_brb = findViewById(R.id.sb_sa_brb);
 
+        sb_sa_person_our = findViewById(R.id.sb_sa_person_our);
+        iv_sa_person_our = findViewById(R.id.iv_sa_person_our);
+        tv_sa_person_our = findViewById(R.id.tv_sa_person_our);
+        iv_sa_car_our = findViewById(R.id.iv_sa_car_our);
+        tv_sa_car_our = findViewById(R.id.tv_sa_car_our);
+
+        sb_sa_person_enemy = findViewById(R.id.sb_sa_person_enemy);
+        iv_sa_person_enemy = findViewById(R.id.iv_sa_person_enemy);
+        tv_sa_person_enemy = findViewById(R.id.tv_sa_person_enemy);
+        iv_sa_car_enemy = findViewById(R.id.iv_sa_car_enemy);
+        tv_sa_car_enemy = findViewById(R.id.tv_sa_car_enemy);
+
+        bt_sa_calc_timed_win = findViewById(R.id.bt_sa_calc_timed_win);
+        bt_sa_calc_early_win = findViewById(R.id.bt_sa_calc_early_win);
+
         // Рекламный блок
         ad_sa_banner = findViewById(R.id.ad_sa_banner);
     }
@@ -980,11 +1087,11 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
@@ -1007,11 +1114,11 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
@@ -1033,11 +1140,11 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
@@ -1059,11 +1166,11 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
@@ -1085,11 +1192,11 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
@@ -1111,14 +1218,55 @@ public class StrategyActivity extends AppCompatActivity {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             if (progress == 0) {
-                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_24dp));
+                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
-                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_24dp));
+                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
             } else {
-                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_24dp));
+                sb_sa_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
             }
             if (needUpdateSlots) {
                 setCarsInBuildings();
+            }
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    };
+
+    private SeekBar.OnSeekBarChangeListener personOurSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            if (needUpdateSlots) {
+                tv_sa_person_our.setText(String.valueOf(progress));
+                tv_sa_car_our.setText(String.valueOf(progress*3));
+            }
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    };
+
+    private SeekBar.OnSeekBarChangeListener personEnemySeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            if (needUpdateSlots) {
+                tv_sa_person_enemy.setText(String.valueOf(progress));
+                tv_sa_car_enemy.setText(String.valueOf(progress*3));
             }
         }
 
@@ -1144,6 +1292,132 @@ public class StrategyActivity extends AppCompatActivity {
             return true;        // возвращаем Истину
         }
         return super.onOptionsItemSelected(item);   // возвращаем супер-метод
+    }
+
+    public void calcTimedWin(View view) {
+
+        Object[] matrixArray = getMaxtrixProgressArray();
+        MatrixProgress matrix = null;
+        Arrays.sort(matrixArray);
+        boolean isFound = false;
+        int index=0;
+        for (int i = 0; i < matrixArray.length; i++) {
+            matrix = (MatrixProgress) matrixArray[i];
+            if (matrix.willOurWin && !matrix.willEarlyWin) {
+                index = i;
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+        } else {
+            Toast.makeText(this, "Вариантов не нейдено", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void calcEarlyWin(View view) {
+
+        Object[] matrixArray = getMaxtrixProgressArray();
+        MatrixProgress matrix = null;
+        Arrays.sort(matrixArray);
+        boolean isFound = false;
+        int index=0;
+        for (int i = 0; i < matrixArray.length; i++) {
+            matrix = (MatrixProgress) matrixArray[i];
+            if (matrix.willOurWin && matrix.willEarlyWin) {
+                index = i;
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+        } else {
+            Toast.makeText(this, "Вариантов не нейдено", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private Object[] getMaxtrixProgressArray() {
+        List<MatrixProgress> list = new ArrayList<>();
+
+        for (int x1 = 0; x1 <= 1; x1++) {
+            for (int x2 = x1; x2 <= 1; x2++) {
+                for (int x3 = x2; x3 <= 1; x3++) {
+                    for (int x4 = x3; x4 <= 1; x4++) {
+                        for (int x5 = x4; x5 <= 1; x5++) {
+                            for (int x6 = x5; x6 <= 1; x6++) {
+                                list.add(new MatrixProgress(x1*2,x2*2,x3*2,x4*2,x5*2,x6*2));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return list.toArray();
+
+    }
+
+
+    class MatrixProgress implements Comparable<MatrixProgress>{
+
+        int personsOur;
+        int blt_progress;
+        int blc_progress;
+        int blb_progress;
+        int brt_progress;
+        int brc_progress;
+        int brb_progress;
+        int differentPoints;
+        boolean willEarlyWin;
+        boolean willOurWin;
+
+        public MatrixProgress() {
+        }
+
+        public MatrixProgress(int blt_progress, int blc_progress, int blb_progress, int brt_progress, int brc_progress, int brb_progress) {
+            this.blt_progress = blt_progress;
+            this.blc_progress = blc_progress;
+            this.blb_progress = blb_progress;
+            this.brt_progress = brt_progress;
+            this.brc_progress = brc_progress;
+            this.brb_progress = brb_progress;
+
+            needUpdateSlots = false;
+            sb_sa_blt.setProgress(blt_progress);
+            sb_sa_blc.setProgress(blc_progress);
+            sb_sa_blb.setProgress(blb_progress);
+            sb_sa_brt.setProgress(blt_progress);
+            sb_sa_brc.setProgress(brc_progress);
+            sb_sa_brb.setProgress(brb_progress);
+            needUpdateSlots = true;
+
+            setCarsInBuildings();
+
+            this.personsOur = sb_sa_person_our.getProgress();
+            CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
+            if (ccaGame != null) {
+                this.willEarlyWin = ccaGame.ccagWillEarlyWin;
+                this.willOurWin = ccaGame.ccagWillOurWin;
+                this.differentPoints = ccaGame.differentPoints;
+            }
+
+        }
+
+        @Override
+        public int compareTo(MatrixProgress o) {
+            Integer a, b, compare;
+            a = this.personsOur;
+            b = o.personsOur;
+            compare = a.compareTo(b);
+            if (compare == 0) {
+                a = this.differentPoints;
+                b = o.differentPoints;
+                compare = a.compareTo(b);
+            }
+            return compare;
+        }
     }
 
 }
