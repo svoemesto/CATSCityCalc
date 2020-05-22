@@ -117,7 +117,7 @@ public class Utils {
 
         if (listTotalTime.size() > 1) {                         // если в списке больше 1 элемента
             for (int i = 0; i < listTotalTime.size(); i++) {    // проходим по списку
-                listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
+                listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() == 1 ? 1 : listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
             }
         }
 
@@ -134,6 +134,7 @@ public class Utils {
                     return hours + ":" + minutes; // время = часы : минуты
                 }
             } else {    // если в списке больше 1 элемента
+                listTotalTime.set(1, listTotalTime.get(1) + listTotalTime.get(2));
                 String hours = listTotalTime.get(0);    // часы - первый элемент из списка
                 String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
                 if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
