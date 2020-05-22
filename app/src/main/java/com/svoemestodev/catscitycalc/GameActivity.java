@@ -991,7 +991,9 @@ public class GameActivity extends AppCompatActivity {
                     if (tmpFile != null) {  // если он не пустой
                         if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
                             fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-                            Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
+                                Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            }
                             mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
                             loadDataToViews(true);
                         }
