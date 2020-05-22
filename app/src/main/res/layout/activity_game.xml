@@ -243,6 +243,7 @@
             android:gravity="center_horizontal"
             android:textSize="16sp"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/compact_regular"
             android:textColor="@android:color/black" />
 
         <LinearLayout
@@ -1068,6 +1069,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/strategic_planning"
+            android:fontFamily="@font/compact_regular"
             android:onClick="openStrategyActivity"/>
         
         
