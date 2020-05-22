@@ -34,8 +34,7 @@
                 android:textSize="12sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="@android:color/black"
-                android:text="Начало: 19 мая 12:30"/>
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@+id/tv_ga_end_game_time"
@@ -46,8 +45,7 @@
                 android:textSize="12sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:textColor="@android:color/black"
-                android:text="Конец: 20 мая 12:30"/>
+                android:textColor="@android:color/black" />
 
         </LinearLayout>
 
@@ -61,8 +59,7 @@
                 android:id="@+id/iv_ga_our_team_name"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_weight="1"
-                android:src="@drawable/stub_our_team_name"/>
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/tv_ga_vs"
@@ -72,14 +69,13 @@
                 android:layout_weight="1"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:text="vs."/>
+                android:text="@string/versus"/>
 
             <ImageView
                 android:id="@+id/iv_ga_enemy_team_name"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_weight="1"
-                android:src="@drawable/stub_enemy_team_name"/>
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -102,8 +98,7 @@
                     android:layout_weight="2"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#4179d8"
-                    android:text="+0"/>
+                    android:background="#4179d8" />
 
                 <TextView
                     android:id="@+id/tv_ga_our_points"
@@ -114,8 +109,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#4179d8"
-                    android:background="#f0f0f0"
-                    android:text="00000"/>
+                    android:background="#f0f0f0" />
 
             </LinearLayout>
 
@@ -133,8 +127,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#4e6881"
-                    android:text="00:00"/>
+                    android:background="#4e6881" />
 
             </LinearLayout>
 
@@ -153,8 +146,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#eb4c48"
-                    android:background="#f0f0f0"
-                    android:text="00000"/>
+                    android:background="#f0f0f0" />
 
                 <TextView
                     android:id="@+id/tv_ga_enemy_increase"
@@ -164,8 +156,7 @@
                     android:layout_weight="2"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#eb4c48"
-                    android:text="+0"/>
+                    android:background="#eb4c48" />
 
 
             </LinearLayout>
@@ -191,8 +182,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#90b3eb"
-                    android:text="00:00"/>
+                    android:background="#90b3eb" />
 
             </LinearLayout>
 
@@ -211,8 +201,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#91a7bf"
-                    android:text="00000"/>
+                    android:background="#91a7bf" />
 
             </LinearLayout>
 
@@ -230,8 +219,7 @@
                     android:layout_weight="1"
                     android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#ff8e98"
-                    android:text="00:00"/>
+                    android:background="#ff8e98" />
 
             </LinearLayout>
 
@@ -255,8 +243,7 @@
             android:gravity="center_horizontal"
             android:textSize="16sp"
             android:layout_marginTop="5dp"
-            android:textColor="@android:color/black"
-            android:text="Результат игры"/>
+            android:textColor="@android:color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -277,8 +264,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_blt_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_blt_x2"
@@ -286,9 +272,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_blt_points"
@@ -296,9 +280,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#4179d8"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
 
@@ -315,8 +297,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_brt_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_brt_x2"
@@ -324,9 +305,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_brt_points"
@@ -334,9 +313,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#eb4c48"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
 
@@ -363,6 +340,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -370,14 +349,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blt_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -385,14 +365,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blt_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -400,14 +381,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blt_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -415,8 +397,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
 
             </LinearLayout>
@@ -433,6 +414,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -440,14 +423,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brt_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -455,14 +439,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brt_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -470,14 +455,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brt_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -485,8 +471,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
             </LinearLayout>
 
@@ -510,8 +495,7 @@
                     android:id="@+id/iv_ga_blt_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -526,23 +510,12 @@
                     android:id="@+id/iv_ga_brt_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
 
         </LinearLayout>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -565,8 +538,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_blc_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_blc_x2"
@@ -574,9 +546,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_blc_points"
@@ -584,9 +554,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#4179d8"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
 
@@ -603,8 +571,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_brc_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_brc_x2"
@@ -612,9 +579,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_brc_points"
@@ -622,9 +587,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#eb4c48"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
             
@@ -649,6 +612,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -656,14 +621,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blc_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -671,14 +637,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blc_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -686,14 +653,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blc_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -701,8 +669,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
 
             </LinearLayout>
@@ -719,6 +686,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -726,14 +695,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brc_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -741,14 +711,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brc_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -756,14 +727,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brc_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -771,8 +743,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
             </LinearLayout>
 
@@ -796,8 +767,7 @@
                     android:id="@+id/iv_ga_blc_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -812,8 +782,7 @@
                     android:id="@+id/iv_ga_brc_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
@@ -840,8 +809,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_blb_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_blb_x2"
@@ -849,9 +817,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_blb_points"
@@ -859,9 +825,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#4179d8"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
 
@@ -878,8 +842,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_brb_name"/>
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/tv_ga_brb_x2"
@@ -887,9 +850,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#000000"
-                    android:background="#ebb948"
-                    android:text="x2"/>
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/tv_ga_brb_points"
@@ -897,9 +858,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
                     android:layout_weight="2"
-                    android:textColor="#ffffff"
-                    android:background="#eb4c48"
-                    android:text="+0"/>
+                    android:textColor="#ffffff" />
 
             </LinearLayout>
 
@@ -926,6 +885,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -933,14 +894,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blb_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -948,14 +910,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blb_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -963,14 +926,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_blb_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -978,8 +942,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
 
             </LinearLayout>
@@ -996,6 +959,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_black_24dp"/>
 
                 <TextView
@@ -1003,14 +968,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:text="0"/>
+                    android:textColor="#000000" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brb_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_our_24dp"/>
 
                 <TextView
@@ -1018,14 +984,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#4179d8"
-                    android:text="0"/>
+                    android:textColor="#4179d8" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brb_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_empty_24dp"/>
 
                 <TextView
@@ -1033,14 +1000,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#5e6a84"
-                    android:text="0"/>
+                    android:textColor="#5e6a84" />
 
                 <ImageView
                     android:id="@+id/iv_ga_brb_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
                     android:src="@drawable/ic_car_enemy_24dp"/>
 
                 <TextView
@@ -1048,8 +1016,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColor="#ff6565"
-                    android:text="0"/>
+                    android:textColor="#ff6565" />
 
             </LinearLayout>
 
@@ -1073,8 +1040,7 @@
                     android:id="@+id/iv_ga_blb_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
             </LinearLayout>
 
@@ -1089,8 +1055,7 @@
                     android:id="@+id/iv_ga_brb_progress"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/stub_progress"/>
+                    android:layout_weight="1" />
 
 
             </LinearLayout>
@@ -1102,7 +1067,7 @@
             android:id="@+id/bt_ga_strategy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Стратегическое планирование"
+            android:text="@string/strategic_planning"
             android:onClick="openStrategyActivity"/>
         
         

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.26 (23/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.27 (22/05/2020)</string>
 
     <string name="banner_ad_ga_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
     <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
@@ -225,6 +225,11 @@
     <string name="pref_colorsAreaName_dialog_title">Select Area</string>
     <string name="pref_colorsAreaName_default_value">Time</string>
     <string name="pref_colorsAreaName_summary">Time</string>
+    <string name="there_no_options">There are no options</string>
+    <string name="strategic_planning">Strategic planning</string>
+    <string name="calculate_victory">Calculate victory</string>
+    <string name="calculate_an_early_victory">Calculate an early victory</string>
+    <string name="versus">vs.</string>
 
     <string-array name="pref_colors_entries">
         <item>Time</item>

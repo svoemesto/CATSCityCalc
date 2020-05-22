@@ -50,11 +50,6 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings" />
-        <activity android:name=".MainActivity">
-            <meta-data
-                android:name="com.google.android.gms.vision.DEPENDENCIES"
-                android:value="orc" />
-        </activity>
     </application>
 
 </manifest>

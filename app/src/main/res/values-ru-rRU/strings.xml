@@ -257,5 +257,10 @@
 <!--        <item>BRB слоты</item>-->
     </string-array>
     <string name="sett_strategy">Стратегия</string>
+    <string name="there_no_options">Вариантов не нейдено</string>
+    <string name="strategic_planning">Стратегическое планирование</string>
+    <string name="calculate_victory">Рассчитать победу</string>
+    <string name="calculate_an_early_victory">Рассчитать досрочную победу</string>
+    <string name="versus">против</string>
 
 </resources>

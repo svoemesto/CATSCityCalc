@@ -1312,7 +1312,7 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, "Вариантов не нейдено", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -1334,7 +1334,7 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, "Вариантов не нейдено", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
         }
     }
 
