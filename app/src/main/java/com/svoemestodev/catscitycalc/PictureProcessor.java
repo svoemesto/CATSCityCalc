@@ -11,6 +11,8 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+import java.util.Locale;
+
 public class PictureProcessor extends Activity {
     /**
      * Разрезает изображение на 2, анализируя цвета
@@ -172,17 +174,28 @@ public class PictureProcessor extends Activity {
     }
 
 
+//    public static String doOCR(Bitmap sourceBitmap, Context context) {
+//        String result = ""; // результат
+//        if (sourceBitmap!= null) {
+//            TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
+//            if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
+//                Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
+//                SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
+//                for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
+//                    result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
+//                }
+//            }
+//        }
+//        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
+//    }
+
     public static String doOCR(Bitmap sourceBitmap, Context context) {
         String result = ""; // результат
         if (sourceBitmap!= null) {
-            TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
-            if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
-                Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
-                SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
-                for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
-                    result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
-                }
-            }
+            String language = "eng";
+            language = Locale.getDefault().getISO3Language().toLowerCase();
+            TessOCR mTessOCR = new TessOCR (context, language);
+            result = mTessOCR.getOCRResult(sourceBitmap);
         }
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
     }
@@ -203,15 +216,18 @@ public class PictureProcessor extends Activity {
                 }
             }
 
-            Matrix matrix = new Matrix();
-            matrix.setScale(5.0f, 4.0f);
-
-            Bitmap scaledBitmap = Bitmap.createBitmap(tmpBitmap, 0, 0, width, height, matrix, true);
-
-            return scaledBitmap;
+            return tmpBitmap;
 
         }
         return sourceBitmap;
+    }
+
+    public static Bitmap doScale(Bitmap sourceBitmap, float scaleX, float scaleY) {
+        int width = sourceBitmap.getWidth();
+        int height = sourceBitmap.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.setScale(scaleX, scaleY);
+        return Bitmap.createBitmap(sourceBitmap, 0, 0, width, height, matrix, true);
     }
 
     private static boolean isPixelTrue(int pixel, int color, int thm, int thp) {

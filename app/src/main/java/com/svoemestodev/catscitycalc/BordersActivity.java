@@ -57,9 +57,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_our_team_name))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
         } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
         } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blt_slots))) {
@@ -67,9 +67,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_blt_progress))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
         } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blc_slots))) {
@@ -77,9 +77,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_blc_progress))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
         } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_blb_slots))) {
@@ -87,9 +87,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_blb_progress))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
         } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brt_slots))) {
@@ -97,9 +97,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_brt_progress))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
         } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brc_slots))) {
@@ -107,9 +107,9 @@ public class BordersActivity extends AppCompatActivity {
         } else if (areaName.get().equals(getString(R.string.borders_brc_progress))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
         } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_ARAE);
         } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
         } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
         } else if (areaName.get().equals(getString(R.string.borders_brb_slots))) {
@@ -209,10 +209,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blt_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_blt_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
@@ -224,10 +224,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blt_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blc_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_blc_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
@@ -239,10 +239,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blc_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blb_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_blb_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
@@ -254,10 +254,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blb_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brt_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_brt_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
@@ -269,10 +269,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brt_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brc_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_brc_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
@@ -284,10 +284,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brc_progress_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brb_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_brb_name_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
@@ -352,10 +352,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blt_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_blt_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
@@ -367,10 +367,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blt_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blc_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_blc_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
@@ -382,10 +382,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blc_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blb_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_blb_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
@@ -397,10 +397,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blb_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brt_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_brt_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
@@ -412,10 +412,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brt_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brc_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_brc_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
@@ -427,10 +427,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brc_progress_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brb_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_brb_name_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
@@ -495,10 +495,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blt_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_blt_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
@@ -510,10 +510,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blt_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blc_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_blc_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
@@ -525,10 +525,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blc_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blb_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_blb_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
@@ -540,10 +540,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blb_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brt_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_brt_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
@@ -555,10 +555,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brt_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brc_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_brc_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
@@ -570,10 +570,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brc_progress_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brb_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_brb_name_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);
@@ -637,10 +637,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
                         editor.putFloat(getString(R.string.pref_cut_team_name_our_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blt_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
                         editor.putFloat(getString(R.string.pref_cut_blt_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_POINTS);
@@ -652,10 +652,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blt_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blc_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
                         editor.putFloat(getString(R.string.pref_cut_blc_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_POINTS);
@@ -667,10 +667,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blc_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_blb_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
                         editor.putFloat(getString(R.string.pref_cut_blb_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_blb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_POINTS);
@@ -682,10 +682,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_blb_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brt_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
                         editor.putFloat(getString(R.string.pref_cut_brt_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brt_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_POINTS);
@@ -697,10 +697,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brt_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brc_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
                         editor.putFloat(getString(R.string.pref_cut_brc_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brc_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_POINTS);
@@ -712,10 +712,10 @@ public class BordersActivity extends AppCompatActivity {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                         editor.putFloat(getString(R.string.pref_cut_brc_progress_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_ARAE);
                         editor.putFloat(getString(R.string.pref_cut_brb_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_name))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_NAME);
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
                         editor.putFloat(getString(R.string.pref_cut_brb_name_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_brb_increase))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BRB_POINTS);

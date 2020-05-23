@@ -328,7 +328,7 @@ public class CityCalc extends Activity {
                     
                     
                     // BLT Area
-                    area = Area.BLT;
+                    area = Area.BLT_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_x1), Float.parseFloat(context.getString(R.string.def_cut_blt_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_x2), Float.parseFloat(context.getString(R.string.def_cut_blt_x2))));
@@ -338,21 +338,20 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBLT = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBLT = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLT);
 
                     // BLT Name Area
-                    area = Area.BLT_NAME;
+                    area = Area.BLT;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_name_x1), Float.parseFloat(context.getString(R.string.def_cut_blt_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_name_x2), Float.parseFloat(context.getString(R.string.def_cut_blt_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_name_y1), Float.parseFloat(context.getString(R.string.def_cut_blt_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_name_y2), Float.parseFloat(context.getString(R.string.def_cut_blt_name_y2))));
                     
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBLTname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBLTname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBLTname);
 
                     // BLT Progress Area
@@ -377,7 +376,7 @@ public class CityCalc extends Activity {
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_points_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_points_y1), Float.parseFloat(context.getString(R.string.def_cut_blt_points_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blt_points_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blt_points_y2), Float.parseFloat(context.getString(R.string.def_cut_blt_points_y2))));
                     
-                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
+                    colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back};
                     ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                     needOcr = false;
                     CityCalcArea ccaBLTpoints = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
@@ -394,17 +393,25 @@ public class CityCalc extends Activity {
                     
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBLTslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBLTslots.needOcr = true;
+                    Bitmap[] ccaBLTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBLTslotsBitmapArray != null) {
+                        if (ccaBLTslotsBitmapArray.length == 2) {
+                            ccaBLTslots.bmpSrc = ccaBLTslotsBitmapArray[1];
+                            ccaBLTslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBLTslots);
-
-                    ccaBLT.calc(ccaBLTname, ccaBLTpoints, ccaBLTslots, ccaBLTprogress);
+                    
+                    ccaBLTname.calc(ccaBLTpoints, ccaBLTslots, ccaBLTprogress);
 
 
 
 
                     // BLC Area
-                    area = Area.BLC;
+                    area = Area.BLC_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_x1), Float.parseFloat(context.getString(R.string.def_cut_blc_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_x2), Float.parseFloat(context.getString(R.string.def_cut_blc_x2))));
@@ -414,23 +421,22 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBLC = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBLC = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLC);
 
                     // BLC Name Area
-                    area = Area.BLC_NAME;
+                    area = Area.BLC;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_name_x1), Float.parseFloat(context.getString(R.string.def_cut_blc_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_name_x2), Float.parseFloat(context.getString(R.string.def_cut_blc_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_name_y1), Float.parseFloat(context.getString(R.string.def_cut_blc_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blc_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blc_name_y2), Float.parseFloat(context.getString(R.string.def_cut_blc_name_y2))));
 
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBLCname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBLCname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBLCname);
-
+                    
                     // BLC Progress Area
                     area = Area.BLC_PROGRESS;
 
@@ -470,16 +476,24 @@ public class CityCalc extends Activity {
 
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBLCslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBLCslots.needOcr = true;
+                    Bitmap[] ccaBLCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBLCslotsBitmapArray != null) {
+                        if (ccaBLCslotsBitmapArray.length == 2) {
+                            ccaBLCslots.bmpSrc = ccaBLCslotsBitmapArray[1];
+                            ccaBLCslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBLCslots);
 
-                    ccaBLC.calc(ccaBLCname, ccaBLCpoints, ccaBLCslots, ccaBLCprogress);
+                    ccaBLCname.calc(ccaBLCpoints, ccaBLCslots, ccaBLCprogress);
 
 
 
                     // BLB Area
-                    area = Area.BLB;
+                    area = Area.BLB_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_x1), Float.parseFloat(context.getString(R.string.def_cut_blb_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_x2), Float.parseFloat(context.getString(R.string.def_cut_blb_x2))));
@@ -489,23 +503,22 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBLB = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBLB = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBLB);
 
                     // BLB Name Area
-                    area = Area.BLB_NAME;
+                    area = Area.BLB;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_name_x1), Float.parseFloat(context.getString(R.string.def_cut_blb_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_name_x2), Float.parseFloat(context.getString(R.string.def_cut_blb_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_name_y1), Float.parseFloat(context.getString(R.string.def_cut_blb_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_blb_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_blb_name_y2), Float.parseFloat(context.getString(R.string.def_cut_blb_name_y2))));
 
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBLBname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBLBname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBLBname);
-
+                    
                     // BLB Progress Area
                     area = Area.BLB_PROGRESS;
 
@@ -545,15 +558,23 @@ public class CityCalc extends Activity {
 
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBLBslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBLBslots.needOcr = true;
+                    Bitmap[] ccaBLBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBLBslotsBitmapArray != null) {
+                        if (ccaBLBslotsBitmapArray.length == 2) {
+                            ccaBLBslots.bmpSrc = ccaBLBslotsBitmapArray[1];
+                            ccaBLBslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBLBslots);
 
-                    ccaBLB.calc(ccaBLBname, ccaBLBpoints, ccaBLBslots, ccaBLBprogress);
+                    ccaBLBname.calc(ccaBLBpoints, ccaBLBslots, ccaBLBprogress);
 
 
                     // BRT Area
-                    area = Area.BRT;
+                    area = Area.BRT_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_x1), Float.parseFloat(context.getString(R.string.def_cut_brt_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_x2), Float.parseFloat(context.getString(R.string.def_cut_brt_x2))));
@@ -563,21 +584,20 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBRT = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBRT = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRT);
 
                     // BRT Name Area
-                    area = Area.BRT_NAME;
+                    area = Area.BRT;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_name_x1), Float.parseFloat(context.getString(R.string.def_cut_brt_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_name_x2), Float.parseFloat(context.getString(R.string.def_cut_brt_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_name_y1), Float.parseFloat(context.getString(R.string.def_cut_brt_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brt_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brt_name_y2), Float.parseFloat(context.getString(R.string.def_cut_brt_name_y2))));
 
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBRTname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBRTname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBRTname);
 
                     // BRT Progress Area
@@ -619,17 +639,25 @@ public class CityCalc extends Activity {
 
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBRTslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBRTslots.needOcr = true;
+                    Bitmap[] ccaBRTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBRTslotsBitmapArray != null) {
+                        if (ccaBRTslotsBitmapArray.length == 2) {
+                            ccaBRTslots.bmpSrc = ccaBRTslotsBitmapArray[1];
+                            ccaBRTslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBRTslots);
 
-                    ccaBRT.calc(ccaBRTname, ccaBRTpoints, ccaBRTslots, ccaBRTprogress);
+                    ccaBRTname.calc(ccaBRTpoints, ccaBRTslots, ccaBRTprogress);
 
 
 
 
                     // BRC Area
-                    area = Area.BRC;
+                    area = Area.BRC_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_x1), Float.parseFloat(context.getString(R.string.def_cut_brc_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_x2), Float.parseFloat(context.getString(R.string.def_cut_brc_x2))));
@@ -639,21 +667,20 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBRC = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBRC = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRC);
 
                     // BRC Name Area
-                    area = Area.BRC_NAME;
+                    area = Area.BRC;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_name_x1), Float.parseFloat(context.getString(R.string.def_cut_brc_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_name_x2), Float.parseFloat(context.getString(R.string.def_cut_brc_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_name_y1), Float.parseFloat(context.getString(R.string.def_cut_brc_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brc_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brc_name_y2), Float.parseFloat(context.getString(R.string.def_cut_brc_name_y2))));
 
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBRCname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBRCname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBRCname);
 
                     // BRC Progress Area
@@ -695,15 +722,23 @@ public class CityCalc extends Activity {
 
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBRCslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBRCslots.needOcr = true;
+                    Bitmap[] ccaBRCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBRCslotsBitmapArray != null) {
+                        if (ccaBRCslotsBitmapArray.length == 2) {
+                            ccaBRCslots.bmpSrc = ccaBRCslotsBitmapArray[1];
+                            ccaBRCslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBRCslots);
 
-                    ccaBRC.calc(ccaBRCname, ccaBRCpoints, ccaBRCslots, ccaBRCprogress);
+                    ccaBRCname.calc(ccaBRCpoints, ccaBRCslots, ccaBRCprogress);
 
 
                     // BRB Area
-                    area = Area.BRB;
+                    area = Area.BRB_ARAE;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_x1), Float.parseFloat(context.getString(R.string.def_cut_brb_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_x2), Float.parseFloat(context.getString(R.string.def_cut_brb_x2))));
@@ -713,21 +748,20 @@ public class CityCalc extends Activity {
                     colors = null;
                     ths = null;
                     needOcr = false;
-                    CCABuilding ccaBRB = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    CityCalcArea ccaBRB = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaBRB);
 
                     // BRB Name Area
-                    area = Area.BRB_NAME;
+                    area = Area.BRB;
 
                     x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_name_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_name_x1), Float.parseFloat(context.getString(R.string.def_cut_brb_name_x1))));
                     x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_name_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_name_x2), Float.parseFloat(context.getString(R.string.def_cut_brb_name_x2))));
                     y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_name_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_name_y1), Float.parseFloat(context.getString(R.string.def_cut_brb_name_y1))));
                     y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_brb_name_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_brb_name_y2), Float.parseFloat(context.getString(R.string.def_cut_brb_name_y2))));
 
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBRBname = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
+                    ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
+                    CCABuilding ccaBRBname = new CCABuilding(this, area, x1, x2, y1, y2, colors, ths);
                     mapAreas.put(area, ccaBRBname);
 
                     // BRB Progress Area
@@ -769,14 +803,19 @@ public class CityCalc extends Activity {
 
                     colors = new int[] {color_building_slot_main, color_building_slot_back};
                     ths = new int[] {thm_building_slot, thp_building_slot};
-                    needOcr = true;
+                    needOcr = false;
                     CityCalcArea ccaBRBslots = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
+                    ccaBRBslots.needOcr = true;
+                    Bitmap[] ccaBRBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                    if (ccaBRBslotsBitmapArray != null) {
+                        if (ccaBRBslotsBitmapArray.length == 2) {
+                            ccaBRBslots.bmpSrc = ccaBRBslotsBitmapArray[1];
+                            ccaBRBslots.doOCR();
+                        }
+                    }
                     mapAreas.put(area, ccaBRBslots);
 
-                    ccaBRB.calc(ccaBRBname, ccaBRBpoints, ccaBRBslots, ccaBRBprogress);
-
-
-
+                    ccaBRBname.calc(ccaBRBpoints, ccaBRBslots, ccaBRBprogress);
 
 
 

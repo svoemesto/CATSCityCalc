@@ -65,7 +65,7 @@
     <string name="def_cut_blt_name_y2" translatable="false">-0.040</string>
 
     <!--  "Здание слева вверху - слоты"  -->
-    <string name="def_cut_blt_slots_x1" translatable="false">-0.290</string>
+    <string name="def_cut_blt_slots_x1" translatable="false">-0.310</string>
     <string name="def_cut_blt_slots_x2" translatable="false">-0.240</string>
     <string name="def_cut_blt_slots_y1" translatable="false">-0.130</string>
     <string name="def_cut_blt_slots_y2" translatable="false">-0.040</string>
@@ -97,7 +97,7 @@
     <string name="def_cut_blc_name_y2" translatable="false">+0.402</string>
 
     <!--  "Здание слева центр - слоты"  -->
-    <string name="def_cut_blc_slots_x1" translatable="false">-0.371</string>
+    <string name="def_cut_blc_slots_x1" translatable="false">-0.391</string>
     <string name="def_cut_blc_slots_x2" translatable="false">-0.321</string>
     <string name="def_cut_blc_slots_y1" translatable="false">+0.312</string>
     <string name="def_cut_blc_slots_y2" translatable="false">+0.402</string>
@@ -128,7 +128,7 @@
     <string name="def_cut_blb_name_y2" translatable="false">+0.666</string>
 
     <!--  "Здание слева низ - слоты"  -->
-    <string name="def_cut_blb_slots_x1" translatable="false">-0.011</string>
+    <string name="def_cut_blb_slots_x1" translatable="false">-0.031</string>
     <string name="def_cut_blb_slots_x2" translatable="false">+0.039</string>
     <string name="def_cut_blb_slots_y1" translatable="false">+0.576</string>
     <string name="def_cut_blb_slots_y2" translatable="false">+0.666</string>
@@ -159,7 +159,7 @@
     <string name="def_cut_brt_name_y2" translatable="false">-0.086</string>
 
     <!--  "Здание справа вверху - слоты"  -->
-    <string name="def_cut_brt_slots_x1" translatable="false">+0.669</string>
+    <string name="def_cut_brt_slots_x1" translatable="false">+0.649</string>
     <string name="def_cut_brt_slots_x2" translatable="false">+0.719</string>
     <string name="def_cut_brt_slots_y1" translatable="false">-0.176</string>
     <string name="def_cut_brt_slots_y2" translatable="false">-0.086</string>
@@ -190,7 +190,7 @@
     <string name="def_cut_brc_name_y2" translatable="false">+0.416</string>
 
     <!--  "Здание справа центр - слоты"  -->
-    <string name="def_cut_brc_slots_x1" translatable="false">+0.692</string>
+    <string name="def_cut_brc_slots_x1" translatable="false">+0.672</string>
     <string name="def_cut_brc_slots_x2" translatable="false">+0.742</string>
     <string name="def_cut_brc_slots_y1" translatable="false">+0.326</string>
     <string name="def_cut_brc_slots_y2" translatable="false">+0.416</string>
@@ -221,7 +221,7 @@
     <string name="def_cut_brb_name_y2" translatable="false">+0.696</string>
 
     <!--  "Здание справа низ - слоты"  -->
-    <string name="def_cut_brb_slots_x1" translatable="false">+0.392</string>
+    <string name="def_cut_brb_slots_x1" translatable="false">+0.372</string>
     <string name="def_cut_brb_slots_x2" translatable="false">+0.442</string>
     <string name="def_cut_brb_slots_y1" translatable="false">+0.606</string>
     <string name="def_cut_brb_slots_y2" translatable="false">+0.696</string>
@@ -281,15 +281,15 @@
     <string name="def_rgb_building_points_enemy_thm" translatable="false">13</string>
     <string name="def_rgb_building_points_enemy_thp" translatable="false">13</string>
 
-    <string name="def_rgb_building_progress_our" translatable="false">90b3eb</string>
-    <string name="def_rgb_building_progress_enemy" translatable="false">ff6565</string>
-    <string name="def_rgb_building_progress_empty" translatable="false">5e6a84</string>
-    <string name="def_rgb_building_progress_our_thm" translatable="false">13</string>
-    <string name="def_rgb_building_progress_our_thp" translatable="false">13</string>
-    <string name="def_rgb_building_progress_enemy_thm" translatable="false">13</string>
-    <string name="def_rgb_building_progress_enemy_thp" translatable="false">13</string>
-    <string name="def_rgb_building_progress_empty_thm" translatable="false">13</string>
-    <string name="def_rgb_building_progress_empty_thp" translatable="false">13</string>
+    <string name="def_rgb_building_progress_our" translatable="false">ff90b3eb</string>
+    <string name="def_rgb_building_progress_enemy" translatable="false">ffff6565</string>
+    <string name="def_rgb_building_progress_empty" translatable="false">ff5e6a84</string>
+    <string name="def_rgb_building_progress_our_thm" translatable="false">23</string>
+    <string name="def_rgb_building_progress_our_thp" translatable="false">23</string>
+    <string name="def_rgb_building_progress_enemy_thm" translatable="false">23</string>
+    <string name="def_rgb_building_progress_enemy_thp" translatable="false">23</string>
+    <string name="def_rgb_building_progress_empty_thm" translatable="false">23</string>
+    <string name="def_rgb_building_progress_empty_thp" translatable="false">23</string>
 
     <string name="def_rgb_building_doublepoints" translatable="false">ffebb948</string>
     <string name="def_rgb_building_doublepoints_thm" translatable="false">13</string>
@@ -303,4 +303,14 @@
     <string name="def_rgb_building_isX2_thm" translatable="false">13</string>
     <string name="def_rgb_building_isX2_thp" translatable="false">13</string>
 
+    <string name="def_rgb_building_name_our" translatable="false">ff90b3eb</string>
+    <string name="def_rgb_building_name_enemy" translatable="false">ffff6565</string>
+    <string name="def_rgb_building_name_empty" translatable="false">ff5f6b85</string>
+    <string name="def_rgb_building_name_our_thm" translatable="false">13</string>
+    <string name="def_rgb_building_name_our_thp" translatable="false">13</string>
+    <string name="def_rgb_building_name_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_building_name_enemy_thp" translatable="false">13</string>
+    <string name="def_rgb_building_name_empty_thm" translatable="false">13</string>
+    <string name="def_rgb_building_name_empty_thp" translatable="false">13</string>
+    
 </resources>

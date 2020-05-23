@@ -91,10 +91,12 @@ public class Utils {
      */
     public static  String parseNumbers(String str) {
         String result = "";                 // результат
-        for (char ch : str.toCharArray()) { // цикл по символам строки
+        for (char ch : str.toUpperCase().toCharArray()) { // цикл по символам строки
             if (ch >= '0' && ch <='9') {    // если символ - числовой
                 result = result + ch;       // приклеиваем его к результату
             }
+            if (ch == 'З') result = result + '3';
+            if (ch == 'О') result = result + '0';
         }
         if (result.equals("")) result = "0";
         return result;                      // возвращаем результат
@@ -123,22 +125,22 @@ public class Utils {
 
         if (listTotalTime.size() > 0) {     // если в списке есть элементы
             if (listTotalTime.size() == 1) {    // если в списке 1 элемент
-                if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m")) {    // если последний символ элемента равен букве "М"
+                if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m") || listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("м")) {    // если последний символ элемента равен букве "М"
                     String hours = "00";    // часы = "00"
-                    String minutes = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);    // минуты = элемент без последнего символа
+                    String minutes = parseNumbers(listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1));    // минуты = элемент без последнего символа
                     if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
                     return hours + ":" + minutes;   // время = часы : минуты
                 } else {    // если последний символ элемента не равен букве "М"
-                    String hours = listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1);  // часы = элемент без последнего символа
+                    String hours = parseNumbers(listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1));  // часы = элемент без последнего символа
                     String minutes = "00";  // минуты = "00"
                     return hours + ":" + minutes; // время = часы : минуты
                 }
             } else {    // если в списке больше 1 элемента
                 if (listTotalTime.size() > 2) {
-                    listTotalTime.set(1, listTotalTime.get(1) + listTotalTime.get(2));
+                    listTotalTime.set(1, parseNumbers(listTotalTime.get(1) + listTotalTime.get(2)));
                 }
-                String hours = listTotalTime.get(0);    // часы - первый элемент из списка
-                String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
+                String hours = parseNumbers(listTotalTime.get(0));    // часы - первый элемент из списка
+                String minutes = parseNumbers(listTotalTime.get(1));  // минуты - второй элемент из списка
                 if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
                 return hours + ":" + minutes; // время = часы : минуты
             }

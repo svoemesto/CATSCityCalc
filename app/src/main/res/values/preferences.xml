@@ -294,6 +294,15 @@
     <string name="pref_rgb_building_isX2_thm" translatable="false">PREF_RGB_BUILDING_ISX2_THM</string>
     <string name="pref_rgb_building_isX2_thp" translatable="false">PREF_RGB_BUILDING_ISX2_THP</string>
 
+    <string name="pref_rgb_building_name_our" translatable="false">PREF_RGB_BUILDING_NAME_OUR</string>
+    <string name="pref_rgb_building_name_enemy" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY</string>
+    <string name="pref_rgb_building_name_empty" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY</string>
+    <string name="pref_rgb_building_name_our_thm" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THM</string>
+    <string name="pref_rgb_building_name_our_thp" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THP</string>
+    <string name="pref_rgb_building_name_enemy_thm" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THM</string>
+    <string name="pref_rgb_building_name_enemy_thp" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THP</string>
+    <string name="pref_rgb_building_name_empty_thm" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THM</string>
+    <string name="pref_rgb_building_name_empty_thp" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THP</string>
 
 
     <string name="pref_def_preferences_file" translatable="false">PREF_DEF_PREFERENCES_FILE</string>
@@ -589,4 +598,15 @@
     <string name="pref_def_rgb_building_isX2" translatable="false">PREF_DEF_RGB_BUILDING_ISX2</string>
     <string name="pref_def_rgb_building_isX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THM</string>
     <string name="pref_def_rgb_building_isX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THP</string>
+
+    <string name="pref_def_rgb_building_name_our" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR</string>
+    <string name="pref_def_rgb_building_name_enemy" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY</string>
+    <string name="pref_def_rgb_building_name_empty" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY</string>
+    <string name="pref_def_rgb_building_name_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR_THM</string>
+    <string name="pref_def_rgb_building_name_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR_THP</string>
+    <string name="pref_def_rgb_building_name_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY_THM</string>
+    <string name="pref_def_rgb_building_name_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY_THP</string>
+    <string name="pref_def_rgb_building_name_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THM</string>
+    <string name="pref_def_rgb_building_name_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THP</string>
+    
 </resources>

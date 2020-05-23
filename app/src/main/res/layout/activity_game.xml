@@ -260,11 +260,11 @@
                 android:layout_weight="1"
                 android:paddingEnd="10dp"
                 >
-                <ImageView
-                    android:id="@+id/iv_ga_blt_name"
+                <TextView
+                    android:id="@+id/tv_ga_blt_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
@@ -293,11 +293,11 @@
                 android:paddingStart="10dp"
                 >
 
-                <ImageView
-                    android:id="@+id/iv_ga_brt_name"
+                <TextView
+                    android:id="@+id/tv_ga_brt_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
@@ -534,11 +534,11 @@
                 android:layout_weight="1"
                 android:paddingEnd="10dp"
                 >
-                <ImageView
-                    android:id="@+id/iv_ga_blc_name"
+                <TextView
+                    android:id="@+id/tv_ga_blc_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
@@ -567,11 +567,11 @@
                 android:paddingStart="10dp"
                 >
 
-                <ImageView
-                    android:id="@+id/iv_ga_brc_name"
+                <TextView
+                    android:id="@+id/tv_ga_brc_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
@@ -805,11 +805,11 @@
                 android:layout_weight="1"
                 android:paddingEnd="10dp"
                 >
-                <ImageView
-                    android:id="@+id/iv_ga_blb_name"
+                <TextView
+                    android:id="@+id/tv_ga_blb_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
@@ -838,11 +838,11 @@
                 android:paddingStart="10dp"
                 >
 
-                <ImageView
-                    android:id="@+id/iv_ga_brb_name"
+                <TextView
+                    android:id="@+id/tv_ga_brb_name"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
                     android:layout_weight="1" />
 
                 <TextView
