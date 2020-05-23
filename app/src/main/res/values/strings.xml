@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.29 (23/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.30 (23/05/2020)</string>
 
     <string name="banner_ad_ga_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
     <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
@@ -230,6 +230,7 @@
     <string name="calculate_victory">Calculate victory</string>
     <string name="calculate_an_early_victory">Calculate an early victory</string>
     <string name="versus">vs.</string>
+    <string name="error_recognizing">Recognize error!</string>
 
     <string-array name="pref_colors_entries">
         <item>Time</item>

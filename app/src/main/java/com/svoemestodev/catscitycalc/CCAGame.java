@@ -19,6 +19,7 @@ public class CCAGame extends CityCalcArea {
     boolean ccagIsWinOur;           // победили мы
     boolean ccagIsWinEnemy;         // победил противник
     boolean ccagIsWinNobody;        // ничья
+    boolean ccagIsErrorRecognize;        // ничья
 
     boolean ccagWillEarlyWin;
     boolean ccagWillOurWin;
@@ -43,11 +44,15 @@ public class CCAGame extends CityCalcArea {
 
         CityCalcArea ccaTotalTime = this.cityCalc.mapAreas.get(Area.TOTAL_TIME); // время
         CityCalcArea ccaEarlyWin = this.cityCalc.mapAreas.get(Area.EARLY_WIN);   // очки досрочки
-
+        int minFromStartToScreenshot = 0;
+        
         if (ccaTotalTime != null && ccaEarlyWin != null) {
 
             String[] words = ccaTotalTime.finText.split(":"); // разделяем строку на часы и минуты
-            int minFromStartToScreenshot = 24*60 - (Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]));// прошло минут с начала игры по скриншоту
+            if (words.length == 2) {
+                minFromStartToScreenshot = 24*60 - (Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]));// прошло минут с начала игры по скриншоту
+                this.ccagIsErrorRecognize = true;
+            }
             this.ccagDateStartGame = Utils.addMinutesToDate(this.ccagDateScreenshot, -minFromStartToScreenshot); // дата начала игры
             this.ccagDateEndGame = Utils.addMinutesToDate(this.ccagDateStartGame, 24*60); // дата конца игры по времени
             this.ccagEarlyWin = Integer.parseInt(ccaEarlyWin.finText); // очки до досрочной победы
@@ -141,8 +146,9 @@ public class CCAGame extends CityCalcArea {
                     }
                 }
             } // игра закончена
-
-
+            
+            if  (this.ccagIsErrorRecognize) this.ccagStatus = cityCalc.getString(R.string.error_recognizing) + "  " + this.ccagStatus;
+            
         }
 
 

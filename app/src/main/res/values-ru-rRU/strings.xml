@@ -262,5 +262,6 @@
     <string name="calculate_victory">Рассчитать победу</string>
     <string name="calculate_an_early_victory">Рассчитать досрочную победу</string>
     <string name="versus">против</string>
+    <string name="error_recognizing">Ошибка распознавания!</string>
 
 </resources>
