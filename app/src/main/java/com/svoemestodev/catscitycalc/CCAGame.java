@@ -51,6 +51,7 @@ public class CCAGame extends CityCalcArea {
             String[] words = ccaTotalTime.finText.split(":"); // разделяем строку на часы и минуты
             if (words.length == 2) {
                 minFromStartToScreenshot = 24*60 - (Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]));// прошло минут с начала игры по скриншоту
+            } else {
                 this.ccagIsErrorRecognize = true;
             }
             this.ccagDateStartGame = Utils.addMinutesToDate(this.ccagDateScreenshot, -minFromStartToScreenshot); // дата начала игры
@@ -147,7 +148,7 @@ public class CCAGame extends CityCalcArea {
                 }
             } // игра закончена
             
-            if  (this.ccagIsErrorRecognize) this.ccagStatus = cityCalc.getString(R.string.error_recognizing) + "  " + this.ccagStatus;
+            if  (this.ccagIsErrorRecognize) this.ccagStatus = cityCalc.context.getString(R.string.error_recognizing) + "  " + this.ccagStatus;
             
         }
 

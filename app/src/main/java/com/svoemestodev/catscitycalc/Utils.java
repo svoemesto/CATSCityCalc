@@ -134,7 +134,9 @@ public class Utils {
                     return hours + ":" + minutes; // время = часы : минуты
                 }
             } else {    // если в списке больше 1 элемента
-                listTotalTime.set(1, listTotalTime.get(1) + listTotalTime.get(2));
+                if (listTotalTime.size() > 2) {
+                    listTotalTime.set(1, listTotalTime.get(1) + listTotalTime.get(2));
+                }
                 String hours = listTotalTime.get(0);    // часы - первый элемент из списка
                 String minutes = listTotalTime.get(1);  // минуты - второй элемент из списка
                 if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
