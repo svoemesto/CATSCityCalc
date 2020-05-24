@@ -14,18 +14,20 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StrategyActivity"
-            android:label="@string/sett_strategy"
-            >
+        <activity android:name=".LanguageActivity"
+            android:label="@string/sett_language"/>
 
-        </activity>
+        <activity
+            android:name=".StrategyActivity"
+            android:label="@string/sett_strategy"/>
+
         <activity
             android:name=".GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleInstance">
-            <meta-data
-                android:name="com.google.android.gms.vision.DEPENDENCIES"
-                android:value="orc" />
+<!--            <meta-data-->
+<!--                android:name="com.google.android.gms.vision.DEPENDENCIES"-->
+<!--                android:value="orc" />-->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

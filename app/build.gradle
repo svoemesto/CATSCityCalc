@@ -6,12 +6,12 @@ android {
 
     defaultConfig {
         applicationId "com.svoemestodev.catscitycalc"
-        minSdkVersion 23
+        minSdkVersion 18
         targetSdkVersion 29
 
 
-        versionCode 32
-        versionName "1.0.32"
+        versionCode 33
+        versionName "1.0.33"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.google.android.gms:play-services-vision:20.0.0'
+//    implementation 'com.google.android.gms:play-services-vision:20.0.0'
     implementation 'com.google.android.gms:play-services-ads:19.1.0'
     implementation 'com.google.firebase:firebase-analytics:17.4.1'
     implementation 'com.rmtheis:tess-two:6.0.0'

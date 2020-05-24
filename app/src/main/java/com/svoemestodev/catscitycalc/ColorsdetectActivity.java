@@ -21,9 +21,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.text.TextBlock;
-import com.google.android.gms.vision.text.TextRecognizer;
+//import com.google.android.gms.vision.Frame;
+//import com.google.android.gms.vision.text.TextBlock;
+//import com.google.android.gms.vision.text.TextRecognizer;
 
 public class ColorsdetectActivity extends AppCompatActivity {
 
@@ -97,19 +97,19 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
     }
 
-    private String recognizePicture(Bitmap bitmap) {
-
-        String result = ""; // результат
-        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build(); // создаем текстрекогнайзер
-        if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
-            Frame frame = new Frame.Builder().setBitmap(bitmap).build();    // создаем фрейм на основе переданного битмапа
-            SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
-            for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
-                result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
-            }
-        }
-        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
-    }
+//    private String recognizePicture(Bitmap bitmap) {
+//
+//        String result = ""; // результат
+//        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build(); // создаем текстрекогнайзер
+//        if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
+//            Frame frame = new Frame.Builder().setBitmap(bitmap).build();    // создаем фрейм на основе переданного битмапа
+//            SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
+//            for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
+//                result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
+//            }
+//        }
+//        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

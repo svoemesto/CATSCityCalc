@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="pref_language_interface_area"
+        android:title="@string/pref_languageInterfaceAreaName"
+        android:entries="@array/pref_language_interface_entries"
+        android:entryValues="@array/pref_language_interface_values"
+        android:defaultValue="@string/pref_languageInterfaceAreaName_default_value"
+        android:summary="@string/pref_languageInterfaceAreaName_summary"
+        />
+
+    <ListPreference
+        android:key="pref_language_screenshot_area"
+        android:title="@string/pref_languageScreenshotAreaName"
+        android:entries="@array/pref_language_screenshot_entries"
+        android:entryValues="@array/pref_language_screenshot_values"
+        android:defaultValue="@string/pref_languageScreenshotAreaName_default_value"
+        android:summary="@string/pref_languageScreenshotAreaName_summary"
+        />
+
+</PreferenceScreen>

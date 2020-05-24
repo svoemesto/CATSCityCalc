@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_version" translatable="false">Version: 1.0.32 (24/05/2020)</string>
+    <string name="app_version" translatable="false">Version: 1.0.33 (24/05/2020)</string>
 
     <string name="banner_ad_ga_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
     <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
@@ -35,6 +35,7 @@
     <string name="debug_mode">Debug mode</string>
     <string name="sett_calibrate_center_screen">Calibrate screenshot center</string>
     <string name="sett_strategy">Strategy</string>
+    <string name="sett_language">Language</string>
     <string name="sett_reset_to_zero">Reset to 0</string>
     <string name="program_depricated">Program is out of date</string>
     <string name="read_external_storage">Read External Storage</string>
@@ -221,6 +222,50 @@
         <item>BRB progress</item>
     </string-array>
 
+
+    <string-array name="pref_language_interface_entries">
+        <item>English</item>
+        <item>Русский</item>
+    </string-array>
+
+    <string-array name="pref_language_interface_values">
+        <item>en</item>
+        <item>ru</item>
+    </string-array>
+
+
+    <string-array name="pref_language_screenshot_entries">
+        <item>English</item>
+        <item>Русский</item>
+        <item>Deutsch</item>
+        <item>Nederlandse</item>
+        <item>Français</item>
+        <item>Italiano</item>
+        <item>Español</item>
+        <item>Português</item>
+        <item>Türk</item>
+        <item>عربي</item>
+        <item>日本語</item>
+        <item>한국어</item>
+        <item>中文</item>
+    </string-array>
+
+    <string-array name="pref_language_screenshot_values">
+        <item>eng</item>
+        <item>rus</item>
+        <item>deu</item>
+        <item>nld</item>
+        <item>fra</item>
+        <item>ita</item>
+        <item>spa</item>
+        <item>por</item>
+        <item>tur</item>
+        <item>ara</item>
+        <item>jpn</item>
+        <item>kor</item>
+        <item>chi_sim</item>
+    </string-array>
+
     <string name="pref_colorsAreaName">Area name</string>
     <string name="pref_colorsAreaName_dialog_title">Select Area</string>
     <string name="pref_colorsAreaName_default_value">Time</string>
@@ -231,6 +276,14 @@
     <string name="calculate_an_early_victory">Calculate an early victory</string>
     <string name="versus">vs.</string>
     <string name="error_recognizing">Recognize error!</string>
+    <string name="pref_languageInterfaceAreaName">Interface Language</string>
+    <string name="pref_languageInterfaceAreaName_dialog_title">Select Interface Language</string>
+    <string name="pref_languageInterfaceAreaName_default_value">en</string>
+    <string name="pref_languageInterfaceAreaName_summary">English</string>
+    <string name="pref_languageScreenshotAreaName">Screenshot Language</string>
+    <string name="pref_languageScreenshotAreaName_dialog_title">Select Screenshot Language</string>
+    <string name="pref_languageScreenshotAreaName_default_value">eng</string>
+    <string name="pref_languageScreenshotAreaName_summary">English</string>
 
     <string-array name="pref_colors_entries">
         <item>Time</item>

@@ -25,6 +25,7 @@
     <string name="exit">Выход</string>
     <string name="sett_screenshot_folder">папка скриншотов</string>
     <string name="sett_listen_files_in_screenshot_folder">Отслеживать файлы в папке скриншотов</string>
+    <string name="sett_language">Язык</string>
     <string name="debug_mode">Режим отладки</string>
     <string name="sett_calibrate_center_screen">Калибровка центра скриншота</string>
     <string name="sett_reset_to_zero">Сброс в ноль</string>
@@ -215,6 +216,17 @@
     <string name="pref_colorsAreaName_default_value">Время</string>
     <string name="pref_colorsAreaName_summary">Время</string>
 
+
+
+    <string name="pref_languageInterfaceAreaName">Язык интерфейса</string>
+    <string name="pref_languageInterfaceAreaName_dialog_title">Выберите язык интерфейса</string>
+    <string name="pref_languageInterfaceAreaName_default_value">en</string>
+    <string name="pref_languageInterfaceAreaName_summary">English</string>
+    <string name="pref_languageScreenshotAreaName">Язык скриншота</string>
+    <string name="pref_languageScreenshotAreaName_dialog_title">Выберите язык скриншота</string>
+    <string name="pref_languageScreenshotAreaName_default_value">eng</string>
+    <string name="pref_languageScreenshotAreaName_summary">English</string>
+
     <string-array name="pref_colors_entries">
         <item>Время</item>
         <item>Очки до досрочной победы</item>
@@ -263,5 +275,6 @@
     <string name="calculate_an_early_victory">Рассчитать досрочную победу</string>
     <string name="versus">против</string>
     <string name="error_recognizing">Ошибка распознавания!</string>
+
 
 </resources>

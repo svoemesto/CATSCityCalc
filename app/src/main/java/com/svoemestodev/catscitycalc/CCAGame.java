@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc;
 
+import android.content.res.Configuration;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;

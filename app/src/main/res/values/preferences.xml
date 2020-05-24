@@ -304,6 +304,12 @@
     <string name="pref_rgb_building_name_empty_thm" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THM</string>
     <string name="pref_rgb_building_name_empty_thp" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THP</string>
 
+    <string name="pref_language_interface" translatable="false">PREF_LANGUAGE_INTERFACE</string>
+    <string name="pref_language_screenshot" translatable="false">PREF_LANGUAGE_SCREENSHOT</string>
+
+    <string name="pref_language_interface_area" translatable="false">PREF_LANGUAGE_INTERFACE_AREA</string>
+    <string name="pref_language_screenshot_area" translatable="false">PREF_LANGUAGE_SCREENSHOT_AREA</string>
+
 
     <string name="pref_def_preferences_file" translatable="false">PREF_DEF_PREFERENCES_FILE</string>
     <string name="pref_def_screenshot_folder" translatable="false">PREF_DEF_SCREENSHOT_FOLDER</string>
@@ -608,5 +614,11 @@
     <string name="pref_def_rgb_building_name_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY_THP</string>
     <string name="pref_def_rgb_building_name_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THM</string>
     <string name="pref_def_rgb_building_name_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THP</string>
-    
+
+    <string name="pref_def_language_interface" translatable="false">PREF_DEF_LANGUAGE_INTERFACE</string>
+    <string name="pref_def_language_screenshot" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT</string>
+
+    <string name="pref_def_language_interface_area" translatable="false">PREF_DEF_LANGUAGE_INTERFACE_AREA</string>
+    <string name="pref_def_language_screenshot_area" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT_AREA</string>
+
 </resources>

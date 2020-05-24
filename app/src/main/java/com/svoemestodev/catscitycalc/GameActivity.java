@@ -15,11 +15,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.Preference;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +45,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -183,10 +186,24 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        context = getBaseContext();
+        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+
+
         setContentView(R.layout.activity_game);
 
         initializeViews(); // Инициализация вьюшек
-        context = tv_ga_start_game_time.getContext();
+
+//        context = tv_ga_start_game_time.getContext();
+//        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
 
         // отслеживание изменения свича "Следить за файлами в папке"
         sw_ga_listen_new_file.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -969,6 +986,17 @@ public class GameActivity extends AppCompatActivity {
             loadDataToViews(false);
 
         }
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        context = getBaseContext();
+        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+
     }
 
     /**
@@ -992,6 +1020,9 @@ public class GameActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_open_screenshot :    // "Открыть скриншотк"
                 selectScreenshot();
+                return true;
+            case R.id.menu_open_language :  // "Настройки"
+                openLanguage();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -1028,6 +1059,11 @@ public class GameActivity extends AppCompatActivity {
      */
     private void openSettings() {
         Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
+    }
+
+    private void openLanguage() {
+        Intent intent = new Intent(this, LanguageActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 

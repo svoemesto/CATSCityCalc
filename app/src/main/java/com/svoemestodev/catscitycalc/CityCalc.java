@@ -3,11 +3,13 @@ package com.svoemestodev.catscitycalc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class CityCalc extends Activity {
@@ -69,6 +71,14 @@ public class CityCalc extends Activity {
         this.calibrateY = calibrateY;
         this.context = context;
 
+        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+        String languageToLoad = sharedPreferences.getString(context.getResources().getString(R.string.pref_language_interface),sharedPreferences.getString(context.getResources().getString(R.string.pref_def_language_interface),"en"));
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+
         Area area;          // идентификатор области
         float x1;           // x1
         float x2;           // x2
@@ -85,7 +95,7 @@ public class CityCalc extends Activity {
             if (file != null) {         // если файл не нулл
                 if (file.exists()) {    // если файл физически существует
 
-                    SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+//                    SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     
                     this.bmpScreenshot = BitmapFactory.decodeFile(file.getAbsolutePath());   // загружаем битмап из файла скриншота
                     // City Area

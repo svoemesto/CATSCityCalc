@@ -2,14 +2,15 @@ package com.svoemestodev.catscitycalc;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.util.SparseArray;
 import android.graphics.Matrix;
 
-import com.google.android.gms.vision.Frame;
-import com.google.android.gms.vision.text.TextBlock;
-import com.google.android.gms.vision.text.TextRecognizer;
+//import com.google.android.gms.vision.Frame;
+//import com.google.android.gms.vision.text.TextBlock;
+//import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.util.Locale;
 
@@ -192,9 +193,11 @@ public class PictureProcessor extends Activity {
     public static String doOCR(Bitmap sourceBitmap, Context context) {
         String result = ""; // результат
         if (sourceBitmap!= null) {
-            String language = "eng";
-            language = Locale.getDefault().getISO3Language().toLowerCase();
-            TessOCR mTessOCR = new TessOCR (context, language);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+            String language = "rus";
+            language = sharedPreferences.getString(context.getResources().getString(R.string.pref_language_screenshot),sharedPreferences.getString(context.getResources().getString(R.string.pref_def_language_screenshot),"eng"));
+//            language = Locale.getDefault().getISO3Language().toLowerCase();
+            TessOCR mTessOCR = new TessOCR(context, language);
             result = mTessOCR.getOCRResult(sourceBitmap);
         }
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
