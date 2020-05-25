@@ -21,7 +21,6 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.Preference;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -42,7 +41,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +74,7 @@ public class GameActivity extends AppCompatActivity {
     TextView tv_ga_enemy_end_time;
     
     // BLT views
-    TextView tv_ga_blt_name;
+    ImageView iv_ga_blt_name;
     TextView tv_ga_blt_x2;
     TextView tv_ga_blt_points;
     TextView tv_ga_blt_slots;
@@ -90,7 +88,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_blt_progress;
 
     // BLC views
-    TextView tv_ga_blc_name;
+    ImageView iv_ga_blc_name;
     TextView tv_ga_blc_x2;
     TextView tv_ga_blc_points;
     TextView tv_ga_blc_slots;
@@ -104,7 +102,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_blc_progress;
 
     // BLB views
-    TextView tv_ga_blb_name;
+    ImageView iv_ga_blb_name;
     TextView tv_ga_blb_x2;
     TextView tv_ga_blb_points;
     TextView tv_ga_blb_slots;
@@ -118,7 +116,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_blb_progress;
 
     // BRT views
-    TextView tv_ga_brt_name;
+    ImageView iv_ga_brt_name;
     TextView tv_ga_brt_x2;
     TextView tv_ga_brt_points;
     TextView tv_ga_brt_slots;
@@ -132,7 +130,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_brt_progress;
 
     // BRC views
-    TextView tv_ga_brc_name;
+    ImageView iv_ga_brc_name;
     TextView tv_ga_brc_x2;
     TextView tv_ga_brc_points;
     TextView tv_ga_brc_slots;
@@ -146,7 +144,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_brc_progress;
 
     // BRB views
-    TextView tv_ga_brb_name;
+    ImageView iv_ga_brb_name;
     TextView tv_ga_brb_x2;
     TextView tv_ga_brb_points;
     TextView tv_ga_brb_slots;
@@ -384,7 +382,7 @@ public class GameActivity extends AppCompatActivity {
 
                 Log.i(TAG, logMsgPref + "ccaBLT != null");
 
-                tv_ga_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blt_x2.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blt_points.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blt_slots.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -404,7 +402,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBLTname = mainCityCalc.mapAreas.get(Area.BLT);
                     CityCalcArea ccaBLTprogress = mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
-                    if (ccaBLTname != null) tv_ga_blt_name.setText(ccaBLTname.finText);
+                    if (ccaBLTname != null) iv_ga_blt_name.setImageBitmap(ccaBLTname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBLTname = " + ccaBLTname.finText);
 
                     if (ccaBLTprogress != null) iv_ga_blt_progress.setImageBitmap(ccaBLTprogress.bmpSrc);
@@ -419,18 +417,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBLT our_points = +" + ccaBLT.our_points);
                         tv_ga_blt_points.setText("+" + ccaBLT.our_points);
                         tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                        tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLT.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBLT buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBLT enemy_points = +" + ccaBRB.enemy_points);
                         tv_ga_blt_points.setText("+" + ccaBLT.enemy_points);
                         tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                        tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLT.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBLT buildingIsEmpty");
                         tv_ga_blt_points.setText("");
                         tv_ga_blt_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLT.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLT isX2");
@@ -452,7 +450,7 @@ public class GameActivity extends AppCompatActivity {
             if (ccaBLC != null) {
                 Log.i(TAG, logMsgPref + "ccaBLC != null");
 
-                tv_ga_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blc_x2.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blc_points.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blc_slots.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -470,7 +468,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBLCname = mainCityCalc.mapAreas.get(Area.BLC);
                     CityCalcArea ccaBLCprogress = mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
-                    if (ccaBLCname != null) tv_ga_blc_name.setText(ccaBLCname.finText);
+                    if (ccaBLCname != null) iv_ga_blc_name.setImageBitmap(ccaBLCname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBLCname = " + ccaBLCname.finText);
 
                     if (ccaBLCprogress != null) iv_ga_blc_progress.setImageBitmap(ccaBLCprogress.bmpSrc);
@@ -485,18 +483,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBLC our_points = +" + ccaBLC.our_points);
                         tv_ga_blc_points.setText("+" + ccaBLC.our_points);
                         tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLC.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBLC buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBLC enemy_points = +" + ccaBLC.enemy_points);
                         tv_ga_blc_points.setText("+" + ccaBLC.enemy_points);
                         tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLC.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBLC buildingIsEmpty");
                         tv_ga_blc_points.setText("");
                         tv_ga_blc_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLC.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLC isX2");
@@ -518,7 +516,7 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaBLB != null) {
                 Log.i(TAG, logMsgPref + "ccaBLB != null");
-                tv_ga_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blb_x2.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blb_points.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blb_slots.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -536,7 +534,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBLBname = mainCityCalc.mapAreas.get(Area.BLB);
                     CityCalcArea ccaBLBprogress = mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
-                    if (ccaBLBname != null) tv_ga_blb_name.setText(ccaBLBname.finText);
+                    if (ccaBLBname != null) iv_ga_blb_name.setImageBitmap(ccaBLBname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBLBname = " + ccaBLBname.finText);
 
                     if (ccaBLBprogress != null) iv_ga_blb_progress.setImageBitmap(ccaBLBprogress.bmpSrc);
@@ -551,18 +549,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBLB our_points = +" + ccaBLB.our_points);
                         tv_ga_blb_points.setText("+" + ccaBLB.our_points);
                         tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLB.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBLB buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBLB enemy_points = +" + ccaBLB.enemy_points);
                         tv_ga_blb_points.setText("+" + ccaBLB.enemy_points);
                         tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLB.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBLB buildingIsEmpty");
                         tv_ga_blb_points.setText("");
                         tv_ga_blb_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLB.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLB isX2");
@@ -583,7 +581,7 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaBRT != null) {
                 Log.i(TAG, logMsgPref + "ccaBRT != null");
-                tv_ga_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brt_x2.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brt_points.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brt_slots.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -601,7 +599,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBRTname = mainCityCalc.mapAreas.get(Area.BRT);
                     CityCalcArea ccaBRTprogress = mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
-                    if (ccaBRTname != null) tv_ga_brt_name.setText(ccaBRTname.finText);
+                    if (ccaBRTname != null) iv_ga_brt_name.setImageBitmap(ccaBRTname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBRTname = " + ccaBRTname.finText);
 
                     if (ccaBRTprogress != null) iv_ga_brt_progress.setImageBitmap(ccaBRTprogress.bmpSrc);
@@ -616,18 +614,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBRT our_points = +" + ccaBRT.our_points);
                         tv_ga_brt_points.setText("+" + ccaBRT.our_points);
                         tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRT.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBRT buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBRT enemy_points = +" + ccaBRT.enemy_points);
                         tv_ga_brt_points.setText("+" + ccaBRT.enemy_points);
                         tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRT.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBRT buildingIsEmpty");
                         tv_ga_brt_points.setText("");
                         tv_ga_brt_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRT.isX2) {
                         tv_ga_brt_x2.setText("X2");
@@ -648,7 +646,7 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaBRC != null) {
                 Log.i(TAG, logMsgPref + "ccaBRC != null");
-                tv_ga_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brc_x2.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brc_points.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brc_slots.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -666,7 +664,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBRCname = mainCityCalc.mapAreas.get(Area.BRC);
                     CityCalcArea ccaBRCprogress = mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
-                    if (ccaBRCname != null) tv_ga_brc_name.setText(ccaBRCname.finText);
+                    if (ccaBRCname != null) iv_ga_brc_name.setImageBitmap(ccaBRCname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBRCname = " + ccaBRCname.finText);
 
                     if (ccaBRCprogress != null) iv_ga_brc_progress.setImageBitmap(ccaBRCprogress.bmpSrc);
@@ -681,18 +679,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBRC our_points = +" + ccaBRC.our_points);
                         tv_ga_brc_points.setText("+" + ccaBRC.our_points);
                         tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRC.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBRC buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBRC enemy_points = +" + ccaBRC.enemy_points);
                         tv_ga_brc_points.setText("+" + ccaBRC.enemy_points);
                         tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRC.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBRC buildingIsEmpty");
                         tv_ga_brc_points.setText("");
                         tv_ga_brc_points.setBackgroundColor(0xFFFFFF);
-                        tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRC.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBRC isX2");
@@ -715,7 +713,7 @@ public class GameActivity extends AppCompatActivity {
             if (ccaBRB != null) {
                 Log.i(TAG, logMsgPref + "ccaBRB != null");
 
-                tv_ga_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_ga_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brb_x2.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brb_points.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brb_slots.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -733,7 +731,7 @@ public class GameActivity extends AppCompatActivity {
 
                     CityCalcArea ccaBRBname = mainCityCalc.mapAreas.get(Area.BRB);
                     CityCalcArea ccaBRBprogress = mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
-                    if (ccaBRBname != null) tv_ga_brb_name.setText(ccaBRBname.finText);
+                    if (ccaBRBname != null) iv_ga_brb_name.setImageBitmap(ccaBRBname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBRBname = " + ccaBRBname.finText);
 
                     if (ccaBRBprogress != null) iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
@@ -748,18 +746,18 @@ public class GameActivity extends AppCompatActivity {
                         Log.i(TAG, logMsgPref + "ccaBRB our_points = +" + ccaBRB.our_points);
                         tv_ga_brb_points.setText("+" + ccaBRB.our_points);
                         tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRB.buildingIsEnemy) {
                         Log.i(TAG, logMsgPref + "ccaBRB buildingIsEnemy");
                         Log.i(TAG, logMsgPref + "ccaBRB enemy_points = +" + ccaBRB.enemy_points);
                         tv_ga_brb_points.setText("+" + ccaBRB.enemy_points);
                         tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRB.buildingIsEmpty) {
                         Log.i(TAG, logMsgPref + "ccaBRB buildingIsEmpty");
                         tv_ga_brb_points.setText("");
                         tv_ga_brb_points.setBackgroundColor(0xFFFFFF);
-                        tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRB.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBRB isX2");
@@ -838,7 +836,7 @@ public class GameActivity extends AppCompatActivity {
         tv_ga_enemy_end_time = findViewById(R.id.tv_ga_enemy_end_time);
 
         // BLT views
-        tv_ga_blt_name = findViewById(R.id.tv_ga_blt_name);
+        iv_ga_blt_name = findViewById(R.id.iv_ga_blt_name);
         tv_ga_blt_x2 = findViewById(R.id.tv_ga_blt_x2);
         tv_ga_blt_points = findViewById(R.id.tv_ga_blt_points);
         tv_ga_blt_slots = findViewById(R.id.tv_ga_blt_slots);
@@ -852,7 +850,7 @@ public class GameActivity extends AppCompatActivity {
         iv_ga_blt_progress = findViewById(R.id.iv_ga_blt_progress);
 
         // BLC views
-        tv_ga_blc_name = findViewById(R.id.tv_ga_blc_name);
+        iv_ga_blc_name = findViewById(R.id.iv_ga_blc_name);
         tv_ga_blc_x2 = findViewById(R.id.tv_ga_blc_x2);
         tv_ga_blc_points = findViewById(R.id.tv_ga_blc_points);
         tv_ga_blc_slots = findViewById(R.id.tv_ga_blc_slots);
@@ -866,7 +864,7 @@ public class GameActivity extends AppCompatActivity {
         iv_ga_blc_progress = findViewById(R.id.iv_ga_blc_progress);
 
         // BLB views
-        tv_ga_blb_name = findViewById(R.id.tv_ga_blb_name);
+        iv_ga_blb_name = findViewById(R.id.iv_ga_blb_name);
         tv_ga_blb_x2 = findViewById(R.id.tv_ga_blb_x2);
         tv_ga_blb_points = findViewById(R.id.tv_ga_blb_points);
         tv_ga_blb_slots = findViewById(R.id.tv_ga_blb_slots);
@@ -880,7 +878,7 @@ public class GameActivity extends AppCompatActivity {
         iv_ga_blb_progress = findViewById(R.id.iv_ga_blb_progress);
 
         // BRT views
-        tv_ga_brt_name = findViewById(R.id.tv_ga_brt_name);
+        iv_ga_brt_name = findViewById(R.id.iv_ga_brt_name);
         tv_ga_brt_x2 = findViewById(R.id.tv_ga_brt_x2);
         tv_ga_brt_points = findViewById(R.id.tv_ga_brt_points);
         tv_ga_brt_slots = findViewById(R.id.tv_ga_brt_slots);
@@ -894,7 +892,7 @@ public class GameActivity extends AppCompatActivity {
         iv_ga_brt_progress = findViewById(R.id.iv_ga_brt_progress);
 
         // BRC views
-        tv_ga_brc_name = findViewById(R.id.tv_ga_brc_name);
+        iv_ga_brc_name = findViewById(R.id.iv_ga_brc_name);
         tv_ga_brc_x2 = findViewById(R.id.tv_ga_brc_x2);
         tv_ga_brc_points = findViewById(R.id.tv_ga_brc_points);
         tv_ga_brc_slots = findViewById(R.id.tv_ga_brc_slots);
@@ -908,7 +906,7 @@ public class GameActivity extends AppCompatActivity {
         iv_ga_brc_progress = findViewById(R.id.iv_ga_brc_progress);
 
         // BRB views
-        tv_ga_brb_name = findViewById(R.id.tv_ga_brb_name);
+        iv_ga_brb_name = findViewById(R.id.iv_ga_brb_name);
         tv_ga_brb_x2 = findViewById(R.id.tv_ga_brb_x2);
         tv_ga_brb_points = findViewById(R.id.tv_ga_brb_points);
         tv_ga_brb_slots = findViewById(R.id.tv_ga_brb_slots);

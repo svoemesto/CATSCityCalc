@@ -236,7 +236,7 @@
     <string name="def_rgb_total_time_main" translatable="false">ffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">4e6881</string>
     <string name="def_rgb_total_time_back2" translatable="false">6b839b</string>
-    <string name="def_rgb_total_time_thm" translatable="false">13</string>
+    <string name="def_rgb_total_time_thm" translatable="false">35</string>
     <string name="def_rgb_total_time_thp" translatable="false">13</string>
 
     <string name="def_rgb_early_win_main" translatable="false">ffffff</string>

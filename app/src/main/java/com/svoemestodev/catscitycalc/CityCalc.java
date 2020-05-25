@@ -149,8 +149,6 @@ public class CityCalc extends Activity {
                     CityCalcArea ccaEarlyWin = new CityCalcArea(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaEarlyWin);
 
-                    ccaGame.calc();
-
 
                     // Points And Increase Our Area
                     area = Area.POINTS_AND_INCREASE_OUR;
@@ -304,7 +302,7 @@ public class CityCalc extends Activity {
                     CCATeam ccaEnemyTeam = new CCATeam(this, area, x1, x2, y1, y2, colors, ths, needOcr);
                     mapAreas.put(area, ccaEnemyTeam);
 
-                    ccaGame.calcWin();
+
 
                     int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_our),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our), 16)));
                     int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_progress_enemy),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy), 16)));
@@ -827,6 +825,12 @@ public class CityCalc extends Activity {
 
                     ccaBRBname.calc(ccaBRBpoints, ccaBRBslots, ccaBRBprogress);
 
+                    ccaOurTeam.ccatIncrease = (ccaBLTname.isPresent ? ccaBLTname.our_points : 0) + (ccaBLCname.isPresent ? ccaBLCname.our_points : 0) + (ccaBLBname.isPresent ? ccaBLBname.our_points : 0) + (ccaBRTname.isPresent ? ccaBRTname.our_points : 0) + (ccaBRCname.isPresent ? ccaBRCname.our_points : 0) + (ccaBRBname.isPresent ? ccaBRBname.our_points : 0);
+                    ccaEnemyTeam.ccatIncrease = (ccaBLTname.isPresent ? ccaBLTname.enemy_points : 0) + (ccaBLCname.isPresent ? ccaBLCname.enemy_points : 0) + (ccaBLBname.isPresent ? ccaBLBname.enemy_points : 0) + (ccaBRTname.isPresent ? ccaBRTname.enemy_points : 0) + (ccaBRCname.isPresent ? ccaBRCname.enemy_points : 0) + (ccaBRBname.isPresent ? ccaBRBname.enemy_points : 0);
+
+                    ccaGame.calc();
+
+                    ccaGame.calcWin();
 
 
                 } // кесли файл физически существует

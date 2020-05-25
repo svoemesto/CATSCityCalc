@@ -55,7 +55,7 @@ public class StrategyActivity extends AppCompatActivity {
     TextView tv_sa_enemy_end_time;
 
     // BLT views
-    TextView tv_sa_blt_name;
+    ImageView iv_sa_blt_name;
     TextView tv_sa_blt_x2;
     TextView tv_sa_blt_points;
     TextView tv_sa_blt_slots;
@@ -69,7 +69,7 @@ public class StrategyActivity extends AppCompatActivity {
     SeekBar sb_sa_blt;
 
     // BLC views
-    TextView tv_sa_blc_name;
+    ImageView iv_sa_blc_name;
     TextView tv_sa_blc_x2;
     TextView tv_sa_blc_points;
     TextView tv_sa_blc_slots;
@@ -83,7 +83,7 @@ public class StrategyActivity extends AppCompatActivity {
     SeekBar sb_sa_blc;
 
     // BLB views
-    TextView tv_sa_blb_name;
+    ImageView iv_sa_blb_name;
     TextView tv_sa_blb_x2;
     TextView tv_sa_blb_points;
     TextView tv_sa_blb_slots;
@@ -97,7 +97,7 @@ public class StrategyActivity extends AppCompatActivity {
     SeekBar sb_sa_blb;
 
     // BRT views
-    TextView tv_sa_brt_name;
+    ImageView iv_sa_brt_name;
     TextView tv_sa_brt_x2;
     TextView tv_sa_brt_points;
     TextView tv_sa_brt_slots;
@@ -111,7 +111,7 @@ public class StrategyActivity extends AppCompatActivity {
     SeekBar sb_sa_brt;
 
     // BRC views
-    TextView tv_sa_brc_name;
+    ImageView iv_sa_brc_name;
     TextView tv_sa_brc_x2;
     TextView tv_sa_brc_points;
     TextView tv_sa_brc_slots;
@@ -125,7 +125,7 @@ public class StrategyActivity extends AppCompatActivity {
     SeekBar sb_sa_brc;
 
     // BRB views
-    TextView tv_sa_brb_name;
+    ImageView iv_sa_brb_name;
     TextView tv_sa_brb_x2;
     TextView tv_sa_brb_points;
     TextView tv_sa_brb_slots;
@@ -336,6 +336,7 @@ public class StrategyActivity extends AppCompatActivity {
     private void setCarsInBuildings() {
         
         if (mainCityCalc != null) {
+
             CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
             CCATeam ccaTeamOur = (CCATeam) mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
             CCATeam ccaTeamEnemy = (CCATeam) mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);
@@ -638,7 +639,7 @@ public class StrategyActivity extends AppCompatActivity {
 
             if (ccaBLT != null) {
 
-                tv_sa_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blt_x2.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blt_points.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blt_slots.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -655,7 +656,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLT.isPresent) {
                     CityCalcArea ccaBLTname = mainCityCalc.mapAreas.get(Area.BLT);
                     CityCalcArea ccaBLTprogress = mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
-                    if (ccaBLTname != null) tv_sa_blt_name.setText(ccaBLTname.finText);
+                    if (ccaBLTname != null) iv_sa_blt_name.setImageBitmap(ccaBLTname.bmpSrc);
                     tv_sa_blt_slots.setText(String.valueOf(ccaBLT.slots));
                     tv_sa_blt_slots_our.setText(String.valueOf(ccaBLT.slots_our));
                     tv_sa_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
@@ -664,15 +665,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBLT.buildingIsOur) {
                         tv_sa_blt_points.setText("+" + ccaBLT.our_points);
                         tv_sa_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                        tv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLT.buildingIsEnemy) {
                         tv_sa_blt_points.setText("+" + ccaBLT.enemy_points);
                         tv_sa_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                        tv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLT.buildingIsEmpty) {
                         tv_sa_blt_points.setText("");
                         tv_sa_blt_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLT.isX2) {
                         tv_sa_blt_x2.setText("X2");
@@ -690,7 +691,7 @@ public class StrategyActivity extends AppCompatActivity {
             }
 
             if (ccaBLC != null) {
-                tv_sa_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blc_x2.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blc_points.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blc_slots.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -706,7 +707,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLC.isPresent) {
                     CityCalcArea ccaBLCname = mainCityCalc.mapAreas.get(Area.BLC);
                     CityCalcArea ccaBLCprogress = mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
-                    if (ccaBLCname != null) tv_sa_blc_name.setText(ccaBLCname.finText);
+                    if (ccaBLCname != null) iv_sa_blc_name.setImageBitmap(ccaBLCname.bmpSrc);
                     tv_sa_blc_slots.setText(String.valueOf(ccaBLC.slots));
                     tv_sa_blc_slots_our.setText(String.valueOf(ccaBLC.slots_our));
                     tv_sa_blc_slots_empty.setText(String.valueOf(ccaBLC.slots_empty));
@@ -714,15 +715,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBLC.buildingIsOur) {
                         tv_sa_blc_points.setText("+" + ccaBLC.our_points);
                         tv_sa_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLC.buildingIsEnemy) {
                         tv_sa_blc_points.setText("+" + ccaBLC.enemy_points);
                         tv_sa_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLC.buildingIsEmpty) {
                         tv_sa_blc_points.setText("");
                         tv_sa_blc_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLC.isX2) {
                         tv_sa_blc_x2.setText("X2");
@@ -741,7 +742,7 @@ public class StrategyActivity extends AppCompatActivity {
 
 
             if (ccaBLB != null) {
-                tv_sa_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blb_x2.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blb_points.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_blb_slots.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -757,7 +758,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBLB.isPresent) {
                     CityCalcArea ccaBLBname = mainCityCalc.mapAreas.get(Area.BLB);
                     CityCalcArea ccaBLBprogress = mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
-                    if (ccaBLBname != null) tv_sa_blb_name.setText(ccaBLBname.finText);
+                    if (ccaBLBname != null) iv_sa_blb_name.setImageBitmap(ccaBLBname.bmpSrc);
                     tv_sa_blb_slots.setText(String.valueOf(ccaBLB.slots));
                     tv_sa_blb_slots_our.setText(String.valueOf(ccaBLB.slots_our));
                     tv_sa_blb_slots_empty.setText(String.valueOf(ccaBLB.slots_empty));
@@ -765,15 +766,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBLB.buildingIsOur) {
                         tv_sa_blb_points.setText("+" + ccaBLB.our_points);
                         tv_sa_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLB.buildingIsEnemy) {
                         tv_sa_blb_points.setText("+" + ccaBLB.enemy_points);
                         tv_sa_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLB.buildingIsEmpty) {
                         tv_sa_blb_points.setText("");
                         tv_sa_blb_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLB.isX2) {
                         tv_sa_blb_x2.setText("X2");
@@ -791,7 +792,7 @@ public class StrategyActivity extends AppCompatActivity {
             }
 
             if (ccaBRT != null) {
-                tv_sa_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brt_x2.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brt_points.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brt_slots.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -807,7 +808,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRT.isPresent) {
                     CityCalcArea ccaBRTname = mainCityCalc.mapAreas.get(Area.BRT);
                     CityCalcArea ccaBRTprogress = mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
-                    if (ccaBRTname != null) tv_sa_brt_name.setText(ccaBRTname.finText);
+                    if (ccaBRTname != null) iv_sa_brt_name.setImageBitmap(ccaBRTname.bmpSrc);
                     tv_sa_brt_slots.setText(String.valueOf(ccaBRT.slots));
                     tv_sa_brt_slots_our.setText(String.valueOf(ccaBRT.slots_our));
                     tv_sa_brt_slots_empty.setText(String.valueOf(ccaBRT.slots_empty));
@@ -815,15 +816,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBRT.buildingIsOur) {
                         tv_sa_brt_points.setText("+" + ccaBRT.our_points);
                         tv_sa_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRT.buildingIsEnemy) {
                         tv_sa_brt_points.setText("+" + ccaBRT.enemy_points);
                         tv_sa_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRT.buildingIsEmpty) {
                         tv_sa_brt_points.setText("");
                         tv_sa_brt_points.setBackgroundColor(0xFFFFFFFF);
-                        tv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRT.isX2) {
                         tv_sa_brt_x2.setText("X2");
@@ -841,7 +842,7 @@ public class StrategyActivity extends AppCompatActivity {
             }
 
             if (ccaBRC != null) {
-                tv_sa_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brc_x2.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brc_points.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brc_slots.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -857,7 +858,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRC.isPresent) {
                     CityCalcArea ccaBRCname = mainCityCalc.mapAreas.get(Area.BRC);
                     CityCalcArea ccaBRCprogress = mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
-                    if (ccaBRCname != null) tv_sa_brc_name.setText(ccaBRCname.finText);
+                    if (ccaBRCname != null) iv_sa_brc_name.setImageBitmap(ccaBRCname.bmpSrc);
                     tv_sa_brc_slots.setText(String.valueOf(ccaBRC.slots));
                     tv_sa_brc_slots_our.setText(String.valueOf(ccaBRC.slots_our));
                     tv_sa_brc_slots_empty.setText(String.valueOf(ccaBRC.slots_empty));
@@ -865,15 +866,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBRC.buildingIsOur) {
                         tv_sa_brc_points.setText("+" + ccaBRC.our_points);
                         tv_sa_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRC.buildingIsEnemy) {
                         tv_sa_brc_points.setText("+" + ccaBRC.enemy_points);
                         tv_sa_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRC.buildingIsEmpty) {
                         tv_sa_brc_points.setText("");
                         tv_sa_brc_points.setBackgroundColor(0xFFFFFF);
-                        tv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRC.isX2) {
                         tv_sa_brc_x2.setText("X2");
@@ -892,7 +893,7 @@ public class StrategyActivity extends AppCompatActivity {
 
 
             if (ccaBRB != null) {
-                tv_sa_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
+                iv_sa_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brb_x2.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brb_points.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_sa_brb_slots.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -908,7 +909,7 @@ public class StrategyActivity extends AppCompatActivity {
                 if (ccaBRB.isPresent) {
                     CityCalcArea ccaBRBname = mainCityCalc.mapAreas.get(Area.BRB);
                     CityCalcArea ccaBRBprogress = mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
-                    if (ccaBRBname != null) tv_sa_brb_name.setText(ccaBRBname.finText);
+                    if (ccaBRBname != null) iv_sa_brb_name.setImageBitmap(ccaBRBname.bmpSrc);
                     tv_sa_brb_slots.setText(String.valueOf(ccaBRB.slots));
                     tv_sa_brb_slots_our.setText(String.valueOf(ccaBRB.slots_our));
                     tv_sa_brb_slots_empty.setText(String.valueOf(ccaBRB.slots_empty));
@@ -916,15 +917,15 @@ public class StrategyActivity extends AppCompatActivity {
                     if (ccaBRB.buildingIsOur) {
                         tv_sa_brb_points.setText("+" + ccaBRB.our_points);
                         tv_sa_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
-                        tv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
+//                        iv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRB.buildingIsEnemy) {
                         tv_sa_brb_points.setText("+" + ccaBRB.enemy_points);
                         tv_sa_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
-                        tv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
+//                        iv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRB.buildingIsEmpty) {
                         tv_sa_brb_points.setText("");
                         tv_sa_brb_points.setBackgroundColor(0xFFFFFF);
-                        tv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
+//                        iv_sa_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRB.isX2) {
                         tv_sa_brb_x2.setText("X2");
@@ -983,7 +984,7 @@ public class StrategyActivity extends AppCompatActivity {
         tv_sa_enemy_end_time = findViewById(R.id.tv_sa_enemy_end_time);
 
         // BLT views
-        tv_sa_blt_name = findViewById(R.id.tv_sa_blt_name);
+        iv_sa_blt_name = findViewById(R.id.iv_sa_blt_name);
         tv_sa_blt_x2 = findViewById(R.id.tv_sa_blt_x2);
         tv_sa_blt_points = findViewById(R.id.tv_sa_blt_points);
         tv_sa_blt_slots = findViewById(R.id.tv_sa_blt_slots);
@@ -997,7 +998,7 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_blt = findViewById(R.id.sb_sa_blt);
 
         // BLC views
-        tv_sa_blc_name = findViewById(R.id.tv_sa_blc_name);
+        iv_sa_blc_name = findViewById(R.id.iv_sa_blc_name);
         tv_sa_blc_x2 = findViewById(R.id.tv_sa_blc_x2);
         tv_sa_blc_points = findViewById(R.id.tv_sa_blc_points);
         tv_sa_blc_slots = findViewById(R.id.tv_sa_blc_slots);
@@ -1011,7 +1012,7 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_blc = findViewById(R.id.sb_sa_blc);
 
         // BLB views
-        tv_sa_blb_name = findViewById(R.id.tv_sa_blb_name);
+        iv_sa_blb_name = findViewById(R.id.iv_sa_blb_name);
         tv_sa_blb_x2 = findViewById(R.id.tv_sa_blb_x2);
         tv_sa_blb_points = findViewById(R.id.tv_sa_blb_points);
         tv_sa_blb_slots = findViewById(R.id.tv_sa_blb_slots);
@@ -1025,7 +1026,7 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_blb = findViewById(R.id.sb_sa_blb);
 
         // BRT views
-        tv_sa_brt_name = findViewById(R.id.tv_sa_brt_name);
+        iv_sa_brt_name = findViewById(R.id.iv_sa_brt_name);
         tv_sa_brt_x2 = findViewById(R.id.tv_sa_brt_x2);
         tv_sa_brt_points = findViewById(R.id.tv_sa_brt_points);
         tv_sa_brt_slots = findViewById(R.id.tv_sa_brt_slots);
@@ -1039,7 +1040,7 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_brt = findViewById(R.id.sb_sa_brt);
 
         // BRC views
-        tv_sa_brc_name = findViewById(R.id.tv_sa_brc_name);
+        iv_sa_brc_name = findViewById(R.id.iv_sa_brc_name);
         tv_sa_brc_x2 = findViewById(R.id.tv_sa_brc_x2);
         tv_sa_brc_points = findViewById(R.id.tv_sa_brc_points);
         tv_sa_brc_slots = findViewById(R.id.tv_sa_brc_slots);
@@ -1053,7 +1054,7 @@ public class StrategyActivity extends AppCompatActivity {
         sb_sa_brc = findViewById(R.id.sb_sa_brc);
 
         // BRB views
-        tv_sa_brb_name = findViewById(R.id.tv_sa_brb_name);
+        iv_sa_brb_name = findViewById(R.id.iv_sa_brb_name);
         tv_sa_brb_x2 = findViewById(R.id.tv_sa_brb_x2);
         tv_sa_brb_points = findViewById(R.id.tv_sa_brb_points);
         tv_sa_brb_slots = findViewById(R.id.tv_sa_brb_slots);

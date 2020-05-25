@@ -109,6 +109,9 @@ public class Utils {
         mapSymbolsLikeNumbers.put('i', '1');
         mapSymbolsLikeNumbers.put('I', '1');
         mapSymbolsLikeNumbers.put('l', '1');
+        mapSymbolsLikeNumbers.put('Т', '1');
+        mapSymbolsLikeNumbers.put('T', '1');
+        mapSymbolsLikeNumbers.put('t', '1');
         mapSymbolsLikeNumbers.put('з', '3');
         mapSymbolsLikeNumbers.put('З', '3');
         mapSymbolsLikeNumbers.put('Б', '6');
