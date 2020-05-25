@@ -237,33 +237,33 @@
     <string-array name="pref_language_screenshot_entries">
         <item>English</item>
         <item>Русский</item>
-        <item>Deutsch</item>
-        <item>Nederlandse</item>
-        <item>Français</item>
-        <item>Italiano</item>
-        <item>Español</item>
-        <item>Português</item>
-        <item>Türk</item>
-        <item>عربي</item>
-        <item>日本語</item>
-        <item>한국어</item>
-        <item>中文</item>
+<!--        <item>Deutsch</item>-->
+<!--        <item>Nederlandse</item>-->
+<!--        <item>Français</item>-->
+<!--        <item>Italiano</item>-->
+<!--        <item>Español</item>-->
+<!--        <item>Português</item>-->
+<!--        <item>Türk</item>-->
+<!--        <item>عربي</item>-->
+<!--        <item>日本語</item>-->
+<!--        <item>한국어</item>-->
+<!--        <item>中文</item>-->
     </string-array>
 
     <string-array name="pref_language_screenshot_values">
         <item>eng</item>
         <item>rus</item>
-        <item>deu</item>
-        <item>nld</item>
-        <item>fra</item>
-        <item>ita</item>
-        <item>spa</item>
-        <item>por</item>
-        <item>tur</item>
-        <item>ara</item>
-        <item>jpn</item>
-        <item>kor</item>
-        <item>chi_sim</item>
+<!--        <item>deu</item>-->
+<!--        <item>nld</item>-->
+<!--        <item>fra</item>-->
+<!--        <item>ita</item>-->
+<!--        <item>spa</item>-->
+<!--        <item>por</item>-->
+<!--        <item>tur</item>-->
+<!--        <item>ara</item>-->
+<!--        <item>jpn</item>-->
+<!--        <item>kor</item>-->
+<!--        <item>chi_sim</item>-->
     </string-array>
 
     <string name="pref_colorsAreaName">Area name</string>
