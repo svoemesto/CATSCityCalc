@@ -22,6 +22,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.Preference;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -183,12 +184,43 @@ public class GameActivity extends AppCompatActivity {
     public Context context;
     public static CityCalc mainCityCalc;
 
+    private static final String TAG = "GameActivity";
+
+    public boolean isResumed;
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isResumed = true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        String logMsgPref = "onCreate: ";
+        Log.i(TAG, logMsgPref + "start");
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+
+        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
+        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
+
+        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
+        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
+
+//        Log.i(TAG, logMsgPref + "вызываем requestPermissions");
+//        requestPermissions(); // запрос разрешений на чтение/запись
+//
+//        Log.i(TAG, logMsgPref + "вызываем createProgramDir()");
+//        createProgramDir(); // создаем папку программы (если её нет)
+
+        Log.i(TAG, logMsgPref + "sharedPreferences...");
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+        Log.i(TAG, logMsgPref + "languageToLoad: " + languageToLoad);
+
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -197,52 +229,61 @@ public class GameActivity extends AppCompatActivity {
         context = getBaseContext();
         this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
 
-
-        setContentView(R.layout.activity_game);
-
+        Log.i(TAG, "onCreate initializeViews()");
         initializeViews(); // Инициализация вьюшек
-
-//        context = tv_ga_start_game_time.getContext();
-//        context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
 
         // отслеживание изменения свича "Следить за файлами в папке"
         sw_ga_listen_new_file.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключили
+                String logMsgPref = "sw_ga_listen_new_file onCheckedChanged: ";
+                Log.i(TAG, logMsgPref + "sharedPreferences...");
                 // обновляем соответствующий пермишн и переменную
                 SharedPreferences sharedPreferences = GameActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
+                Log.i(TAG, logMsgPref + "preference " + (getString(R.string.pref_listen_last_file) + " = " + isChecked));
                 editor.apply();
                 isListenToNewFileInFolder = isChecked;
             }
         });
 
+        Log.i(TAG, "onCreate MobileAds.initialize");
         // инициализация рекламного блока
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
+        Log.i(TAG, logMsgPref + "adRequest = new AdRequest.Builder().build()");
         AdRequest adRequest = new AdRequest.Builder().build();
+
+        Log.i(TAG, logMsgPref + "ad_ga_banner.loadAd(adRequest)");
         ad_ga_banner.loadAd(adRequest);
 
-        requestPermissions(); // запрос разрешений на чтение/запись
 
-        createProgramDirAndInitializeScreenshot(); // создаем папку программы (если её нет) и инициализируем скриншот
+//        Log.i(TAG, logMsgPref + "вызываем createProgramDirAndInitializeScreenshot()");
+//        createProgramDirAndInitializeScreenshot(); // создаем папку программы (если её нет) и инициализируем скриншот
 
         // нотификейшт менеджер
+        Log.i(TAG, logMsgPref + "Инициализируем notificationManager");
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
+        Log.i(TAG, logMsgPref + "вызываем readPreferences()");
         readPreferences(); // считываем преференцы
 
         sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
 
+        Log.i(TAG, logMsgPref + "вызываем startTimer()");
         startTimer();   // стартуем таймер
 
     }
 
     public void loadDataToViews(boolean withNotify) {
+
+        String logMsgPref = "loadDataToViews: ";
+        Log.i(TAG, logMsgPref + "start");
 
         String textStartGameTime;
         String textEndGameTime;
@@ -258,48 +299,77 @@ public class GameActivity extends AppCompatActivity {
         CCABuilding ccaBRB = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB);
         String pattern = "dd MMM HH:mm";
 
-        if (ccaGame != null) {
+        if (ccaGame != null && ccaGame.ccagDateStartGame != null) {
 
+            Log.i(TAG, logMsgPref + "вызываем ccaGame.calcWin()");
             ccaGame.calcWin();
 
-            bt_ga_strategy.setEnabled(!ccaGame.ccagIsGameOver);
+//            bt_ga_strategy.setEnabled(!ccaGame.ccagIsGameOver);
+            bt_ga_strategy.setVisibility(!ccaGame.ccagIsGameOver ? View.VISIBLE : View.INVISIBLE);
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.ccagDateStartGame, pattern);    // дата/время начала игры
+            Log.i(TAG, logMsgPref + "textStartGameTime = " + textStartGameTime);
+
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.ccagDateEndGame, pattern);          // дата/время окончания игры
+            Log.i(TAG, logMsgPref + "textEndGameTime = " + textEndGameTime);
 
             tv_ga_status.setText(ccaGame.ccagStatus);   // статус
+            Log.i(TAG, logMsgPref + "ccagStatus = " + ccaGame.ccagStatus);
+
             tv_ga_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             tv_ga_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
+
+            Log.i(TAG, logMsgPref + "ccagIsGameOver = " + ccaGame.ccagIsGameOver);
             if (ccaGame.ccagIsGameOver) {   // если игра закончена
                 tv_ga_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
                 tv_ga_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
+                Log.i(TAG, logMsgPref + "tv_ga_total_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));
             }
 
+            Log.i(TAG, logMsgPref + "ccagEarlyWin = " + ccaGame.ccagEarlyWin);
             tv_ga_early_win.setText(String.valueOf(ccaGame.ccagEarlyWin)); // очки до досрочной победы
+
             if (ccaOurTeam != null && ccaEnemyTeam != null) {   // если команды не пустые
 
                 iv_ga_our_team_name.setImageBitmap(ccaOurTeam.bmpSrc);  // имя нашей команды
                 tv_ga_our_increase.setText(ccaOurTeam.ccatIncrease == 0 ? "" : " +" + ccaOurTeam.ccatIncrease + " ");   // прирост нашей команды
+                Log.i(TAG, logMsgPref + "tv_ga_our_increase = " + (ccaOurTeam.ccatIncrease == 0 ? "" : " +" + ccaOurTeam.ccatIncrease + " "));
                 tv_ga_our_points.setText(String.valueOf(ccaOurTeam.getPoints()));  // очки нашей команды
+                Log.i(TAG, logMsgPref + "tv_ga_our_points = " + String.valueOf(ccaOurTeam.getPoints()));
 
                 iv_ga_enemy_team_name.setImageBitmap(ccaEnemyTeam.bmpSrc);  // имя команды противника
                 tv_ga_enemy_increase.setText(ccaEnemyTeam.ccatIncrease == 0 ? "" : " +" + ccaEnemyTeam.ccatIncrease + " "); // прирост команды противника
+                Log.i(TAG, logMsgPref + "tv_ga_enemy_increase = " + (ccaEnemyTeam.ccatIncrease == 0 ? "" : " +" + ccaEnemyTeam.ccatIncrease + " "));
                 tv_ga_enemy_points.setText(String.valueOf(ccaEnemyTeam.getPoints()));    // очки команды противника
+                Log.i(TAG, logMsgPref + "tv_ga_enemy_points = " + String.valueOf(ccaEnemyTeam.getPoints()));
 
                 if (ccaGame.ccagIsGameOver) {   // если игра закончена
                     tv_ga_our_end_time.setText(""); // наше время пустое
                     tv_ga_enemy_end_time.setText(""); // время противника пустое
                 } else { // если игра незакончена
                     if (ccaGame.ccagWillOurWin) {
+                        Log.i(TAG, logMsgPref + "ccagWillOurWin = " + ccaGame.ccagWillOurWin);
+
                         tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                        Log.i(TAG, logMsgPref + "tv_ga_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
+
                         tv_ga_enemy_end_time.setText("");   // время противника пустое
                     } else if (ccaGame.ccagWillEnemyWin) {
+                        Log.i(TAG, logMsgPref + "ccagWillEnemyWin = " + ccaGame.ccagWillEnemyWin);
+
                         tv_ga_our_end_time.setText(""); // наше время пустое
                         tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                        Log.i(TAG, logMsgPref + "tv_ga_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
+
                     } else if (ccaGame.ccagWillNobodyWin) {
+                        Log.i(TAG, logMsgPref + "ccagWillNobodyWin = " + ccaGame.ccagWillNobodyWin);
+
                         tv_ga_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                        Log.i(TAG, logMsgPref + "tv_ga_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
+
                         tv_ga_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                        Log.i(TAG, logMsgPref + "tv_ga_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
                     }
 
                 }
@@ -311,6 +381,8 @@ public class GameActivity extends AppCompatActivity {
             int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
 
             if (ccaBLT != null) {
+
+                Log.i(TAG, logMsgPref + "ccaBLT != null");
 
                 tv_ga_blt_name.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blt_x2.setVisibility(ccaBLT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -328,32 +400,45 @@ public class GameActivity extends AppCompatActivity {
 
 
                 if (ccaBLT.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBLT is Present");
+
                     CityCalcArea ccaBLTname = mainCityCalc.mapAreas.get(Area.BLT);
                     CityCalcArea ccaBLTprogress = mainCityCalc.mapAreas.get(Area.BLT_PROGRESS);
                     if (ccaBLTname != null) tv_ga_blt_name.setText(ccaBLTname.finText);
+                    Log.i(TAG, logMsgPref + "ccaBLTname = " + ccaBLTname.finText);
+
                     if (ccaBLTprogress != null) iv_ga_blt_progress.setImageBitmap(ccaBLTprogress.bmpSrc);
                     tv_ga_blt_slots.setText(String.valueOf(ccaBLT.slots));
                     tv_ga_blt_slots_our.setText(String.valueOf(ccaBLT.slots_our));
                     tv_ga_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
                     tv_ga_blt_slots_enemy.setText(String.valueOf(ccaBLT.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBLT: slots = " + ccaBLT.slots + ", slots_our = " + ccaBLT.slots_our + ", slots_empty = " + ccaBLT.slots_empty + ", slots_enemy = " + ccaBLT.slots_enemy);
+
                     if (ccaBLT.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBLT buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBLT our_points = +" + ccaBLT.our_points);
                         tv_ga_blt_points.setText("+" + ccaBLT.our_points);
                         tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                         tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLT.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBLT buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBLT enemy_points = +" + ccaBRB.enemy_points);
                         tv_ga_blt_points.setText("+" + ccaBLT.enemy_points);
                         tv_ga_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                         tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLT.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBLT buildingIsEmpty");
                         tv_ga_blt_points.setText("");
                         tv_ga_blt_points.setBackgroundColor(0xFFFFFFFF);
                         tv_ga_blt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLT.isX2) {
+                        Log.i(TAG, logMsgPref + "ccaBLT isX2");
                         tv_ga_blt_x2.setText("X2");
                         tv_ga_blt_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBLT.mayX2) {
+                            Log.i(TAG, logMsgPref + "ccaBLT mayX2");
                             tv_ga_blt_x2.setText("X2");
                             tv_ga_blt_x2.setBackgroundColor(color_building_mayX2);
                         } else {
@@ -365,6 +450,8 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (ccaBLC != null) {
+                Log.i(TAG, logMsgPref + "ccaBLC != null");
+
                 tv_ga_blc_name.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blc_x2.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blc_points.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -379,32 +466,45 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_blc_progress.setVisibility(ccaBLC.isPresent ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaBLC.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBLC is Present");
+
                     CityCalcArea ccaBLCname = mainCityCalc.mapAreas.get(Area.BLC);
                     CityCalcArea ccaBLCprogress = mainCityCalc.mapAreas.get(Area.BLC_PROGRESS);
                     if (ccaBLCname != null) tv_ga_blc_name.setText(ccaBLCname.finText);
+                    Log.i(TAG, logMsgPref + "ccaBLCname = " + ccaBLCname.finText);
+
                     if (ccaBLCprogress != null) iv_ga_blc_progress.setImageBitmap(ccaBLCprogress.bmpSrc);
                     tv_ga_blc_slots.setText(String.valueOf(ccaBLC.slots));
                     tv_ga_blc_slots_our.setText(String.valueOf(ccaBLC.slots_our));
                     tv_ga_blc_slots_empty.setText(String.valueOf(ccaBLC.slots_empty));
                     tv_ga_blc_slots_enemy.setText(String.valueOf(ccaBLC.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBLC: slots = " + ccaBLC.slots + ", slots_our = " + ccaBLC.slots_our + ", slots_empty = " + ccaBLC.slots_empty + ", slots_enemy = " + ccaBLC.slots_enemy);
+
                     if (ccaBLC.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBLC buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBLC our_points = +" + ccaBLC.our_points);
                         tv_ga_blc_points.setText("+" + ccaBLC.our_points);
                         tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
                         tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLC.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBLC buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBLC enemy_points = +" + ccaBLC.enemy_points);
                         tv_ga_blc_points.setText("+" + ccaBLC.enemy_points);
                         tv_ga_blc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
                         tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLC.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBLC buildingIsEmpty");
                         tv_ga_blc_points.setText("");
                         tv_ga_blc_points.setBackgroundColor(0xFFFFFFFF);
                         tv_ga_blc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLC.isX2) {
+                        Log.i(TAG, logMsgPref + "ccaBLC isX2");
                         tv_ga_blc_x2.setText("X2");
                         tv_ga_blc_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBLC.mayX2) {
+                            Log.i(TAG, logMsgPref + "ccaBLC mayX2");
                             tv_ga_blc_x2.setText("X2");
                             tv_ga_blc_x2.setBackgroundColor(color_building_mayX2);
                         } else {
@@ -417,6 +517,7 @@ public class GameActivity extends AppCompatActivity {
 
 
             if (ccaBLB != null) {
+                Log.i(TAG, logMsgPref + "ccaBLB != null");
                 tv_ga_blb_name.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blb_x2.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_blb_points.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -431,33 +532,45 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_blb_progress.setVisibility(ccaBLB.isPresent ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaBLB.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBLB is Present");
+
                     CityCalcArea ccaBLBname = mainCityCalc.mapAreas.get(Area.BLB);
                     CityCalcArea ccaBLBprogress = mainCityCalc.mapAreas.get(Area.BLB_PROGRESS);
                     if (ccaBLBname != null) tv_ga_blb_name.setText(ccaBLBname.finText);
-                    if (ccaBLBprogress != null)
-                        iv_ga_blb_progress.setImageBitmap(ccaBLBprogress.bmpSrc);
+                    Log.i(TAG, logMsgPref + "ccaBLBname = " + ccaBLBname.finText);
+
+                    if (ccaBLBprogress != null) iv_ga_blb_progress.setImageBitmap(ccaBLBprogress.bmpSrc);
                     tv_ga_blb_slots.setText(String.valueOf(ccaBLB.slots));
                     tv_ga_blb_slots_our.setText(String.valueOf(ccaBLB.slots_our));
                     tv_ga_blb_slots_empty.setText(String.valueOf(ccaBLB.slots_empty));
                     tv_ga_blb_slots_enemy.setText(String.valueOf(ccaBLB.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBLB: slots = " + ccaBLB.slots + ", slots_our = " + ccaBLB.slots_our + ", slots_empty = " + ccaBLB.slots_empty + ", slots_enemy = " + ccaBLB.slots_enemy);
+
                     if (ccaBLB.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBLB buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBLB our_points = +" + ccaBLB.our_points);
                         tv_ga_blb_points.setText("+" + ccaBLB.our_points);
                         tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
                         tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBLB.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBLB buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBLB enemy_points = +" + ccaBLB.enemy_points);
                         tv_ga_blb_points.setText("+" + ccaBLB.enemy_points);
                         tv_ga_blb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
                         tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBLB.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBLB buildingIsEmpty");
                         tv_ga_blb_points.setText("");
                         tv_ga_blb_points.setBackgroundColor(0xFFFFFFFF);
                         tv_ga_blb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBLB.isX2) {
+                        Log.i(TAG, logMsgPref + "ccaBLB isX2");
                         tv_ga_blb_x2.setText("X2");
                         tv_ga_blb_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBLB.mayX2) {
+                            Log.i(TAG, logMsgPref + "ccaBLB mayX2");
                             tv_ga_blb_x2.setText("X2");
                             tv_ga_blb_x2.setBackgroundColor(color_building_mayX2);
                         } else {
@@ -469,6 +582,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (ccaBRT != null) {
+                Log.i(TAG, logMsgPref + "ccaBRT != null");
                 tv_ga_brt_name.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brt_x2.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brt_points.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -483,34 +597,46 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_brt_progress.setVisibility(ccaBRT.isPresent ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaBRT.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBRT is Present");
+
                     CityCalcArea ccaBRTname = mainCityCalc.mapAreas.get(Area.BRT);
                     CityCalcArea ccaBRTprogress = mainCityCalc.mapAreas.get(Area.BRT_PROGRESS);
                     if (ccaBRTname != null) tv_ga_brt_name.setText(ccaBRTname.finText);
-                    if (ccaBRTprogress != null)
-                        iv_ga_brt_progress.setImageBitmap(ccaBRTprogress.bmpSrc);
+                    Log.i(TAG, logMsgPref + "ccaBRTname = " + ccaBRTname.finText);
+
+                    if (ccaBRTprogress != null) iv_ga_brt_progress.setImageBitmap(ccaBRTprogress.bmpSrc);
                     tv_ga_brt_slots.setText(String.valueOf(ccaBRT.slots));
                     tv_ga_brt_slots_our.setText(String.valueOf(ccaBRT.slots_our));
                     tv_ga_brt_slots_empty.setText(String.valueOf(ccaBRT.slots_empty));
                     tv_ga_brt_slots_enemy.setText(String.valueOf(ccaBRT.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBRT: slots = " + ccaBRT.slots + ", slots_our = " + ccaBRT.slots_our + ", slots_empty = " + ccaBRT.slots_empty + ", slots_enemy = " + ccaBRT.slots_enemy);
+
                     if (ccaBRT.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBRT buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBRT our_points = +" + ccaBRT.our_points);
                         tv_ga_brt_points.setText("+" + ccaBRT.our_points);
                         tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
                         tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRT.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBRT buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBRT enemy_points = +" + ccaBRT.enemy_points);
                         tv_ga_brt_points.setText("+" + ccaBRT.enemy_points);
                         tv_ga_brt_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
                         tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRT.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBRT buildingIsEmpty");
                         tv_ga_brt_points.setText("");
                         tv_ga_brt_points.setBackgroundColor(0xFFFFFFFF);
                         tv_ga_brt_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRT.isX2) {
                         tv_ga_brt_x2.setText("X2");
+                        Log.i(TAG, logMsgPref + "ccaBRT isX2");
                         tv_ga_brt_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBRT.mayX2) {
                             tv_ga_brt_x2.setText("X2");
+                            Log.i(TAG, logMsgPref + "ccaBRT mayX2");
                             tv_ga_brt_x2.setBackgroundColor(color_building_mayX2);
                         } else {
                             tv_ga_brt_x2.setText("");
@@ -521,6 +647,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (ccaBRC != null) {
+                Log.i(TAG, logMsgPref + "ccaBRC != null");
                 tv_ga_brc_name.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brc_x2.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brc_points.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -535,33 +662,45 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_brc_progress.setVisibility(ccaBRC.isPresent ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaBRC.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBRC is Present");
+
                     CityCalcArea ccaBRCname = mainCityCalc.mapAreas.get(Area.BRC);
                     CityCalcArea ccaBRCprogress = mainCityCalc.mapAreas.get(Area.BRC_PROGRESS);
                     if (ccaBRCname != null) tv_ga_brc_name.setText(ccaBRCname.finText);
-                    if (ccaBRCprogress != null)
-                        iv_ga_brc_progress.setImageBitmap(ccaBRCprogress.bmpSrc);
+                    Log.i(TAG, logMsgPref + "ccaBRCname = " + ccaBRCname.finText);
+
+                    if (ccaBRCprogress != null) iv_ga_brc_progress.setImageBitmap(ccaBRCprogress.bmpSrc);
                     tv_ga_brc_slots.setText(String.valueOf(ccaBRC.slots));
                     tv_ga_brc_slots_our.setText(String.valueOf(ccaBRC.slots_our));
                     tv_ga_brc_slots_empty.setText(String.valueOf(ccaBRC.slots_empty));
                     tv_ga_brc_slots_enemy.setText(String.valueOf(ccaBRC.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBRC: slots = " + ccaBRC.slots + ", slots_our = " + ccaBRC.slots_our + ", slots_empty = " + ccaBRC.slots_empty + ", slots_enemy = " + ccaBRC.slots_enemy);
+
                     if (ccaBRC.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBRC buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBRC our_points = +" + ccaBRC.our_points);
                         tv_ga_brc_points.setText("+" + ccaBRC.our_points);
                         tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
                         tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRC.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBRC buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBRC enemy_points = +" + ccaBRC.enemy_points);
                         tv_ga_brc_points.setText("+" + ccaBRC.enemy_points);
                         tv_ga_brc_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
                         tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRC.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBRC buildingIsEmpty");
                         tv_ga_brc_points.setText("");
                         tv_ga_brc_points.setBackgroundColor(0xFFFFFF);
                         tv_ga_brc_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRC.isX2) {
+                        Log.i(TAG, logMsgPref + "ccaBRC isX2");
                         tv_ga_brc_x2.setText("X2");
                         tv_ga_brc_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBRC.mayX2) {
+                            Log.i(TAG, logMsgPref + "ccaBRC mayX2");
                             tv_ga_brc_x2.setText("X2");
                             tv_ga_brc_x2.setBackgroundColor(color_building_mayX2);
                         } else {
@@ -574,6 +713,8 @@ public class GameActivity extends AppCompatActivity {
 
 
             if (ccaBRB != null) {
+                Log.i(TAG, logMsgPref + "ccaBRB != null");
+
                 tv_ga_brb_name.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brb_x2.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
                 tv_ga_brb_points.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
@@ -588,33 +729,45 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_brb_progress.setVisibility(ccaBRB.isPresent ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaBRB.isPresent) {
+                    Log.i(TAG, logMsgPref + "ccaBRB is Present");
+
                     CityCalcArea ccaBRBname = mainCityCalc.mapAreas.get(Area.BRB);
                     CityCalcArea ccaBRBprogress = mainCityCalc.mapAreas.get(Area.BRB_PROGRESS);
                     if (ccaBRBname != null) tv_ga_brb_name.setText(ccaBRBname.finText);
-                    if (ccaBRBprogress != null)
-                        iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
+                    Log.i(TAG, logMsgPref + "ccaBRBname = " + ccaBRBname.finText);
+
+                    if (ccaBRBprogress != null) iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
                     tv_ga_brb_slots.setText(String.valueOf(ccaBRB.slots));
                     tv_ga_brb_slots_our.setText(String.valueOf(ccaBRB.slots_our));
                     tv_ga_brb_slots_empty.setText(String.valueOf(ccaBRB.slots_empty));
                     tv_ga_brb_slots_enemy.setText(String.valueOf(ccaBRB.slots_enemy));
+                    Log.i(TAG, logMsgPref + "ccaBRB: slots = " + ccaBRB.slots + ", slots_our = " + ccaBRB.slots_our + ", slots_empty = " + ccaBRB.slots_empty + ", slots_enemy = " + ccaBRB.slots_enemy);
+
                     if (ccaBRB.buildingIsOur) {
+                        Log.i(TAG, logMsgPref + "ccaBRB buildingIsOur");
+                        Log.i(TAG, logMsgPref + "ccaBRB our_points = +" + ccaBRB.our_points);
                         tv_ga_brb_points.setText("+" + ccaBRB.our_points);
                         tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_our_main), 16));
                         tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_our),16));
                     } else if (ccaBRB.buildingIsEnemy) {
+                        Log.i(TAG, logMsgPref + "ccaBRB buildingIsEnemy");
+                        Log.i(TAG, logMsgPref + "ccaBRB enemy_points = +" + ccaBRB.enemy_points);
                         tv_ga_brb_points.setText("+" + ccaBRB.enemy_points);
                         tv_ga_brb_points.setBackgroundColor((int) Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main), 16));
                         tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_enemy),16));
                     } else if (ccaBRB.buildingIsEmpty) {
+                        Log.i(TAG, logMsgPref + "ccaBRB buildingIsEmpty");
                         tv_ga_brb_points.setText("");
                         tv_ga_brb_points.setBackgroundColor(0xFFFFFF);
                         tv_ga_brb_name.setTextColor((int)Long.parseLong(context.getString(R.string.def_rgb_building_progress_empty),16));
                     }
                     if (ccaBRB.isX2) {
+                        Log.i(TAG, logMsgPref + "ccaBRB isX2");
                         tv_ga_brb_x2.setText("X2");
                         tv_ga_brb_x2.setBackgroundColor(color_building_isX2);
                     } else {
                         if (ccaBRC.mayX2) {
+                            Log.i(TAG, logMsgPref + "ccaBRB mayX2");
                             tv_ga_brb_x2.setText("X2");
                             tv_ga_brb_x2.setBackgroundColor(color_building_mayX2);
                         } else {
@@ -632,7 +785,9 @@ public class GameActivity extends AppCompatActivity {
 
         // нотификация
         if (withNotify) {
+            Log.i(TAG, logMsgPref + "withNotify");
             if (ccaGame != null) {
+                Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.ccagStatus);
                 Intent intent = new Intent(this, GameActivity.class);
                 intent.setAction(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -655,6 +810,9 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void initializeViews() {
+
+        String logMsgPref = "initializeViews: ";
+        Log.i(TAG, logMsgPref + "start");
 
         // Game views
         sw_ga_listen_new_file = findViewById(R.id.sw_ga_listen_new_file);
@@ -771,6 +929,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void requestPermissions() {
+
+        String logMsgPref = "requestPermissions: ";
+        Log.i(TAG, logMsgPref + "start");
+
         List<String> permissionsNeeded = new ArrayList<String>();
 
         final List<String> permissionsList = new ArrayList<String>();
@@ -810,80 +972,146 @@ public class GameActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void createProgramDirAndInitializeScreenshot() {
+    public void initializeScreenshot() {
+
+        String logMsgPref = "initializeScreenshot: ";
+        Log.i(TAG, logMsgPref + "start");
+
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
         pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
+
         pathToTessFolder = pathToCATScalcFolder + "/tessdata";
+        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
+
         File cityCatDir = new File(pathToCATScalcFolder);
         File tessDir = new File(pathToTessFolder);
         if (!cityCatDir.exists()) {
+            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
             cityCatDir.mkdir();
+            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
         }
 
         if (cityCatDir.exists()) { // если папка есть
             File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
             if (!tessDir.exists()) {
+                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
                 tessDir.mkdir();
+                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
             }
-            if (tessDir.exists()) {
-                File tessRus = new File(pathToTessFolder + "/rus.traineddata");
-                if (!tessRus.exists()) {
-                    try {
-                        InputStream inputStream = getAssets().open("tessdata/rus.traineddata");
-                        OutputStream outputStream = new FileOutputStream(tessRus);
-                        byte[] buf = new byte[1024];
-                        int len;
-                        while ((len = inputStream.read(buf)) > 0) {
-                            outputStream.write(buf, 0, len);
-                        }
-                        inputStream.close();
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
 
-                File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-                if (!tessEng.exists()) {
-                    try {
-                        InputStream inputStream = getAssets().open("tessdata/eng.traineddata");
-                        OutputStream outputStream = new FileOutputStream(tessEng);
-                        byte[] buf = new byte[1024];
-                        int len;
-                        while ((len = inputStream.read(buf)) > 0) {
-                            outputStream.write(buf, 0, len);
-                        }
-                        inputStream.close();
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+//            if (tessDir.exists()) {
+//                File tessRus = new File(pathToTessFolder + "/rus.traineddata");
+//                if (!tessRus.exists()) {
+//                    try {
+//                        InputStream inputStream = getAssets().open("tessdata/rus.traineddata");
+//                        OutputStream outputStream = new FileOutputStream(tessRus);
+//                        byte[] buf = new byte[1024];
+//                        int len;
+//                        while ((len = inputStream.read(buf)) > 0) {
+//                            outputStream.write(buf, 0, len);
+//                        }
+//                        inputStream.close();
+//                        outputStream.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
 
-             }
+            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
+            if (!tessEng.exists()) {
+                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
+                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
+                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
+
+            }
 
             if (!tmp.exists()) {    // если файла нет
+                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
                 Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
                 try {
+                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
                     OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
                     sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
                     fOutScreenshot.flush();                                                       // сохраняем данные из потока
                     fOutScreenshot.close(); // закрываем поток
+                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
                     fileScreenshot = tmp; // файл скриншота - созданный файл
+                    Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                    Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
                     mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                    Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
                     loadDataToViews(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             } else {
                 fileScreenshot = tmp; // файл скриншота - картинка из папки программы
+                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
                 mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
                 loadDataToViews(false);
             }
         }
     }
 
+    public void createProgramDir() {
+
+        String logMsgPref = "createProgramDir: ";
+        Log.i(TAG, logMsgPref + "start");
+
+        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
+        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
+
+        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
+        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
+
+        File cityCatDir = new File(pathToCATScalcFolder);
+        File tessDir = new File(pathToTessFolder);
+        if (!cityCatDir.exists()) {
+            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
+            cityCatDir.mkdir();
+            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
+        }
+
+        if (cityCatDir.exists()) { // если папка есть
+            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+            if (!tessDir.exists()) {
+                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
+                tessDir.mkdir();
+                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
+            }
+
+            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
+            if (!tessEng.exists()) {
+                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
+                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
+                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
+            }
+
+            if (!tmp.exists()) {    // если файла нет
+                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
+                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
+                try {
+                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
+                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
+                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
+                    fOutScreenshot.close(); // закрываем поток
+                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+
     public void readPreferences() {
+        String logMsgPref = "readPreferences: ";
+        Log.i(TAG, logMsgPref + "start");
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
 
@@ -893,13 +1121,24 @@ public class GameActivity extends AppCompatActivity {
         calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_x),0));
         calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_y),0));
 
+        Log.i(TAG, logMsgPref + "pathToScreenshotDir = " + pathToScreenshotDir);
+        Log.i(TAG, logMsgPref + "isListenToNewFileInFolder = " + isListenToNewFileInFolder);
+        Log.i(TAG, logMsgPref + "isDebugMode = " + isDebugMode);
+        Log.i(TAG, logMsgPref + "calibrateX = " + calibrateX);
+        Log.i(TAG, logMsgPref + "calibrateY = " + calibrateY);
+
     }
 
     private void startTimer() {
 
+        String logMsgPref = "readPreferences: ";
+        Log.i(TAG, logMsgPref + "start");
+
         if (timer == null) {    // если таймер не запущен
             timer = new Timer();    // запускаем таймер
+            Log.i(TAG, logMsgPref + "firstTask");
             timer.schedule(new firstTask(), 1000,1000); // запускаем такс таймера
+            Log.i(TAG, logMsgPref + "secondTask");
             timer.schedule(new secondTask(), 60000,60000); // запускаем такс таймера
         }
 
@@ -907,8 +1146,14 @@ public class GameActivity extends AppCompatActivity {
 
     private File getLastFileInFolder(String pathToFolder) {
 
+        String logMsgPref = "getLastFileInFolder: ";
+        Log.i(TAG, logMsgPref + "start");
+
         File temp = null;           // временный файл
         File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+        Log.i(TAG, logMsgPref + "lastScreenshot = " + lastScreenshot.getAbsolutePath());
+        Log.i(TAG, logMsgPref + "pathToFolder = " + pathToFolder);
+
         File dir = new File(pathToFolder); // папка
         File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
             @Override
@@ -918,9 +1163,12 @@ public class GameActivity extends AppCompatActivity {
         });
         List<File> listFiles = new ArrayList<>(); // лист
         if (files != null) {    // если файлы в папке есть
+            Log.i(TAG, logMsgPref + "Файлы в папке есть");
             for (File file : files) {   // цикл по файлам
                 listFiles.add(file);    // добавляем файл в лист
             }
+        } else {
+            Log.i(TAG, logMsgPref + "Файлов в папке нет");
         }
 
         if  (listFiles.size() > 0) {    // если в листе есть файлы
@@ -934,19 +1182,28 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (temp != null) { // если найден самый свежий файл
+                Log.i(TAG, logMsgPref + "Самый свежий файл: " + temp.getAbsolutePath() + ", дата: " + maxLastModified);
                 if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                    Log.i(TAG, logMsgPref + "найденный файл не совпадает с раенее найденным последним файлом");
+                    Log.i(TAG, logMsgPref + "получаем битмап из файла скриншота");
                     Bitmap sourceBitmap = BitmapFactory.decodeFile(temp.getAbsolutePath());   // получаем битмап из файла скриншота
+
                     int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
                     int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
 
+                    Log.i(TAG, logMsgPref + "ширина х высота = " + widthSource + " x " + heightSource);
+
                     if (widthSource < heightSource) {
+                        Log.i(TAG, logMsgPref + "ориентация картинки неправильная");
                         if (fileLastInFolder == null) {
+                            Log.i(TAG, logMsgPref + "вернем последний скриншот если он есть");
                             temp = lastScreenshot;
                             if (!temp.exists()) temp = null;
                         } else {
                             temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
                         }
                     } else {
+                        Log.i(TAG, logMsgPref + "ориентация картинки правильная");
                         fileLastInFolder = temp;    // последний найденный файл - текущий найденный
                     }
 
@@ -954,15 +1211,25 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
-        if (temp == null && lastScreenshot.exists()) return lastScreenshot;
+        if (temp == null && lastScreenshot.exists()) {
+            Log.i(TAG, logMsgPref + "возвращаем " + lastScreenshot.getAbsolutePath());
+            return lastScreenshot;
+        } else {
+            Log.i(TAG, logMsgPref + "возвращаем " + ((temp == null) ? "null" : temp.getAbsolutePath()));
+            return temp;
+        }
 
-        return temp;
+
+
+
     }
 
     /**
      * Создание канала нотификации
      */
     public static void createChannelIfNeeded(NotificationManager manager) {
+        String logMsgPref = "createChannelIfNeeded: ";
+        Log.i(TAG, logMsgPref + "start");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(notificationChannel);
@@ -975,20 +1242,28 @@ public class GameActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String logMsgPref = "onActivityResult: ";
+        Log.i(TAG, logMsgPref + "start");
+
         super.onActivityResult(requestCode, resultCode, data);
         // если произошел возврат со страницы настрок - обновляем контролы в текущей активности
         if (requestCode == REQUEST_CODE_SECOND_ACTIVITY) {
-
+            Log.i(TAG, logMsgPref + "был возврат из предыдущей активности");
+            Log.i(TAG, logMsgPref + "вызов readPreferences()");
             readPreferences();
             fileScreenshotPrevious = null;
             sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
+            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+            Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
             mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+            Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
             loadDataToViews(false);
 
         }
 
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+        Log.i(TAG, logMsgPref + "languageToLoad = " + languageToLoad);
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -1004,6 +1279,8 @@ public class GameActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        String logMsgPref = "onCreateOptionsMenu: ";
+        Log.i(TAG, logMsgPref + "start");
         getMenuInflater().inflate(R.menu.main_menu, menu);  // создаем меню
         return true;
     }
@@ -1013,15 +1290,23 @@ public class GameActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        String logMsgPref = "onOptionsItemSelected: ";
+        Log.i(TAG, logMsgPref + "start");
         int id = item.getItemId();  // айди элемента меню
         switch(id){
             case R.id.menu_open_settings :  // "Настройки"
+                Log.i(TAG, logMsgPref + "выбран пункт Настройки");
+                Log.i(TAG, logMsgPref + "вызываем openSettings()");
                 openSettings();
                 return true;
-            case R.id.menu_open_screenshot :    // "Открыть скриншотк"
+            case R.id.menu_open_screenshot :    // "Открыть скриншот"
+                Log.i(TAG, logMsgPref + "выбран пункт Открыть скриншот");
+                Log.i(TAG, logMsgPref + "вызываем selectScreenshot()");
                 selectScreenshot();
                 return true;
-            case R.id.menu_open_language :  // "Настройки"
+            case R.id.menu_open_language :  // "Язык"
+                Log.i(TAG, logMsgPref + "выбран пункт Язык");
+                Log.i(TAG, logMsgPref + "вызываем openLanguage()");
                 openLanguage();
                 return true;
             default:
@@ -1034,6 +1319,9 @@ public class GameActivity extends AppCompatActivity {
      *  Выбор скриншота
      */
     private void selectScreenshot() {
+
+        String logMsgPref = "selectScreenshot: ";
+        Log.i(TAG, logMsgPref + "start");
 
         OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)   // диалог выбора скриншота по переданному пути
                 .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))            // иконка папки
@@ -1058,16 +1346,22 @@ public class GameActivity extends AppCompatActivity {
      * Открытие Настроек
      */
     private void openSettings() {
+        String logMsgPref = "openSettings: ";
+        Log.i(TAG, logMsgPref + "start");
         Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
     private void openLanguage() {
+        String logMsgPref = "openLanguage: ";
+        Log.i(TAG, logMsgPref + "start");
         Intent intent = new Intent(this, LanguageActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
     public void openStrategyActivity(View view) {
+        String logMsgPref = "openStrategyActivity: ";
+        Log.i(TAG, logMsgPref + "start");
         Intent intent = new Intent(this, StrategyActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
@@ -1078,35 +1372,55 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public void run() {
 
+            String logMsgPref = "firstTask: ";
+//            Log.i(TAG, logMsgPref + "run()");
+
             GameActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
 
-                if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
-                    File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
-                    if (tmpFile != null) {  // если он не пустой
-                        if (!tmpFile.equals(fileScreenshot)) {  // если он не равен текущем скриншоту
-                            fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-                            if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
-                                Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                    String logMsgPref = "firstTask: ";
+//                    Log.i(TAG, logMsgPref + "runOnUiThread()");
+
+                    if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
+//                        Log.i(TAG, logMsgPref + "Следить за файлами в папке");
+//                        Log.i(TAG, logMsgPref + "Запрашиваем последний файл в папке");
+                        File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
+                        if (tmpFile != null) {  // если он не пустой
+//                            Log.i(TAG, logMsgPref + "Последний файл не пустой");
+                            if (!tmpFile.equals(fileScreenshot)  || isResumed) {  // если он не равен текущем скриншоту
+                                Log.i(TAG, logMsgPref + "Последний файл не равен текущем скриншоту");
+                                fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                                if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
+                                    Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
+                                    Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
+                                    Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                                }
+                                Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
+                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                                loadDataToViews(true);
+                                if (isResumed) isResumed = false;
                             }
-                            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                            loadDataToViews(true);
                         }
-                    }
 
-                } else {
-                    if (fileScreenshot == null) {
-                        File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
-                        if (lastScreenshot.exists()) {
-                            fileScreenshot = lastScreenshot;
-                            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                            loadDataToViews(true);
+                    } else {
+//                        Log.i(TAG, logMsgPref + "Не следить за файлами в папке");
+                        if (fileScreenshot == null) {
+                            File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+                            if (lastScreenshot.exists()) {
+                                fileScreenshot = lastScreenshot;
+                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                                Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
+                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                                loadDataToViews(true);
+                            }
                         }
-                    }
 
-                }
+                    }
 
                 }
             });
@@ -1119,15 +1433,24 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public void run() {
 
+            String logMsgPref = "secondTask: ";
+//            Log.i(TAG, logMsgPref + "run()");
+
             GameActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
+                    String logMsgPref = "secondTask: ";
+//                    Log.i(TAG, logMsgPref + "runOnUiThread()");
 
                     if (mainCityCalc != null) {
+//                        Log.i(TAG, logMsgPref + "mainCityCalc не null");
                         CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
                         if (ccaGame != null) {
+                            Log.i(TAG, logMsgPref + "ccaGame не null");
+                            Log.i(TAG, logMsgPref + "вызываем ccaGame.calcWin()");
                             ccaGame.calcWin();
+                            Log.i(TAG, logMsgPref + "вызываем loadDataToViews() без нотификации");
                             loadDataToViews(false);
                         }
                     }

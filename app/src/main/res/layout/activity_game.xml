@@ -1069,7 +1069,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/strategic_planning"
-            android:fontFamily="@font/compact_regular"
+            android:visibility="invisible"
+            tools:visibility="visible"
             android:onClick="openStrategyActivity"/>
         
         

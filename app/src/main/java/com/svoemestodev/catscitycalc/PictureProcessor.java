@@ -200,6 +200,7 @@ public class PictureProcessor extends Activity {
             TessOCR mTessOCR = new TessOCR(context, language);
             result = mTessOCR.getOCRResult(sourceBitmap);
         }
+        if (result == null) result = "";
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
     }
 

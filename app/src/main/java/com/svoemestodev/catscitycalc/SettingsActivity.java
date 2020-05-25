@@ -31,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 //    String pathToScreenshotDir = "";    // путь к папке скриншотов
 //    boolean listenLastFile;             // флаг "следить за последним файлом в папке"
+    TextView tvVersion;        // текствью пути к папке скриншотов
     TextView tvScreenshotFolder;        // текствью пути к папке скриншотов
     Switch swListenLastFile;            // свич "следить за последним файлом в папке"
     Switch swLDebugMode;                // свич "дебаг мод"
@@ -71,6 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // биндим контролы
+        tvVersion = findViewById(R.id.tv_version);
         tvScreenshotFolder = findViewById(R.id.tv_screenshotfolder);
         swListenLastFile = findViewById(R.id.sw_get_last_screenshot);
         swLDebugMode = findViewById(R.id.sw_debug_mode);
@@ -82,6 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
         context = tvScreenshotFolder.getContext();
 
                 // устанавливаем значения контролов
+        tvVersion.setText(BuildConfig.VERSION_NAME);
         tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);
         swListenLastFile.setChecked(GameActivity.isListenToNewFileInFolder);
         swLDebugMode.setChecked(GameActivity.isDebugMode);
