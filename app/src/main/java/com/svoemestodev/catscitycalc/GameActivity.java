@@ -209,7 +209,7 @@ public class GameActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
         pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
@@ -236,6 +236,8 @@ public class GameActivity extends AppCompatActivity {
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         context = getBaseContext();
         this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+
+        setContentView(R.layout.activity_game);
 
         Log.i(TAG, "onCreate initializeViews()");
         initializeViews(); // Инициализация вьюшек

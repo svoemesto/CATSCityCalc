@@ -225,6 +225,83 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:id="@+id/iv_ga_game_car_black"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:src="@drawable/ic_car_black_36dp"/>
+
+            <TextView
+                android:id="@+id/tv_ga_game_slots"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="#000000" />
+
+            <ImageView
+                android:id="@+id/iv_ga_game_car_our"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:src="@drawable/ic_car_our_36dp"/>
+
+            <TextView
+                android:id="@+id/tv_ga_game_slots_our"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="#4179d8" />
+
+            <ImageView
+                android:id="@+id/iv_ga_game_car_empty"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:src="@drawable/ic_car_empty_36dp"/>
+
+            <TextView
+                android:id="@+id/tv_ga_game_slots_empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="#5e6a84" />
+
+            <ImageView
+                android:id="@+id/iv_ga_game_car_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:visibility="visible"
+                tools:visibility="visible"
+                android:src="@drawable/ic_car_enemy_36dp"/>
+
+            <TextView
+                android:id="@+id/tv_ga_game_slots_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="24sp"
+                android:textColor="#ff6565" />
+
+
+        </LinearLayout>
+
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/ad_ga_banner"
@@ -1063,82 +1140,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            >
 
-            <ImageView
-                android:id="@+id/iv_ga_game_car_black"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:visibility="visible"
-                tools:visibility="visible"
-                android:src="@drawable/ic_car_black_36dp"/>
-
-            <TextView
-                android:id="@+id/tv_ga_game_slots"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="#000000" />
-
-            <ImageView
-                android:id="@+id/iv_ga_game_car_our"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:visibility="visible"
-                tools:visibility="visible"
-                android:src="@drawable/ic_car_our_36dp"/>
-
-            <TextView
-                android:id="@+id/tv_ga_game_slots_our"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="#4179d8" />
-
-            <ImageView
-                android:id="@+id/iv_ga_game_car_empty"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:visibility="visible"
-                tools:visibility="visible"
-                android:src="@drawable/ic_car_empty_36dp"/>
-
-            <TextView
-                android:id="@+id/tv_ga_game_slots_empty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="#5e6a84" />
-
-            <ImageView
-                android:id="@+id/iv_ga_game_car_enemy"
-                android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_weight="1"
-                android:visibility="visible"
-                tools:visibility="visible"
-                android:src="@drawable/ic_car_enemy_36dp"/>
-
-            <TextView
-                android:id="@+id/tv_ga_game_slots_enemy"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="24sp"
-                android:textColor="#ff6565" />
-
-
-        </LinearLayout>
 
         <Button
             android:id="@+id/bt_ga_strategy"
