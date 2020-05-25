@@ -161,6 +161,8 @@ public class Utils {
         int hours = 0, minutes = 0;
         if (listWords.size() == 4) {
             try {
+                if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
+                if (listWords.get(2).length() > 2) listWords.set(0, listWords.get(2).substring(0,2));
                 hours = Integer.parseInt(listWords.get(0));
                 minutes = Integer.parseInt(listWords.get(2));
             } catch (NumberFormatException ignored) {
@@ -168,15 +170,20 @@ public class Utils {
         } else if (listWords.size() == 2) {
             if (listWords.get(1).equals("M") || listWords.get(1).equals("М")) {
                 try {
+                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
                     minutes = Integer.parseInt(listWords.get(0));
                 } catch (NumberFormatException ignored) {
                 }
             } else {
                 try {
+                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
                     hours = Integer.parseInt(listWords.get(0));
                 } catch (NumberFormatException ignored) {
                 }
             }
+        } else if (listWords.size() == 1) {
+            if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
+            minutes = Integer.parseInt(listWords.get(0));
         }
 
         return String.format(Locale.getDefault(), "%01d:%02d", hours, minutes);
