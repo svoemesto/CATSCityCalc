@@ -160,6 +160,16 @@ public class GameActivity extends AppCompatActivity {
     // Рекламный блок
     AdView ad_ga_banner;
 
+    ImageView iv_ga_game_car_black;
+    ImageView iv_ga_game_car_our;
+    ImageView iv_ga_game_car_empty;
+    ImageView iv_ga_game_car_enemy;
+    TextView tv_ga_game_slots;
+    TextView tv_ga_game_slots_our;
+    TextView tv_ga_game_slots_empty;
+    TextView tv_ga_game_slots_enemy;
+
+
     Button bt_ga_strategy;
 
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
@@ -378,6 +388,8 @@ public class GameActivity extends AppCompatActivity {
             int color_building_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_mayX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_mayX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_mayX2), 16)));
             int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
 
+            int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
+
             if (ccaBLT != null) {
 
                 Log.i(TAG, logMsgPref + "ccaBLT != null");
@@ -411,6 +423,11 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_blt_slots_empty.setText(String.valueOf(ccaBLT.slots_empty));
                     tv_ga_blt_slots_enemy.setText(String.valueOf(ccaBLT.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBLT: slots = " + ccaBLT.slots + ", slots_our = " + ccaBLT.slots_our + ", slots_empty = " + ccaBLT.slots_empty + ", slots_enemy = " + ccaBLT.slots_enemy);
+
+                    slots += ccaBLT.slots;
+                    slots_our += ccaBLT.slots_our;
+                    slots_empty += ccaBLT.slots_empty;
+                    slots_enemy += ccaBLT.slots_enemy;
 
                     if (ccaBLT.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBLT buildingIsOur");
@@ -478,6 +495,11 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_blc_slots_enemy.setText(String.valueOf(ccaBLC.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBLC: slots = " + ccaBLC.slots + ", slots_our = " + ccaBLC.slots_our + ", slots_empty = " + ccaBLC.slots_empty + ", slots_enemy = " + ccaBLC.slots_enemy);
 
+                    slots += ccaBLC.slots;
+                    slots_our += ccaBLC.slots_our;
+                    slots_empty += ccaBLC.slots_empty;
+                    slots_enemy += ccaBLC.slots_enemy;
+
                     if (ccaBLC.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBLC buildingIsOur");
                         Log.i(TAG, logMsgPref + "ccaBLC our_points = +" + ccaBLC.our_points);
@@ -544,6 +566,11 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_blb_slots_enemy.setText(String.valueOf(ccaBLB.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBLB: slots = " + ccaBLB.slots + ", slots_our = " + ccaBLB.slots_our + ", slots_empty = " + ccaBLB.slots_empty + ", slots_enemy = " + ccaBLB.slots_enemy);
 
+                    slots += ccaBLB.slots;
+                    slots_our += ccaBLB.slots_our;
+                    slots_empty += ccaBLB.slots_empty;
+                    slots_enemy += ccaBLB.slots_enemy;
+
                     if (ccaBLB.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBLB buildingIsOur");
                         Log.i(TAG, logMsgPref + "ccaBLB our_points = +" + ccaBLB.our_points);
@@ -608,6 +635,11 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_brt_slots_empty.setText(String.valueOf(ccaBRT.slots_empty));
                     tv_ga_brt_slots_enemy.setText(String.valueOf(ccaBRT.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBRT: slots = " + ccaBRT.slots + ", slots_our = " + ccaBRT.slots_our + ", slots_empty = " + ccaBRT.slots_empty + ", slots_enemy = " + ccaBRT.slots_enemy);
+
+                    slots += ccaBRT.slots;
+                    slots_our += ccaBRT.slots_our;
+                    slots_empty += ccaBRT.slots_empty;
+                    slots_enemy += ccaBRT.slots_enemy;
 
                     if (ccaBRT.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBRT buildingIsOur");
@@ -674,6 +706,11 @@ public class GameActivity extends AppCompatActivity {
                     tv_ga_brc_slots_enemy.setText(String.valueOf(ccaBRC.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBRC: slots = " + ccaBRC.slots + ", slots_our = " + ccaBRC.slots_our + ", slots_empty = " + ccaBRC.slots_empty + ", slots_enemy = " + ccaBRC.slots_enemy);
 
+                    slots += ccaBRC.slots;
+                    slots_our += ccaBRC.slots_our;
+                    slots_empty += ccaBRC.slots_empty;
+                    slots_enemy += ccaBRC.slots_enemy;
+
                     if (ccaBRC.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBRC buildingIsOur");
                         Log.i(TAG, logMsgPref + "ccaBRC our_points = +" + ccaBRC.our_points);
@@ -734,12 +771,18 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBRBname != null) iv_ga_brb_name.setImageBitmap(ccaBRBname.bmpSrc);
                     Log.i(TAG, logMsgPref + "ccaBRBname = " + ccaBRBname.finText);
 
+
                     if (ccaBRBprogress != null) iv_ga_brb_progress.setImageBitmap(ccaBRBprogress.bmpSrc);
                     tv_ga_brb_slots.setText(String.valueOf(ccaBRB.slots));
                     tv_ga_brb_slots_our.setText(String.valueOf(ccaBRB.slots_our));
                     tv_ga_brb_slots_empty.setText(String.valueOf(ccaBRB.slots_empty));
                     tv_ga_brb_slots_enemy.setText(String.valueOf(ccaBRB.slots_enemy));
                     Log.i(TAG, logMsgPref + "ccaBRB: slots = " + ccaBRB.slots + ", slots_our = " + ccaBRB.slots_our + ", slots_empty = " + ccaBRB.slots_empty + ", slots_enemy = " + ccaBRB.slots_enemy);
+
+                    slots += ccaBRB.slots;
+                    slots_our += ccaBRB.slots_our;
+                    slots_empty += ccaBRB.slots_empty;
+                    slots_enemy += ccaBRB.slots_enemy;
 
                     if (ccaBRB.buildingIsOur) {
                         Log.i(TAG, logMsgPref + "ccaBRB buildingIsOur");
@@ -776,6 +819,10 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
+            tv_ga_game_slots.setText(String.valueOf(slots));
+            tv_ga_game_slots_our.setText(String.valueOf(slots_our));
+            tv_ga_game_slots_empty.setText(String.valueOf(slots_empty));
+            tv_ga_game_slots_enemy.setText(String.valueOf(slots_enemy));
 
         }
 
@@ -921,6 +968,15 @@ public class GameActivity extends AppCompatActivity {
 
         // Рекламный блок
         ad_ga_banner = findViewById(R.id.ad_ga_banner);
+
+        iv_ga_game_car_black = findViewById(R.id.iv_ga_game_car_black);
+        iv_ga_game_car_our = findViewById(R.id.iv_ga_game_car_our);
+        iv_ga_game_car_empty = findViewById(R.id.iv_ga_game_car_empty);
+        iv_ga_game_car_enemy = findViewById(R.id.iv_ga_game_car_enemy);
+        tv_ga_game_slots = findViewById(R.id.tv_ga_game_slots);
+        tv_ga_game_slots_our = findViewById(R.id.tv_ga_game_slots_our);
+        tv_ga_game_slots_empty = findViewById(R.id.tv_ga_game_slots_empty);
+        tv_ga_game_slots_enemy = findViewById(R.id.tv_ga_game_slots_enemy);
 
         bt_ga_strategy = findViewById(R.id.bt_ga_strategy);
 
