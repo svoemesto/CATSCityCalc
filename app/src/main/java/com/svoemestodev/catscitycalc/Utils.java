@@ -11,8 +11,10 @@ import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class Utils {
 
@@ -102,6 +104,28 @@ public class Utils {
         return result;                      // возвращаем результат
     }
 
+    public static String replaceSymbolsLikeNumbers(String str) {
+        Map<Character, Character> mapSymbolsLikeNumbers = new HashMap<>();
+        mapSymbolsLikeNumbers.put('i', '1');
+        mapSymbolsLikeNumbers.put('I', '1');
+        mapSymbolsLikeNumbers.put('l', '1');
+        mapSymbolsLikeNumbers.put('з', '3');
+        mapSymbolsLikeNumbers.put('З', '3');
+        mapSymbolsLikeNumbers.put('Б', '6');
+        mapSymbolsLikeNumbers.put('б', '6');
+        mapSymbolsLikeNumbers.put('о', '0');
+        mapSymbolsLikeNumbers.put('О', '0');
+        mapSymbolsLikeNumbers.put('o', '0');
+        mapSymbolsLikeNumbers.put('O', '0');
+
+        String result = "";                 // результат
+        for (char ch : str.toUpperCase().toCharArray()) { // цикл по символам строки
+            char num = mapSymbolsLikeNumbers.containsKey(ch) ? mapSymbolsLikeNumbers.get(ch) : ch;
+            result = result + num;
+        }
+        return result;                      // возвращаем результат
+    }
+
     /**
      * Из строки цифр разделенных пробелом возвращаем строку вида ЧЧ:ММ
      * @param str - строка
@@ -109,44 +133,51 @@ public class Utils {
      */
     public static  String parseTime(String str) {
         // парсинг "Время"
-        String[] arrTotalTime = str.split(" ");             // парсим с разделителем "пробел"
-        List<String> listTotalTime = new ArrayList<>();            // лист значений
-        for (int i = 0; i < arrTotalTime.length; i++) {             // проходим по распарсенному массиву
-            if (!arrTotalTime[i].equals("")) {                      // если элемент массива не пустой
-                listTotalTime.add(arrTotalTime[i]);                 // добавляем текущий элемент массива в лист
+        str = replaceSymbolsLikeNumbers(str).trim().toUpperCase();
+        List<String> listWords = new ArrayList<>();
+        boolean isNewWord = true;
+        String word = "";
+        boolean currSymInNum = false;
+        boolean prevSymInNum = false;
+        char currChar, prevChar;
+
+        for (int i = 0; i < str.length(); i++) {
+            currChar = str.charAt(i);
+            currSymInNum = (currChar >= '0' && currChar <= '9');
+            isNewWord = (currSymInNum != prevSymInNum || i == 0);
+            if (i != 0 && isNewWord) {
+                listWords.add(word.trim());
+                word = "";
+            }
+            word = word + currChar;
+            prevChar = currChar;
+            prevSymInNum = currSymInNum;
+            if (i == str.length() - 1) listWords.add(word.trim());
+        }
+
+        int hours = 0, minutes = 0;
+        if (listWords.size() == 4) {
+            try {
+                hours = Integer.parseInt(listWords.get(0));
+                minutes = Integer.parseInt(listWords.get(2));
+            } catch (NumberFormatException ignored) {
+            }
+        } else if (listWords.size() == 2) {
+            if (listWords.get(1).equals("M") || listWords.get(1).equals("М")) {
+                try {
+                    minutes = Integer.parseInt(listWords.get(0));
+                } catch (NumberFormatException ignored) {
+                }
+            } else {
+                try {
+                    hours = Integer.parseInt(listWords.get(0));
+                } catch (NumberFormatException ignored) {
+                }
             }
         }
 
-        if (listTotalTime.size() > 1) {                         // если в списке больше 1 элемента
-            for (int i = 0; i < listTotalTime.size(); i++) {    // проходим по списку
-                listTotalTime.set(i, listTotalTime.get(i).substring(0, listTotalTime.get(i).length() == 1 ? 1 : listTotalTime.get(i).length() - 1)); // отрезаем у текущего элемента списка последний символ
-            }
-        }
+        return String.format(Locale.getDefault(), "%01d:%02d", hours, minutes);
 
-        if (listTotalTime.size() > 0) {     // если в списке есть элементы
-            if (listTotalTime.size() == 1) {    // если в списке 1 элемент
-                if (listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("m") || listTotalTime.get(0).substring(listTotalTime.get(0).length()-1).toLowerCase().equals("м")) {    // если последний символ элемента равен букве "М"
-                    String hours = "00";    // часы = "00"
-                    String minutes = parseNumbers(listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1));    // минуты = элемент без последнего символа
-                    if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                    return hours + ":" + minutes;   // время = часы : минуты
-                } else {    // если последний символ элемента не равен букве "М"
-                    String hours = parseNumbers(listTotalTime.get(0).substring(0, listTotalTime.get(0).length()-1));  // часы = элемент без последнего символа
-                    String minutes = "00";  // минуты = "00"
-                    return hours + ":" + minutes; // время = часы : минуты
-                }
-            } else {    // если в списке больше 1 элемента
-                if (listTotalTime.size() > 2) {
-                    listTotalTime.set(1, parseNumbers(listTotalTime.get(1) + listTotalTime.get(2)));
-                }
-                String hours = parseNumbers(listTotalTime.get(0));    // часы - первый элемент из списка
-                String minutes = parseNumbers(listTotalTime.get(1));  // минуты - второй элемент из списка
-                if (minutes.length() == 1) minutes = "0" + minutes;    // если минуты состоят из 1 символа -  дописываем "0" в начало минут
-                return hours + ":" + minutes; // время = часы : минуты
-            }
-        } else { // если в списке нет элементов
-            return "00:00"; // время нулевое
-        }
     }
 
 }

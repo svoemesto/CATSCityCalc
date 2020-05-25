@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ public class CityCalcArea {
     Bitmap bmpPrc;      // кропнутая картинка (обработанная для распознавания)
     String ocrText = "";     // распознанный текст
     String finText = "";     // распознанный финальный текст
+
+    private static final String TAG = "CityCalcArea";
 
     // конструктор "обычных" картинок
     public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr) {
@@ -50,7 +53,7 @@ public class CityCalcArea {
     }
 
     public void doOCR() {
-        doOCR(0,0,1, true, true, 5.0f, 4.0f);
+        doOCR(0,0,1, true, true, 6.0f, 4.0f);
     }
 
     public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doBW, boolean doScale, float scaleX, float scaleY) {
@@ -64,6 +67,9 @@ public class CityCalcArea {
             } else {
                 this.finText = Utils.parseNumbers(this.ocrText);
             }
+            String logMsgPref = "doOCR: ";
+            Log.i(TAG, logMsgPref + "AREA = " + this.area + ", ocrText = " + this.ocrText + ", finText = " + this.finText);
+
         }
     }
 
