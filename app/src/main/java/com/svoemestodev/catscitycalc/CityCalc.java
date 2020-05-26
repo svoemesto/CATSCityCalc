@@ -120,25 +120,9 @@ public class CityCalc extends Activity {
 
                     int color_box_info_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_info_main), 16)));
 
-
-                    // Box Back Area
-                    area = Area.BOX_BACK;
-                    x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_x1), Float.parseFloat(context.getString(R.string.def_cut_box_back_x1))));
-                    x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_x2), Float.parseFloat(context.getString(R.string.def_cut_box_back_x2))));
-                    y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_y1), Float.parseFloat(context.getString(R.string.def_cut_box_back_y1))));
-                    y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_y2), Float.parseFloat(context.getString(R.string.def_cut_box_back_y2))));
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBoxBack = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
-                    mapAreas.put(area, ccaBoxBack);
-
-                    int color_box_back_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_back_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_back_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_back_main), 16)));
-
                     float fraquencyBoxInfo = PictureProcessor.frequencyPixelInBitmap(ccaBoxInfo.bmpSrc, color_box_info_main,40, 40);
-                    float fraquencyBoxBack = PictureProcessor.frequencyPixelInBitmap(ccaBoxBack.bmpSrc, color_box_back_main,40, 40);
 
-                    this.isWrong = (fraquencyBoxInfo < 0.50f) ||  (fraquencyBoxBack < 0.50f);
+                    this.isWrong = (fraquencyBoxInfo < 0.50f);
 
                 }
             }
@@ -206,17 +190,6 @@ public class CityCalc extends Activity {
                         CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         mapAreas.put(area, ccaBoxInfo);
 
-                        // Box Back Area
-                        area = Area.BOX_BACK;
-                        x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_x1), Float.parseFloat(context.getString(R.string.def_cut_box_back_x1))));
-                        x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_x2), Float.parseFloat(context.getString(R.string.def_cut_box_back_x2))));
-                        y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_y1), Float.parseFloat(context.getString(R.string.def_cut_box_back_y1))));
-                        y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_back_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_back_y2), Float.parseFloat(context.getString(R.string.def_cut_box_back_y2))));
-                        colors = null;
-                        ths = null;
-                        needOcr = false;
-                        CityCalcArea ccaBoxBack = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
-                        mapAreas.put(area, ccaBoxBack);
 
                         // City Area
                         area = Area.CITY;

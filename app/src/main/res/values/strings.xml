@@ -146,7 +146,6 @@
 
     <string-array name="pref_borders_entries">
         <item>Box Info</item>
-        <item>Box Back</item>
         <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>
@@ -188,7 +187,6 @@
 
     <string-array name="pref_borders_values">
         <item>Box Info</item>
-        <item>Box Back</item>
         <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>

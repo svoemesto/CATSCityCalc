@@ -2,7 +2,6 @@ package com.svoemestodev.catscitycalc;
 
 public enum Area {
     BOX_INFO,
-    BOX_BACK,
     CITY,
     TOTAL_TIME,
     EARLY_WIN,

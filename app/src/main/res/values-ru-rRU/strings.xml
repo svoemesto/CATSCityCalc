@@ -130,7 +130,6 @@
 
     <string-array name="pref_borders_entries">
         <item>Box Info</item>
-        <item>Box Back</item>
         <item>Город</item>
         <item>Время</item>
         <item>Очки до досрочной победы</item>
@@ -172,7 +171,6 @@
 
     <string-array name="pref_borders_values">
         <item>Box Info</item>
-        <item>Box Back</item>
         <item>Город</item>
         <item>Время</item>
         <item>Очки до досрочной победы</item>
