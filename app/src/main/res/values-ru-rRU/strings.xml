@@ -56,6 +56,8 @@
     <string name="offset_center_x">Смещение центра скриншота по вертикальной оси</string>
     <string name="offset_center_y">Смещение центра скриншота по горизонтальной оси</string>
     <string name="sett_borders">Настройка границ областей</string>
+    <string name="borders_box_info">Box Info</string>
+    <string name="borders_box_back">Box Back</string>
     <string name="borders_city">Город</string>
     <string name="borders_time">Время</string>
     <string name="borders_scores_to_early_win">Очки до досрочной победы</string>
@@ -127,6 +129,8 @@
     <string name="sett_default">По-умолчанию</string>
 
     <string-array name="pref_borders_entries">
+        <item>Box Info</item>
+        <item>Box Back</item>
         <item>Город</item>
         <item>Время</item>
         <item>Очки до досрочной победы</item>
@@ -167,6 +171,8 @@
     </string-array>
 
     <string-array name="pref_borders_values">
+        <item>Box Info</item>
+        <item>Box Back</item>
         <item>Город</item>
         <item>Время</item>
         <item>Очки до досрочной победы</item>

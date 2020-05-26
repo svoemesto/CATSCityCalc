@@ -64,6 +64,8 @@
     <string name="offset_center_x">Offset the center of the screenshot along the vertical axis</string>
     <string name="offset_center_y">Offset the center of the screenshot along the horizontal axis</string>
     <string name="sett_borders">Borders settings</string>
+    <string name="borders_box_info">Box Info</string>
+    <string name="borders_box_back">Box Back</string>
     <string name="borders_city">City</string>
     <string name="borders_time">Time</string>
     <string name="borders_scores_to_early_win">Scores to early win</string>
@@ -143,6 +145,8 @@
     <string name="pref_bordersAreaName_summary">City</string>
 
     <string-array name="pref_borders_entries">
+        <item>Box Info</item>
+        <item>Box Back</item>
         <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>
@@ -183,6 +187,8 @@
     </string-array>
 
     <string-array name="pref_borders_values">
+        <item>Box Info</item>
+        <item>Box Back</item>
         <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>

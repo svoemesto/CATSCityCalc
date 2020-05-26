@@ -1193,7 +1193,7 @@ public class GameActivity extends AppCompatActivity {
         if (timer == null) {    // если таймер не запущен
             timer = new Timer();    // запускаем таймер
             Log.i(TAG, logMsgPref + "firstTask");
-            timer.schedule(new firstTask(), 1000,1000); // запускаем такс таймера
+            timer.schedule(new firstTask(), 0,3000); // запускаем такс таймера
             Log.i(TAG, logMsgPref + "secondTask");
             timer.schedule(new secondTask(), 60000,60000); // запускаем такс таймера
         }
@@ -1260,7 +1260,15 @@ public class GameActivity extends AppCompatActivity {
                         }
                     } else {
                         Log.i(TAG, logMsgPref + "ориентация картинки правильная");
-                        fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                        CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context, true);
+                        if (tmpCityCalc.isWrong) {
+                            Log.i(TAG, logMsgPref + "File isWrong");
+                            temp = null;
+                        } else {
+                            Log.i(TAG, logMsgPref + "File not isWrong");
+                            fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                        }
+
                     }
 
                 }
@@ -1269,14 +1277,10 @@ public class GameActivity extends AppCompatActivity {
 
         if (temp == null && lastScreenshot.exists()) {
             Log.i(TAG, logMsgPref + "возвращаем " + lastScreenshot.getAbsolutePath());
-            return lastScreenshot;
-        } else {
-            Log.i(TAG, logMsgPref + "возвращаем " + ((temp == null) ? "null" : temp.getAbsolutePath()));
-            return temp;
+            temp = lastScreenshot;
         }
 
-
-
+        return temp;
 
     }
 
@@ -1311,9 +1315,13 @@ public class GameActivity extends AppCompatActivity {
             sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
             Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
             Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
-            mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-            Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
-            loadDataToViews(false);
+            CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+            if (!tmpCityCalc.isWrong) {
+                mainCityCalc = tmpCityCalc;
+                Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
+                loadDataToViews(false);
+            }
+
 
         }
 
@@ -1385,13 +1393,17 @@ public class GameActivity extends AppCompatActivity {
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     public void OnSelectedFile(String fileName) {
-                        fileScreenshot = new File(fileName); // файл скриншота - возавращенный из диалога
-                        if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
-                        isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
-                        sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
-                        fileLastInFolder = null;    // сбрасываем последний файл в папке
-                        mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                        loadDataToViews(true);
+                        File newFile = new File(fileName);
+                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context);
+                        if (!tmpCityCalc.isWrong) {
+                            fileScreenshot = newFile; // файл скриншота - возавращенный из диалога
+                            if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
+                            sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
+                            fileLastInFolder = null;    // сбрасываем последний файл в папке
+                            mainCityCalc = tmpCityCalc;
+                            loadDataToViews(true);
+                        }
                     }
                 });
         fileDialog.show();
@@ -1455,9 +1467,12 @@ public class GameActivity extends AppCompatActivity {
                                     Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
                                 }
                                 Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
-                                loadDataToViews(true);
+                                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                                if (!tmpCityCalc.isWrong) {
+                                    mainCityCalc = tmpCityCalc;
+                                    Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                                    loadDataToViews(true);
+                                }
                                 if (isResumed) isResumed = false;
                             }
                         }
@@ -1470,9 +1485,12 @@ public class GameActivity extends AppCompatActivity {
                                 fileScreenshot = lastScreenshot;
                                 Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
                                 Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
-                                loadDataToViews(true);
+                                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                                if (!tmpCityCalc.isWrong) {
+                                    mainCityCalc = tmpCityCalc;
+                                    Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                                    loadDataToViews(true);
+                                }
                             }
                         }
 

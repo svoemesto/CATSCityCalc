@@ -9,6 +9,16 @@
     <string name="pref_calibrate_x" translatable="false">PREF_CALIBRATE_X</string>
     <string name="pref_calibrate_y" translatable="false">PREF_CALIBRATE_Y</string>
 
+    <string name="pref_cut_box_info_x1" translatable="false">PREF_CUT_BOX_INFO_X1</string>
+    <string name="pref_cut_box_info_x2" translatable="false">PREF_CUT_BOX_INFO_X2</string>
+    <string name="pref_cut_box_info_y1" translatable="false">PREF_CUT_BOX_INFO_Y1</string>
+    <string name="pref_cut_box_info_y2" translatable="false">PREF_CUT_BOX_INFO_Y2</string>
+
+    <string name="pref_cut_box_back_x1" translatable="false">PREF_CUT_BOX_BACK_X1</string>
+    <string name="pref_cut_box_back_x2" translatable="false">PREF_CUT_BOX_BACK_X2</string>
+    <string name="pref_cut_box_back_y1" translatable="false">PREF_CUT_BOX_BACK_Y1</string>
+    <string name="pref_cut_box_back_y2" translatable="false">PREF_CUT_BOX_BACK_Y2</string>
+
     <string name="pref_cut_city_x1" translatable="false">PREF_CUT_CITY_X1</string>
     <string name="pref_cut_city_x2" translatable="false">PREF_CUT_CITY_X2</string>
     <string name="pref_cut_city_y1" translatable="false">PREF_CUT_CITY_Y1</string>
@@ -224,6 +234,13 @@
     <string name="pref_cut_brb_points_y1" translatable="false">PREF_CUT_BRB_POINTS_Y1</string>
     <string name="pref_cut_brb_points_y2" translatable="false">PREF_CUT_BRB_POINTS_Y2</string>
 
+    <string name="pref_rgb_box_info_main" translatable="false">PREF_RGB_BOX_INFO_MAIN</string>
+    <string name="pref_rgb_box_info_thp" translatable="false">PREF_RGB_BOX_INFO_THP</string>
+    <string name="pref_rgb_box_info_thm" translatable="false">PREF_RGB_BOX_INFO_THM</string>
+    <string name="pref_rgb_box_back_main" translatable="false">PREF_RGB_BOX_BACK_MAIN</string>
+    <string name="pref_rgb_box_back_thp" translatable="false">PREF_RGB_BOX_BACK_THP</string>
+    <string name="pref_rgb_box_back_thm" translatable="false">PREF_RGB_BOX_BACK_THM</string>
+
     <string name="pref_rgb_points_our_main" translatable="false">PREF_RGB_POINTS_OUR_MAIN</string>
     <string name="pref_rgb_points_our_back1" translatable="false">PREF_RGB_POINTS_OUR_BACK1</string>
     <string name="pref_rgb_points_our_back2" translatable="false">PREF_RGB_POINTS_OUR_BACK2</string>
@@ -318,6 +335,16 @@
 
     <string name="pref_def_calibrate_x" translatable="false">PREF_DEF_CALIBRATE_X</string>
     <string name="pref_def_calibrate_y" translatable="false">PREF_DEF_CALIBRATE_Y</string>
+
+    <string name="pref_def_cut_box_info_x1" translatable="false">PREF_DEF_CUT_BOX_INFO_X1</string>
+    <string name="pref_def_cut_box_info_x2" translatable="false">PREF_DEF_CUT_BOX_INFO_X2</string>
+    <string name="pref_def_cut_box_info_y1" translatable="false">PREF_DEF_CUT_BOX_INFO_Y1</string>
+    <string name="pref_def_cut_box_info_y2" translatable="false">PREF_DEF_CUT_BOX_INFO_Y2</string>
+
+    <string name="pref_def_cut_box_back_x1" translatable="false">PREF_DEF_CUT_BOX_BACK_X1</string>
+    <string name="pref_def_cut_box_back_x2" translatable="false">PREF_DEF_CUT_BOX_BACK_X2</string>
+    <string name="pref_def_cut_box_back_y1" translatable="false">PREF_DEF_CUT_BOX_BACK_Y1</string>
+    <string name="pref_def_cut_box_back_y2" translatable="false">PREF_DEF_CUT_BOX_BACK_Y2</string>
 
     <string name="pref_def_cut_city_x1" translatable="false">PREF_DEF_CUT_CITY_X1</string>
     <string name="pref_def_cut_city_x2" translatable="false">PREF_DEF_CUT_CITY_X2</string>
@@ -534,6 +561,13 @@
     <string name="pref_def_cut_brb_points_x2" translatable="false">PREF_DEF_CUT_BRB_POINTS_X2</string>
     <string name="pref_def_cut_brb_points_y1" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y1</string>
     <string name="pref_def_cut_brb_points_y2" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y2</string>
+
+    <string name="pref_def_rgb_box_info_main" translatable="false">PREF_DEF_RGB_BOX_INFO_MAIN</string>
+    <string name="pref_def_rgb_box_info_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_THP</string>
+    <string name="pref_def_rgb_box_info_thm" translatable="false">PREF_DEF_RGB_BOX_INFO_THM</string>
+    <string name="pref_def_rgb_box_back_main" translatable="false">PREF_DEF_RGB_BOX_BACK_MAIN</string>
+    <string name="pref_def_rgb_box_back_thp" translatable="false">PREF_DEF_RGB_BOX_BACK_THP</string>
+    <string name="pref_def_rgb_box_back_thm" translatable="false">PREF_DEF_RGB_BOX_BACK_THM</string>
 
     <string name="pref_def_rgb_points_our_main" translatable="false">PREF_DEF_RGB_POINTS_OUR_MAIN</string>
     <string name="pref_def_rgb_points_our_back1" translatable="false">PREF_DEF_RGB_POINTS_OUR_BACK1</string>

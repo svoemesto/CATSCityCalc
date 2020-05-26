@@ -251,7 +251,7 @@ public class PictureProcessor extends Activity {
 
     }
 
-    public static float frequencyPixelInBitmap(Bitmap picture, int color) {
+    public static float frequencyPixelInBitmap(Bitmap picture, int color, int thm, int thp) {
 
         if (picture != null) {
             int width = picture.getWidth();      // ширина исходной картинки
@@ -260,7 +260,7 @@ public class PictureProcessor extends Activity {
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
                     int pixel = picture.getPixel(x , y);
-                    countTruePixels += isPixelTrue(pixel, color, 10,10) ? 1 : 0;
+                    countTruePixels += isPixelTrue(pixel, color, thm, thp) ? 1 : 0;
                 }
             }
             return (float)countTruePixels / (width * height);

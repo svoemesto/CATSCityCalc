@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  "box_info"  -->
+    <string name="def_cut_box_info_x1" translatable="false">-0.640</string>
+    <string name="def_cut_box_info_x2" translatable="false">-0.585</string>
+    <string name="def_cut_box_info_y1" translatable="false">-0.800</string>
+    <string name="def_cut_box_info_y2" translatable="false">-0.690</string>
+
+    <!--  "box_back"  -->
+    <string name="def_cut_box_back_x1" translatable="false">-0.977</string>
+    <string name="def_cut_box_back_x2" translatable="false">-0.856</string>
+    <string name="def_cut_box_back_y1" translatable="false">+0.718</string>
+    <string name="def_cut_box_back_y2" translatable="false">+0.964</string>
+
+
     <!--  "Город"  -->
     <string name="def_cut_city_x1" translatable="false">-0.565</string>
     <string name="def_cut_city_x2" translatable="false">+0.565</string>
@@ -232,6 +245,12 @@
     <string name="def_cut_brb_progress_y1" translatable="false">+0.700</string>
     <string name="def_cut_brb_progress_y2" translatable="false">+0.752</string>
 
+    <string name="def_rgb_box_info_main" translatable="false">FFd22425</string>
+    <string name="def_rgb_box_info_thm" translatable="false">40</string>
+    <string name="def_rgb_box_info_thp" translatable="false">40</string>
+    <string name="def_rgb_box_back_main" translatable="false">FFd22425</string>
+    <string name="def_rgb_box_back_thm" translatable="false">40</string>
+    <string name="def_rgb_box_back_thp" translatable="false">40</string>
 
     <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>

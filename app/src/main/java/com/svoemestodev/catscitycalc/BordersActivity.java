@@ -42,10 +42,14 @@ public class BordersActivity extends AppCompatActivity {
 
         CityCalcArea cityCalcArea = null;
 
-        if (areaName.get().equals(getString(R.string.borders_city))) {
+        if (areaName.get().equals(getString(R.string.borders_box_info))) {
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_INFO);
+        } else if (areaName.get().equals(getString(R.string.borders_box_back))) {
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_BACK);
+        } else if (areaName.get().equals(getString(R.string.borders_city))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.CITY);
         } else if (areaName.get().equals(getString(R.string.borders_time))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME); 
+            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
@@ -190,6 +194,12 @@ public class BordersActivity extends AppCompatActivity {
                     if (areaName.get().equals(getString(R.string.borders_city))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_x1), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_info))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_INFO);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_x1), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_back))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_BACK);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_x1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_x1), value);
@@ -333,6 +343,12 @@ public class BordersActivity extends AppCompatActivity {
                     if (areaName.get().equals(getString(R.string.borders_city))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_x2), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_info))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_INFO);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_x2), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_back))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_BACK);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_x2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_x2), value);
@@ -476,6 +492,12 @@ public class BordersActivity extends AppCompatActivity {
                     if (areaName.get().equals(getString(R.string.borders_city))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_y1), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_info))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_INFO);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_y1), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_back))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_BACK);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_y1), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_y1), value);
@@ -618,6 +640,12 @@ public class BordersActivity extends AppCompatActivity {
                     if (areaName.get().equals(getString(R.string.borders_city))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.CITY);
                         editor.putFloat(getString(R.string.pref_cut_city_y2), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_info))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_INFO);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_y2), value);
+                    } else if (areaName.get().equals(getString(R.string.borders_box_back))) {
+                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.BOX_BACK);
+                        editor.putFloat(getString(R.string.pref_cut_box_info_y2), value);
                     } else if (areaName.get().equals(getString(R.string.borders_time))) {
                         cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
                         editor.putFloat(getString(R.string.pref_cut_total_time_y2), value);
@@ -780,6 +808,8 @@ public class BordersActivity extends AppCompatActivity {
     public void resetX1(View view) {
 
         if (areaName.get().equals(getString(R.string.borders_city))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_city_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_box_info))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_box_info_x1));
+        } else if (areaName.get().equals(getString(R.string.borders_box_back))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_box_back_x1));
         } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_total_time_x1));
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_early_win_x1));
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_x1));
@@ -824,6 +854,8 @@ public class BordersActivity extends AppCompatActivity {
     public void resetX2(View view) {
 
         if (areaName.get().equals(getString(R.string.borders_city))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_city_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_box_info))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_box_info_x2));
+        } else if (areaName.get().equals(getString(R.string.borders_box_back))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_box_back_x2));
         } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_total_time_x2));
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_early_win_x2));
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_x2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_x2));
@@ -868,6 +900,8 @@ public class BordersActivity extends AppCompatActivity {
     public void resetY1(View view) {
 
         if (areaName.get().equals(getString(R.string.borders_city))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_city_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_box_info))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_box_info_y1));
+        } else if (areaName.get().equals(getString(R.string.borders_box_back))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_box_back_y1));
         } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_total_time_y1));
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_early_win_y1));
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y1 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_y1));
@@ -912,6 +946,8 @@ public class BordersActivity extends AppCompatActivity {
     public void resetY2(View view) {
 
         if (areaName.get().equals(getString(R.string.borders_city))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_city_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_box_info))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_box_info_y2));
+        } else if (areaName.get().equals(getString(R.string.borders_box_back))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_box_back_y2));
         } else if (areaName.get().equals(getString(R.string.borders_time))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_total_time_y2));
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_early_win_y2));
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) { cut_y2 = Float.parseFloat(getString(R.string.def_cut_points_and_increase_our_y2));
