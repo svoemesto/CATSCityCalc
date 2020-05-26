@@ -245,7 +245,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:inputType="numberSigned|numberDecimal"
                         android:gravity="center_horizontal"
                         />
 
@@ -340,6 +339,19 @@
 
         <TextView
             android:id="@+id/tv_recognized"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/final_symbols"/>
+
+        <TextView
+            android:id="@+id/tv_final"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"

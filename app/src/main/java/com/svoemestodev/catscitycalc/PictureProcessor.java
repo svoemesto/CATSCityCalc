@@ -12,6 +12,10 @@ import android.graphics.Matrix;
 //import com.google.android.gms.vision.text.TextBlock;
 //import com.google.android.gms.vision.text.TextRecognizer;
 
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.text.TextBlock;
+import com.google.android.gms.vision.text.TextRecognizer;
+
 import java.util.Locale;
 
 public class PictureProcessor extends Activity {
@@ -80,12 +84,12 @@ public class PictureProcessor extends Activity {
                 float filling = (float)countTruePixelsInLine / secondDirectionEnd;
 
                 if (!findStartSplit) { // если начало кропа еще не найдено
-                    if (filling > maxSensitivity) { // если текущая линия подходит
+                    if (filling <= (1 - maxSensitivity)) { // если текущая линия подходит
                         findStartSplit = true;
                         startSplit = i;
                     }
                 } else if (!findEndSplit){ // если начало кропа уже найдено, а конец еще нет
-                    if (filling <= minSensitivity) { // если текущая линия подходит
+                    if (filling >= (1 - minSensitivity)) { // если текущая линия подходит
                         findEndSplit = true;
                         endSplit = i;
                     }
@@ -175,34 +179,34 @@ public class PictureProcessor extends Activity {
     }
 
 
-//    public static String doOCR(Bitmap sourceBitmap, Context context) {
-//        String result = ""; // результат
-//        if (sourceBitmap!= null) {
-//            TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
-//            if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
-//                Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
-//                SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
-//                for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
-//                    result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
-//                }
-//            }
-//        }
-//        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
-//    }
-
     public static String doOCR(Bitmap sourceBitmap, Context context) {
         String result = ""; // результат
         if (sourceBitmap!= null) {
-            SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            String language = "rus";
-            language = sharedPreferences.getString(context.getResources().getString(R.string.pref_language_screenshot),sharedPreferences.getString(context.getResources().getString(R.string.pref_def_language_screenshot),"eng"));
-//            language = Locale.getDefault().getISO3Language().toLowerCase();
-            TessOCR mTessOCR = new TessOCR(context, language);
-            result = mTessOCR.getOCRResult(sourceBitmap);
+            TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
+            if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
+                Frame frame = new Frame.Builder().setBitmap(sourceBitmap).build();    // создаем фрейм на основе переданного битмапа
+                SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
+                for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
+                    result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
+                }
+            }
         }
-        if (result == null) result = "";
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
     }
+
+//    public static String doOCR(Bitmap sourceBitmap, Context context) {
+//        String result = ""; // результат
+//        if (sourceBitmap!= null) {
+//            SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+//            String language = "rus";
+//            language = sharedPreferences.getString(context.getResources().getString(R.string.pref_language_screenshot),sharedPreferences.getString(context.getResources().getString(R.string.pref_def_language_screenshot),"eng"));
+////            language = Locale.getDefault().getISO3Language().toLowerCase();
+//            TessOCR mTessOCR = new TessOCR(context, language);
+//            result = mTessOCR.getOCRResult(sourceBitmap);
+//        }
+//        if (result == null) result = "";
+//        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
+//    }
 
     public static Bitmap doBW(Bitmap sourceBitmap, int color, int thm, int thp) {
 

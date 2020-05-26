@@ -275,6 +275,10 @@
     <string name="calculate_an_early_victory">Рассчитать досрочную победу</string>
     <string name="versus">против</string>
     <string name="error_recognizing">Ошибка распознавания!</string>
+    <string name="loading">Загрузка...</string>
+    <string name="version">версия</string>
+    <string name="request_permissions">Запрос разрешений</string>
+    <string name="final_symbols">Значение</string>
 
 
 </resources>

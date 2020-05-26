@@ -37,6 +37,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
     public ImageView ivOriginal;
     public ImageView ivProcessed;
     public TextView tvRecognize;
+    public TextView tvFinal;
     public static Bitmap fullBitmap;
 
     public static int color_A = 255;
@@ -138,6 +139,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         ivOriginal = findViewById(R.id.iv_original_image);
         ivProcessed = findViewById(R.id.iv_processed_image);
         tvRecognize = findViewById(R.id.tv_recognized);
+        tvFinal = findViewById(R.id.tv_final);
 
         fullBitmap = BitmapFactory.decodeFile(GameActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
 
@@ -224,6 +226,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
                     ivOriginal.setImageBitmap(originalBitmap);
                     ivProcessed.setImageBitmap(processedBitmap);
                     tvRecognize.setText(cityCalcArea.ocrText);
+                    tvFinal.setText(cityCalcArea.finText);
 
                 } catch (NumberFormatException e) {
                 }
@@ -380,27 +383,27 @@ public class ColorsdetectActivity extends AppCompatActivity {
         if (areaName.get().equals(getString(R.string.borders_time))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_total_time_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_total_time_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_total_time_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_total_time_main),16);
         } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_early_win_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_early_win_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_early_win_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_early_win_main),16);
         } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_points_our_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_points_our_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_points_our_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_points_our_main),16);
         } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_our_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_our_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_increase_our_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_increase_our_main),16);
         } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_points_enemy_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_points_enemy_main),16);
         } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
             color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thm));
             color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thp));
-            value = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_main));
+            value = (int)Long.parseLong(getString(R.string.def_rgb_increase_enemy_main),16);
         }
 
         color_RGB = value;

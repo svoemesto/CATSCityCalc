@@ -120,54 +120,54 @@ public class Splash extends Activity {
 
     public void createProgramDir() {
 
-        String logMsgPref = "createProgramDir: ";
-        Log.i(TAG, logMsgPref + "start");
-
-        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        String pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
-        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
-
-        String pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
-
-        File cityCatDir = new File(pathToCATScalcFolder);
-        File tessDir = new File(pathToTessFolder);
-        if (!cityCatDir.exists()) {
-            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
-            cityCatDir.mkdir();
-            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
-        }
-
-        if (cityCatDir.exists()) { // если папка есть
-            File tmp = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-            if (!tessDir.exists()) {
-                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
-                tessDir.mkdir();
-                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
-            }
-
-            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-            if (!tessEng.exists()) {
-                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-                new DownloadTask(Splash.this, file_url, pathToCATScalcFolder + "/tessdata/");
-            }
-
-            if (!tmp.exists()) {    // если файла нет
-                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-                try {
-                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
-                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
-                    fOutScreenshot.close(); // закрываем поток
-                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        String logMsgPref = "createProgramDir: ";
+//        Log.i(TAG, logMsgPref + "start");
+//
+//        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
+//        String pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+//        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
+//
+//        String pathToTessFolder = pathToCATScalcFolder + "/tessdata";
+//        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
+//
+//        File cityCatDir = new File(pathToCATScalcFolder);
+//        File tessDir = new File(pathToTessFolder);
+//        if (!cityCatDir.exists()) {
+//            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
+//            cityCatDir.mkdir();
+//            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
+//        }
+//
+//        if (cityCatDir.exists()) { // если папка есть
+//            File tmp = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+//            if (!tessDir.exists()) {
+//                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
+//                tessDir.mkdir();
+//                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
+//            }
+//
+//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
+//            if (!tessEng.exists()) {
+//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
+//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
+//                new DownloadTask(Splash.this, file_url, pathToCATScalcFolder + "/tessdata/");
+//            }
+//
+//            if (!tmp.exists()) {    // если файла нет
+//                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
+//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
+//                try {
+//                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
+//                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
+//                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+//                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
+//                    fOutScreenshot.close(); // закрываем поток
+//                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 
 }

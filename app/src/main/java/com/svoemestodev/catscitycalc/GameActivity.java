@@ -224,18 +224,18 @@ public class GameActivity extends AppCompatActivity {
 //        Log.i(TAG, logMsgPref + "вызываем createProgramDir()");
 //        createProgramDir(); // создаем папку программы (если её нет)
 
-        Log.i(TAG, logMsgPref + "sharedPreferences...");
-        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
-        Log.i(TAG, logMsgPref + "languageToLoad: " + languageToLoad);
-
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+//        Log.i(TAG, logMsgPref + "sharedPreferences...");
+//        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+//        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+//        Log.i(TAG, logMsgPref + "languageToLoad: " + languageToLoad);
+//
+//        Locale locale = new Locale(languageToLoad);
+//        Locale.setDefault(locale);
+//        Configuration config = new Configuration();
+//        config.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         context = getBaseContext();
-        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+//        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
 
         setContentView(R.layout.activity_game);
 
@@ -1074,94 +1074,94 @@ public class GameActivity extends AppCompatActivity {
 //                    }
 //                }
 
-            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-            if (!tessEng.exists()) {
-                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
-
-            }
-
-            if (!tmp.exists()) {    // если файла нет
-                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-                try {
-                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
-                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
-                    fOutScreenshot.close(); // закрываем поток
-                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-                    fileScreenshot = tmp; // файл скриншота - созданный файл
-                    Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-                    Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
-                    mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                    Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
-                    loadDataToViews(false);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                fileScreenshot = tmp; // файл скриншота - картинка из папки программы
-                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-                Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
-                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
-                loadDataToViews(false);
-            }
+//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
+//            if (!tessEng.exists()) {
+//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
+//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
+//                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
+//
+//            }
+//
+//            if (!tmp.exists()) {    // если файла нет
+//                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
+//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
+//                try {
+//                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
+//                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
+//                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+//                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
+//                    fOutScreenshot.close(); // закрываем поток
+//                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
+//                    fileScreenshot = tmp; // файл скриншота - созданный файл
+//                    Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+//                    Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
+//                    mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+//                    Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
+//                    loadDataToViews(false);
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            } else {
+//                fileScreenshot = tmp; // файл скриншота - картинка из папки программы
+//                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+//                Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
+//                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+//                Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
+//                loadDataToViews(false);
+//            }
         }
     }
 
     public void createProgramDir() {
 
-        String logMsgPref = "createProgramDir: ";
-        Log.i(TAG, logMsgPref + "start");
-
-        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
-        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
-
-        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
-
-        File cityCatDir = new File(pathToCATScalcFolder);
-        File tessDir = new File(pathToTessFolder);
-        if (!cityCatDir.exists()) {
-            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
-            cityCatDir.mkdir();
-            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
-        }
-
-        if (cityCatDir.exists()) { // если папка есть
-            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-            if (!tessDir.exists()) {
-                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
-                tessDir.mkdir();
-                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
-            }
-
-            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-            if (!tessEng.exists()) {
-                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
-            }
-
-            if (!tmp.exists()) {    // если файла нет
-                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-                try {
-                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
-                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
-                    fOutScreenshot.close(); // закрываем поток
-                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        String logMsgPref = "createProgramDir: ";
+//        Log.i(TAG, logMsgPref + "start");
+//
+//        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
+//        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+//        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
+//
+//        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
+//        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
+//
+//        File cityCatDir = new File(pathToCATScalcFolder);
+//        File tessDir = new File(pathToTessFolder);
+//        if (!cityCatDir.exists()) {
+//            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
+//            cityCatDir.mkdir();
+//            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
+//        }
+//
+//        if (cityCatDir.exists()) { // если папка есть
+//            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+//            if (!tessDir.exists()) {
+//                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
+//                tessDir.mkdir();
+//                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
+//            }
+//
+//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
+//            if (!tessEng.exists()) {
+//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
+//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
+//                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
+//            }
+//
+//            if (!tmp.exists()) {    // если файла нет
+//                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
+//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
+//                try {
+//                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
+//                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
+//                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
+//                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
+//                    fOutScreenshot.close(); // закрываем поток
+//                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 
 
@@ -1317,16 +1317,16 @@ public class GameActivity extends AppCompatActivity {
 
         }
 
-        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
-        Log.i(TAG, logMsgPref + "languageToLoad = " + languageToLoad);
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        context = getBaseContext();
-        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
+//        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+//        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
+//        Log.i(TAG, logMsgPref + "languageToLoad = " + languageToLoad);
+//        Locale locale = new Locale(languageToLoad);
+//        Locale.setDefault(locale);
+//        Configuration config = new Configuration();
+//        config.locale = locale;
+//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+//        context = getBaseContext();
+//        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
 
     }
 
@@ -1360,11 +1360,11 @@ public class GameActivity extends AppCompatActivity {
                 Log.i(TAG, logMsgPref + "вызываем selectScreenshot()");
                 selectScreenshot();
                 return true;
-            case R.id.menu_open_language :  // "Язык"
-                Log.i(TAG, logMsgPref + "выбран пункт Язык");
-                Log.i(TAG, logMsgPref + "вызываем openLanguage()");
-                openLanguage();
-                return true;
+//            case R.id.menu_open_language :  // "Язык"
+//                Log.i(TAG, logMsgPref + "выбран пункт Язык");
+//                Log.i(TAG, logMsgPref + "вызываем openLanguage()");
+//                openLanguage();
+//                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

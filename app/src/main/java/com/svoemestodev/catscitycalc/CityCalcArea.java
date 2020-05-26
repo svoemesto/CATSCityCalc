@@ -53,7 +53,7 @@ public class CityCalcArea {
     }
 
     public void doOCR() {
-        doOCR(0,0,1, true, true, 6.0f, 4.0f);
+        doOCR(0,0,1, false, true, 6.0f, 4.0f);
     }
 
     public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doBW, boolean doScale, float scaleX, float scaleY) {
