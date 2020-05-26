@@ -178,7 +178,7 @@ public class SplashActivity extends AppCompatActivity {
                     Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
 
 
-                    InputStream inputStream = getAssets().open("stub_screenshot.webp");
+                    InputStream inputStream = getAssets().open("stub_screenshot.jpg");
                     OutputStream outputStream = new FileOutputStream(tmp);
                     byte[] buf = new byte[1024];
                     int len;
