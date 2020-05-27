@@ -1249,7 +1249,7 @@ public class GameActivity extends AppCompatActivity {
 
                     Log.i(TAG, logMsgPref + "ширина х высота = " + widthSource + " x " + heightSource);
 
-                    if (widthSource < heightSource) {
+                    if (widthSource <= heightSource) {
                         Log.i(TAG, logMsgPref + "ориентация картинки неправильная");
                         if (fileLastInFolder == null) {
                             Log.i(TAG, logMsgPref + "вернем последний скриншот если он есть");
@@ -1313,14 +1313,17 @@ public class GameActivity extends AppCompatActivity {
             readPreferences();
             fileScreenshotPrevious = null;
             sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
-            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-            Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
-            CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-            if (!tmpCityCalc.isWrong) {
-                mainCityCalc = tmpCityCalc;
-                Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
-                loadDataToViews(false);
+            if (fileScreenshot != null) {
+                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
+                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                if (!tmpCityCalc.isWrong) {
+                    mainCityCalc = tmpCityCalc;
+                    Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
+                    loadDataToViews(false);
+                }
             }
+
 
 
         }
@@ -1394,7 +1397,7 @@ public class GameActivity extends AppCompatActivity {
                     @Override
                     public void OnSelectedFile(String fileName) {
                         File newFile = new File(fileName);
-                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context);
+                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,true);
                         if (!tmpCityCalc.isWrong) {
                             fileScreenshot = newFile; // файл скриншота - возавращенный из диалога
                             if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");

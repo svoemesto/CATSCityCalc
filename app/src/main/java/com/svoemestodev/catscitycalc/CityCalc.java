@@ -103,26 +103,29 @@ public class CityCalc extends Activity {
             if (fileScreenshot.exists()) {    // если файл физически существует
                 bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
                 if (this.bmpScreenshot != null) {
+                    if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) {
+                        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
 
-                    SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                        // Box Info Area
+                        area = Area.BOX_INFO;
+                        x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_x1), Float.parseFloat(context.getString(R.string.def_cut_box_info_x1))));
+                        x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_x2), Float.parseFloat(context.getString(R.string.def_cut_box_info_x2))));
+                        y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_y1), Float.parseFloat(context.getString(R.string.def_cut_box_info_y1))));
+                        y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_y2), Float.parseFloat(context.getString(R.string.def_cut_box_info_y2))));
+                        colors = null;
+                        ths = null;
+                        needOcr = false;
+                        CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        mapAreas.put(area, ccaBoxInfo);
 
-                    // Box Info Area
-                    area = Area.BOX_INFO;
-                    x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_x1), Float.parseFloat(context.getString(R.string.def_cut_box_info_x1))));
-                    x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_x2), Float.parseFloat(context.getString(R.string.def_cut_box_info_x2))));
-                    y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_y1), Float.parseFloat(context.getString(R.string.def_cut_box_info_y1))));
-                    y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_box_info_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_box_info_y2), Float.parseFloat(context.getString(R.string.def_cut_box_info_y2))));
-                    colors = null;
-                    ths = null;
-                    needOcr = false;
-                    CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
-                    mapAreas.put(area, ccaBoxInfo);
+                        int color_box_info_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_info_main), 16)));
 
-                    int color_box_info_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_info_main), 16)));
+                        float fraquencyBoxInfo = PictureProcessor.frequencyPixelInBitmap(ccaBoxInfo.bmpSrc, color_box_info_main,40, 40);
 
-                    float fraquencyBoxInfo = PictureProcessor.frequencyPixelInBitmap(ccaBoxInfo.bmpSrc, color_box_info_main,40, 40);
-
-                    this.isWrong = (fraquencyBoxInfo < 0.50f);
+                        this.isWrong = (fraquencyBoxInfo < 0.50f);
+                    } else {
+                        this.isWrong = true;
+                    }
 
                 }
             }
