@@ -1396,6 +1396,7 @@ public class GameActivity extends AppCompatActivity {
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     public void OnSelectedFile(String fileName) {
+                        String logMsgPref = "OnSelectedFile: ";
                         File newFile = new File(fileName);
                         CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,true);
                         if (!tmpCityCalc.isWrong) {
@@ -1404,8 +1405,16 @@ public class GameActivity extends AppCompatActivity {
                             isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                             sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                             fileLastInFolder = null;    // сбрасываем последний файл в папке
-                            mainCityCalc = tmpCityCalc;
-                            loadDataToViews(true);
+
+                            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                            Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
+                            tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
+                            if (!tmpCityCalc.isWrong) {
+                                mainCityCalc = tmpCityCalc;
+                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                                loadDataToViews(true);
+                            }
+
                         }
                     }
                 });

@@ -182,8 +182,13 @@ public class Utils {
                 }
             }
         } else if (listWords.size() == 1) {
+            char lastChar = listWords.get(0).charAt(listWords.get(0).length()-1);
             if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
-            minutes = Integer.parseInt(listWords.get(0));
+            if (lastChar == 'M' || lastChar == 'М') {
+                minutes = Integer.parseInt(listWords.get(0));
+            } else {
+                hours = Integer.parseInt(listWords.get(0));
+            }
         }
 
         return String.format(Locale.getDefault(), "%01d:%02d", hours, minutes);
