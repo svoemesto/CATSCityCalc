@@ -31,7 +31,7 @@ public class PictureProcessor extends Activity {
      * @param direction         - направление при анализе
      * @return                  - массив из 2-х разрезанных изображений
      */
-    public static Bitmap[] splitBitmap(Bitmap sourceBitmap, int color, int thm, int thp, float maxSensitivity, float minSensitivity, PictureProcessorDirection direction) {
+    public static Bitmap[] splitBitmap(Bitmap sourceBitmap, int color, int thm, int thp, float maxSensitivity, float minSensitivity, PictureProcessorDirection direction, boolean colorIsBackground) {
         Bitmap[] arrBitmap = null;
         Bitmap firstBitmap, secondBitmap;
         if (sourceBitmap != null) {
@@ -83,17 +83,33 @@ public class PictureProcessor extends Activity {
                 }
                 float filling = (float)countTruePixelsInLine / secondDirectionEnd;
 
-                if (!findStartSplit) { // если начало кропа еще не найдено
-                    if (filling <= (1 - maxSensitivity)) { // если текущая линия подходит
-                        findStartSplit = true;
-                        startSplit = i;
+                if (colorIsBackground) {
+                    if (!findStartSplit) { // если начало кропа еще не найдено
+                        if (filling <= (1 - maxSensitivity)) { // если текущая линия подходит
+                            findStartSplit = true;
+                            startSplit = i;
+                        }
+                    } else if (!findEndSplit){ // если начало кропа уже найдено, а конец еще нет
+                        if (filling >= (1 - minSensitivity)) { // если текущая линия подходит
+                            findEndSplit = true;
+                            endSplit = i;
+                        }
                     }
-                } else if (!findEndSplit){ // если начало кропа уже найдено, а конец еще нет
-                    if (filling >= (1 - minSensitivity)) { // если текущая линия подходит
-                        findEndSplit = true;
-                        endSplit = i;
+                } else {
+                    if (!findStartSplit) { // если начало кропа еще не найдено
+                        if (filling > maxSensitivity) { // если текущая линия подходит
+                            findStartSplit = true;
+                            startSplit = i;
+                        }
+                    } else if (!findEndSplit){ // если начало кропа уже найдено, а конец еще нет
+                        if (filling <= minSensitivity) { // если текущая линия подходит
+                            findEndSplit = true;
+                            endSplit = i;
+                        }
                     }
                 }
+
+
                 if (findStartSplit && findEndSplit) break; // если найдены начало и конец - выходим из цикла
             }
 

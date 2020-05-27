@@ -262,7 +262,7 @@ public class CityCalc extends Activity {
                         thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_our_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_our_thm), Integer.parseInt(context.getString(R.string.def_rgb_points_our_thm))));
                         thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_our_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_our_thp), Integer.parseInt(context.getString(R.string.def_rgb_points_our_thp))));
 
-                        Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.bmpSrc, color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.bmpSrc, color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, true);
 
                         CityCalcArea ccaPointsOur = null;
                         CityCalcArea ccaIncreaseOur = null;
@@ -339,7 +339,7 @@ public class CityCalc extends Activity {
                         thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_enemy_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_enemy_thm), Integer.parseInt(context.getString(R.string.def_rgb_points_enemy_thm))));
                         thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_enemy_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_enemy_thp), Integer.parseInt(context.getString(R.string.def_rgb_points_enemy_thp))));
 
-                        Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.bmpSrc, color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT);
+                        Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.bmpSrc, color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT, true);
 
                         CityCalcArea ccaPointsEnemy = null;
                         CityCalcArea ccaIncreaseEnemy = null;
@@ -498,7 +498,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBLTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBLTslots.needOcr = true;
-                        Bitmap[] ccaBLTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBLTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLTslotsBitmapArray != null) {
                             if (ccaBLTslotsBitmapArray.length == 2) {
                                 ccaBLTslots.bmpSrc = ccaBLTslotsBitmapArray[1];
@@ -579,7 +579,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBLCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBLCslots.needOcr = true;
-                        Bitmap[] ccaBLCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBLCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLCslotsBitmapArray != null) {
                             if (ccaBLCslotsBitmapArray.length == 2) {
                                 ccaBLCslots.bmpSrc = ccaBLCslotsBitmapArray[1];
@@ -659,7 +659,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBLBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBLBslots.needOcr = true;
-                        Bitmap[] ccaBLBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBLBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLBslotsBitmapArray != null) {
                             if (ccaBLBslotsBitmapArray.length == 2) {
                                 ccaBLBslots.bmpSrc = ccaBLBslotsBitmapArray[1];
@@ -739,7 +739,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBRTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBRTslots.needOcr = true;
-                        Bitmap[] ccaBRTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBRTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRTslotsBitmapArray != null) {
                             if (ccaBRTslotsBitmapArray.length == 2) {
                                 ccaBRTslots.bmpSrc = ccaBRTslotsBitmapArray[1];
@@ -819,7 +819,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBRCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBRCslots.needOcr = true;
-                        Bitmap[] ccaBRCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBRCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRCslotsBitmapArray != null) {
                             if (ccaBRCslotsBitmapArray.length == 2) {
                                 ccaBRCslots.bmpSrc = ccaBRCslotsBitmapArray[1];
@@ -900,7 +900,7 @@ public class CityCalc extends Activity {
                         needOcr = false;
                         CityCalcArea ccaBRBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
                         ccaBRBslots.needOcr = true;
-                        Bitmap[] ccaBRBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT);
+                        Bitmap[] ccaBRBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRBslotsBitmapArray != null) {
                             if (ccaBRBslotsBitmapArray.length == 2) {
                                 ccaBRBslots.bmpSrc = ccaBRBslotsBitmapArray[1];

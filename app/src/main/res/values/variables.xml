@@ -78,7 +78,7 @@
     <string name="def_cut_blt_name_y2" translatable="false">-0.040</string>
 
     <!--  "Здание слева вверху - слоты"  -->
-    <string name="def_cut_blt_slots_x1" translatable="false">-0.310</string>
+    <string name="def_cut_blt_slots_x1" translatable="false">-0.330</string>
     <string name="def_cut_blt_slots_x2" translatable="false">-0.240</string>
     <string name="def_cut_blt_slots_y1" translatable="false">-0.130</string>
     <string name="def_cut_blt_slots_y2" translatable="false">-0.040</string>
@@ -110,7 +110,7 @@
     <string name="def_cut_blc_name_y2" translatable="false">+0.402</string>
 
     <!--  "Здание слева центр - слоты"  -->
-    <string name="def_cut_blc_slots_x1" translatable="false">-0.391</string>
+    <string name="def_cut_blc_slots_x1" translatable="false">-0.411</string>
     <string name="def_cut_blc_slots_x2" translatable="false">-0.321</string>
     <string name="def_cut_blc_slots_y1" translatable="false">+0.312</string>
     <string name="def_cut_blc_slots_y2" translatable="false">+0.402</string>
@@ -141,7 +141,7 @@
     <string name="def_cut_blb_name_y2" translatable="false">+0.666</string>
 
     <!--  "Здание слева низ - слоты"  -->
-    <string name="def_cut_blb_slots_x1" translatable="false">-0.031</string>
+    <string name="def_cut_blb_slots_x1" translatable="false">-0.051</string>
     <string name="def_cut_blb_slots_x2" translatable="false">+0.039</string>
     <string name="def_cut_blb_slots_y1" translatable="false">+0.576</string>
     <string name="def_cut_blb_slots_y2" translatable="false">+0.666</string>
@@ -172,7 +172,7 @@
     <string name="def_cut_brt_name_y2" translatable="false">-0.086</string>
 
     <!--  "Здание справа вверху - слоты"  -->
-    <string name="def_cut_brt_slots_x1" translatable="false">+0.649</string>
+    <string name="def_cut_brt_slots_x1" translatable="false">+0.629</string>
     <string name="def_cut_brt_slots_x2" translatable="false">+0.719</string>
     <string name="def_cut_brt_slots_y1" translatable="false">-0.176</string>
     <string name="def_cut_brt_slots_y2" translatable="false">-0.086</string>
@@ -203,7 +203,7 @@
     <string name="def_cut_brc_name_y2" translatable="false">+0.416</string>
 
     <!--  "Здание справа центр - слоты"  -->
-    <string name="def_cut_brc_slots_x1" translatable="false">+0.672</string>
+    <string name="def_cut_brc_slots_x1" translatable="false">+0.652</string>
     <string name="def_cut_brc_slots_x2" translatable="false">+0.742</string>
     <string name="def_cut_brc_slots_y1" translatable="false">+0.326</string>
     <string name="def_cut_brc_slots_y2" translatable="false">+0.416</string>
@@ -234,7 +234,7 @@
     <string name="def_cut_brb_name_y2" translatable="false">+0.696</string>
 
     <!--  "Здание справа низ - слоты"  -->
-    <string name="def_cut_brb_slots_x1" translatable="false">+0.372</string>
+    <string name="def_cut_brb_slots_x1" translatable="false">+0.352</string>
     <string name="def_cut_brb_slots_x2" translatable="false">+0.442</string>
     <string name="def_cut_brb_slots_y1" translatable="false">+0.606</string>
     <string name="def_cut_brb_slots_y2" translatable="false">+0.696</string>
