@@ -18,6 +18,7 @@ public class CityCalcArea {
     int [] colors;      // цвета
     int [] ths;         // пороги
     boolean needOcr;    // надо распознавать
+    boolean needBW;    // надо BW
     boolean isGeneric = false;  // расчетная картинка
     Bitmap bmpPrc;      // кропнутая картинка (обработанная для распознавания)
     String ocrText = "";     // распознанный текст
@@ -26,7 +27,7 @@ public class CityCalcArea {
     private static final String TAG = "CityCalcArea";
 
     // конструктор "обычных" картинок
-    public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr) {
+    public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
 
         this.cityCalc = cityCalc;
         this.area = area;
@@ -37,28 +38,30 @@ public class CityCalcArea {
         this.colors = colors;
         this.ths = ths;
         this.needOcr = needOcr;
+        this.needBW = needBW;
         doCut();
         doOCR();
 
     }
 
     // конструктор "дженериков"
-    public CityCalcArea(CityCalc cityCalc, Area area, int[] colors, int [] ths, boolean needOcr) {
+    public CityCalcArea(CityCalc cityCalc, Area area, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
         this.isGeneric = true;
         this.cityCalc = cityCalc;
         this.area = area;
         this.colors = colors;
         this.ths = ths;
         this.needOcr = needOcr;
+        this.needBW = needBW;
     }
 
     public void doOCR() {
-        doOCR(0,0,1, false, true, 6.0f, 4.0f);
+        doOCR(0,0,1, true, 6.0f, 4.0f);
     }
 
-    public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doBW, boolean doScale, float scaleX, float scaleY) {
+    public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doScale, float scaleX, float scaleY) {
         if (this.needOcr) {
-            this.bmpPrc = doBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]) : this.bmpSrc;
+            this.bmpPrc = this.needBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]) : this.bmpSrc;
             this.bmpPrc = doScale ? PictureProcessor.doScale(this.bmpPrc, scaleX, scaleY) : this.bmpPrc;
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.context);
 

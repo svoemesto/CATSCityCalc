@@ -1260,6 +1260,12 @@
             android:layout_height="wrap_content"
             android:text="@string/calculate_victory"
             android:onClick="calcTimedWin"/>
+        <Button
+            android:id="@+id/bt_sa_calc_timed_win_without_x2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calculate_victory_without_x2"
+            android:onClick="calcTimedWinWithoutx2"/>
 
         <Button
             android:id="@+id/bt_sa_calc_early_win"
@@ -1267,6 +1273,13 @@
             android:layout_height="wrap_content"
             android:text="@string/calculate_an_early_victory"
             android:onClick="calcEarlyWin"/>
+
+        <Button
+            android:id="@+id/bt_sa_calc_early_win_without_x2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calculate_an_early_victory_without_x2"
+            android:onClick="calcEarlyWinWithoutx2"/>
 
     </LinearLayout>
 

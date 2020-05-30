@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/C.A.T.S. City Calculator.iml" filepath="$PROJECT_DIR$/C.A.T.S. City Calculator.iml" group="C.A.T.S. City Calculator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/C.A.T.S._City_Calculator.iml" filepath="$PROJECT_DIR$/.idea/modules/C.A.T.S._City_Calculator.iml" group="C.A.T.S._City_Calculator" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="C.A.T.S. City Calculator/app" />
     </modules>
   </component>

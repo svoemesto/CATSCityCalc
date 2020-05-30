@@ -15,8 +15,8 @@ public class CCABuilding extends CityCalcArea{
     boolean isPresent;
 
 
-    public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths) {
-        super(cityCalc, area, x1, x2, y1, y2, colors, ths, false);
+    public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
+        super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
         this.isPresent = PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, 0xFFFFFFFF, 10, 10) > 0.2f;
         if (this.isPresent) {
             this.mayX2 = PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, this.colors[3],10, 10) > 0.01f || PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, this.colors[4],10, 10) > 0.01f;
@@ -24,13 +24,14 @@ public class CCABuilding extends CityCalcArea{
             this.buildingIsOur = PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, this.colors[0],10, 10) > 0.01f;
             this.buildingIsEnemy = PictureProcessor.frequencyPixelInBitmap(this.bmpSrc, this.colors[1],10, 10) > 0.01f;
             this.buildingIsEmpty = !this.buildingIsOur && !this.buildingIsEnemy;
-            this.needOcr = true;
+            this.needOcr = needOCR;
+            this.needBW = needBW;
             if (this.buildingIsOur) {
-                this.doOCR(0, 0, 1, true, true, 7.0f, 4.0f);
+                this.doOCR(0, 0, 1, true, 7.0f, 4.0f);
             } else if (this.buildingIsEnemy) {
-                this.doOCR(1, 2, 3, true, true, 7.0f, 4.0f);
+                this.doOCR(1, 2, 3, true, 7.0f, 4.0f);
             } else {
-                this.doOCR(2, 4, 5, true, true, 7.0f, 4.0f);
+                this.doOCR(2, 4, 5, true, 7.0f, 4.0f);
             }
             this.finText = this.ocrText.trim();
         }

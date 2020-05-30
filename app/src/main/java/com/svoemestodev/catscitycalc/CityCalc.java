@@ -53,6 +53,7 @@ public class CityCalc extends Activity {
         int [] colors;      // цвета
         int [] ths;         // пороги
         boolean needOcr;    // надо распознавать
+        boolean needBW;    // надо распознавать
         CityCalcArea cca;   // область
 
         if (this.bmpScreenshot != null) {
@@ -68,7 +69,8 @@ public class CityCalc extends Activity {
             colors = null;
             ths = null;
             needOcr = false;
-            CCAGame ccaGame = new CCAGame(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+            needBW = false;
+            CCAGame ccaGame = new CCAGame(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
             mapAreas.put(area, ccaGame);
 
         }
@@ -98,6 +100,7 @@ public class CityCalc extends Activity {
         int [] colors;      // цвета
         int [] ths;         // пороги
         boolean needOcr;    // надо распознавать
+        boolean needBW;    // надо распознавать
         CityCalcArea cca;   // область
         if (fileScreenshot != null) {         // если файл не нулл
             if (fileScreenshot.exists()) {    // если файл физически существует
@@ -115,7 +118,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBoxInfo);
 
                         int color_box_info_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_info_main), 16)));
@@ -160,6 +164,7 @@ public class CityCalc extends Activity {
         int [] colors;      // цвета
         int [] ths;         // пороги
         boolean needOcr;    // надо распознавать
+        boolean needBW;    // надо BW
         CityCalcArea cca;   // область
 
         int color_main, color_back1, color_back2, thm, thp;
@@ -190,7 +195,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBoxInfo = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBoxInfo);
 
 
@@ -203,7 +209,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CCAGame ccaGame = new CCAGame(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CCAGame ccaGame = new CCAGame(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaGame);
 
                         // Total Time Area
@@ -223,7 +230,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_main, color_back1, color_back2};
                         ths = new int[] {thm, thp};
                         needOcr = true;
-                        CityCalcArea ccaTotalTime = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaTotalTime = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaTotalTime);
 
                         // Early Win Area
@@ -242,7 +250,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_main, color_back1};
                         ths = new int[] {thm, thp};
                         needOcr = true;
-                        CityCalcArea ccaEarlyWin = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = true;
+                        CityCalcArea ccaEarlyWin = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaEarlyWin);
 
 
@@ -256,7 +265,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        cca = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        cca = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, cca);
 
 //                    color_back1 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_increase_our_back1),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_increase_our_back1), (int)Long.parseLong(context.getString(R.string.def_rgb_increase_our_back1), 16)));
@@ -285,7 +295,8 @@ public class CityCalc extends Activity {
                             ths = new int[] {thm, thp};
 
                             needOcr = true;
-                            ccaPointsOur = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr);
+                            needBW = false;
+                            ccaPointsOur = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr, needBW);
                             ccaPointsOur.bmpSrc = ourPointsAndIncreaseBitmapArray[1];
                             ccaPointsOur.doOCR();
                             mapAreas.put(area, ccaPointsOur);
@@ -302,7 +313,8 @@ public class CityCalc extends Activity {
                             ths = new int[] {thm, thp};
 
                             needOcr = true;
-                            ccaIncreaseOur = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr);
+                            needBW = false;
+                            ccaIncreaseOur = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr,needBW);
                             ccaIncreaseOur.bmpSrc = ourPointsAndIncreaseBitmapArray[0];
                             ccaIncreaseOur.doOCR();
                             mapAreas.put(area, ccaIncreaseOur);
@@ -319,7 +331,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CCATeam ccaOurTeam = new CCATeam(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CCATeam ccaOurTeam = new CCATeam(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaOurTeam);
 
 
@@ -333,7 +346,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        cca = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        cca = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, cca);
 
 //                    color_back1 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_increase_enemy_back1),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_increase_enemy_back1), (int)Long.parseLong(context.getString(R.string.def_rgb_increase_enemy_back1), 16)));
@@ -362,7 +376,8 @@ public class CityCalc extends Activity {
                             ths = new int[] {thm, thp};
 
                             needOcr = true;
-                            ccaPointsEnemy = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr);
+                            needBW = false;
+                            ccaPointsEnemy = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr, needBW);
                             ccaPointsEnemy.bmpSrc = enemyPointsAndIncreaseBitmapArray[1];
                             ccaPointsEnemy.doOCR();
                             mapAreas.put(area, ccaPointsEnemy);
@@ -379,7 +394,8 @@ public class CityCalc extends Activity {
                             ths = new int[] {thm, thp};
 
                             needOcr = true;
-                            ccaIncreaseEnemy = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr);
+                            needBW = false;
+                            ccaIncreaseEnemy = new CityCalcArea(thisCityCalc, area, colors, ths, needOcr, needBW);
                             ccaIncreaseEnemy.bmpSrc = enemyPointsAndIncreaseBitmapArray[0];
                             ccaIncreaseEnemy.doOCR();
                             mapAreas.put(area, ccaIncreaseEnemy);
@@ -397,7 +413,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CCATeam ccaEnemyTeam = new CCATeam(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CCATeam ccaEnemyTeam = new CCATeam(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaEnemyTeam);
 
 
@@ -443,7 +460,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBLT = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLT = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLT);
 
                         // BLT Name Area
@@ -456,7 +474,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBLTname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBLTname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLTname);
 
                         // BLT Progress Area
@@ -470,7 +490,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBLTprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLTprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLTprogress);
 
                         // BLT Points Area
@@ -484,7 +505,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBLTpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLTpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLTpoints);
 
                         // BLT Slots Area
@@ -499,7 +521,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBLTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBLTslots.needOcr = true;
                         Bitmap[] ccaBLTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLTslotsBitmapArray != null) {
@@ -524,7 +547,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBLC = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLC = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLC);
 
                         // BLC Name Area
@@ -537,7 +561,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBLCname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBLCname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLCname);
 
                         // BLC Progress Area
@@ -551,7 +577,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBLCprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLCprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLCprogress);
 
                         // BLC Points Area
@@ -565,7 +592,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBLCpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLCpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLCpoints);
 
                         // BLC Slots Area
@@ -580,7 +608,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBLCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBLCslots.needOcr = true;
                         Bitmap[] ccaBLCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLCslotsBitmapArray != null) {
@@ -604,7 +633,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBLB = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLB = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLB);
 
                         // BLB Name Area
@@ -617,7 +647,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBLBname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBLBname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLBname);
 
                         // BLB Progress Area
@@ -631,7 +663,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBLBprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLBprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLBprogress);
 
                         // BLB Points Area
@@ -645,7 +678,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBLBpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLBpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBLBpoints);
 
                         // BLB Slots Area
@@ -660,7 +694,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBLBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBLBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBLBslots.needOcr = true;
                         Bitmap[] ccaBLBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBLBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBLBslotsBitmapArray != null) {
@@ -684,7 +719,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBRT = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRT = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRT);
 
                         // BRT Name Area
@@ -697,7 +733,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBRTname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBRTname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRTname);
 
                         // BRT Progress Area
@@ -711,7 +749,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBRTprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRTprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRTprogress);
 
                         // BRT Points Area
@@ -725,7 +764,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBRTpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRTpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRTpoints);
 
                         // BRT Slots Area
@@ -740,7 +780,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBRTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRTslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBRTslots.needOcr = true;
                         Bitmap[] ccaBRTslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRTslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRTslotsBitmapArray != null) {
@@ -764,7 +805,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBRC = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRC = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRC);
 
                         // BRC Name Area
@@ -777,7 +819,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBRCname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBRCname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRCname);
 
                         // BRC Progress Area
@@ -791,7 +835,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBRCprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRCprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRCprogress);
 
                         // BRC Points Area
@@ -805,7 +850,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBRCpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRCpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRCpoints);
 
                         // BRC Slots Area
@@ -820,7 +866,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBRCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRCslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBRCslots.needOcr = true;
                         Bitmap[] ccaBRCslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRCslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRCslotsBitmapArray != null) {
@@ -845,7 +892,8 @@ public class CityCalc extends Activity {
                         colors = null;
                         ths = null;
                         needOcr = false;
-                        CityCalcArea ccaBRB = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRB = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRB);
 
                         // BRB Name Area
@@ -858,7 +906,9 @@ public class CityCalc extends Activity {
 
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
-                        CCABuilding ccaBRBname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths);
+                        needOcr = false;
+                        needBW = false;
+                        CCABuilding ccaBRBname = new CCABuilding(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRBname);
 
                         // BRB Progress Area
@@ -872,7 +922,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_progress_our, color_progress_enemy, color_progress_empty};
                         ths = new int[] {thm_progress_our, thp_progress_our, thm_progress_enemy, thp_progress_enemy, thm_progress_empty, thp_progress_empty};
                         needOcr = false;
-                        CityCalcArea ccaBRBprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRBprogress = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRBprogress);
 
                         // BRB Points Area
@@ -886,7 +937,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_points_our_main, color_building_points_our_back, color_building_points_enemy_main, color_building_points_enemy_back, color_building_doublepoints, color_building_mayX2, color_building_isX2};
                         ths = new int[] {thm_building_points_our, thp_building_points_our, thm_building_points_enemy, thp_building_points_enemy};
                         needOcr = false;
-                        CityCalcArea ccaBRBpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRBpoints = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         mapAreas.put(area, ccaBRBpoints);
 
                         // BRB Slots Area
@@ -901,7 +953,8 @@ public class CityCalc extends Activity {
                         colors = new int[] {color_building_slot_main, color_building_slot_back};
                         ths = new int[] {thm_building_slot, thp_building_slot};
                         needOcr = false;
-                        CityCalcArea ccaBRBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+                        needBW = false;
+                        CityCalcArea ccaBRBslots = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
                         ccaBRBslots.needOcr = true;
                         Bitmap[] ccaBRBslotsBitmapArray = PictureProcessor.splitBitmap(ccaBRBslots.bmpSrc, color_building_slot_main, thm_building_slot, thp_building_slot, 0.05f, 0.0f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
                         if (ccaBRBslotsBitmapArray != null) {

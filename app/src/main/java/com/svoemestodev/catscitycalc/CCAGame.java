@@ -32,8 +32,8 @@ public class CCAGame extends CityCalcArea {
 
     String ccagStatus;
 
-    public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr) {
-        super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr);
+    public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
+        super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
         if (cityCalc.fileScreenshot != null) {
             if (cityCalc.fileScreenshot.exists()) {
                 ccagDateScreenshot = new Date((cityCalc.fileScreenshot.lastModified() / 60_000) * 60_000); // дата/время создания скриншота с точностью до минуты

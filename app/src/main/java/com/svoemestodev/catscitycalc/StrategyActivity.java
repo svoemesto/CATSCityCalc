@@ -171,7 +171,8 @@ public class StrategyActivity extends AppCompatActivity {
     int pointsInScreenshotOurMain;
     int pointsInScreenshotEnemyMain;
     Date dateScreenshotMain;
-    
+
+
     boolean needUpdateSlots;
     
     // Рекламный блок
@@ -330,7 +331,8 @@ public class StrategyActivity extends AppCompatActivity {
         needUpdateSlots = true;
         
         setCarsInBuildings();
-        
+
+
     }
 
     private void setCarsInBuildings() {
@@ -1300,8 +1302,8 @@ public class StrategyActivity extends AppCompatActivity {
     public void calcTimedWin(View view) {
 
         Object[] matrixArray = getMaxtrixProgressArray();
-        MatrixProgress matrix = null;
         Arrays.sort(matrixArray);
+        MatrixProgress matrix = null;
         boolean isFound = false;
         int index=0;
         for (int i = 0; i < matrixArray.length; i++) {
@@ -1319,11 +1321,33 @@ public class StrategyActivity extends AppCompatActivity {
         }
     }
 
+    public void calcTimedWinWithoutx2(View view) {
+
+        Object[] matrixArray = getMaxtrixProgressArray();
+        Arrays.sort(matrixArray);
+        MatrixProgress matrix = null;
+        boolean isFound = false;
+        int index=0;
+        for (int i = 0; i < matrixArray.length; i++) {
+            matrix = (MatrixProgress) matrixArray[i];
+            if (matrix.willOurWin && !matrix.willEarlyWin && matrix.countOurX2 == 0) {
+                index = i;
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+        } else {
+            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+        }
+    }
+
     public void calcEarlyWin(View view) {
 
         Object[] matrixArray = getMaxtrixProgressArray();
-        MatrixProgress matrix = null;
         Arrays.sort(matrixArray);
+        MatrixProgress matrix = null;
         boolean isFound = false;
         int index=0;
         for (int i = 0; i < matrixArray.length; i++) {
@@ -1341,15 +1365,37 @@ public class StrategyActivity extends AppCompatActivity {
         }
     }
 
+    public void calcEarlyWinWithoutx2(View view) {
+
+        Object[] matrixArray = getMaxtrixProgressArray();
+        Arrays.sort(matrixArray);
+        MatrixProgress matrix = null;
+        boolean isFound = false;
+        int index=0;
+        for (int i = 0; i < matrixArray.length; i++) {
+            matrix = (MatrixProgress) matrixArray[i];
+            if (matrix.willOurWin && matrix.willEarlyWin && matrix.countOurX2 == 0) {
+                index = i;
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound) {
+            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+        } else {
+            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+        }
+    }
+
     private Object[] getMaxtrixProgressArray() {
         List<MatrixProgress> list = new ArrayList<>();
 
         for (int x1 = 0; x1 <= 1; x1++) {
-            for (int x2 = x1; x2 <= 1; x2++) {
-                for (int x3 = x2; x3 <= 1; x3++) {
-                    for (int x4 = x3; x4 <= 1; x4++) {
-                        for (int x5 = x4; x5 <= 1; x5++) {
-                            for (int x6 = x5; x6 <= 1; x6++) {
+            for (int x2 = 0; x2 <= 1; x2++) {
+                for (int x3 = 0; x3 <= 1; x3++) {
+                    for (int x4 = 0; x4 <= 1; x4++) {
+                        for (int x5 = 0; x5 <= 1; x5++) {
+                            for (int x6 = 0; x6 <= 1; x6++) {
                                 list.add(new MatrixProgress(x1*2,x2*2,x3*2,x4*2,x5*2,x6*2));
                             }
                         }
@@ -1375,17 +1421,20 @@ public class StrategyActivity extends AppCompatActivity {
         int differentPoints;
         boolean willEarlyWin;
         boolean willOurWin;
+        int countOurX2;
 
         public MatrixProgress() {
         }
 
         public MatrixProgress(int blt_progress, int blc_progress, int blb_progress, int brt_progress, int brc_progress, int brb_progress) {
+
             this.blt_progress = blt_progress;
             this.blc_progress = blc_progress;
             this.blb_progress = blb_progress;
             this.brt_progress = brt_progress;
             this.brc_progress = brc_progress;
             this.brb_progress = brb_progress;
+
 
             needUpdateSlots = false;
             sb_sa_blt.setProgress(blt_progress);
@@ -1401,9 +1450,18 @@ public class StrategyActivity extends AppCompatActivity {
             this.personsOur = sb_sa_person_our.getProgress();
             CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
             if (ccaGame != null) {
+                int countOurX2 = 0;
                 this.willEarlyWin = ccaGame.ccagWillEarlyWin;
                 this.willOurWin = ccaGame.ccagWillOurWin;
                 this.differentPoints = ccaGame.differentPoints;
+                CCABuilding ccab;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BLT); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BLC); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BLB); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRT); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRC); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                ccab = (CCABuilding) mainCityCalc.mapAreas.get(Area.BRB); if (ccab.isPresent && ccab.mayX2 && ccab.buildingIsOur) countOurX2++;
+                this.countOurX2 = countOurX2;
             }
 
         }

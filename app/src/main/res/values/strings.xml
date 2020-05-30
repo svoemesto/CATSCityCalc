@@ -277,7 +277,9 @@
     <string name="there_no_options">There are no options</string>
     <string name="strategic_planning">Strategic planning</string>
     <string name="calculate_victory">Calculate victory</string>
+    <string name="calculate_victory_without_x2">Calculate victory without x2</string>
     <string name="calculate_an_early_victory">Calculate an early victory</string>
+    <string name="calculate_an_early_victory_without_x2">Calculate an early victory without x2</string>
     <string name="versus">vs.</string>
     <string name="error_recognizing">Recognize error!</string>
     <string name="pref_languageInterfaceAreaName">Interface Language</string>
