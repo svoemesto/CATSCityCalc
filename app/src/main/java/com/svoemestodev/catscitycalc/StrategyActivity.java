@@ -7,6 +7,9 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -1317,7 +1320,13 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+            View viewToast = toast.getView();
+            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+            TextView textView = viewToast.findViewById(android.R.id.message);
+            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTextColor(Color.WHITE);
+            toast.show();
         }
     }
 
@@ -1339,7 +1348,13 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+            View viewToast = toast.getView();
+            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+            TextView textView = viewToast.findViewById(android.R.id.message);
+            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTextColor(Color.WHITE);
+            toast.show();
         }
     }
 
@@ -1361,7 +1376,13 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+            View viewToast = toast.getView();
+            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+            TextView textView = viewToast.findViewById(android.R.id.message);
+            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTextColor(Color.WHITE);
+            toast.show();
         }
     }
 
@@ -1383,7 +1404,13 @@ public class StrategyActivity extends AppCompatActivity {
         if (isFound) {
             new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
         } else {
-            Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG).show();
+            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+            View viewToast = toast.getView();
+            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+            TextView textView = viewToast.findViewById(android.R.id.message);
+            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTextColor(Color.WHITE);
+            toast.show();
         }
     }
 
