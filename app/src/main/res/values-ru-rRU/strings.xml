@@ -56,6 +56,16 @@
     <string name="offset_center_x">Смещение центра скриншота по вертикальной оси</string>
     <string name="offset_center_y">Смещение центра скриншота по горизонтальной оси</string>
     <string name="sett_borders">Настройка границ областей</string>
+    <string name="borders_car_box">Car Box</string>
+    <string name="borders_car_info">Car Info</string>
+    <string name="borders_car_slot1">Car Slot 1</string>
+    <string name="borders_car_slot2">Car Slot 2</string>
+    <string name="borders_car_slot3">Car Slot 3</string>
+    <string name="borders_car_health">Car Health</string>
+    <string name="borders_car_shield">Car Shield</string>
+    <string name="borders_car_state">Car State</string>
+    <string name="borders_car_healbox">Car Health Box</string>
+    <string name="borders_car_timebox">Car Time Box</string>
     <string name="borders_box_info">Box Info</string>
     <string name="borders_box_back">Box Back</string>
     <string name="borders_city">Город</string>
@@ -129,6 +139,16 @@
     <string name="sett_default">По-умолчанию</string>
 
     <string-array name="pref_borders_entries">
+        <item>Car Box</item>
+        <item>Car Info</item>
+        <item>Car Slot 1</item>
+        <item>Car Slot 2</item>
+        <item>Car Slot 3</item>
+        <item>Car Health</item>
+        <item>Car Shield</item>
+        <item>Car State</item>
+        <item>Car Health Box</item>
+        <item>Car Time Box</item>
         <item>Box Info</item>
         <item>Город</item>
         <item>Время</item>
@@ -170,6 +190,16 @@
     </string-array>
 
     <string-array name="pref_borders_values">
+        <item>Car Box</item>
+        <item>Car Info</item>
+        <item>Car Slot 1</item>
+        <item>Car Slot 2</item>
+        <item>Car Slot 3</item>
+        <item>Car Health</item>
+        <item>Car Shield</item>
+        <item>Car State</item>
+        <item>Car Health Box</item>
+        <item>Car Time Box</item>
         <item>Box Info</item>
         <item>Город</item>
         <item>Время</item>

@@ -14,12 +14,14 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.SparseArray;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //import com.google.android.gms.vision.Frame;
 //import com.google.android.gms.vision.text.TextBlock;
@@ -57,22 +59,72 @@ public class ColorsdetectActivity extends AppCompatActivity {
     public static ObservableString areaName = new ObservableString();
     public static final String PREF_COLORS_AREA = "pref_colors_area";
 
+    public static Map<String, myArea> mapAreas = new HashMap<>();
 
-    public void loadArea() {
-        
-        if (areaName.get().equals(getString(R.string.borders_time))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
+    public static CityCalc mainCityCalc;
+
+
+    private class myArea {
+        String key;
+        Area area;
+        String prefMainColor;
+        String prefBackColor;
+        String prefTHM;
+        String prefTHP;
+        String defMainColor;
+        String defBackColor;
+        String defTHM;
+        String defTHP;
+
+        public myArea(String key, Area area, String prefMainColor, String prefBackColor, String prefTHM, String prefTHP, String defMainColor, String defBackColor, String defTHM, String defTHP) {
+            this.key = key;
+            this.area = area;
+            this.prefMainColor = prefMainColor;
+            this.prefBackColor = prefBackColor;
+            this.prefTHM = prefTHM;
+            this.prefTHP = prefTHP;
+            this.defMainColor = defMainColor;
+            this.defBackColor = defBackColor;
+            this.defTHM = defTHM;
+            this.defTHP = defTHP;
         }
+    }
+
+    private void initMap() {
+        mapAreas = new HashMap<>();
+        String key;
+
+        key = getString(R.string.borders_time); mapAreas.put(key, new myArea(key, Area.TOTAL_TIME, 
+                getString(R.string.pref_rgb_total_time_main), getString(R.string.pref_rgb_total_time_back1), getString(R.string.pref_rgb_total_time_thm), getString(R.string.pref_rgb_total_time_thp),
+                getString(R.string.def_rgb_total_time_main), getString(R.string.def_rgb_total_time_back1), getString(R.string.def_rgb_total_time_thm), getString(R.string.def_rgb_total_time_thp)));
+
+        key = getString(R.string.borders_scores_to_early_win); mapAreas.put(key, new myArea(key, Area.EARLY_WIN,
+                getString(R.string.pref_rgb_early_win_main), getString(R.string.pref_rgb_early_win_back1), getString(R.string.pref_rgb_early_win_thm), getString(R.string.pref_rgb_early_win_thp),
+                getString(R.string.def_rgb_early_win_main), getString(R.string.def_rgb_early_win_back1), getString(R.string.def_rgb_early_win_thm), getString(R.string.def_rgb_early_win_thp)));
+
+        key = getString(R.string.borders_our_scores); mapAreas.put(key, new myArea(key, Area.POINTS_OUR,
+                getString(R.string.pref_rgb_points_our_main), getString(R.string.pref_rgb_points_our_back1), getString(R.string.pref_rgb_points_our_thm), getString(R.string.pref_rgb_points_our_thp),
+                getString(R.string.def_rgb_points_our_main), getString(R.string.def_rgb_points_our_back1), getString(R.string.def_rgb_points_our_thm), getString(R.string.def_rgb_points_our_thp)));
+
+        key = getString(R.string.colors_plus_us); mapAreas.put(key, new myArea(key, Area.INCREASE_OUR,
+                getString(R.string.pref_rgb_increase_our_main), getString(R.string.pref_rgb_increase_our_back1), getString(R.string.pref_rgb_increase_our_thm), getString(R.string.pref_rgb_increase_our_thp),
+                getString(R.string.def_rgb_increase_our_main), getString(R.string.def_rgb_increase_our_back1), getString(R.string.def_rgb_increase_our_thm), getString(R.string.def_rgb_increase_our_thp)));
+
+        key = getString(R.string.borders_enemy_scores); mapAreas.put(key, new myArea(key, Area.POINTS_ENEMY,
+                getString(R.string.pref_rgb_points_enemy_main), getString(R.string.pref_rgb_points_enemy_back1), getString(R.string.pref_rgb_points_enemy_thm), getString(R.string.pref_rgb_points_enemy_thp),
+                getString(R.string.def_rgb_points_enemy_main), getString(R.string.def_rgb_points_enemy_back1), getString(R.string.def_rgb_points_enemy_thm), getString(R.string.def_rgb_points_enemy_thp)));
+
+        key = getString(R.string.colors_plus_they); mapAreas.put(key, new myArea(key, Area.INCREASE_ENEMY,
+                getString(R.string.pref_rgb_increase_enemy_main), getString(R.string.pref_rgb_increase_enemy_back1), getString(R.string.pref_rgb_increase_enemy_thm), getString(R.string.pref_rgb_increase_enemy_thp),
+                getString(R.string.def_rgb_increase_enemy_main), getString(R.string.def_rgb_increase_enemy_back1), getString(R.string.def_rgb_increase_enemy_thm), getString(R.string.def_rgb_increase_enemy_thp)));
+
+
+    }
+    
+    
+    public void loadArea() {
+
+        cityCalcArea = mainCityCalc.mapAreas.get(mapAreas.get(areaName.get()).area);
 
         color_THM = cityCalcArea.ths[0];
         color_THP = cityCalcArea.ths[1];
@@ -88,29 +140,10 @@ public class ColorsdetectActivity extends AppCompatActivity {
         tvTHM.setText(String.valueOf(color_THM));
         tvTHP.setText(String.valueOf(color_THP));
 
-//        originalBitmap = cityCalcArea.bmpSrc;
-//        processedBitmap = cityCalcArea.bmpPrc;
-//        ivOriginal.setImageBitmap(originalBitmap);
-//        ivProcessed.setImageBitmap(processedBitmap);
-
         etRGB.setText(Integer.toHexString(color_RGB).toUpperCase());
-//        tvRecognize.setText(cityCalcArea.ocrText);
+
 
     }
-
-//    private String recognizePicture(Bitmap bitmap) {
-//
-//        String result = ""; // результат
-//        TextRecognizer textRecognizer = new TextRecognizer.Builder(getApplicationContext()).build(); // создаем текстрекогнайзер
-//        if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
-//            Frame frame = new Frame.Builder().setBitmap(bitmap).build();    // создаем фрейм на основе переданного битмапа
-//            SparseArray<TextBlock> items = textRecognizer.detect(frame);    // передаем фрейм в текстрекогнайзер, на выходе - массив текстовых блоков
-//            for (int i = 0; i < items.size(); ++i) {                        // проходимся по массиву текстовых блоков
-//                result = result + items.valueAt(i).getValue() + " ";        // добавляем к результату значение текста в очередном блоке, разделяем пробелами
-//            }
-//        }
-//        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,25 +174,17 @@ public class ColorsdetectActivity extends AppCompatActivity {
         tvRecognize = findViewById(R.id.tv_recognized);
         tvFinal = findViewById(R.id.tv_final);
 
-        fullBitmap = BitmapFactory.decodeFile(GameActivity.fileScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
+        mainCityCalc = new CityCalc(GameActivity.fileLast, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.context, CityCalcType.COLORS);
+
+        initMap();
+
+        fullBitmap = BitmapFactory.decodeFile(GameActivity.fileGameScreenshot.getAbsolutePath());   // получаем битмап из файла скриншота
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         areaName.set(sharedPreferences.getString(PREF_COLORS_AREA, String.valueOf(R.string.pref_colorsAreaName_default_value)));
 
-        if (areaName.get().equals(getString(R.string.borders_time))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
-        }
-        
+        cityCalcArea = mainCityCalc.mapAreas.get(mapAreas.get(areaName.get()).area);
+
         areaName.setOnStringChangeListener(new OnStringChangeListener()
         {
             @Override
@@ -197,26 +222,10 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
                     SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    
-                    if (areaName.get().equals(getString(R.string.borders_time))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.TOTAL_TIME);
-                        editor.putInt(getString(R.string.pref_rgb_total_time_main), color_RGB);
-                    } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.EARLY_WIN);
-                        editor.putInt(getString(R.string.pref_rgb_early_win_main), color_RGB);
-                    } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_OUR);
-                        editor.putInt(getString(R.string.pref_rgb_points_our_main), color_RGB);
-                    } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_OUR);
-                        editor.putInt(getString(R.string.pref_rgb_increase_our_main), color_RGB);
-                    } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.POINTS_ENEMY);
-                        editor.putInt(getString(R.string.pref_rgb_points_enemy_main), color_RGB);
-                    } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-                        cityCalcArea = GameActivity.mainCityCalc.mapAreas.get(Area.INCREASE_ENEMY);
-                        editor.putInt(getString(R.string.pref_rgb_increase_enemy_main), color_RGB);
-                    }
+
+                    cityCalcArea = mainCityCalc.mapAreas.get(mapAreas.get(areaName.get()).area);
+                    editor.putInt(mapAreas.get(areaName.get()).prefMainColor, color_RGB);
+
                     editor.apply();
                     cityCalcArea.colors[0] = color_RGB;
                     cityCalcArea.doOCR();
@@ -291,21 +300,9 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        
-        if (areaName.get().equals(getString(R.string.borders_time))) {
-            editor.putInt(getString(R.string.pref_rgb_total_time_thm), color_THM);
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            editor.putInt(getString(R.string.pref_rgb_early_win_thm), color_THM);
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            editor.putInt(getString(R.string.pref_rgb_points_our_thm), color_THM);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            editor.putInt(getString(R.string.pref_rgb_increase_our_thm), color_THM);
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            editor.putInt(getString(R.string.pref_rgb_points_enemy_thm), color_THM);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            editor.putInt(getString(R.string.pref_rgb_increase_enemy_thm), color_THM);
-        }
-        
+
+        editor.putInt(mapAreas.get(areaName.get()).prefTHM, color_THM);
+
         cityCalcArea.ths[0] = color_THM;
         editor.apply();
         
@@ -324,19 +321,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = ColorsdetectActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if (areaName.get().equals(getString(R.string.borders_time))) {
-            editor.putInt(getString(R.string.pref_rgb_total_time_thp), color_THP);
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            editor.putInt(getString(R.string.pref_rgb_early_win_thp), color_THP);
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            editor.putInt(getString(R.string.pref_rgb_points_our_thp), color_THP);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            editor.putInt(getString(R.string.pref_rgb_increase_our_thp), color_THP);
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            editor.putInt(getString(R.string.pref_rgb_points_enemy_thp), color_THP);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            editor.putInt(getString(R.string.pref_rgb_increase_enemy_thp), color_THP);
-        }
+        editor.putInt(mapAreas.get(areaName.get()).prefTHP, color_THP);
 
         cityCalcArea.ths[1] = color_THP;
         editor.apply();
@@ -379,32 +364,12 @@ public class ColorsdetectActivity extends AppCompatActivity {
 
     public void setDefaultColor(View view) {
 
+
         int value = 0;
-        if (areaName.get().equals(getString(R.string.borders_time))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_total_time_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_total_time_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_total_time_main),16);
-        } else if (areaName.get().equals(getString(R.string.borders_scores_to_early_win))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_early_win_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_early_win_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_early_win_main),16);
-        } else if (areaName.get().equals(getString(R.string.borders_our_scores))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_points_our_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_points_our_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_points_our_main),16);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_us))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_our_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_our_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_increase_our_main),16);
-        } else if (areaName.get().equals(getString(R.string.borders_enemy_scores))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_points_enemy_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_points_enemy_main),16);
-        } else if (areaName.get().equals(getString(R.string.colors_plus_they))) {
-            color_THM = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thm));
-            color_THP = Integer.parseInt(getString(R.string.def_rgb_increase_enemy_thp));
-            value = (int)Long.parseLong(getString(R.string.def_rgb_increase_enemy_main),16);
-        }
+
+        color_THM = Integer.parseInt(mapAreas.get(areaName.get()).defTHM);
+        color_THP = Integer.parseInt(mapAreas.get(areaName.get()).defTHP);
+        value = (int)Long.parseLong((mapAreas.get(areaName.get()).defMainColor),16);
 
         color_RGB = value;
         color_R = Color.red(value);

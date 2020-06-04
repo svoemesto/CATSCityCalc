@@ -220,7 +220,7 @@ public class StrategyActivity extends AppCompatActivity {
 
 
 
-        mainCityCalc = new CityCalc(GameActivity.fileScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context);
+        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context));
         CCAGame ccaGame = (CCAGame) mainCityCalc.mapAreas.get(Area.CITY);
         CCATeam ccaTeamOur = (CCATeam) mainCityCalc.mapAreas.get(Area.TEAM_NAME_OUR);
         CCATeam ccaTeamEnemy = (CCATeam) mainCityCalc.mapAreas.get(Area.TEAM_NAME_ENEMY);

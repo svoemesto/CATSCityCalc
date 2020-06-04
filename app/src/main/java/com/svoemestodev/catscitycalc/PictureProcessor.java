@@ -16,7 +16,12 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class PictureProcessor extends Activity {
     /**
@@ -326,5 +331,55 @@ public class PictureProcessor extends Activity {
 
     }
 
+    public static List<ColorFrequency> getFrequencyMap(Bitmap bitmap) {
+        int thm = 13, thp = 13;
+        return getFrequencyMap(bitmap, thm, thp);
+    }
+
+    public static List<ColorFrequency> getFrequencyMap(Bitmap bitmap, int thm, int thp) {
+        List<ColorFrequency> colorFrequencyList = new ArrayList<>();
+        if (bitmap != null) {
+            int width = bitmap.getWidth();      // ширина исходной картинки
+            int height = bitmap.getHeight();    // высота исходной картинки
+            int countPixels = width * height;
+
+            Map<Integer, Integer> mapPixels = new HashMap<>();
+
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int pixel = bitmap.getPixel(x , y);
+                    if (mapPixels.containsKey(pixel)) {
+                        mapPixels.put(pixel, mapPixels.get(pixel)+1);
+                    } else {
+                        mapPixels.put(pixel, 1);
+                    }
+                }
+            }
+
+            for (Map.Entry<Integer, Integer> pair1 : mapPixels.entrySet()) {
+                for (Map.Entry<Integer, Integer> pair2 : mapPixels.entrySet()) {
+                    if (!pair1.equals(pair2) && pair1.getValue() !=0 && pair2.getValue() !=0) {
+                        if (isPixelTrue(pair1.getKey(), pair2.getKey(), thm, thp)) {
+                            pair1.setValue(pair1.getValue() + pair2.getValue());
+                            pair2.setValue(0);
+                        }
+                    }
+                }
+            }
+
+            Map<Float, Integer> mapFrequency = new TreeMap<>();
+            for (Map.Entry<Integer, Integer> pair : mapPixels.entrySet()) {
+                if (pair.getValue() !=0) {
+                    mapFrequency.put(-(float)pair.getValue() / countPixels,  pair.getKey());
+                }
+            }
+
+            for (Map.Entry<Float, Integer> pair : mapFrequency.entrySet()) {
+                colorFrequencyList.add(new ColorFrequency(-pair.getKey(), pair.getValue()));
+            }
+
+        }
+        return  colorFrequencyList;
+    }
 
 }

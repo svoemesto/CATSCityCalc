@@ -1,6 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--  "car_box"  -->
+    <string name="def_cut_car_box_x1" translatable="false">+0.360</string>
+    <string name="def_cut_car_box_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_box_y1" translatable="false">-0.280</string>
+    <string name="def_cut_car_box_y2" translatable="false">-0.155</string>
+
+    <!--  "car_info"  -->
+    <string name="def_cut_car_info_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_info_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_info_y1" translatable="false">-0.720</string>
+    <string name="def_cut_car_info_y2" translatable="false">-0.155</string>
+
+    <!--  "car_slot1"  -->
+    <string name="def_cut_car_slot1_x1" translatable="false">+0.050</string>
+    <string name="def_cut_car_slot1_x2" translatable="false">+0.140</string>
+    <string name="def_cut_car_slot1_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_slot1_y2" translatable="false">-0.185</string>
+
+    <!--  "car_slot2"  -->
+    <string name="def_cut_car_slot2_x1" translatable="false">+0.155</string>
+    <string name="def_cut_car_slot2_x2" translatable="false">+0.250</string>
+    <string name="def_cut_car_slot2_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_slot2_y2" translatable="false">-0.185</string>
+
+    <!--  "car_slot3"  -->
+    <string name="def_cut_car_slot3_x1" translatable="false">+0.265</string>
+    <string name="def_cut_car_slot3_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_slot3_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_slot3_y2" translatable="false">-0.185</string>
+
+    <!--  "car_health"  -->
+    <string name="def_cut_car_health_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_health_x2" translatable="false">+0.224</string>
+    <string name="def_cut_car_health_y1" translatable="false">-0.375</string>
+    <string name="def_cut_car_health_y2" translatable="false">-0.305</string>
+
+    <!--  "car_shield"  -->
+    <string name="def_cut_car_shield_x1" translatable="false">+0.224</string>
+    <string name="def_cut_car_shield_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_shield_y1" translatable="false">-0.375</string>
+    <string name="def_cut_car_shield_y2" translatable="false">-0.305</string>
+
+    <!--  "car_state"  -->
+    <string name="def_cut_car_state_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_state_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_state_y1" translatable="false">-0.640</string>
+    <string name="def_cut_car_state_y2" translatable="false">-0.560</string>
+
+    <!--  "car_healbox"  -->
+    <string name="def_cut_car_healbox_x1" translatable="false">+0.280</string>
+    <string name="def_cut_car_healbox_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_healbox_y1" translatable="false">-0.640</string>
+    <string name="def_cut_car_healbox_y2" translatable="false">-0.560</string>
+
+    <!--  "car_timebox"  -->
+    <string name="def_cut_car_timebox_x1" translatable="false">+0.120</string>
+    <string name="def_cut_car_timebox_x2" translatable="false">+0.270</string>
+    <string name="def_cut_car_timebox_y1" translatable="false">-0.625</string>
+    <string name="def_cut_car_timebox_y2" translatable="false">-0.570</string>
+
     <!--  "box_info"  -->
     <string name="def_cut_box_info_x1" translatable="false">-0.640</string>
     <string name="def_cut_box_info_x2" translatable="false">-0.585</string>
@@ -245,12 +305,16 @@
     <string name="def_cut_brb_progress_y1" translatable="false">+0.700</string>
     <string name="def_cut_brb_progress_y2" translatable="false">+0.752</string>
 
-    <string name="def_rgb_box_info_main" translatable="false">FFd22425</string>
-    <string name="def_rgb_box_info_thm" translatable="false">40</string>
-    <string name="def_rgb_box_info_thp" translatable="false">40</string>
-    <string name="def_rgb_box_back_main" translatable="false">FFd22425</string>
-    <string name="def_rgb_box_back_thm" translatable="false">40</string>
-    <string name="def_rgb_box_back_thp" translatable="false">40</string>
+
+
+
+    <string name="def_rgb_box_info_main" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box_info_thm" translatable="false">13</string>
+    <string name="def_rgb_box_info_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_box_main" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_box_thm" translatable="false">13</string>
+    <string name="def_rgb_car_box_thp" translatable="false">13</string>
 
     <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>

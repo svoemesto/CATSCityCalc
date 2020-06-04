@@ -11,10 +11,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorFrequency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CropPosition.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_freq_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Area.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/SplashActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/StrategyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_borders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_borders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +103,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Enum" />
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -95,7 +115,6 @@
     <option name="KEY_STORE_PATH" value="D:\Dropbox\keystores\android.jks" />
     <option name="KEY_ALIAS" value="SmAndroidKey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,6 +138,7 @@
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
     <property name="project.structure.last.edited" value="Dependencies" />
@@ -344,38 +364,58 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state width="2706" height="346" key="GridCell.Tab.0.bottom" timestamp="1590843364195">
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591270483658">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364195" />
-    <state width="2706" height="346" key="GridCell.Tab.0.center" timestamp="1590843364195">
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591270483658" />
+    <state width="3397" height="377" key="GridCell.Tab.0.bottom" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364195" />
-    <state width="2706" height="346" key="GridCell.Tab.0.left" timestamp="1590843364194">
+    <state width="3397" height="377" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.0.center" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364194" />
-    <state width="2706" height="346" key="GridCell.Tab.0.right" timestamp="1590843364195">
+    <state width="3397" height="377" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.0.left" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364195" />
-    <state width="2706" height="346" key="GridCell.Tab.1.bottom" timestamp="1590843364197">
+    <state width="3397" height="377" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.0.right" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364197" />
-    <state width="2706" height="346" key="GridCell.Tab.1.center" timestamp="1590843364196">
+    <state width="3397" height="377" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.1.bottom" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364196" />
-    <state width="2706" height="346" key="GridCell.Tab.1.left" timestamp="1590843364196">
+    <state width="3397" height="377" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.1.center" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364196" />
-    <state width="2706" height="346" key="GridCell.Tab.1.right" timestamp="1590843364196">
+    <state width="3397" height="377" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.1.left" timestamp="1591284383695">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2706" height="346" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1590843364196" />
+    <state width="3397" height="377" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.1.right" timestamp="1591284383695">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="377" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="1393" height="685" key="XDebugger.FullValuePopup" timestamp="1591284143965">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1393" height="685" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591284143965" />
+    <state x="1163" y="513" key="com.intellij.ide.util.TipDialog" timestamp="1590935280599">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1163" y="513" key="com.intellij.ide.util.TipDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1590935280599" />
+    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591260368851">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400@0.0.3440.1400" timestamp="1591260368851" />
+    <state x="1130" y="453" width="540" height="496" key="extract.method.dialog" timestamp="1591275588514">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1130" y="453" width="540" height="496" key="extract.method.dialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591275588514" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -384,6 +424,26 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/mrt/catscitycalc/MainActivity.java</url>
           <line>879</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java</url>
+          <line>334</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java</url>
+          <line>373</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java</url>
+          <line>1257</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java</url>
+          <line>1214</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

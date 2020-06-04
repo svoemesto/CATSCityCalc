@@ -89,7 +89,7 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_x), GameActivity.calibrateX);
                 editor.apply();
-                CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLast, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.context, CityCalcType.CALIBRATE);
                 if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
                     ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
                 }
@@ -116,7 +116,7 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_y), GameActivity.calibrateY);
                 editor.apply();
-                CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLast, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.mainCityCalc.context, CityCalcType.CALIBRATE);
                 if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
                     ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.mapAreas.get(Area.CITY)).bmpSrc);
                 }
@@ -124,7 +124,7 @@ public class CalibrateActivity extends AppCompatActivity {
             }
         });
 
-        CityCalc calibrateCityCalc = new CityCalc(GameActivity.mainCityCalc, GameActivity.calibrateX, GameActivity.calibrateY);
+        CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLast, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.mainCityCalc.context, CityCalcType.CALIBRATE);
         if (calibrateCityCalc.mapAreas.get(Area.CITY) != null) {
             ivCalibrate.setImageBitmap(calibrateCityCalc.mapAreas.get(Area.CITY).bmpSrc);
         }

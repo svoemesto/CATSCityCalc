@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +42,35 @@ public class Utils {
 
     }
 
+    public static String convertFloatToStringFormatter2digit(float number) {
+        String pattern = "###,##0.00";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertFloatToStringFormatter3digit(float number) {
+        String pattern = "###,##0.000";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertFloatToStringFormatter4digit(float number) {
+        String pattern = "###,##0.0000";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertFloatToStringFormatter5digit(float number) {
+        String pattern = "###,##0.00000";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertIntToStringFormatter(int number) {
+        String pattern = "###,##0";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
 
     /**
      * Вычисляет количество минут между двумя датами.

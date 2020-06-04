@@ -5,19 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,13 +31,9 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -176,9 +165,12 @@ public class GameActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
     public static String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
     public static String pathToTessFolder = "";   // путь к папке программы в корне флешки
-    public static File fileScreenshot = null;    // текущий файл скриншота
-    public static File fileScreenshotPrevious;    // предыдущий файл скриншота
+    public static File fileGameScreenshot = null;    // текущий файл скриншота
+    public static File fileGameScreenshotPrevious;    // предыдущий файл скриншота
     public static File fileLastInFolder;    // последний файл в папке
+    public static File fileCarScreenshot = null;    // текущий файл скриншота
+    public static File fileCarScreenshotPrevious;    // предыдущий файл скриншота
+    public static File fileLast;    // последний файл в папке
     private NotificationManager notificationManager;    // нотификатор
     private static final int NOTIFY_ID = 1;             // айди нотификатора
     private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
@@ -189,7 +181,7 @@ public class GameActivity extends AppCompatActivity {
     public static int calibrateY;                              // калибровка
     private Timer timer;                        // таймер
     public static boolean isDebugMode;
-    public Context context;
+    public static Context context;
     public static CityCalc mainCityCalc;
 
     private static final String TAG = "GameActivity";
@@ -218,24 +210,7 @@ public class GameActivity extends AppCompatActivity {
         pathToTessFolder = pathToCATScalcFolder + "/tessdata";
         Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
 
-//        Log.i(TAG, logMsgPref + "вызываем requestPermissions");
-//        requestPermissions(); // запрос разрешений на чтение/запись
-//
-//        Log.i(TAG, logMsgPref + "вызываем createProgramDir()");
-//        createProgramDir(); // создаем папку программы (если её нет)
-
-//        Log.i(TAG, logMsgPref + "sharedPreferences...");
-//        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-//        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
-//        Log.i(TAG, logMsgPref + "languageToLoad: " + languageToLoad);
-//
-//        Locale locale = new Locale(languageToLoad);
-//        Locale.setDefault(locale);
-//        Configuration config = new Configuration();
-//        config.locale = locale;
-//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
         context = getBaseContext();
-//        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
 
         setContentView(R.layout.activity_game);
 
@@ -984,185 +959,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void requestPermissions() {
-
-        String logMsgPref = "requestPermissions: ";
-        Log.i(TAG, logMsgPref + "start");
-
-        List<String> permissionsNeeded = new ArrayList<String>();
-
-        final List<String> permissionsList = new ArrayList<String>();
-        if (!addPermission(permissionsList, Manifest.permission.READ_EXTERNAL_STORAGE)) permissionsNeeded.add(getString(R.string.read_external_storage));
-        if (!addPermission(permissionsList, Manifest.permission.WRITE_EXTERNAL_STORAGE)) permissionsNeeded.add(getString(R.string.write_external_storage));
-
-        if (permissionsList.size() > 0) {
-            if (permissionsNeeded.size() > 0) {
-                // Need Rationale
-                String message = getString(R.string.you_need_to_grant_access_to) + " " + permissionsNeeded.get(0);
-                for (int i = 1; i < permissionsNeeded.size(); i++)
-                    message = message + ", " + permissionsNeeded.get(i);
-                showMessageOKCancel(message, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS);}
-                        });
-            }
-        }
-    }
-
-    private boolean addPermission(List<String> permissionsList, String permission) {
-        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            permissionsList.add(permission);
-            // Check for Rationale Option
-            if (!shouldShowRequestPermissionRationale(permission))
-                return false;
-        }
-        return true;
-    }
-
-    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(GameActivity.this)
-                .setMessage(message)
-                .setPositiveButton(R.string.ok, okListener)
-                .setNegativeButton(R.string.cancel, null)
-                .create()
-                .show();
-    }
-
-    public void initializeScreenshot() {
-
-        String logMsgPref = "initializeScreenshot: ";
-        Log.i(TAG, logMsgPref + "start");
-
-        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
-        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
-
-        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
-
-        File cityCatDir = new File(pathToCATScalcFolder);
-        File tessDir = new File(pathToTessFolder);
-        if (!cityCatDir.exists()) {
-            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
-            cityCatDir.mkdir();
-            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
-        }
-
-        if (cityCatDir.exists()) { // если папка есть
-            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-            if (!tessDir.exists()) {
-                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
-                tessDir.mkdir();
-                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
-            }
-
-//            if (tessDir.exists()) {
-//                File tessRus = new File(pathToTessFolder + "/rus.traineddata");
-//                if (!tessRus.exists()) {
-//                    try {
-//                        InputStream inputStream = getAssets().open("tessdata/rus.traineddata");
-//                        OutputStream outputStream = new FileOutputStream(tessRus);
-//                        byte[] buf = new byte[1024];
-//                        int len;
-//                        while ((len = inputStream.read(buf)) > 0) {
-//                            outputStream.write(buf, 0, len);
-//                        }
-//                        inputStream.close();
-//                        outputStream.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-
-//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-//            if (!tessEng.exists()) {
-//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-//                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
-//
-//            }
-//
-//            if (!tmp.exists()) {    // если файла нет
-//                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-//                try {
-//                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-//                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
-//                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-//                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
-//                    fOutScreenshot.close(); // закрываем поток
-//                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-//                    fileScreenshot = tmp; // файл скриншота - созданный файл
-//                    Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-//                    Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
-//                    mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-//                    Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
-//                    loadDataToViews(false);
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            } else {
-//                fileScreenshot = tmp; // файл скриншота - картинка из папки программы
-//                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-//                Log.i(TAG, logMsgPref + "Вызываем создание mainCityCalc");
-//                mainCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-//                Log.i(TAG, logMsgPref + "Вызываем loadDataToViews");
-//                loadDataToViews(false);
-//            }
-        }
-    }
-
-    public void createProgramDir() {
-
-//        String logMsgPref = "createProgramDir: ";
-//        Log.i(TAG, logMsgPref + "start");
-//
-//        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-//        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
-//        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
-//
-//        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-//        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
-//
-//        File cityCatDir = new File(pathToCATScalcFolder);
-//        File tessDir = new File(pathToTessFolder);
-//        if (!cityCatDir.exists()) {
-//            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
-//            cityCatDir.mkdir();
-//            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
-//        }
-//
-//        if (cityCatDir.exists()) { // если папка есть
-//            File tmp = new File(GameActivity.pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-//            if (!tessDir.exists()) {
-//                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
-//                tessDir.mkdir();
-//                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
-//            }
-//
-//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-//            if (!tessEng.exists()) {
-//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-//                new DownloadTask(GameActivity.this, file_url, GameActivity.pathToCATScalcFolder + "/tessdata/");
-//            }
-//
-//            if (!tmp.exists()) {    // если файла нет
-//                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-//                try {
-//                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-//                    OutputStream fOutScreenshot = new FileOutputStream(tmp);                       // открываем поток вывода
-//                    sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fOutScreenshot); // сжимаем картинку в ПНГ с качеством 100%
-//                    fOutScreenshot.flush();                                                       // сохраняем данные из потока
-//                    fOutScreenshot.close(); // закрываем поток
-//                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-    }
 
 
     public void readPreferences() {
@@ -1239,36 +1035,22 @@ public class GameActivity extends AppCompatActivity {
 
             if (temp != null) { // если найден самый свежий файл
                 Log.i(TAG, logMsgPref + "Самый свежий файл: " + temp.getAbsolutePath() + ", дата: " + maxLastModified);
+                fileLast = temp;
                 if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
-                    Log.i(TAG, logMsgPref + "найденный файл не совпадает с раенее найденным последним файлом");
-                    Log.i(TAG, logMsgPref + "получаем битмап из файла скриншота");
-                    Bitmap sourceBitmap = BitmapFactory.decodeFile(temp.getAbsolutePath());   // получаем битмап из файла скриншота
+                    Log.i(TAG, logMsgPref + "найденный файл не совпадает с ранее найденным последним файлом");
 
-                    int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
-                    int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
-
-                    Log.i(TAG, logMsgPref + "ширина х высота = " + widthSource + " x " + heightSource);
-
-                    if (widthSource <= heightSource) {
-                        Log.i(TAG, logMsgPref + "ориентация картинки неправильная");
+                    CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context);
+                    Log.i(TAG, logMsgPref + "CityCalcType = " + tmpCityCalc.cityCalcType);
+                    if (!tmpCityCalc.cityCalcType.equals(CityCalcType.ERROR)) {
+                        fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                    } else {
                         if (fileLastInFolder == null) {
                             Log.i(TAG, logMsgPref + "вернем последний скриншот если он есть");
                             temp = lastScreenshot;
                             if (!temp.exists()) temp = null;
                         } else {
-                            temp = null;    // если ориентация картинки неправильная - найденный файл не подходит и будет равен нулл
-                        }
-                    } else {
-                        Log.i(TAG, logMsgPref + "ориентация картинки правильная");
-                        CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context, true);
-                        if (tmpCityCalc.isWrong) {
-                            Log.i(TAG, logMsgPref + "File isWrong");
                             temp = null;
-                        } else {
-                            Log.i(TAG, logMsgPref + "File not isWrong");
-                            fileLastInFolder = temp;    // последний найденный файл - текущий найденный
                         }
-
                     }
 
                 }
@@ -1311,14 +1093,14 @@ public class GameActivity extends AppCompatActivity {
             Log.i(TAG, logMsgPref + "был возврат из предыдущей активности");
             Log.i(TAG, logMsgPref + "вызов readPreferences()");
             readPreferences();
-            fileScreenshotPrevious = null;
+            fileGameScreenshotPrevious = null;
             sw_ga_listen_new_file.setChecked(isListenToNewFileInFolder);
-            if (fileScreenshot != null) {
-                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+            if (fileGameScreenshot != null) {
+                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
                 Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
-                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                if (!tmpCityCalc.isWrong) {
-                    mainCityCalc = tmpCityCalc;
+                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
+                if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
+                    mainCityCalc = new CityCalc(tmpCityCalc);
                     Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
                     loadDataToViews(false);
                 }
@@ -1327,17 +1109,6 @@ public class GameActivity extends AppCompatActivity {
 
 
         }
-
-//        SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-//        String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
-//        Log.i(TAG, logMsgPref + "languageToLoad = " + languageToLoad);
-//        Locale locale = new Locale(languageToLoad);
-//        Locale.setDefault(locale);
-//        Configuration config = new Configuration();
-//        config.locale = locale;
-//        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-//        context = getBaseContext();
-//        this.context.getResources().updateConfiguration(config, this.context.getResources().getDisplayMetrics());
 
     }
 
@@ -1398,23 +1169,22 @@ public class GameActivity extends AppCompatActivity {
                     public void OnSelectedFile(String fileName) {
                         String logMsgPref = "OnSelectedFile: ";
                         File newFile = new File(fileName);
-                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,true);
-                        if (!tmpCityCalc.isWrong) {
-                            fileScreenshot = newFile; // файл скриншота - возавращенный из диалога
-                            if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                        fileLast = newFile;
+                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context);
+                        if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
+                            fileGameScreenshot = newFile; // файл скриншота - возавращенный из диалога
+                            if (!fileGameScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
                             isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                             sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                             fileLastInFolder = null;    // сбрасываем последний файл в папке
 
-                            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
                             Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                            tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                            if (!tmpCityCalc.isWrong) {
-                                mainCityCalc = tmpCityCalc;
-                                Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
-                                loadDataToViews(true);
-                            }
-
+                            mainCityCalc = new CityCalc(tmpCityCalc);
+                            Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                            loadDataToViews(true);
+                        } else if (tmpCityCalc.cityCalcType.equals(CityCalcType.CAR)) {
+                            fileCarScreenshot = newFile;
                         }
                     }
                 });
@@ -1469,21 +1239,26 @@ public class GameActivity extends AppCompatActivity {
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
                         if (tmpFile != null) {  // если он не пустой
 //                            Log.i(TAG, logMsgPref + "Последний файл не пустой");
-                            if (!tmpFile.equals(fileScreenshot)  || isResumed) {  // если он не равен текущем скриншоту
-                                Log.i(TAG, logMsgPref + "Последний файл не равен текущем скриншоту");
-                                fileScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
-                                if (!fileScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
-                                    Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
-                                    Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
-                                    Utils.copyFile(fileScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
-                                }
+                            if ((!tmpFile.equals(fileGameScreenshot)  && !tmpFile.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
+                                Log.i(TAG, logMsgPref + "Последний файл не равен текущем скриншотам");
+                                Log.i(TAG, logMsgPref + "tmpFile = " + tmpFile.getAbsolutePath());
+
                                 Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                if (!tmpCityCalc.isWrong) {
-                                    mainCityCalc = tmpCityCalc;
+                                CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context);
+                                if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
+                                    fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+
+                                    if (!fileGameScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
+                                        Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
+                                        Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
+                                        Utils.copyFile(fileGameScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                                    }
+
+                                    mainCityCalc = new CityCalc(tmpCityCalc);
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
+                                } else if (tmpCityCalc.cityCalcType.equals(CityCalcType.CAR)) {
+                                    fileCarScreenshot = tmpFile;
                                 }
                                 if (isResumed) isResumed = false;
                             }
@@ -1491,15 +1266,16 @@ public class GameActivity extends AppCompatActivity {
 
                     } else {
 //                        Log.i(TAG, logMsgPref + "Не следить за файлами в папке");
-                        if (fileScreenshot == null) {
+                        if (fileGameScreenshot == null) {
                             File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+                            fileLast = lastScreenshot;
                             if (lastScreenshot.exists()) {
-                                fileScreenshot = lastScreenshot;
-                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileScreenshot.getAbsolutePath());
+                                fileGameScreenshot = lastScreenshot;
+                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
                                 Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                                CityCalc tmpCityCalc = new CityCalc(fileScreenshot, calibrateX, calibrateY, context);
-                                if (!tmpCityCalc.isWrong) {
-                                    mainCityCalc = tmpCityCalc;
+                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
+                                if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
+                                    mainCityCalc = new CityCalc(tmpCityCalc);
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
                                 }

@@ -336,4 +336,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" />
 
+    <Button
+        android:id="@+id/bt_freq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Frequency"
+        android:onClick="getFrequency"/>
+
+    <ListView
+        android:id="@+id/lv_freq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

@@ -9,6 +9,58 @@
     <string name="pref_calibrate_x" translatable="false">PREF_CALIBRATE_X</string>
     <string name="pref_calibrate_y" translatable="false">PREF_CALIBRATE_Y</string>
 
+    <string name="pref_cut_car_box_x1" translatable="false">PREF_CUT_CAR_BOX_X1</string>
+    <string name="pref_cut_car_box_x2" translatable="false">PREF_CUT_CAR_BOX_X2</string>
+    <string name="pref_cut_car_box_y1" translatable="false">PREF_CUT_CAR_BOX_Y1</string>
+    <string name="pref_cut_car_box_y2" translatable="false">PREF_CUT_CAR_BOX_Y2</string>
+
+    <string name="pref_cut_car_info_x1" translatable="false">PREF_CUT_CAR_INFO_X1</string>
+    <string name="pref_cut_car_info_x2" translatable="false">PREF_CUT_CAR_INFO_X2</string>
+    <string name="pref_cut_car_info_y1" translatable="false">PREF_CUT_CAR_INFO_Y1</string>
+    <string name="pref_cut_car_info_y2" translatable="false">PREF_CUT_CAR_INFO_Y2</string>
+
+    <string name="pref_cut_car_slot1_x1" translatable="false">PREF_CUT_CAR_SLOT1_X1</string>
+    <string name="pref_cut_car_slot1_x2" translatable="false">PREF_CUT_CAR_SLOT1_X2</string>
+    <string name="pref_cut_car_slot1_y1" translatable="false">PREF_CUT_CAR_SLOT1_Y1</string>
+    <string name="pref_cut_car_slot1_y2" translatable="false">PREF_CUT_CAR_SLOT1_Y2</string>
+
+    <string name="pref_cut_car_slot2_x1" translatable="false">PREF_CUT_CAR_SLOT2_X1</string>
+    <string name="pref_cut_car_slot2_x2" translatable="false">PREF_CUT_CAR_SLOT2_X2</string>
+    <string name="pref_cut_car_slot2_y1" translatable="false">PREF_CUT_CAR_SLOT2_Y1</string>
+    <string name="pref_cut_car_slot2_y2" translatable="false">PREF_CUT_CAR_SLOT2_Y2</string>
+
+    <string name="pref_cut_car_slot3_x1" translatable="false">PREF_CUT_CAR_SLOT3_X1</string>
+    <string name="pref_cut_car_slot3_x2" translatable="false">PREF_CUT_CAR_SLOT3_X2</string>
+    <string name="pref_cut_car_slot3_y1" translatable="false">PREF_CUT_CAR_SLOT3_Y1</string>
+    <string name="pref_cut_car_slot3_y2" translatable="false">PREF_CUT_CAR_SLOT3_Y2</string>
+
+    <string name="pref_cut_car_health_x1" translatable="false">PREF_CUT_CAR_HEALTH_X1</string>
+    <string name="pref_cut_car_health_x2" translatable="false">PREF_CUT_CAR_HEALTH_X2</string>
+    <string name="pref_cut_car_health_y1" translatable="false">PREF_CUT_CAR_HEALTH_Y1</string>
+    <string name="pref_cut_car_health_y2" translatable="false">PREF_CUT_CAR_HEALTH_Y2</string>
+
+    <string name="pref_cut_car_shield_x1" translatable="false">PREF_CUT_CAR_SHIELD_X1</string>
+    <string name="pref_cut_car_shield_x2" translatable="false">PREF_CUT_CAR_SHIELD_X2</string>
+    <string name="pref_cut_car_shield_y1" translatable="false">PREF_CUT_CAR_SHIELD_Y1</string>
+    <string name="pref_cut_car_shield_y2" translatable="false">PREF_CUT_CAR_SHIELD_Y2</string>
+
+    <string name="pref_cut_car_state_x1" translatable="false">PREF_CUT_CAR_STATE_X1</string>
+    <string name="pref_cut_car_state_x2" translatable="false">PREF_CUT_CAR_STATE_X2</string>
+    <string name="pref_cut_car_state_y1" translatable="false">PREF_CUT_CAR_STATE_Y1</string>
+    <string name="pref_cut_car_state_y2" translatable="false">PREF_CUT_CAR_STATE_Y2</string>
+
+    <string name="pref_cut_car_healbox_x1" translatable="false">PREF_CUT_CAR_HEALBOX_X1</string>
+    <string name="pref_cut_car_healbox_x2" translatable="false">PREF_CUT_CAR_HEALBOX_X2</string>
+    <string name="pref_cut_car_healbox_y1" translatable="false">PREF_CUT_CAR_HEALBOX_Y1</string>
+    <string name="pref_cut_car_healbox_y2" translatable="false">PREF_CUT_CAR_HEALBOX_Y2</string>
+
+    <string name="pref_cut_car_timebox_x1" translatable="false">PREF_CUT_CAR_TIMEBOX_X1</string>
+    <string name="pref_cut_car_timebox_x2" translatable="false">PREF_CUT_CAR_TIMEBOX_X2</string>
+    <string name="pref_cut_car_timebox_y1" translatable="false">PREF_CUT_CAR_TIMEBOX_Y1</string>
+    <string name="pref_cut_car_timebox_y2" translatable="false">PREF_CUT_CAR_TIMEBOX_Y2</string>
+    
+    
+    
     <string name="pref_cut_box_info_x1" translatable="false">PREF_CUT_BOX_INFO_X1</string>
     <string name="pref_cut_box_info_x2" translatable="false">PREF_CUT_BOX_INFO_X2</string>
     <string name="pref_cut_box_info_y1" translatable="false">PREF_CUT_BOX_INFO_Y1</string>
@@ -234,6 +286,10 @@
     <string name="pref_cut_brb_points_y1" translatable="false">PREF_CUT_BRB_POINTS_Y1</string>
     <string name="pref_cut_brb_points_y2" translatable="false">PREF_CUT_BRB_POINTS_Y2</string>
 
+    <string name="pref_rgb_car_box_main" translatable="false">PREF_RGB_CAR_BOX_MAIN</string>
+    <string name="pref_rgb_car_box_thp" translatable="false">PREF_RGB_CAR_BOX_THP</string>
+    <string name="pref_rgb_car_box_thm" translatable="false">PREF_RGB_CAR_BOX_THM</string>
+
     <string name="pref_rgb_box_info_main" translatable="false">PREF_RGB_BOX_INFO_MAIN</string>
     <string name="pref_rgb_box_info_thp" translatable="false">PREF_RGB_BOX_INFO_THP</string>
     <string name="pref_rgb_box_info_thm" translatable="false">PREF_RGB_BOX_INFO_THM</string>
@@ -335,6 +391,63 @@
 
     <string name="pref_def_calibrate_x" translatable="false">PREF_DEF_CALIBRATE_X</string>
     <string name="pref_def_calibrate_y" translatable="false">PREF_DEF_CALIBRATE_Y</string>
+
+
+
+    <string name="pref_def_cut_car_box_x1" translatable="false">PREF_DEF_CUT_CAR_BOX_X1</string>
+    <string name="pref_def_cut_car_box_x2" translatable="false">PREF_DEF_CUT_CAR_BOX_X2</string>
+    <string name="pref_def_cut_car_box_y1" translatable="false">PREF_DEF_CUT_CAR_BOX_Y1</string>
+    <string name="pref_def_cut_car_box_y2" translatable="false">PREF_DEF_CUT_CAR_BOX_Y2</string>
+
+    <string name="pref_def_cut_car_info_x1" translatable="false">PREF_DEF_CUT_CAR_INFO_X1</string>
+    <string name="pref_def_cut_car_info_x2" translatable="false">PREF_DEF_CUT_CAR_INFO_X2</string>
+    <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
+    <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
+
+
+    <string name="pref_def_cut_car_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X1</string>
+    <string name="pref_def_cut_car_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X2</string>
+    <string name="pref_def_cut_car_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y1</string>
+    <string name="pref_def_cut_car_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y2</string>
+
+    <string name="pref_def_cut_car_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X1</string>
+    <string name="pref_def_cut_car_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X2</string>
+    <string name="pref_def_cut_car_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y1</string>
+    <string name="pref_def_cut_car_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y2</string>
+
+    <string name="pref_def_cut_car_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X1</string>
+    <string name="pref_def_cut_car_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X2</string>
+    <string name="pref_def_cut_car_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y1</string>
+    <string name="pref_def_cut_car_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y2</string>
+
+    <string name="pref_def_cut_car_health_x1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X1</string>
+    <string name="pref_def_cut_car_health_x2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X2</string>
+    <string name="pref_def_cut_car_health_y1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y1</string>
+    <string name="pref_def_cut_car_health_y2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y2</string>
+
+    <string name="pref_def_cut_car_shield_x1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X1</string>
+    <string name="pref_def_cut_car_shield_x2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X2</string>
+    <string name="pref_def_cut_car_shield_y1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y1</string>
+    <string name="pref_def_cut_car_shield_y2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y2</string>
+
+    <string name="pref_def_cut_car_state_x1" translatable="false">PREF_DEF_CUT_CAR_STATE_X1</string>
+    <string name="pref_def_cut_car_state_x2" translatable="false">PREF_DEF_CUT_CAR_STATE_X2</string>
+    <string name="pref_def_cut_car_state_y1" translatable="false">PREF_DEF_CUT_CAR_STATE_Y1</string>
+    <string name="pref_def_cut_car_state_y2" translatable="false">PREF_DEF_CUT_CAR_STATE_Y2</string>
+
+    <string name="pref_def_cut_car_healbox_x1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X1</string>
+    <string name="pref_def_cut_car_healbox_x2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X2</string>
+    <string name="pref_def_cut_car_healbox_y1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y1</string>
+    <string name="pref_def_cut_car_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y2</string>
+
+    <string name="pref_def_cut_car_timebox_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X1</string>
+    <string name="pref_def_cut_car_timebox_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X2</string>
+    <string name="pref_def_cut_car_timebox_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y1</string>
+    <string name="pref_def_cut_car_timebox_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y2</string>
+
+
+
+
 
     <string name="pref_def_cut_box_info_x1" translatable="false">PREF_DEF_CUT_BOX_INFO_X1</string>
     <string name="pref_def_cut_box_info_x2" translatable="false">PREF_DEF_CUT_BOX_INFO_X2</string>
@@ -561,6 +674,10 @@
     <string name="pref_def_cut_brb_points_x2" translatable="false">PREF_DEF_CUT_BRB_POINTS_X2</string>
     <string name="pref_def_cut_brb_points_y1" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y1</string>
     <string name="pref_def_cut_brb_points_y2" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y2</string>
+
+    <string name="pref_def_rgb_car_box_main" translatable="false">PREF_DEF_RGB_CAR_BOX_MAIN</string>
+    <string name="pref_def_rgb_car_box_thp" translatable="false">PREF_DEF_RGB_CAR_BOX_THP</string>
+    <string name="pref_def_rgb_car_box_thm" translatable="false">PREF_DEF_RGB_CAR_BOX_THM</string>
 
     <string name="pref_def_rgb_box_info_main" translatable="false">PREF_DEF_RGB_BOX_INFO_MAIN</string>
     <string name="pref_def_rgb_box_info_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_THP</string>

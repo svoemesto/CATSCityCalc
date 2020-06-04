@@ -34,9 +34,9 @@ public class SplashActivity extends AppCompatActivity {
     private Runnable r;
     private static final String TAG = "Splash";
 
-      SharedPreferences mPrefs;
-      final String settingScreenShownPref = "settingScreenShown";
-      final String versionCheckedPref = "versionChecked";
+    SharedPreferences mPrefs;
+    final String settingScreenShownPref = "settingScreenShown";
+    final String versionCheckedPref = "versionChecked";
 
 
     TextView tv_sp_title;

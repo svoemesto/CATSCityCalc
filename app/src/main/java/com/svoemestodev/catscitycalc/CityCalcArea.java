@@ -11,6 +11,7 @@ public class CityCalcArea {
     CityCalc cityCalc;  // родительский объект
     Area area;
     Bitmap bmpSrc;      // кропнутая картинка (исходник)
+    CropPosition cropPosition = CropPosition.CENTER_VERTICAL;
     float x1;           // x1
     float x2;           // x2
     float y1;           // y1
@@ -29,6 +30,8 @@ public class CityCalcArea {
     // конструктор "обычных" картинок
     public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
 
+        if (area.equals(Area.CAR_BOX) || area.equals(Area.CAR_INFO) || area.equals(Area.CAR_SLOT1)  || area.equals(Area.CAR_SLOT2)  || area.equals(Area.CAR_SLOT3)  || area.equals(Area.CAR_HEALTH) || area.equals(Area.CAR_SHIELD) || area.equals(Area.CAR_STATE) || area.equals(Area.CAR_HEALBOX) || area.equals(Area.CAR_TIMEBOX) )
+            this.cropPosition = CropPosition.LEFT;
         this.cityCalc = cityCalc;
         this.area = area;
         this.x1 = x1;
@@ -46,6 +49,8 @@ public class CityCalcArea {
 
     // конструктор "дженериков"
     public CityCalcArea(CityCalc cityCalc, Area area, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
+
+        if (area.equals(Area.CAR_INFO)) this.cropPosition = CropPosition.LEFT;
         this.isGeneric = true;
         this.cityCalc = cityCalc;
         this.area = area;
@@ -76,8 +81,6 @@ public class CityCalcArea {
         }
     }
 
-
-
     private Bitmap cutSrc() {
         if (this.cityCalc != null) {
             if (this.cityCalc.bmpScreenshot != null) {
@@ -90,10 +93,19 @@ public class CityCalcArea {
                     int realCalibrateY = (heightSource / 2) > Math.abs(this.cityCalc.calibrateY) ? this.cityCalc.calibrateY : 0;
 
                     // координаты для вырезания картинки информации об игре
-                    int x1 = (int) ((double) widthSource / 2 + this.x1 * heightSource) + realCalibrateX;
-                    int x2 = (int) ((double) widthSource / 2 + this.x2 * heightSource) + realCalibrateX;
-                    int y1 = (int) ((double) heightSource / 2 + this.y1 * ((double) heightSource / 2)) + realCalibrateY;
-                    int y2 = (int) ((double) heightSource / 2 + this.y2 * ((double) heightSource / 2)) + realCalibrateY;
+                    int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+
+                    if (this.cropPosition == CropPosition.CENTER_VERTICAL) {
+                        x1 = (int) ((double) widthSource / 2 + this.x1 * heightSource) + realCalibrateX;
+                        x2 = (int) ((double) widthSource / 2 + this.x2 * heightSource) + realCalibrateX;
+                        y1 = (int) ((double) heightSource / 2 + this.y1 * ((double) heightSource / 2)) + realCalibrateY;
+                        y2 = (int) ((double) heightSource / 2 + this.y2 * ((double) heightSource / 2)) + realCalibrateY;
+                    } else if (this.cropPosition == CropPosition.LEFT) {
+                        x1 = (int) (heightSource * this.x1);
+                        x2 = (int) (heightSource * this.x2);
+                        y1 = (int) (heightSource + heightSource * this.y1);
+                        y2 = (int) (heightSource + heightSource * this.y2);
+                    }
 
                     // если координаты вылезаю за границы скриншота - приводим их к границам
                     x1 = Math.max(x1, 0); x2 = Math.min(x2, widthSource);
