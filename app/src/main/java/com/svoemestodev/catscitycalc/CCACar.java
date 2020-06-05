@@ -42,7 +42,8 @@ public class CCACar extends CityCalcArea {
             car.setStateRepairing(screenshotDate,secondsToEndRepairing);
         } else {
             car.setStateFree();
-            car.savePicture(areaPicture.bmpSrc);
+//            car.savePicture(areaPicture.bmpSrc);
+            car.setPicture(areaPicture.bmpSrc);
         }
 
         areaHealth.needOcr = true;
@@ -59,6 +60,7 @@ public class CCACar extends CityCalcArea {
             Car updatedCar = listCars.get(car.getSlot()-1);
             updatedCar.setHealth(car.getHealth());
             updatedCar.setShield(car.getShield());
+            updatedCar.setPicture(car.getPicture());
             if (car.getState().equals(CarState.FREE)) {
                 updatedCar.setStateFree();
             } else if (car.getState().equals(CarState.DEFENCING)) {
