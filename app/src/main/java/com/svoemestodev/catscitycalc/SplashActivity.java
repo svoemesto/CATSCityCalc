@@ -142,14 +142,11 @@ public class SplashActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        String pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
+        String pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder);
         Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
 
-        String pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
 
         File cityCatDir = new File(pathToCATScalcFolder);
-        File tessDir = new File(pathToTessFolder);
         if (!cityCatDir.exists()) {
             Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
             cityCatDir.mkdir();
@@ -157,19 +154,15 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         if (cityCatDir.exists()) { // если папка есть
-            File tmp = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-//            if (!tessDir.exists()) {
-//                Log.i(TAG, logMsgPref + "папки " + pathToTessFolder + " не существует, создаем папку");
-//                tessDir.mkdir();
-//                Log.i(TAG, logMsgPref + "Создана папка " + pathToTessFolder);
-//            }
 
-//            File tessEng = new File(pathToTessFolder + "/eng.traineddata");
-//            if (!tessEng.exists()) {
-//                Log.i(TAG, logMsgPref + "Файл " + pathToTessFolder + "/eng.traineddata не существует, надо скачать.");
-//                String file_url = "https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata";
-//                new DownloadTask(SplashActivity.this, file_url, pathToCATScalcFolder + "/tessdata/");
-//            }
+            Car.pathToFile = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder) + "/" + getString(R.string.file_list_cars);
+            File plastics = new File(Car.pathToFile);
+            if (!plastics.exists()) {
+                Car.saveList(Car.getDefaultList());
+            }
+
+
+            File tmp = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
 
             if (!tmp.exists()) {    // если файла нет
                 Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");

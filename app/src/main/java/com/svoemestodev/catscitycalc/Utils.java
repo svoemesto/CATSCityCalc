@@ -93,6 +93,20 @@ public class Utils {
         return String.format(Locale.getDefault(), "%02d:%02d", Math.abs(minutes) / 60, Math.abs(minutes) % 60);
     }
 
+    public static String convertSecondsToHHMMSS(long secundes) {
+        int hours = (int)secundes / 3600;
+        int minutes = (int)(secundes - hours*3600) / 60;
+        int seconds = (int)secundes - hours*3600 - minutes*60;
+        return String.format(Locale.getDefault(), "%01d:%02d:%02d", hours, minutes, seconds);
+    }
+
+    public static String convertSecondsToHHMMSSwithoutColon(long secundes) {
+        int hours = (int)secundes / 3600;
+        int minutes = (int)(secundes - hours*3600) / 60;
+        int seconds = (int)secundes - hours*3600 - minutes*60;
+        return String.format(Locale.getDefault(), "%01d%02d%02d", hours, minutes, seconds);
+    }
+
     /**
      *  Возвращает сроку, состоящую из отформатированной по паттерну даты
      * @param date - дата
@@ -225,4 +239,11 @@ public class Utils {
 
     }
 
+    public static long conversTimeStringWithoutColonsToSeconds(String timeStringWithoutColons) {
+        String str = "00000" + parseNumbers(timeStringWithoutColons);
+        int seconds = Integer.parseInt(str.substring(str.length()-2));
+        int minutes = Integer.parseInt(str.substring(str.length()-4, str.length()-2));
+        int hours = Integer.parseInt(str.substring(0, str.length()-4));
+        return hours*3600 + minutes*60 + seconds;
+    }
 }

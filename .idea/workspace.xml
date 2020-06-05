@@ -11,30 +11,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorFrequency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CropPosition.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/color_freq_layout.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CarActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CarState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ListBuildingAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_build_black_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_health_black_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_house_black_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_keyboard_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_open_in_browser_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_shield_black_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car1_blue.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car1_gray.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car1_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car1_red.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car2_blue.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car2_gray.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car2_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car2_red.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car3_blue.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car3_gray.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car3_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_car3_red.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_car.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/select_bitmap.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/select_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Area.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/BordersActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CalibrateActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalcArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/ColorsdetectActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/PictureProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/StrategyActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_borders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_borders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,22 +163,25 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
+      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\assets\tesseract" />
+      <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\raw" />
+      <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.packageName">
+      <recent name="com.svoemestodev.catscitycalc" />
+      <recent name="com.mrt.catscitycalc" />
+    </key>
+    <key name="android.template.-1577744293">
+      <recent name="com.svoemestodev.catscitycalc" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\raw" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\font" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\assets\fonts" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable-v24" />
-    </key>
-    <key name="android.template.packageName">
-      <recent name="com.svoemestodev.catscitycalc" />
-      <recent name="com.mrt.catscitycalc" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
-      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\assets\tesseract" />
-      <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\raw" />
-      <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -364,42 +380,50 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591270483658">
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591348492206">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591270483658" />
-    <state width="3397" height="377" key="GridCell.Tab.0.bottom" timestamp="1591284383695">
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591348492206" />
+    <state x="1300" y="455" key="AndroidCreateResourceDirectoryDialog" timestamp="1591343340325">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.0.center" timestamp="1591284383695">
+    <state x="1300" y="455" key="AndroidCreateResourceDirectoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591343340325" />
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1591288834664">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.0.left" timestamp="1591284383695">
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1591288834664" />
+    <state width="3397" height="377" key="GridCell.Tab.0.bottom" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.0.right" timestamp="1591284383695">
+    <state width="3397" height="377" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.0.center" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.1.bottom" timestamp="1591284383695">
+    <state width="3397" height="377" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.0.left" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.1.center" timestamp="1591284383695">
+    <state width="3397" height="377" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.0.right" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.1.left" timestamp="1591284383695">
+    <state width="3397" height="377" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.1.bottom" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
-    <state width="3397" height="377" key="GridCell.Tab.1.right" timestamp="1591284383695">
+    <state width="3397" height="377" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.1.center" timestamp="1591349834291">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="377" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591284383695" />
+    <state width="3397" height="377" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.1.left" timestamp="1591349834291">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="377" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
+    <state width="3397" height="377" key="GridCell.Tab.1.right" timestamp="1591349834291">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="3397" height="377" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591349834291" />
     <state width="1393" height="685" key="XDebugger.FullValuePopup" timestamp="1591284143965">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -408,14 +432,18 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1163" y="513" key="com.intellij.ide.util.TipDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1590935280599" />
-    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591260368851">
+    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591341034424">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400@0.0.3440.1400" timestamp="1591260368851" />
+    <state x="1529" y="617" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3440.1400@0.0.3440.1400" timestamp="1591341034424" />
     <state x="1130" y="453" width="540" height="496" key="extract.method.dialog" timestamp="1591275588514">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1130" y="453" width="540" height="496" key="extract.method.dialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591275588514" />
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup" timestamp="1591349438721">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1591349438721" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -444,6 +472,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CityCalc.java</url>
           <line>1214</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CarActivity.java</url>
+          <line>247</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

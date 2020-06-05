@@ -11,6 +11,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -158,7 +160,33 @@ public class GameActivity extends AppCompatActivity {
     TextView tv_ga_game_slots_empty;
     TextView tv_ga_game_slots_enemy;
 
+    ImageButton ib_ga_car1;
+    TextView tv_ga_car1_name;
+    ImageView iv_ga_car1_health;
+    TextView tv_ga_car1_health;
+    ImageView iv_ga_car1_shield;
+    TextView tv_ga_car1_shield;
+    TextView tv_ga_car1_repair;
+    ImageView iv_ga_car1_house;
 
+    ImageButton ib_ga_car2;
+    TextView tv_ga_car2_name;
+    ImageView iv_ga_car2_health;
+    TextView tv_ga_car2_health;
+    ImageView iv_ga_car2_shield;
+    TextView tv_ga_car2_shield;
+    TextView tv_ga_car2_repair;
+    ImageView iv_ga_car2_house;
+
+    ImageButton ib_ga_car3;
+    TextView tv_ga_car3_name;
+    ImageView iv_ga_car3_health;
+    TextView tv_ga_car3_health;
+    ImageView iv_ga_car3_shield;
+    TextView tv_ga_car3_shield;
+    TextView tv_ga_car3_repair;
+    ImageView iv_ga_car3_house;
+    
     Button bt_ga_strategy;
 
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
@@ -957,8 +985,149 @@ public class GameActivity extends AppCompatActivity {
 
         bt_ga_strategy = findViewById(R.id.bt_ga_strategy);
 
+        ib_ga_car1 = findViewById(R.id.ib_ga_car1);
+        tv_ga_car1_name = findViewById(R.id.tv_ga_car1_name);
+        iv_ga_car1_health = findViewById(R.id.iv_ga_car1_health);
+        tv_ga_car1_health = findViewById(R.id.tv_ga_car1_health);
+        iv_ga_car1_shield = findViewById(R.id.iv_ga_car1_shield);
+        tv_ga_car1_shield = findViewById(R.id.tv_ga_car1_shield);
+        tv_ga_car1_repair = findViewById(R.id.tv_ga_car1_repair);
+        iv_ga_car1_house = findViewById(R.id.iv_ga_car1_house);
+
+        ib_ga_car2 = findViewById(R.id.ib_ga_car2);
+        tv_ga_car2_name = findViewById(R.id.tv_ga_car2_name);
+        iv_ga_car2_health = findViewById(R.id.iv_ga_car2_health);
+        tv_ga_car2_health = findViewById(R.id.tv_ga_car2_health);
+        iv_ga_car2_shield = findViewById(R.id.iv_ga_car2_shield);
+        tv_ga_car2_shield = findViewById(R.id.tv_ga_car2_shield);
+        tv_ga_car2_repair = findViewById(R.id.tv_ga_car2_repair);
+        iv_ga_car2_house = findViewById(R.id.iv_ga_car2_house);
+
+        ib_ga_car3 = findViewById(R.id.ib_ga_car3);
+        tv_ga_car3_name = findViewById(R.id.tv_ga_car3_name);
+        iv_ga_car3_health = findViewById(R.id.iv_ga_car3_health);
+        tv_ga_car3_health = findViewById(R.id.tv_ga_car3_health);
+        iv_ga_car3_shield = findViewById(R.id.iv_ga_car3_shield);
+        tv_ga_car3_shield = findViewById(R.id.tv_ga_car3_shield);
+        tv_ga_car3_repair = findViewById(R.id.tv_ga_car3_repair);
+        iv_ga_car3_house = findViewById(R.id.iv_ga_car3_house);
+        
     }
 
+    private void setDataToCarsViews() {
+        List<Car> listCars = Car.loadList();
+
+        Car car1 = listCars.get(0);
+        Car car2 = listCars.get(1);
+        Car car3 = listCars.get(2);
+        
+        
+        CarState car1state = car1.getState();
+        if (car1state.equals(CarState.EMPTY)) {
+            ib_ga_car1.setImageResource(R.drawable.ic_car1_gray);
+        } else if (car1state.equals(CarState.FREE)) {
+            ib_ga_car1.setImageResource(R.drawable.ic_car1_blue);
+        } else if (car1state.equals(CarState.DEFENCING)) {
+            ib_ga_car1.setImageResource(R.drawable.ic_car1_green);
+        } else if (car1state.equals(CarState.REPAIRING)) {
+            ib_ga_car1.setImageResource(R.drawable.ic_car1_red);
+        }
+        tv_ga_car1_name.setText(car1.getName());
+        tv_ga_car1_health.setText(String.valueOf(car1.getHealth()));
+        tv_ga_car1_shield.setText(String.valueOf(car1.getShield()));
+        String car1textRepair = car1state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
+        tv_ga_car1_repair.setText(car1textRepair);
+        if (car1state.equals(CarState.DEFENCING)) {
+            Bitmap car1houseBitmap = null;
+            try {
+                if (car1.building == 1) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                if (car1.building == 2) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                if (car1.building == 3) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                if (car1.building == 4) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                if (car1.building == 5) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                if (car1.building == 6) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                if (car1houseBitmap != null) {
+                    iv_ga_car1_house.setImageBitmap(car1houseBitmap);
+                    iv_ga_car1_house.setVisibility(View.VISIBLE);
+                }
+            } catch (Exception ignored) {
+            }
+        } else {
+            iv_ga_car1_house.setVisibility(View.INVISIBLE);
+        }
+
+
+        CarState car2state = car2.getState();
+        if (car2state.equals(CarState.EMPTY)) {
+            ib_ga_car2.setImageResource(R.drawable.ic_car2_gray);
+        } else if (car2state.equals(CarState.FREE)) {
+            ib_ga_car2.setImageResource(R.drawable.ic_car2_blue);
+        } else if (car2state.equals(CarState.DEFENCING)) {
+            ib_ga_car2.setImageResource(R.drawable.ic_car2_green);
+        } else if (car2state.equals(CarState.REPAIRING)) {
+            ib_ga_car2.setImageResource(R.drawable.ic_car2_red);
+        }
+        tv_ga_car2_name.setText(car2.getName());
+        tv_ga_car2_health.setText(String.valueOf(car2.getHealth()));
+        tv_ga_car2_shield.setText(String.valueOf(car2.getShield()));
+        String car2textRepair = car2state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
+        tv_ga_car2_repair.setText(car2textRepair);
+        if (car2state.equals(CarState.DEFENCING)) {
+            Bitmap car2houseBitmap = null;
+            try {
+                if (car2.building == 1) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                if (car2.building == 2) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                if (car2.building == 3) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                if (car2.building == 4) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                if (car2.building == 5) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                if (car2.building == 6) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                if (car2houseBitmap != null) {
+                    iv_ga_car2_house.setImageBitmap(car2houseBitmap);
+                    iv_ga_car2_house.setVisibility(View.VISIBLE);
+                }
+            } catch (Exception ignored) {
+            }
+        } else {
+            iv_ga_car2_house.setVisibility(View.INVISIBLE);
+        }
+
+
+        CarState car3state = car3.getState();
+        if (car3state.equals(CarState.EMPTY)) {
+            ib_ga_car3.setImageResource(R.drawable.ic_car3_gray);
+        } else if (car3state.equals(CarState.FREE)) {
+            ib_ga_car3.setImageResource(R.drawable.ic_car3_blue);
+        } else if (car3state.equals(CarState.DEFENCING)) {
+            ib_ga_car3.setImageResource(R.drawable.ic_car3_green);
+        } else if (car3state.equals(CarState.REPAIRING)) {
+            ib_ga_car3.setImageResource(R.drawable.ic_car3_red);
+        }
+        tv_ga_car3_name.setText(car3.getName());
+        tv_ga_car3_health.setText(String.valueOf(car3.getHealth()));
+        tv_ga_car3_shield.setText(String.valueOf(car3.getShield()));
+        String car3textRepair = car3state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
+        tv_ga_car3_repair.setText(car3textRepair);
+        if (car3state.equals(CarState.DEFENCING)) {
+            Bitmap car3houseBitmap = null;
+            try {
+                if (car3.building == 1) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                if (car3.building == 2) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                if (car3.building == 3) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                if (car3.building == 4) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                if (car3.building == 5) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                if (car3.building == 6) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                if (car3houseBitmap != null) {
+                    iv_ga_car3_house.setImageBitmap(car3houseBitmap);
+                    iv_ga_car3_house.setVisibility(View.VISIBLE);
+                }
+            } catch (Exception ignored) {
+            }
+        } else {
+            iv_ga_car3_house.setVisibility(View.INVISIBLE);
+        }
+        
+        
+    }
 
 
     public void readPreferences() {
@@ -1216,6 +1385,24 @@ public class GameActivity extends AppCompatActivity {
         startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
+    public void openCar1(View view) {
+        CarActivity.slot = 1;
+        Intent intent = new Intent(this, CarActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void openCar2(View view) {
+        CarActivity.slot = 2;
+        Intent intent = new Intent(this, CarActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void openCar3(View view) {
+        CarActivity.slot = 3;
+        Intent intent = new Intent(this, CarActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
 
     class firstTask extends TimerTask {
 
@@ -1232,6 +1419,8 @@ public class GameActivity extends AppCompatActivity {
 
                     String logMsgPref = "firstTask: ";
 //                    Log.i(TAG, logMsgPref + "runOnUiThread()");
+
+                    setDataToCarsViews();
 
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
 //                        Log.i(TAG, logMsgPref + "Следить за файлами в папке");

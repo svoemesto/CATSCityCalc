@@ -315,6 +315,18 @@
     <string name="final_symbols">Значение</string>
     <string name="calculate_an_early_victory_without_x2">Рассчитать досрочную победу без x2</string>
     <string name="calculate_victory_without_x2">Рассчитать победу без x2</string>
+    <string name="name_car">Имя машины</string>
+    <string name="name_car_colon">Имя машины:</string>
+    <string name="health">Здоровье</string>
+    <string name="health_colon">Здоровье:</string>
+    <string name="attack">Атака</string>
+    <string name="attack_colon">Атака:</string>
+    <string name="repair">Ремонт</string>
+    <string name="repair_colon">Ремонт:</string>
+    <string name="building">Здание</string>
+    <string name="building_colon">Здание:</string>
+    <string name="set_free_and_repair">Сделать свободной / починить</string>
+    <string name="time_reparing_hhmmss">Время ремонта ЧЧ:ММ:СС (без \":\")</string>
 
 
 </resources>
