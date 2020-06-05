@@ -60,8 +60,8 @@ public class CCACar extends CityCalcArea {
             Car updatedCar = listCars.get(car.getSlot()-1);
             updatedCar.setHealth(car.getHealth());
             updatedCar.setShield(car.getShield());
-            updatedCar.setPicture(car.getPicture());
             if (car.getState().equals(CarState.FREE)) {
+                updatedCar.setPicture(car.getPicture());
                 updatedCar.setStateFree();
             } else if (car.getState().equals(CarState.DEFENCING)) {
                 updatedCar.setStateDefencing(0);
