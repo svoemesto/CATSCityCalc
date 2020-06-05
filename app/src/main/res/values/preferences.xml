@@ -14,6 +14,11 @@
     <string name="pref_cut_car_box_y1" translatable="false">PREF_CUT_CAR_BOX_Y1</string>
     <string name="pref_cut_car_box_y2" translatable="false">PREF_CUT_CAR_BOX_Y2</string>
 
+    <string name="pref_cut_car_picture_x1" translatable="false">PREF_CUT_CAR_PICTURE_X1</string>
+    <string name="pref_cut_car_picture_x2" translatable="false">PREF_CUT_CAR_PICTURE_X2</string>
+    <string name="pref_cut_car_picture_y1" translatable="false">PREF_CUT_CAR_PICTURE_Y1</string>
+    <string name="pref_cut_car_picture_y2" translatable="false">PREF_CUT_CAR_PICTURE_Y2</string>
+
     <string name="pref_cut_car_info_x1" translatable="false">PREF_CUT_CAR_INFO_X1</string>
     <string name="pref_cut_car_info_x2" translatable="false">PREF_CUT_CAR_INFO_X2</string>
     <string name="pref_cut_car_info_y1" translatable="false">PREF_CUT_CAR_INFO_Y1</string>
@@ -290,6 +295,36 @@
     <string name="pref_rgb_car_box_thp" translatable="false">PREF_RGB_CAR_BOX_THP</string>
     <string name="pref_rgb_car_box_thm" translatable="false">PREF_RGB_CAR_BOX_THM</string>
 
+    <string name="pref_rgb_car_slot_main" translatable="false">PREF_RGB_CAR_SLOT_MAIN</string>
+    <string name="pref_rgb_car_slot_back" translatable="false">PREF_RGB_CAR_SLOT_BACK</string>
+    <string name="pref_rgb_car_slot_thp" translatable="false">PREF_RGB_CAR_SLOT_THP</string>
+    <string name="pref_rgb_car_slot_thm" translatable="false">PREF_RGB_CAR_SLOT_THM</string>
+
+    <string name="pref_rgb_car_health_main" translatable="false">PREF_RGB_CAR_HEALTH_MAIN</string>
+    <string name="pref_rgb_car_health_back" translatable="false">PREF_RGB_CAR_HEALTH_BACK</string>
+    <string name="pref_rgb_car_health_thp" translatable="false">PREF_RGB_CAR_HEALTH_THP</string>
+    <string name="pref_rgb_car_health_thm" translatable="false">PREF_RGB_CAR_HEALTH_THM</string>
+
+    <string name="pref_rgb_car_shield_main" translatable="false">PREF_RGB_CAR_SHIELD_MAIN</string>
+    <string name="pref_rgb_car_shield_back" translatable="false">PREF_RGB_CAR_SHIELD_BACK</string>
+    <string name="pref_rgb_car_shield_thp" translatable="false">PREF_RGB_CAR_SHIELD_THP</string>
+    <string name="pref_rgb_car_shield_thm" translatable="false">PREF_RGB_CAR_SHIELD_THM</string>
+
+    <string name="pref_rgb_car_state_main" translatable="false">PREF_RGB_CAR_STATE_MAIN</string>
+    <string name="pref_rgb_car_state_back" translatable="false">PREF_RGB_CAR_STATE_BACK</string>
+    <string name="pref_rgb_car_state_thp" translatable="false">PREF_RGB_CAR_STATE_THP</string>
+    <string name="pref_rgb_car_state_thm" translatable="false">PREF_RGB_CAR_STATE_THM</string>
+
+    <string name="pref_rgb_car_healbox_main" translatable="false">PREF_RGB_CAR_HEALBOX_MAIN</string>
+    <string name="pref_rgb_car_healbox_back" translatable="false">PREF_RGB_CAR_HEALBOX_BACK</string>
+    <string name="pref_rgb_car_healbox_thp" translatable="false">PREF_RGB_CAR_HEALBOX_THP</string>
+    <string name="pref_rgb_car_healbox_thm" translatable="false">PREF_RGB_CAR_HEALBOX_THM</string>
+
+    <string name="pref_rgb_car_timebox_main" translatable="false">PREF_RGB_CAR_TIMEBOX_MAIN</string>
+    <string name="pref_rgb_car_timebox_back" translatable="false">PREF_RGB_CAR_TIMEBOX_BACK</string>
+    <string name="pref_rgb_car_timebox_thp" translatable="false">PREF_RGB_CAR_TIMEBOX_THP</string>
+    <string name="pref_rgb_car_timebox_thm" translatable="false">PREF_RGB_CAR_TIMEBOX_THM</string>
+    
     <string name="pref_rgb_box_info_main" translatable="false">PREF_RGB_BOX_INFO_MAIN</string>
     <string name="pref_rgb_box_info_thp" translatable="false">PREF_RGB_BOX_INFO_THP</string>
     <string name="pref_rgb_box_info_thm" translatable="false">PREF_RGB_BOX_INFO_THM</string>
@@ -404,6 +439,10 @@
     <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
     <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
 
+    <string name="pref_def_cut_car_picture_x1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X1</string>
+    <string name="pref_def_cut_car_picture_x2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X2</string>
+    <string name="pref_def_cut_car_picture_y1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y1</string>
+    <string name="pref_def_cut_car_picture_y2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y2</string>
 
     <string name="pref_def_cut_car_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X1</string>
     <string name="pref_def_cut_car_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X2</string>
@@ -679,6 +718,36 @@
     <string name="pref_def_rgb_car_box_thp" translatable="false">PREF_DEF_RGB_CAR_BOX_THP</string>
     <string name="pref_def_rgb_car_box_thm" translatable="false">PREF_DEF_RGB_CAR_BOX_THM</string>
 
+    <string name="pref_def_rgb_car_slot_main" translatable="false">PREF_DEF_RGB_CAR_SLOT_MAIN</string>
+    <string name="pref_def_rgb_car_slot_back" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK</string>
+    <string name="pref_def_rgb_car_slot_thp" translatable="false">PREF_DEF_RGB_CAR_SLOT_THP</string>
+    <string name="pref_def_rgb_car_slot_thm" translatable="false">PREF_DEF_RGB_CAR_SLOT_THM</string>
+
+    <string name="pref_def_rgb_car_health_main" translatable="false">PREF_DEF_RGB_CAR_HEALTH_MAIN</string>
+    <string name="pref_def_rgb_car_health_back" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK</string>
+    <string name="pref_def_rgb_car_health_thp" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THP</string>
+    <string name="pref_def_rgb_car_health_thm" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THM</string>
+
+    <string name="pref_def_rgb_car_shield_main" translatable="false">PREF_DEF_RGB_CAR_SHIELD_MAIN</string>
+    <string name="pref_def_rgb_car_shield_back" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK</string>
+    <string name="pref_def_rgb_car_shield_thp" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THP</string>
+    <string name="pref_def_rgb_car_shield_thm" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THM</string>
+
+    <string name="pref_def_rgb_car_state_main" translatable="false">PREF_DEF_RGB_CAR_STATE_MAIN</string>
+    <string name="pref_def_rgb_car_state_back" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK</string>
+    <string name="pref_def_rgb_car_state_thp" translatable="false">PREF_DEF_RGB_CAR_STATE_THP</string>
+    <string name="pref_def_rgb_car_state_thm" translatable="false">PREF_DEF_RGB_CAR_STATE_THM</string>
+
+    <string name="pref_def_rgb_car_healbox_main" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_MAIN</string>
+    <string name="pref_def_rgb_car_healbox_back" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK</string>
+    <string name="pref_def_rgb_car_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THP</string>
+    <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
+
+    <string name="pref_def_rgb_car_timebox_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_MAIN</string>
+    <string name="pref_def_rgb_car_timebox_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_BACK</string>
+    <string name="pref_def_rgb_car_timebox_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THP</string>
+    <string name="pref_def_rgb_car_timebox_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THM</string>
+    
     <string name="pref_def_rgb_box_info_main" translatable="false">PREF_DEF_RGB_BOX_INFO_MAIN</string>
     <string name="pref_def_rgb_box_info_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_THP</string>
     <string name="pref_def_rgb_box_info_thm" translatable="false">PREF_DEF_RGB_BOX_INFO_THM</string>

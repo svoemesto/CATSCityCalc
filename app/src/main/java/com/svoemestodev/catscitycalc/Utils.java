@@ -94,17 +94,27 @@ public class Utils {
     }
 
     public static String convertSecondsToHHMMSS(long secundes) {
-        int hours = (int)secundes / 3600;
-        int minutes = (int)(secundes - hours*3600) / 60;
-        int seconds = (int)secundes - hours*3600 - minutes*60;
-        return String.format(Locale.getDefault(), "%01d:%02d:%02d", hours, minutes, seconds);
+        if (secundes > 0) {
+            int hours = (int)secundes / 3600;
+            int minutes = (int)(secundes - hours*3600) / 60;
+            int seconds = (int)secundes - hours*3600 - minutes*60;
+            return String.format(Locale.getDefault(), "%01d:%02d:%02d", hours, minutes, seconds);
+        } else {
+            return "";
+        }
+
     }
 
     public static String convertSecondsToHHMMSSwithoutColon(long secundes) {
-        int hours = (int)secundes / 3600;
-        int minutes = (int)(secundes - hours*3600) / 60;
-        int seconds = (int)secundes - hours*3600 - minutes*60;
-        return String.format(Locale.getDefault(), "%01d%02d%02d", hours, minutes, seconds);
+        if (secundes > 0) {
+            int hours = (int)secundes / 3600;
+            int minutes = (int)(secundes - hours*3600) / 60;
+            int seconds = (int)secundes - hours*3600 - minutes*60;
+            return String.format(Locale.getDefault(), "%01d%02d%02d", hours, minutes, seconds);
+        } else {
+            return "";
+        }
+
     }
 
     /**
@@ -240,6 +250,7 @@ public class Utils {
     }
 
     public static long conversTimeStringWithoutColonsToSeconds(String timeStringWithoutColons) {
+
         String str = "00000" + parseNumbers(timeStringWithoutColons);
         int seconds = Integer.parseInt(str.substring(str.length()-2));
         int minutes = Integer.parseInt(str.substring(str.length()-4, str.length()-2));

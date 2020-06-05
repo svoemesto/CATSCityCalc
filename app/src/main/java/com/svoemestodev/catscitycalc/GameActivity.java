@@ -1020,8 +1020,7 @@ public class GameActivity extends AppCompatActivity {
         Car car1 = listCars.get(0);
         Car car2 = listCars.get(1);
         Car car3 = listCars.get(2);
-        
-        
+
         CarState car1state = car1.getState();
         if (car1state.equals(CarState.EMPTY)) {
             ib_ga_car1.setImageResource(R.drawable.ic_car1_gray);
@@ -1035,26 +1034,6 @@ public class GameActivity extends AppCompatActivity {
         tv_ga_car1_name.setText(car1.getName());
         tv_ga_car1_health.setText(String.valueOf(car1.getHealth()));
         tv_ga_car1_shield.setText(String.valueOf(car1.getShield()));
-        String car1textRepair = car1state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
-        tv_ga_car1_repair.setText(car1textRepair);
-        if (car1state.equals(CarState.DEFENCING)) {
-            Bitmap car1houseBitmap = null;
-            try {
-                if (car1.building == 1) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                if (car1.building == 2) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                if (car1.building == 3) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                if (car1.building == 4) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                if (car1.building == 5) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                if (car1.building == 6) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
-                if (car1houseBitmap != null) {
-                    iv_ga_car1_house.setImageBitmap(car1houseBitmap);
-                    iv_ga_car1_house.setVisibility(View.VISIBLE);
-                }
-            } catch (Exception ignored) {
-            }
-        } else {
-            iv_ga_car1_house.setVisibility(View.INVISIBLE);
-        }
 
 
         CarState car2state = car2.getState();
@@ -1070,26 +1049,6 @@ public class GameActivity extends AppCompatActivity {
         tv_ga_car2_name.setText(car2.getName());
         tv_ga_car2_health.setText(String.valueOf(car2.getHealth()));
         tv_ga_car2_shield.setText(String.valueOf(car2.getShield()));
-        String car2textRepair = car2state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
-        tv_ga_car2_repair.setText(car2textRepair);
-        if (car2state.equals(CarState.DEFENCING)) {
-            Bitmap car2houseBitmap = null;
-            try {
-                if (car2.building == 1) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                if (car2.building == 2) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                if (car2.building == 3) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                if (car2.building == 4) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                if (car2.building == 5) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                if (car2.building == 6) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
-                if (car2houseBitmap != null) {
-                    iv_ga_car2_house.setImageBitmap(car2houseBitmap);
-                    iv_ga_car2_house.setVisibility(View.VISIBLE);
-                }
-            } catch (Exception ignored) {
-            }
-        } else {
-            iv_ga_car2_house.setVisibility(View.INVISIBLE);
-        }
 
 
         CarState car3state = car3.getState();
@@ -1105,28 +1064,89 @@ public class GameActivity extends AppCompatActivity {
         tv_ga_car3_name.setText(car3.getName());
         tv_ga_car3_health.setText(String.valueOf(car3.getHealth()));
         tv_ga_car3_shield.setText(String.valueOf(car3.getShield()));
-        String car3textRepair = car3state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
-        tv_ga_car3_repair.setText(car3textRepair);
-        if (car3state.equals(CarState.DEFENCING)) {
-            Bitmap car3houseBitmap = null;
-            try {
-                if (car3.building == 1) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                if (car3.building == 2) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                if (car3.building == 3) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                if (car3.building == 4) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                if (car3.building == 5) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                if (car3.building == 6) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
-                if (car3houseBitmap != null) {
-                    iv_ga_car3_house.setImageBitmap(car3houseBitmap);
-                    iv_ga_car3_house.setVisibility(View.VISIBLE);
+
+        try {
+            if (((CCAGame)GameActivity.mainCityCalc.mapAreas.get(Area.CITY)).ccagIsGameOver) {
+                car1.setStateFree();
+                car2.setStateFree();
+                car3.setStateFree();
+                iv_ga_car1_house.setVisibility(View.INVISIBLE);
+                iv_ga_car2_house.setVisibility(View.INVISIBLE);
+                iv_ga_car3_house.setVisibility(View.INVISIBLE);
+                car1.save();
+                car2.save();
+                car3.save();
+            } else {
+
+                String car1textRepair = car1state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
+                tv_ga_car1_repair.setText(car1textRepair);
+                if (car1state.equals(CarState.DEFENCING)) {
+                    Bitmap car1houseBitmap = null;
+                    try {
+                        if (car1.building == 1) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                        if (car1.building == 2) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                        if (car1.building == 3) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                        if (car1.building == 4) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                        if (car1.building == 5) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                        if (car1.building == 6) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                        if (car1houseBitmap != null) {
+                            iv_ga_car1_house.setImageBitmap(car1houseBitmap);
+                            iv_ga_car1_house.setVisibility(View.VISIBLE);
+                        }
+                    } catch (Exception ignored) {
+                    }
+                } else {
+                    iv_ga_car1_house.setVisibility(View.INVISIBLE);
                 }
-            } catch (Exception ignored) {
+
+                String car2textRepair = car2state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
+                tv_ga_car2_repair.setText(car2textRepair);
+                if (car2state.equals(CarState.DEFENCING)) {
+                    Bitmap car2houseBitmap = null;
+                    try {
+                        if (car2.building == 1) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                        if (car2.building == 2) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                        if (car2.building == 3) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                        if (car2.building == 4) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                        if (car2.building == 5) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                        if (car2.building == 6) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                        if (car2houseBitmap != null) {
+                            iv_ga_car2_house.setImageBitmap(car2houseBitmap);
+                            iv_ga_car2_house.setVisibility(View.VISIBLE);
+                        }
+                    } catch (Exception ignored) {
+                    }
+                } else {
+                    iv_ga_car2_house.setVisibility(View.INVISIBLE);
+                }
+
+                String car3textRepair = car3state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
+                tv_ga_car3_repair.setText(car3textRepair);
+                if (car3state.equals(CarState.DEFENCING)) {
+                    Bitmap car3houseBitmap = null;
+                    try {
+                        if (car3.building == 1) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
+                        if (car3.building == 2) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
+                        if (car3.building == 3) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
+                        if (car3.building == 4) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
+                        if (car3.building == 5) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
+                        if (car3.building == 6) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
+                        if (car3houseBitmap != null) {
+                            iv_ga_car3_house.setImageBitmap(car3houseBitmap);
+                            iv_ga_car3_house.setVisibility(View.VISIBLE);
+                        }
+                    } catch (Exception ignored) {
+                    }
+                } else {
+                    iv_ga_car3_house.setVisibility(View.INVISIBLE);
+                }
+
+
             }
-        } else {
-            iv_ga_car3_house.setVisibility(View.INVISIBLE);
+        } catch (Exception ignored) {
         }
-        
-        
+
+
     }
 
 
@@ -1353,7 +1373,10 @@ public class GameActivity extends AppCompatActivity {
                             Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                             loadDataToViews(true);
                         } else if (tmpCityCalc.cityCalcType.equals(CityCalcType.CAR)) {
+                            CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                            ((CCACar)carCityCalc.mapAreas.get(Area.CAR_INFO)).parseCar();
                             fileCarScreenshot = newFile;
+
                         }
                     }
                 });
@@ -1447,6 +1470,8 @@ public class GameActivity extends AppCompatActivity {
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.cityCalcType.equals(CityCalcType.CAR)) {
+                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                                    ((CCACar)carCityCalc.mapAreas.get(Area.CAR_INFO)).parseCar();
                                     fileCarScreenshot = tmpFile;
                                 }
                                 if (isResumed) isResumed = false;
@@ -1467,6 +1492,9 @@ public class GameActivity extends AppCompatActivity {
                                     mainCityCalc = new CityCalc(tmpCityCalc);
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
+                                } else if (tmpCityCalc.cityCalcType.equals(CityCalcType.CAR)) {
+                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                                    ((CCACar)carCityCalc.mapAreas.get(Area.CAR_INFO)).parseCar();
                                 }
                             }
                         }

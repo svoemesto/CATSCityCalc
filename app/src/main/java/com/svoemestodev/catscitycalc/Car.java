@@ -1,9 +1,12 @@
 package com.svoemestodev.catscitycalc;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,9 +27,35 @@ public class Car implements Serializable {
     int building;   // здание. 0 - свободно, 1-6 - BLT-BLC-BLB-BRT-BTC-BRB
     Date repair = null; // дата/время начала ремонта
     CarState carState = CarState.EMPTY;
+
+
     transient public static String pathToFile;
+    transient public static String pathToCATScalcFolder;
 
     public Car() {
+    }
+
+    public Bitmap getPicture() {
+
+        String pathToPictureFile = pathToCATScalcFolder + "/car" + this.slot + ".PNG";
+        return BitmapFactory.decodeFile(pathToPictureFile);
+
+    }
+
+//    public void setPicture(Bitmap picture) {
+//        this.picture = picture;
+//    }
+
+    public void savePicture(Bitmap picture) {
+        String pathToPictureFile = pathToCATScalcFolder + "/car" + this.slot + ".PNG";
+        try {
+            FileOutputStream fOut = new FileOutputStream(pathToPictureFile);
+            picture.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Car(String name, int slot, int health, int shield, int building, Date repair, CarState carState) {

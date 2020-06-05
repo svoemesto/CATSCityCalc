@@ -7,6 +7,12 @@
     <string name="def_cut_car_box_y1" translatable="false">-0.280</string>
     <string name="def_cut_car_box_y2" translatable="false">-0.155</string>
 
+    <!--  "car_picture"  -->
+    <string name="def_cut_car_picture_x1" translatable="false">+0.060</string>
+    <string name="def_cut_car_picture_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_picture_y1" translatable="false">-0.560</string>
+    <string name="def_cut_car_picture_y2" translatable="false">-0.380</string>
+
     <!--  "car_info"  -->
     <string name="def_cut_car_info_x1" translatable="false">+0.000</string>
     <string name="def_cut_car_info_x2" translatable="false">+0.448</string>
@@ -315,6 +321,36 @@
     <string name="def_rgb_car_box_main" translatable="false">FF8BAFEB</string>
     <string name="def_rgb_car_box_thm" translatable="false">13</string>
     <string name="def_rgb_car_box_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_slot_back" translatable="false">FF839FDA</string>
+    <string name="def_rgb_car_slot_thm" translatable="false">13</string>
+    <string name="def_rgb_car_slot_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_health_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_health_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_health_thm" translatable="false">13</string>
+    <string name="def_rgb_car_health_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_shield_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_shield_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_shield_thm" translatable="false">13</string>
+    <string name="def_rgb_car_shield_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_state_main" translatable="false">FF77D734</string>
+    <string name="def_rgb_car_state_back" translatable="false">FF738FE1</string>
+    <string name="def_rgb_car_state_thm" translatable="false">13</string>
+    <string name="def_rgb_car_state_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_healbox_main" translatable="false">FFD32526</string>
+    <string name="def_rgb_car_healbox_back" translatable="false">FFFFF7C1</string>
+    <string name="def_rgb_car_healbox_thm" translatable="false">13</string>
+    <string name="def_rgb_car_healbox_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_timebox_main" translatable="false">FF5B79D0</string>
+    <string name="def_rgb_car_timebox_back" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_timebox_thm" translatable="false">13</string>
+    <string name="def_rgb_car_timebox_thp" translatable="false">13</string>
 
     <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>

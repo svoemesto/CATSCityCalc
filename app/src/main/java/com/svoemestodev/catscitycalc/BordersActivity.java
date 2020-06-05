@@ -68,6 +68,10 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_cut_car_info_x1), getString(R.string.pref_cut_car_info_x2), getString(R.string.pref_cut_car_info_y1), getString(R.string.pref_cut_car_info_y2),
                 getString(R.string.def_cut_car_info_x1), getString(R.string.def_cut_car_info_x2), getString(R.string.def_cut_car_info_y1), getString(R.string.def_cut_car_info_y2)));
 
+        key = getString(R.string.borders_car_picture); mapAreas.put(key, new myArea(key, Area.CAR_PICTURE,
+                getString(R.string.pref_cut_car_picture_x1), getString(R.string.pref_cut_car_picture_x2), getString(R.string.pref_cut_car_picture_y1), getString(R.string.pref_cut_car_picture_y2),
+                getString(R.string.def_cut_car_picture_x1), getString(R.string.def_cut_car_picture_x2), getString(R.string.def_cut_car_picture_y1), getString(R.string.def_cut_car_picture_y2)));
+
         key = getString(R.string.borders_car_box); mapAreas.put(key, new myArea(key, Area.CAR_BOX,
                 getString(R.string.pref_cut_car_box_x1), getString(R.string.pref_cut_car_box_x2), getString(R.string.pref_cut_car_box_y1), getString(R.string.pref_cut_car_box_y2),
                 getString(R.string.def_cut_car_box_x1), getString(R.string.def_cut_car_box_x2), getString(R.string.def_cut_car_box_y1), getString(R.string.def_cut_car_box_y2)));

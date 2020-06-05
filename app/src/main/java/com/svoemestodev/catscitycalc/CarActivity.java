@@ -69,6 +69,9 @@ public class CarActivity extends AppCompatActivity {
         ca_tv_health_value.setText(Utils.convertIntToStringFormatter(car.getHealth()));
         ca_tv_shield_value.setText(Utils.convertIntToStringFormatter(car.getShield()));
         ca_tv_repair_value.setText(car.getTimeStringToEndRepairing());
+
+        if (car.getPicture() != null) ca_iv_car_picture.setImageBitmap(car.getPicture());
+
         Bitmap houseBitmap = null;
         try {
             if (car.building == 1) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;

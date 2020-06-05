@@ -156,6 +156,8 @@ public class SplashActivity extends AppCompatActivity {
         if (cityCatDir.exists()) { // если папка есть
 
             Car.pathToFile = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder) + "/" + getString(R.string.file_list_cars);
+            Car.pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder);
+
             File plastics = new File(Car.pathToFile);
             if (!plastics.exists()) {
                 Car.saveList(Car.getDefaultList());

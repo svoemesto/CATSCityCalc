@@ -2,6 +2,7 @@ package com.svoemestodev.catscitycalc;
 
 public enum Area {
     CAR_INFO,
+    CAR_PICTURE,
     CAR_BOX,
     CAR_SLOT1,
     CAR_SLOT2,

@@ -27,11 +27,73 @@ public class CityCalcArea {
 
     private static final String TAG = "CityCalcArea";
 
+    private CropPosition getCropPosition(Area area) {
+        switch (area) {
+            case CAR_INFO:
+            case CAR_PICTURE:
+            case CAR_BOX:
+            case CAR_SLOT1:
+            case CAR_SLOT2:
+            case CAR_SLOT3:
+            case CAR_HEALTH:
+            case CAR_SHIELD:
+            case CAR_STATE:
+            case CAR_HEALBOX:
+            case CAR_TIMEBOX:
+                return CropPosition.LEFT;
+
+            case BOX_INFO:
+            case CITY:
+            case TOTAL_TIME:
+            case EARLY_WIN:
+            case TEAM_NAME_OUR:
+            case TEAM_NAME_ENEMY:
+            case POINTS_AND_INCREASE_OUR:
+            case POINTS_OUR:
+            case POINTS_AND_INCREASE_ENEMY:
+            case POINTS_ENEMY:
+            case INCREASE_OUR:
+            case INCREASE_ENEMY:
+            case BLT_AREA:
+            case BLT:
+            case BLT_POINTS:
+            case BLT_SLOTS:
+            case BLT_PROGRESS:
+            case BLC_AREA:
+            case BLC:
+            case BLC_POINTS:
+            case BLC_SLOTS:
+            case BLC_PROGRESS:
+            case BLB_AREA:
+            case BLB:
+            case BLB_POINTS:
+            case BLB_SLOTS:
+            case BLB_PROGRESS:
+            case BRT_AREA:
+            case BRT:
+            case BRT_POINTS:
+            case BRT_SLOTS:
+            case BRT_PROGRESS:
+            case BRC_AREA:
+            case BRC:
+            case BRC_POINTS:
+            case BRC_SLOTS:
+            case BRC_PROGRESS:
+            case BRB_AREA:
+            case BRB:
+            case BRB_POINTS:
+            case BRB_SLOTS:
+            case BRB_PROGRESS:
+            default:
+                return CropPosition.CENTER_VERTICAL;
+                
+        }
+    }
+    
     // конструктор "обычных" картинок
     public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
 
-        if (area.equals(Area.CAR_BOX) || area.equals(Area.CAR_INFO) || area.equals(Area.CAR_SLOT1)  || area.equals(Area.CAR_SLOT2)  || area.equals(Area.CAR_SLOT3)  || area.equals(Area.CAR_HEALTH) || area.equals(Area.CAR_SHIELD) || area.equals(Area.CAR_STATE) || area.equals(Area.CAR_HEALBOX) || area.equals(Area.CAR_TIMEBOX) )
-            this.cropPosition = CropPosition.LEFT;
+        this.cropPosition = getCropPosition(area);
         this.cityCalc = cityCalc;
         this.area = area;
         this.x1 = x1;
