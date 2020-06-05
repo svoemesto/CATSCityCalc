@@ -33,7 +33,7 @@ public class CCACar extends CityCalcArea {
         if (PictureProcessor.frequencyPixelInBitmap(areaSlot2.bmpSrc, areaSlot2.colors[0],areaSlot2.ths[0], areaSlot2.ths[1]) > 0.01f) car.setSlot(2);
         if (PictureProcessor.frequencyPixelInBitmap(areaSlot3.bmpSrc, areaSlot3.colors[0],areaSlot3.ths[0], areaSlot3.ths[1]) > 0.01f) car.setSlot(3);
         if (PictureProcessor.frequencyPixelInBitmap(areaState.bmpSrc, areaState.colors[0],areaState.ths[0], areaState.ths[1]) > 0.01f) {
-            car.setStateDefencing(0);
+            car.setStateDefencing();
         } else if (PictureProcessor.frequencyPixelInBitmap(areaHealbox.bmpSrc, areaHealbox.colors[0],areaHealbox.ths[0], areaHealbox.ths[1]) > 0.01f) {
             areaTimebox.needOcr = true;
             areaTimebox.doOCR();
@@ -64,7 +64,7 @@ public class CCACar extends CityCalcArea {
                 updatedCar.setPicture(car.getPicture());
                 updatedCar.setStateFree();
             } else if (car.getState().equals(CarState.DEFENCING)) {
-                updatedCar.setStateDefencing(0);
+                updatedCar.setStateDefencing();
             } else if (car.getState().equals(CarState.REPAIRING)) {
                 updatedCar.setStateRepairing(screenshotDate,secondsToEndRepairing);
             }

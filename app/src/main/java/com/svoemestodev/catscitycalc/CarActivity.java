@@ -72,15 +72,9 @@ public class CarActivity extends AppCompatActivity {
 
         if (car.getPicture() != null) ca_iv_car_picture.setImageBitmap(car.getPicture());
 
-        Bitmap houseBitmap = null;
+        Bitmap houseBitmap = car.getBuilding();
         try {
-            if (car.building == 1) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-            if (car.building == 2) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-            if (car.building == 3) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-            if (car.building == 4) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-            if (car.building == 5) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-            if (car.building == 6) houseBitmap = GameActivity.mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
-            if (houseBitmap != null) {
+            if (houseBitmap != null && car.getState().equals(CarState.DEFENCING)) {
                 ca_iv_building_value.setImageBitmap(houseBitmap);
                 ca_iv_building_value.setVisibility(View.VISIBLE);
             } else {
@@ -281,7 +275,8 @@ public class CarActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Building item = arrayAdapter.getItem(which);
-                car.setStateDefencing(item.getSlot());
+                car.setBuilding(item.bitmap);
+                car.setStateDefencing();
                 loadDataToViews();
             }
         });

@@ -60,22 +60,34 @@ public class BordersActivity extends AppCompatActivity {
         mapAreas = new HashMap<>();
         String key;
 
-        key = getString(R.string.borders_box_info); mapAreas.put(key, new myArea(key, Area.BOX_INFO, 
-                getString(R.string.pref_cut_box_info_x1), getString(R.string.pref_cut_box_info_x2), getString(R.string.pref_cut_box_info_y1), getString(R.string.pref_cut_box_info_y2),
-                getString(R.string.def_cut_box_info_x1), getString(R.string.def_cut_box_info_x2), getString(R.string.def_cut_box_info_y1), getString(R.string.def_cut_box_info_y2)));
+        key = getString(R.string.borders_box1_info); mapAreas.put(key, new myArea(key, Area.BOX1_INFO, 
+                getString(R.string.pref_cut_box1_info_x1), getString(R.string.pref_cut_box1_info_x2), getString(R.string.pref_cut_box1_info_y1), getString(R.string.pref_cut_box1_info_y2),
+                getString(R.string.def_cut_box1_info_x1), getString(R.string.def_cut_box1_info_x2), getString(R.string.def_cut_box1_info_y1), getString(R.string.def_cut_box1_info_y2)));
+
+        key = getString(R.string.borders_box2_info); mapAreas.put(key, new myArea(key, Area.BOX2_INFO,
+                getString(R.string.pref_cut_box2_info_x1), getString(R.string.pref_cut_box2_info_x2), getString(R.string.pref_cut_box2_info_y1), getString(R.string.pref_cut_box2_info_y2),
+                getString(R.string.def_cut_box2_info_x1), getString(R.string.def_cut_box2_info_x2), getString(R.string.def_cut_box2_info_y1), getString(R.string.def_cut_box2_info_y2)));
         
         key = getString(R.string.borders_car_info); mapAreas.put(key, new myArea(key, Area.CAR_INFO, 
                 getString(R.string.pref_cut_car_info_x1), getString(R.string.pref_cut_car_info_x2), getString(R.string.pref_cut_car_info_y1), getString(R.string.pref_cut_car_info_y2),
                 getString(R.string.def_cut_car_info_x1), getString(R.string.def_cut_car_info_x2), getString(R.string.def_cut_car_info_y1), getString(R.string.def_cut_car_info_y2)));
 
+        key = getString(R.string.borders_car_building); mapAreas.put(key, new myArea(key, Area.CAR_BUILDING,
+                getString(R.string.pref_cut_car_building_x1), getString(R.string.pref_cut_car_building_x2), getString(R.string.pref_cut_car_building_y1), getString(R.string.pref_cut_car_building_y2),
+                getString(R.string.def_cut_car_building_x1), getString(R.string.def_cut_car_building_x2), getString(R.string.def_cut_car_building_y1), getString(R.string.def_cut_car_building_y2)));
+        
         key = getString(R.string.borders_car_picture); mapAreas.put(key, new myArea(key, Area.CAR_PICTURE,
                 getString(R.string.pref_cut_car_picture_x1), getString(R.string.pref_cut_car_picture_x2), getString(R.string.pref_cut_car_picture_y1), getString(R.string.pref_cut_car_picture_y2),
                 getString(R.string.def_cut_car_picture_x1), getString(R.string.def_cut_car_picture_x2), getString(R.string.def_cut_car_picture_y1), getString(R.string.def_cut_car_picture_y2)));
 
-        key = getString(R.string.borders_car_box); mapAreas.put(key, new myArea(key, Area.CAR_BOX,
-                getString(R.string.pref_cut_car_box_x1), getString(R.string.pref_cut_car_box_x2), getString(R.string.pref_cut_car_box_y1), getString(R.string.pref_cut_car_box_y2),
-                getString(R.string.def_cut_car_box_x1), getString(R.string.def_cut_car_box_x2), getString(R.string.def_cut_car_box_y1), getString(R.string.def_cut_car_box_y2)));
+        key = getString(R.string.borders_car_box1); mapAreas.put(key, new myArea(key, Area.CAR_BOX1,
+                getString(R.string.pref_cut_car_box1_x1), getString(R.string.pref_cut_car_box1_x2), getString(R.string.pref_cut_car_box1_y1), getString(R.string.pref_cut_car_box1_y2),
+                getString(R.string.def_cut_car_box1_x1), getString(R.string.def_cut_car_box1_x2), getString(R.string.def_cut_car_box1_y1), getString(R.string.def_cut_car_box1_y2)));
 
+        key = getString(R.string.borders_car_box2); mapAreas.put(key, new myArea(key, Area.CAR_BOX2,
+                getString(R.string.pref_cut_car_box2_x1), getString(R.string.pref_cut_car_box2_x2), getString(R.string.pref_cut_car_box2_y1), getString(R.string.pref_cut_car_box2_y2),
+                getString(R.string.def_cut_car_box2_x1), getString(R.string.def_cut_car_box2_x2), getString(R.string.def_cut_car_box2_y1), getString(R.string.def_cut_car_box2_y2)));
+        
         key = getString(R.string.borders_car_slot1); mapAreas.put(key, new myArea(key, Area.CAR_SLOT1,
                 getString(R.string.pref_cut_car_slot1_x1), getString(R.string.pref_cut_car_slot1_x2), getString(R.string.pref_cut_car_slot1_y1), getString(R.string.pref_cut_car_slot1_y2),
                 getString(R.string.def_cut_car_slot1_x1), getString(R.string.def_cut_car_slot1_x2), getString(R.string.def_cut_car_slot1_y1), getString(R.string.def_cut_car_slot1_y2)));

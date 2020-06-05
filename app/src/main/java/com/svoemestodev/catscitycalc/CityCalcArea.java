@@ -31,7 +31,8 @@ public class CityCalcArea {
         switch (area) {
             case CAR_INFO:
             case CAR_PICTURE:
-            case CAR_BOX:
+            case CAR_BOX1:
+            case CAR_BOX2:
             case CAR_SLOT1:
             case CAR_SLOT2:
             case CAR_SLOT3:
@@ -42,7 +43,9 @@ public class CityCalcArea {
             case CAR_TIMEBOX:
                 return CropPosition.LEFT;
 
-            case BOX_INFO:
+            case CAR_BUILDING:
+            case BOX1_INFO:
+            case BOX2_INFO:
             case CITY:
             case TOTAL_TIME:
             case EARLY_WIN:

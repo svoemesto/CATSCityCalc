@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--  "car_box"  -->
-    <string name="def_cut_car_box_x1" translatable="false">+0.360</string>
-    <string name="def_cut_car_box_x2" translatable="false">+0.448</string>
-    <string name="def_cut_car_box_y1" translatable="false">-0.280</string>
-    <string name="def_cut_car_box_y2" translatable="false">-0.155</string>
+    <!--  "car_box1"  -->
+    <string name="def_cut_car_box1_x1" translatable="false">+0.360</string>
+    <string name="def_cut_car_box1_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_box1_y1" translatable="false">-0.280</string>
+    <string name="def_cut_car_box1_y2" translatable="false">-0.155</string>
+
+    <!--  "car_box2"  -->
+    <string name="def_cut_car_box2_x1" translatable="false">+0.050</string>
+    <string name="def_cut_car_box2_x2" translatable="false">+0.170</string>
+    <string name="def_cut_car_box2_y1" translatable="false">-0.900</string>
+    <string name="def_cut_car_box2_y2" translatable="false">-0.800</string>
+
+    <!--  "car_building"  -->
+    <string name="def_cut_car_building_x1" translatable="false">-0.140</string>
+    <string name="def_cut_car_building_x2" translatable="false">+0.140</string>
+    <string name="def_cut_car_building_y1" translatable="false">-0.962</string>
+    <string name="def_cut_car_building_y2" translatable="false">-0.824</string>
 
     <!--  "car_picture"  -->
     <string name="def_cut_car_picture_x1" translatable="false">+0.060</string>
@@ -67,11 +79,18 @@
     <string name="def_cut_car_timebox_y1" translatable="false">-0.625</string>
     <string name="def_cut_car_timebox_y2" translatable="false">-0.570</string>
 
-    <!--  "box_info"  -->
-    <string name="def_cut_box_info_x1" translatable="false">-0.640</string>
-    <string name="def_cut_box_info_x2" translatable="false">-0.585</string>
-    <string name="def_cut_box_info_y1" translatable="false">-0.800</string>
-    <string name="def_cut_box_info_y2" translatable="false">-0.690</string>
+    <!--  "box1_info"  -->
+    <string name="def_cut_box1_info_x1" translatable="false">-0.640</string>
+    <string name="def_cut_box1_info_x2" translatable="false">-0.585</string>
+    <string name="def_cut_box1_info_y1" translatable="false">-0.800</string>
+    <string name="def_cut_box1_info_y2" translatable="false">-0.690</string>
+
+    <!--  "box2_info"  -->
+    <string name="def_cut_box2_info_x1" translatable="false">-0.170</string>
+    <string name="def_cut_box2_info_x2" translatable="false">-0.135</string>
+    <string name="def_cut_box2_info_y1" translatable="false">-0.770</string>
+    <string name="def_cut_box2_info_y2" translatable="false">-0.660</string>
+
 
     <!--  "box_back"  -->
     <string name="def_cut_box_back_x1" translatable="false">-0.977</string>
@@ -314,13 +333,26 @@
 
 
 
-    <string name="def_rgb_box_info_main" translatable="false">FFCA2728</string>
-    <string name="def_rgb_box_info_thm" translatable="false">13</string>
-    <string name="def_rgb_box_info_thp" translatable="false">13</string>
+    <string name="def_rgb_box1_info_main" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box1_info_thm" translatable="false">13</string>
+    <string name="def_rgb_box1_info_thp" translatable="false">13</string>
 
-    <string name="def_rgb_car_box_main" translatable="false">FF8BAFEB</string>
-    <string name="def_rgb_car_box_thm" translatable="false">13</string>
-    <string name="def_rgb_car_box_thp" translatable="false">13</string>
+    <string name="def_rgb_box2_info_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box2_info_thm" translatable="false">13</string>
+    <string name="def_rgb_box2_info_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_box1_main" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_box1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_box1_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_box2_main" translatable="false">FFFF6661</string>
+    <string name="def_rgb_car_box2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_box2_thp" translatable="false">13</string>
+
+    <string name="def_rgb_car_building_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_building_back" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_building_thm" translatable="false">13</string>
+    <string name="def_rgb_car_building_thp" translatable="false">13</string>
 
     <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
     <string name="def_rgb_car_slot_back" translatable="false">FF839FDA</string>

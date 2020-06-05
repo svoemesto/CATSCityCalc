@@ -7,7 +7,6 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -25,10 +24,10 @@ public class Car implements Serializable {
     int slot;       // слот (1-3)
     int health;     // здоровье
     int shield;     // защита
-    int building;   // здание. 0 - свободно, 1-6 - BLT-BLC-BLB-BRT-BTC-BRB
     Date repair = null; // дата/время начала ремонта
     CarState carState = CarState.EMPTY;
-    byte[] imageByteArray;
+    byte[] imageByteArrayCar;
+    byte[] imageByteArrayBuilding;
 
     transient public static String pathToFile;
     transient public static String pathToCATScalcFolder;
@@ -38,42 +37,26 @@ public class Car implements Serializable {
 
     public Bitmap getPicture() {
 
-        if (imageByteArray != null) {
-            return BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.length);
+        if (imageByteArrayCar != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
         } else {
             return null;
         }
-
-
-//        String pathToPictureFile = pathToCATScalcFolder + "/car" + this.slot + ".PNG";
-//        return BitmapFactory.decodeFile(pathToPictureFile);
 
     }
 
     public void setPicture(Bitmap picture) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        imageByteArray = stream.toByteArray();
+        imageByteArrayCar = stream.toByteArray();
     }
 
-//    public void savePicture(Bitmap picture) {
-//        String pathToPictureFile = pathToCATScalcFolder + "/car" + this.slot + ".PNG";
-//        try {
-//            FileOutputStream fOut = new FileOutputStream(pathToPictureFile);
-//            picture.compress(Bitmap.CompressFormat.PNG, 85, fOut);
-//            fOut.flush();
-//            fOut.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
-    public Car(String name, int slot, int health, int shield, int building, Date repair, CarState carState) {
+    public Car(String name, int slot, int health, int shield, Date repair, CarState carState) {
         this.name = name;
         this.slot = slot;
         this.health = health;
         this.shield = shield;
-        this.building = building;
         this.repair = repair;
         this.carState = carState;
     }
@@ -82,9 +65,9 @@ public class Car implements Serializable {
 
         List<Car> list = new ArrayList<>();
 
-        list.add(new Car("Car #1", 1, 0, 0, 0, null, CarState.EMPTY));
-        list.add(new Car("Car #2", 2, 0, 0, 0, null, CarState.EMPTY));
-        list.add(new Car("Car #3", 3, 0, 0, 0, null, CarState.EMPTY));
+        list.add(new Car("Car #1", 1, 0, 0, null, CarState.EMPTY));
+        list.add(new Car("Car #2", 2, 0, 0, null, CarState.EMPTY));
+        list.add(new Car("Car #3", 3, 0, 0, null, CarState.EMPTY));
 
         return list;
     }
@@ -147,19 +130,16 @@ public class Car implements Serializable {
         this.carState = CarState.EMPTY;
         this.health = 0;
         this.shield = 0;
-        this.building = 0;
         this.repair = null;
     }
 
     public void setStateFree() {
         this.carState = CarState.FREE;
-        this.building = 0;
         this.repair = null;
     }
 
-    public void setStateDefencing(int building) {
+    public void setStateDefencing() {
         this.carState = CarState.DEFENCING;
-        this.building = building;
         this.repair = null;
     }
 
@@ -176,7 +156,6 @@ public class Car implements Serializable {
             repair = null;
             carState = CarState.FREE;
         }
-        building = 0;
     }
 
     public String getTimeStringToEndRepairing() {
@@ -235,12 +214,18 @@ public class Car implements Serializable {
         this.shield = shield;
     }
 
-    public int getBuilding() {
-        return building;
+    public Bitmap getBuilding() {
+        if (imageByteArrayCar != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayBuilding, 0, imageByteArrayBuilding.length);
+        } else {
+            return null;
+        }
     }
 
-    public void setBuilding(int building) {
-        this.building = building;
+    public void setBuilding(Bitmap picture) {
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        imageByteArrayBuilding = stream.toByteArray();
     }
 
     public Date getRepair() {

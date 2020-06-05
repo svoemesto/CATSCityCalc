@@ -1081,14 +1081,8 @@ public class GameActivity extends AppCompatActivity {
                 String car1textRepair = car1state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
                 tv_ga_car1_repair.setText(car1textRepair);
                 if (car1state.equals(CarState.DEFENCING)) {
-                    Bitmap car1houseBitmap = null;
+                    Bitmap car1houseBitmap = car1.getBuilding();
                     try {
-                        if (car1.building == 1) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                        if (car1.building == 2) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                        if (car1.building == 3) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                        if (car1.building == 4) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                        if (car1.building == 5) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                        if (car1.building == 6) car1houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
                         if (car1houseBitmap != null) {
                             iv_ga_car1_house.setImageBitmap(car1houseBitmap);
                             iv_ga_car1_house.setVisibility(View.VISIBLE);
@@ -1102,14 +1096,8 @@ public class GameActivity extends AppCompatActivity {
                 String car2textRepair = car2state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
                 tv_ga_car2_repair.setText(car2textRepair);
                 if (car2state.equals(CarState.DEFENCING)) {
-                    Bitmap car2houseBitmap = null;
+                    Bitmap car2houseBitmap = car2.getBuilding();
                     try {
-                        if (car2.building == 1) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                        if (car2.building == 2) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                        if (car2.building == 3) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                        if (car2.building == 4) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                        if (car2.building == 5) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                        if (car2.building == 6) car2houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
                         if (car2houseBitmap != null) {
                             iv_ga_car2_house.setImageBitmap(car2houseBitmap);
                             iv_ga_car2_house.setVisibility(View.VISIBLE);
@@ -1123,14 +1111,8 @@ public class GameActivity extends AppCompatActivity {
                 String car3textRepair = car3state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
                 tv_ga_car3_repair.setText(car3textRepair);
                 if (car3state.equals(CarState.DEFENCING)) {
-                    Bitmap car3houseBitmap = null;
+                    Bitmap car3houseBitmap = car3.getBuilding();
                     try {
-                        if (car3.building == 1) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLT).bmpSrc;
-                        if (car3.building == 2) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLC).bmpSrc;
-                        if (car3.building == 3) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BLB).bmpSrc;
-                        if (car3.building == 4) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRT).bmpSrc;
-                        if (car3.building == 5) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRC).bmpSrc;
-                        if (car3.building == 6) car3houseBitmap = mainCityCalc.mapAreas.get(Area.BRB).bmpSrc;
                         if (car3houseBitmap != null) {
                             iv_ga_car3_house.setImageBitmap(car3houseBitmap);
                             iv_ga_car3_house.setVisibility(View.VISIBLE);
