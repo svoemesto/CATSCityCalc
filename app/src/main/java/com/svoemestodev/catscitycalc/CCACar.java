@@ -72,12 +72,14 @@ public class CCACar extends CityCalcArea {
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
+                car.setCarPictureRepairing(areaPicture.bmpSrc);
             }
 
             if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании
                 // устанавливаем нулевое здание и его картинку
                 car.setBuilding(0);
                 car.setBuildingPicture(areaBuilding.bmpSrc);
+                car.setCarPictureDefencing(areaPicture.bmpSrc);
             }
 
         }
@@ -94,9 +96,11 @@ public class CCACar extends CityCalcArea {
                 if (car.isDefencing()) {
                     updatedCar.setBuilding(car.getBuilding());
                     updatedCar.setBuildingPicture(car.getBuildingPicture());
+                    updatedCar.setCarPictureDefencing(car.getCarPictureDefencing());
                 }
                 if (car.isRepairing()) {
                     updatedCar.setRepairingState(screenshotDate,secondsToEndRepairing);
+                    updatedCar.setCarPictureRepairing(car.getCarPictureRepairing());
                 }
             }
             updatedCar.save();

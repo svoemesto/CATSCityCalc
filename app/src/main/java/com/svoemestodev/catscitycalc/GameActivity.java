@@ -1059,7 +1059,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
-            Bitmap car1CarBitmap = car1.getCarPicture();
+            Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
             Bitmap car1BuildingBitmap = car1.getBuildingPicture();
             if (car1CarBitmap != null) ib_ga_car1.setImageBitmap(car1CarBitmap);
             ib_ga_car1.setImageBitmap(car1.getCarPicture());
@@ -1076,7 +1076,7 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_car1_house.setVisibility(View.INVISIBLE);
             }
 
-            Bitmap car2CarBitmap = car2.getCarPicture();
+            Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
             Bitmap car2BuildingBitmap = car2.getBuildingPicture();
             if (car2CarBitmap != null) ib_ga_car2.setImageBitmap(car2CarBitmap);
             ib_ga_car2.setImageBitmap(car2.getCarPicture());
@@ -1093,7 +1093,7 @@ public class GameActivity extends AppCompatActivity {
                 iv_ga_car2_house.setVisibility(View.INVISIBLE);
             }
 
-            Bitmap car3CarBitmap = car3.getCarPicture();
+            Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
             Bitmap car3BuildingBitmap = car3.getBuildingPicture();
             if (car3CarBitmap != null) ib_ga_car3.setImageBitmap(car3CarBitmap);
             ib_ga_car3.setImageBitmap(car3.getCarPicture());

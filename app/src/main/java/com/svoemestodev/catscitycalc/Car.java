@@ -27,6 +27,8 @@ public class Car implements Serializable {
     Date repair = null; // дата/время начала ремонта. если null - машина "здорова"
     int building = -1;  // номер занятого здания. если -1 - машина свободна. 0 - занято неизвестное здание. 1-6 - занято конкретное здание.
     byte[] imageByteArrayCar = null; // картинка машины
+    byte[] imageByteArrayCarDefencing = null; // картинка машины
+    byte[] imageByteArrayCarRepairing = null; // картинка машины
     byte[] imageByteArrayBuilding = null; // катинка здания
 
     transient public static String pathToFile;
@@ -39,6 +41,14 @@ public class Car implements Serializable {
 
         if (imageByteArrayCar != null) {
             return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
+        } else if (imageByteArrayCarDefencing != null) {
+            setCarPicture(getCarPictureDefencing());
+            save();
+            return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
+        } else if (imageByteArrayCarRepairing != null) {
+            setCarPicture(getCarPictureRepairing());
+            save();
+            return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
         } else {
             return null;
         }
@@ -50,6 +60,44 @@ public class Car implements Serializable {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
             imageByteArrayCar = stream.toByteArray();
+        }
+
+    }
+
+    public Bitmap getCarPictureDefencing() {
+
+        if (imageByteArrayCarDefencing != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayCarDefencing, 0, imageByteArrayCarDefencing.length);
+        } else {
+            return null;
+        }
+
+    }
+
+    public void setCarPictureDefencing(Bitmap picture) {
+        if (picture != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageByteArrayCarDefencing = stream.toByteArray();
+        }
+
+    }
+
+    public Bitmap getCarPictureRepairing() {
+
+        if (imageByteArrayCarRepairing != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayCarRepairing, 0, imageByteArrayCarRepairing.length);
+        } else {
+            return null;
+        }
+
+    }
+
+    public void setCarPictureRepairing(Bitmap picture) {
+        if (picture != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageByteArrayCarRepairing = stream.toByteArray();
         }
 
     }
