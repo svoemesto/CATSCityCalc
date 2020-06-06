@@ -24,10 +24,10 @@ public class Car implements Serializable {
     int slot;       // слот (1-3)
     int health;     // здоровье
     int shield;     // защита
-    Date repair = null; // дата/время начала ремонта
-    CarState carState = CarState.EMPTY;
-    byte[] imageByteArrayCar;
-    byte[] imageByteArrayBuilding;
+    Date repair = null; // дата/время начала ремонта. если null - машина "здорова"
+    int building = -1;  // номер занятого здания. если -1 - машина свободна. 0 - занято неизвестное здание. 1-6 - занято конкретное здание.
+    byte[] imageByteArrayCar = null; // картинка машины
+    byte[] imageByteArrayBuilding = null; // катинка здания
 
     transient public static String pathToFile;
     transient public static String pathToCATScalcFolder;
@@ -35,7 +35,7 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public Bitmap getPicture() {
+    public Bitmap getCarPicture() {
 
         if (imageByteArrayCar != null) {
             return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
@@ -45,29 +45,47 @@ public class Car implements Serializable {
 
     }
 
-    public void setPicture(Bitmap picture) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        imageByteArrayCar = stream.toByteArray();
+    public void setCarPicture(Bitmap picture) {
+        if (picture != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageByteArrayCar = stream.toByteArray();
+        }
+
+    }
+
+    public Bitmap getBuildingPicture() {
+        if (imageByteArrayBuilding != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayBuilding, 0, imageByteArrayBuilding.length);
+        } else {
+            return null;
+        }
+    }
+
+    public void setBuildingPicture(Bitmap picture) {
+        if (picture != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageByteArrayBuilding = stream.toByteArray();
+        }
+
     }
 
 
-    public Car(String name, int slot, int health, int shield, Date repair, CarState carState) {
+    public Car(String name, int slot, int health, int shield) {
         this.name = name;
         this.slot = slot;
         this.health = health;
         this.shield = shield;
-        this.repair = repair;
-        this.carState = carState;
     }
 
     public static List<Car> getDefaultList() {
 
         List<Car> list = new ArrayList<>();
 
-        list.add(new Car("Car #1", 1, 0, 0, null, CarState.EMPTY));
-        list.add(new Car("Car #2", 2, 0, 0, null, CarState.EMPTY));
-        list.add(new Car("Car #3", 3, 0, 0, null, CarState.EMPTY));
+        list.add(new Car("Car #1", 1, 0, 0));
+        list.add(new Car("Car #2", 2, 0, 0));
+        list.add(new Car("Car #3", 3, 0, 0));
 
         return list;
     }
@@ -117,44 +135,30 @@ public class Car implements Serializable {
         }
     }
 
-    public CarState getState() {
-        if (getSecondsToEndRepairing() > 0) {
-            return CarState.REPAIRING;
-        } else {
-            if (carState.equals(CarState.REPAIRING)) setStateFree();
-            return carState;
-        }
-    }
-
-    public void setStateEmpty() {
-        this.carState = CarState.EMPTY;
-        this.health = 0;
-        this.shield = 0;
-        this.repair = null;
-    }
-
     public void setStateFree() {
-        this.carState = CarState.FREE;
+        this.building = -1;
         this.repair = null;
     }
 
-    public void setStateDefencing() {
-        this.carState = CarState.DEFENCING;
-        this.repair = null;
+    public void setBuilding(int building) {
+        this.building = building;
     }
 
-    public void setStateRepairingNow(long secondsToEndRepairing) {
+    public int getBuilding() {
+        return building;
+    }
+
+    public void setRepairingStateTillNow(long secondsToEndRepairing) {
         Date dateScreenshot = Calendar.getInstance().getTime();
-        setStateRepairing(dateScreenshot, secondsToEndRepairing);
+        setRepairingState(dateScreenshot, secondsToEndRepairing);
     }
 
-    public void setStateRepairing(Date dateScreenshot, long secondsToEndRepairing) {
+
+    public void setRepairingState(Date dateScreenshot, long secondsToEndRepairing) {
         if (secondsToEndRepairing > 0) {
             repair = new Date((dateScreenshot.getTime() / 1000 + secondsToEndRepairing) * 1000);
-            carState = CarState.REPAIRING;
         } else {
             repair = null;
-            carState = CarState.FREE;
         }
     }
 
@@ -172,6 +176,18 @@ public class Car implements Serializable {
         long result = (repair.getTime() - currDate.getTime()) / 1000;
         if (result < 0) result = 0;
         return result;
+    }
+
+    public boolean isFree() {
+        return this.repair == null && this.building == -1;
+    }
+
+    public boolean isDefencing() {
+        return this.building != -1;
+    }
+
+    public boolean isRepairing() {
+        return this.repair != null;
     }
 
     public UUID getUuid() {
@@ -212,20 +228,6 @@ public class Car implements Serializable {
 
     public void setShield(int shield) {
         this.shield = shield;
-    }
-
-    public Bitmap getBuilding() {
-        if (imageByteArrayCar != null) {
-            return BitmapFactory.decodeByteArray(imageByteArrayBuilding, 0, imageByteArrayBuilding.length);
-        } else {
-            return null;
-        }
-    }
-
-    public void setBuilding(Bitmap picture) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        imageByteArrayBuilding = stream.toByteArray();
     }
 
     public Date getRepair() {

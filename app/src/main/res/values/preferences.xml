@@ -1,367 +1,410 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--    preferences_file-->
     <string name="pref_preferences_file" translatable="false">PREF_PREFERENCES_FILE</string>
+    <string name="pref_def_preferences_file" translatable="false">PREF_DEF_PREFERENCES_FILE</string>
+
+    <!--    screenshot_folder-->
     <string name="pref_screenshot_folder" translatable="false">PREF_SCREENSHOT_FOLDER</string>
+    <string name="pref_def_screenshot_folder" translatable="false">PREF_DEF_SCREENSHOT_FOLDER</string>
+
+    <!--    listen_last_file-->
     <string name="pref_listen_last_file" translatable="false">PREF_LISTEN_LAST_FILE</string>
+    <string name="pref_def_listen_last_file" translatable="false">PREF_DEF_LISTEN_LAST_FILE</string>
+
+    <!--    debug_mode-->
     <string name="pref_debug_mode" translatable="false">PREF_DEBUG_MODE</string>
+    <string name="pref_def_debug_mode" translatable="false">PREF_DEF_DEBUG_MODE</string>
 
+    <!--    calibrate_x-->
     <string name="pref_calibrate_x" translatable="false">PREF_CALIBRATE_X</string>
-    <string name="pref_calibrate_y" translatable="false">PREF_CALIBRATE_Y</string>
+    <string name="pref_def_calibrate_x" translatable="false">PREF_DEF_CALIBRATE_X</string>
 
+    <!--    calibrate_y-->
+    <string name="pref_calibrate_y" translatable="false">PREF_CALIBRATE_Y</string>
+    <string name="pref_def_calibrate_y" translatable="false">PREF_DEF_CALIBRATE_Y</string>
+
+    <!--    language_interface-->
+    <string name="pref_language_interface" translatable="false">PREF_LANGUAGE_INTERFACE</string>
+    <string name="pref_def_language_interface" translatable="false">PREF_DEF_LANGUAGE_INTERFACE</string>
+
+    <!--    language_screenshot-->
+    <string name="pref_language_screenshot" translatable="false">PREF_LANGUAGE_SCREENSHOT</string>
+    <string name="pref_def_language_screenshot" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT</string>
+
+    <!--    language_interface_area-->
+    <string name="pref_language_interface_area" translatable="false">PREF_LANGUAGE_INTERFACE_AREA</string>
+    <string name="pref_def_language_interface_area" translatable="false">PREF_DEF_LANGUAGE_INTERFACE_AREA</string>
+
+    <!--    language_screenshot_area-->
+    <string name="pref_language_screenshot_area" translatable="false">PREF_LANGUAGE_SCREENSHOT_AREA</string>
+    <string name="pref_def_language_screenshot_area" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT_AREA</string>
+
+
+
+    <!--    car_statebox1-->
+    <string name="pref_cut_car_statebox1_x1" translatable="false">PREF_CUT_CAR_STATEBOX1_X1</string>
+    <string name="pref_cut_car_statebox1_x2" translatable="false">PREF_CUT_CAR_STATEBOX1_X2</string>
+    <string name="pref_cut_car_statebox1_y1" translatable="false">PREF_CUT_CAR_STATEBOX1_Y1</string>
+    <string name="pref_cut_car_statebox1_y2" translatable="false">PREF_CUT_CAR_STATEBOX1_Y2</string>
+
+    <string name="pref_def_cut_car_statebox1_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_X1</string>
+    <string name="pref_def_cut_car_statebox1_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_X2</string>
+    <string name="pref_def_cut_car_statebox1_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_Y1</string>
+    <string name="pref_def_cut_car_statebox1_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_Y2</string>
+
+    <string name="pref_rgb_car_statebox1_main" translatable="false">PREF_RGB_CAR_STATEBOX1_MAIN</string>
+    <string name="pref_rgb_car_statebox1_back" translatable="false">PREF_RGB_CAR_STATEBOX1_BACK</string>
+    <string name="pref_rgb_car_statebox1_thp" translatable="false">PREF_RGB_CAR_STATEBOX1_THP</string>
+    <string name="pref_rgb_car_statebox1_thm" translatable="false">PREF_RGB_CAR_STATEBOX1_THM</string>
+
+    <string name="pref_def_rgb_car_statebox1_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_MAIN</string>
+    <string name="pref_def_rgb_car_statebox1_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_BACK</string>
+    <string name="pref_def_rgb_car_statebox1_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THP</string>
+    <string name="pref_def_rgb_car_statebox1_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THM</string>
+
+
+    <!--    car_statebox2-->
+    <string name="pref_cut_car_statebox2_x1" translatable="false">PREF_CUT_CAR_STATEBOX2_X1</string>
+    <string name="pref_cut_car_statebox2_x2" translatable="false">PREF_CUT_CAR_STATEBOX2_X2</string>
+    <string name="pref_cut_car_statebox2_y1" translatable="false">PREF_CUT_CAR_STATEBOX2_Y1</string>
+    <string name="pref_cut_car_statebox2_y2" translatable="false">PREF_CUT_CAR_STATEBOX2_Y2</string>
+
+    <string name="pref_def_cut_car_statebox2_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_X1</string>
+    <string name="pref_def_cut_car_statebox2_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_X2</string>
+    <string name="pref_def_cut_car_statebox2_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_Y1</string>
+    <string name="pref_def_cut_car_statebox2_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_Y2</string>
+
+    <string name="pref_rgb_car_statebox2_main" translatable="false">PREF_RGB_CAR_STATEBOX2_MAIN</string>
+    <string name="pref_rgb_car_statebox2_back" translatable="false">PREF_RGB_CAR_STATEBOX2_BACK</string>
+    <string name="pref_rgb_car_statebox2_thp" translatable="false">PREF_RGB_CAR_STATEBOX2_THP</string>
+    <string name="pref_rgb_car_statebox2_thm" translatable="false">PREF_RGB_CAR_STATEBOX2_THM</string>
+
+    <string name="pref_def_rgb_car_statebox2_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_MAIN</string>
+    <string name="pref_def_rgb_car_statebox2_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_BACK</string>
+    <string name="pref_def_rgb_car_statebox2_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THP</string>
+    <string name="pref_def_rgb_car_statebox2_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THM</string>
+
+
+    <!--    cut_car_box1-->
     <string name="pref_cut_car_box1_x1" translatable="false">PREF_CUT_CAR_BOX1_X1</string>
     <string name="pref_cut_car_box1_x2" translatable="false">PREF_CUT_CAR_BOX1_X2</string>
     <string name="pref_cut_car_box1_y1" translatable="false">PREF_CUT_CAR_BOX1_Y1</string>
     <string name="pref_cut_car_box1_y2" translatable="false">PREF_CUT_CAR_BOX1_Y2</string>
 
-    <string name="pref_cut_car_box2_x1" translatable="false">PREF_CUT_CAR_BOX2_X1</string>
-    <string name="pref_cut_car_box2_x2" translatable="false">PREF_CUT_CAR_BOX2_X2</string>
-    <string name="pref_cut_car_box2_y1" translatable="false">PREF_CUT_CAR_BOX2_Y1</string>
-    <string name="pref_cut_car_box2_y2" translatable="false">PREF_CUT_CAR_BOX2_Y2</string>
-
-    <string name="pref_cut_car_picture_x1" translatable="false">PREF_CUT_CAR_PICTURE_X1</string>
-    <string name="pref_cut_car_picture_x2" translatable="false">PREF_CUT_CAR_PICTURE_X2</string>
-    <string name="pref_cut_car_picture_y1" translatable="false">PREF_CUT_CAR_PICTURE_Y1</string>
-    <string name="pref_cut_car_picture_y2" translatable="false">PREF_CUT_CAR_PICTURE_Y2</string>
-
-    <string name="pref_cut_car_building_x1" translatable="false">PREF_CUT_CAR_BUILDING_X1</string>
-    <string name="pref_cut_car_building_x2" translatable="false">PREF_CUT_CAR_BUILDING_X2</string>
-    <string name="pref_cut_car_building_y1" translatable="false">PREF_CUT_CAR_BUILDING_Y1</string>
-    <string name="pref_cut_car_building_y2" translatable="false">PREF_CUT_CAR_BUILDING_Y2</string>
-
-    <string name="pref_cut_car_info_x1" translatable="false">PREF_CUT_CAR_INFO_X1</string>
-    <string name="pref_cut_car_info_x2" translatable="false">PREF_CUT_CAR_INFO_X2</string>
-    <string name="pref_cut_car_info_y1" translatable="false">PREF_CUT_CAR_INFO_Y1</string>
-    <string name="pref_cut_car_info_y2" translatable="false">PREF_CUT_CAR_INFO_Y2</string>
-
-    <string name="pref_cut_car_slot1_x1" translatable="false">PREF_CUT_CAR_SLOT1_X1</string>
-    <string name="pref_cut_car_slot1_x2" translatable="false">PREF_CUT_CAR_SLOT1_X2</string>
-    <string name="pref_cut_car_slot1_y1" translatable="false">PREF_CUT_CAR_SLOT1_Y1</string>
-    <string name="pref_cut_car_slot1_y2" translatable="false">PREF_CUT_CAR_SLOT1_Y2</string>
-
-    <string name="pref_cut_car_slot2_x1" translatable="false">PREF_CUT_CAR_SLOT2_X1</string>
-    <string name="pref_cut_car_slot2_x2" translatable="false">PREF_CUT_CAR_SLOT2_X2</string>
-    <string name="pref_cut_car_slot2_y1" translatable="false">PREF_CUT_CAR_SLOT2_Y1</string>
-    <string name="pref_cut_car_slot2_y2" translatable="false">PREF_CUT_CAR_SLOT2_Y2</string>
-
-    <string name="pref_cut_car_slot3_x1" translatable="false">PREF_CUT_CAR_SLOT3_X1</string>
-    <string name="pref_cut_car_slot3_x2" translatable="false">PREF_CUT_CAR_SLOT3_X2</string>
-    <string name="pref_cut_car_slot3_y1" translatable="false">PREF_CUT_CAR_SLOT3_Y1</string>
-    <string name="pref_cut_car_slot3_y2" translatable="false">PREF_CUT_CAR_SLOT3_Y2</string>
-
-    <string name="pref_cut_car_health_x1" translatable="false">PREF_CUT_CAR_HEALTH_X1</string>
-    <string name="pref_cut_car_health_x2" translatable="false">PREF_CUT_CAR_HEALTH_X2</string>
-    <string name="pref_cut_car_health_y1" translatable="false">PREF_CUT_CAR_HEALTH_Y1</string>
-    <string name="pref_cut_car_health_y2" translatable="false">PREF_CUT_CAR_HEALTH_Y2</string>
-
-    <string name="pref_cut_car_shield_x1" translatable="false">PREF_CUT_CAR_SHIELD_X1</string>
-    <string name="pref_cut_car_shield_x2" translatable="false">PREF_CUT_CAR_SHIELD_X2</string>
-    <string name="pref_cut_car_shield_y1" translatable="false">PREF_CUT_CAR_SHIELD_Y1</string>
-    <string name="pref_cut_car_shield_y2" translatable="false">PREF_CUT_CAR_SHIELD_Y2</string>
-
-    <string name="pref_cut_car_state_x1" translatable="false">PREF_CUT_CAR_STATE_X1</string>
-    <string name="pref_cut_car_state_x2" translatable="false">PREF_CUT_CAR_STATE_X2</string>
-    <string name="pref_cut_car_state_y1" translatable="false">PREF_CUT_CAR_STATE_Y1</string>
-    <string name="pref_cut_car_state_y2" translatable="false">PREF_CUT_CAR_STATE_Y2</string>
-
-    <string name="pref_cut_car_healbox_x1" translatable="false">PREF_CUT_CAR_HEALBOX_X1</string>
-    <string name="pref_cut_car_healbox_x2" translatable="false">PREF_CUT_CAR_HEALBOX_X2</string>
-    <string name="pref_cut_car_healbox_y1" translatable="false">PREF_CUT_CAR_HEALBOX_Y1</string>
-    <string name="pref_cut_car_healbox_y2" translatable="false">PREF_CUT_CAR_HEALBOX_Y2</string>
-
-    <string name="pref_cut_car_timebox_x1" translatable="false">PREF_CUT_CAR_TIMEBOX_X1</string>
-    <string name="pref_cut_car_timebox_x2" translatable="false">PREF_CUT_CAR_TIMEBOX_X2</string>
-    <string name="pref_cut_car_timebox_y1" translatable="false">PREF_CUT_CAR_TIMEBOX_Y1</string>
-    <string name="pref_cut_car_timebox_y2" translatable="false">PREF_CUT_CAR_TIMEBOX_Y2</string>
-    
-    
-    
-    <string name="pref_cut_box1_info_x1" translatable="false">PREF_CUT_BOX1_INFO_X1</string>
-    <string name="pref_cut_box1_info_x2" translatable="false">PREF_CUT_BOX1_INFO_X2</string>
-    <string name="pref_cut_box1_info_y1" translatable="false">PREF_CUT_BOX1_INFO_Y1</string>
-    <string name="pref_cut_box1_info_y2" translatable="false">PREF_CUT_BOX1_INFO_Y2</string>
-
-    <string name="pref_cut_box2_info_x1" translatable="false">PREF_CUT_BOX2_INFO_X1</string>
-    <string name="pref_cut_box2_info_x2" translatable="false">PREF_CUT_BOX2_INFO_X2</string>
-    <string name="pref_cut_box2_info_y1" translatable="false">PREF_CUT_BOX2_INFO_Y1</string>
-    <string name="pref_cut_box2_info_y2" translatable="false">PREF_CUT_BOX2_INFO_Y2</string>
-
-    <string name="pref_cut_box_back_x1" translatable="false">PREF_CUT_BOX_BACK_X1</string>
-    <string name="pref_cut_box_back_x2" translatable="false">PREF_CUT_BOX_BACK_X2</string>
-    <string name="pref_cut_box_back_y1" translatable="false">PREF_CUT_BOX_BACK_Y1</string>
-    <string name="pref_cut_box_back_y2" translatable="false">PREF_CUT_BOX_BACK_Y2</string>
-
-    <string name="pref_cut_city_x1" translatable="false">PREF_CUT_CITY_X1</string>
-    <string name="pref_cut_city_x2" translatable="false">PREF_CUT_CITY_X2</string>
-    <string name="pref_cut_city_y1" translatable="false">PREF_CUT_CITY_Y1</string>
-    <string name="pref_cut_city_y2" translatable="false">PREF_CUT_CITY_Y2</string>
-
-    <string name="pref_cut_points_and_increase_our_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
-    <string name="pref_cut_points_and_increase_our_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X2</string>
-    <string name="pref_cut_points_and_increase_our_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y1</string>
-    <string name="pref_cut_points_and_increase_our_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y2</string>
-
-    <string name="pref_cut_points_and_increase_enemy_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X1</string>
-    <string name="pref_cut_points_and_increase_enemy_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X2</string>
-    <string name="pref_cut_points_and_increase_enemy_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y1</string>
-    <string name="pref_cut_points_and_increase_enemy_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y2</string>
-
-    <string name="pref_cut_total_time_x1" translatable="false">PREF_CUT_TOTAL_TIME_X1</string>
-    <string name="pref_cut_total_time_x2" translatable="false">PREF_CUT_TOTAL_TIME_X2</string>
-    <string name="pref_cut_total_time_y1" translatable="false">PREF_CUT_TOTAL_TIME_Y1</string>
-    <string name="pref_cut_total_time_y2" translatable="false">PREF_CUT_TOTAL_TIME_Y2</string>
-
-    <string name="pref_cut_early_win_x1" translatable="false">PREF_CUT_EARLY_WIN_X1</string>
-    <string name="pref_cut_early_win_x2" translatable="false">PREF_CUT_EARLY_WIN_X2</string>
-    <string name="pref_cut_early_win_y1" translatable="false">PREF_CUT_EARLY_WIN_Y1</string>
-    <string name="pref_cut_early_win_y2" translatable="false">PREF_CUT_EARLY_WIN_Y2</string>
-
-    <string name="pref_cut_team_name_our_x1" translatable="false">PREF_CUT_TEAM_NAME_OUR_X1</string>
-    <string name="pref_cut_team_name_our_x2" translatable="false">PREF_CUT_TEAM_NAME_OUR_X2</string>
-    <string name="pref_cut_team_name_our_y1" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y1</string>
-    <string name="pref_cut_team_name_our_y2" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y2</string>
-
-    <string name="pref_cut_team_name_enemy_x1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X1</string>
-    <string name="pref_cut_team_name_enemy_x2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X2</string>
-    <string name="pref_cut_team_name_enemy_y1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y1</string>
-    <string name="pref_cut_team_name_enemy_y2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y2</string>
-
-    <string name="pref_cut_blt_x1" translatable="false">PREF_CUT_BLT_X1</string>
-    <string name="pref_cut_blt_x2" translatable="false">PREF_CUT_BLT_X2</string>
-    <string name="pref_cut_blt_y1" translatable="false">PREF_CUT_BLT_Y1</string>
-    <string name="pref_cut_blt_y2" translatable="false">PREF_CUT_BLT_Y2</string>
-
-    <string name="pref_cut_blt_name_x1" translatable="false">PREF_CUT_BLT_NAME_X1</string>
-    <string name="pref_cut_blt_name_x2" translatable="false">PREF_CUT_BLT_NAME_X2</string>
-    <string name="pref_cut_blt_name_y1" translatable="false">PREF_CUT_BLT_NAME_Y1</string>
-    <string name="pref_cut_blt_name_y2" translatable="false">PREF_CUT_BLT_NAME_Y2</string>
-
-    <string name="pref_cut_blt_increase_x1" translatable="false">PREF_CUT_BLT_INCREASE_X1</string>
-    <string name="pref_cut_blt_increase_x2" translatable="false">PREF_CUT_BLT_INCREASE_X2</string>
-    <string name="pref_cut_blt_increase_y1" translatable="false">PREF_CUT_BLT_INCREASE_Y1</string>
-    <string name="pref_cut_blt_increase_y2" translatable="false">PREF_CUT_BLT_INCREASE_Y2</string>
-
-    <string name="pref_cut_blt_slots_x1" translatable="false">PREF_CUT_BLT_SLOTS_X1</string>
-    <string name="pref_cut_blt_slots_x2" translatable="false">PREF_CUT_BLT_SLOTS_X2</string>
-    <string name="pref_cut_blt_slots_y1" translatable="false">PREF_CUT_BLT_SLOTS_Y1</string>
-    <string name="pref_cut_blt_slots_y2" translatable="false">PREF_CUT_BLT_SLOTS_Y2</string>
-
-    <string name="pref_cut_blt_progress_x1" translatable="false">PREF_CUT_BLT_PROGRESS_X1</string>
-    <string name="pref_cut_blt_progress_x2" translatable="false">PREF_CUT_BLT_PROGRESS_X2</string>
-    <string name="pref_cut_blt_progress_y1" translatable="false">PREF_CUT_BLT_PROGRESS_Y1</string>
-    <string name="pref_cut_blt_progress_y2" translatable="false">PREF_CUT_BLT_PROGRESS_Y2</string>
-
-    <string name="pref_cut_blt_points_x1" translatable="false">PREF_CUT_BLT_POINTS_X1</string>
-    <string name="pref_cut_blt_points_x2" translatable="false">PREF_CUT_BLT_POINTS_X2</string>
-    <string name="pref_cut_blt_points_y1" translatable="false">PREF_CUT_BLT_POINTS_Y1</string>
-    <string name="pref_cut_blt_points_y2" translatable="false">PREF_CUT_BLT_POINTS_Y2</string>
-
-    <string name="pref_cut_blc_x1" translatable="false">PREF_CUT_BLC_X1</string>
-    <string name="pref_cut_blc_x2" translatable="false">PREF_CUT_BLC_X2</string>
-    <string name="pref_cut_blc_y1" translatable="false">PREF_CUT_BLC_Y1</string>
-    <string name="pref_cut_blc_y2" translatable="false">PREF_CUT_BLC_Y2</string>
-
-    <string name="pref_cut_blc_name_x1" translatable="false">PREF_CUT_BLC_NAME_X1</string>
-    <string name="pref_cut_blc_name_x2" translatable="false">PREF_CUT_BLC_NAME_X2</string>
-    <string name="pref_cut_blc_name_y1" translatable="false">PREF_CUT_BLC_NAME_Y1</string>
-    <string name="pref_cut_blc_name_y2" translatable="false">PREF_CUT_BLC_NAME_Y2</string>
-
-    <string name="pref_cut_blc_increase_x1" translatable="false">PREF_CUT_BLC_INCREASE_X1</string>
-    <string name="pref_cut_blc_increase_x2" translatable="false">PREF_CUT_BLC_INCREASE_X2</string>
-    <string name="pref_cut_blc_increase_y1" translatable="false">PREF_CUT_BLC_INCREASE_Y1</string>
-    <string name="pref_cut_blc_increase_y2" translatable="false">PREF_CUT_BLC_INCREASE_Y2</string>
-
-    <string name="pref_cut_blc_slots_x1" translatable="false">PREF_CUT_BLC_SLOTS_X1</string>
-    <string name="pref_cut_blc_slots_x2" translatable="false">PREF_CUT_BLC_SLOTS_X2</string>
-    <string name="pref_cut_blc_slots_y1" translatable="false">PREF_CUT_BLC_SLOTS_Y1</string>
-    <string name="pref_cut_blc_slots_y2" translatable="false">PREF_CUT_BLC_SLOTS_Y2</string>
-
-    <string name="pref_cut_blc_progress_x1" translatable="false">PREF_CUT_BLC_PROGRESS_X1</string>
-    <string name="pref_cut_blc_progress_x2" translatable="false">PREF_CUT_BLC_PROGRESS_X2</string>
-    <string name="pref_cut_blc_progress_y1" translatable="false">PREF_CUT_BLC_PROGRESS_Y1</string>
-    <string name="pref_cut_blc_progress_y2" translatable="false">PREF_CUT_BLC_PROGRESS_Y2</string>
-
-    <string name="pref_cut_blc_points_x1" translatable="false">PREF_CUT_BLC_POINTS_X1</string>
-    <string name="pref_cut_blc_points_x2" translatable="false">PREF_CUT_BLC_POINTS_X2</string>
-    <string name="pref_cut_blc_points_y1" translatable="false">PREF_CUT_BLC_POINTS_Y1</string>
-    <string name="pref_cut_blc_points_y2" translatable="false">PREF_CUT_BLC_POINTS_Y2</string>
-
-    <string name="pref_cut_blb_x1" translatable="false">PREF_CUT_BLB_X1</string>
-    <string name="pref_cut_blb_x2" translatable="false">PREF_CUT_BLB_X2</string>
-    <string name="pref_cut_blb_y1" translatable="false">PREF_CUT_BLB_Y1</string>
-    <string name="pref_cut_blb_y2" translatable="false">PREF_CUT_BLB_Y2</string>
-
-    <string name="pref_cut_blb_name_x1" translatable="false">PREF_CUT_BLB_NAME_X1</string>
-    <string name="pref_cut_blb_name_x2" translatable="false">PREF_CUT_BLB_NAME_X2</string>
-    <string name="pref_cut_blb_name_y1" translatable="false">PREF_CUT_BLB_NAME_Y1</string>
-    <string name="pref_cut_blb_name_y2" translatable="false">PREF_CUT_BLB_NAME_Y2</string>
-
-    <string name="pref_cut_blb_increase_x1" translatable="false">PREF_CUT_BLB_INCREASE_X1</string>
-    <string name="pref_cut_blb_increase_x2" translatable="false">PREF_CUT_BLB_INCREASE_X2</string>
-    <string name="pref_cut_blb_increase_y1" translatable="false">PREF_CUT_BLB_INCREASE_Y1</string>
-    <string name="pref_cut_blb_increase_y2" translatable="false">PREF_CUT_BLB_INCREASE_Y2</string>
-
-    <string name="pref_cut_blb_slots_x1" translatable="false">PREF_CUT_BLB_SLOTS_X1</string>
-    <string name="pref_cut_blb_slots_x2" translatable="false">PREF_CUT_BLB_SLOTS_X2</string>
-    <string name="pref_cut_blb_slots_y1" translatable="false">PREF_CUT_BLB_SLOTS_Y1</string>
-    <string name="pref_cut_blb_slots_y2" translatable="false">PREF_CUT_BLB_SLOTS_Y2</string>
-
-    <string name="pref_cut_blb_progress_x1" translatable="false">PREF_CUT_BLB_PROGRESS_X1</string>
-    <string name="pref_cut_blb_progress_x2" translatable="false">PREF_CUT_BLB_PROGRESS_X2</string>
-    <string name="pref_cut_blb_progress_y1" translatable="false">PREF_CUT_BLB_PROGRESS_Y1</string>
-    <string name="pref_cut_blb_progress_y2" translatable="false">PREF_CUT_BLB_PROGRESS_Y2</string>
-
-    <string name="pref_cut_blb_points_x1" translatable="false">PREF_CUT_BLB_POINTS_X1</string>
-    <string name="pref_cut_blb_points_x2" translatable="false">PREF_CUT_BLB_POINTS_X2</string>
-    <string name="pref_cut_blb_points_y1" translatable="false">PREF_CUT_BLB_POINTS_Y1</string>
-    <string name="pref_cut_blb_points_y2" translatable="false">PREF_CUT_BLB_POINTS_Y2</string>
-
-    <string name="pref_cut_brt_x1" translatable="false">PREF_CUT_BRT_X1</string>
-    <string name="pref_cut_brt_x2" translatable="false">PREF_CUT_BRT_X2</string>
-    <string name="pref_cut_brt_y1" translatable="false">PREF_CUT_BRT_Y1</string>
-    <string name="pref_cut_brt_y2" translatable="false">PREF_CUT_BRT_Y2</string>
-
-    <string name="pref_cut_brt_name_x1" translatable="false">PREF_CUT_BRT_NAME_X1</string>
-    <string name="pref_cut_brt_name_x2" translatable="false">PREF_CUT_BRT_NAME_X2</string>
-    <string name="pref_cut_brt_name_y1" translatable="false">PREF_CUT_BRT_NAME_Y1</string>
-    <string name="pref_cut_brt_name_y2" translatable="false">PREF_CUT_BRT_NAME_Y2</string>
-
-    <string name="pref_cut_brt_increase_x1" translatable="false">PREF_CUT_BRT_INCREASE_X1</string>
-    <string name="pref_cut_brt_increase_x2" translatable="false">PREF_CUT_BRT_INCREASE_X2</string>
-    <string name="pref_cut_brt_increase_y1" translatable="false">PREF_CUT_BRT_INCREASE_Y1</string>
-    <string name="pref_cut_brt_increase_y2" translatable="false">PREF_CUT_BRT_INCREASE_Y2</string>
-
-    <string name="pref_cut_brt_slots_x1" translatable="false">PREF_CUT_BRT_SLOTS_X1</string>
-    <string name="pref_cut_brt_slots_x2" translatable="false">PREF_CUT_BRT_SLOTS_X2</string>
-    <string name="pref_cut_brt_slots_y1" translatable="false">PREF_CUT_BRT_SLOTS_Y1</string>
-    <string name="pref_cut_brt_slots_y2" translatable="false">PREF_CUT_BRT_SLOTS_Y2</string>
-
-    <string name="pref_cut_brt_progress_x1" translatable="false">PREF_CUT_BRT_PROGRESS_X1</string>
-    <string name="pref_cut_brt_progress_x2" translatable="false">PREF_CUT_BRT_PROGRESS_X2</string>
-    <string name="pref_cut_brt_progress_y1" translatable="false">PREF_CUT_BRT_PROGRESS_Y1</string>
-    <string name="pref_cut_brt_progress_y2" translatable="false">PREF_CUT_BRT_PROGRESS_Y2</string>
-
-    <string name="pref_cut_brt_points_x1" translatable="false">PREF_CUT_BRT_POINTS_X1</string>
-    <string name="pref_cut_brt_points_x2" translatable="false">PREF_CUT_BRT_POINTS_X2</string>
-    <string name="pref_cut_brt_points_y1" translatable="false">PREF_CUT_BRT_POINTS_Y1</string>
-    <string name="pref_cut_brt_points_y2" translatable="false">PREF_CUT_BRT_POINTS_Y2</string>
-
-    <string name="pref_cut_brc_x1" translatable="false">PREF_CUT_BRC_X1</string>
-    <string name="pref_cut_brc_x2" translatable="false">PREF_CUT_BRC_X2</string>
-    <string name="pref_cut_brc_y1" translatable="false">PREF_CUT_BRC_Y1</string>
-    <string name="pref_cut_brc_y2" translatable="false">PREF_CUT_BRC_Y2</string>
-
-    <string name="pref_cut_brc_name_x1" translatable="false">PREF_CUT_BRC_NAME_X1</string>
-    <string name="pref_cut_brc_name_x2" translatable="false">PREF_CUT_BRC_NAME_X2</string>
-    <string name="pref_cut_brc_name_y1" translatable="false">PREF_CUT_BRC_NAME_Y1</string>
-    <string name="pref_cut_brc_name_y2" translatable="false">PREF_CUT_BRC_NAME_Y2</string>
-
-    <string name="pref_cut_brc_increase_x1" translatable="false">PREF_CUT_BRC_INCREASE_X1</string>
-    <string name="pref_cut_brc_increase_x2" translatable="false">PREF_CUT_BRC_INCREASE_X2</string>
-    <string name="pref_cut_brc_increase_y1" translatable="false">PREF_CUT_BRC_INCREASE_Y1</string>
-    <string name="pref_cut_brc_increase_y2" translatable="false">PREF_CUT_BRC_INCREASE_Y2</string>
-
-    <string name="pref_cut_brc_slots_x1" translatable="false">PREF_CUT_BRC_SLOTS_X1</string>
-    <string name="pref_cut_brc_slots_x2" translatable="false">PREF_CUT_BRC_SLOTS_X2</string>
-    <string name="pref_cut_brc_slots_y1" translatable="false">PREF_CUT_BRC_SLOTS_Y1</string>
-    <string name="pref_cut_brc_slots_y2" translatable="false">PREF_CUT_BRC_SLOTS_Y2</string>
-
-    <string name="pref_cut_brc_progress_x1" translatable="false">PREF_CUT_BRC_PROGRESS_X1</string>
-    <string name="pref_cut_brc_progress_x2" translatable="false">PREF_CUT_BRC_PROGRESS_X2</string>
-    <string name="pref_cut_brc_progress_y1" translatable="false">PREF_CUT_BRC_PROGRESS_Y1</string>
-    <string name="pref_cut_brc_progress_y2" translatable="false">PREF_CUT_BRC_PROGRESS_Y2</string>
-
-    <string name="pref_cut_brc_points_x1" translatable="false">PREF_CUT_BRC_POINTS_X1</string>
-    <string name="pref_cut_brc_points_x2" translatable="false">PREF_CUT_BRC_POINTS_X2</string>
-    <string name="pref_cut_brc_points_y1" translatable="false">PREF_CUT_BRC_POINTS_Y1</string>
-    <string name="pref_cut_brc_points_y2" translatable="false">PREF_CUT_BRC_POINTS_Y2</string>
-
-    <string name="pref_cut_brb_x1" translatable="false">PREF_CUT_BRB_X1</string>
-    <string name="pref_cut_brb_x2" translatable="false">PREF_CUT_BRB_X2</string>
-    <string name="pref_cut_brb_y1" translatable="false">PREF_CUT_BRB_Y1</string>
-    <string name="pref_cut_brb_y2" translatable="false">PREF_CUT_BRB_Y2</string>
-
-    <string name="pref_cut_brb_name_x1" translatable="false">PREF_CUT_BRB_NAME_X1</string>
-    <string name="pref_cut_brb_name_x2" translatable="false">PREF_CUT_BRB_NAME_X2</string>
-    <string name="pref_cut_brb_name_y1" translatable="false">PREF_CUT_BRB_NAME_Y1</string>
-    <string name="pref_cut_brb_name_y2" translatable="false">PREF_CUT_BRB_NAME_Y2</string>
-
-    <string name="pref_cut_brb_increase_x1" translatable="false">PREF_CUT_BRB_INCREASE_X1</string>
-    <string name="pref_cut_brb_increase_x2" translatable="false">PREF_CUT_BRB_INCREASE_X2</string>
-    <string name="pref_cut_brb_increase_y1" translatable="false">PREF_CUT_BRB_INCREASE_Y1</string>
-    <string name="pref_cut_brb_increase_y2" translatable="false">PREF_CUT_BRB_INCREASE_Y2</string>
-
-    <string name="pref_cut_brb_slots_x1" translatable="false">PREF_CUT_BRB_SLOTS_X1</string>
-    <string name="pref_cut_brb_slots_x2" translatable="false">PREF_CUT_BRB_SLOTS_X2</string>
-    <string name="pref_cut_brb_slots_y1" translatable="false">PREF_CUT_BRB_SLOTS_Y1</string>
-    <string name="pref_cut_brb_slots_y2" translatable="false">PREF_CUT_BRB_SLOTS_Y2</string>
-
-    <string name="pref_cut_brb_progress_x1" translatable="false">PREF_CUT_BRB_PROGRESS_X1</string>
-    <string name="pref_cut_brb_progress_x2" translatable="false">PREF_CUT_BRB_PROGRESS_X2</string>
-    <string name="pref_cut_brb_progress_y1" translatable="false">PREF_CUT_BRB_PROGRESS_Y1</string>
-    <string name="pref_cut_brb_progress_y2" translatable="false">PREF_CUT_BRB_PROGRESS_Y2</string>
-
-    <string name="pref_cut_brb_points_x1" translatable="false">PREF_CUT_BRB_POINTS_X1</string>
-    <string name="pref_cut_brb_points_x2" translatable="false">PREF_CUT_BRB_POINTS_X2</string>
-    <string name="pref_cut_brb_points_y1" translatable="false">PREF_CUT_BRB_POINTS_Y1</string>
-    <string name="pref_cut_brb_points_y2" translatable="false">PREF_CUT_BRB_POINTS_Y2</string>
-
-
+    <string name="pref_def_cut_car_box1_x1" translatable="false">PREF_DEF_CUT_CAR_BOX1_X1</string>
+    <string name="pref_def_cut_car_box1_x2" translatable="false">PREF_DEF_CUT_CAR_BOX1_X2</string>
+    <string name="pref_def_cut_car_box1_y1" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y1</string>
+    <string name="pref_def_cut_car_box1_y2" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y2</string>
 
     <string name="pref_rgb_car_box1_main" translatable="false">PREF_RGB_CAR_BOX1_MAIN</string>
     <string name="pref_rgb_car_box1_thp" translatable="false">PREF_RGB_CAR_BOX1_THP</string>
     <string name="pref_rgb_car_box1_thm" translatable="false">PREF_RGB_CAR_BOX1_THM</string>
 
+    <string name="pref_def_rgb_car_box1_main" translatable="false">PREF_DEF_RGB_CAR_BOX1_MAIN</string>
+    <string name="pref_def_rgb_car_box1_thp" translatable="false">PREF_DEF_RGB_CAR_BOX1_THP</string>
+    <string name="pref_def_rgb_car_box1_thm" translatable="false">PREF_DEF_RGB_CAR_BOX1_THM</string>
+
+    <!--    car_box2-->
+    <string name="pref_cut_car_box2_x1" translatable="false">PREF_CUT_CAR_BOX2_X1</string>
+    <string name="pref_cut_car_box2_x2" translatable="false">PREF_CUT_CAR_BOX2_X2</string>
+    <string name="pref_cut_car_box2_y1" translatable="false">PREF_CUT_CAR_BOX2_Y1</string>
+    <string name="pref_cut_car_box2_y2" translatable="false">PREF_CUT_CAR_BOX2_Y2</string>
+
+    <string name="pref_def_cut_car_box2_x1" translatable="false">PREF_DEF_CUT_CAR_BOX2_X1</string>
+    <string name="pref_def_cut_car_box2_x2" translatable="false">PREF_DEF_CUT_CAR_BOX2_X2</string>
+    <string name="pref_def_cut_car_box2_y1" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y1</string>
+    <string name="pref_def_cut_car_box2_y2" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y2</string>
+
     <string name="pref_rgb_car_box2_main" translatable="false">PREF_RGB_CAR_BOX2_MAIN</string>
     <string name="pref_rgb_car_box2_thp" translatable="false">PREF_RGB_CAR_BOX2_THP</string>
     <string name="pref_rgb_car_box2_thm" translatable="false">PREF_RGB_CAR_BOX2_THM</string>
+
+    <string name="pref_def_rgb_car_box2_main" translatable="false">PREF_DEF_RGB_CAR_BOX2_MAIN</string>
+    <string name="pref_def_rgb_car_box2_thp" translatable="false">PREF_DEF_RGB_CAR_BOX2_THP</string>
+    <string name="pref_def_rgb_car_box2_thm" translatable="false">PREF_DEF_RGB_CAR_BOX2_THM</string>
+
+
+    <!--    car_picture-->
+    <string name="pref_cut_car_picture_x1" translatable="false">PREF_CUT_CAR_PICTURE_X1</string>
+    <string name="pref_cut_car_picture_x2" translatable="false">PREF_CUT_CAR_PICTURE_X2</string>
+    <string name="pref_cut_car_picture_y1" translatable="false">PREF_CUT_CAR_PICTURE_Y1</string>
+    <string name="pref_cut_car_picture_y2" translatable="false">PREF_CUT_CAR_PICTURE_Y2</string>
+
+    <string name="pref_def_cut_car_picture_x1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X1</string>
+    <string name="pref_def_cut_car_picture_x2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X2</string>
+    <string name="pref_def_cut_car_picture_y1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y1</string>
+    <string name="pref_def_cut_car_picture_y2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y2</string>
+
+<!--    car_building-->
+    <string name="pref_cut_car_building_x1" translatable="false">PREF_CUT_CAR_BUILDING_X1</string>
+    <string name="pref_cut_car_building_x2" translatable="false">PREF_CUT_CAR_BUILDING_X2</string>
+    <string name="pref_cut_car_building_y1" translatable="false">PREF_CUT_CAR_BUILDING_Y1</string>
+    <string name="pref_cut_car_building_y2" translatable="false">PREF_CUT_CAR_BUILDING_Y2</string>
+
+    <string name="pref_def_cut_car_building_x1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X1</string>
+    <string name="pref_def_cut_car_building_x2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X2</string>
+    <string name="pref_def_cut_car_building_y1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y1</string>
+    <string name="pref_def_cut_car_building_y2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y2</string>
 
     <string name="pref_rgb_car_building_main" translatable="false">PREF_RGB_CAR_BUILDING_MAIN</string>
     <string name="pref_rgb_car_building_back" translatable="false">PREF_RGB_CAR_BUILDING_BACK</string>
     <string name="pref_rgb_car_building_thp" translatable="false">PREF_RGB_CAR_BUILDING_THP</string>
     <string name="pref_rgb_car_building_thm" translatable="false">PREF_RGB_CAR_BUILDING_THM</string>
 
+    <string name="pref_def_rgb_car_building_main" translatable="false">PREF_DEF_RGB_CAR_BUILDING_MAIN</string>
+    <string name="pref_def_rgb_car_building_back" translatable="false">PREF_DEF_RGB_CAR_BUILDING_BACK</string>
+    <string name="pref_def_rgb_car_building_thp" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THP</string>
+    <string name="pref_def_rgb_car_building_thm" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THM</string>
+
+
+<!--    car_info-->
+    <string name="pref_cut_car_info_x1" translatable="false">PREF_CUT_CAR_INFO_X1</string>
+    <string name="pref_cut_car_info_x2" translatable="false">PREF_CUT_CAR_INFO_X2</string>
+    <string name="pref_cut_car_info_y1" translatable="false">PREF_CUT_CAR_INFO_Y1</string>
+    <string name="pref_cut_car_info_y2" translatable="false">PREF_CUT_CAR_INFO_Y2</string>
+
+    <string name="pref_def_cut_car_info_x1" translatable="false">PREF_DEF_CUT_CAR_INFO_X1</string>
+    <string name="pref_def_cut_car_info_x2" translatable="false">PREF_DEF_CUT_CAR_INFO_X2</string>
+    <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
+    <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
+
+<!--    car_slot1-->
+    <string name="pref_cut_car_slot1_x1" translatable="false">PREF_CUT_CAR_SLOT1_X1</string>
+    <string name="pref_cut_car_slot1_x2" translatable="false">PREF_CUT_CAR_SLOT1_X2</string>
+    <string name="pref_cut_car_slot1_y1" translatable="false">PREF_CUT_CAR_SLOT1_Y1</string>
+    <string name="pref_cut_car_slot1_y2" translatable="false">PREF_CUT_CAR_SLOT1_Y2</string>
+
+    <string name="pref_def_cut_car_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X1</string>
+    <string name="pref_def_cut_car_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X2</string>
+    <string name="pref_def_cut_car_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y1</string>
+    <string name="pref_def_cut_car_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y2</string>
+
     <string name="pref_rgb_car_slot_main" translatable="false">PREF_RGB_CAR_SLOT_MAIN</string>
     <string name="pref_rgb_car_slot_back" translatable="false">PREF_RGB_CAR_SLOT_BACK</string>
     <string name="pref_rgb_car_slot_thp" translatable="false">PREF_RGB_CAR_SLOT_THP</string>
     <string name="pref_rgb_car_slot_thm" translatable="false">PREF_RGB_CAR_SLOT_THM</string>
+
+    <string name="pref_def_rgb_car_slot_main" translatable="false">PREF_DEF_RGB_CAR_SLOT_MAIN</string>
+    <string name="pref_def_rgb_car_slot_back" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK</string>
+    <string name="pref_def_rgb_car_slot_thp" translatable="false">PREF_DEF_RGB_CAR_SLOT_THP</string>
+    <string name="pref_def_rgb_car_slot_thm" translatable="false">PREF_DEF_RGB_CAR_SLOT_THM</string>
+
+
+    <!--    car_slot2-->
+    <string name="pref_cut_car_slot2_x1" translatable="false">PREF_CUT_CAR_SLOT2_X1</string>
+    <string name="pref_cut_car_slot2_x2" translatable="false">PREF_CUT_CAR_SLOT2_X2</string>
+    <string name="pref_cut_car_slot2_y1" translatable="false">PREF_CUT_CAR_SLOT2_Y1</string>
+    <string name="pref_cut_car_slot2_y2" translatable="false">PREF_CUT_CAR_SLOT2_Y2</string>
+
+    <string name="pref_def_cut_car_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X1</string>
+    <string name="pref_def_cut_car_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X2</string>
+    <string name="pref_def_cut_car_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y1</string>
+    <string name="pref_def_cut_car_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y2</string>
+
+<!--    car_slot3-->
+    <string name="pref_cut_car_slot3_x1" translatable="false">PREF_CUT_CAR_SLOT3_X1</string>
+    <string name="pref_cut_car_slot3_x2" translatable="false">PREF_CUT_CAR_SLOT3_X2</string>
+    <string name="pref_cut_car_slot3_y1" translatable="false">PREF_CUT_CAR_SLOT3_Y1</string>
+    <string name="pref_cut_car_slot3_y2" translatable="false">PREF_CUT_CAR_SLOT3_Y2</string>
+
+    <string name="pref_def_cut_car_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X1</string>
+    <string name="pref_def_cut_car_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X2</string>
+    <string name="pref_def_cut_car_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y1</string>
+    <string name="pref_def_cut_car_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y2</string>
+
+<!--    car_health-->
+    <string name="pref_cut_car_health_x1" translatable="false">PREF_CUT_CAR_HEALTH_X1</string>
+    <string name="pref_cut_car_health_x2" translatable="false">PREF_CUT_CAR_HEALTH_X2</string>
+    <string name="pref_cut_car_health_y1" translatable="false">PREF_CUT_CAR_HEALTH_Y1</string>
+    <string name="pref_cut_car_health_y2" translatable="false">PREF_CUT_CAR_HEALTH_Y2</string>
+
+    <string name="pref_def_cut_car_health_x1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X1</string>
+    <string name="pref_def_cut_car_health_x2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X2</string>
+    <string name="pref_def_cut_car_health_y1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y1</string>
+    <string name="pref_def_cut_car_health_y2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y2</string>
 
     <string name="pref_rgb_car_health_main" translatable="false">PREF_RGB_CAR_HEALTH_MAIN</string>
     <string name="pref_rgb_car_health_back" translatable="false">PREF_RGB_CAR_HEALTH_BACK</string>
     <string name="pref_rgb_car_health_thp" translatable="false">PREF_RGB_CAR_HEALTH_THP</string>
     <string name="pref_rgb_car_health_thm" translatable="false">PREF_RGB_CAR_HEALTH_THM</string>
 
+    <string name="pref_def_rgb_car_health_main" translatable="false">PREF_DEF_RGB_CAR_HEALTH_MAIN</string>
+    <string name="pref_def_rgb_car_health_back" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK</string>
+    <string name="pref_def_rgb_car_health_thp" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THP</string>
+    <string name="pref_def_rgb_car_health_thm" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THM</string>
+
+
+    <!--    car_shield-->
+    <string name="pref_cut_car_shield_x1" translatable="false">PREF_CUT_CAR_SHIELD_X1</string>
+    <string name="pref_cut_car_shield_x2" translatable="false">PREF_CUT_CAR_SHIELD_X2</string>
+    <string name="pref_cut_car_shield_y1" translatable="false">PREF_CUT_CAR_SHIELD_Y1</string>
+    <string name="pref_cut_car_shield_y2" translatable="false">PREF_CUT_CAR_SHIELD_Y2</string>
+
+    <string name="pref_def_cut_car_shield_x1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X1</string>
+    <string name="pref_def_cut_car_shield_x2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X2</string>
+    <string name="pref_def_cut_car_shield_y1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y1</string>
+    <string name="pref_def_cut_car_shield_y2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y2</string>
+
     <string name="pref_rgb_car_shield_main" translatable="false">PREF_RGB_CAR_SHIELD_MAIN</string>
     <string name="pref_rgb_car_shield_back" translatable="false">PREF_RGB_CAR_SHIELD_BACK</string>
     <string name="pref_rgb_car_shield_thp" translatable="false">PREF_RGB_CAR_SHIELD_THP</string>
     <string name="pref_rgb_car_shield_thm" translatable="false">PREF_RGB_CAR_SHIELD_THM</string>
+
+    <string name="pref_def_rgb_car_shield_main" translatable="false">PREF_DEF_RGB_CAR_SHIELD_MAIN</string>
+    <string name="pref_def_rgb_car_shield_back" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK</string>
+    <string name="pref_def_rgb_car_shield_thp" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THP</string>
+    <string name="pref_def_rgb_car_shield_thm" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THM</string>
+
+
+    <!--    car_state-->
+    <string name="pref_cut_car_state_x1" translatable="false">PREF_CUT_CAR_STATE_X1</string>
+    <string name="pref_cut_car_state_x2" translatable="false">PREF_CUT_CAR_STATE_X2</string>
+    <string name="pref_cut_car_state_y1" translatable="false">PREF_CUT_CAR_STATE_Y1</string>
+    <string name="pref_cut_car_state_y2" translatable="false">PREF_CUT_CAR_STATE_Y2</string>
+
+    <string name="pref_def_cut_car_state_x1" translatable="false">PREF_DEF_CUT_CAR_STATE_X1</string>
+    <string name="pref_def_cut_car_state_x2" translatable="false">PREF_DEF_CUT_CAR_STATE_X2</string>
+    <string name="pref_def_cut_car_state_y1" translatable="false">PREF_DEF_CUT_CAR_STATE_Y1</string>
+    <string name="pref_def_cut_car_state_y2" translatable="false">PREF_DEF_CUT_CAR_STATE_Y2</string>
 
     <string name="pref_rgb_car_state_main" translatable="false">PREF_RGB_CAR_STATE_MAIN</string>
     <string name="pref_rgb_car_state_back" translatable="false">PREF_RGB_CAR_STATE_BACK</string>
     <string name="pref_rgb_car_state_thp" translatable="false">PREF_RGB_CAR_STATE_THP</string>
     <string name="pref_rgb_car_state_thm" translatable="false">PREF_RGB_CAR_STATE_THM</string>
 
+    <string name="pref_def_rgb_car_state_main" translatable="false">PREF_DEF_RGB_CAR_STATE_MAIN</string>
+    <string name="pref_def_rgb_car_state_back" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK</string>
+    <string name="pref_def_rgb_car_state_thp" translatable="false">PREF_DEF_RGB_CAR_STATE_THP</string>
+    <string name="pref_def_rgb_car_state_thm" translatable="false">PREF_DEF_RGB_CAR_STATE_THM</string>
+
+
+    <!--    car_healbox-->
+    <string name="pref_cut_car_healbox_x1" translatable="false">PREF_CUT_CAR_HEALBOX_X1</string>
+    <string name="pref_cut_car_healbox_x2" translatable="false">PREF_CUT_CAR_HEALBOX_X2</string>
+    <string name="pref_cut_car_healbox_y1" translatable="false">PREF_CUT_CAR_HEALBOX_Y1</string>
+    <string name="pref_cut_car_healbox_y2" translatable="false">PREF_CUT_CAR_HEALBOX_Y2</string>
+
+    <string name="pref_def_cut_car_healbox_x1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X1</string>
+    <string name="pref_def_cut_car_healbox_x2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X2</string>
+    <string name="pref_def_cut_car_healbox_y1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y1</string>
+    <string name="pref_def_cut_car_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y2</string>
+
     <string name="pref_rgb_car_healbox_main" translatable="false">PREF_RGB_CAR_HEALBOX_MAIN</string>
     <string name="pref_rgb_car_healbox_back" translatable="false">PREF_RGB_CAR_HEALBOX_BACK</string>
     <string name="pref_rgb_car_healbox_thp" translatable="false">PREF_RGB_CAR_HEALBOX_THP</string>
     <string name="pref_rgb_car_healbox_thm" translatable="false">PREF_RGB_CAR_HEALBOX_THM</string>
 
+    <string name="pref_def_rgb_car_healbox_main" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_MAIN</string>
+    <string name="pref_def_rgb_car_healbox_back" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK</string>
+    <string name="pref_def_rgb_car_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THP</string>
+    <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
+
+
+    <!--    car_timebox-->
+    <string name="pref_cut_car_timebox_x1" translatable="false">PREF_CUT_CAR_TIMEBOX_X1</string>
+    <string name="pref_cut_car_timebox_x2" translatable="false">PREF_CUT_CAR_TIMEBOX_X2</string>
+    <string name="pref_cut_car_timebox_y1" translatable="false">PREF_CUT_CAR_TIMEBOX_Y1</string>
+    <string name="pref_cut_car_timebox_y2" translatable="false">PREF_CUT_CAR_TIMEBOX_Y2</string>
+
+    <string name="pref_def_cut_car_timebox_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X1</string>
+    <string name="pref_def_cut_car_timebox_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X2</string>
+    <string name="pref_def_cut_car_timebox_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y1</string>
+    <string name="pref_def_cut_car_timebox_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y2</string>
+
     <string name="pref_rgb_car_timebox_main" translatable="false">PREF_RGB_CAR_TIMEBOX_MAIN</string>
     <string name="pref_rgb_car_timebox_back" translatable="false">PREF_RGB_CAR_TIMEBOX_BACK</string>
     <string name="pref_rgb_car_timebox_thp" translatable="false">PREF_RGB_CAR_TIMEBOX_THP</string>
     <string name="pref_rgb_car_timebox_thm" translatable="false">PREF_RGB_CAR_TIMEBOX_THM</string>
-    
+
+    <string name="pref_def_rgb_car_timebox_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_MAIN</string>
+    <string name="pref_def_rgb_car_timebox_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_BACK</string>
+    <string name="pref_def_rgb_car_timebox_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THP</string>
+    <string name="pref_def_rgb_car_timebox_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THM</string>
+
+
+    <!--    box1_info-->
+    <string name="pref_cut_box1_info_x1" translatable="false">PREF_CUT_BOX1_INFO_X1</string>
+    <string name="pref_cut_box1_info_x2" translatable="false">PREF_CUT_BOX1_INFO_X2</string>
+    <string name="pref_cut_box1_info_y1" translatable="false">PREF_CUT_BOX1_INFO_Y1</string>
+    <string name="pref_cut_box1_info_y2" translatable="false">PREF_CUT_BOX1_INFO_Y2</string>
+
+    <string name="pref_def_cut_box1_info_x1" translatable="false">PREF_DEF_CUT_BOX1_INFO_X1</string>
+    <string name="pref_def_cut_box1_info_x2" translatable="false">PREF_DEF_CUT_BOX1_INFO_X2</string>
+    <string name="pref_def_cut_box1_info_y1" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y1</string>
+    <string name="pref_def_cut_box1_info_y2" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y2</string>
+
     <string name="pref_rgb_box1_info_main" translatable="false">PREF_RGB_BOX1_INFO_MAIN</string>
     <string name="pref_rgb_box1_info_thp" translatable="false">PREF_RGB_BOX1_INFO_THP</string>
     <string name="pref_rgb_box1_info_thm" translatable="false">PREF_RGB_BOX1_INFO_THM</string>
+
+    <string name="pref_def_rgb_box1_info_main" translatable="false">PREF_DEF_RGB_BOX1_INFO_MAIN</string>
+    <string name="pref_def_rgb_box1_info_thp" translatable="false">PREF_DEF_RGB_BOX1_INFO_THP</string>
+    <string name="pref_def_rgb_box1_info_thm" translatable="false">PREF_DEF_RGB_BOX1_INFO_THM</string>
+
+<!--    box2_info-->
+    <string name="pref_cut_box2_info_x1" translatable="false">PREF_CUT_BOX2_INFO_X1</string>
+    <string name="pref_cut_box2_info_x2" translatable="false">PREF_CUT_BOX2_INFO_X2</string>
+    <string name="pref_cut_box2_info_y1" translatable="false">PREF_CUT_BOX2_INFO_Y1</string>
+    <string name="pref_cut_box2_info_y2" translatable="false">PREF_CUT_BOX2_INFO_Y2</string>
+
+    <string name="pref_def_cut_box2_info_x1" translatable="false">PREF_DEF_CUT_BOX2_INFO_X1</string>
+    <string name="pref_def_cut_box2_info_x2" translatable="false">PREF_DEF_CUT_BOX2_INFO_X2</string>
+    <string name="pref_def_cut_box2_info_y1" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y1</string>
+    <string name="pref_def_cut_box2_info_y2" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y2</string>
 
     <string name="pref_rgb_box2_info_main" translatable="false">PREF_RGB_BOX2_INFO_MAIN</string>
     <string name="pref_rgb_box2_info_thp" translatable="false">PREF_RGB_BOX2_INFO_THP</string>
     <string name="pref_rgb_box2_info_thm" translatable="false">PREF_RGB_BOX2_INFO_THM</string>
 
+    <string name="pref_def_rgb_box2_info_main" translatable="false">PREF_DEF_RGB_BOX2_INFO_MAIN</string>
+    <string name="pref_def_rgb_box2_info_thp" translatable="false">PREF_DEF_RGB_BOX2_INFO_THP</string>
+    <string name="pref_def_rgb_box2_info_thm" translatable="false">PREF_DEF_RGB_BOX2_INFO_THM</string>
+
+
+<!--    box_back-->
+    <string name="pref_cut_box_back_x1" translatable="false">PREF_CUT_BOX_BACK_X1</string>
+    <string name="pref_cut_box_back_x2" translatable="false">PREF_CUT_BOX_BACK_X2</string>
+    <string name="pref_cut_box_back_y1" translatable="false">PREF_CUT_BOX_BACK_Y1</string>
+    <string name="pref_cut_box_back_y2" translatable="false">PREF_CUT_BOX_BACK_Y2</string>
+
+    <string name="pref_def_cut_box_back_x1" translatable="false">PREF_DEF_CUT_BOX_BACK_X1</string>
+    <string name="pref_def_cut_box_back_x2" translatable="false">PREF_DEF_CUT_BOX_BACK_X2</string>
+    <string name="pref_def_cut_box_back_y1" translatable="false">PREF_DEF_CUT_BOX_BACK_Y1</string>
+    <string name="pref_def_cut_box_back_y2" translatable="false">PREF_DEF_CUT_BOX_BACK_Y2</string>
+
     <string name="pref_rgb_box_back_main" translatable="false">PREF_RGB_BOX_BACK_MAIN</string>
     <string name="pref_rgb_box_back_thp" translatable="false">PREF_RGB_BOX_BACK_THP</string>
     <string name="pref_rgb_box_back_thm" translatable="false">PREF_RGB_BOX_BACK_THM</string>
+
+    <string name="pref_def_rgb_box_back_main" translatable="false">PREF_DEF_RGB_BOX_BACK_MAIN</string>
+    <string name="pref_def_rgb_box_back_thp" translatable="false">PREF_DEF_RGB_BOX_BACK_THP</string>
+    <string name="pref_def_rgb_box_back_thm" translatable="false">PREF_DEF_RGB_BOX_BACK_THM</string>
+
+
+<!--    city-->
+    <string name="pref_cut_city_x1" translatable="false">PREF_CUT_CITY_X1</string>
+    <string name="pref_cut_city_x2" translatable="false">PREF_CUT_CITY_X2</string>
+    <string name="pref_cut_city_y1" translatable="false">PREF_CUT_CITY_Y1</string>
+    <string name="pref_cut_city_y2" translatable="false">PREF_CUT_CITY_Y2</string>
+
+    <string name="pref_def_cut_city_x1" translatable="false">PREF_DEF_CUT_CITY_X1</string>
+    <string name="pref_def_cut_city_x2" translatable="false">PREF_DEF_CUT_CITY_X2</string>
+    <string name="pref_def_cut_city_y1" translatable="false">PREF_DEF_CUT_CITY_Y1</string>
+    <string name="pref_def_cut_city_y2" translatable="false">PREF_DEF_CUT_CITY_Y2</string>
+
+
+<!--    points_and_increase_our-->
+    <string name="pref_cut_points_and_increase_our_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
+    <string name="pref_cut_points_and_increase_our_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X2</string>
+    <string name="pref_cut_points_and_increase_our_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y1</string>
+    <string name="pref_cut_points_and_increase_our_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_Y2</string>
+
+    <string name="pref_def_cut_points_and_increase_our_x1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
+    <string name="pref_def_cut_points_and_increase_our_x2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_X2</string>
+    <string name="pref_def_cut_points_and_increase_our_y1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_Y1</string>
+    <string name="pref_def_cut_points_and_increase_our_y2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_Y2</string>
 
     <string name="pref_rgb_points_our_main" translatable="false">PREF_RGB_POINTS_OUR_MAIN</string>
     <string name="pref_rgb_points_our_back1" translatable="false">PREF_RGB_POINTS_OUR_BACK1</string>
@@ -369,10 +412,33 @@
     <string name="pref_rgb_points_our_thp" translatable="false">PREF_RGB_POINTS_OUR_THP</string>
     <string name="pref_rgb_points_our_thm" translatable="false">PREF_RGB_POINTS_OUR_THM</string>
 
+    <string name="pref_def_rgb_points_our_main" translatable="false">PREF_DEF_RGB_POINTS_OUR_MAIN</string>
+    <string name="pref_def_rgb_points_our_back1" translatable="false">PREF_DEF_RGB_POINTS_OUR_BACK1</string>
+    <string name="pref_def_rgb_points_our_back2" translatable="false">PREF_DEF_RGB_POINTS_OUR_BACK2</string>
+    <string name="pref_def_rgb_points_our_thp" translatable="false">PREF_DEF_RGB_POINTS_OUR_THP</string>
+    <string name="pref_def_rgb_points_our_thm" translatable="false">PREF_DEF_RGB_POINTS_OUR_THM</string>
+
     <string name="pref_rgb_increase_our_main" translatable="false">PREF_RGB_INCREASE_OUR_MAIN</string>
     <string name="pref_rgb_increase_our_back1" translatable="false">PREF_RGB_INCREASE_OUR_BACK</string>
     <string name="pref_rgb_increase_our_thp" translatable="false">PREF_RGB_INCREASE_OUR_THP</string>
     <string name="pref_rgb_increase_our_thm" translatable="false">PREF_RGB_INCREASE_OUR_THM</string>
+
+    <string name="pref_def_rgb_increase_our_main" translatable="false">PREF_DEF_RGB_INCREASE_OUR_MAIN</string>
+    <string name="pref_def_rgb_increase_our_back1" translatable="false">PREF_DEF_RGB_INCREASE_OUR_BACK</string>
+    <string name="pref_def_rgb_increase_our_thp" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THP</string>
+    <string name="pref_def_rgb_increase_our_thm" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THM</string>
+
+
+<!--    points_and_increase_enemy-->
+    <string name="pref_cut_points_and_increase_enemy_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X1</string>
+    <string name="pref_cut_points_and_increase_enemy_x2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_X2</string>
+    <string name="pref_cut_points_and_increase_enemy_y1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y1</string>
+    <string name="pref_cut_points_and_increase_enemy_y2" translatable="false">PREF_CUT_POINTS_AND_INCREASE_ENEMY_Y2</string>
+
+    <string name="pref_def_cut_points_and_increase_enemy_x1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_X1</string>
+    <string name="pref_def_cut_points_and_increase_enemy_x2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_X2</string>
+    <string name="pref_def_cut_points_and_increase_enemy_y1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_Y1</string>
+    <string name="pref_def_cut_points_and_increase_enemy_y2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_Y2</string>
 
     <string name="pref_rgb_points_enemy_main" translatable="false">PREF_RGB_POINTS_ENEMY_MAIN</string>
     <string name="pref_rgb_points_enemy_back1" translatable="false">PREF_RGB_POINTS_ENEMY_BACK1</string>
@@ -380,10 +446,33 @@
     <string name="pref_rgb_points_enemy_thp" translatable="false">PREF_RGB_POINTS_ENEMY_THP</string>
     <string name="pref_rgb_points_enemy_thm" translatable="false">PREF_RGB_POINTS_ENEMY_THM</string>
 
+    <string name="pref_def_rgb_points_enemy_main" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_points_enemy_back1" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_BACK1</string>
+    <string name="pref_def_rgb_points_enemy_back2" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_BACK2</string>
+    <string name="pref_def_rgb_points_enemy_thp" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_THP</string>
+    <string name="pref_def_rgb_points_enemy_thm" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_THM</string>
+
     <string name="pref_rgb_increase_enemy_main" translatable="false">PREF_RGB_INCREASE_ENEMY_MAIN</string>
     <string name="pref_rgb_increase_enemy_back1" translatable="false">PREF_RGB_INCREASE_ENEMY_BACK</string>
     <string name="pref_rgb_increase_enemy_thp" translatable="false">PREF_RGB_INCREASE_ENEMY_THP</string>
     <string name="pref_rgb_increase_enemy_thm" translatable="false">PREF_RGB_INCREASE_ENEMY_THM</string>
+
+    <string name="pref_def_rgb_increase_enemy_main" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_increase_enemy_back1" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_BACK</string>
+    <string name="pref_def_rgb_increase_enemy_thp" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THP</string>
+    <string name="pref_def_rgb_increase_enemy_thm" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THM</string>
+
+
+    <!--    total_time-->
+    <string name="pref_cut_total_time_x1" translatable="false">PREF_CUT_TOTAL_TIME_X1</string>
+    <string name="pref_cut_total_time_x2" translatable="false">PREF_CUT_TOTAL_TIME_X2</string>
+    <string name="pref_cut_total_time_y1" translatable="false">PREF_CUT_TOTAL_TIME_Y1</string>
+    <string name="pref_cut_total_time_y2" translatable="false">PREF_CUT_TOTAL_TIME_Y2</string>
+
+    <string name="pref_def_cut_total_time_x1" translatable="false">PREF_DEF_CUT_TOTAL_TIME_X1</string>
+    <string name="pref_def_cut_total_time_x2" translatable="false">PREF_DEF_CUT_TOTAL_TIME_X2</string>
+    <string name="pref_def_cut_total_time_y1" translatable="false">PREF_DEF_CUT_TOTAL_TIME_Y1</string>
+    <string name="pref_def_cut_total_time_y2" translatable="false">PREF_DEF_CUT_TOTAL_TIME_Y2</string>
 
     <string name="pref_rgb_total_time_main" translatable="false">PREF_RGB_TOTAL_TIME_MAIN</string>
     <string name="pref_rgb_total_time_back1" translatable="false">PREF_RGB_TOTAL_TIME_BACK1</string>
@@ -391,25 +480,125 @@
     <string name="pref_rgb_total_time_thp" translatable="false">PREF_RGB_TOTAL_TIME_THP</string>
     <string name="pref_rgb_total_time_thm" translatable="false">PREF_RGB_TOTAL_TIME_THM</string>
 
+    <string name="pref_def_rgb_total_time_main" translatable="false">PREF_DEF_RGB_TOTAL_TIME_MAIN</string>
+    <string name="pref_def_rgb_total_time_back1" translatable="false">PREF_DEF_RGB_TOTAL_TIME_BACK1</string>
+    <string name="pref_def_rgb_total_time_back2" translatable="false">PREF_DEF_RGB_TOTAL_TIME_BACK2</string>
+    <string name="pref_def_rgb_total_time_thp" translatable="false">PREF_DEF_RGB_TOTAL_TIME_THP</string>
+    <string name="pref_def_rgb_total_time_thm" translatable="false">PREF_DEF_RGB_TOTAL_TIME_THM</string>
+
+<!--    early_win-->
+    <string name="pref_cut_early_win_x1" translatable="false">PREF_CUT_EARLY_WIN_X1</string>
+    <string name="pref_cut_early_win_x2" translatable="false">PREF_CUT_EARLY_WIN_X2</string>
+    <string name="pref_cut_early_win_y1" translatable="false">PREF_CUT_EARLY_WIN_Y1</string>
+    <string name="pref_cut_early_win_y2" translatable="false">PREF_CUT_EARLY_WIN_Y2</string>
+
+    <string name="pref_def_cut_early_win_x1" translatable="false">PREF_DEF_CUT_EARLY_WIN_X1</string>
+    <string name="pref_def_cut_early_win_x2" translatable="false">PREF_DEF_CUT_EARLY_WIN_X2</string>
+    <string name="pref_def_cut_early_win_y1" translatable="false">PREF_DEF_CUT_EARLY_WIN_Y1</string>
+    <string name="pref_def_cut_early_win_y2" translatable="false">PREF_DEF_CUT_EARLY_WIN_Y2</string>
+
     <string name="pref_rgb_early_win_main" translatable="false">PREF_RGB_EARLY_WIN_MAIN</string>
     <string name="pref_rgb_early_win_back1" translatable="false">PREF_RGB_EARLY_WIN_BACK</string>
     <string name="pref_rgb_early_win_thp" translatable="false">PREF_RGB_EARLY_WIN_THP</string>
     <string name="pref_rgb_early_win_thm" translatable="false">PREF_RGB_EARLY_WIN_THM</string>
+
+    <string name="pref_def_rgb_early_win_main" translatable="false">PREF_DEF_RGB_EARLY_WIN_MAIN</string>
+    <string name="pref_def_rgb_early_win_back1" translatable="false">PREF_DEF_RGB_EARLY_WIN_BACK</string>
+    <string name="pref_def_rgb_early_win_thp" translatable="false">PREF_DEF_RGB_EARLY_WIN_THP</string>
+    <string name="pref_def_rgb_early_win_thm" translatable="false">PREF_DEF_RGB_EARLY_WIN_THM</string>
+
+
+<!--    team_name_our-->
+    <string name="pref_cut_team_name_our_x1" translatable="false">PREF_CUT_TEAM_NAME_OUR_X1</string>
+    <string name="pref_cut_team_name_our_x2" translatable="false">PREF_CUT_TEAM_NAME_OUR_X2</string>
+    <string name="pref_cut_team_name_our_y1" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y1</string>
+    <string name="pref_cut_team_name_our_y2" translatable="false">PREF_CUT_TEAM_NAME_OUR_Y2</string>
+
+    <string name="pref_def_cut_team_name_our_x1" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_X1</string>
+    <string name="pref_def_cut_team_name_our_x2" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_X2</string>
+    <string name="pref_def_cut_team_name_our_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y1</string>
+    <string name="pref_def_cut_team_name_our_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y2</string>
+
+
+<!--    team_name_enemy-->
+    <string name="pref_cut_team_name_enemy_x1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X1</string>
+    <string name="pref_cut_team_name_enemy_x2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X2</string>
+    <string name="pref_cut_team_name_enemy_y1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y1</string>
+    <string name="pref_cut_team_name_enemy_y2" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_Y2</string>
+
+    <string name="pref_def_cut_team_name_enemy_x1" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_X1</string>
+    <string name="pref_def_cut_team_name_enemy_x2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_X2</string>
+    <string name="pref_def_cut_team_name_enemy_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y1</string>
+    <string name="pref_def_cut_team_name_enemy_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y2</string>
+
+
+<!--    blt-->
+    <string name="pref_cut_blt_x1" translatable="false">PREF_CUT_BLT_X1</string>
+    <string name="pref_cut_blt_x2" translatable="false">PREF_CUT_BLT_X2</string>
+    <string name="pref_cut_blt_y1" translatable="false">PREF_CUT_BLT_Y1</string>
+    <string name="pref_cut_blt_y2" translatable="false">PREF_CUT_BLT_Y2</string>
+
+    <string name="pref_def_cut_blt_x1" translatable="false">PREF_DEF_CUT_BLT_X1</string>
+    <string name="pref_def_cut_blt_x2" translatable="false">PREF_DEF_CUT_BLT_X2</string>
+    <string name="pref_def_cut_blt_y1" translatable="false">PREF_DEF_CUT_BLT_Y1</string>
+    <string name="pref_def_cut_blt_y2" translatable="false">PREF_DEF_CUT_BLT_Y2</string>
+
+
+    <!--    blt_name-->
+    <string name="pref_cut_blt_name_x1" translatable="false">PREF_CUT_BLT_NAME_X1</string>
+    <string name="pref_cut_blt_name_x2" translatable="false">PREF_CUT_BLT_NAME_X2</string>
+    <string name="pref_cut_blt_name_y1" translatable="false">PREF_CUT_BLT_NAME_Y1</string>
+    <string name="pref_cut_blt_name_y2" translatable="false">PREF_CUT_BLT_NAME_Y2</string>
+
+    <string name="pref_def_cut_blt_name_x1" translatable="false">PREFF_DEF_CUT_BLT_NAME_X1</string>
+    <string name="pref_def_cut_blt_name_x2" translatable="false">PREFF_DEF_CUT_BLT_NAME_X2</string>
+    <string name="pref_def_cut_blt_name_y1" translatable="false">PREFF_DEF_CUT_BLT_NAME_Y1</string>
+    <string name="pref_def_cut_blt_name_y2" translatable="false">PREFF_DEF_CUT_BLT_NAME_Y2</string>
+
+
+<!--    blt_increase-->
+    <string name="pref_cut_blt_increase_x1" translatable="false">PREF_CUT_BLT_INCREASE_X1</string>
+    <string name="pref_cut_blt_increase_x2" translatable="false">PREF_CUT_BLT_INCREASE_X2</string>
+    <string name="pref_cut_blt_increase_y1" translatable="false">PREF_CUT_BLT_INCREASE_Y1</string>
+    <string name="pref_cut_blt_increase_y2" translatable="false">PREF_CUT_BLT_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_blt_increase_x1" translatable="false">PREF_DEF_CUT_BLT_INCREASE_X1</string>
+    <string name="pref_def_cut_blt_increase_x2" translatable="false">PREF_DEF_CUT_BLT_INCREASE_X2</string>
+    <string name="pref_def_cut_blt_increase_y1" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y1</string>
+    <string name="pref_def_cut_blt_increase_y2" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y2</string>
+
+<!--    blt_slots-->
+    <string name="pref_cut_blt_slots_x1" translatable="false">PREF_CUT_BLT_SLOTS_X1</string>
+    <string name="pref_cut_blt_slots_x2" translatable="false">PREF_CUT_BLT_SLOTS_X2</string>
+    <string name="pref_cut_blt_slots_y1" translatable="false">PREF_CUT_BLT_SLOTS_Y1</string>
+    <string name="pref_cut_blt_slots_y2" translatable="false">PREF_CUT_BLT_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_blt_slots_x1" translatable="false">PREF_DEF_CUT_BLT_SLOTS_X1</string>
+    <string name="pref_def_cut_blt_slots_x2" translatable="false">PREF_DEF_CUT_BLT_SLOTS_X2</string>
+    <string name="pref_def_cut_blt_slots_y1" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y1</string>
+    <string name="pref_def_cut_blt_slots_y2" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y2</string>
 
     <string name="pref_rgb_building_slot_main" translatable="false">PREF_RGB_BUILDING_SLOT_MAIN</string>
     <string name="pref_rgb_building_slot_back1" translatable="false">PREF_RGB_BUILDING_SLOT_BACK</string>
     <string name="pref_rgb_building_slot_thp" translatable="false">PREF_RGB_BUILDING_SLOT_THP</string>
     <string name="pref_rgb_building_slot_thm" translatable="false">PREF_RGB_BUILDING_SLOT_THM</string>
 
-    <string name="pref_rgb_building_points_our_main" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_MAIN</string>
-    <string name="pref_rgb_building_points_our_back1" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_BACK</string>
-    <string name="pref_rgb_building_points_our_thp" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THP</string>
-    <string name="pref_rgb_building_points_our_thm" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THM</string>
+    <string name="pref_def_rgb_building_slot_main" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_MAIN</string>
+    <string name="pref_def_rgb_building_slot_back1" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_BACK</string>
+    <string name="pref_def_rgb_building_slot_thp" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THP</string>
+    <string name="pref_def_rgb_building_slot_thm" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THM</string>
 
-    <string name="pref_rgb_building_points_enemy_main" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
-    <string name="pref_rgb_building_points_enemy_back1" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
-    <string name="pref_rgb_building_points_enemy_thp" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THP</string>
-    <string name="pref_rgb_building_points_enemy_thm" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THM</string>
+
+    <!--    blt_progress-->
+    <string name="pref_cut_blt_progress_x1" translatable="false">PREF_CUT_BLT_PROGRESS_X1</string>
+    <string name="pref_cut_blt_progress_x2" translatable="false">PREF_CUT_BLT_PROGRESS_X2</string>
+    <string name="pref_cut_blt_progress_y1" translatable="false">PREF_CUT_BLT_PROGRESS_Y1</string>
+    <string name="pref_cut_blt_progress_y2" translatable="false">PREF_CUT_BLT_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_blt_progress_x1" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_X1</string>
+    <string name="pref_def_cut_blt_progress_x2" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_X2</string>
+    <string name="pref_def_cut_blt_progress_y1" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y1</string>
+    <string name="pref_def_cut_blt_progress_y2" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y2</string>
 
     <string name="pref_rgb_building_progress_our" translatable="false">PREF_RGB_BUILDING_PROGRESS_OUR</string>
     <string name="pref_rgb_building_progress_enemy" translatable="false">PREF_RGB_BUILDING_PROGRESS_ENEMY</string>
@@ -421,452 +610,6 @@
     <string name="pref_rgb_building_progress_empty_thm" translatable="false">PREF_RGB_BUILDING_PROGRESS_EMPTY_THM</string>
     <string name="pref_rgb_building_progress_empty_thp" translatable="false">PREF_RGB_BUILDING_PROGRESS_EMPTY_THP</string>
 
-    <string name="pref_rgb_building_doublepoints" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS</string>
-    <string name="pref_rgb_building_doublepoints_thm" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
-    <string name="pref_rgb_building_doublepoints_thp" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
-
-    <string name="pref_rgb_building_mayX2" translatable="false">PREF_RGB_BUILDING_MAYX2</string>
-    <string name="pref_rgb_building_mayX2_thm" translatable="false">PREF_RGB_BUILDING_MAYX2_THM</string>
-    <string name="pref_rgb_building_mayX2_thp" translatable="false">PREF_RGB_BUILDING_MAYX2_THP</string>
-
-    <string name="pref_rgb_building_isX2" translatable="false">PREF_RGB_BUILDING_ISX2</string>
-    <string name="pref_rgb_building_isX2_thm" translatable="false">PREF_RGB_BUILDING_ISX2_THM</string>
-    <string name="pref_rgb_building_isX2_thp" translatable="false">PREF_RGB_BUILDING_ISX2_THP</string>
-
-    <string name="pref_rgb_building_name_our" translatable="false">PREF_RGB_BUILDING_NAME_OUR</string>
-    <string name="pref_rgb_building_name_enemy" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY</string>
-    <string name="pref_rgb_building_name_empty" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY</string>
-    <string name="pref_rgb_building_name_our_thm" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THM</string>
-    <string name="pref_rgb_building_name_our_thp" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THP</string>
-    <string name="pref_rgb_building_name_enemy_thm" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THM</string>
-    <string name="pref_rgb_building_name_enemy_thp" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THP</string>
-    <string name="pref_rgb_building_name_empty_thm" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THM</string>
-    <string name="pref_rgb_building_name_empty_thp" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THP</string>
-
-    <string name="pref_language_interface" translatable="false">PREF_LANGUAGE_INTERFACE</string>
-    <string name="pref_language_screenshot" translatable="false">PREF_LANGUAGE_SCREENSHOT</string>
-
-    <string name="pref_language_interface_area" translatable="false">PREF_LANGUAGE_INTERFACE_AREA</string>
-    <string name="pref_language_screenshot_area" translatable="false">PREF_LANGUAGE_SCREENSHOT_AREA</string>
-
-
-    <string name="pref_def_preferences_file" translatable="false">PREF_DEF_PREFERENCES_FILE</string>
-    <string name="pref_def_screenshot_folder" translatable="false">PREF_DEF_SCREENSHOT_FOLDER</string>
-    <string name="pref_def_listen_last_file" translatable="false">PREF_DEF_LISTEN_LAST_FILE</string>
-    <string name="pref_def_debug_mode" translatable="false">PREF_DEF_DEBUG_MODE</string>
-
-    <string name="pref_def_calibrate_x" translatable="false">PREF_DEF_CALIBRATE_X</string>
-    <string name="pref_def_calibrate_y" translatable="false">PREF_DEF_CALIBRATE_Y</string>
-
-
-
-    <string name="pref_def_cut_car_box1_x1" translatable="false">PREF_DEF_CUT_CAR_BOX1_X1</string>
-    <string name="pref_def_cut_car_box1_x2" translatable="false">PREF_DEF_CUT_CAR_BOX1_X2</string>
-    <string name="pref_def_cut_car_box1_y1" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y1</string>
-    <string name="pref_def_cut_car_box1_y2" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y2</string>
-
-    <string name="pref_def_cut_car_box2_x1" translatable="false">PREF_DEF_CUT_CAR_BOX2_X1</string>
-    <string name="pref_def_cut_car_box2_x2" translatable="false">PREF_DEF_CUT_CAR_BOX2_X2</string>
-    <string name="pref_def_cut_car_box2_y1" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y1</string>
-    <string name="pref_def_cut_car_box2_y2" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y2</string>
-
-
-    <string name="pref_def_cut_car_info_x1" translatable="false">PREF_DEF_CUT_CAR_INFO_X1</string>
-    <string name="pref_def_cut_car_info_x2" translatable="false">PREF_DEF_CUT_CAR_INFO_X2</string>
-    <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
-    <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
-
-    <string name="pref_def_cut_car_picture_x1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X1</string>
-    <string name="pref_def_cut_car_picture_x2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X2</string>
-    <string name="pref_def_cut_car_picture_y1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y1</string>
-    <string name="pref_def_cut_car_picture_y2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y2</string>
-
-    <string name="pref_def_cut_car_building_x1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X1</string>
-    <string name="pref_def_cut_car_building_x2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X2</string>
-    <string name="pref_def_cut_car_building_y1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y1</string>
-    <string name="pref_def_cut_car_building_y2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y2</string>
-
-    <string name="pref_def_cut_car_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X1</string>
-    <string name="pref_def_cut_car_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X2</string>
-    <string name="pref_def_cut_car_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y1</string>
-    <string name="pref_def_cut_car_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y2</string>
-
-    <string name="pref_def_cut_car_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X1</string>
-    <string name="pref_def_cut_car_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X2</string>
-    <string name="pref_def_cut_car_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y1</string>
-    <string name="pref_def_cut_car_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y2</string>
-
-    <string name="pref_def_cut_car_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X1</string>
-    <string name="pref_def_cut_car_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X2</string>
-    <string name="pref_def_cut_car_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y1</string>
-    <string name="pref_def_cut_car_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y2</string>
-
-    <string name="pref_def_cut_car_health_x1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X1</string>
-    <string name="pref_def_cut_car_health_x2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X2</string>
-    <string name="pref_def_cut_car_health_y1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y1</string>
-    <string name="pref_def_cut_car_health_y2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y2</string>
-
-    <string name="pref_def_cut_car_shield_x1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X1</string>
-    <string name="pref_def_cut_car_shield_x2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X2</string>
-    <string name="pref_def_cut_car_shield_y1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y1</string>
-    <string name="pref_def_cut_car_shield_y2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y2</string>
-
-    <string name="pref_def_cut_car_state_x1" translatable="false">PREF_DEF_CUT_CAR_STATE_X1</string>
-    <string name="pref_def_cut_car_state_x2" translatable="false">PREF_DEF_CUT_CAR_STATE_X2</string>
-    <string name="pref_def_cut_car_state_y1" translatable="false">PREF_DEF_CUT_CAR_STATE_Y1</string>
-    <string name="pref_def_cut_car_state_y2" translatable="false">PREF_DEF_CUT_CAR_STATE_Y2</string>
-
-    <string name="pref_def_cut_car_healbox_x1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X1</string>
-    <string name="pref_def_cut_car_healbox_x2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X2</string>
-    <string name="pref_def_cut_car_healbox_y1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y1</string>
-    <string name="pref_def_cut_car_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y2</string>
-
-    <string name="pref_def_cut_car_timebox_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X1</string>
-    <string name="pref_def_cut_car_timebox_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X2</string>
-    <string name="pref_def_cut_car_timebox_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y1</string>
-    <string name="pref_def_cut_car_timebox_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y2</string>
-
-
-
-
-
-    <string name="pref_def_cut_box1_info_x1" translatable="false">PREF_DEF_CUT_BOX1_INFO_X1</string>
-    <string name="pref_def_cut_box1_info_x2" translatable="false">PREF_DEF_CUT_BOX1_INFO_X2</string>
-    <string name="pref_def_cut_box1_info_y1" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y1</string>
-    <string name="pref_def_cut_box1_info_y2" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y2</string>
-
-    <string name="pref_def_cut_box2_info_x1" translatable="false">PREF_DEF_CUT_BOX2_INFO_X1</string>
-    <string name="pref_def_cut_box2_info_x2" translatable="false">PREF_DEF_CUT_BOX2_INFO_X2</string>
-    <string name="pref_def_cut_box2_info_y1" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y1</string>
-    <string name="pref_def_cut_box2_info_y2" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y2</string>
-
-    <string name="pref_def_cut_box_back_x1" translatable="false">PREF_DEF_CUT_BOX_BACK_X1</string>
-    <string name="pref_def_cut_box_back_x2" translatable="false">PREF_DEF_CUT_BOX_BACK_X2</string>
-    <string name="pref_def_cut_box_back_y1" translatable="false">PREF_DEF_CUT_BOX_BACK_Y1</string>
-    <string name="pref_def_cut_box_back_y2" translatable="false">PREF_DEF_CUT_BOX_BACK_Y2</string>
-
-    <string name="pref_def_cut_city_x1" translatable="false">PREF_DEF_CUT_CITY_X1</string>
-    <string name="pref_def_cut_city_x2" translatable="false">PREF_DEF_CUT_CITY_X2</string>
-    <string name="pref_def_cut_city_y1" translatable="false">PREF_DEF_CUT_CITY_Y1</string>
-    <string name="pref_def_cut_city_y2" translatable="false">PREF_DEF_CUT_CITY_Y2</string>
-
-    <string name="pref_def_cut_points_and_increase_our_x1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
-    <string name="pref_def_cut_points_and_increase_our_x2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_X2</string>
-    <string name="pref_def_cut_points_and_increase_our_y1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_Y1</string>
-    <string name="pref_def_cut_points_and_increase_our_y2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_OUR_Y2</string>
-
-    <string name="pref_def_cut_points_and_increase_enemy_x1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_X1</string>
-    <string name="pref_def_cut_points_and_increase_enemy_x2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_X2</string>
-    <string name="pref_def_cut_points_and_increase_enemy_y1" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_Y1</string>
-    <string name="pref_def_cut_points_and_increase_enemy_y2" translatable="false">PREF_DEF_CUT_POINTS_AND_INCREASE_ENEMY_Y2</string>
-
-    <string name="pref_def_cut_total_time_x1" translatable="false">PREF_DEF_CUT_TOTAL_TIME_X1</string>
-    <string name="pref_def_cut_total_time_x2" translatable="false">PREF_DEF_CUT_TOTAL_TIME_X2</string>
-    <string name="pref_def_cut_total_time_y1" translatable="false">PREF_DEF_CUT_TOTAL_TIME_Y1</string>
-    <string name="pref_def_cut_total_time_y2" translatable="false">PREF_DEF_CUT_TOTAL_TIME_Y2</string>
-
-    <string name="pref_def_cut_early_win_x1" translatable="false">PREF_DEF_CUT_EARLY_WIN_X1</string>
-    <string name="pref_def_cut_early_win_x2" translatable="false">PREF_DEF_CUT_EARLY_WIN_X2</string>
-    <string name="pref_def_cut_early_win_y1" translatable="false">PREF_DEF_CUT_EARLY_WIN_Y1</string>
-    <string name="pref_def_cut_early_win_y2" translatable="false">PREF_DEF_CUT_EARLY_WIN_Y2</string>
-
-    <string name="pref_def_cut_team_name_our_x1" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_X1</string>
-    <string name="pref_def_cut_team_name_our_x2" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_X2</string>
-    <string name="pref_def_cut_team_name_our_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y1</string>
-    <string name="pref_def_cut_team_name_our_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y2</string>
-
-    <string name="pref_def_cut_team_name_enemy_x1" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_X1</string>
-    <string name="pref_def_cut_team_name_enemy_x2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_X2</string>
-    <string name="pref_def_cut_team_name_enemy_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y1</string>
-    <string name="pref_def_cut_team_name_enemy_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y2</string>
-
-    <string name="pref_def_cut_blt_x1" translatable="false">PREF_DEF_CUT_BLT_X1</string>
-    <string name="pref_def_cut_blt_x2" translatable="false">PREF_DEF_CUT_BLT_X2</string>
-    <string name="pref_def_cut_blt_y1" translatable="false">PREF_DEF_CUT_BLT_Y1</string>
-    <string name="pref_def_cut_blt_y2" translatable="false">PREF_DEF_CUT_BLT_Y2</string>
-
-    <string name="pref_def_cut_blt_name_x1" translatable="false">PREF_DEF_CUT_BLT_NAME_X1</string>
-    <string name="pref_def_cut_blt_name_x2" translatable="false">PREF_DEF_CUT_BLT_NAME_X2</string>
-    <string name="pref_def_cut_blt_name_y1" translatable="false">PREF_DEF_CUT_BLT_NAME_Y1</string>
-    <string name="pref_def_cut_blt_name_y2" translatable="false">PREF_DEF_CUT_BLT_NAME_Y2</string>
-
-    <string name="pref_def_cut_blt_increase_x1" translatable="false">PREF_DEF_CUT_BLT_INCREASE_X1</string>
-    <string name="pref_def_cut_blt_increase_x2" translatable="false">PREF_DEF_CUT_BLT_INCREASE_X2</string>
-    <string name="pref_def_cut_blt_increase_y1" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y1</string>
-    <string name="pref_def_cut_blt_increase_y2" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_blt_slots_x1" translatable="false">PREF_DEF_CUT_BLT_SLOTS_X1</string>
-    <string name="pref_def_cut_blt_slots_x2" translatable="false">PREF_DEF_CUT_BLT_SLOTS_X2</string>
-    <string name="pref_def_cut_blt_slots_y1" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y1</string>
-    <string name="pref_def_cut_blt_slots_y2" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_blt_progress_x1" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_X1</string>
-    <string name="pref_def_cut_blt_progress_x2" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_X2</string>
-    <string name="pref_def_cut_blt_progress_y1" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y1</string>
-    <string name="pref_def_cut_blt_progress_y2" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_blt_points_x1" translatable="false">PREF_DEF_CUT_BLT_POINTS_X1</string>
-    <string name="pref_def_cut_blt_points_x2" translatable="false">PREF_DEF_CUT_BLT_POINTS_X2</string>
-    <string name="pref_def_cut_blt_points_y1" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y1</string>
-    <string name="pref_def_cut_blt_points_y2" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y2</string>
-
-    
-    <string name="pref_def_cut_blc_x1" translatable="false">PREF_DEF_CUT_BLC_X1</string>
-    <string name="pref_def_cut_blc_x2" translatable="false">PREF_DEF_CUT_BLC_X2</string>
-    <string name="pref_def_cut_blc_y1" translatable="false">PREF_DEF_CUT_BLC_Y1</string>
-    <string name="pref_def_cut_blc_y2" translatable="false">PREF_DEF_CUT_BLC_Y2</string>
-
-    <string name="pref_def_cut_blc_name_x1" translatable="false">PREF_DEF_CUT_BLC_NAME_X1</string>
-    <string name="pref_def_cut_blc_name_x2" translatable="false">PREF_DEF_CUT_BLC_NAME_X2</string>
-    <string name="pref_def_cut_blc_name_y1" translatable="false">PREF_DEF_CUT_BLC_NAME_Y1</string>
-    <string name="pref_def_cut_blc_name_y2" translatable="false">PREF_DEF_CUT_BLC_NAME_Y2</string>
-
-    <string name="pref_def_cut_blc_increase_x1" translatable="false">PREF_DEF_CUT_BLC_INCREASE_X1</string>
-    <string name="pref_def_cut_blc_increase_x2" translatable="false">PREF_DEF_CUT_BLC_INCREASE_X2</string>
-    <string name="pref_def_cut_blc_increase_y1" translatable="false">PREF_DEF_CUT_BLC_INCREASE_Y1</string>
-    <string name="pref_def_cut_blc_increase_y2" translatable="false">PREF_DEF_CUT_BLC_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_blc_slots_x1" translatable="false">PREF_DEF_CUT_BLC_SLOTS_X1</string>
-    <string name="pref_def_cut_blc_slots_x2" translatable="false">PREF_DEF_CUT_BLC_SLOTS_X2</string>
-    <string name="pref_def_cut_blc_slots_y1" translatable="false">PREF_DEF_CUT_BLC_SLOTS_Y1</string>
-    <string name="pref_def_cut_blc_slots_y2" translatable="false">PREF_DEF_CUT_BLC_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_blc_progress_x1" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_X1</string>
-    <string name="pref_def_cut_blc_progress_x2" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_X2</string>
-    <string name="pref_def_cut_blc_progress_y1" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_Y1</string>
-    <string name="pref_def_cut_blc_progress_y2" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_blc_points_x1" translatable="false">PREF_DEF_CUT_BLC_POINTS_X1</string>
-    <string name="pref_def_cut_blc_points_x2" translatable="false">PREF_DEF_CUT_BLC_POINTS_X2</string>
-    <string name="pref_def_cut_blc_points_y1" translatable="false">PREF_DEF_CUT_BLC_POINTS_Y1</string>
-    <string name="pref_def_cut_blc_points_y2" translatable="false">PREF_DEF_CUT_BLC_POINTS_Y2</string>
-
-    <string name="pref_def_cut_blb_x1" translatable="false">PREF_DEF_CUT_BLB_X1</string>
-    <string name="pref_def_cut_blb_x2" translatable="false">PREF_DEF_CUT_BLB_X2</string>
-    <string name="pref_def_cut_blb_y1" translatable="false">PREF_DEF_CUT_BLB_Y1</string>
-    <string name="pref_def_cut_blb_y2" translatable="false">PREF_DEF_CUT_BLB_Y2</string>
-
-    <string name="pref_def_cut_blb_name_x1" translatable="false">PREF_DEF_CUT_BLB_NAME_X1</string>
-    <string name="pref_def_cut_blb_name_x2" translatable="false">PREF_DEF_CUT_BLB_NAME_X2</string>
-    <string name="pref_def_cut_blb_name_y1" translatable="false">PREF_DEF_CUT_BLB_NAME_Y1</string>
-    <string name="pref_def_cut_blb_name_y2" translatable="false">PREF_DEF_CUT_BLB_NAME_Y2</string>
-
-    <string name="pref_def_cut_blb_increase_x1" translatable="false">PREF_DEF_CUT_BLB_INCREASE_X1</string>
-    <string name="pref_def_cut_blb_increase_x2" translatable="false">PREF_DEF_CUT_BLB_INCREASE_X2</string>
-    <string name="pref_def_cut_blb_increase_y1" translatable="false">PREF_DEF_CUT_BLB_INCREASE_Y1</string>
-    <string name="pref_def_cut_blb_increase_y2" translatable="false">PREF_DEF_CUT_BLB_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_blb_slots_x1" translatable="false">PREF_DEF_CUT_BLB_SLOTS_X1</string>
-    <string name="pref_def_cut_blb_slots_x2" translatable="false">PREF_DEF_CUT_BLB_SLOTS_X2</string>
-    <string name="pref_def_cut_blb_slots_y1" translatable="false">PREF_DEF_CUT_BLB_SLOTS_Y1</string>
-    <string name="pref_def_cut_blb_slots_y2" translatable="false">PREF_DEF_CUT_BLB_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_blb_progress_x1" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_X1</string>
-    <string name="pref_def_cut_blb_progress_x2" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_X2</string>
-    <string name="pref_def_cut_blb_progress_y1" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_Y1</string>
-    <string name="pref_def_cut_blb_progress_y2" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_blb_points_x1" translatable="false">PREF_DEF_CUT_BLB_POINTS_X1</string>
-    <string name="pref_def_cut_blb_points_x2" translatable="false">PREF_DEF_CUT_BLB_POINTS_X2</string>
-    <string name="pref_def_cut_blb_points_y1" translatable="false">PREF_DEF_CUT_BLB_POINTS_Y1</string>
-    <string name="pref_def_cut_blb_points_y2" translatable="false">PREF_DEF_CUT_BLB_POINTS_Y2</string>
-
-    <string name="pref_def_cut_brt_x1" translatable="false">PREF_DEF_CUT_BRT_X1</string>
-    <string name="pref_def_cut_brt_x2" translatable="false">PREF_DEF_CUT_BRT_X2</string>
-    <string name="pref_def_cut_brt_y1" translatable="false">PREF_DEF_CUT_BRT_Y1</string>
-    <string name="pref_def_cut_brt_y2" translatable="false">PREF_DEF_CUT_BRT_Y2</string>
-
-    <string name="pref_def_cut_brt_name_x1" translatable="false">PREF_DEF_CUT_BRT_NAME_X1</string>
-    <string name="pref_def_cut_brt_name_x2" translatable="false">PREF_DEF_CUT_BRT_NAME_X2</string>
-    <string name="pref_def_cut_brt_name_y1" translatable="false">PREF_DEF_CUT_BRT_NAME_Y1</string>
-    <string name="pref_def_cut_brt_name_y2" translatable="false">PREF_DEF_CUT_BRT_NAME_Y2</string>
-
-    <string name="pref_def_cut_brt_increase_x1" translatable="false">PREF_DEF_CUT_BRT_INCREASE_X1</string>
-    <string name="pref_def_cut_brt_increase_x2" translatable="false">PREF_DEF_CUT_BRT_INCREASE_X2</string>
-    <string name="pref_def_cut_brt_increase_y1" translatable="false">PREF_DEF_CUT_BRT_INCREASE_Y1</string>
-    <string name="pref_def_cut_brt_increase_y2" translatable="false">PREF_DEF_CUT_BRT_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_brt_slots_x1" translatable="false">PREF_DEF_CUT_BRT_SLOTS_X1</string>
-    <string name="pref_def_cut_brt_slots_x2" translatable="false">PREF_DEF_CUT_BRT_SLOTS_X2</string>
-    <string name="pref_def_cut_brt_slots_y1" translatable="false">PREF_DEF_CUT_BRT_SLOTS_Y1</string>
-    <string name="pref_def_cut_brt_slots_y2" translatable="false">PREF_DEF_CUT_BRT_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_brt_progress_x1" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_X1</string>
-    <string name="pref_def_cut_brt_progress_x2" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_X2</string>
-    <string name="pref_def_cut_brt_progress_y1" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_Y1</string>
-    <string name="pref_def_cut_brt_progress_y2" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_brt_points_x1" translatable="false">PREF_DEF_CUT_BRT_POINTS_X1</string>
-    <string name="pref_def_cut_brt_points_x2" translatable="false">PREF_DEF_CUT_BRT_POINTS_X2</string>
-    <string name="pref_def_cut_brt_points_y1" translatable="false">PREF_DEF_CUT_BRT_POINTS_Y1</string>
-    <string name="pref_def_cut_brt_points_y2" translatable="false">PREF_DEF_CUT_BRT_POINTS_Y2</string>
-
-    <string name="pref_def_cut_brc_x1" translatable="false">PREF_DEF_CUT_BRC_X1</string>
-    <string name="pref_def_cut_brc_x2" translatable="false">PREF_DEF_CUT_BRC_X2</string>
-    <string name="pref_def_cut_brc_y1" translatable="false">PREF_DEF_CUT_BRC_Y1</string>
-    <string name="pref_def_cut_brc_y2" translatable="false">PREF_DEF_CUT_BRC_Y2</string>
-
-    <string name="pref_def_cut_brc_name_x1" translatable="false">PREF_DEF_CUT_BRC_NAME_X1</string>
-    <string name="pref_def_cut_brc_name_x2" translatable="false">PREF_DEF_CUT_BRC_NAME_X2</string>
-    <string name="pref_def_cut_brc_name_y1" translatable="false">PREF_DEF_CUT_BRC_NAME_Y1</string>
-    <string name="pref_def_cut_brc_name_y2" translatable="false">PREF_DEF_CUT_BRC_NAME_Y2</string>
-
-    <string name="pref_def_cut_brc_increase_x1" translatable="false">PREF_DEF_CUT_BRC_INCREASE_X1</string>
-    <string name="pref_def_cut_brc_increase_x2" translatable="false">PREF_DEF_CUT_BRC_INCREASE_X2</string>
-    <string name="pref_def_cut_brc_increase_y1" translatable="false">PREF_DEF_CUT_BRC_INCREASE_Y1</string>
-    <string name="pref_def_cut_brc_increase_y2" translatable="false">PREF_DEF_CUT_BRC_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_brc_slots_x1" translatable="false">PREF_DEF_CUT_BRC_SLOTS_X1</string>
-    <string name="pref_def_cut_brc_slots_x2" translatable="false">PREF_DEF_CUT_BRC_SLOTS_X2</string>
-    <string name="pref_def_cut_brc_slots_y1" translatable="false">PREF_DEF_CUT_BRC_SLOTS_Y1</string>
-    <string name="pref_def_cut_brc_slots_y2" translatable="false">PREF_DEF_CUT_BRC_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_brc_progress_x1" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_X1</string>
-    <string name="pref_def_cut_brc_progress_x2" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_X2</string>
-    <string name="pref_def_cut_brc_progress_y1" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_Y1</string>
-    <string name="pref_def_cut_brc_progress_y2" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_brc_points_x1" translatable="false">PREF_DEF_CUT_BRC_POINTS_X1</string>
-    <string name="pref_def_cut_brc_points_x2" translatable="false">PREF_DEF_CUT_BRC_POINTS_X2</string>
-    <string name="pref_def_cut_brc_points_y1" translatable="false">PREF_DEF_CUT_BRC_POINTS_Y1</string>
-    <string name="pref_def_cut_brc_points_y2" translatable="false">PREF_DEF_CUT_BRC_POINTS_Y2</string>
-
-    <string name="pref_def_cut_brb_x1" translatable="false">PREF_DEF_CUT_BRB_X1</string>
-    <string name="pref_def_cut_brb_x2" translatable="false">PREF_DEF_CUT_BRB_X2</string>
-    <string name="pref_def_cut_brb_y1" translatable="false">PREF_DEF_CUT_BRB_Y1</string>
-    <string name="pref_def_cut_brb_y2" translatable="false">PREF_DEF_CUT_BRB_Y2</string>
-
-    <string name="pref_def_cut_brb_name_x1" translatable="false">PREF_DEF_CUT_BRB_NAME_X1</string>
-    <string name="pref_def_cut_brb_name_x2" translatable="false">PREF_DEF_CUT_BRB_NAME_X2</string>
-    <string name="pref_def_cut_brb_name_y1" translatable="false">PREF_DEF_CUT_BRB_NAME_Y1</string>
-    <string name="pref_def_cut_brb_name_y2" translatable="false">PREF_DEF_CUT_BRB_NAME_Y2</string>
-
-    <string name="pref_def_cut_brb_increase_x1" translatable="false">PREF_DEF_CUT_BRB_INCREASE_X1</string>
-    <string name="pref_def_cut_brb_increase_x2" translatable="false">PREF_DEF_CUT_BRB_INCREASE_X2</string>
-    <string name="pref_def_cut_brb_increase_y1" translatable="false">PREF_DEF_CUT_BRB_INCREASE_Y1</string>
-    <string name="pref_def_cut_brb_increase_y2" translatable="false">PREF_DEF_CUT_BRB_INCREASE_Y2</string>
-
-    <string name="pref_def_cut_brb_slots_x1" translatable="false">PREF_DEF_CUT_BRB_SLOTS_X1</string>
-    <string name="pref_def_cut_brb_slots_x2" translatable="false">PREF_DEF_CUT_BRB_SLOTS_X2</string>
-    <string name="pref_def_cut_brb_slots_y1" translatable="false">PREF_DEF_CUT_BRB_SLOTS_Y1</string>
-    <string name="pref_def_cut_brb_slots_y2" translatable="false">PREF_DEF_CUT_BRB_SLOTS_Y2</string>
-
-    <string name="pref_def_cut_brb_progress_x1" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_X1</string>
-    <string name="pref_def_cut_brb_progress_x2" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_X2</string>
-    <string name="pref_def_cut_brb_progress_y1" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_Y1</string>
-    <string name="pref_def_cut_brb_progress_y2" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_Y2</string>
-
-    <string name="pref_def_cut_brb_points_x1" translatable="false">PREF_DEF_CUT_BRB_POINTS_X1</string>
-    <string name="pref_def_cut_brb_points_x2" translatable="false">PREF_DEF_CUT_BRB_POINTS_X2</string>
-    <string name="pref_def_cut_brb_points_y1" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y1</string>
-    <string name="pref_def_cut_brb_points_y2" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y2</string>
-
-
-
-    <string name="pref_def_rgb_car_box1_main" translatable="false">PREF_DEF_RGB_CAR_BOX1_MAIN</string>
-    <string name="pref_def_rgb_car_box1_thp" translatable="false">PREF_DEF_RGB_CAR_BOX1_THP</string>
-    <string name="pref_def_rgb_car_box1_thm" translatable="false">PREF_DEF_RGB_CAR_BOX1_THM</string>
-
-    <string name="pref_def_rgb_car_box2_main" translatable="false">PREF_DEF_RGB_CAR_BOX2_MAIN</string>
-    <string name="pref_def_rgb_car_box2_thp" translatable="false">PREF_DEF_RGB_CAR_BOX2_THP</string>
-    <string name="pref_def_rgb_car_box2_thm" translatable="false">PREF_DEF_RGB_CAR_BOX2_THM</string>
-
-    <string name="pref_def_rgb_car_building_main" translatable="false">PREF_DEF_RGB_CAR_BUILDING_MAIN</string>
-    <string name="pref_def_rgb_car_building_back" translatable="false">PREF_DEF_RGB_CAR_BUILDING_BACK</string>
-    <string name="pref_def_rgb_car_building_thp" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THP</string>
-    <string name="pref_def_rgb_car_building_thm" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THM</string>
-
-    <string name="pref_def_rgb_car_slot_main" translatable="false">PREF_DEF_RGB_CAR_SLOT_MAIN</string>
-    <string name="pref_def_rgb_car_slot_back" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK</string>
-    <string name="pref_def_rgb_car_slot_thp" translatable="false">PREF_DEF_RGB_CAR_SLOT_THP</string>
-    <string name="pref_def_rgb_car_slot_thm" translatable="false">PREF_DEF_RGB_CAR_SLOT_THM</string>
-
-    <string name="pref_def_rgb_car_health_main" translatable="false">PREF_DEF_RGB_CAR_HEALTH_MAIN</string>
-    <string name="pref_def_rgb_car_health_back" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK</string>
-    <string name="pref_def_rgb_car_health_thp" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THP</string>
-    <string name="pref_def_rgb_car_health_thm" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THM</string>
-
-    <string name="pref_def_rgb_car_shield_main" translatable="false">PREF_DEF_RGB_CAR_SHIELD_MAIN</string>
-    <string name="pref_def_rgb_car_shield_back" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK</string>
-    <string name="pref_def_rgb_car_shield_thp" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THP</string>
-    <string name="pref_def_rgb_car_shield_thm" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THM</string>
-
-    <string name="pref_def_rgb_car_state_main" translatable="false">PREF_DEF_RGB_CAR_STATE_MAIN</string>
-    <string name="pref_def_rgb_car_state_back" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK</string>
-    <string name="pref_def_rgb_car_state_thp" translatable="false">PREF_DEF_RGB_CAR_STATE_THP</string>
-    <string name="pref_def_rgb_car_state_thm" translatable="false">PREF_DEF_RGB_CAR_STATE_THM</string>
-
-    <string name="pref_def_rgb_car_healbox_main" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_MAIN</string>
-    <string name="pref_def_rgb_car_healbox_back" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK</string>
-    <string name="pref_def_rgb_car_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THP</string>
-    <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
-
-    <string name="pref_def_rgb_car_timebox_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_MAIN</string>
-    <string name="pref_def_rgb_car_timebox_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_BACK</string>
-    <string name="pref_def_rgb_car_timebox_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THP</string>
-    <string name="pref_def_rgb_car_timebox_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THM</string>
-    
-    <string name="pref_def_rgb_box1_info_main" translatable="false">PREF_DEF_RGB_BOX1_INFO_MAIN</string>
-    <string name="pref_def_rgb_box1_info_thp" translatable="false">PREF_DEF_RGB_BOX1_INFO_THP</string>
-    <string name="pref_def_rgb_box1_info_thm" translatable="false">PREF_DEF_RGB_BOX1_INFO_THM</string>
-
-    <string name="pref_def_rgb_box2_info_main" translatable="false">PREF_DEF_RGB_BOX2_INFO_MAIN</string>
-    <string name="pref_def_rgb_box2_info_thp" translatable="false">PREF_DEF_RGB_BOX2_INFO_THP</string>
-    <string name="pref_def_rgb_box2_info_thm" translatable="false">PREF_DEF_RGB_BOX2_INFO_THM</string>
-
-
-    <string name="pref_def_rgb_box_back_main" translatable="false">PREF_DEF_RGB_BOX_BACK_MAIN</string>
-    <string name="pref_def_rgb_box_back_thp" translatable="false">PREF_DEF_RGB_BOX_BACK_THP</string>
-    <string name="pref_def_rgb_box_back_thm" translatable="false">PREF_DEF_RGB_BOX_BACK_THM</string>
-
-    <string name="pref_def_rgb_points_our_main" translatable="false">PREF_DEF_RGB_POINTS_OUR_MAIN</string>
-    <string name="pref_def_rgb_points_our_back1" translatable="false">PREF_DEF_RGB_POINTS_OUR_BACK1</string>
-    <string name="pref_def_rgb_points_our_back2" translatable="false">PREF_DEF_RGB_POINTS_OUR_BACK2</string>
-    <string name="pref_def_rgb_points_our_thp" translatable="false">PREF_DEF_RGB_POINTS_OUR_THP</string>
-    <string name="pref_def_rgb_points_our_thm" translatable="false">PREF_DEF_RGB_POINTS_OUR_THM</string>
-
-    <string name="pref_def_rgb_increase_our_main" translatable="false">PREF_DEF_RGB_INCREASE_OUR_MAIN</string>
-    <string name="pref_def_rgb_increase_our_back1" translatable="false">PREF_DEF_RGB_INCREASE_OUR_BACK</string>
-    <string name="pref_def_rgb_increase_our_thp" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THP</string>
-    <string name="pref_def_rgb_increase_our_thm" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THM</string>
-
-    <string name="pref_def_rgb_points_enemy_main" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_MAIN</string>
-    <string name="pref_def_rgb_points_enemy_back1" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_BACK1</string>
-    <string name="pref_def_rgb_points_enemy_back2" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_BACK2</string>
-    <string name="pref_def_rgb_points_enemy_thp" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_THP</string>
-    <string name="pref_def_rgb_points_enemy_thm" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_THM</string>
-
-    <string name="pref_def_rgb_increase_enemy_main" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_MAIN</string>
-    <string name="pref_def_rgb_increase_enemy_back1" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_BACK</string>
-    <string name="pref_def_rgb_increase_enemy_thp" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THP</string>
-    <string name="pref_def_rgb_increase_enemy_thm" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THM</string>
-
-    <string name="pref_def_rgb_total_time_main" translatable="false">PREF_DEF_RGB_TOTAL_TIME_MAIN</string>
-    <string name="pref_def_rgb_total_time_back1" translatable="false">PREF_DEF_RGB_TOTAL_TIME_BACK1</string>
-    <string name="pref_def_rgb_total_time_back2" translatable="false">PREF_DEF_RGB_TOTAL_TIME_BACK2</string>
-    <string name="pref_def_rgb_total_time_thp" translatable="false">PREF_DEF_RGB_TOTAL_TIME_THP</string>
-    <string name="pref_def_rgb_total_time_thm" translatable="false">PREF_DEF_RGB_TOTAL_TIME_THM</string>
-
-    <string name="pref_def_rgb_early_win_main" translatable="false">PREF_DEF_RGB_EARLY_WIN_MAIN</string>
-    <string name="pref_def_rgb_early_win_back1" translatable="false">PREF_DEF_RGB_EARLY_WIN_BACK</string>
-    <string name="pref_def_rgb_early_win_thp" translatable="false">PREF_DEF_RGB_EARLY_WIN_THP</string>
-    <string name="pref_def_rgb_early_win_thm" translatable="false">PREF_DEF_RGB_EARLY_WIN_THM</string>
-
-    <string name="pref_def_rgb_building_slot_main" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_MAIN</string>
-    <string name="pref_def_rgb_building_slot_back1" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_BACK</string>
-    <string name="pref_def_rgb_building_slot_thp" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THP</string>
-    <string name="pref_def_rgb_building_slot_thm" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THM</string>
-
-    <string name="pref_def_rgb_building_points_our_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_MAIN</string>
-    <string name="pref_def_rgb_building_points_our_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_BACK</string>
-    <string name="pref_def_rgb_building_points_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THP</string>
-    <string name="pref_def_rgb_building_points_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THM</string>
-
-    <string name="pref_def_rgb_building_points_enemy_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
-    <string name="pref_def_rgb_building_points_enemy_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
-    <string name="pref_def_rgb_building_points_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THP</string>
-    <string name="pref_def_rgb_building_points_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THM</string>
-
     <string name="pref_def_rgb_building_progress_our" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_OUR</string>
     <string name="pref_def_rgb_building_progress_enemy" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_ENEMY</string>
     <string name="pref_def_rgb_building_progress_empty" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY</string>
@@ -877,17 +620,435 @@
     <string name="pref_def_rgb_building_progress_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY_THM</string>
     <string name="pref_def_rgb_building_progress_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY_THP</string>
 
+
+    <!--    blt_points-->
+    <string name="pref_cut_blt_points_x1" translatable="false">PREF_CUT_BLT_POINTS_X1</string>
+    <string name="pref_cut_blt_points_x2" translatable="false">PREF_CUT_BLT_POINTS_X2</string>
+    <string name="pref_cut_blt_points_y1" translatable="false">PREF_CUT_BLT_POINTS_Y1</string>
+    <string name="pref_cut_blt_points_y2" translatable="false">PREF_CUT_BLT_POINTS_Y2</string>
+
+    <string name="pref_def_cut_blt_points_x1" translatable="false">PREF_DEF_CUT_BLT_POINTS_X1</string>
+    <string name="pref_def_cut_blt_points_x2" translatable="false">PREF_DEF_CUT_BLT_POINTS_X2</string>
+    <string name="pref_def_cut_blt_points_y1" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y1</string>
+    <string name="pref_def_cut_blt_points_y2" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y2</string>
+
+    <string name="pref_rgb_building_points_our_main" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_MAIN</string>
+    <string name="pref_rgb_building_points_our_back1" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_BACK</string>
+    <string name="pref_rgb_building_points_our_thp" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THP</string>
+    <string name="pref_rgb_building_points_our_thm" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THM</string>
+    <string name="pref_rgb_building_points_enemy_main" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
+    <string name="pref_rgb_building_points_enemy_back1" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
+    <string name="pref_rgb_building_points_enemy_thp" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THP</string>
+    <string name="pref_rgb_building_points_enemy_thm" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THM</string>
+
+    <string name="pref_def_rgb_building_points_our_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_MAIN</string>
+    <string name="pref_def_rgb_building_points_our_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_BACK</string>
+    <string name="pref_def_rgb_building_points_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THP</string>
+    <string name="pref_def_rgb_building_points_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THM</string>
+    <string name="pref_def_rgb_building_points_enemy_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_building_points_enemy_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
+    <string name="pref_def_rgb_building_points_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THP</string>
+    <string name="pref_def_rgb_building_points_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THM</string>
+
+
+<!--    blc-->
+    <string name="pref_cut_blc_x1" translatable="false">PREF_CUT_BLC_X1</string>
+    <string name="pref_cut_blc_x2" translatable="false">PREF_CUT_BLC_X2</string>
+    <string name="pref_cut_blc_y1" translatable="false">PREF_CUT_BLC_Y1</string>
+    <string name="pref_cut_blc_y2" translatable="false">PREF_CUT_BLC_Y2</string>
+
+    <string name="pref_def_cut_blc_x1" translatable="false">PREF_DEF_CUT_BLC_X1</string>
+    <string name="pref_def_cut_blc_x2" translatable="false">PREF_DEF_CUT_BLC_X2</string>
+    <string name="pref_def_cut_blc_y1" translatable="false">PREF_DEF_CUT_BLC_Y1</string>
+    <string name="pref_def_cut_blc_y2" translatable="false">PREF_DEF_CUT_BLC_Y2</string>
+
+
+    <!--    blc_name-->
+    <string name="pref_cut_blc_name_x1" translatable="false">PREF_CUT_BLC_NAME_X1</string>
+    <string name="pref_cut_blc_name_x2" translatable="false">PREF_CUT_BLC_NAME_X2</string>
+    <string name="pref_cut_blc_name_y1" translatable="false">PREF_CUT_BLC_NAME_Y1</string>
+    <string name="pref_cut_blc_name_y2" translatable="false">PREF_CUT_BLC_NAME_Y2</string>
+
+    <string name="pref_def_cut_blc_name_x1" translatable="false">PREF_DEF_CUT_BLC_NAME_X1</string>
+    <string name="pref_def_cut_blc_name_x2" translatable="false">PREF_DEF_CUT_BLC_NAME_X2</string>
+    <string name="pref_def_cut_blc_name_y1" translatable="false">PREF_DEF_CUT_BLC_NAME_Y1</string>
+    <string name="pref_def_cut_blc_name_y2" translatable="false">PREF_DEF_CUT_BLC_NAME_Y2</string>
+
+
+    <!--    blc_increase-->
+    <string name="pref_cut_blc_increase_x1" translatable="false">PREF_CUT_BLC_INCREASE_X1</string>
+    <string name="pref_cut_blc_increase_x2" translatable="false">PREF_CUT_BLC_INCREASE_X2</string>
+    <string name="pref_cut_blc_increase_y1" translatable="false">PREF_CUT_BLC_INCREASE_Y1</string>
+    <string name="pref_cut_blc_increase_y2" translatable="false">PREF_CUT_BLC_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_blc_increase_x1" translatable="false">PREF_DEF_CUT_BLC_INCREASE_X1</string>
+    <string name="pref_def_cut_blc_increase_x2" translatable="false">PREF_DEF_CUT_BLC_INCREASE_X2</string>
+    <string name="pref_def_cut_blc_increase_y1" translatable="false">PREF_DEF_CUT_BLC_INCREASE_Y1</string>
+    <string name="pref_def_cut_blc_increase_y2" translatable="false">PREF_DEF_CUT_BLC_INCREASE_Y2</string>
+
+
+    <!--    blc_slots-->
+    <string name="pref_cut_blc_slots_x1" translatable="false">PREF_CUT_BLC_SLOTS_X1</string>
+    <string name="pref_cut_blc_slots_x2" translatable="false">PREF_CUT_BLC_SLOTS_X2</string>
+    <string name="pref_cut_blc_slots_y1" translatable="false">PREF_CUT_BLC_SLOTS_Y1</string>
+    <string name="pref_cut_blc_slots_y2" translatable="false">PREF_CUT_BLC_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_blc_slots_x1" translatable="false">PREF_DEF_CUT_BLC_SLOTS_X1</string>
+    <string name="pref_def_cut_blc_slots_x2" translatable="false">PREF_DEF_CUT_BLC_SLOTS_X2</string>
+    <string name="pref_def_cut_blc_slots_y1" translatable="false">PREF_DEF_CUT_BLC_SLOTS_Y1</string>
+    <string name="pref_def_cut_blc_slots_y2" translatable="false">PREF_DEF_CUT_BLC_SLOTS_Y2</string>
+
+
+    <!--    blc_progress-->
+    <string name="pref_cut_blc_progress_x1" translatable="false">PREF_CUT_BLC_PROGRESS_X1</string>
+    <string name="pref_cut_blc_progress_x2" translatable="false">PREF_CUT_BLC_PROGRESS_X2</string>
+    <string name="pref_cut_blc_progress_y1" translatable="false">PREF_CUT_BLC_PROGRESS_Y1</string>
+    <string name="pref_cut_blc_progress_y2" translatable="false">PREF_CUT_BLC_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_blc_progress_x1" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_X1</string>
+    <string name="pref_def_cut_blc_progress_x2" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_X2</string>
+    <string name="pref_def_cut_blc_progress_y1" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_Y1</string>
+    <string name="pref_def_cut_blc_progress_y2" translatable="false">PREF_DEF_CUT_BLC_PROGRESS_Y2</string>
+
+
+    <!--    blc_points-->
+    <string name="pref_cut_blc_points_x1" translatable="false">PREF_CUT_BLC_POINTS_X1</string>
+    <string name="pref_cut_blc_points_x2" translatable="false">PREF_CUT_BLC_POINTS_X2</string>
+    <string name="pref_cut_blc_points_y1" translatable="false">PREF_CUT_BLC_POINTS_Y1</string>
+    <string name="pref_cut_blc_points_y2" translatable="false">PREF_CUT_BLC_POINTS_Y2</string>
+
+    <string name="pref_def_cut_blc_points_x1" translatable="false">PREF_DEF_CUT_BLC_POINTS_X1</string>
+    <string name="pref_def_cut_blc_points_x2" translatable="false">PREF_DEF_CUT_BLC_POINTS_X2</string>
+    <string name="pref_def_cut_blc_points_y1" translatable="false">PREF_DEF_CUT_BLC_POINTS_Y1</string>
+    <string name="pref_def_cut_blc_points_y2" translatable="false">PREF_DEF_CUT_BLC_POINTS_Y2</string>
+
+
+    <!--    blb-->
+    <string name="pref_cut_blb_x1" translatable="false">PREF_CUT_BLB_X1</string>
+    <string name="pref_cut_blb_x2" translatable="false">PREF_CUT_BLB_X2</string>
+    <string name="pref_cut_blb_y1" translatable="false">PREF_CUT_BLB_Y1</string>
+    <string name="pref_cut_blb_y2" translatable="false">PREF_CUT_BLB_Y2</string>
+
+    <string name="pref_def_cut_blb_x1" translatable="false">PREF_DEF_CUT_BLB_X1</string>
+    <string name="pref_def_cut_blb_x2" translatable="false">PREF_DEF_CUT_BLB_X2</string>
+    <string name="pref_def_cut_blb_y1" translatable="false">PREF_DEF_CUT_BLB_Y1</string>
+    <string name="pref_def_cut_blb_y2" translatable="false">PREF_DEF_CUT_BLB_Y2</string>
+
+
+    <!--    blb_name-->
+    <string name="pref_cut_blb_name_x1" translatable="false">PREF_CUT_BLB_NAME_X1</string>
+    <string name="pref_cut_blb_name_x2" translatable="false">PREF_CUT_BLB_NAME_X2</string>
+    <string name="pref_cut_blb_name_y1" translatable="false">PREF_CUT_BLB_NAME_Y1</string>
+    <string name="pref_cut_blb_name_y2" translatable="false">PREF_CUT_BLB_NAME_Y2</string>
+
+    <string name="pref_def_cut_blb_name_x1" translatable="false">PREF_DEF_CUT_BLB_NAME_X1</string>
+    <string name="pref_def_cut_blb_name_x2" translatable="false">PREF_DEF_CUT_BLB_NAME_X2</string>
+    <string name="pref_def_cut_blb_name_y1" translatable="false">PREF_DEF_CUT_BLB_NAME_Y1</string>
+    <string name="pref_def_cut_blb_name_y2" translatable="false">PREF_DEF_CUT_BLB_NAME_Y2</string>
+
+
+    <!--    blb_increase-->
+    <string name="pref_cut_blb_increase_x1" translatable="false">PREF_CUT_BLB_INCREASE_X1</string>
+    <string name="pref_cut_blb_increase_x2" translatable="false">PREF_CUT_BLB_INCREASE_X2</string>
+    <string name="pref_cut_blb_increase_y1" translatable="false">PREF_CUT_BLB_INCREASE_Y1</string>
+    <string name="pref_cut_blb_increase_y2" translatable="false">PREF_CUT_BLB_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_blb_increase_x1" translatable="false">PREF_DEF_CUT_BLB_INCREASE_X1</string>
+    <string name="pref_def_cut_blb_increase_x2" translatable="false">PREF_DEF_CUT_BLB_INCREASE_X2</string>
+    <string name="pref_def_cut_blb_increase_y1" translatable="false">PREF_DEF_CUT_BLB_INCREASE_Y1</string>
+    <string name="pref_def_cut_blb_increase_y2" translatable="false">PREF_DEF_CUT_BLB_INCREASE_Y2</string>
+
+
+    <!--    blb_slots-->
+    <string name="pref_cut_blb_slots_x1" translatable="false">PREF_CUT_BLB_SLOTS_X1</string>
+    <string name="pref_cut_blb_slots_x2" translatable="false">PREF_CUT_BLB_SLOTS_X2</string>
+    <string name="pref_cut_blb_slots_y1" translatable="false">PREF_CUT_BLB_SLOTS_Y1</string>
+    <string name="pref_cut_blb_slots_y2" translatable="false">PREF_CUT_BLB_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_blb_slots_x1" translatable="false">PREF_DEF_CUT_BLB_SLOTS_X1</string>
+    <string name="pref_def_cut_blb_slots_x2" translatable="false">PREF_DEF_CUT_BLB_SLOTS_X2</string>
+    <string name="pref_def_cut_blb_slots_y1" translatable="false">PREF_DEF_CUT_BLB_SLOTS_Y1</string>
+    <string name="pref_def_cut_blb_slots_y2" translatable="false">PREF_DEF_CUT_BLB_SLOTS_Y2</string>
+
+
+    <!--    blb_progress-->
+    <string name="pref_cut_blb_progress_x1" translatable="false">PREF_CUT_BLB_PROGRESS_X1</string>
+    <string name="pref_cut_blb_progress_x2" translatable="false">PREF_CUT_BLB_PROGRESS_X2</string>
+    <string name="pref_cut_blb_progress_y1" translatable="false">PREF_CUT_BLB_PROGRESS_Y1</string>
+    <string name="pref_cut_blb_progress_y2" translatable="false">PREF_CUT_BLB_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_blb_progress_x1" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_X1</string>
+    <string name="pref_def_cut_blb_progress_x2" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_X2</string>
+    <string name="pref_def_cut_blb_progress_y1" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_Y1</string>
+    <string name="pref_def_cut_blb_progress_y2" translatable="false">PREF_DEF_CUT_BLB_PROGRESS_Y2</string>
+
+
+    <!--    blb_points-->
+    <string name="pref_cut_blb_points_x1" translatable="false">PREF_CUT_BLB_POINTS_X1</string>
+    <string name="pref_cut_blb_points_x2" translatable="false">PREF_CUT_BLB_POINTS_X2</string>
+    <string name="pref_cut_blb_points_y1" translatable="false">PREF_CUT_BLB_POINTS_Y1</string>
+    <string name="pref_cut_blb_points_y2" translatable="false">PREF_CUT_BLB_POINTS_Y2</string>
+
+    <string name="pref_def_cut_blb_points_x1" translatable="false">PREF_DEF_CUT_BLB_POINTS_X1</string>
+    <string name="pref_def_cut_blb_points_x2" translatable="false">PREF_DEF_CUT_BLB_POINTS_X2</string>
+    <string name="pref_def_cut_blb_points_y1" translatable="false">PREF_DEF_CUT_BLB_POINTS_Y1</string>
+    <string name="pref_def_cut_blb_points_y2" translatable="false">PREF_DEF_CUT_BLB_POINTS_Y2</string>
+
+
+    <!--    brt-->
+    <string name="pref_cut_brt_x1" translatable="false">PREF_CUT_BRT_X1</string>
+    <string name="pref_cut_brt_x2" translatable="false">PREF_CUT_BRT_X2</string>
+    <string name="pref_cut_brt_y1" translatable="false">PREF_CUT_BRT_Y1</string>
+    <string name="pref_cut_brt_y2" translatable="false">PREF_CUT_BRT_Y2</string>
+
+    <string name="pref_def_cut_brt_x1" translatable="false">PREF_DEF_CUT_BRT_X1</string>
+    <string name="pref_def_cut_brt_x2" translatable="false">PREF_DEF_CUT_BRT_X2</string>
+    <string name="pref_def_cut_brt_y1" translatable="false">PREF_DEF_CUT_BRT_Y1</string>
+    <string name="pref_def_cut_brt_y2" translatable="false">PREF_DEF_CUT_BRT_Y2</string>
+
+
+    <!--    brt_name-->
+    <string name="pref_cut_brt_name_x1" translatable="false">PREF_CUT_BRT_NAME_X1</string>
+    <string name="pref_cut_brt_name_x2" translatable="false">PREF_CUT_BRT_NAME_X2</string>
+    <string name="pref_cut_brt_name_y1" translatable="false">PREF_CUT_BRT_NAME_Y1</string>
+    <string name="pref_cut_brt_name_y2" translatable="false">PREF_CUT_BRT_NAME_Y2</string>
+
+    <string name="pref_def_cut_brt_name_x1" translatable="false">PREF_DEF_CUT_BRT_NAME_X1</string>
+    <string name="pref_def_cut_brt_name_x2" translatable="false">PREF_DEF_CUT_BRT_NAME_X2</string>
+    <string name="pref_def_cut_brt_name_y1" translatable="false">PREF_DEF_CUT_BRT_NAME_Y1</string>
+    <string name="pref_def_cut_brt_name_y2" translatable="false">PREF_DEF_CUT_BRT_NAME_Y2</string>
+
+
+    <!--    brt_increase-->
+    <string name="pref_cut_brt_increase_x1" translatable="false">PREF_CUT_BRT_INCREASE_X1</string>
+    <string name="pref_cut_brt_increase_x2" translatable="false">PREF_CUT_BRT_INCREASE_X2</string>
+    <string name="pref_cut_brt_increase_y1" translatable="false">PREF_CUT_BRT_INCREASE_Y1</string>
+    <string name="pref_cut_brt_increase_y2" translatable="false">PREF_CUT_BRT_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_brt_increase_x1" translatable="false">PREF_DEF_CUT_BRT_INCREASE_X1</string>
+    <string name="pref_def_cut_brt_increase_x2" translatable="false">PREF_DEF_CUT_BRT_INCREASE_X2</string>
+    <string name="pref_def_cut_brt_increase_y1" translatable="false">PREF_DEF_CUT_BRT_INCREASE_Y1</string>
+    <string name="pref_def_cut_brt_increase_y2" translatable="false">PREF_DEF_CUT_BRT_INCREASE_Y2</string>
+
+
+    <!--    brt_slots-->
+    <string name="pref_cut_brt_slots_x1" translatable="false">PREF_CUT_BRT_SLOTS_X1</string>
+    <string name="pref_cut_brt_slots_x2" translatable="false">PREF_CUT_BRT_SLOTS_X2</string>
+    <string name="pref_cut_brt_slots_y1" translatable="false">PREF_CUT_BRT_SLOTS_Y1</string>
+    <string name="pref_cut_brt_slots_y2" translatable="false">PREF_CUT_BRT_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_brt_slots_x1" translatable="false">PREF_DEF_CUT_BRT_SLOTS_X1</string>
+    <string name="pref_def_cut_brt_slots_x2" translatable="false">PREF_DEF_CUT_BRT_SLOTS_X2</string>
+    <string name="pref_def_cut_brt_slots_y1" translatable="false">PREF_DEF_CUT_BRT_SLOTS_Y1</string>
+    <string name="pref_def_cut_brt_slots_y2" translatable="false">PREF_DEF_CUT_BRT_SLOTS_Y2</string>
+
+
+    <!--    brt_progress-->
+    <string name="pref_cut_brt_progress_x1" translatable="false">PREF_CUT_BRT_PROGRESS_X1</string>
+    <string name="pref_cut_brt_progress_x2" translatable="false">PREF_CUT_BRT_PROGRESS_X2</string>
+    <string name="pref_cut_brt_progress_y1" translatable="false">PREF_CUT_BRT_PROGRESS_Y1</string>
+    <string name="pref_cut_brt_progress_y2" translatable="false">PREF_CUT_BRT_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_brt_progress_x1" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_X1</string>
+    <string name="pref_def_cut_brt_progress_x2" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_X2</string>
+    <string name="pref_def_cut_brt_progress_y1" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_Y1</string>
+    <string name="pref_def_cut_brt_progress_y2" translatable="false">PREF_DEF_CUT_BRT_PROGRESS_Y2</string>
+
+
+    <!--    brt_points-->
+    <string name="pref_cut_brt_points_x1" translatable="false">PREF_CUT_BRT_POINTS_X1</string>
+    <string name="pref_cut_brt_points_x2" translatable="false">PREF_CUT_BRT_POINTS_X2</string>
+    <string name="pref_cut_brt_points_y1" translatable="false">PREF_CUT_BRT_POINTS_Y1</string>
+    <string name="pref_cut_brt_points_y2" translatable="false">PREF_CUT_BRT_POINTS_Y2</string>
+
+    <string name="pref_def_cut_brt_points_x1" translatable="false">PREF_DEF_CUT_BRT_POINTS_X1</string>
+    <string name="pref_def_cut_brt_points_x2" translatable="false">PREF_DEF_CUT_BRT_POINTS_X2</string>
+    <string name="pref_def_cut_brt_points_y1" translatable="false">PREF_DEF_CUT_BRT_POINTS_Y1</string>
+    <string name="pref_def_cut_brt_points_y2" translatable="false">PREF_DEF_CUT_BRT_POINTS_Y2</string>
+
+
+    <!--    brc-->
+    <string name="pref_cut_brc_x1" translatable="false">PREF_CUT_BRC_X1</string>
+    <string name="pref_cut_brc_x2" translatable="false">PREF_CUT_BRC_X2</string>
+    <string name="pref_cut_brc_y1" translatable="false">PREF_CUT_BRC_Y1</string>
+    <string name="pref_cut_brc_y2" translatable="false">PREF_CUT_BRC_Y2</string>
+
+    <string name="pref_def_cut_brc_x1" translatable="false">PREF_DEF_CUT_BRC_X1</string>
+    <string name="pref_def_cut_brc_x2" translatable="false">PREF_DEF_CUT_BRC_X2</string>
+    <string name="pref_def_cut_brc_y1" translatable="false">PREF_DEF_CUT_BRC_Y1</string>
+    <string name="pref_def_cut_brc_y2" translatable="false">PREF_DEF_CUT_BRC_Y2</string>
+
+
+    <!--    brc_name-->
+    <string name="pref_cut_brc_name_x1" translatable="false">PREF_CUT_BRC_NAME_X1</string>
+    <string name="pref_cut_brc_name_x2" translatable="false">PREF_CUT_BRC_NAME_X2</string>
+    <string name="pref_cut_brc_name_y1" translatable="false">PREF_CUT_BRC_NAME_Y1</string>
+    <string name="pref_cut_brc_name_y2" translatable="false">PREF_CUT_BRC_NAME_Y2</string>
+
+    <string name="pref_def_cut_brc_name_x1" translatable="false">PREF_DEF_CUT_BRC_NAME_X1</string>
+    <string name="pref_def_cut_brc_name_x2" translatable="false">PREF_DEF_CUT_BRC_NAME_X2</string>
+    <string name="pref_def_cut_brc_name_y1" translatable="false">PREF_DEF_CUT_BRC_NAME_Y1</string>
+    <string name="pref_def_cut_brc_name_y2" translatable="false">PREF_DEF_CUT_BRC_NAME_Y2</string>
+
+
+    <!--    brc_increase-->
+    <string name="pref_cut_brc_increase_x1" translatable="false">PREF_CUT_BRC_INCREASE_X1</string>
+    <string name="pref_cut_brc_increase_x2" translatable="false">PREF_CUT_BRC_INCREASE_X2</string>
+    <string name="pref_cut_brc_increase_y1" translatable="false">PREF_CUT_BRC_INCREASE_Y1</string>
+    <string name="pref_cut_brc_increase_y2" translatable="false">PREF_CUT_BRC_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_brc_increase_x1" translatable="false">PREF_DEF_CUT_BRC_INCREASE_X1</string>
+    <string name="pref_def_cut_brc_increase_x2" translatable="false">PREF_DEF_CUT_BRC_INCREASE_X2</string>
+    <string name="pref_def_cut_brc_increase_y1" translatable="false">PREF_DEF_CUT_BRC_INCREASE_Y1</string>
+    <string name="pref_def_cut_brc_increase_y2" translatable="false">PREF_DEF_CUT_BRC_INCREASE_Y2</string>
+
+
+    <!--    brc_slots-->
+    <string name="pref_cut_brc_slots_x1" translatable="false">PREF_CUT_BRC_SLOTS_X1</string>
+    <string name="pref_cut_brc_slots_x2" translatable="false">PREF_CUT_BRC_SLOTS_X2</string>
+    <string name="pref_cut_brc_slots_y1" translatable="false">PREF_CUT_BRC_SLOTS_Y1</string>
+    <string name="pref_cut_brc_slots_y2" translatable="false">PREF_CUT_BRC_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_brc_slots_x1" translatable="false">PREF_DEF_CUT_BRC_SLOTS_X1</string>
+    <string name="pref_def_cut_brc_slots_x2" translatable="false">PREF_DEF_CUT_BRC_SLOTS_X2</string>
+    <string name="pref_def_cut_brc_slots_y1" translatable="false">PREF_DEF_CUT_BRC_SLOTS_Y1</string>
+    <string name="pref_def_cut_brc_slots_y2" translatable="false">PREF_DEF_CUT_BRC_SLOTS_Y2</string>
+
+
+    <!--    brc_progress-->
+    <string name="pref_cut_brc_progress_x1" translatable="false">PREF_CUT_BRC_PROGRESS_X1</string>
+    <string name="pref_cut_brc_progress_x2" translatable="false">PREF_CUT_BRC_PROGRESS_X2</string>
+    <string name="pref_cut_brc_progress_y1" translatable="false">PREF_CUT_BRC_PROGRESS_Y1</string>
+    <string name="pref_cut_brc_progress_y2" translatable="false">PREF_CUT_BRC_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_brc_progress_x1" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_X1</string>
+    <string name="pref_def_cut_brc_progress_x2" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_X2</string>
+    <string name="pref_def_cut_brc_progress_y1" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_Y1</string>
+    <string name="pref_def_cut_brc_progress_y2" translatable="false">PREF_DEF_CUT_BRC_PROGRESS_Y2</string>
+
+
+    <!--    brc_points-->
+    <string name="pref_cut_brc_points_x1" translatable="false">PREF_CUT_BRC_POINTS_X1</string>
+    <string name="pref_cut_brc_points_x2" translatable="false">PREF_CUT_BRC_POINTS_X2</string>
+    <string name="pref_cut_brc_points_y1" translatable="false">PREF_CUT_BRC_POINTS_Y1</string>
+    <string name="pref_cut_brc_points_y2" translatable="false">PREF_CUT_BRC_POINTS_Y2</string>
+
+    <string name="pref_def_cut_brc_points_x1" translatable="false">PREF_DEF_CUT_BRC_POINTS_X1</string>
+    <string name="pref_def_cut_brc_points_x2" translatable="false">PREF_DEF_CUT_BRC_POINTS_X2</string>
+    <string name="pref_def_cut_brc_points_y1" translatable="false">PREF_DEF_CUT_BRC_POINTS_Y1</string>
+    <string name="pref_def_cut_brc_points_y2" translatable="false">PREF_DEF_CUT_BRC_POINTS_Y2</string>
+
+
+    <!--    brb-->
+    <string name="pref_cut_brb_x1" translatable="false">PREF_CUT_BRB_X1</string>
+    <string name="pref_cut_brb_x2" translatable="false">PREF_CUT_BRB_X2</string>
+    <string name="pref_cut_brb_y1" translatable="false">PREF_CUT_BRB_Y1</string>
+    <string name="pref_cut_brb_y2" translatable="false">PREF_CUT_BRB_Y2</string>
+
+    <string name="pref_def_cut_brb_x1" translatable="false">PREF_DEF_CUT_BRB_X1</string>
+    <string name="pref_def_cut_brb_x2" translatable="false">PREF_DEF_CUT_BRB_X2</string>
+    <string name="pref_def_cut_brb_y1" translatable="false">PREF_DEF_CUT_BRB_Y1</string>
+    <string name="pref_def_cut_brb_y2" translatable="false">PREF_DEF_CUT_BRB_Y2</string>
+
+
+    <!--    brb_name-->
+    <string name="pref_cut_brb_name_x1" translatable="false">PREF_CUT_BRB_NAME_X1</string>
+    <string name="pref_cut_brb_name_x2" translatable="false">PREF_CUT_BRB_NAME_X2</string>
+    <string name="pref_cut_brb_name_y1" translatable="false">PREF_CUT_BRB_NAME_Y1</string>
+    <string name="pref_cut_brb_name_y2" translatable="false">PREF_CUT_BRB_NAME_Y2</string>
+
+    <string name="pref_def_cut_brb_name_x1" translatable="false">PREF_DEF_CUT_BRB_NAME_X1</string>
+    <string name="pref_def_cut_brb_name_x2" translatable="false">PREF_DEF_CUT_BRB_NAME_X2</string>
+    <string name="pref_def_cut_brb_name_y1" translatable="false">PREF_DEF_CUT_BRB_NAME_Y1</string>
+    <string name="pref_def_cut_brb_name_y2" translatable="false">PREF_DEF_CUT_BRB_NAME_Y2</string>
+
+
+    <!--    brb_increase-->
+    <string name="pref_cut_brb_increase_x1" translatable="false">PREF_CUT_BRB_INCREASE_X1</string>
+    <string name="pref_cut_brb_increase_x2" translatable="false">PREF_CUT_BRB_INCREASE_X2</string>
+    <string name="pref_cut_brb_increase_y1" translatable="false">PREF_CUT_BRB_INCREASE_Y1</string>
+    <string name="pref_cut_brb_increase_y2" translatable="false">PREF_CUT_BRB_INCREASE_Y2</string>
+
+    <string name="pref_def_cut_brb_increase_x1" translatable="false">PREF_DEF_CUT_BRB_INCREASE_X1</string>
+    <string name="pref_def_cut_brb_increase_x2" translatable="false">PREF_DEF_CUT_BRB_INCREASE_X2</string>
+    <string name="pref_def_cut_brb_increase_y1" translatable="false">PREF_DEF_CUT_BRB_INCREASE_Y1</string>
+    <string name="pref_def_cut_brb_increase_y2" translatable="false">PREF_DEF_CUT_BRB_INCREASE_Y2</string>
+
+
+    <!--    brb_slots-->
+    <string name="pref_cut_brb_slots_x1" translatable="false">PREF_CUT_BRB_SLOTS_X1</string>
+    <string name="pref_cut_brb_slots_x2" translatable="false">PREF_CUT_BRB_SLOTS_X2</string>
+    <string name="pref_cut_brb_slots_y1" translatable="false">PREF_CUT_BRB_SLOTS_Y1</string>
+    <string name="pref_cut_brb_slots_y2" translatable="false">PREF_CUT_BRB_SLOTS_Y2</string>
+
+    <string name="pref_def_cut_brb_slots_x1" translatable="false">PREF_DEF_CUT_BRB_SLOTS_X1</string>
+    <string name="pref_def_cut_brb_slots_x2" translatable="false">PREF_DEF_CUT_BRB_SLOTS_X2</string>
+    <string name="pref_def_cut_brb_slots_y1" translatable="false">PREF_DEF_CUT_BRB_SLOTS_Y1</string>
+    <string name="pref_def_cut_brb_slots_y2" translatable="false">PREF_DEF_CUT_BRB_SLOTS_Y2</string>
+
+
+    <!--    brb_progress-->
+    <string name="pref_cut_brb_progress_x1" translatable="false">PREF_CUT_BRB_PROGRESS_X1</string>
+    <string name="pref_cut_brb_progress_x2" translatable="false">PREF_CUT_BRB_PROGRESS_X2</string>
+    <string name="pref_cut_brb_progress_y1" translatable="false">PREF_CUT_BRB_PROGRESS_Y1</string>
+    <string name="pref_cut_brb_progress_y2" translatable="false">PREF_CUT_BRB_PROGRESS_Y2</string>
+
+    <string name="pref_def_cut_brb_progress_x1" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_X1</string>
+    <string name="pref_def_cut_brb_progress_x2" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_X2</string>
+    <string name="pref_def_cut_brb_progress_y1" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_Y1</string>
+    <string name="pref_def_cut_brb_progress_y2" translatable="false">PREF_DEF_CUT_BRB_PROGRESS_Y2</string>
+
+
+    <!--    brb_points-->
+    <string name="pref_cut_brb_points_x1" translatable="false">PREF_CUT_BRB_POINTS_X1</string>
+    <string name="pref_cut_brb_points_x2" translatable="false">PREF_CUT_BRB_POINTS_X2</string>
+    <string name="pref_cut_brb_points_y1" translatable="false">PREF_CUT_BRB_POINTS_Y1</string>
+    <string name="pref_cut_brb_points_y2" translatable="false">PREF_CUT_BRB_POINTS_Y2</string>
+
+    <string name="pref_def_cut_brb_points_x1" translatable="false">PREF_DEF_CUT_BRB_POINTS_X1</string>
+    <string name="pref_def_cut_brb_points_x2" translatable="false">PREF_DEF_CUT_BRB_POINTS_X2</string>
+    <string name="pref_def_cut_brb_points_y1" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y1</string>
+    <string name="pref_def_cut_brb_points_y2" translatable="false">PREF_DEF_CUT_BRB_POINTS_Y2</string>
+
+
+
+<!--    building_doublepoints-->
+    <string name="pref_rgb_building_doublepoints" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS</string>
+    <string name="pref_rgb_building_doublepoints_thm" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
+    <string name="pref_rgb_building_doublepoints_thp" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
+
     <string name="pref_def_rgb_building_doublepoints" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS</string>
     <string name="pref_def_rgb_building_doublepoints_thm" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
     <string name="pref_def_rgb_building_doublepoints_thp" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
+
+<!--    building_mayX2-->
+    <string name="pref_rgb_building_mayX2" translatable="false">PREF_RGB_BUILDING_MAYX2</string>
+    <string name="pref_rgb_building_mayX2_thm" translatable="false">PREF_RGB_BUILDING_MAYX2_THM</string>
+    <string name="pref_rgb_building_mayX2_thp" translatable="false">PREF_RGB_BUILDING_MAYX2_THP</string>
 
     <string name="pref_def_rgb_building_mayX2" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2</string>
     <string name="pref_def_rgb_building_mayX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THM</string>
     <string name="pref_def_rgb_building_mayX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THP</string>
 
+<!--    building_isX2-->
+    <string name="pref_rgb_building_isX2" translatable="false">PREF_RGB_BUILDING_ISX2</string>
+    <string name="pref_rgb_building_isX2_thm" translatable="false">PREF_RGB_BUILDING_ISX2_THM</string>
+    <string name="pref_rgb_building_isX2_thp" translatable="false">PREF_RGB_BUILDING_ISX2_THP</string>
+
     <string name="pref_def_rgb_building_isX2" translatable="false">PREF_DEF_RGB_BUILDING_ISX2</string>
     <string name="pref_def_rgb_building_isX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THM</string>
     <string name="pref_def_rgb_building_isX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THP</string>
+
+<!--    building_name-->
+    <string name="pref_rgb_building_name_our" translatable="false">PREF_RGB_BUILDING_NAME_OUR</string>
+    <string name="pref_rgb_building_name_enemy" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY</string>
+    <string name="pref_rgb_building_name_empty" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY</string>
+    <string name="pref_rgb_building_name_our_thm" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THM</string>
+    <string name="pref_rgb_building_name_our_thp" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THP</string>
+    <string name="pref_rgb_building_name_enemy_thm" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THM</string>
+    <string name="pref_rgb_building_name_enemy_thp" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THP</string>
+    <string name="pref_rgb_building_name_empty_thm" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THM</string>
+    <string name="pref_rgb_building_name_empty_thp" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THP</string>
 
     <string name="pref_def_rgb_building_name_our" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR</string>
     <string name="pref_def_rgb_building_name_enemy" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY</string>
@@ -899,10 +1060,6 @@
     <string name="pref_def_rgb_building_name_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THM</string>
     <string name="pref_def_rgb_building_name_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THP</string>
 
-    <string name="pref_def_language_interface" translatable="false">PREF_DEF_LANGUAGE_INTERFACE</string>
-    <string name="pref_def_language_screenshot" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT</string>
 
-    <string name="pref_def_language_interface_area" translatable="false">PREF_DEF_LANGUAGE_INTERFACE_AREA</string>
-    <string name="pref_def_language_screenshot_area" translatable="false">PREF_DEF_LANGUAGE_SCREENSHOT_AREA</string>
 
 </resources>

@@ -54,17 +54,35 @@
 
                     <ImageButton
                         android:id="@+id/ib_ga_car1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
                         android:onClick="openCar1"
                         />
 
-                    <TextView
-                        android:id="@+id/tv_ga_car1_name"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal|center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_ga_car1_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/dingbat1"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_ga_car1_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:layout_toEndOf="@id/tv_ga_car1_number"/>
+
+                    </RelativeLayout>
+
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -140,17 +158,34 @@
 
                     <ImageButton
                         android:id="@+id/ib_ga_car2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
                         android:onClick="openCar2"
                         />
 
-                    <TextView
-                        android:id="@+id/tv_ga_car2_name"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal|center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_ga_car2_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/dingbat2"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_ga_car2_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:layout_toEndOf="@id/tv_ga_car2_number"/>
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -224,17 +259,33 @@
 
                     <ImageButton
                         android:id="@+id/ib_ga_car3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
                         android:onClick="openCar3"
                         />
 
-                    <TextView
-                        android:id="@+id/tv_ga_car3_name"
+                    <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"/>
+                        android:layout_gravity="center_horizontal|center_vertical">
+
+                        <TextView
+                            android:id="@+id/tv_ga_car3_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="30sp"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/dingbat3" />
+
+                        <TextView
+                            android:id="@+id/tv_ga_car3_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:layout_toEndOf="@id/tv_ga_car3_number"/>
+
+                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"

@@ -38,11 +38,11 @@
                 android:layout_gravity="center_horizontal"
                 />
 
-            <ImageView
-                android:id="@+id/ca_iv_car"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_car1_blue"
+            <TextView
+                android:id="@+id/ca_tv_car_dingbat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
                 android:layout_gravity="center_horizontal"
                 />
 

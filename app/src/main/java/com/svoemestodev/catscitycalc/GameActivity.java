@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -161,6 +162,7 @@ public class GameActivity extends AppCompatActivity {
     TextView tv_ga_game_slots_enemy;
 
     ImageButton ib_ga_car1;
+    TextView tv_ga_car1_number;
     TextView tv_ga_car1_name;
     ImageView iv_ga_car1_health;
     TextView tv_ga_car1_health;
@@ -170,6 +172,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_car1_house;
 
     ImageButton ib_ga_car2;
+    TextView tv_ga_car2_number;
     TextView tv_ga_car2_name;
     ImageView iv_ga_car2_health;
     TextView tv_ga_car2_health;
@@ -179,6 +182,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView iv_ga_car2_house;
 
     ImageButton ib_ga_car3;
+    TextView tv_ga_car3_number;
     TextView tv_ga_car3_name;
     ImageView iv_ga_car3_health;
     TextView tv_ga_car3_health;
@@ -987,6 +991,7 @@ public class GameActivity extends AppCompatActivity {
 
         ib_ga_car1 = findViewById(R.id.ib_ga_car1);
         tv_ga_car1_name = findViewById(R.id.tv_ga_car1_name);
+        tv_ga_car1_number = findViewById(R.id.tv_ga_car1_number);
         iv_ga_car1_health = findViewById(R.id.iv_ga_car1_health);
         tv_ga_car1_health = findViewById(R.id.tv_ga_car1_health);
         iv_ga_car1_shield = findViewById(R.id.iv_ga_car1_shield);
@@ -996,6 +1001,7 @@ public class GameActivity extends AppCompatActivity {
 
         ib_ga_car2 = findViewById(R.id.ib_ga_car2);
         tv_ga_car2_name = findViewById(R.id.tv_ga_car2_name);
+        tv_ga_car2_number = findViewById(R.id.tv_ga_car2_number);
         iv_ga_car2_health = findViewById(R.id.iv_ga_car2_health);
         tv_ga_car2_health = findViewById(R.id.tv_ga_car2_health);
         iv_ga_car2_shield = findViewById(R.id.iv_ga_car2_shield);
@@ -1005,6 +1011,7 @@ public class GameActivity extends AppCompatActivity {
 
         ib_ga_car3 = findViewById(R.id.ib_ga_car3);
         tv_ga_car3_name = findViewById(R.id.tv_ga_car3_name);
+        tv_ga_car3_number = findViewById(R.id.tv_ga_car3_number);
         iv_ga_car3_health = findViewById(R.id.iv_ga_car3_health);
         tv_ga_car3_health = findViewById(R.id.tv_ga_car3_health);
         iv_ga_car3_shield = findViewById(R.id.iv_ga_car3_shield);
@@ -1021,110 +1028,88 @@ public class GameActivity extends AppCompatActivity {
         Car car2 = listCars.get(1);
         Car car3 = listCars.get(2);
 
-        CarState car1state = car1.getState();
-        if (car1state.equals(CarState.EMPTY)) {
-            ib_ga_car1.setImageResource(R.drawable.ic_car1_gray);
-        } else if (car1state.equals(CarState.FREE)) {
-            ib_ga_car1.setImageResource(R.drawable.ic_car1_blue);
-        } else if (car1state.equals(CarState.DEFENCING)) {
-            ib_ga_car1.setImageResource(R.drawable.ic_car1_green);
-        } else if (car1state.equals(CarState.REPAIRING)) {
-            ib_ga_car1.setImageResource(R.drawable.ic_car1_red);
-        }
         tv_ga_car1_name.setText(car1.getName());
         tv_ga_car1_health.setText(String.valueOf(car1.getHealth()));
         tv_ga_car1_shield.setText(String.valueOf(car1.getShield()));
-
-
-        CarState car2state = car2.getState();
-        if (car2state.equals(CarState.EMPTY)) {
-            ib_ga_car2.setImageResource(R.drawable.ic_car2_gray);
-        } else if (car2state.equals(CarState.FREE)) {
-            ib_ga_car2.setImageResource(R.drawable.ic_car2_blue);
-        } else if (car2state.equals(CarState.DEFENCING)) {
-            ib_ga_car2.setImageResource(R.drawable.ic_car2_green);
-        } else if (car2state.equals(CarState.REPAIRING)) {
-            ib_ga_car2.setImageResource(R.drawable.ic_car2_red);
-        }
+        
         tv_ga_car2_name.setText(car2.getName());
         tv_ga_car2_health.setText(String.valueOf(car2.getHealth()));
         tv_ga_car2_shield.setText(String.valueOf(car2.getShield()));
 
-
-        CarState car3state = car3.getState();
-        if (car3state.equals(CarState.EMPTY)) {
-            ib_ga_car3.setImageResource(R.drawable.ic_car3_gray);
-        } else if (car3state.equals(CarState.FREE)) {
-            ib_ga_car3.setImageResource(R.drawable.ic_car3_blue);
-        } else if (car3state.equals(CarState.DEFENCING)) {
-            ib_ga_car3.setImageResource(R.drawable.ic_car3_green);
-        } else if (car3state.equals(CarState.REPAIRING)) {
-            ib_ga_car3.setImageResource(R.drawable.ic_car3_red);
-        }
         tv_ga_car3_name.setText(car3.getName());
         tv_ga_car3_health.setText(String.valueOf(car3.getHealth()));
         tv_ga_car3_shield.setText(String.valueOf(car3.getShield()));
 
         try {
             if (((CCAGame)GameActivity.mainCityCalc.mapAreas.get(Area.CITY)).ccagIsGameOver) {
-                car1.setStateFree();
-                car2.setStateFree();
-                car3.setStateFree();
-                iv_ga_car1_house.setVisibility(View.INVISIBLE);
-                iv_ga_car2_house.setVisibility(View.INVISIBLE);
-                iv_ga_car3_house.setVisibility(View.INVISIBLE);
-                car1.save();
-                car2.save();
-                car3.save();
-            } else {
 
-                String car1textRepair = car1state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
-                tv_ga_car1_repair.setText(car1textRepair);
-                if (car1state.equals(CarState.DEFENCING)) {
-                    Bitmap car1houseBitmap = car1.getBuilding();
-                    try {
-                        if (car1houseBitmap != null) {
-                            iv_ga_car1_house.setImageBitmap(car1houseBitmap);
-                            iv_ga_car1_house.setVisibility(View.VISIBLE);
-                        }
-                    } catch (Exception ignored) {
-                    }
-                } else {
-                    iv_ga_car1_house.setVisibility(View.INVISIBLE);
+                if (!car1.isFree()) {
+                    car1.setStateFree();
+                    car1.save();
                 }
 
-                String car2textRepair = car2state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
-                tv_ga_car2_repair.setText(car2textRepair);
-                if (car2state.equals(CarState.DEFENCING)) {
-                    Bitmap car2houseBitmap = car2.getBuilding();
-                    try {
-                        if (car2houseBitmap != null) {
-                            iv_ga_car2_house.setImageBitmap(car2houseBitmap);
-                            iv_ga_car2_house.setVisibility(View.VISIBLE);
-                        }
-                    } catch (Exception ignored) {
-                    }
-                } else {
-                    iv_ga_car2_house.setVisibility(View.INVISIBLE);
+                if (!car2.isFree()) {
+                    car2.setStateFree();
+                    car2.save();
                 }
 
-                String car3textRepair = car3state.equals(CarState.REPAIRING) ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
-                tv_ga_car3_repair.setText(car3textRepair);
-                if (car3state.equals(CarState.DEFENCING)) {
-                    Bitmap car3houseBitmap = car3.getBuilding();
-                    try {
-                        if (car3houseBitmap != null) {
-                            iv_ga_car3_house.setImageBitmap(car3houseBitmap);
-                            iv_ga_car3_house.setVisibility(View.VISIBLE);
-                        }
-                    } catch (Exception ignored) {
-                    }
-                } else {
-                    iv_ga_car3_house.setVisibility(View.INVISIBLE);
+                if (!car3.isFree()) {
+                    car3.setStateFree();
+                    car3.save();
                 }
-
-
             }
+
+            Bitmap car1CarBitmap = car1.getCarPicture();
+            Bitmap car1BuildingBitmap = car1.getBuildingPicture();
+            if (car1CarBitmap != null) ib_ga_car1.setImageBitmap(car1CarBitmap);
+            ib_ga_car1.setImageBitmap(car1.getCarPicture());
+            if (car1.isFree()) tv_ga_car1_number.setTextColor(Color.BLUE);
+            if (car1.isRepairing() && !car1.isDefencing()) tv_ga_car1_number.setTextColor(Color.RED);
+            if (!car1.isRepairing() && car1.isDefencing()) tv_ga_car1_number.setTextColor(Color.GREEN);
+            if (car1.isRepairing() && car1.isDefencing()) tv_ga_car1_number.setTextColor(Color.YELLOW);
+            String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
+            tv_ga_car1_repair.setText(car1textRepair);
+            if (car1.isDefencing()) {
+                iv_ga_car1_house.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car1BuildingBitmap != null) iv_ga_car1_house.setImageBitmap(car1BuildingBitmap);
+            } else {
+                iv_ga_car1_house.setVisibility(View.INVISIBLE);
+            }
+
+            Bitmap car2CarBitmap = car2.getCarPicture();
+            Bitmap car2BuildingBitmap = car2.getBuildingPicture();
+            if (car2CarBitmap != null) ib_ga_car2.setImageBitmap(car2CarBitmap);
+            ib_ga_car2.setImageBitmap(car2.getCarPicture());
+            if (car2.isFree()) tv_ga_car2_number.setTextColor(Color.BLUE);
+            if (car2.isRepairing() && !car2.isDefencing()) tv_ga_car2_number.setTextColor(Color.RED);
+            if (!car2.isRepairing() && car2.isDefencing()) tv_ga_car2_number.setTextColor(Color.GREEN);
+            if (car2.isRepairing() && car2.isDefencing()) tv_ga_car2_number.setTextColor(Color.YELLOW);
+            String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
+            tv_ga_car2_repair.setText(car2textRepair);
+            if (car2.isDefencing()) {
+                iv_ga_car2_house.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car2BuildingBitmap != null) iv_ga_car2_house.setImageBitmap(car2BuildingBitmap);
+            } else {
+                iv_ga_car2_house.setVisibility(View.INVISIBLE);
+            }
+
+            Bitmap car3CarBitmap = car3.getCarPicture();
+            Bitmap car3BuildingBitmap = car3.getBuildingPicture();
+            if (car3CarBitmap != null) ib_ga_car3.setImageBitmap(car3CarBitmap);
+            ib_ga_car3.setImageBitmap(car3.getCarPicture());
+            if (car3.isFree()) tv_ga_car3_number.setTextColor(Color.BLUE);
+            if (car3.isRepairing() && !car3.isDefencing()) tv_ga_car3_number.setTextColor(Color.RED);
+            if (!car3.isRepairing() && car3.isDefencing()) tv_ga_car3_number.setTextColor(Color.GREEN);
+            if (car3.isRepairing() && car3.isDefencing()) tv_ga_car3_number.setTextColor(Color.YELLOW);
+            String car3textRepair = car3.isRepairing() ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
+            tv_ga_car3_repair.setText(car3textRepair);
+            if (car3.isDefencing()) {
+                iv_ga_car3_house.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car3BuildingBitmap != null) iv_ga_car3_house.setImageBitmap(car3BuildingBitmap);
+            } else {
+                iv_ga_car3_house.setVisibility(View.INVISIBLE);
+            }
+
         } catch (Exception ignored) {
         }
 

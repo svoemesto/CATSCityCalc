@@ -7,17 +7,52 @@
     <string name="def_cut_car_box1_y1" translatable="false">-0.280</string>
     <string name="def_cut_car_box1_y2" translatable="false">-0.155</string>
 
+    <string name="def_rgb_car_box1_main" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_box1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_box1_thp" translatable="false">13</string>
+
     <!--  "car_box2"  -->
     <string name="def_cut_car_box2_x1" translatable="false">+0.050</string>
     <string name="def_cut_car_box2_x2" translatable="false">+0.170</string>
     <string name="def_cut_car_box2_y1" translatable="false">-0.900</string>
     <string name="def_cut_car_box2_y2" translatable="false">-0.800</string>
 
+    <string name="def_rgb_car_box2_main" translatable="false">FFFF6661</string>
+    <string name="def_rgb_car_box2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_box2_thp" translatable="false">13</string>
+
+    <!--  "car_statebox1"  -->
+    <string name="def_cut_car_statebox1_x1" translatable="false">+0.130</string>
+    <string name="def_cut_car_statebox1_x2" translatable="false">+0.170</string>
+    <string name="def_cut_car_statebox1_y1" translatable="false">-0.620</string>
+    <string name="def_cut_car_statebox1_y2" translatable="false">-0.580</string>
+
+    <string name="def_rgb_car_statebox1_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_statebox1_back" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_statebox1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_statebox1_thp" translatable="false">13</string>
+
+    <!--  "car_statebox2"  -->
+    <string name="def_cut_car_statebox2_x1" translatable="false">+0.290</string>
+    <string name="def_cut_car_statebox2_x2" translatable="false">+0.380</string>
+    <string name="def_cut_car_statebox2_y1" translatable="false">-0.480</string>
+    <string name="def_cut_car_statebox2_y2" translatable="false">-0.390</string>
+
+    <string name="def_rgb_car_statebox2_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_statebox2_back" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_statebox2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_statebox2_thp" translatable="false">13</string>
+
     <!--  "car_building"  -->
     <string name="def_cut_car_building_x1" translatable="false">-0.140</string>
     <string name="def_cut_car_building_x2" translatable="false">+0.140</string>
     <string name="def_cut_car_building_y1" translatable="false">-0.962</string>
     <string name="def_cut_car_building_y2" translatable="false">-0.824</string>
+
+    <string name="def_rgb_car_building_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_building_back" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_building_thm" translatable="false">13</string>
+    <string name="def_rgb_car_building_thp" translatable="false">13</string>
 
     <!--  "car_picture"  -->
     <string name="def_cut_car_picture_x1" translatable="false">+0.060</string>
@@ -37,6 +72,11 @@
     <string name="def_cut_car_slot1_y1" translatable="false">-0.275</string>
     <string name="def_cut_car_slot1_y2" translatable="false">-0.185</string>
 
+    <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_slot_back" translatable="false">FF839FDA</string>
+    <string name="def_rgb_car_slot_thm" translatable="false">13</string>
+    <string name="def_rgb_car_slot_thp" translatable="false">13</string>
+
     <!--  "car_slot2"  -->
     <string name="def_cut_car_slot2_x1" translatable="false">+0.155</string>
     <string name="def_cut_car_slot2_x2" translatable="false">+0.250</string>
@@ -55,11 +95,22 @@
     <string name="def_cut_car_health_y1" translatable="false">-0.375</string>
     <string name="def_cut_car_health_y2" translatable="false">-0.305</string>
 
+    <string name="def_rgb_car_health_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_health_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_health_thm" translatable="false">13</string>
+    <string name="def_rgb_car_health_thp" translatable="false">13</string>
+
+
     <!--  "car_shield"  -->
     <string name="def_cut_car_shield_x1" translatable="false">+0.224</string>
     <string name="def_cut_car_shield_x2" translatable="false">+0.448</string>
     <string name="def_cut_car_shield_y1" translatable="false">-0.375</string>
     <string name="def_cut_car_shield_y2" translatable="false">-0.305</string>
+
+    <string name="def_rgb_car_shield_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_shield_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_shield_thm" translatable="false">13</string>
+    <string name="def_rgb_car_shield_thp" translatable="false">13</string>
 
     <!--  "car_state"  -->
     <string name="def_cut_car_state_x1" translatable="false">+0.000</string>
@@ -67,11 +118,21 @@
     <string name="def_cut_car_state_y1" translatable="false">-0.640</string>
     <string name="def_cut_car_state_y2" translatable="false">-0.560</string>
 
+    <string name="def_rgb_car_state_main" translatable="false">FF77D734</string>
+    <string name="def_rgb_car_state_back" translatable="false">FF738FE1</string>
+    <string name="def_rgb_car_state_thm" translatable="false">13</string>
+    <string name="def_rgb_car_state_thp" translatable="false">13</string>
+
     <!--  "car_healbox"  -->
     <string name="def_cut_car_healbox_x1" translatable="false">+0.280</string>
     <string name="def_cut_car_healbox_x2" translatable="false">+0.360</string>
     <string name="def_cut_car_healbox_y1" translatable="false">-0.640</string>
     <string name="def_cut_car_healbox_y2" translatable="false">-0.560</string>
+
+    <string name="def_rgb_car_healbox_main" translatable="false">FFD32526</string>
+    <string name="def_rgb_car_healbox_back" translatable="false">FFFFF7C1</string>
+    <string name="def_rgb_car_healbox_thm" translatable="false">13</string>
+    <string name="def_rgb_car_healbox_thp" translatable="false">13</string>
 
     <!--  "car_timebox"  -->
     <string name="def_cut_car_timebox_x1" translatable="false">+0.120</string>
@@ -79,17 +140,31 @@
     <string name="def_cut_car_timebox_y1" translatable="false">-0.625</string>
     <string name="def_cut_car_timebox_y2" translatable="false">-0.570</string>
 
+    <string name="def_rgb_car_timebox_main" translatable="false">FF5B79D0</string>
+    <string name="def_rgb_car_timebox_back" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_timebox_thm" translatable="false">13</string>
+    <string name="def_rgb_car_timebox_thp" translatable="false">13</string>
+
     <!--  "box1_info"  -->
     <string name="def_cut_box1_info_x1" translatable="false">-0.640</string>
     <string name="def_cut_box1_info_x2" translatable="false">-0.585</string>
     <string name="def_cut_box1_info_y1" translatable="false">-0.800</string>
     <string name="def_cut_box1_info_y2" translatable="false">-0.690</string>
 
+    <string name="def_rgb_box1_info_main" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box1_info_thm" translatable="false">13</string>
+    <string name="def_rgb_box1_info_thp" translatable="false">13</string>
+
     <!--  "box2_info"  -->
     <string name="def_cut_box2_info_x1" translatable="false">-0.170</string>
     <string name="def_cut_box2_info_x2" translatable="false">-0.135</string>
     <string name="def_cut_box2_info_y1" translatable="false">-0.770</string>
     <string name="def_cut_box2_info_y2" translatable="false">-0.660</string>
+
+    <string name="def_rgb_box2_info_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box2_info_thm" translatable="false">13</string>
+    <string name="def_rgb_box2_info_thp" translatable="false">13</string>
+
 
 
     <!--  "box_back"  -->
@@ -140,8 +215,6 @@
     <string name="def_cut_team_name_enemy_x2" translatable="false">+0.490</string>
     <string name="def_cut_team_name_enemy_y1" translatable="false">-0.760</string>
     <string name="def_cut_team_name_enemy_y2" translatable="false">-0.650</string>
-
-
 
 
     <!--  "Здание слева вверху"  -->
@@ -333,56 +406,6 @@
 
 
 
-    <string name="def_rgb_box1_info_main" translatable="false">FFCA2728</string>
-    <string name="def_rgb_box1_info_thm" translatable="false">13</string>
-    <string name="def_rgb_box1_info_thp" translatable="false">13</string>
-
-    <string name="def_rgb_box2_info_main" translatable="false">FF91A7BF</string>
-    <string name="def_rgb_box2_info_thm" translatable="false">13</string>
-    <string name="def_rgb_box2_info_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_box1_main" translatable="false">FF8BAFEB</string>
-    <string name="def_rgb_car_box1_thm" translatable="false">13</string>
-    <string name="def_rgb_car_box1_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_box2_main" translatable="false">FFFF6661</string>
-    <string name="def_rgb_car_box2_thm" translatable="false">13</string>
-    <string name="def_rgb_car_box2_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_building_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_building_back" translatable="false">FF95A7BD</string>
-    <string name="def_rgb_car_building_thm" translatable="false">13</string>
-    <string name="def_rgb_car_building_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_slot_back" translatable="false">FF839FDA</string>
-    <string name="def_rgb_car_slot_thm" translatable="false">13</string>
-    <string name="def_rgb_car_slot_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_health_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_health_back" translatable="false">FFF2D7C7</string>
-    <string name="def_rgb_car_health_thm" translatable="false">13</string>
-    <string name="def_rgb_car_health_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_shield_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_shield_back" translatable="false">FFF2D7C7</string>
-    <string name="def_rgb_car_shield_thm" translatable="false">13</string>
-    <string name="def_rgb_car_shield_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_state_main" translatable="false">FF77D734</string>
-    <string name="def_rgb_car_state_back" translatable="false">FF738FE1</string>
-    <string name="def_rgb_car_state_thm" translatable="false">13</string>
-    <string name="def_rgb_car_state_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_healbox_main" translatable="false">FFD32526</string>
-    <string name="def_rgb_car_healbox_back" translatable="false">FFFFF7C1</string>
-    <string name="def_rgb_car_healbox_thm" translatable="false">13</string>
-    <string name="def_rgb_car_healbox_thp" translatable="false">13</string>
-
-    <string name="def_rgb_car_timebox_main" translatable="false">FF5B79D0</string>
-    <string name="def_rgb_car_timebox_back" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox_thm" translatable="false">13</string>
-    <string name="def_rgb_car_timebox_thp" translatable="false">13</string>
 
     <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
     <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>

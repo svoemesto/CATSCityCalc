@@ -58,6 +58,8 @@
     <string name="sett_borders">Настройка границ областей</string>
     <string name="borders_car_box1">Car Box1</string>
     <string name="borders_car_box2">Car Box2</string>
+    <string name="borders_car_statebox1">Car Statebox1</string>
+    <string name="borders_car_statebox2">Car Statebox2</string>
     <string name="borders_car_info">Car Info</string>
     <string name="borders_car_building">Car Building</string>
     <string name="borders_car_picture">Car Picture</string>
@@ -145,6 +147,8 @@
     <string-array name="pref_borders_entries">
         <item>Car Box1</item>
         <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>
@@ -200,6 +204,8 @@
     <string-array name="pref_borders_values">
         <item>Car Box1</item>
         <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>

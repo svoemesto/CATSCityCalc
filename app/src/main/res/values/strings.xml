@@ -81,6 +81,8 @@
     <string name="sett_borders">Borders settings</string>
     <string name="borders_car_box1">Car Box1</string>
     <string name="borders_car_box2">Car Box2</string>
+    <string name="borders_car_statebox1">Car Statebox1</string>
+    <string name="borders_car_statebox2">Car Statebox2</string>
     <string name="borders_car_info">Car Info</string>
     <string name="borders_car_building">Car Building</string>
     <string name="borders_car_picture">Car Picture</string>
@@ -177,6 +179,8 @@
     <string-array name="pref_borders_entries">
         <item>Car Box1</item>
         <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>
@@ -232,6 +236,8 @@
     <string-array name="pref_borders_values">
         <item>Car Box1</item>
         <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>
@@ -352,6 +358,9 @@
     <string name="version">version</string>
     <string name="request_permissions">Request permissions</string>
     <string name="final_symbols">Final symbols</string>
+    <string name="dingbat1">➊</string>
+    <string name="dingbat2">➋</string>
+    <string name="dingbat3">➌</string>
 
     <string-array name="pref_colors_entries">
         <item>Time</item>

@@ -22,51 +22,82 @@ public class CCACar extends CityCalcArea {
         CityCalcArea areaSlot3 = this.cityCalc.mapAreas.get(Area.CAR_SLOT3);
         CityCalcArea areaHealth = this.cityCalc.mapAreas.get(Area.CAR_HEALTH);
         CityCalcArea areaShield = this.cityCalc.mapAreas.get(Area.CAR_SHIELD);
-        CityCalcArea areaState = this.cityCalc.mapAreas.get(Area.CAR_STATE);
+        CityCalcArea areaStatebox1 = this.cityCalc.mapAreas.get(Area.CAR_STATEBOX1);
+        CityCalcArea areaStatebox2 = this.cityCalc.mapAreas.get(Area.CAR_STATEBOX2);
         CityCalcArea areaHealbox = this.cityCalc.mapAreas.get(Area.CAR_HEALBOX);
         CityCalcArea areaTimebox = this.cityCalc.mapAreas.get(Area.CAR_TIMEBOX);
         CityCalcArea areaPicture = this.cityCalc.mapAreas.get(Area.CAR_PICTURE);
+        CityCalcArea areaBuilding = this.cityCalc.mapAreas.get(Area.CAR_BUILDING);
+
         long secondsToEndRepairing = 0;
         Date screenshotDate = Calendar.getInstance().getTime();
 
-        if (PictureProcessor.frequencyPixelInBitmap(areaSlot1.bmpSrc, areaSlot1.colors[0],areaSlot1.ths[0], areaSlot1.ths[1]) > 0.01f) car.setSlot(1);
-        if (PictureProcessor.frequencyPixelInBitmap(areaSlot2.bmpSrc, areaSlot2.colors[0],areaSlot2.ths[0], areaSlot2.ths[1]) > 0.01f) car.setSlot(2);
-        if (PictureProcessor.frequencyPixelInBitmap(areaSlot3.bmpSrc, areaSlot3.colors[0],areaSlot3.ths[0], areaSlot3.ths[1]) > 0.01f) car.setSlot(3);
-        if (PictureProcessor.frequencyPixelInBitmap(areaState.bmpSrc, areaState.colors[0],areaState.ths[0], areaState.ths[1]) > 0.01f) {
-            car.setStateDefencing();
-        } else if (PictureProcessor.frequencyPixelInBitmap(areaHealbox.bmpSrc, areaHealbox.colors[0],areaHealbox.ths[0], areaHealbox.ths[1]) > 0.01f) {
-            areaTimebox.needOcr = true;
-            areaTimebox.doOCR();
-            secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox.ocrText);
-            screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
-            car.setStateRepairing(screenshotDate,secondsToEndRepairing);
-        } else {
-            car.setStateFree();
-//            car.savePicture(areaPicture.bmpSrc);
-            car.setPicture(areaPicture.bmpSrc);
-        }
-
+        // распознаем health
         areaHealth.needOcr = true;
-        areaShield.needOcr = true;
         areaHealth.needBW = true;
-        areaShield.needBW = true;
         areaHealth.doOCR();
-        areaShield.doOCR();
         car.setHealth(Integer.parseInt(areaHealth.finText));
+
+        // распознаем shield
+        areaShield.needOcr = true;
+        areaShield.needBW = true;
+        areaShield.doOCR();
         car.setShield(Integer.parseInt(areaShield.finText));
+
+        // распознаем слоты
+        boolean isSlot1 = PictureProcessor.frequencyPixelInBitmap(areaSlot1.bmpSrc, areaSlot1.colors[0],areaSlot1.ths[0], areaSlot1.ths[1]) > 0.01f;    // обнаружен слот 1
+        boolean isSlot2 = PictureProcessor.frequencyPixelInBitmap(areaSlot2.bmpSrc, areaSlot2.colors[0],areaSlot2.ths[0], areaSlot2.ths[1]) > 0.01f;    // обнаружен слот 2
+        boolean isSlot3 = PictureProcessor.frequencyPixelInBitmap(areaSlot3.bmpSrc, areaSlot3.colors[0],areaSlot3.ths[0], areaSlot3.ths[1]) > 0.01f;    // обнаружен слот 3
+
+        if (isSlot1) car.setSlot(1); // есть белый цвет в слоте1 - машина №1
+        if (isSlot2) car.setSlot(2); // есть белый цвет в слоте2 - машина №2
+        if (isSlot3) car.setSlot(3); // есть белый цвет в слоте3 - машина №3
+
+        // распознаем стейтбоксы
+        boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaStatebox1.bmpSrc, areaStatebox1.colors[0],areaStatebox1.ths[0], areaStatebox1.ths[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ
+        boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaStatebox2.bmpSrc, areaStatebox2.colors[0],areaStatebox2.ths[0], areaStatebox2.ths[1]) > 0.01f; // обнаружен стейтбокс2 - в боксе есть белый цвет
+        boolean isHealbox = PictureProcessor.frequencyPixelInBitmap(areaHealbox.bmpSrc, areaHealbox.colors[0],areaHealbox.ths[0], areaHealbox.ths[1]) > 0.01f; // обнаружен хилбокс - в боксе есть красный цвет
+
+        if (!isStatebox2) { // если нет стейтбокса2 - машина гарантированно сободна и починена
+            // устанавливаем свободный статус машины и забираем ее картинку
+            car.setStateFree();
+            car.setCarPicture(areaPicture.bmpSrc);
+        } else {
+
+            if (isStatebox1) { // если есть сейтбокс1 - машина гарантированно ремонтируется
+                // парсим и устанавливаем время ремонта
+                areaTimebox.needOcr = true;
+                areaTimebox.needBW = true;
+                areaTimebox.doOCR();
+                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox.ocrText);
+                screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
+                car.setRepairingState(screenshotDate,secondsToEndRepairing);
+            }
+
+            if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании
+                // устанавливаем нулевое здание и его картинку
+                car.setBuilding(0);
+                car.setBuildingPicture(areaBuilding.bmpSrc);
+            }
+
+        }
 
         if (car.getSlot() != 0) {
             List<Car> listCars = Car.loadList();
             Car updatedCar = listCars.get(car.getSlot()-1);
             updatedCar.setHealth(car.getHealth());
             updatedCar.setShield(car.getShield());
-            if (car.getState().equals(CarState.FREE)) {
-                updatedCar.setPicture(car.getPicture());
+            if (car.isFree()) {
                 updatedCar.setStateFree();
-            } else if (car.getState().equals(CarState.DEFENCING)) {
-                updatedCar.setStateDefencing();
-            } else if (car.getState().equals(CarState.REPAIRING)) {
-                updatedCar.setStateRepairing(screenshotDate,secondsToEndRepairing);
+                updatedCar.setCarPicture(car.getCarPicture());
+            } else {
+                if (car.isDefencing()) {
+                    updatedCar.setBuilding(car.getBuilding());
+                    updatedCar.setBuildingPicture(car.getBuildingPicture());
+                }
+                if (car.isRepairing()) {
+                    updatedCar.setRepairingState(screenshotDate,secondsToEndRepairing);
+                }
             }
             updatedCar.save();
         }

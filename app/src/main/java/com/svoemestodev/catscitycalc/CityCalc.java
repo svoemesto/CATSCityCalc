@@ -109,7 +109,16 @@ public class CityCalc extends Activity {
     private int color_car_timebox_thm;
     private int color_car_timebox_thp;
 
+    private int color_car_statebox1_main;
+    private int color_car_statebox1_back;
+    private int color_car_statebox1_thm;
+    private int color_car_statebox1_thp;
 
+    private int color_car_statebox2_main;
+    private int color_car_statebox2_back;
+    private int color_car_statebox2_thm;
+    private int color_car_statebox2_thp;
+    
     private void initVariables() {
 
         sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
@@ -194,6 +203,16 @@ public class CityCalc extends Activity {
         color_car_timebox_back = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_timebox_back),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_timebox_back), (int)Long.parseLong(context.getString(R.string.def_rgb_car_timebox_back), 16)));
         color_car_timebox_thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_timebox_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_timebox_thm), Integer.parseInt(context.getString(R.string.def_rgb_car_timebox_thm))));
         color_car_timebox_thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_timebox_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_timebox_thp), Integer.parseInt(context.getString(R.string.def_rgb_car_timebox_thp))));
+
+        color_car_statebox1_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox1_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox1_main), (int)Long.parseLong(context.getString(R.string.def_rgb_car_statebox1_main), 16)));
+        color_car_statebox1_back = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox1_back),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox1_back), (int)Long.parseLong(context.getString(R.string.def_rgb_car_statebox1_back), 16)));
+        color_car_statebox1_thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox1_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox1_thm), Integer.parseInt(context.getString(R.string.def_rgb_car_statebox1_thm))));
+        color_car_statebox1_thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox1_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox1_thp), Integer.parseInt(context.getString(R.string.def_rgb_car_statebox1_thp))));
+
+        color_car_statebox2_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_car_statebox2_main), 16)));
+        color_car_statebox2_back = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox2_back),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox2_back), (int)Long.parseLong(context.getString(R.string.def_rgb_car_statebox2_back), 16)));
+        color_car_statebox2_thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox2_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox2_thm), Integer.parseInt(context.getString(R.string.def_rgb_car_statebox2_thm))));
+        color_car_statebox2_thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_statebox2_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_statebox2_thp), Integer.parseInt(context.getString(R.string.def_rgb_car_statebox2_thp))));
 
     }
 
@@ -1242,7 +1261,34 @@ public class CityCalc extends Activity {
                 mapAreas.put(area, ccaCarTimebox);
                 break;
 
+            case CAR_STATEBOX1:
+                // Car Statebox1 Area
+                x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox1_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox1_x1), Float.parseFloat(context.getString(R.string.def_cut_car_statebox1_x1))));
+                x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox1_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox1_x2), Float.parseFloat(context.getString(R.string.def_cut_car_statebox1_x2))));
+                y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox1_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox1_y1), Float.parseFloat(context.getString(R.string.def_cut_car_statebox1_y1))));
+                y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox1_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox1_y2), Float.parseFloat(context.getString(R.string.def_cut_car_statebox1_y2))));
+                colors = new int[] {color_car_statebox1_main, color_car_statebox1_back};
+                ths = new int[] {color_car_statebox1_thm, color_car_statebox1_thp};
+                needOcr = false;
+                needBW = false;
+                CityCalcArea ccaCarStatebox1 = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
+                mapAreas.put(area, ccaCarStatebox1);
+                break;
 
+            case CAR_STATEBOX2:
+                // Car Statebox2 Area
+                x1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox2_x1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox2_x1), Float.parseFloat(context.getString(R.string.def_cut_car_statebox2_x1))));
+                x2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox2_x2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox2_x2), Float.parseFloat(context.getString(R.string.def_cut_car_statebox2_x2))));
+                y1 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox2_y1),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox2_y1), Float.parseFloat(context.getString(R.string.def_cut_car_statebox2_y1))));
+                y2 = sharedPreferences.getFloat(context.getString(R.string.pref_cut_car_statebox2_y2),sharedPreferences.getFloat(context.getString(R.string.pref_def_cut_car_statebox2_y2), Float.parseFloat(context.getString(R.string.def_cut_car_statebox2_y2))));
+                colors = new int[] {color_car_statebox2_main, color_car_statebox2_back};
+                ths = new int[] {color_car_statebox2_thm, color_car_statebox2_thp};
+                needOcr = false;
+                needBW = false;
+                CityCalcArea ccaCarStatebox2 = new CityCalcArea(thisCityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
+                mapAreas.put(area, ccaCarStatebox2);
+                break;
+                
             default:
         }
         
@@ -1348,6 +1394,8 @@ public class CityCalc extends Activity {
 
                         setAreaToMap(Area.CAR_BOX1);
                         setAreaToMap(Area.CAR_BOX2);
+                        setAreaToMap(Area.CAR_STATEBOX1);
+                        setAreaToMap(Area.CAR_STATEBOX2);
                         setAreaToMap(Area.CAR_INFO);
                         setAreaToMap(Area.CAR_BUILDING);
                         setAreaToMap(Area.CAR_PICTURE);
@@ -1405,6 +1453,8 @@ public class CityCalc extends Activity {
                         setAreaToMap(Area.BRB_SLOTS);
                         setAreaToMap(Area.CAR_BOX1);
                         setAreaToMap(Area.CAR_BOX2);
+                        setAreaToMap(Area.CAR_STATEBOX1);
+                        setAreaToMap(Area.CAR_STATEBOX2);
                         setAreaToMap(Area.CAR_INFO);
                         setAreaToMap(Area.CAR_BUILDING);
                         setAreaToMap(Area.CAR_PICTURE);
@@ -1460,6 +1510,8 @@ public class CityCalc extends Activity {
                         setAreaToMap(Area.BRB_SLOTS);
                         setAreaToMap(Area.CAR_BOX1);
                         setAreaToMap(Area.CAR_BOX2);
+                        setAreaToMap(Area.CAR_STATEBOX1);
+                        setAreaToMap(Area.CAR_STATEBOX2);
                         setAreaToMap(Area.CAR_INFO);
                         setAreaToMap(Area.CAR_BUILDING);
                         setAreaToMap(Area.CAR_PICTURE);

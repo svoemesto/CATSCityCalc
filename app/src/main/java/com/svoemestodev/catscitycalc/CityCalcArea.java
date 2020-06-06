@@ -33,6 +33,8 @@ public class CityCalcArea {
             case CAR_PICTURE:
             case CAR_BOX1:
             case CAR_BOX2:
+            case CAR_STATEBOX1:
+            case CAR_STATEBOX2:
             case CAR_SLOT1:
             case CAR_SLOT2:
             case CAR_SLOT3:

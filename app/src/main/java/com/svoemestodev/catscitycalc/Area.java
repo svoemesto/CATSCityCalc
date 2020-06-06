@@ -6,6 +6,8 @@ public enum Area {
     CAR_BUILDING,
     CAR_BOX1,
     CAR_BOX2,
+    CAR_STATEBOX1,
+    CAR_STATEBOX2,
     CAR_SLOT1,
     CAR_SLOT2,
     CAR_SLOT3,

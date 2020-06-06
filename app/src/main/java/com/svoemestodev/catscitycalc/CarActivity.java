@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MenuItem;
@@ -26,7 +27,7 @@ public class CarActivity extends AppCompatActivity {
 
     AdView ca_ad_banner;
     ImageView ca_iv_car_picture;
-    ImageView ca_iv_car;
+    TextView ca_tv_car_dingbat;
     TextView ca_tv_name_value;
     TextView ca_tv_health_value;
     TextView ca_tv_shield_value;
@@ -70,57 +71,24 @@ public class CarActivity extends AppCompatActivity {
         ca_tv_shield_value.setText(Utils.convertIntToStringFormatter(car.getShield()));
         ca_tv_repair_value.setText(car.getTimeStringToEndRepairing());
 
-        if (car.getPicture() != null) ca_iv_car_picture.setImageBitmap(car.getPicture());
+        if (car.getCarPicture() != null) ca_iv_car_picture.setImageBitmap(car.getCarPicture());
+        Bitmap buildingBitmap = car.getBuildingPicture();
 
-        Bitmap houseBitmap = car.getBuilding();
-        try {
-            if (houseBitmap != null && car.getState().equals(CarState.DEFENCING)) {
-                ca_iv_building_value.setImageBitmap(houseBitmap);
-                ca_iv_building_value.setVisibility(View.VISIBLE);
-            } else {
-                ca_iv_building_value.setVisibility(View.INVISIBLE);
-            }
-        } catch (Exception ignored) {
+        if (buildingBitmap != null && car.isDefencing()) {
+            ca_iv_building_value.setImageBitmap(buildingBitmap);
+            ca_iv_building_value.setVisibility(View.VISIBLE);
+        } else {
+            ca_iv_building_value.setVisibility(View.INVISIBLE);
         }
 
-        CarState carState = car.getState();
-        if (carState.equals(CarState.EMPTY)) {
-            if (car.getSlot() == 1) {
-                ca_iv_car.setImageResource(R.drawable.ic_car1_gray);
-            } else if (car.getSlot() == 2) {
-                ca_iv_car.setImageResource(R.drawable.ic_car2_gray);
-            } else if (car.getSlot() == 3) {
-                ca_iv_car.setImageResource(R.drawable.ic_car3_gray);
-            }
+        if (car.slot == 1) ca_tv_car_dingbat.setText(getString(R.string.dingbat1));
+        if (car.slot == 2) ca_tv_car_dingbat.setText(getString(R.string.dingbat2));
+        if (car.slot == 3) ca_tv_car_dingbat.setText(getString(R.string.dingbat3));
 
-        } else if (carState.equals(CarState.FREE)) {
-            if (car.getSlot() == 1) {
-                ca_iv_car.setImageResource(R.drawable.ic_car1_blue);
-            } else if (car.getSlot() == 2) {
-                ca_iv_car.setImageResource(R.drawable.ic_car2_blue);
-            } else if (car.getSlot() == 3) {
-                ca_iv_car.setImageResource(R.drawable.ic_car3_blue);
-            }
-
-        } else if (carState.equals(CarState.DEFENCING)) {
-            if (car.getSlot() == 1) {
-                ca_iv_car.setImageResource(R.drawable.ic_car1_green);
-            } else if (car.getSlot() == 2) {
-                ca_iv_car.setImageResource(R.drawable.ic_car2_green);
-            } else if (car.getSlot() == 3) {
-                ca_iv_car.setImageResource(R.drawable.ic_car3_green);
-            }
-
-        } else if (carState.equals(CarState.REPAIRING)) {
-            if (car.getSlot() == 1) {
-                ca_iv_car.setImageResource(R.drawable.ic_car1_red);
-            } else if (car.getSlot() == 2) {
-                ca_iv_car.setImageResource(R.drawable.ic_car2_red);
-            } else if (car.getSlot() == 3) {
-                ca_iv_car.setImageResource(R.drawable.ic_car3_red);
-            }
-
-        }
+        if (car.isFree()) ca_tv_car_dingbat.setTextColor(Color.BLUE);
+        if (car.isRepairing() && !car.isDefencing()) ca_tv_car_dingbat.setTextColor(Color.RED);
+        if (!car.isRepairing() && car.isDefencing()) ca_tv_car_dingbat.setTextColor(Color.GREEN);
+        if (car.isRepairing() && car.isDefencing()) ca_tv_car_dingbat.setTextColor(Color.YELLOW);
 
         car.save();
 
@@ -129,7 +97,7 @@ public class CarActivity extends AppCompatActivity {
     private void initializeViews() {
         ca_ad_banner = findViewById(R.id.ca_ad_banner);
         ca_iv_car_picture = findViewById(R.id.ca_iv_car_picture);
-        ca_iv_car = findViewById(R.id.ca_iv_car);
+        ca_tv_car_dingbat = findViewById(R.id.ca_tv_car_dingbat);
         ca_tv_name_value = findViewById(R.id.ca_tv_name_value);
         ca_tv_health_value = findViewById(R.id.ca_tv_health_value);
         ca_tv_shield_value = findViewById(R.id.ca_tv_shield_value);
@@ -243,7 +211,7 @@ public class CarActivity extends AppCompatActivity {
                 String newValue = input.getText().toString();
                 if (newValue.equals("")) newValue = "0";
                 long seconds = Utils.conversTimeStringWithoutColonsToSeconds(newValue);
-                car.setStateRepairingNow(seconds);
+                car.setRepairingStateTillNow(seconds);
                 loadDataToViews();
             }
         });
@@ -275,8 +243,8 @@ public class CarActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Building item = arrayAdapter.getItem(which);
-                car.setBuilding(item.bitmap);
-                car.setStateDefencing();
+                car.setBuildingPicture(item.bitmap);
+                car.setBuilding(item.slot);
                 loadDataToViews();
             }
         });

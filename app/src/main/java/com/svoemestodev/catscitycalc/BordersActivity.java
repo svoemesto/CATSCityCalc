@@ -15,6 +15,7 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -120,7 +121,13 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_cut_car_timebox_x1), getString(R.string.pref_cut_car_timebox_x2), getString(R.string.pref_cut_car_timebox_y1), getString(R.string.pref_cut_car_timebox_y2),
                 getString(R.string.def_cut_car_timebox_x1), getString(R.string.def_cut_car_timebox_x2), getString(R.string.def_cut_car_timebox_y1), getString(R.string.def_cut_car_timebox_y2)));
 
+        key = getString(R.string.borders_car_statebox1); mapAreas.put(key, new myArea(key, Area.CAR_STATEBOX1,
+                getString(R.string.pref_cut_car_statebox1_x1), getString(R.string.pref_cut_car_statebox1_x2), getString(R.string.pref_cut_car_statebox1_y1), getString(R.string.pref_cut_car_statebox1_y2),
+                getString(R.string.def_cut_car_statebox1_x1), getString(R.string.def_cut_car_statebox1_x2), getString(R.string.def_cut_car_statebox1_y1), getString(R.string.def_cut_car_statebox1_y2)));
 
+        key = getString(R.string.borders_car_statebox2); mapAreas.put(key, new myArea(key, Area.CAR_STATEBOX2,
+                getString(R.string.pref_cut_car_statebox2_x1), getString(R.string.pref_cut_car_statebox2_x2), getString(R.string.pref_cut_car_statebox2_y1), getString(R.string.pref_cut_car_statebox2_y2),
+                getString(R.string.def_cut_car_statebox2_x1), getString(R.string.def_cut_car_statebox2_x2), getString(R.string.def_cut_car_statebox2_y1), getString(R.string.def_cut_car_statebox2_y2)));
 
         key = getString(R.string.borders_city); mapAreas.put(key, new myArea(key, Area.CITY, 
                 getString(R.string.pref_cut_city_x1), getString(R.string.pref_cut_city_x2), getString(R.string.pref_cut_city_y1), getString(R.string.pref_cut_city_y2),
@@ -346,19 +353,26 @@ public class BordersActivity extends AppCompatActivity {
 
         CityCalcArea cityCalcArea = null;
 
-        cityCalcArea = mainCityCalc.mapAreas.get(mapAreas.get(areaName.get()).area);
+        try {
+            cityCalcArea = mainCityCalc.mapAreas.get(mapAreas.get(areaName.get()).area);
+            cityCalcArea.doCut();
+            cut_x1 = cityCalcArea.x1;
+            cut_x2 = cityCalcArea.x2;
+            cut_y1 = cityCalcArea.y1;
+            cut_y2 = cityCalcArea.y2;
 
-        cityCalcArea.doCut();
-        cut_x1 = cityCalcArea.x1;
-        cut_x2 = cityCalcArea.x2;
-        cut_y1 = cityCalcArea.y1;
-        cut_y2 = cityCalcArea.y2;
-        
-        etX1.setText(String.valueOf(cut_x1));
-        etX2.setText(String.valueOf(cut_x2));
-        etY1.setText(String.valueOf(cut_y1));
-        etY2.setText(String.valueOf(cut_y2));
-        ivPicture.setImageBitmap(cityCalcArea.bmpSrc);  // выводим битмап игры в контрол
+            etX1.setText(String.valueOf(cut_x1));
+            etX2.setText(String.valueOf(cut_x2));
+            etY1.setText(String.valueOf(cut_y1));
+            etY2.setText(String.valueOf(cut_y2));
+            ivPicture.setImageBitmap(cityCalcArea.bmpSrc);  // выводим битмап игры в контрол
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("loadArea", areaName.get());
+        }
+
+
 
     }
 
