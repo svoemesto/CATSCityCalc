@@ -24,8 +24,10 @@ public class CCACar extends CityCalcArea {
         CityCalcArea areaShield = this.cityCalc.mapAreas.get(Area.CAR_SHIELD);
         CityCalcArea areaStatebox1 = this.cityCalc.mapAreas.get(Area.CAR_STATEBOX1);
         CityCalcArea areaStatebox2 = this.cityCalc.mapAreas.get(Area.CAR_STATEBOX2);
+        CityCalcArea areaStatebox3 = this.cityCalc.mapAreas.get(Area.CAR_STATEBOX3);
         CityCalcArea areaHealbox = this.cityCalc.mapAreas.get(Area.CAR_HEALBOX);
-        CityCalcArea areaTimebox = this.cityCalc.mapAreas.get(Area.CAR_TIMEBOX);
+        CityCalcArea areaTimebox1 = this.cityCalc.mapAreas.get(Area.CAR_TIMEBOX1);
+        CityCalcArea areaTimebox2 = this.cityCalc.mapAreas.get(Area.CAR_TIMEBOX2);
         CityCalcArea areaPicture = this.cityCalc.mapAreas.get(Area.CAR_PICTURE);
         CityCalcArea areaBuilding = this.cityCalc.mapAreas.get(Area.CAR_BUILDING);
 
@@ -54,11 +56,12 @@ public class CCACar extends CityCalcArea {
         if (isSlot3) car.setSlot(3); // есть белый цвет в слоте3 - машина №3
 
         // распознаем стейтбоксы
-        boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaStatebox1.bmpSrc, areaStatebox1.colors[0],areaStatebox1.ths[0], areaStatebox1.ths[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ
+        boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaStatebox1.bmpSrc, areaStatebox1.colors[0],areaStatebox1.ths[0], areaStatebox1.ths[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ - починка в защите
         boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaStatebox2.bmpSrc, areaStatebox2.colors[0],areaStatebox2.ths[0], areaStatebox2.ths[1]) > 0.01f; // обнаружен стейтбокс2 - в боксе есть белый цвет
+        boolean isStatebox3 = PictureProcessor.frequencyPixelInBitmap(areaStatebox3.bmpSrc, areaStatebox3.colors[0],areaStatebox3.ths[0], areaStatebox3.ths[1]) > 0.28f; // обнаружен стейтбокс3 - в боксе есть ключ - починка
         boolean isHealbox = PictureProcessor.frequencyPixelInBitmap(areaHealbox.bmpSrc, areaHealbox.colors[0],areaHealbox.ths[0], areaHealbox.ths[1]) > 0.01f; // обнаружен хилбокс - в боксе есть красный цвет
 
-        if (!isStatebox2) { // если нет стейтбокса2 - машина гарантированно сободна и починена
+        if (!isStatebox2) { // если нет стейтбокса2 - машина гарантированно свободна и починена
             // устанавливаем свободный статус машины и забираем ее картинку
             car.setStateFree();
             car.setCarPicture(areaPicture.bmpSrc);
@@ -66,13 +69,27 @@ public class CCACar extends CityCalcArea {
 
             if (isStatebox1) { // если есть сейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
-                areaTimebox.needOcr = true;
-                areaTimebox.needBW = true;
-                areaTimebox.doOCR();
-                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox.ocrText);
+                areaTimebox1.needOcr = true;
+                areaTimebox1.needBW = true;
+                areaTimebox1.doOCR();
+                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox1.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
                 car.setCarPictureRepairing(areaPicture.bmpSrc);
+                car.setCarPictureDefencing(areaPicture.bmpSrc);
+            }
+
+            if (isStatebox3) { // если есть сейтбокс1 - машина гарантированно ремонтируется
+                // парсим и устанавливаем время ремонта
+                areaTimebox2.needOcr = true;
+                areaTimebox2.needBW = true;
+                areaTimebox2.doOCR();
+                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.ocrText);
+                screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
+                car.setRepairingState(screenshotDate,secondsToEndRepairing);
+                car.setCarPictureRepairing(areaPicture.bmpSrc);
+
+
             }
 
             if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании

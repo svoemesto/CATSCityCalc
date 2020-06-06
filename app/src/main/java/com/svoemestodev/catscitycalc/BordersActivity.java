@@ -117,10 +117,14 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_cut_car_healbox_x1), getString(R.string.pref_cut_car_healbox_x2), getString(R.string.pref_cut_car_healbox_y1), getString(R.string.pref_cut_car_healbox_y2),
                 getString(R.string.def_cut_car_healbox_x1), getString(R.string.def_cut_car_healbox_x2), getString(R.string.def_cut_car_healbox_y1), getString(R.string.def_cut_car_healbox_y2)));
 
-        key = getString(R.string.borders_car_timebox); mapAreas.put(key, new myArea(key, Area.CAR_TIMEBOX,
-                getString(R.string.pref_cut_car_timebox_x1), getString(R.string.pref_cut_car_timebox_x2), getString(R.string.pref_cut_car_timebox_y1), getString(R.string.pref_cut_car_timebox_y2),
-                getString(R.string.def_cut_car_timebox_x1), getString(R.string.def_cut_car_timebox_x2), getString(R.string.def_cut_car_timebox_y1), getString(R.string.def_cut_car_timebox_y2)));
+        key = getString(R.string.borders_car_timebox1); mapAreas.put(key, new myArea(key, Area.CAR_TIMEBOX1,
+                getString(R.string.pref_cut_car_timebox1_x1), getString(R.string.pref_cut_car_timebox1_x2), getString(R.string.pref_cut_car_timebox1_y1), getString(R.string.pref_cut_car_timebox1_y2),
+                getString(R.string.def_cut_car_timebox1_x1), getString(R.string.def_cut_car_timebox1_x2), getString(R.string.def_cut_car_timebox1_y1), getString(R.string.def_cut_car_timebox1_y2)));
 
+        key = getString(R.string.borders_car_timebox2); mapAreas.put(key, new myArea(key, Area.CAR_TIMEBOX2,
+                getString(R.string.pref_cut_car_timebox2_x1), getString(R.string.pref_cut_car_timebox2_x2), getString(R.string.pref_cut_car_timebox2_y1), getString(R.string.pref_cut_car_timebox2_y2),
+                getString(R.string.def_cut_car_timebox2_x1), getString(R.string.def_cut_car_timebox2_x2), getString(R.string.def_cut_car_timebox2_y1), getString(R.string.def_cut_car_timebox2_y2)));
+        
         key = getString(R.string.borders_car_statebox1); mapAreas.put(key, new myArea(key, Area.CAR_STATEBOX1,
                 getString(R.string.pref_cut_car_statebox1_x1), getString(R.string.pref_cut_car_statebox1_x2), getString(R.string.pref_cut_car_statebox1_y1), getString(R.string.pref_cut_car_statebox1_y2),
                 getString(R.string.def_cut_car_statebox1_x1), getString(R.string.def_cut_car_statebox1_x2), getString(R.string.def_cut_car_statebox1_y1), getString(R.string.def_cut_car_statebox1_y2)));
@@ -129,6 +133,10 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_cut_car_statebox2_x1), getString(R.string.pref_cut_car_statebox2_x2), getString(R.string.pref_cut_car_statebox2_y1), getString(R.string.pref_cut_car_statebox2_y2),
                 getString(R.string.def_cut_car_statebox2_x1), getString(R.string.def_cut_car_statebox2_x2), getString(R.string.def_cut_car_statebox2_y1), getString(R.string.def_cut_car_statebox2_y2)));
 
+        key = getString(R.string.borders_car_statebox3); mapAreas.put(key, new myArea(key, Area.CAR_STATEBOX3,
+                getString(R.string.pref_cut_car_statebox3_x1), getString(R.string.pref_cut_car_statebox3_x2), getString(R.string.pref_cut_car_statebox3_y1), getString(R.string.pref_cut_car_statebox3_y2),
+                getString(R.string.def_cut_car_statebox3_x1), getString(R.string.def_cut_car_statebox3_x2), getString(R.string.def_cut_car_statebox3_y1), getString(R.string.def_cut_car_statebox3_y2)));
+        
         key = getString(R.string.borders_city); mapAreas.put(key, new myArea(key, Area.CITY, 
                 getString(R.string.pref_cut_city_x1), getString(R.string.pref_cut_city_x2), getString(R.string.pref_cut_city_y1), getString(R.string.pref_cut_city_y2),
                 getString(R.string.def_cut_city_x1), getString(R.string.def_cut_city_x2), getString(R.string.def_cut_city_y1), getString(R.string.def_cut_city_y2)));

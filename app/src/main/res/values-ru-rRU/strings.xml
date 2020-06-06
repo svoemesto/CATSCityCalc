@@ -60,6 +60,7 @@
     <string name="borders_car_box2">Car Box2</string>
     <string name="borders_car_statebox1">Car Statebox1</string>
     <string name="borders_car_statebox2">Car Statebox2</string>
+    <string name="borders_car_statebox3">Car Statebox3</string>
     <string name="borders_car_info">Car Info</string>
     <string name="borders_car_building">Car Building</string>
     <string name="borders_car_picture">Car Picture</string>
@@ -70,7 +71,8 @@
     <string name="borders_car_shield">Car Shield</string>
     <string name="borders_car_state">Car State</string>
     <string name="borders_car_healbox">Car Health Box</string>
-    <string name="borders_car_timebox">Car Time Box</string>
+    <string name="borders_car_timebox1">Car Time Box1</string>
+    <string name="borders_car_timebox2">Car Time Box2</string>
     <string name="borders_box1_info">Box1 Info</string>
     <string name="borders_box2_info">Box2 Info</string>
     <string name="borders_box_back">Box Back</string>
@@ -149,6 +151,7 @@
         <item>Car Box2</item>
         <item>Car Statebox1</item>
         <item>Car Statebox2</item>
+        <item>Car Statebox3</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>
@@ -159,7 +162,8 @@
         <item>Car Shield</item>
         <item>Car State</item>
         <item>Car Health Box</item>
-        <item>Car Time Box</item>
+        <item>Car Time Box1</item>
+        <item>Car Time Box2</item>
         <item>Box1 Info</item>
         <item>Box2 Info</item>
         <item>Город</item>
@@ -206,6 +210,7 @@
         <item>Car Box2</item>
         <item>Car Statebox1</item>
         <item>Car Statebox2</item>
+        <item>Car Statebox3</item>
         <item>Car Info</item>
         <item>Car Building</item>
         <item>Car Picture</item>
@@ -216,7 +221,8 @@
         <item>Car Shield</item>
         <item>Car State</item>
         <item>Car Health Box</item>
-        <item>Car Time Box</item>
+        <item>Car Time Box1</item>
+        <item>Car Time Box2</item>
         <item>Box1 Info</item>
         <item>Box2 Info</item>
         <item>Город</item>

@@ -86,7 +86,27 @@
     <string name="pref_def_rgb_car_statebox2_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THP</string>
     <string name="pref_def_rgb_car_statebox2_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THM</string>
 
+    <!--    car_statebox3-->
+    <string name="pref_cut_car_statebox3_x1" translatable="false">PREF_CUT_CAR_STATEBOX3_X1</string>
+    <string name="pref_cut_car_statebox3_x2" translatable="false">PREF_CUT_CAR_STATEBOX3_X2</string>
+    <string name="pref_cut_car_statebox3_y1" translatable="false">PREF_CUT_CAR_STATEBOX3_Y1</string>
+    <string name="pref_cut_car_statebox3_y2" translatable="false">PREF_CUT_CAR_STATEBOX3_Y2</string>
 
+    <string name="pref_def_cut_car_statebox3_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_X1</string>
+    <string name="pref_def_cut_car_statebox3_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_X2</string>
+    <string name="pref_def_cut_car_statebox3_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_Y1</string>
+    <string name="pref_def_cut_car_statebox3_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_Y2</string>
+
+    <string name="pref_rgb_car_statebox3_main" translatable="false">PREF_RGB_CAR_STATEBOX3_MAIN</string>
+    <string name="pref_rgb_car_statebox3_back" translatable="false">PREF_RGB_CAR_STATEBOX3_BACK</string>
+    <string name="pref_rgb_car_statebox3_thp" translatable="false">PREF_RGB_CAR_STATEBOX3_THP</string>
+    <string name="pref_rgb_car_statebox3_thm" translatable="false">PREF_RGB_CAR_STATEBOX3_THM</string>
+
+    <string name="pref_def_rgb_car_statebox3_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_MAIN</string>
+    <string name="pref_def_rgb_car_statebox3_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_BACK</string>
+    <string name="pref_def_rgb_car_statebox3_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THP</string>
+    <string name="pref_def_rgb_car_statebox3_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THM</string>
+    
     <!--    cut_car_box1-->
     <string name="pref_cut_car_box1_x1" translatable="false">PREF_CUT_CAR_BOX1_X1</string>
     <string name="pref_cut_car_box1_x2" translatable="false">PREF_CUT_CAR_BOX1_X2</string>
@@ -302,27 +322,47 @@
     <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
 
 
-    <!--    car_timebox-->
-    <string name="pref_cut_car_timebox_x1" translatable="false">PREF_CUT_CAR_TIMEBOX_X1</string>
-    <string name="pref_cut_car_timebox_x2" translatable="false">PREF_CUT_CAR_TIMEBOX_X2</string>
-    <string name="pref_cut_car_timebox_y1" translatable="false">PREF_CUT_CAR_TIMEBOX_Y1</string>
-    <string name="pref_cut_car_timebox_y2" translatable="false">PREF_CUT_CAR_TIMEBOX_Y2</string>
+    <!--    car_timebox1-->
+    <string name="pref_cut_car_timebox1_x1" translatable="false">PREF_CUT_CAR_TIMEBOX1_X1</string>
+    <string name="pref_cut_car_timebox1_x2" translatable="false">PREF_CUT_CAR_TIMEBOX1_X2</string>
+    <string name="pref_cut_car_timebox1_y1" translatable="false">PREF_CUT_CAR_TIMEBOX1_Y1</string>
+    <string name="pref_cut_car_timebox1_y2" translatable="false">PREF_CUT_CAR_TIMEBOX1_Y2</string>
 
-    <string name="pref_def_cut_car_timebox_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X1</string>
-    <string name="pref_def_cut_car_timebox_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_X2</string>
-    <string name="pref_def_cut_car_timebox_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y1</string>
-    <string name="pref_def_cut_car_timebox_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX_Y2</string>
+    <string name="pref_def_cut_car_timebox1_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_X1</string>
+    <string name="pref_def_cut_car_timebox1_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_X2</string>
+    <string name="pref_def_cut_car_timebox1_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_Y1</string>
+    <string name="pref_def_cut_car_timebox1_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_Y2</string>
 
-    <string name="pref_rgb_car_timebox_main" translatable="false">PREF_RGB_CAR_TIMEBOX_MAIN</string>
-    <string name="pref_rgb_car_timebox_back" translatable="false">PREF_RGB_CAR_TIMEBOX_BACK</string>
-    <string name="pref_rgb_car_timebox_thp" translatable="false">PREF_RGB_CAR_TIMEBOX_THP</string>
-    <string name="pref_rgb_car_timebox_thm" translatable="false">PREF_RGB_CAR_TIMEBOX_THM</string>
+    <string name="pref_rgb_car_timebox1_main" translatable="false">PREF_RGB_CAR_TIMEBOX1_MAIN</string>
+    <string name="pref_rgb_car_timebox1_back" translatable="false">PREF_RGB_CAR_TIMEBOX1_BACK</string>
+    <string name="pref_rgb_car_timebox1_thp" translatable="false">PREF_RGB_CAR_TIMEBOX1_THP</string>
+    <string name="pref_rgb_car_timebox1_thm" translatable="false">PREF_RGB_CAR_TIMEBOX1_THM</string>
 
-    <string name="pref_def_rgb_car_timebox_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_MAIN</string>
-    <string name="pref_def_rgb_car_timebox_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_BACK</string>
-    <string name="pref_def_rgb_car_timebox_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THP</string>
-    <string name="pref_def_rgb_car_timebox_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX_THM</string>
+    <string name="pref_def_rgb_car_timebox1_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_MAIN</string>
+    <string name="pref_def_rgb_car_timebox1_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_BACK</string>
+    <string name="pref_def_rgb_car_timebox1_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THP</string>
+    <string name="pref_def_rgb_car_timebox1_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THM</string>
 
+    <!--    car_timebox2-->
+    <string name="pref_cut_car_timebox2_x1" translatable="false">PREF_CUT_CAR_TIMEBOX2_X1</string>
+    <string name="pref_cut_car_timebox2_x2" translatable="false">PREF_CUT_CAR_TIMEBOX2_X2</string>
+    <string name="pref_cut_car_timebox2_y1" translatable="false">PREF_CUT_CAR_TIMEBOX2_Y1</string>
+    <string name="pref_cut_car_timebox2_y2" translatable="false">PREF_CUT_CAR_TIMEBOX2_Y2</string>
+
+    <string name="pref_def_cut_car_timebox2_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_X1</string>
+    <string name="pref_def_cut_car_timebox2_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_X2</string>
+    <string name="pref_def_cut_car_timebox2_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_Y1</string>
+    <string name="pref_def_cut_car_timebox2_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_Y2</string>
+
+    <string name="pref_rgb_car_timebox2_main" translatable="false">PREF_RGB_CAR_TIMEBOX2_MAIN</string>
+    <string name="pref_rgb_car_timebox2_back" translatable="false">PREF_RGB_CAR_TIMEBOX2_BACK</string>
+    <string name="pref_rgb_car_timebox2_thp" translatable="false">PREF_RGB_CAR_TIMEBOX2_THP</string>
+    <string name="pref_rgb_car_timebox2_thm" translatable="false">PREF_RGB_CAR_TIMEBOX2_THM</string>
+
+    <string name="pref_def_rgb_car_timebox2_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_MAIN</string>
+    <string name="pref_def_rgb_car_timebox2_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_BACK</string>
+    <string name="pref_def_rgb_car_timebox2_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THP</string>
+    <string name="pref_def_rgb_car_timebox2_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THM</string>
 
     <!--    box1_info-->
     <string name="pref_cut_box1_info_x1" translatable="false">PREF_CUT_BOX1_INFO_X1</string>

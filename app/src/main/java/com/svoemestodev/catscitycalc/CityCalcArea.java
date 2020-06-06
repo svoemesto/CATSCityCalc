@@ -35,6 +35,7 @@ public class CityCalcArea {
             case CAR_BOX2:
             case CAR_STATEBOX1:
             case CAR_STATEBOX2:
+            case CAR_STATEBOX3:
             case CAR_SLOT1:
             case CAR_SLOT2:
             case CAR_SLOT3:
@@ -42,7 +43,8 @@ public class CityCalcArea {
             case CAR_SHIELD:
             case CAR_STATE:
             case CAR_HEALBOX:
-            case CAR_TIMEBOX:
+            case CAR_TIMEBOX1:
+            case CAR_TIMEBOX2:
                 return CropPosition.LEFT;
 
             case CAR_BUILDING:

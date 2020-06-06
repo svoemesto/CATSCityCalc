@@ -1113,7 +1113,6 @@ public class GameActivity extends AppCompatActivity {
         } catch (Exception ignored) {
         }
 
-
     }
 
 
