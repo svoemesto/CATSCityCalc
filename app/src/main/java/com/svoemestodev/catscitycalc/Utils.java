@@ -190,7 +190,7 @@ public class Utils {
      */
     public static  String parseTime(String str) {
         // парсинг "Время"
-        str = replaceSymbolsLikeNumbers(str).trim().toUpperCase();
+//        str = replaceSymbolsLikeNumbers(str).trim().toUpperCase();
         List<String> listWords = new ArrayList<>();
         boolean isNewWord = true;
         String word = "";
@@ -215,7 +215,8 @@ public class Utils {
         int hours = 0, minutes = 0;
         if (listWords.size() == 4) {
             try {
-                if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
+                listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
+//                if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
                 if (listWords.get(2).length() > 2) listWords.set(0, listWords.get(2).substring(0,2));
                 hours = Integer.parseInt(listWords.get(0));
                 minutes = Integer.parseInt(listWords.get(2));
@@ -230,7 +231,8 @@ public class Utils {
                 }
             } else {
                 try {
-                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
+//                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
+                    listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
                     hours = Integer.parseInt(listWords.get(0));
                 } catch (NumberFormatException ignored) {
                 }
@@ -241,6 +243,7 @@ public class Utils {
             if (lastChar == 'M' || lastChar == 'М') {
                 minutes = Integer.parseInt(listWords.get(0));
             } else {
+                listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
                 hours = Integer.parseInt(listWords.get(0));
             }
         }
