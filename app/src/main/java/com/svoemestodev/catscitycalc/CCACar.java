@@ -35,15 +35,15 @@ public class CCACar extends CityCalcArea {
         Date screenshotDate = Calendar.getInstance().getTime();
 
         // распознаем health
-        areaHealth.needOcr = true;
-        areaHealth.needBW = true;
-        areaHealth.doOCR();
+//        areaHealth.needOcr = true;
+//        areaHealth.needBW = true;
+//        areaHealth.doOCR();
         car.setHealth(Integer.parseInt(areaHealth.finText));
 
         // распознаем shield
-        areaShield.needOcr = true;
-        areaShield.needBW = true;
-        areaShield.doOCR();
+//        areaShield.needOcr = true;
+//        areaShield.needBW = true;
+//        areaShield.doOCR();
         car.setShield(Integer.parseInt(areaShield.finText));
 
         // распознаем слоты
@@ -69,9 +69,9 @@ public class CCACar extends CityCalcArea {
 
             if (isStatebox1) { // если есть сейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
-                areaTimebox1.needOcr = true;
-                areaTimebox1.needBW = true;
-                areaTimebox1.doOCR();
+//                areaTimebox1.needOcr = true;
+//                areaTimebox1.needBW = true;
+//                areaTimebox1.doOCR();
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox1.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
@@ -81,9 +81,9 @@ public class CCACar extends CityCalcArea {
 
             if (isStatebox3) { // если есть сейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
-                areaTimebox2.needOcr = true;
-                areaTimebox2.needBW = true;
-                areaTimebox2.doOCR();
+//                areaTimebox2.needOcr = true;
+//                areaTimebox2.needBW = true;
+//                areaTimebox2.doOCR();
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
@@ -100,6 +100,62 @@ public class CCACar extends CityCalcArea {
             }
 
         }
+
+        if (car.isDefencing()) {
+            // если машина в защите - попытаемся найти в каком она здании
+            String carBuildingName = areaBuilding.ocrText;
+            CCABuilding ccaBuilding;
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(1);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(2);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(3);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(4);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(5);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+            if (ccaBuilding.isPresent) {
+                if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                    car.setBuilding(6);
+                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                }
+            }
+
+        }
+
 
         if (car.getSlot() != 0) {
             List<Car> listCars = Car.loadList();

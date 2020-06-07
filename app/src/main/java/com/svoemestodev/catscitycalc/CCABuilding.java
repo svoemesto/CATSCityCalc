@@ -27,11 +27,11 @@ public class CCABuilding extends CityCalcArea{
             this.needOcr = needOCR;
             this.needBW = needBW;
             if (this.buildingIsOur) {
-                this.doOCR(0, 0, 1, true, 7.0f, 4.0f);
+                this.doOCR(0, 0, 1, true, 6.0f, 4.0f);
             } else if (this.buildingIsEnemy) {
-                this.doOCR(1, 2, 3, true, 7.0f, 4.0f);
+                this.doOCR(1, 2, 3, true, 6.0f, 4.0f);
             } else {
-                this.doOCR(2, 4, 5, true, 7.0f, 4.0f);
+                this.doOCR(2, 4, 5, true, 6.0f, 4.0f);
             }
             this.finText = this.ocrText.trim();
         }

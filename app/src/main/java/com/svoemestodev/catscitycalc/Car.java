@@ -227,7 +227,7 @@ public class Car implements Serializable {
     }
 
     public boolean isFree() {
-        return this.repair == null && this.building == -1;
+        return !isRepairing() && !isDefencing();
     }
 
     public boolean isDefencing() {
@@ -235,7 +235,7 @@ public class Car implements Serializable {
     }
 
     public boolean isRepairing() {
-        return this.repair != null;
+        return getSecondsToEndRepairing() > 0;
     }
 
     public UUID getUuid() {
