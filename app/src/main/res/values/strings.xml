@@ -8,7 +8,6 @@
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
 
-    <string name="program_folder" translatable="false">CATScalc</string>
     <string name="file_list_cars" translatable="false">Cars</string>
 
     <string name="start_game_at">Start game</string>

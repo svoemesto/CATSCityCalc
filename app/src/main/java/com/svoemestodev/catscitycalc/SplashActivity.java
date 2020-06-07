@@ -142,53 +142,38 @@ public class SplashActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        String pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder);
-        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
 
+        Car.pathToFile = getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.file_list_cars);
+        Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
 
-        File cityCatDir = new File(pathToCATScalcFolder);
-        if (!cityCatDir.exists()) {
-            Log.i(TAG, logMsgPref + "папки " + pathToCATScalcFolder + " не существует, создаем папку");
-            cityCatDir.mkdir();
-            Log.i(TAG, logMsgPref + "Создана папка " + pathToCATScalcFolder);
+        File cars = new File(Car.pathToFile);
+        if (!cars.exists()) {
+            Car.saveList(Car.getDefaultList());
         }
 
-        if (cityCatDir.exists()) { // если папка есть
+        File tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
 
-            Car.pathToFile = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder) + "/" + getString(R.string.file_list_cars);
-            Car.pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/" + getString(R.string.program_folder);
+        if (!tmp.exists()) {    // если файла нет
+            Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
+            try {
+                Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
 
-            File plastics = new File(Car.pathToFile);
-            if (!plastics.exists()) {
-                Car.saveList(Car.getDefaultList());
-            }
-
-
-            File tmp = new File(pathToCATScalcFolder, "last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
-
-            if (!tmp.exists()) {    // если файла нет
-                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");
-//                Bitmap sourceBitmap = BitmapFactory.decodeResource(getResources(), R.raw.stub_screenshot);  // открываем битмап из ресурса
-                try {
-                    Log.i(TAG, logMsgPref + "Копирование файла " + tmp.getAbsolutePath() + " из рессурса.");
-
-
-                    InputStream inputStream = getAssets().open("stub_screenshot.jpg");
-                    OutputStream outputStream = new FileOutputStream(tmp);
-                    byte[] buf = new byte[1024];
-                    int len;
-                    while ((len = inputStream.read(buf)) > 0) {
-                        outputStream.write(buf, 0, len);
-                    }
-                    inputStream.close();
-                    outputStream.close();
-
-                    Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                InputStream inputStream = getAssets().open("stub_screenshot.jpg");
+                OutputStream outputStream = new FileOutputStream(tmp);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buf)) > 0) {
+                    outputStream.write(buf, 0, len);
                 }
+                inputStream.close();
+                outputStream.close();
+
+                Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " успешно скопирован из рессурса.");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
+
     }
 
 }
