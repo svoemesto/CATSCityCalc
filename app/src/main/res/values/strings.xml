@@ -7,6 +7,7 @@
     <string name="banner_ad_ca_unit_id" translatable="false">ca-app-pub-2870168293382158/8639364851</string>
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
+    <string name="last_screenshot_file_name" translatable="false">last_screenshot.PNG</string>
 
     <string name="file_list_cars" translatable="false">Cars</string>
 

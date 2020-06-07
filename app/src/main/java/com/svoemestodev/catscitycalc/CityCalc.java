@@ -1492,6 +1492,10 @@ public class CityCalc extends Activity {
                         ((CCAGame)mapAreas.get(Area.CITY)).calc();
                         ((CCAGame)mapAreas.get(Area.CITY)).calcWin();
 
+                        if (!fileScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG")) {
+                            Utils.copyFile(fileScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG");
+                        }
+
                     } else if (cityCalcType.equals(CityCalcType.CAR)) {
 
                         setAreaToMap(Area.CAR_BOX1);

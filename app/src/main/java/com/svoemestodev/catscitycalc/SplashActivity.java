@@ -151,7 +151,7 @@ public class SplashActivity extends AppCompatActivity {
             Car.saveList(Car.getDefaultList());
         }
 
-        File tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG");       // файл картинки - путь к папке программы + имя файла
+        File tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name) );       // файл картинки - путь к папке программы + имя файла
 
         if (!tmp.exists()) {    // если файла нет
             Log.i(TAG, logMsgPref + "Файл " + tmp.getAbsolutePath() + " не существует, надо взять из рессурса.");

@@ -30,12 +30,14 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -195,8 +197,6 @@ public class GameActivity extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
-    public static String pathToCATScalcFolder = "";   // путь к папке программы в корне флешки
-    public static String pathToTessFolder = "";   // путь к папке программы в корне флешки
     public static File fileGameScreenshot = null;    // текущий файл скриншота
     public static File fileGameScreenshotPrevious;    // предыдущий файл скриншота
     public static File fileLastInFolder;    // последний файл в папке
@@ -235,13 +235,6 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
-        // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
-        pathToCATScalcFolder = Environment.getExternalStorageDirectory().getPath() + "/CATScalc";
-        Log.i(TAG, logMsgPref + "pathToCATScalcFolder = " + pathToCATScalcFolder);
-
-        pathToTessFolder = pathToCATScalcFolder + "/tessdata";
-        Log.i(TAG, logMsgPref + "pathToTessFolder = " + pathToTessFolder);
-
         context = getBaseContext();
 
         setContentView(R.layout.activity_game);
@@ -272,6 +265,10 @@ public class GameActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
+//        MobileAds.setRequestConfiguration(
+//                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList(AdRequest.DEVICE_ID_EMULATOR))
+//                        .build());
 
         Log.i(TAG, logMsgPref + "adRequest = new AdRequest.Builder().build()");
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -1157,7 +1154,7 @@ public class GameActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         File temp = null;           // временный файл
-        File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+        File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
         Log.i(TAG, logMsgPref + "lastScreenshot = " + lastScreenshot.getAbsolutePath());
         Log.i(TAG, logMsgPref + "pathToFolder = " + pathToFolder);
 
@@ -1328,7 +1325,7 @@ public class GameActivity extends AppCompatActivity {
                         CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context);
                         if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
                             fileGameScreenshot = newFile; // файл скриншота - возавращенный из диалога
-                            if (!fileGameScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                            if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                             isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                             sw_ga_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                             fileLastInFolder = null;    // сбрасываем последний файл в папке
@@ -1357,13 +1354,6 @@ public class GameActivity extends AppCompatActivity {
         String logMsgPref = "openSettings: ";
         Log.i(TAG, logMsgPref + "start");
         Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
-        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
-    }
-
-    private void openLanguage() {
-        String logMsgPref = "openLanguage: ";
-        Log.i(TAG, logMsgPref + "start");
-        Intent intent = new Intent(this, LanguageActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
@@ -1426,10 +1416,10 @@ public class GameActivity extends AppCompatActivity {
                                 if (tmpCityCalc.cityCalcType.equals(CityCalcType.GAME)) {
                                     fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
 
-                                    if (!fileGameScreenshot.getAbsolutePath().equals(pathToCATScalcFolder + "/last_screenshot.PNG")) {
+                                    if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
                                         Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
                                         Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
-                                        Utils.copyFile(fileGameScreenshot.getAbsolutePath(), pathToCATScalcFolder + "/last_screenshot.PNG");
+                                        Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                                     }
 
                                     mainCityCalc = new CityCalc(tmpCityCalc);
@@ -1447,7 +1437,7 @@ public class GameActivity extends AppCompatActivity {
                     } else {
 //                        Log.i(TAG, logMsgPref + "Не следить за файлами в папке");
                         if (fileGameScreenshot == null) {
-                            File lastScreenshot = new File(pathToCATScalcFolder, "last_screenshot.PNG"); // последний скри
+                            File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
                             fileLast = lastScreenshot;
                             if (lastScreenshot.exists()) {
                                 fileGameScreenshot = lastScreenshot;

@@ -34,16 +34,7 @@ public class CCACar extends CityCalcArea {
         long secondsToEndRepairing = 0;
         Date screenshotDate = Calendar.getInstance().getTime();
 
-        // распознаем health
-//        areaHealth.needOcr = true;
-//        areaHealth.needBW = true;
-//        areaHealth.doOCR();
         car.setHealth(Integer.parseInt(areaHealth.finText));
-
-        // распознаем shield
-//        areaShield.needOcr = true;
-//        areaShield.needBW = true;
-//        areaShield.doOCR();
         car.setShield(Integer.parseInt(areaShield.finText));
 
         // распознаем слоты
@@ -57,7 +48,7 @@ public class CCACar extends CityCalcArea {
 
         // распознаем стейтбоксы
         boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaStatebox1.bmpSrc, areaStatebox1.colors[0],areaStatebox1.ths[0], areaStatebox1.ths[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ - починка в защите
-        boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaStatebox2.bmpSrc, areaStatebox2.colors[0],areaStatebox2.ths[0], areaStatebox2.ths[1]) > 0.01f; // обнаружен стейтбокс2 - в боксе есть белый цвет
+        boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaStatebox2.bmpSrc, areaStatebox2.colors[0],areaStatebox2.ths[0], areaStatebox2.ths[1]) > 0.50f; // обнаружен стейтбокс2 - в боксе есть белый цвет
         boolean isStatebox3 = PictureProcessor.frequencyPixelInBitmap(areaStatebox3.bmpSrc, areaStatebox3.colors[0],areaStatebox3.ths[0], areaStatebox3.ths[1]) > 0.28f; // обнаружен стейтбокс3 - в боксе есть ключ - починка
         boolean isHealbox = PictureProcessor.frequencyPixelInBitmap(areaHealbox.bmpSrc, areaHealbox.colors[0],areaHealbox.ths[0], areaHealbox.ths[1]) > 0.01f; // обнаружен хилбокс - в боксе есть красный цвет
 
@@ -69,9 +60,6 @@ public class CCACar extends CityCalcArea {
 
             if (isStatebox1) { // если есть сейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
-//                areaTimebox1.needOcr = true;
-//                areaTimebox1.needBW = true;
-//                areaTimebox1.doOCR();
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox1.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
@@ -81,9 +69,6 @@ public class CCACar extends CityCalcArea {
 
             if (isStatebox3) { // если есть сейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
-//                areaTimebox2.needOcr = true;
-//                areaTimebox2.needBW = true;
-//                areaTimebox2.doOCR();
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
                 car.setRepairingState(screenshotDate,secondsToEndRepairing);
@@ -106,52 +91,56 @@ public class CCACar extends CityCalcArea {
             String carBuildingName = areaBuilding.ocrText;
             CCABuilding ccaBuilding;
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(1);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
-                }
-            }
+            if (GameActivity.mainCityCalc != null) {
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(2);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLT);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(1);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
                 }
-            }
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(3);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLC);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(2);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
                 }
-            }
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(4);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BLB);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(3);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
                 }
-            }
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(5);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRT);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(4);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
                 }
-            }
 
-            ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
-            if (ccaBuilding.isPresent) {
-                if (ccaBuilding.ocrText.equals(carBuildingName)) {
-                    car.setBuilding(6);
-                    car.setBuildingPicture(ccaBuilding.bmpSrc);
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRC);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(5);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
                 }
+
+                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.mapAreas.get(Area.BRB);
+                if (ccaBuilding.isPresent) {
+                    if (ccaBuilding.ocrText.equals(carBuildingName)) {
+                        car.setBuilding(6);
+                        car.setBuildingPicture(ccaBuilding.bmpSrc);
+                    }
+                }
+
             }
 
         }
