@@ -8,6 +8,7 @@
     <string name="def_cut_car_box1_y2" translatable="false">-0.155</string>
 
     <string name="def_rgb_car_box1_main" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_box1_back1" translatable="false">FF8BAFEB</string>
     <string name="def_rgb_car_box1_thm" translatable="false">13</string>
     <string name="def_rgb_car_box1_thp" translatable="false">13</string>
 
@@ -18,6 +19,7 @@
     <string name="def_cut_car_box2_y2" translatable="false">-0.800</string>
 
     <string name="def_rgb_car_box2_main" translatable="false">FFFF6661</string>
+    <string name="def_rgb_car_box2_back1" translatable="false">FFFF6661</string>
     <string name="def_rgb_car_box2_thm" translatable="false">13</string>
     <string name="def_rgb_car_box2_thp" translatable="false">13</string>
 
@@ -28,7 +30,7 @@
     <string name="def_cut_car_statebox1_y2" translatable="false">-0.580</string>
 
     <string name="def_rgb_car_statebox1_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox1_back" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_statebox1_back1" translatable="false">FF74D72F</string>
     <string name="def_rgb_car_statebox1_thm" translatable="false">13</string>
     <string name="def_rgb_car_statebox1_thp" translatable="false">13</string>
 
@@ -39,7 +41,7 @@
     <string name="def_cut_car_statebox2_y2" translatable="false">-0.390</string>
 
     <string name="def_rgb_car_statebox2_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox2_back" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_statebox2_back1" translatable="false">FF74D72F</string>
     <string name="def_rgb_car_statebox2_thm" translatable="false">13</string>
     <string name="def_rgb_car_statebox2_thp" translatable="false">13</string>
 
@@ -50,7 +52,7 @@
     <string name="def_cut_car_statebox3_y2" translatable="false">-0.580</string>
 
     <string name="def_rgb_car_statebox3_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox3_back" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_statebox3_back1" translatable="false">FF74D72F</string>
     <string name="def_rgb_car_statebox3_thm" translatable="false">13</string>
     <string name="def_rgb_car_statebox3_thp" translatable="false">13</string>
 
@@ -61,7 +63,7 @@
     <string name="def_cut_car_building_y2" translatable="false">-0.824</string>
 
     <string name="def_rgb_car_building_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_building_back" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_building_back1" translatable="false">FF95A7BD</string>
     <string name="def_rgb_car_building_thm" translatable="false">13</string>
     <string name="def_rgb_car_building_thp" translatable="false">13</string>
 
@@ -71,11 +73,21 @@
     <string name="def_cut_car_picture_y1" translatable="false">-0.560</string>
     <string name="def_cut_car_picture_y2" translatable="false">-0.380</string>
 
+    <string name="def_rgb_car_picture_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_picture_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_picture_thm" translatable="false">13</string>
+    <string name="def_rgb_car_picture_thp" translatable="false">13</string>
+
     <!--  "car_info"  -->
     <string name="def_cut_car_info_x1" translatable="false">+0.000</string>
     <string name="def_cut_car_info_x2" translatable="false">+0.448</string>
     <string name="def_cut_car_info_y1" translatable="false">-0.720</string>
     <string name="def_cut_car_info_y2" translatable="false">-0.155</string>
+
+    <string name="def_rgb_car_info_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_info_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_info_thm" translatable="false">13</string>
+    <string name="def_rgb_car_info_thp" translatable="false">13</string>
 
     <!--  "car_slot1"  -->
     <string name="def_cut_car_slot1_x1" translatable="false">+0.050</string>
@@ -84,7 +96,7 @@
     <string name="def_cut_car_slot1_y2" translatable="false">-0.185</string>
 
     <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_slot_back" translatable="false">FF839FDA</string>
+    <string name="def_rgb_car_slot_back1" translatable="false">FF839FDA</string>
     <string name="def_rgb_car_slot_thm" translatable="false">13</string>
     <string name="def_rgb_car_slot_thp" translatable="false">13</string>
 
@@ -94,11 +106,13 @@
     <string name="def_cut_car_slot2_y1" translatable="false">-0.275</string>
     <string name="def_cut_car_slot2_y2" translatable="false">-0.185</string>
 
+
     <!--  "car_slot3"  -->
     <string name="def_cut_car_slot3_x1" translatable="false">+0.265</string>
     <string name="def_cut_car_slot3_x2" translatable="false">+0.360</string>
     <string name="def_cut_car_slot3_y1" translatable="false">-0.275</string>
     <string name="def_cut_car_slot3_y2" translatable="false">-0.185</string>
+
 
     <!--  "car_health"  -->
     <string name="def_cut_car_health_x1" translatable="false">+0.000</string>
@@ -107,7 +121,7 @@
     <string name="def_cut_car_health_y2" translatable="false">-0.305</string>
 
     <string name="def_rgb_car_health_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_health_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_health_back1" translatable="false">FFF2D7C7</string>
     <string name="def_rgb_car_health_thm" translatable="false">13</string>
     <string name="def_rgb_car_health_thp" translatable="false">13</string>
 
@@ -119,7 +133,7 @@
     <string name="def_cut_car_shield_y2" translatable="false">-0.305</string>
 
     <string name="def_rgb_car_shield_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_shield_back" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_shield_back1" translatable="false">FFF2D7C7</string>
     <string name="def_rgb_car_shield_thm" translatable="false">13</string>
     <string name="def_rgb_car_shield_thp" translatable="false">13</string>
 
@@ -130,7 +144,7 @@
     <string name="def_cut_car_state_y2" translatable="false">-0.560</string>
 
     <string name="def_rgb_car_state_main" translatable="false">FF77D734</string>
-    <string name="def_rgb_car_state_back" translatable="false">FF738FE1</string>
+    <string name="def_rgb_car_state_back1" translatable="false">FF738FE1</string>
     <string name="def_rgb_car_state_thm" translatable="false">13</string>
     <string name="def_rgb_car_state_thp" translatable="false">13</string>
 
@@ -141,7 +155,7 @@
     <string name="def_cut_car_healbox_y2" translatable="false">-0.560</string>
 
     <string name="def_rgb_car_healbox_main" translatable="false">FFD32526</string>
-    <string name="def_rgb_car_healbox_back" translatable="false">FFFFF7C1</string>
+    <string name="def_rgb_car_healbox_back1" translatable="false">FFFFF7C1</string>
     <string name="def_rgb_car_healbox_thm" translatable="false">13</string>
     <string name="def_rgb_car_healbox_thp" translatable="false">13</string>
 
@@ -152,7 +166,7 @@
     <string name="def_cut_car_timebox1_y2" translatable="false">-0.570</string>
 
     <string name="def_rgb_car_timebox1_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox1_back" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_timebox1_back1" translatable="false">FFFFFFFF</string>
     <string name="def_rgb_car_timebox1_thm" translatable="false">13</string>
     <string name="def_rgb_car_timebox1_thp" translatable="false">13</string>
 
@@ -163,7 +177,7 @@
     <string name="def_cut_car_timebox2_y2" translatable="false">-0.570</string>
 
     <string name="def_rgb_car_timebox2_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox2_back" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_timebox2_back1" translatable="false">FFFFFFFF</string>
     <string name="def_rgb_car_timebox2_thm" translatable="false">13</string>
     <string name="def_rgb_car_timebox2_thp" translatable="false">13</string>
 
@@ -174,6 +188,7 @@
     <string name="def_cut_box1_info_y2" translatable="false">-0.690</string>
 
     <string name="def_rgb_box1_info_main" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box1_info_back1" translatable="false">FFCA2728</string>
     <string name="def_rgb_box1_info_thm" translatable="false">13</string>
     <string name="def_rgb_box1_info_thp" translatable="false">13</string>
 
@@ -184,6 +199,7 @@
     <string name="def_cut_box2_info_y2" translatable="false">-0.660</string>
 
     <string name="def_rgb_box2_info_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box2_info_back1" translatable="false">FF91A7BF</string>
     <string name="def_rgb_box2_info_thm" translatable="false">13</string>
     <string name="def_rgb_box2_info_thp" translatable="false">13</string>
 
@@ -195,6 +211,10 @@
     <string name="def_cut_box_back_y1" translatable="false">+0.718</string>
     <string name="def_cut_box_back_y2" translatable="false">+0.964</string>
 
+    <string name="def_rgb_box_back_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box_back_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box_back_thm" translatable="false">13</string>
+    <string name="def_rgb_box_back_thp" translatable="false">13</string>
 
     <!--  "Город"  -->
     <string name="def_cut_city_x1" translatable="false">-0.565</string>
@@ -202,11 +222,22 @@
     <string name="def_cut_city_y1" translatable="false">-0.800</string>
     <string name="def_cut_city_y2" translatable="false">-0.450</string>
 
+    <string name="def_rgb_city_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_city_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_city_thm" translatable="false">13</string>
+    <string name="def_rgb_city_thp" translatable="false">13</string>
+
     <!--  "Время"  -->
     <string name="def_cut_total_time_x1" translatable="false">-0.130</string>
     <string name="def_cut_total_time_x2" translatable="false">+0.060</string>
     <string name="def_cut_total_time_y1" translatable="false">-0.780</string>
     <string name="def_cut_total_time_y2" translatable="false">-0.660</string>
+
+    <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
+    <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>
+    <string name="def_rgb_total_time_back2" translatable="false">FF6b839b</string>
+    <string name="def_rgb_total_time_thm" translatable="false">30</string>
+    <string name="def_rgb_total_time_thp" translatable="false">13</string>
 
     <!--  "Очки для досрочной победы"  -->
     <string name="def_cut_early_win_x1" translatable="false">-0.170</string>
@@ -214,11 +245,29 @@
     <string name="def_cut_early_win_y1" translatable="false">-0.570</string>
     <string name="def_cut_early_win_y2" translatable="false">-0.450</string>
 
+    <string name="def_rgb_early_win_main" translatable="false">FFffffff</string>
+    <string name="def_rgb_early_win_back1" translatable="false">FF91a7bf</string>
+    <string name="def_rgb_early_win_thm" translatable="false">13</string>
+    <string name="def_rgb_early_win_thp" translatable="false">13</string>
+
     <!--  "Очки и пророст - наши"  -->
     <string name="def_cut_points_and_increase_our_x1" translatable="false">-0.565</string>
     <string name="def_cut_points_and_increase_our_x2" translatable="false">-0.180</string>
     <string name="def_cut_points_and_increase_our_y1" translatable="false">-0.610</string>
     <string name="def_cut_points_and_increase_our_y2" translatable="false">-0.470</string>
+
+    <string name="def_rgb_points_our_main" translatable="false">FFff437ad7</string>
+    <string name="def_rgb_points_our_back1" translatable="false">FFffffff</string>
+    <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
+    <string name="def_rgb_points_our_thm" translatable="false">13</string>
+    <string name="def_rgb_points_our_thp" translatable="false">13</string>
+
+    <string name="def_rgb_increase_our_main" translatable="false">FFd3def4</string>
+    <string name="def_rgb_increase_our_back1" translatable="false">FF4179d8</string>
+    <string name="def_rgb_increase_our_thm" translatable="false">13</string>
+    <string name="def_rgb_increase_our_thp" translatable="false">13</string>
+
+
 
     <!--  "Очки и пророст - противника"  -->
     <string name="def_cut_points_and_increase_enemy_x1" translatable="false">+0.180</string>
@@ -226,17 +275,39 @@
     <string name="def_cut_points_and_increase_enemy_y1" translatable="false">-0.610</string>
     <string name="def_cut_points_and_increase_enemy_y2" translatable="false">-0.470</string>
 
+    <string name="def_rgb_points_enemy_main" translatable="false">FFfff64f49</string>
+    <string name="def_rgb_points_enemy_back1" translatable="false">FFffffff</string>
+    <string name="def_rgb_points_enemy_back2" translatable="false">FFf1f1f1</string>
+    <string name="def_rgb_points_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_points_enemy_thp" translatable="false">13</string>
+
+    <string name="def_rgb_increase_enemy_main" translatable="false">FFfdd5d3</string>
+    <string name="def_rgb_increase_enemy_back1" translatable="false">FFeb4c48</string>
+    <string name="def_rgb_increase_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_increase_enemy_thp" translatable="false">13</string>
+
+
     <!--  "Название номанды - нашей"  -->
     <string name="def_cut_team_name_our_x1" translatable="false">-0.565</string>
     <string name="def_cut_team_name_our_x2" translatable="false">-0.250</string>
     <string name="def_cut_team_name_our_y1" translatable="false">-0.760</string>
     <string name="def_cut_team_name_our_y2" translatable="false">-0.650</string>
 
+    <string name="def_rgb_team_name_our_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_team_name_our_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_team_name_our_thm" translatable="false">13</string>
+    <string name="def_rgb_team_name_our_thp" translatable="false">13</string>
+
     <!--  "Название номанды - противника"  -->
     <string name="def_cut_team_name_enemy_x1" translatable="false">+0.250</string>
     <string name="def_cut_team_name_enemy_x2" translatable="false">+0.490</string>
     <string name="def_cut_team_name_enemy_y1" translatable="false">-0.760</string>
     <string name="def_cut_team_name_enemy_y2" translatable="false">-0.650</string>
+
+    <string name="def_rgb_team_name_enemy_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_team_name_enemy_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_team_name_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_team_name_enemy_thp" translatable="false">13</string>
 
 
     <!--  "Здание слева вверху"  -->
@@ -245,11 +316,26 @@
     <string name="def_cut_blt_y1" translatable="false">-0.144</string>
     <string name="def_cut_blt_y2" translatable="false">+0.051</string>
 
+    <string name="def_rgb_bxx_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_bxx_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_bxx_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_thp" translatable="false">13</string>
+
     <!--  "Здание слева вверху - прирост"  -->
     <string name="def_cut_blt_points_x1" translatable="false">-0.597</string>
     <string name="def_cut_blt_points_x2" translatable="false">-0.490</string>
     <string name="def_cut_blt_points_y1" translatable="false">-0.144</string>
     <string name="def_cut_blt_points_y2" translatable="false">+0.051</string>
+
+    <string name="def_rgb_bxx_points_our_main" translatable="false">FFffffff</string>
+    <string name="def_rgb_bxx_points_our_back1" translatable="false">FF4179d8</string>
+    <string name="def_rgb_bxx_points_our_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_points_our_thp" translatable="false">13</string>
+
+    <string name="def_rgb_bxx_points_enemy_main" translatable="false">FFffffff</string>
+    <string name="def_rgb_bxx_points_enemy_back1" translatable="false">FFeb4c48</string>
+    <string name="def_rgb_bxx_points_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_points_enemy_thp" translatable="false">13</string>
 
     <!--  "Здание слева вверху - название"  -->
     <string name="def_cut_blt_name_x1" translatable="false">-0.490</string>
@@ -257,11 +343,30 @@
     <string name="def_cut_blt_name_y1" translatable="false">-0.130</string>
     <string name="def_cut_blt_name_y2" translatable="false">-0.040</string>
 
+    <string name="def_rgb_bxx_name_our_main" translatable="false">ff90b3eb</string>
+    <string name="def_rgb_bxx_name_our_back1" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_bxx_name_enemy_main" translatable="false">ffff6565</string>
+    <string name="def_rgb_bxx_name_enemy_back1" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_bxx_name_empty_main" translatable="false">ff5f6b85</string>
+    <string name="def_rgb_bxx_name_empty_back1" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_bxx_name_our_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_name_our_thp" translatable="false">13</string>
+    <string name="def_rgb_bxx_name_enemy_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_name_enemy_thp" translatable="false">13</string>
+    <string name="def_rgb_bxx_name_empty_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_name_empty_thp" translatable="false">13</string>
+
     <!--  "Здание слева вверху - слоты"  -->
     <string name="def_cut_blt_slots_x1" translatable="false">-0.330</string>
     <string name="def_cut_blt_slots_x2" translatable="false">-0.240</string>
     <string name="def_cut_blt_slots_y1" translatable="false">-0.130</string>
     <string name="def_cut_blt_slots_y2" translatable="false">-0.040</string>
+
+    <string name="def_rgb_bxx_slots_main" translatable="false">FF2c3852</string>
+    <string name="def_rgb_bxx_slots_back1" translatable="false">FFffffff</string>
+    <string name="def_rgb_bxx_slots_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_slots_thp" translatable="false">13</string>
+
 
     <!--  "Здание слева вверху - прогресс"  -->
     <string name="def_cut_blt_progress_x1" translatable="false">-0.486</string>
@@ -269,6 +374,30 @@
     <string name="def_cut_blt_progress_y1" translatable="false">-0.036</string>
     <string name="def_cut_blt_progress_y2" translatable="false">+0.016</string>
 
+    <string name="def_rgb_bxx_progress_our_main" translatable="false">FF90b3eb</string>
+    <string name="def_rgb_bxx_progress_our_back1" translatable="false">FF90b3eb</string>
+    <string name="def_rgb_bxx_progress_enemy_main" translatable="false">FFff6565</string>
+    <string name="def_rgb_bxx_progress_enemy_back1" translatable="false">FFff6565</string>
+    <string name="def_rgb_bxx_progress_empty_main" translatable="false">FF5e6a84</string>
+    <string name="def_rgb_bxx_progress_empty_back1" translatable="false">FF5e6a84</string>
+    <string name="def_rgb_bxx_progress_our_thm" translatable="false">23</string>
+    <string name="def_rgb_bxx_progress_our_thp" translatable="false">23</string>
+    <string name="def_rgb_bxx_progress_enemy_thm" translatable="false">23</string>
+    <string name="def_rgb_bxx_progress_enemy_thp" translatable="false">23</string>
+    <string name="def_rgb_bxx_progress_empty_thm" translatable="false">23</string>
+    <string name="def_rgb_bxx_progress_empty_thp" translatable="false">23</string>
+
+    <string name="def_rgb_bxx_doublepoints" translatable="false">ffebb948</string>
+    <string name="def_rgb_bxx_doublepoints_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_doublepoints_thp" translatable="false">13</string>
+
+    <string name="def_rgb_bxx_mayX2" translatable="false">ffafbed1</string>
+    <string name="def_rgb_bxx_mayX2_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_mayX2_thp" translatable="false">13</string>
+
+    <string name="def_rgb_bxx_isX2" translatable="false">ffecad20</string>
+    <string name="def_rgb_bxx_isX2_thm" translatable="false">13</string>
+    <string name="def_rgb_bxx_isX2_thp" translatable="false">13</string>
 
 
     <!--  "Здание слева центр"  x-81 y+442  -->
@@ -426,87 +555,5 @@
     <string name="def_cut_brb_progress_y2" translatable="false">+0.752</string>
 
 
-
-
-
-    <string name="def_rgb_total_time_main" translatable="false">FFffffff</string>
-    <string name="def_rgb_total_time_back1" translatable="false">FF4e6881</string>
-    <string name="def_rgb_total_time_back2" translatable="false">FF6b839b</string>
-    <string name="def_rgb_total_time_thm" translatable="false">35</string>
-    <string name="def_rgb_total_time_thp" translatable="false">13</string>
-
-    <string name="def_rgb_early_win_main" translatable="false">FFffffff</string>
-    <string name="def_rgb_early_win_back1" translatable="false">FF91a7bf</string>
-    <string name="def_rgb_early_win_thm" translatable="false">13</string>
-    <string name="def_rgb_early_win_thp" translatable="false">13</string>
-
-    <string name="def_rgb_points_our_main" translatable="false">FFff437ad7</string>
-    <string name="def_rgb_points_our_back1" translatable="false">FFffffff</string>
-    <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
-    <string name="def_rgb_points_our_thm" translatable="false">13</string>
-    <string name="def_rgb_points_our_thp" translatable="false">13</string>
-
-    <string name="def_rgb_increase_our_main" translatable="false">FFd3def4</string>
-    <string name="def_rgb_increase_our_back1" translatable="false">FF4179d8</string>
-    <string name="def_rgb_increase_our_thm" translatable="false">13</string>
-    <string name="def_rgb_increase_our_thp" translatable="false">13</string>
-
-    <string name="def_rgb_points_enemy_main" translatable="false">FFfff64f49</string>
-    <string name="def_rgb_points_enemy_back1" translatable="false">FFffffff</string>
-    <string name="def_rgb_points_enemy_back2" translatable="false">FFf1f1f1</string>
-    <string name="def_rgb_points_enemy_thm" translatable="false">13</string>
-    <string name="def_rgb_points_enemy_thp" translatable="false">13</string>
-
-    <string name="def_rgb_increase_enemy_main" translatable="false">FFfdd5d3</string>
-    <string name="def_rgb_increase_enemy_back1" translatable="false">FFeb4c48</string>
-    <string name="def_rgb_increase_enemy_thm" translatable="false">13</string>
-    <string name="def_rgb_increase_enemy_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_slot_main" translatable="false">FF2c3852</string>
-    <string name="def_rgb_building_slot_back1" translatable="false">FFffffff</string>
-    <string name="def_rgb_building_slot_thm" translatable="false">13</string>
-    <string name="def_rgb_building_slot_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_points_our_main" translatable="false">FFffffff</string>
-    <string name="def_rgb_building_points_our_back1" translatable="false">FF4179d8</string>
-    <string name="def_rgb_building_points_our_thm" translatable="false">13</string>
-    <string name="def_rgb_building_points_our_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_points_enemy_main" translatable="false">FFffffff</string>
-    <string name="def_rgb_building_points_enemy_back1" translatable="false">FFeb4c48</string>
-    <string name="def_rgb_building_points_enemy_thm" translatable="false">13</string>
-    <string name="def_rgb_building_points_enemy_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_progress_our" translatable="false">FF90b3eb</string>
-    <string name="def_rgb_building_progress_enemy" translatable="false">FFff6565</string>
-    <string name="def_rgb_building_progress_empty" translatable="false">FF5e6a84</string>
-    <string name="def_rgb_building_progress_our_thm" translatable="false">23</string>
-    <string name="def_rgb_building_progress_our_thp" translatable="false">23</string>
-    <string name="def_rgb_building_progress_enemy_thm" translatable="false">23</string>
-    <string name="def_rgb_building_progress_enemy_thp" translatable="false">23</string>
-    <string name="def_rgb_building_progress_empty_thm" translatable="false">23</string>
-    <string name="def_rgb_building_progress_empty_thp" translatable="false">23</string>
-
-    <string name="def_rgb_building_doublepoints" translatable="false">ffebb948</string>
-    <string name="def_rgb_building_doublepoints_thm" translatable="false">13</string>
-    <string name="def_rgb_building_doublepoints_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_mayX2" translatable="false">ffafbed1</string>
-    <string name="def_rgb_building_mayX2_thm" translatable="false">13</string>
-    <string name="def_rgb_building_mayX2_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_isX2" translatable="false">ffecad20</string>
-    <string name="def_rgb_building_isX2_thm" translatable="false">13</string>
-    <string name="def_rgb_building_isX2_thp" translatable="false">13</string>
-
-    <string name="def_rgb_building_name_our" translatable="false">ff90b3eb</string>
-    <string name="def_rgb_building_name_enemy" translatable="false">ffff6565</string>
-    <string name="def_rgb_building_name_empty" translatable="false">ff5f6b85</string>
-    <string name="def_rgb_building_name_our_thm" translatable="false">13</string>
-    <string name="def_rgb_building_name_our_thp" translatable="false">13</string>
-    <string name="def_rgb_building_name_enemy_thm" translatable="false">13</string>
-    <string name="def_rgb_building_name_enemy_thp" translatable="false">13</string>
-    <string name="def_rgb_building_name_empty_thm" translatable="false">13</string>
-    <string name="def_rgb_building_name_empty_thp" translatable="false">13</string>
     
 </resources>

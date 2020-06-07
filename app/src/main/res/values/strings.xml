@@ -79,63 +79,63 @@
     <string name="offset_center_x">Offset the center of the screenshot along the vertical axis</string>
     <string name="offset_center_y">Offset the center of the screenshot along the horizontal axis</string>
     <string name="sett_borders">Borders settings</string>
-    <string name="borders_car_box1">Car Box1</string>
-    <string name="borders_car_box2">Car Box2</string>
-    <string name="borders_car_statebox1">Car Statebox1</string>
-    <string name="borders_car_statebox2">Car Statebox2</string>
-    <string name="borders_car_statebox3">Car Statebox3</string>
-    <string name="borders_car_info">Car Info</string>
-    <string name="borders_car_building">Car Building</string>
-    <string name="borders_car_picture">Car Picture</string>
-    <string name="borders_car_slot1">Car Slot 1</string>
-    <string name="borders_car_slot2">Car Slot 2</string>
-    <string name="borders_car_slot3">Car Slot 3</string>
-    <string name="borders_car_health">Car Health</string>
-    <string name="borders_car_shield">Car Shield</string>
-    <string name="borders_car_state">Car State</string>
-    <string name="borders_car_healbox">Car Health Box</string>
-    <string name="borders_car_timebox1">Car Time Box1</string>
-    <string name="borders_car_timebox2">Car Time Box2</string>
-    <string name="borders_box1_info">Box1 Info</string>
-    <string name="borders_box2_info">Box2 Info</string>
-    <string name="borders_box_back">Box Back</string>
-    <string name="borders_city">City</string>
-    <string name="borders_time">Time</string>
-    <string name="borders_scores_to_early_win">Scores to early win</string>
-    <string name="borders_our_scores">Our scores</string>
-    <string name="borders_enemy_scores">Enemy\'s scores</string>
-    <string name="borders_our_team_name">Our team name</string>
-    <string name="borders_enemy_team_name">Enemy\'s team name</string>
-    <string name="borders_blt">Building left-top (BLT)</string>
-    <string name="borders_blt_name">BLT name</string>
-    <string name="borders_blt_increase">BLT increase</string>
-    <string name="borders_blt_slots">BLT slots</string>
-    <string name="borders_blt_progress">BLT progress</string>
-    <string name="borders_blc">Building left-center (BLC)</string>
-    <string name="borders_blc_name">BLC name</string>
-    <string name="borders_blc_increase">BLC increase</string>
-    <string name="borders_blc_slots">BLC slots</string>
-    <string name="borders_blc_progress">BLC progress</string>
-    <string name="borders_blb">Building left-bottom (BLB)</string>
-    <string name="borders_blb_name">BLB name</string>
-    <string name="borders_blb_increase">BLB increase</string>
-    <string name="borders_blb_slots">BLB slots</string>
-    <string name="borders_blb_progress">BLB progress</string>
-    <string name="borders_brt">Building right-top (BRT)</string>
-    <string name="borders_brt_name">BRT name</string>
-    <string name="borders_brt_increase">BRT increase</string>
-    <string name="borders_brt_slots">BRT slots</string>
-    <string name="borders_brt_progress">BRT progress</string>
-    <string name="borders_brc">Building right-center (BRC)</string>
-    <string name="borders_brc_name">BRC name</string>
-    <string name="borders_brc_increase">BRC increase</string>
-    <string name="borders_brc_slots">BRC slots</string>
-    <string name="borders_brc_progress">BRC progress</string>
-    <string name="borders_brb">Building right-bottom (BRB)</string>
-    <string name="borders_brb_name">BRB name</string>
-    <string name="borders_brb_increase">BRB increase</string>
-    <string name="borders_brb_slots">BRB slots</string>
-    <string name="borders_brb_progress">BRB progress</string>
+    <string name="borders_car_box1" translatable="false">Car Box1</string>
+    <string name="borders_car_box2" translatable="false">Car Box2</string>
+    <string name="borders_car_statebox1" translatable="false">Car Statebox1</string>
+    <string name="borders_car_statebox2" translatable="false">Car Statebox2</string>
+    <string name="borders_car_statebox3" translatable="false">Car Statebox3</string>
+    <string name="borders_car_info" translatable="false">Car Info</string>
+    <string name="borders_car_building" translatable="false">Car Building</string>
+    <string name="borders_car_picture" translatable="false">Car Picture</string>
+    <string name="borders_car_slot1" translatable="false">Car Slot 1</string>
+    <string name="borders_car_slot2" translatable="false">Car Slot 2</string>
+    <string name="borders_car_slot3" translatable="false">Car Slot 3</string>
+    <string name="borders_car_health" translatable="false">Car Health</string>
+    <string name="borders_car_shield" translatable="false">Car Shield</string>
+    <string name="borders_car_state" translatable="false">Car State</string>
+    <string name="borders_car_healbox" translatable="false">Car Health Box</string>
+    <string name="borders_car_timebox1" translatable="false">Car Time Box1</string>
+    <string name="borders_car_timebox2" translatable="false">Car Time Box2</string>
+    <string name="borders_box1_info" translatable="false">Box1 Info</string>
+    <string name="borders_box2_info" translatable="false">Box2 Info</string>
+    <string name="borders_box_back" translatable="false">Box Back</string>
+    <string name="borders_city" translatable="false">City</string>
+    <string name="borders_time" translatable="false">Time</string>
+    <string name="borders_scores_to_early_win" translatable="false">Scores to early win</string>
+    <string name="borders_our_scores" translatable="false">Our scores</string>
+    <string name="borders_enemy_scores" translatable="false">Enemy\'s scores</string>
+    <string name="borders_our_team_name" translatable="false">Our team name</string>
+    <string name="borders_enemy_team_name" translatable="false">Enemy\'s team name</string>
+    <string name="borders_blt" translatable="false">Building left-top (BLT)</string>
+    <string name="borders_blt_name" translatable="false">BLT name</string>
+    <string name="borders_blt_increase" translatable="false">BLT increase</string>
+    <string name="borders_blt_slots" translatable="false">BLT slots</string>
+    <string name="borders_blt_progress" translatable="false">BLT progress</string>
+    <string name="borders_blc" translatable="false">Building left-center (BLC)</string>
+    <string name="borders_blc_name" translatable="false">BLC name</string>
+    <string name="borders_blc_increase" translatable="false">BLC increase</string>
+    <string name="borders_blc_slots" translatable="false">BLC slots</string>
+    <string name="borders_blc_progress" translatable="false">BLC progress</string>
+    <string name="borders_blb" translatable="false">Building left-bottom (BLB)</string>
+    <string name="borders_blb_name" translatable="false">BLB name</string>
+    <string name="borders_blb_increase" translatable="false">BLB increase</string>
+    <string name="borders_blb_slots" translatable="false">BLB slots</string>
+    <string name="borders_blb_progress" translatable="false">BLB progress</string>
+    <string name="borders_brt" translatable="false">Building right-top (BRT)</string>
+    <string name="borders_brt_name" translatable="false">BRT name</string>
+    <string name="borders_brt_increase" translatable="false">BRT increase</string>
+    <string name="borders_brt_slots" translatable="false">BRT slots</string>
+    <string name="borders_brt_progress" translatable="false">BRT progress</string>
+    <string name="borders_brc" translatable="false">Building right-center (BRC)</string>
+    <string name="borders_brc_name" translatable="false">BRC name</string>
+    <string name="borders_brc_increase" translatable="false">BRC increase</string>
+    <string name="borders_brc_slots" translatable="false">BRC slots</string>
+    <string name="borders_brc_progress" translatable="false">BRC progress</string>
+    <string name="borders_brb" translatable="false">Building right-bottom (BRB)</string>
+    <string name="borders_brb_name" translatable="false">BRB name</string>
+    <string name="borders_brb_increase" translatable="false">BRB increase</string>
+    <string name="borders_brb_slots" translatable="false">BRB slots</string>
+    <string name="borders_brb_progress" translatable="false">BRB progress</string>
 
     <string name="reset_x1_to_default">Reset X1 to default</string>
     <string name="reset_x2_to_default">Reset X2 to default</string>
@@ -146,20 +146,67 @@
     <string name="border_y1">Offset Y top</string>
     <string name="border_y2">Offset Y bottom</string>
     <string name="sett_colors">Colors detect settings</string>
-    <string name="colors_plus_us">Our increase</string>
-    <string name="colors_plus_they">Enemy\'s increase</string>
-    <string name="colors_blt_increase">BLT increase</string>
-    <string name="colors_blt_slots">BLT slots</string>
-    <string name="colors_blc_increase">BLC increase</string>
-    <string name="colors_blc_slots">BLC slots</string>
-    <string name="colors_blb_increase">BLB increase</string>
-    <string name="colors_blb_slots">BLB slots</string>
-    <string name="colors_brt_increase">BRT increase</string>
-    <string name="colors_brt_slots">BRT slots</string>
-    <string name="colors_brc_increase">BRC increase</string>
-    <string name="colors_brc_slots">BRC slots</string>
-    <string name="colors_brb_increase">BRB increase</string>
-    <string name="colors_brb_slots">BRB slots</string>
+
+    <string name="colors_car_box1" translatable="false">Car Box1</string>
+    <string name="colors_car_box2" translatable="false">Car Box2</string>
+    <string name="colors_car_statebox1" translatable="false">Car Statebox1</string>
+    <string name="colors_car_statebox2" translatable="false">Car Statebox2</string>
+    <string name="colors_car_statebox3" translatable="false">Car Statebox3</string>
+    <string name="colors_car_info" translatable="false">Car Info</string>
+    <string name="colors_car_building" translatable="false">Car Building</string>
+    <string name="colors_car_picture" translatable="false">Car Picture</string>
+    <string name="colors_car_slot1" translatable="false">Car Slot 1</string>
+    <string name="colors_car_slot2" translatable="false">Car Slot 2</string>
+    <string name="colors_car_slot3" translatable="false">Car Slot 3</string>
+    <string name="colors_car_health" translatable="false">Car Health</string>
+    <string name="colors_car_shield" translatable="false">Car Shield</string>
+    <string name="colors_car_state" translatable="false">Car State</string>
+    <string name="colors_car_healbox" translatable="false">Car Health Box</string>
+    <string name="colors_car_timebox1" translatable="false">Car Time Box1</string>
+    <string name="colors_car_timebox2" translatable="false">Car Time Box2</string>
+    <string name="colors_box1_info" translatable="false">Box1 Info</string>
+    <string name="colors_box2_info" translatable="false">Box2 Info</string>
+    <string name="colors_box_back" translatable="false">Box Back</string>
+    <string name="colors_city" translatable="false">City</string>
+    <string name="colors_time" translatable="false">Time</string>
+    <string name="colors_scores_to_early_win" translatable="false">Scores to early win</string>
+    <string name="colors_our_scores" translatable="false">Our scores</string>
+    <string name="colors_enemy_scores" translatable="false">Enemy\'s scores</string>
+    <string name="colors_our_team_name" translatable="false">Our team name</string>
+    <string name="colors_enemy_team_name" translatable="false">Enemy\'s team name</string>
+    <string name="colors_blt" translatable="false">Building left-top (BLT)</string>
+    <string name="colors_blt_name" translatable="false">BLT name</string>
+    <string name="colors_blt_increase" translatable="false">BLT increase</string>
+    <string name="colors_blt_slots" translatable="false">BLT slots</string>
+    <string name="colors_blt_progress" translatable="false">BLT progress</string>
+    <string name="colors_blc" translatable="false">Building left-center (BLC)</string>
+    <string name="colors_blc_name" translatable="false">BLC name</string>
+    <string name="colors_blc_increase" translatable="false">BLC increase</string>
+    <string name="colors_blc_slots" translatable="false">BLC slots</string>
+    <string name="colors_blc_progress" translatable="false">BLC progress</string>
+    <string name="colors_blb" translatable="false">Building left-bottom (BLB)</string>
+    <string name="colors_blb_name" translatable="false">BLB name</string>
+    <string name="colors_blb_increase" translatable="false">BLB increase</string>
+    <string name="colors_blb_slots" translatable="false">BLB slots</string>
+    <string name="colors_blb_progress" translatable="false">BLB progress</string>
+    <string name="colors_brt" translatable="false">Building right-top (BRT)</string>
+    <string name="colors_brt_name" translatable="false">BRT name</string>
+    <string name="colors_brt_increase" translatable="false">BRT increase</string>
+    <string name="colors_brt_slots" translatable="false">BRT slots</string>
+    <string name="colors_brt_progress" translatable="false">BRT progress</string>
+    <string name="colors_brc" translatable="false">Building right-center (BRC)</string>
+    <string name="colors_brc_name" translatable="false">BRC name</string>
+    <string name="colors_brc_increase" translatable="false">BRC increase</string>
+    <string name="colors_brc_slots" translatable="false">BRC slots</string>
+    <string name="colors_brc_progress" translatable="false">BRC progress</string>
+    <string name="colors_brb" translatable="false">Building right-bottom (BRB)</string>
+    <string name="colors_brb_name" translatable="false">BRB name</string>
+    <string name="colors_brb_increase" translatable="false">BRB increase</string>
+    <string name="colors_brb_slots" translatable="false">BRB slots</string>
+    <string name="colors_brb_progress" translatable="false">BRB progress</string>
+    
+    
+    
     <string name="red" translatable="false">RED</string>
     <string name="green" translatable="false">GREEN</string>
     <string name="blue" translatable="false">BLUE</string>
@@ -342,8 +389,8 @@
 
     <string name="pref_colorsAreaName">Area name</string>
     <string name="pref_colorsAreaName_dialog_title">Select Area</string>
-    <string name="pref_colorsAreaName_default_value">Time</string>
-    <string name="pref_colorsAreaName_summary">Time</string>
+    <string name="pref_colorsAreaName_default_value" translatable="false">Time</string>
+    <string name="pref_colorsAreaName_summary" translatable="false">Time</string>
     <string name="there_no_options">There are no options</string>
     <string name="strategic_planning">Strategic planning</string>
     <string name="calculate_victory">Calculate victory</string>
@@ -364,50 +411,126 @@
     <string name="version">version</string>
     <string name="request_permissions">Request permissions</string>
     <string name="final_symbols">Final symbols</string>
-    <string name="dingbat1">➊</string>
-    <string name="dingbat2">➋</string>
-    <string name="dingbat3">➌</string>
+    <string name="dingbat1" translatable="false">➊</string>
+    <string name="dingbat2" translatable="false">➋</string>
+    <string name="dingbat3" translatable="false">➌</string>
 
     <string-array name="pref_colors_entries">
+        <item>Car Box1</item>
+        <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
+        <item>Car Statebox3</item>
+        <item>Car Info</item>
+        <item>Car Building</item>
+        <item>Car Picture</item>
+        <item>Car Slot 1</item>
+        <item>Car Slot 2</item>
+        <item>Car Slot 3</item>
+        <item>Car Health</item>
+        <item>Car Shield</item>
+        <item>Car State</item>
+        <item>Car Health Box</item>
+        <item>Car Time Box1</item>
+        <item>Car Time Box2</item>
+        <item>Box1 Info</item>
+        <item>Box2 Info</item>
+        <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>
         <item>Our scores</item>
-        <item>Our increas</item>
         <item>Enemy\'s scores</item>
-        <item>Enemy\'s increase</item>
-        <!--        <item>BLT increase</item>-->
-        <!--        <item>BLT slots</item>-->
-        <!--        <item>BLC increase</item>-->
-        <!--        <item>BLC slots</item>-->
-        <!--        <item>BLB increase</item>-->
-        <!--        <item>BLB slots</item>-->
-        <!--        <item>BRT increase</item>-->
-        <!--        <item>BRT slots</item>-->
-        <!--        <item>BRC increase</item>-->
-        <!--        <item>BRC slots</item>-->
-        <!--        <item>BRB increase</item>-->
-        <!--        <item>BRB slots</item>-->
+        <item>Our team name</item>
+        <item>Enemy\'s team name</item>
+        <item>Building left-top (BLT)</item>
+        <item>BLT name</item>
+        <item>BLT increase</item>
+        <item>BLT slots</item>
+        <item>BLT progress</item>
+        <item>Building left-center (BLC)</item>
+        <item>BLC name</item>
+        <item>BLC increase</item>
+        <item>BLC slots</item>
+        <item>BLC progress</item>
+        <item>Building left-bottom (BLB)</item>
+        <item>BLB name</item>
+        <item>BLB increase</item>
+        <item>BLB slots</item>
+        <item>BLB progress</item>
+        <item>Building right-top (BRT)</item>
+        <item>BRT name</item>
+        <item>BRT increase</item>
+        <item>BRT slots</item>
+        <item>BRT progress</item>
+        <item>Building right-center (BRC)</item>
+        <item>BRC name</item>
+        <item>BRC increase</item>
+        <item>BRC slots</item>
+        <item>BRC progress</item>
+        <item>Building right-bottom (BRB)</item>
+        <item>BRB name</item>
+        <item>BRB increase</item>
+        <item>BRB slots</item>
+        <item>BRB progress</item>
     </string-array>
 
     <string-array name="pref_colors_values">
+        <item>Car Box1</item>
+        <item>Car Box2</item>
+        <item>Car Statebox1</item>
+        <item>Car Statebox2</item>
+        <item>Car Statebox3</item>
+        <item>Car Info</item>
+        <item>Car Building</item>
+        <item>Car Picture</item>
+        <item>Car Slot 1</item>
+        <item>Car Slot 2</item>
+        <item>Car Slot 3</item>
+        <item>Car Health</item>
+        <item>Car Shield</item>
+        <item>Car State</item>
+        <item>Car Health Box</item>
+        <item>Car Time Box1</item>
+        <item>Car Time Box2</item>
+        <item>Box1 Info</item>
+        <item>Box2 Info</item>
+        <item>City</item>
         <item>Time</item>
         <item>Scores to early win</item>
         <item>Our scores</item>
-        <item>Our increas</item>
         <item>Enemy\'s scores</item>
-        <item>Enemy\'s increase</item>
-        <!--        <item>BLT increase</item>-->
-        <!--        <item>BLT slots</item>-->
-        <!--        <item>BLC increase</item>-->
-        <!--        <item>BLC slots</item>-->
-        <!--        <item>BLB increase</item>-->
-        <!--        <item>BLB slots</item>-->
-        <!--        <item>BRT increase</item>-->
-        <!--        <item>BRT slots</item>-->
-        <!--        <item>BRC increase</item>-->
-        <!--        <item>BRC slots</item>-->
-        <!--        <item>BRB increase</item>-->
-        <!--        <item>BRB slots</item>-->
+        <item>Our team name</item>
+        <item>Enemy\'s team name</item>
+        <item>Building left-top (BLT)</item>
+        <item>BLT name</item>
+        <item>BLT increase</item>
+        <item>BLT slots</item>
+        <item>BLT progress</item>
+        <item>Building left-center (BLC)</item>
+        <item>BLC name</item>
+        <item>BLC increase</item>
+        <item>BLC slots</item>
+        <item>BLC progress</item>
+        <item>Building left-bottom (BLB)</item>
+        <item>BLB name</item>
+        <item>BLB increase</item>
+        <item>BLB slots</item>
+        <item>BLB progress</item>
+        <item>Building right-top (BRT)</item>
+        <item>BRT name</item>
+        <item>BRT increase</item>
+        <item>BRT slots</item>
+        <item>BRT progress</item>
+        <item>Building right-center (BRC)</item>
+        <item>BRC name</item>
+        <item>BRC increase</item>
+        <item>BRC slots</item>
+        <item>BRC progress</item>
+        <item>Building right-bottom (BRB)</item>
+        <item>BRB name</item>
+        <item>BRB increase</item>
+        <item>BRB slots</item>
+        <item>BRB progress</item>
     </string-array>
 
 </resources>

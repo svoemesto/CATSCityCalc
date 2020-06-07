@@ -55,12 +55,12 @@
     <string name="pref_def_cut_car_statebox1_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_Y2</string>
 
     <string name="pref_rgb_car_statebox1_main" translatable="false">PREF_RGB_CAR_STATEBOX1_MAIN</string>
-    <string name="pref_rgb_car_statebox1_back" translatable="false">PREF_RGB_CAR_STATEBOX1_BACK</string>
+    <string name="pref_rgb_car_statebox1_back1" translatable="false">PREF_RGB_CAR_STATEBOX1_BACK1</string>
     <string name="pref_rgb_car_statebox1_thp" translatable="false">PREF_RGB_CAR_STATEBOX1_THP</string>
     <string name="pref_rgb_car_statebox1_thm" translatable="false">PREF_RGB_CAR_STATEBOX1_THM</string>
 
     <string name="pref_def_rgb_car_statebox1_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_MAIN</string>
-    <string name="pref_def_rgb_car_statebox1_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_BACK</string>
+    <string name="pref_def_rgb_car_statebox1_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_BACK1</string>
     <string name="pref_def_rgb_car_statebox1_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THP</string>
     <string name="pref_def_rgb_car_statebox1_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THM</string>
 
@@ -77,12 +77,12 @@
     <string name="pref_def_cut_car_statebox2_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_Y2</string>
 
     <string name="pref_rgb_car_statebox2_main" translatable="false">PREF_RGB_CAR_STATEBOX2_MAIN</string>
-    <string name="pref_rgb_car_statebox2_back" translatable="false">PREF_RGB_CAR_STATEBOX2_BACK</string>
+    <string name="pref_rgb_car_statebox2_back1" translatable="false">PREF_RGB_CAR_STATEBOX2_BACK1</string>
     <string name="pref_rgb_car_statebox2_thp" translatable="false">PREF_RGB_CAR_STATEBOX2_THP</string>
     <string name="pref_rgb_car_statebox2_thm" translatable="false">PREF_RGB_CAR_STATEBOX2_THM</string>
 
     <string name="pref_def_rgb_car_statebox2_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_MAIN</string>
-    <string name="pref_def_rgb_car_statebox2_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_BACK</string>
+    <string name="pref_def_rgb_car_statebox2_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_BACK1</string>
     <string name="pref_def_rgb_car_statebox2_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THP</string>
     <string name="pref_def_rgb_car_statebox2_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THM</string>
 
@@ -98,12 +98,12 @@
     <string name="pref_def_cut_car_statebox3_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_Y2</string>
 
     <string name="pref_rgb_car_statebox3_main" translatable="false">PREF_RGB_CAR_STATEBOX3_MAIN</string>
-    <string name="pref_rgb_car_statebox3_back" translatable="false">PREF_RGB_CAR_STATEBOX3_BACK</string>
+    <string name="pref_rgb_car_statebox3_back1" translatable="false">PREF_RGB_CAR_STATEBOX3_BACK1</string>
     <string name="pref_rgb_car_statebox3_thp" translatable="false">PREF_RGB_CAR_STATEBOX3_THP</string>
     <string name="pref_rgb_car_statebox3_thm" translatable="false">PREF_RGB_CAR_STATEBOX3_THM</string>
 
     <string name="pref_def_rgb_car_statebox3_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_MAIN</string>
-    <string name="pref_def_rgb_car_statebox3_back" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_BACK</string>
+    <string name="pref_def_rgb_car_statebox3_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_BACK1</string>
     <string name="pref_def_rgb_car_statebox3_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THP</string>
     <string name="pref_def_rgb_car_statebox3_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THM</string>
     
@@ -119,10 +119,12 @@
     <string name="pref_def_cut_car_box1_y2" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y2</string>
 
     <string name="pref_rgb_car_box1_main" translatable="false">PREF_RGB_CAR_BOX1_MAIN</string>
+    <string name="pref_rgb_car_box1_back1" translatable="false">PREF_RGB_CAR_BOX1_BACK1</string>
     <string name="pref_rgb_car_box1_thp" translatable="false">PREF_RGB_CAR_BOX1_THP</string>
     <string name="pref_rgb_car_box1_thm" translatable="false">PREF_RGB_CAR_BOX1_THM</string>
 
     <string name="pref_def_rgb_car_box1_main" translatable="false">PREF_DEF_RGB_CAR_BOX1_MAIN</string>
+    <string name="pref_def_rgb_car_box1_back1" translatable="false">PREF_DEF_RGB_CAR_BOX1_BACK1</string>
     <string name="pref_def_rgb_car_box1_thp" translatable="false">PREF_DEF_RGB_CAR_BOX1_THP</string>
     <string name="pref_def_rgb_car_box1_thm" translatable="false">PREF_DEF_RGB_CAR_BOX1_THM</string>
 
@@ -138,10 +140,12 @@
     <string name="pref_def_cut_car_box2_y2" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y2</string>
 
     <string name="pref_rgb_car_box2_main" translatable="false">PREF_RGB_CAR_BOX2_MAIN</string>
+    <string name="pref_rgb_car_box2_back1" translatable="false">PREF_RGB_CAR_BOX2_BACK1</string>
     <string name="pref_rgb_car_box2_thp" translatable="false">PREF_RGB_CAR_BOX2_THP</string>
     <string name="pref_rgb_car_box2_thm" translatable="false">PREF_RGB_CAR_BOX2_THM</string>
 
     <string name="pref_def_rgb_car_box2_main" translatable="false">PREF_DEF_RGB_CAR_BOX2_MAIN</string>
+    <string name="pref_def_rgb_car_box2_back1" translatable="false">PREF_DEF_RGB_CAR_BOX2_BACK1</string>
     <string name="pref_def_rgb_car_box2_thp" translatable="false">PREF_DEF_RGB_CAR_BOX2_THP</string>
     <string name="pref_def_rgb_car_box2_thm" translatable="false">PREF_DEF_RGB_CAR_BOX2_THM</string>
 
@@ -157,6 +161,16 @@
     <string name="pref_def_cut_car_picture_y1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y1</string>
     <string name="pref_def_cut_car_picture_y2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y2</string>
 
+    <string name="pref_rgb_car_picture_main" translatable="false">PREF_RGB_CAR_PICTURE_MAIN</string>
+    <string name="pref_rgb_car_picture_back1" translatable="false">PREF_RGB_CAR_PICTURE_BACK1</string>
+    <string name="pref_rgb_car_picture_thp" translatable="false">PREF_RGB_CAR_PICTURE_THP</string>
+    <string name="pref_rgb_car_picture_thm" translatable="false">PREF_RGB_CAR_PICTURE_THM</string>
+
+    <string name="pref_def_rgb_car_picture_main" translatable="false">PREF_DEF_RGB_CAR_PICTURE_MAIN</string>
+    <string name="pref_def_rgb_car_picture_back1" translatable="false">PREF_DEF_RGB_CAR_PICTURE_BACK1</string>
+    <string name="pref_def_rgb_car_picture_thp" translatable="false">PREF_DEF_RGB_CAR_PICTURE_THP</string>
+    <string name="pref_def_rgb_car_picture_thm" translatable="false">PREF_DEF_RGB_CAR_PICTURE_THM</string>
+    
 <!--    car_building-->
     <string name="pref_cut_car_building_x1" translatable="false">PREF_CUT_CAR_BUILDING_X1</string>
     <string name="pref_cut_car_building_x2" translatable="false">PREF_CUT_CAR_BUILDING_X2</string>
@@ -169,12 +183,12 @@
     <string name="pref_def_cut_car_building_y2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y2</string>
 
     <string name="pref_rgb_car_building_main" translatable="false">PREF_RGB_CAR_BUILDING_MAIN</string>
-    <string name="pref_rgb_car_building_back" translatable="false">PREF_RGB_CAR_BUILDING_BACK</string>
+    <string name="pref_rgb_car_building_back1" translatable="false">PREF_RGB_CAR_BUILDING_BACK1</string>
     <string name="pref_rgb_car_building_thp" translatable="false">PREF_RGB_CAR_BUILDING_THP</string>
     <string name="pref_rgb_car_building_thm" translatable="false">PREF_RGB_CAR_BUILDING_THM</string>
 
     <string name="pref_def_rgb_car_building_main" translatable="false">PREF_DEF_RGB_CAR_BUILDING_MAIN</string>
-    <string name="pref_def_rgb_car_building_back" translatable="false">PREF_DEF_RGB_CAR_BUILDING_BACK</string>
+    <string name="pref_def_rgb_car_building_back1" translatable="false">PREF_DEF_RGB_CAR_BUILDING_BACK1</string>
     <string name="pref_def_rgb_car_building_thp" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THP</string>
     <string name="pref_def_rgb_car_building_thm" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THM</string>
 
@@ -190,6 +204,16 @@
     <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
     <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
 
+    <string name="pref_rgb_car_info_main" translatable="false">PREF_RGB_CAR_INFO_MAIN</string>
+    <string name="pref_rgb_car_info_back1" translatable="false">PREF_RGB_CAR_INFO_BACK1</string>
+    <string name="pref_rgb_car_info_thp" translatable="false">PREF_RGB_CAR_INFO_THP</string>
+    <string name="pref_rgb_car_info_thm" translatable="false">PREF_RGB_CAR_INFO_THM</string>
+
+    <string name="pref_def_rgb_car_info_main" translatable="false">PREF_DEF_RGB_CAR_INFO_MAIN</string>
+    <string name="pref_def_rgb_car_info_back1" translatable="false">PREF_DEF_RGB_CAR_INFO_BACK1</string>
+    <string name="pref_def_rgb_car_info_thp" translatable="false">PREF_DEF_RGB_CAR_INFO_THP</string>
+    <string name="pref_def_rgb_car_info_thm" translatable="false">PREF_DEF_RGB_CAR_INFO_THM</string>
+    
 <!--    car_slot1-->
     <string name="pref_cut_car_slot1_x1" translatable="false">PREF_CUT_CAR_SLOT1_X1</string>
     <string name="pref_cut_car_slot1_x2" translatable="false">PREF_CUT_CAR_SLOT1_X2</string>
@@ -202,12 +226,12 @@
     <string name="pref_def_cut_car_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y2</string>
 
     <string name="pref_rgb_car_slot_main" translatable="false">PREF_RGB_CAR_SLOT_MAIN</string>
-    <string name="pref_rgb_car_slot_back" translatable="false">PREF_RGB_CAR_SLOT_BACK</string>
+    <string name="pref_rgb_car_slot_back1" translatable="false">PREF_RGB_CAR_SLOT_BACK1</string>
     <string name="pref_rgb_car_slot_thp" translatable="false">PREF_RGB_CAR_SLOT_THP</string>
     <string name="pref_rgb_car_slot_thm" translatable="false">PREF_RGB_CAR_SLOT_THM</string>
 
     <string name="pref_def_rgb_car_slot_main" translatable="false">PREF_DEF_RGB_CAR_SLOT_MAIN</string>
-    <string name="pref_def_rgb_car_slot_back" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK</string>
+    <string name="pref_def_rgb_car_slot_back1" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK1</string>
     <string name="pref_def_rgb_car_slot_thp" translatable="false">PREF_DEF_RGB_CAR_SLOT_THP</string>
     <string name="pref_def_rgb_car_slot_thm" translatable="false">PREF_DEF_RGB_CAR_SLOT_THM</string>
 
@@ -246,12 +270,12 @@
     <string name="pref_def_cut_car_health_y2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y2</string>
 
     <string name="pref_rgb_car_health_main" translatable="false">PREF_RGB_CAR_HEALTH_MAIN</string>
-    <string name="pref_rgb_car_health_back" translatable="false">PREF_RGB_CAR_HEALTH_BACK</string>
+    <string name="pref_rgb_car_health_back1" translatable="false">PREF_RGB_CAR_HEALTH_BACK1</string>
     <string name="pref_rgb_car_health_thp" translatable="false">PREF_RGB_CAR_HEALTH_THP</string>
     <string name="pref_rgb_car_health_thm" translatable="false">PREF_RGB_CAR_HEALTH_THM</string>
 
     <string name="pref_def_rgb_car_health_main" translatable="false">PREF_DEF_RGB_CAR_HEALTH_MAIN</string>
-    <string name="pref_def_rgb_car_health_back" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK</string>
+    <string name="pref_def_rgb_car_health_back1" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK1</string>
     <string name="pref_def_rgb_car_health_thp" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THP</string>
     <string name="pref_def_rgb_car_health_thm" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THM</string>
 
@@ -268,12 +292,12 @@
     <string name="pref_def_cut_car_shield_y2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y2</string>
 
     <string name="pref_rgb_car_shield_main" translatable="false">PREF_RGB_CAR_SHIELD_MAIN</string>
-    <string name="pref_rgb_car_shield_back" translatable="false">PREF_RGB_CAR_SHIELD_BACK</string>
+    <string name="pref_rgb_car_shield_back1" translatable="false">PREF_RGB_CAR_SHIELD_BACK1</string>
     <string name="pref_rgb_car_shield_thp" translatable="false">PREF_RGB_CAR_SHIELD_THP</string>
     <string name="pref_rgb_car_shield_thm" translatable="false">PREF_RGB_CAR_SHIELD_THM</string>
 
     <string name="pref_def_rgb_car_shield_main" translatable="false">PREF_DEF_RGB_CAR_SHIELD_MAIN</string>
-    <string name="pref_def_rgb_car_shield_back" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK</string>
+    <string name="pref_def_rgb_car_shield_back1" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK1</string>
     <string name="pref_def_rgb_car_shield_thp" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THP</string>
     <string name="pref_def_rgb_car_shield_thm" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THM</string>
 
@@ -290,12 +314,12 @@
     <string name="pref_def_cut_car_state_y2" translatable="false">PREF_DEF_CUT_CAR_STATE_Y2</string>
 
     <string name="pref_rgb_car_state_main" translatable="false">PREF_RGB_CAR_STATE_MAIN</string>
-    <string name="pref_rgb_car_state_back" translatable="false">PREF_RGB_CAR_STATE_BACK</string>
+    <string name="pref_rgb_car_state_back1" translatable="false">PREF_RGB_CAR_STATE_BACK1</string>
     <string name="pref_rgb_car_state_thp" translatable="false">PREF_RGB_CAR_STATE_THP</string>
     <string name="pref_rgb_car_state_thm" translatable="false">PREF_RGB_CAR_STATE_THM</string>
 
     <string name="pref_def_rgb_car_state_main" translatable="false">PREF_DEF_RGB_CAR_STATE_MAIN</string>
-    <string name="pref_def_rgb_car_state_back" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK</string>
+    <string name="pref_def_rgb_car_state_back1" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK1</string>
     <string name="pref_def_rgb_car_state_thp" translatable="false">PREF_DEF_RGB_CAR_STATE_THP</string>
     <string name="pref_def_rgb_car_state_thm" translatable="false">PREF_DEF_RGB_CAR_STATE_THM</string>
 
@@ -312,12 +336,12 @@
     <string name="pref_def_cut_car_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y2</string>
 
     <string name="pref_rgb_car_healbox_main" translatable="false">PREF_RGB_CAR_HEALBOX_MAIN</string>
-    <string name="pref_rgb_car_healbox_back" translatable="false">PREF_RGB_CAR_HEALBOX_BACK</string>
+    <string name="pref_rgb_car_healbox_back1" translatable="false">PREF_RGB_CAR_HEALBOX_BACK1</string>
     <string name="pref_rgb_car_healbox_thp" translatable="false">PREF_RGB_CAR_HEALBOX_THP</string>
     <string name="pref_rgb_car_healbox_thm" translatable="false">PREF_RGB_CAR_HEALBOX_THM</string>
 
     <string name="pref_def_rgb_car_healbox_main" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_MAIN</string>
-    <string name="pref_def_rgb_car_healbox_back" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK</string>
+    <string name="pref_def_rgb_car_healbox_back1" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK1</string>
     <string name="pref_def_rgb_car_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THP</string>
     <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
 
@@ -334,12 +358,12 @@
     <string name="pref_def_cut_car_timebox1_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_Y2</string>
 
     <string name="pref_rgb_car_timebox1_main" translatable="false">PREF_RGB_CAR_TIMEBOX1_MAIN</string>
-    <string name="pref_rgb_car_timebox1_back" translatable="false">PREF_RGB_CAR_TIMEBOX1_BACK</string>
+    <string name="pref_rgb_car_timebox1_back1" translatable="false">PREF_RGB_CAR_TIMEBOX1_BACK1</string>
     <string name="pref_rgb_car_timebox1_thp" translatable="false">PREF_RGB_CAR_TIMEBOX1_THP</string>
     <string name="pref_rgb_car_timebox1_thm" translatable="false">PREF_RGB_CAR_TIMEBOX1_THM</string>
 
     <string name="pref_def_rgb_car_timebox1_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_MAIN</string>
-    <string name="pref_def_rgb_car_timebox1_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_BACK</string>
+    <string name="pref_def_rgb_car_timebox1_back1" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_BACK1</string>
     <string name="pref_def_rgb_car_timebox1_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THP</string>
     <string name="pref_def_rgb_car_timebox1_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THM</string>
 
@@ -355,12 +379,12 @@
     <string name="pref_def_cut_car_timebox2_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_Y2</string>
 
     <string name="pref_rgb_car_timebox2_main" translatable="false">PREF_RGB_CAR_TIMEBOX2_MAIN</string>
-    <string name="pref_rgb_car_timebox2_back" translatable="false">PREF_RGB_CAR_TIMEBOX2_BACK</string>
+    <string name="pref_rgb_car_timebox2_back1" translatable="false">PREF_RGB_CAR_TIMEBOX2_BACK1</string>
     <string name="pref_rgb_car_timebox2_thp" translatable="false">PREF_RGB_CAR_TIMEBOX2_THP</string>
     <string name="pref_rgb_car_timebox2_thm" translatable="false">PREF_RGB_CAR_TIMEBOX2_THM</string>
 
     <string name="pref_def_rgb_car_timebox2_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_MAIN</string>
-    <string name="pref_def_rgb_car_timebox2_back" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_BACK</string>
+    <string name="pref_def_rgb_car_timebox2_back1" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_BACK1</string>
     <string name="pref_def_rgb_car_timebox2_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THP</string>
     <string name="pref_def_rgb_car_timebox2_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THM</string>
 
@@ -376,10 +400,12 @@
     <string name="pref_def_cut_box1_info_y2" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y2</string>
 
     <string name="pref_rgb_box1_info_main" translatable="false">PREF_RGB_BOX1_INFO_MAIN</string>
+    <string name="pref_rgb_box1_info_back1" translatable="false">PREF_RGB_BOX1_INFO_BACK1</string>
     <string name="pref_rgb_box1_info_thp" translatable="false">PREF_RGB_BOX1_INFO_THP</string>
     <string name="pref_rgb_box1_info_thm" translatable="false">PREF_RGB_BOX1_INFO_THM</string>
 
     <string name="pref_def_rgb_box1_info_main" translatable="false">PREF_DEF_RGB_BOX1_INFO_MAIN</string>
+    <string name="pref_def_rgb_box1_info_back1" translatable="false">PREF_DEF_RGB_BOX1_INFO_BACK1</string>
     <string name="pref_def_rgb_box1_info_thp" translatable="false">PREF_DEF_RGB_BOX1_INFO_THP</string>
     <string name="pref_def_rgb_box1_info_thm" translatable="false">PREF_DEF_RGB_BOX1_INFO_THM</string>
 
@@ -395,10 +421,12 @@
     <string name="pref_def_cut_box2_info_y2" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y2</string>
 
     <string name="pref_rgb_box2_info_main" translatable="false">PREF_RGB_BOX2_INFO_MAIN</string>
+    <string name="pref_rgb_box2_info_back1" translatable="false">PREF_RGB_BOX2_INFO_BACK1</string>
     <string name="pref_rgb_box2_info_thp" translatable="false">PREF_RGB_BOX2_INFO_THP</string>
     <string name="pref_rgb_box2_info_thm" translatable="false">PREF_RGB_BOX2_INFO_THM</string>
 
     <string name="pref_def_rgb_box2_info_main" translatable="false">PREF_DEF_RGB_BOX2_INFO_MAIN</string>
+    <string name="pref_def_rgb_box2_info_back1" translatable="false">PREF_DEF_RGB_BOX2_INFO_BACK1</string>
     <string name="pref_def_rgb_box2_info_thp" translatable="false">PREF_DEF_RGB_BOX2_INFO_THP</string>
     <string name="pref_def_rgb_box2_info_thm" translatable="false">PREF_DEF_RGB_BOX2_INFO_THM</string>
 
@@ -415,10 +443,12 @@
     <string name="pref_def_cut_box_back_y2" translatable="false">PREF_DEF_CUT_BOX_BACK_Y2</string>
 
     <string name="pref_rgb_box_back_main" translatable="false">PREF_RGB_BOX_BACK_MAIN</string>
+    <string name="pref_rgb_box_back_back1" translatable="false">PREF_RGB_BOX_BACK_BACK1</string>
     <string name="pref_rgb_box_back_thp" translatable="false">PREF_RGB_BOX_BACK_THP</string>
     <string name="pref_rgb_box_back_thm" translatable="false">PREF_RGB_BOX_BACK_THM</string>
 
     <string name="pref_def_rgb_box_back_main" translatable="false">PREF_DEF_RGB_BOX_BACK_MAIN</string>
+    <string name="pref_def_rgb_box_back_back1" translatable="false">PREF_DEF_RGB_BOX_BACK_BACK1</string>
     <string name="pref_def_rgb_box_back_thp" translatable="false">PREF_DEF_RGB_BOX_BACK_THP</string>
     <string name="pref_def_rgb_box_back_thm" translatable="false">PREF_DEF_RGB_BOX_BACK_THM</string>
 
@@ -434,6 +464,15 @@
     <string name="pref_def_cut_city_y1" translatable="false">PREF_DEF_CUT_CITY_Y1</string>
     <string name="pref_def_cut_city_y2" translatable="false">PREF_DEF_CUT_CITY_Y2</string>
 
+    <string name="pref_rgb_city_main" translatable="false">PREF_RGB_CITY_MAIN</string>
+    <string name="pref_rgb_city_back1" translatable="false">PREF_RGB_CITY_BACK1</string>
+    <string name="pref_rgb_city_thp" translatable="false">PREF_RGB_CITY_THP</string>
+    <string name="pref_rgb_city_thm" translatable="false">PREF_RGB_CITY_THM</string>
+
+    <string name="pref_def_rgb_city_main" translatable="false">PREF_DEF_RGB_CITY_MAIN</string>
+    <string name="pref_def_rgb_city_back1" translatable="false">PREF_DEF_RGB_CITY_BACK1</string>
+    <string name="pref_def_rgb_city_thp" translatable="false">PREF_DEF_RGB_CITY_THP</string>
+    <string name="pref_def_rgb_city_thm" translatable="false">PREF_DEF_RGB_CITY_THM</string>
 
 <!--    points_and_increase_our-->
     <string name="pref_cut_points_and_increase_our_x1" translatable="false">PREF_CUT_POINTS_AND_INCREASE_OUR_X1</string>
@@ -459,12 +498,12 @@
     <string name="pref_def_rgb_points_our_thm" translatable="false">PREF_DEF_RGB_POINTS_OUR_THM</string>
 
     <string name="pref_rgb_increase_our_main" translatable="false">PREF_RGB_INCREASE_OUR_MAIN</string>
-    <string name="pref_rgb_increase_our_back1" translatable="false">PREF_RGB_INCREASE_OUR_BACK</string>
+    <string name="pref_rgb_increase_our_back1" translatable="false">PREF_RGB_INCREASE_OUR_BACK1</string>
     <string name="pref_rgb_increase_our_thp" translatable="false">PREF_RGB_INCREASE_OUR_THP</string>
     <string name="pref_rgb_increase_our_thm" translatable="false">PREF_RGB_INCREASE_OUR_THM</string>
 
     <string name="pref_def_rgb_increase_our_main" translatable="false">PREF_DEF_RGB_INCREASE_OUR_MAIN</string>
-    <string name="pref_def_rgb_increase_our_back1" translatable="false">PREF_DEF_RGB_INCREASE_OUR_BACK</string>
+    <string name="pref_def_rgb_increase_our_back1" translatable="false">PREF_DEF_RGB_INCREASE_OUR_BACK1</string>
     <string name="pref_def_rgb_increase_our_thp" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THP</string>
     <string name="pref_def_rgb_increase_our_thm" translatable="false">PREF_DEF_RGB_INCREASE_OUR_THM</string>
 
@@ -493,12 +532,12 @@
     <string name="pref_def_rgb_points_enemy_thm" translatable="false">PREF_DEF_RGB_POINTS_ENEMY_THM</string>
 
     <string name="pref_rgb_increase_enemy_main" translatable="false">PREF_RGB_INCREASE_ENEMY_MAIN</string>
-    <string name="pref_rgb_increase_enemy_back1" translatable="false">PREF_RGB_INCREASE_ENEMY_BACK</string>
+    <string name="pref_rgb_increase_enemy_back1" translatable="false">PREF_RGB_INCREASE_ENEMY_BACK1</string>
     <string name="pref_rgb_increase_enemy_thp" translatable="false">PREF_RGB_INCREASE_ENEMY_THP</string>
     <string name="pref_rgb_increase_enemy_thm" translatable="false">PREF_RGB_INCREASE_ENEMY_THM</string>
 
     <string name="pref_def_rgb_increase_enemy_main" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_MAIN</string>
-    <string name="pref_def_rgb_increase_enemy_back1" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_BACK</string>
+    <string name="pref_def_rgb_increase_enemy_back1" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_BACK1</string>
     <string name="pref_def_rgb_increase_enemy_thp" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THP</string>
     <string name="pref_def_rgb_increase_enemy_thm" translatable="false">PREF_DEF_RGB_INCREASE_ENEMY_THM</string>
 
@@ -538,12 +577,12 @@
     <string name="pref_def_cut_early_win_y2" translatable="false">PREF_DEF_CUT_EARLY_WIN_Y2</string>
 
     <string name="pref_rgb_early_win_main" translatable="false">PREF_RGB_EARLY_WIN_MAIN</string>
-    <string name="pref_rgb_early_win_back1" translatable="false">PREF_RGB_EARLY_WIN_BACK</string>
+    <string name="pref_rgb_early_win_back1" translatable="false">PREF_RGB_EARLY_WIN_BACK1</string>
     <string name="pref_rgb_early_win_thp" translatable="false">PREF_RGB_EARLY_WIN_THP</string>
     <string name="pref_rgb_early_win_thm" translatable="false">PREF_RGB_EARLY_WIN_THM</string>
 
     <string name="pref_def_rgb_early_win_main" translatable="false">PREF_DEF_RGB_EARLY_WIN_MAIN</string>
-    <string name="pref_def_rgb_early_win_back1" translatable="false">PREF_DEF_RGB_EARLY_WIN_BACK</string>
+    <string name="pref_def_rgb_early_win_back1" translatable="false">PREF_DEF_RGB_EARLY_WIN_BACK1</string>
     <string name="pref_def_rgb_early_win_thp" translatable="false">PREF_DEF_RGB_EARLY_WIN_THP</string>
     <string name="pref_def_rgb_early_win_thm" translatable="false">PREF_DEF_RGB_EARLY_WIN_THM</string>
 
@@ -559,6 +598,15 @@
     <string name="pref_def_cut_team_name_our_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y1</string>
     <string name="pref_def_cut_team_name_our_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_OUR_Y2</string>
 
+    <string name="pref_rgb_team_name_our_main" translatable="false">PREF_RGB_TEAM_NAME_OUR_MAIN</string>
+    <string name="pref_rgb_team_name_our_back1" translatable="false">PREF_RGB_TEAM_NAME_OUR_BACK1</string>
+    <string name="pref_rgb_team_name_our_thp" translatable="false">PREF_RGB_TEAM_NAME_OUR_THP</string>
+    <string name="pref_rgb_team_name_our_thm" translatable="false">PREF_RGB_TEAM_NAME_OUR_THM</string>
+
+    <string name="pref_def_rgb_team_name_our_main" translatable="false">PREF_DEF_RGB_TEAM_NAME_OUR_MAIN</string>
+    <string name="pref_def_rgb_team_name_our_back1" translatable="false">PREF_DEF_RGB_TEAM_NAME_OUR_BACK1</string>
+    <string name="pref_def_rgb_team_name_our_thp" translatable="false">PREF_DEF_RGB_TEAM_NAME_OUR_THP</string>
+    <string name="pref_def_rgb_team_name_our_thm" translatable="false">PREF_DEF_RGB_TEAM_NAME_OUR_THM</string>
 
 <!--    team_name_enemy-->
     <string name="pref_cut_team_name_enemy_x1" translatable="false">PREF_CUT_TEAM_NAME_ENEMY_X1</string>
@@ -570,6 +618,17 @@
     <string name="pref_def_cut_team_name_enemy_x2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_X2</string>
     <string name="pref_def_cut_team_name_enemy_y1" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y1</string>
     <string name="pref_def_cut_team_name_enemy_y2" translatable="false">PREF_DEF_CUT_TEAM_NAME_ENEMY_Y2</string>
+
+    <string name="pref_rgb_team_name_enemy_main" translatable="false">PREF_RGB_TEAM_NAME_ENEMY_MAIN</string>
+    <string name="pref_rgb_team_name_enemy_back1" translatable="false">PREF_RGB_TEAM_NAME_ENEMY_BACK1</string>
+    <string name="pref_rgb_team_name_enemy_thp" translatable="false">PREF_RGB_TEAM_NAME_ENEMY_THP</string>
+    <string name="pref_rgb_team_name_enemy_thm" translatable="false">PREF_RGB_TEAM_NAME_ENEMY_THM</string>
+
+    <string name="pref_def_rgb_team_name_enemy_main" translatable="false">PREF_DEF_RGB_TEAM_NAME_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_team_name_enemy_back1" translatable="false">PREF_DEF_RGB_TEAM_NAME_ENEMY_BACK1</string>
+    <string name="pref_def_rgb_team_name_enemy_thp" translatable="false">PREF_DEF_RGB_TEAM_NAME_ENEMY_THP</string>
+    <string name="pref_def_rgb_team_name_enemy_thm" translatable="false">PREF_DEF_RGB_TEAM_NAME_ENEMY_THM</string>
+
 
 
 <!--    blt-->
@@ -583,6 +642,15 @@
     <string name="pref_def_cut_blt_y1" translatable="false">PREF_DEF_CUT_BLT_Y1</string>
     <string name="pref_def_cut_blt_y2" translatable="false">PREF_DEF_CUT_BLT_Y2</string>
 
+    <string name="pref_rgb_bxx_main" translatable="false">PREF_RGB_BXX_MAIN</string>
+    <string name="pref_rgb_bxx_back1" translatable="false">PREF_RGB_BXX_BACK1</string>
+    <string name="pref_rgb_bxx_thp" translatable="false">PREF_RGB_BXX_THP</string>
+    <string name="pref_rgb_bxx_thm" translatable="false">PREF_RGB_BXX_THM</string>
+
+    <string name="pref_def_rgb_bxx_main" translatable="false">PREF_DEF_RGB_BXX_MAIN</string>
+    <string name="pref_def_rgb_bxx_back1" translatable="false">PREF_DEF_RGB_BXX_BACK1</string>
+    <string name="pref_def_rgb_bxx_thp" translatable="false">PREF_DEF_RGB_BXX_THP</string>
+    <string name="pref_def_rgb_bxx_thm" translatable="false">PREF_DEF_RGB_BXX_THM</string>
 
     <!--    blt_name-->
     <string name="pref_cut_blt_name_x1" translatable="false">PREF_CUT_BLT_NAME_X1</string>
@@ -595,7 +663,16 @@
     <string name="pref_def_cut_blt_name_y1" translatable="false">PREFF_DEF_CUT_BLT_NAME_Y1</string>
     <string name="pref_def_cut_blt_name_y2" translatable="false">PREFF_DEF_CUT_BLT_NAME_Y2</string>
 
+    <string name="pref_rgb_bxx_name_main" translatable="false">PREF_RGB_BXX_NAME_MAIN</string>
+    <string name="pref_rgb_bxx_name_back1" translatable="false">PREF_RGB_BXX_NAME_BACK1</string>
+    <string name="pref_rgb_bxx_name_thp" translatable="false">PREF_RGB_BXX_NAME_THP</string>
+    <string name="pref_rgb_bxx_name_thm" translatable="false">PREF_RGB_BXX_NAME_THM</string>
 
+    <string name="pref_def_rgb_bxx_name_main" translatable="false">PREF_DEF_RGB_BXX_NAME_MAIN</string>
+    <string name="pref_def_rgb_bxx_name_back1" translatable="false">PREF_DEF_RGB_BXX_NAME_BACK1</string>
+    <string name="pref_def_rgb_bxx_name_thp" translatable="false">PREF_DEF_RGB_BXX_NAME_THP</string>
+    <string name="pref_def_rgb_bxx_name_thm" translatable="false">PREF_DEF_RGB_BXX_NAME_THM</string>
+    
 <!--    blt_increase-->
     <string name="pref_cut_blt_increase_x1" translatable="false">PREF_CUT_BLT_INCREASE_X1</string>
     <string name="pref_cut_blt_increase_x2" translatable="false">PREF_CUT_BLT_INCREASE_X2</string>
@@ -607,6 +684,16 @@
     <string name="pref_def_cut_blt_increase_y1" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y1</string>
     <string name="pref_def_cut_blt_increase_y2" translatable="false">PREF_DEF_CUT_BLT_INCREASE_Y2</string>
 
+    <string name="pref_rgb_bxx_increase_main" translatable="false">PREF_RGB_BXX_INCREASE_MAIN</string>
+    <string name="pref_rgb_bxx_increase_back1" translatable="false">PREF_RGB_BXX_INCREASE_BACK1</string>
+    <string name="pref_rgb_bxx_increase_thp" translatable="false">PREF_RGB_BXX_INCREASE_THP</string>
+    <string name="pref_rgb_bxx_increase_thm" translatable="false">PREF_RGB_BXX_INCREASE_THM</string>
+
+    <string name="pref_def_rgb_bxx_increase_main" translatable="false">PREF_DEF_RGB_BXX_INCREASE_MAIN</string>
+    <string name="pref_def_rgb_bxx_increase_back1" translatable="false">PREF_DEF_RGB_BXX_INCREASE_BACK1</string>
+    <string name="pref_def_rgb_bxx_increase_thp" translatable="false">PREF_DEF_RGB_BXX_INCREASE_THP</string>
+    <string name="pref_def_rgb_bxx_increase_thm" translatable="false">PREF_DEF_RGB_BXX_INCREASE_THM</string>
+    
 <!--    blt_slots-->
     <string name="pref_cut_blt_slots_x1" translatable="false">PREF_CUT_BLT_SLOTS_X1</string>
     <string name="pref_cut_blt_slots_x2" translatable="false">PREF_CUT_BLT_SLOTS_X2</string>
@@ -618,15 +705,15 @@
     <string name="pref_def_cut_blt_slots_y1" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y1</string>
     <string name="pref_def_cut_blt_slots_y2" translatable="false">PREF_DEF_CUT_BLT_SLOTS_Y2</string>
 
-    <string name="pref_rgb_building_slot_main" translatable="false">PREF_RGB_BUILDING_SLOT_MAIN</string>
-    <string name="pref_rgb_building_slot_back1" translatable="false">PREF_RGB_BUILDING_SLOT_BACK</string>
-    <string name="pref_rgb_building_slot_thp" translatable="false">PREF_RGB_BUILDING_SLOT_THP</string>
-    <string name="pref_rgb_building_slot_thm" translatable="false">PREF_RGB_BUILDING_SLOT_THM</string>
+    <string name="pref_rgb_bxx_slots_main" translatable="false">PREF_RGB_BXX_SLOTS_MAIN</string>
+    <string name="pref_rgb_bxx_slots_back1" translatable="false">PREF_RGB_BXX_SLOTS_BACK</string>
+    <string name="pref_rgb_bxx_slots_thp" translatable="false">PREF_RGB_BXX_SLOTS_THP</string>
+    <string name="pref_rgb_bxx_slots_thm" translatable="false">PREF_RGB_BXX_SLOTS_THM</string>
 
-    <string name="pref_def_rgb_building_slot_main" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_MAIN</string>
-    <string name="pref_def_rgb_building_slot_back1" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_BACK</string>
-    <string name="pref_def_rgb_building_slot_thp" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THP</string>
-    <string name="pref_def_rgb_building_slot_thm" translatable="false">PREF_DEF_RGB_BUILDING_SLOT_THM</string>
+    <string name="pref_def_rgb_bxx_slots_main" translatable="false">PREF_DEF_RGB_BXX_SLOTS_MAIN</string>
+    <string name="pref_def_rgb_bxx_slots_back1" translatable="false">PREF_DEF_RGB_BXX_SLOTS_BACK</string>
+    <string name="pref_def_rgb_bxx_slots_thp" translatable="false">PREF_DEF_RGB_BXX_SLOTS_THP</string>
+    <string name="pref_def_rgb_bxx_slots_thm" translatable="false">PREF_DEF_RGB_BXX_SLOTS_THM</string>
 
 
     <!--    blt_progress-->
@@ -640,25 +727,28 @@
     <string name="pref_def_cut_blt_progress_y1" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y1</string>
     <string name="pref_def_cut_blt_progress_y2" translatable="false">PREF_DEF_CUT_BLT_PROGRESS_Y2</string>
 
-    <string name="pref_rgb_building_progress_our" translatable="false">PREF_RGB_BUILDING_PROGRESS_OUR</string>
-    <string name="pref_rgb_building_progress_enemy" translatable="false">PREF_RGB_BUILDING_PROGRESS_ENEMY</string>
-    <string name="pref_rgb_building_progress_empty" translatable="false">PREF_RGB_BUILDING_PROGRESS_EMPTY</string>
-    <string name="pref_rgb_building_progress_our_thm" translatable="false">PREF_RGB_BUILDING_PROGRESS_OUR_THM</string>
-    <string name="pref_rgb_building_progress_our_thp" translatable="false">PREF_RGB_BUILDING_PROGRESS_OUR_THP</string>
-    <string name="pref_rgb_building_progress_enemy_thm" translatable="false">PREF_RGB_BUILDING_PROGRESS_ENEMY_THM</string>
-    <string name="pref_rgb_building_progress_enemy_thp" translatable="false">PREF_RGB_BUILDING_PROGRESS_ENEMY_THP</string>
-    <string name="pref_rgb_building_progress_empty_thm" translatable="false">PREF_RGB_BUILDING_PROGRESS_EMPTY_THM</string>
-    <string name="pref_rgb_building_progress_empty_thp" translatable="false">PREF_RGB_BUILDING_PROGRESS_EMPTY_THP</string>
+    <string name="pref_rgb_bxx_progress_our_main" translatable="false">PREF_RGB_BXX_PROGRESS_OUR_MAIN</string>
+    <string name="pref_rgb_bxx_progress_our_back1" translatable="false">PREF_RGB_BXX_PROGRESS_OUR_BACK1</string>
+    <string name="pref_rgb_bxx_progress_enemy_main" translatable="false">PREF_RGB_BXX_PROGRESS_ENEMY_MAIN</string>
+    <string name="pref_rgb_bxx_progress_enemy_back1" translatable="false">PREF_RGB_BXX_PROGRESS_ENEMY_BACK1</string>
+    <string name="pref_rgb_bxx_progress_empty_main" translatable="false">PREF_RGB_BXX_PROGRESS_EMPTY_MAIN</string>
+    <string name="pref_rgb_bxx_progress_empty_back1" translatable="false">PREF_RGB_BXX_PROGRESS_EMPTY_BACK1</string>
+    <string name="pref_rgb_bxx_progress_our_thm" translatable="false">PREF_RGB_BXX_PROGRESS_OUR_THM</string>
+    <string name="pref_rgb_bxx_progress_our_thp" translatable="false">PREF_RGB_BXX_PROGRESS_OUR_THP</string>
+    <string name="pref_rgb_bxx_progress_enemy_thm" translatable="false">PREF_RGB_BXX_PROGRESS_ENEMY_THM</string>
+    <string name="pref_rgb_bxx_progress_enemy_thp" translatable="false">PREF_RGB_BXX_PROGRESS_ENEMY_THP</string>
+    <string name="pref_rgb_bxx_progress_empty_thm" translatable="false">PREF_RGB_BXX_PROGRESS_EMPTY_THM</string>
+    <string name="pref_rgb_bxx_progress_empty_thp" translatable="false">PREF_RGB_BXX_PROGRESS_EMPTY_THP</string>
 
-    <string name="pref_def_rgb_building_progress_our" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_OUR</string>
-    <string name="pref_def_rgb_building_progress_enemy" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_ENEMY</string>
-    <string name="pref_def_rgb_building_progress_empty" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY</string>
-    <string name="pref_def_rgb_building_progress_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_OUR_THM</string>
-    <string name="pref_def_rgb_building_progress_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_OUR_THP</string>
-    <string name="pref_def_rgb_building_progress_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_ENEMY_THM</string>
-    <string name="pref_def_rgb_building_progress_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_ENEMY_THP</string>
-    <string name="pref_def_rgb_building_progress_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY_THM</string>
-    <string name="pref_def_rgb_building_progress_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_PROGRESS_EMPTY_THP</string>
+    <string name="pref_def_rgb_bxx_progress_our" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_OUR</string>
+    <string name="pref_def_rgb_bxx_progress_enemy" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_ENEMY</string>
+    <string name="pref_def_rgb_bxx_progress_empty" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_EMPTY</string>
+    <string name="pref_def_rgb_bxx_progress_our_thm" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_OUR_THM</string>
+    <string name="pref_def_rgb_bxx_progress_our_thp" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_OUR_THP</string>
+    <string name="pref_def_rgb_bxx_progress_enemy_thm" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_ENEMY_THM</string>
+    <string name="pref_def_rgb_bxx_progress_enemy_thp" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_ENEMY_THP</string>
+    <string name="pref_def_rgb_bxx_progress_empty_thm" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_EMPTY_THM</string>
+    <string name="pref_def_rgb_bxx_progress_empty_thp" translatable="false">PREF_DEF_RGB_BXX_PROGRESS_EMPTY_THP</string>
 
 
     <!--    blt_points-->
@@ -672,23 +762,23 @@
     <string name="pref_def_cut_blt_points_y1" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y1</string>
     <string name="pref_def_cut_blt_points_y2" translatable="false">PREF_DEF_CUT_BLT_POINTS_Y2</string>
 
-    <string name="pref_rgb_building_points_our_main" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_MAIN</string>
-    <string name="pref_rgb_building_points_our_back1" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_BACK</string>
-    <string name="pref_rgb_building_points_our_thp" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THP</string>
-    <string name="pref_rgb_building_points_our_thm" translatable="false">PREF_RGB_BUILDING_POINTS_OUR_THM</string>
-    <string name="pref_rgb_building_points_enemy_main" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
-    <string name="pref_rgb_building_points_enemy_back1" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
-    <string name="pref_rgb_building_points_enemy_thp" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THP</string>
-    <string name="pref_rgb_building_points_enemy_thm" translatable="false">PREF_RGB_BUILDING_POINTS_ENEMY_THM</string>
+    <string name="pref_rgb_bxx_points_our_main" translatable="false">PREF_RGB_BXX_POINTS_OUR_MAIN</string>
+    <string name="pref_rgb_bxx_points_our_back1" translatable="false">PREF_RGB_BXX_POINTS_OUR_BACK</string>
+    <string name="pref_rgb_bxx_points_our_thp" translatable="false">PREF_RGB_BXX_POINTS_OUR_THP</string>
+    <string name="pref_rgb_bxx_points_our_thm" translatable="false">PREF_RGB_BXX_POINTS_OUR_THM</string>
+    <string name="pref_rgb_bxx_points_enemy_main" translatable="false">PREF_RGB_BXX_POINTS_ENEMY_MAIN</string>
+    <string name="pref_rgb_bxx_points_enemy_back1" translatable="false">PREF_RGB_BXX_POINTS_ENEMY_BACK</string>
+    <string name="pref_rgb_bxx_points_enemy_thp" translatable="false">PREF_RGB_BXX_POINTS_ENEMY_THP</string>
+    <string name="pref_rgb_bxx_points_enemy_thm" translatable="false">PREF_RGB_BXX_POINTS_ENEMY_THM</string>
 
-    <string name="pref_def_rgb_building_points_our_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_MAIN</string>
-    <string name="pref_def_rgb_building_points_our_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_BACK</string>
-    <string name="pref_def_rgb_building_points_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THP</string>
-    <string name="pref_def_rgb_building_points_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_OUR_THM</string>
-    <string name="pref_def_rgb_building_points_enemy_main" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_MAIN</string>
-    <string name="pref_def_rgb_building_points_enemy_back1" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_BACK</string>
-    <string name="pref_def_rgb_building_points_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THP</string>
-    <string name="pref_def_rgb_building_points_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_POINTS_ENEMY_THM</string>
+    <string name="pref_def_rgb_bxx_points_our_main" translatable="false">PREF_DEF_RGB_BXX_POINTS_OUR_MAIN</string>
+    <string name="pref_def_rgb_bxx_points_our_back1" translatable="false">PREF_DEF_RGB_BXX_POINTS_OUR_BACK</string>
+    <string name="pref_def_rgb_bxx_points_our_thp" translatable="false">PREF_DEF_RGB_BXX_POINTS_OUR_THP</string>
+    <string name="pref_def_rgb_bxx_points_our_thm" translatable="false">PREF_DEF_RGB_BXX_POINTS_OUR_THM</string>
+    <string name="pref_def_rgb_bxx_points_enemy_main" translatable="false">PREF_DEF_RGB_BXX_POINTS_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_bxx_points_enemy_back1" translatable="false">PREF_DEF_RGB_BXX_POINTS_ENEMY_BACK</string>
+    <string name="pref_def_rgb_bxx_points_enemy_thp" translatable="false">PREF_DEF_RGB_BXX_POINTS_ENEMY_THP</string>
+    <string name="pref_def_rgb_bxx_points_enemy_thm" translatable="false">PREF_DEF_RGB_BXX_POINTS_ENEMY_THM</string>
 
 
 <!--    blc-->
@@ -1052,53 +1142,65 @@
 
 
 
-<!--    building_doublepoints-->
-    <string name="pref_rgb_building_doublepoints" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS</string>
-    <string name="pref_rgb_building_doublepoints_thm" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
-    <string name="pref_rgb_building_doublepoints_thp" translatable="false">PREF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
+<!--    bxx_doublepoints-->
+    <string name="pref_rgb_bxx_doublepoints_main" translatable="false">PREF_RGB_BXX_DOUBLEPOINTS_MAIN</string>
+    <string name="pref_rgb_bxx_doublepoints_back1" translatable="false">PREF_RGB_BXX_DOUBLEPOINTS_BACK1</string>
+    <string name="pref_rgb_bxx_doublepoints_thm" translatable="false">PREF_RGB_BXX_DOUBLEPOINTS_THM</string>
+    <string name="pref_rgb_bxx_doublepoints_thp" translatable="false">PREF_RGB_BXX_DOUBLEPOINTS_THP</string>
 
-    <string name="pref_def_rgb_building_doublepoints" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS</string>
-    <string name="pref_def_rgb_building_doublepoints_thm" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THM</string>
-    <string name="pref_def_rgb_building_doublepoints_thp" translatable="false">PREF_DEF_RGB_BUILDING_DOUBLEPOINTS_THP</string>
+    <string name="pref_def_rgb_bxx_doublepoiints_main" translatable="false">PREF_DEF_RGB_BXX_DOUBLEPOINTS_MAIN</string>
+    <string name="pref_def_rgb_bxx_doublepoiints_back1" translatable="false">PREF_DEF_RGB_BXX_DOUBLEPOINTS_BACK1</string>
+    <string name="pref_def_rgb_bxx_doublepoints_thm" translatable="false">PREF_DEF_RGB_BXX_DOUBLEPOINTS_THM</string>
+    <string name="pref_def_rgb_bxx_doublepoints_thp" translatable="false">PREF_DEF_RGB_BXX_DOUBLEPOINTS_THP</string>
 
-<!--    building_mayX2-->
-    <string name="pref_rgb_building_mayX2" translatable="false">PREF_RGB_BUILDING_MAYX2</string>
-    <string name="pref_rgb_building_mayX2_thm" translatable="false">PREF_RGB_BUILDING_MAYX2_THM</string>
-    <string name="pref_rgb_building_mayX2_thp" translatable="false">PREF_RGB_BUILDING_MAYX2_THP</string>
+<!--    bxx_mayX2-->
+    <string name="pref_rgb_bxx_mayX2_main" translatable="false">PREF_RGB_BXX_MAYX2_MAIN</string>
+    <string name="pref_rgb_bxx_mayX2_back1" translatable="false">PREF_RGB_BXX_MAYX2_BACK1</string>
+    <string name="pref_rgb_bxx_mayX2_thm" translatable="false">PREF_RGB_BXX_MAYX2_THM</string>
+    <string name="pref_rgb_bxx_mayX2_thp" translatable="false">PREF_RGB_BXX_MAYX2_THP</string>
 
-    <string name="pref_def_rgb_building_mayX2" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2</string>
-    <string name="pref_def_rgb_building_mayX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THM</string>
-    <string name="pref_def_rgb_building_mayX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_MAYX2_THP</string>
+    <string name="pref_def_rgb_bxx_mayX2_main" translatable="false">PREF_DEF_RGB_BXX_MAYX2_MAIN</string>
+    <string name="pref_def_rgb_bxx_mayX2_back1" translatable="false">PREF_DEF_RGB_BXX_MAYX2_BACK1</string>
+    <string name="pref_def_rgb_bxx_mayX2_thm" translatable="false">PREF_DEF_RGB_BXX_MAYX2_THM</string>
+    <string name="pref_def_rgb_bxx_mayX2_thp" translatable="false">PREF_DEF_RGB_BXX_MAYX2_THP</string>
 
-<!--    building_isX2-->
-    <string name="pref_rgb_building_isX2" translatable="false">PREF_RGB_BUILDING_ISX2</string>
-    <string name="pref_rgb_building_isX2_thm" translatable="false">PREF_RGB_BUILDING_ISX2_THM</string>
-    <string name="pref_rgb_building_isX2_thp" translatable="false">PREF_RGB_BUILDING_ISX2_THP</string>
+<!--    bxx_isX2-->
+    <string name="pref_rgb_bxx_isX2_main" translatable="false">PREF_RGB_BXX_ISX2_MAIN</string>
+    <string name="pref_rgb_bxx_isX2_back1" translatable="false">PREF_RGB_BXX_ISX2_BACK1</string>
+    <string name="pref_rgb_bxx_isX2_thm" translatable="false">PREF_RGB_BXX_ISX2_THM</string>
+    <string name="pref_rgb_bxx_isX2_thp" translatable="false">PREF_RGB_BXX_ISX2_THP</string>
 
-    <string name="pref_def_rgb_building_isX2" translatable="false">PREF_DEF_RGB_BUILDING_ISX2</string>
-    <string name="pref_def_rgb_building_isX2_thm" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THM</string>
-    <string name="pref_def_rgb_building_isX2_thp" translatable="false">PREF_DEF_RGB_BUILDING_ISX2_THP</string>
+    <string name="pref_def_rgb_bxx_isX2_main" translatable="false">PREF_DEF_RGB_BXX_ISX2_MAIN</string>
+    <string name="pref_def_rgb_bxx_isX2_back1" translatable="false">PREF_DEF_RGB_BXX_ISX2_BACK1</string>
+    <string name="pref_def_rgb_bxx_isX2_thm" translatable="false">PREF_DEF_RGB_BXX_ISX2_THM</string>
+    <string name="pref_def_rgb_bxx_isX2_thp" translatable="false">PREF_DEF_RGB_BXX_ISX2_THP</string>
 
-<!--    building_name-->
-    <string name="pref_rgb_building_name_our" translatable="false">PREF_RGB_BUILDING_NAME_OUR</string>
-    <string name="pref_rgb_building_name_enemy" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY</string>
-    <string name="pref_rgb_building_name_empty" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY</string>
-    <string name="pref_rgb_building_name_our_thm" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THM</string>
-    <string name="pref_rgb_building_name_our_thp" translatable="false">PREF_RGB_BUILDING_NAME_OUR_THP</string>
-    <string name="pref_rgb_building_name_enemy_thm" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THM</string>
-    <string name="pref_rgb_building_name_enemy_thp" translatable="false">PREF_RGB_BUILDING_NAME_ENEMY_THP</string>
-    <string name="pref_rgb_building_name_empty_thm" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THM</string>
-    <string name="pref_rgb_building_name_empty_thp" translatable="false">PREF_RGB_BUILDING_NAME_EMPTY_THP</string>
+<!--    bxx_name-->
+    <string name="pref_rgb_bxx_name_our_main" translatable="false">PREF_RGB_BXX_NAME_OUR_MAIN</string>
+    <string name="pref_rgb_bxx_name_our_back1" translatable="false">PREF_RGB_BXX_NAME_OUR_BACK1</string>
+    <string name="pref_rgb_bxx_name_enemy_main" translatable="false">PREF_RGB_BXX_NAME_ENEMY_MAIN</string>
+    <string name="pref_rgb_bxx_name_enemy_back1" translatable="false">PREF_RGB_BXX_NAME_ENEMY_BACK1</string>
+    <string name="pref_rgb_bxx_name_empty_main" translatable="false">PREF_RGB_BXX_NAME_EMPTY_MAIN</string>
+    <string name="pref_rgb_bxx_name_empty_back1" translatable="false">PREF_RGB_BXX_NAME_EMPTY_BACK1</string>
+    <string name="pref_rgb_bxx_name_our_thm" translatable="false">PREF_RGB_BXX_NAME_OUR_THM</string>
+    <string name="pref_rgb_bxx_name_our_thp" translatable="false">PREF_RGB_BXX_NAME_OUR_THP</string>
+    <string name="pref_rgb_bxx_name_enemy_thm" translatable="false">PREF_RGB_BXX_NAME_ENEMY_THM</string>
+    <string name="pref_rgb_bxx_name_enemy_thp" translatable="false">PREF_RGB_BXX_NAME_ENEMY_THP</string>
+    <string name="pref_rgb_bxx_name_empty_thm" translatable="false">PREF_RGB_BXX_NAME_EMPTY_THM</string>
+    <string name="pref_rgb_bxx_name_empty_thp" translatable="false">PREF_RGB_BXX_NAME_EMPTY_THP</string>
 
-    <string name="pref_def_rgb_building_name_our" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR</string>
-    <string name="pref_def_rgb_building_name_enemy" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY</string>
-    <string name="pref_def_rgb_building_name_empty" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY</string>
-    <string name="pref_def_rgb_building_name_our_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR_THM</string>
-    <string name="pref_def_rgb_building_name_our_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_OUR_THP</string>
-    <string name="pref_def_rgb_building_name_enemy_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY_THM</string>
-    <string name="pref_def_rgb_building_name_enemy_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_ENEMY_THP</string>
-    <string name="pref_def_rgb_building_name_empty_thm" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THM</string>
-    <string name="pref_def_rgb_building_name_empty_thp" translatable="false">PREF_DEF_RGB_BUILDING_NAME_EMPTY_THP</string>
+    <string name="pref_def_rgb_bxx_name_our_main" translatable="false">PREF_DEF_RGB_BXX_NAME_OUR_MAIN</string>
+    <string name="pref_def_rgb_bxx_name_our_back1" translatable="false">PREF_DEF_RGB_BXX_NAME_OUR_BACK1</string>
+    <string name="pref_def_rgb_bxx_name_enemy_main" translatable="false">PREF_DEF_RGB_BXX_NAME_ENEMY_MAIN</string>
+    <string name="pref_def_rgb_bxx_name_enemy_back1" translatable="false">PREF_DEF_RGB_BXX_NAME_ENEMY_BACK1</string>
+    <string name="pref_def_rgb_bxx_name_empty_main" translatable="false">PREF_DEF_RGB_BXX_NAME_EMPTY_MAIN</string>
+    <string name="pref_def_rgb_bxx_name_empty_back1" translatable="false">PREF_DEF_RGB_BXX_NAME_EMPTY_BACK1</string>
+    <string name="pref_def_rgb_bxx_name_our_thm" translatable="false">PREF_DEF_RGB_BXX_NAME_OUR_THM</string>
+    <string name="pref_def_rgb_bxx_name_our_thp" translatable="false">PREF_DEF_RGB_BXX_NAME_OUR_THP</string>
+    <string name="pref_def_rgb_bxx_name_enemy_thm" translatable="false">PREF_DEF_RGB_BXX_NAME_ENEMY_THM</string>
+    <string name="pref_def_rgb_bxx_name_enemy_thp" translatable="false">PREF_DEF_RGB_BXX_NAME_ENEMY_THP</string>
+    <string name="pref_def_rgb_bxx_name_empty_thm" translatable="false">PREF_DEF_RGB_BXX_NAME_EMPTY_THM</string>
+    <string name="pref_def_rgb_bxx_name_empty_thp" translatable="false">PREF_DEF_RGB_BXX_NAME_EMPTY_THP</string>
 
 
 

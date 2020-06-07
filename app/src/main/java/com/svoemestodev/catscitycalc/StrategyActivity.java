@@ -639,8 +639,8 @@ public class StrategyActivity extends AppCompatActivity {
             }
 
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            int color_building_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_mayX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_mayX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_mayX2), 16)));
-            int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
+            int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));
+            int color_bxx_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_isX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_isX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_isX2), 16)));
 
             if (ccaBLT != null) {
 
@@ -682,11 +682,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBLT.isX2) {
                         tv_sa_blt_x2.setText("X2");
-                        tv_sa_blt_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_blt_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLT.mayX2) {
                             tv_sa_blt_x2.setText("X2");
-                            tv_sa_blt_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_blt_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_blt_x2.setText("");
                             tv_sa_blt_x2.setBackgroundColor(0xFFFFFFFF);
@@ -732,11 +732,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBLC.isX2) {
                         tv_sa_blc_x2.setText("X2");
-                        tv_sa_blc_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_blc_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLC.mayX2) {
                             tv_sa_blc_x2.setText("X2");
-                            tv_sa_blc_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_blc_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_blc_x2.setText("");
                             tv_sa_blc_x2.setBackgroundColor(0xFFFFFFFF);
@@ -783,11 +783,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBLB.isX2) {
                         tv_sa_blb_x2.setText("X2");
-                        tv_sa_blb_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_blb_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLB.mayX2) {
                             tv_sa_blb_x2.setText("X2");
-                            tv_sa_blb_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_blb_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_blb_x2.setText("");
                             tv_sa_blb_x2.setBackgroundColor(0xFFFFFFFF);
@@ -833,11 +833,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBRT.isX2) {
                         tv_sa_brt_x2.setText("X2");
-                        tv_sa_brt_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_brt_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRT.mayX2) {
                             tv_sa_brt_x2.setText("X2");
-                            tv_sa_brt_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_brt_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_brt_x2.setText("");
                             tv_sa_brt_x2.setBackgroundColor(0xFFFFFFFF);
@@ -883,11 +883,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBRC.isX2) {
                         tv_sa_brc_x2.setText("X2");
-                        tv_sa_brc_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_brc_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRC.mayX2) {
                             tv_sa_brc_x2.setText("X2");
-                            tv_sa_brc_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_brc_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_brc_x2.setText("");
                             tv_sa_brc_x2.setBackgroundColor(0xFFFFFFFF);
@@ -934,11 +934,11 @@ public class StrategyActivity extends AppCompatActivity {
                     }
                     if (ccaBRB.isX2) {
                         tv_sa_brb_x2.setText("X2");
-                        tv_sa_brb_x2.setBackgroundColor(color_building_isX2);
+                        tv_sa_brb_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRB.mayX2) {
                             tv_sa_brb_x2.setText("X2");
-                            tv_sa_brb_x2.setBackgroundColor(color_building_mayX2);
+                            tv_sa_brb_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_sa_brb_x2.setText("");
                             tv_sa_brb_x2.setBackgroundColor(0xFFFFFFFF);

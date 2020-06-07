@@ -394,8 +394,8 @@ public class GameActivity extends AppCompatActivity {
             }
 
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            int color_building_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_mayX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_mayX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_mayX2), 16)));
-            int color_building_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_building_isX2),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_building_isX2), (int)Long.parseLong(context.getString(R.string.def_rgb_building_isX2), 16)));
+            int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));
+            int color_bxx_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_isX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_isX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_isX2), 16)));
 
             int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
 
@@ -459,12 +459,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBLT.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLT isX2");
                         tv_ga_blt_x2.setText("X2");
-                        tv_ga_blt_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_blt_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLT.mayX2) {
                             Log.i(TAG, logMsgPref + "ccaBLT mayX2");
                             tv_ga_blt_x2.setText("X2");
-                            tv_ga_blt_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_blt_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_blt_x2.setText("");
                             tv_ga_blt_x2.setBackgroundColor(0xFFFFFFFF);
@@ -530,12 +530,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBLC.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLC isX2");
                         tv_ga_blc_x2.setText("X2");
-                        tv_ga_blc_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_blc_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLC.mayX2) {
                             Log.i(TAG, logMsgPref + "ccaBLC mayX2");
                             tv_ga_blc_x2.setText("X2");
-                            tv_ga_blc_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_blc_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_blc_x2.setText("");
                             tv_ga_blc_x2.setBackgroundColor(0xFFFFFFFF);
@@ -601,12 +601,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBLB.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBLB isX2");
                         tv_ga_blb_x2.setText("X2");
-                        tv_ga_blb_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_blb_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBLB.mayX2) {
                             Log.i(TAG, logMsgPref + "ccaBLB mayX2");
                             tv_ga_blb_x2.setText("X2");
-                            tv_ga_blb_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_blb_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_blb_x2.setText("");
                             tv_ga_blb_x2.setBackgroundColor(0xFFFFFFFF);
@@ -671,12 +671,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBRT.isX2) {
                         tv_ga_brt_x2.setText("X2");
                         Log.i(TAG, logMsgPref + "ccaBRT isX2");
-                        tv_ga_brt_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_brt_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRT.mayX2) {
                             tv_ga_brt_x2.setText("X2");
                             Log.i(TAG, logMsgPref + "ccaBRT mayX2");
-                            tv_ga_brt_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_brt_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_brt_x2.setText("");
                             tv_ga_brt_x2.setBackgroundColor(0xFFFFFFFF);
@@ -741,12 +741,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBRC.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBRC isX2");
                         tv_ga_brc_x2.setText("X2");
-                        tv_ga_brc_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_brc_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRC.mayX2) {
                             Log.i(TAG, logMsgPref + "ccaBRC mayX2");
                             tv_ga_brc_x2.setText("X2");
-                            tv_ga_brc_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_brc_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_brc_x2.setText("");
                             tv_ga_brc_x2.setBackgroundColor(0xFFFFFFFF);
@@ -814,12 +814,12 @@ public class GameActivity extends AppCompatActivity {
                     if (ccaBRB.isX2) {
                         Log.i(TAG, logMsgPref + "ccaBRB isX2");
                         tv_ga_brb_x2.setText("X2");
-                        tv_ga_brb_x2.setBackgroundColor(color_building_isX2);
+                        tv_ga_brb_x2.setBackgroundColor(color_bxx_isX2);
                     } else {
                         if (ccaBRC.mayX2) {
                             Log.i(TAG, logMsgPref + "ccaBRB mayX2");
                             tv_ga_brb_x2.setText("X2");
-                            tv_ga_brb_x2.setBackgroundColor(color_building_mayX2);
+                            tv_ga_brb_x2.setBackgroundColor(color_bxx_mayX2);
                         } else {
                             tv_ga_brb_x2.setText("");
                             tv_ga_brb_x2.setBackgroundColor(0xFFFFFFFF);

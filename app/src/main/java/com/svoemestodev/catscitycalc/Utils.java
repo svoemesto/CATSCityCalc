@@ -174,6 +174,8 @@ public class Utils {
         mapSymbolsLikeNumbers.put('О', '0');
         mapSymbolsLikeNumbers.put('o', '0');
         mapSymbolsLikeNumbers.put('O', '0');
+        mapSymbolsLikeNumbers.put('H', '4');
+        mapSymbolsLikeNumbers.put('h', '4');
 
         String result = "";                 // результат
         for (char ch : str.toUpperCase().toCharArray()) { // цикл по символам строки
@@ -190,7 +192,7 @@ public class Utils {
      */
     public static  String parseTime(String str) {
         // парсинг "Время"
-//        str = replaceSymbolsLikeNumbers(str).trim().toUpperCase();
+        str = replaceSymbolsLikeNumbers(str).trim().toUpperCase();
         List<String> listWords = new ArrayList<>();
         boolean isNewWord = true;
         String word = "";
@@ -216,35 +218,43 @@ public class Utils {
         if (listWords.size() == 4) {
             try {
                 listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
-//                if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
-                if (listWords.get(2).length() > 2) listWords.set(0, listWords.get(2).substring(0,2));
                 hours = Integer.parseInt(listWords.get(0));
+            } catch (NumberFormatException e) {
+            }
+            try {
                 minutes = Integer.parseInt(listWords.get(2));
-            } catch (NumberFormatException ignored) {
+            } catch (NumberFormatException e) {
             }
-        } else if (listWords.size() == 2) {
-            if (listWords.get(1).equals("M") || listWords.get(1).equals("М")) {
-                try {
-                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
-                    minutes = Integer.parseInt(listWords.get(0));
-                } catch (NumberFormatException ignored) {
-                }
-            } else {
-                try {
-//                    if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
-                    listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
-                    hours = Integer.parseInt(listWords.get(0));
-                } catch (NumberFormatException ignored) {
-                }
-            }
-        } else if (listWords.size() == 1) {
-            char lastChar = listWords.get(0).charAt(listWords.get(0).length()-1);
-            if (listWords.get(0).length() > 2) listWords.set(0, listWords.get(0).substring(0,2));
-            if (lastChar == 'M' || lastChar == 'М') {
-                minutes = Integer.parseInt(listWords.get(0));
-            } else {
+        } else if (listWords.size() == 3) {
+            try {
                 listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
                 hours = Integer.parseInt(listWords.get(0));
+            } catch (NumberFormatException e) {
+            }
+            try {
+                minutes = Integer.parseInt(listWords.get(1));
+            } catch (NumberFormatException e) {
+            }
+        } else if (listWords.size() == 2) {
+            char lastChar = listWords.get(1).charAt(listWords.get(1).length()-1); // запоминаем последний символ
+            listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
+            listWords.set(1, listWords.get(1).substring(0,listWords.get(1).length()-1));
+            if (lastChar == 'M' || lastChar == 'М') {
+                try {
+                    minutes = Integer.parseInt(listWords.get(0));
+                } catch (NumberFormatException e) {
+                }
+            } else {
+                try {
+                    hours = Integer.parseInt(listWords.get(0));
+                } catch (NumberFormatException e) {
+                }
+            }
+        } else if (listWords.size() == 1) { // если один - это часы. отрезам последний символ
+            listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1)); // отрезаем последний символ
+            try {
+                hours = Integer.parseInt(listWords.get(0));
+            } catch (NumberFormatException e) {
             }
         }
 
