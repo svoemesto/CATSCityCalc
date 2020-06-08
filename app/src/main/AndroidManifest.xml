@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".UserActivity"
             android:label="@string/open_login"/>
-        
+
         <activity android:name=".CarActivity" />
         <activity
             android:name=".SplashActivity"

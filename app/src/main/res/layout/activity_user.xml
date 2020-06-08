@@ -38,6 +38,13 @@
                 android:onClick="logout"
                 />
 
+            <Button
+                android:id="@+id/ua_bt_send_email_verification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="sendEmailVerification"
+                android:text="send email verification" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,9 @@ public class UserActivity extends AppCompatActivity {
 
     AdView ua_ad_banner;
     Button ua_bt_logout;
+    Button ua_bt_send_email_verification;
+    ImageButton ua_ib_set_usernic;
+    ImageButton ua_ib_copy_uuid;
     TextView ua_tv_usernic_value;
     TextView ua_tv_username_value;
     TextView ua_tv_useremail_value;
@@ -197,6 +201,26 @@ public class UserActivity extends AppCompatActivity {
                                                         Map<String, Object> updateUser = new HashMap<>();
                                                         updateUser.put("userID", dbUser.userID);
                                                         GameActivity.fbDb.collection("users").document(dbUser.getUserID()).update(updateUser);
+
+                                                        GameActivity.fbUser.sendEmailVerification()
+                                                                .addOnCompleteListener(UserActivity.this, new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                                                        if (task.isSuccessful()) {
+                                                                            Toast.makeText(UserActivity.this,
+                                                                                    "Verification email sent to " + GameActivity.fbUser.getEmail(),
+                                                                                    Toast.LENGTH_SHORT).show();
+                                                                        } else {
+                                                                            Log.e(TAG, "sendEmailVerification", task.getException());
+                                                                            Toast.makeText(UserActivity.this,
+                                                                                    "Failed to send verification email.",
+                                                                                    Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    }
+                                                                });
+
+
                                                     }
                                                 })
                                                 .addOnFailureListener(new OnFailureListener() {
@@ -263,11 +287,27 @@ public class UserActivity extends AppCompatActivity {
         ua_tv_useremail_value.setText(dbUser.getUserEmail());
         ua_tv_uuid_value.setText(dbUser.getUserUID());
 
+        if (!GameActivity.fbUser.isEmailVerified()) {
+            Toast.makeText(UserActivity.this, "Емейл не подтвержден!", Toast.LENGTH_LONG).show();
+            ua_bt_send_email_verification.setEnabled(true);
+            ua_ib_set_usernic.setEnabled(false);
+            ua_ib_copy_uuid.setEnabled(false);
+        } else {
+            ua_bt_send_email_verification.setEnabled(false);
+            ua_ib_set_usernic.setEnabled(true);
+            ua_ib_copy_uuid.setEnabled(true);
+        }
+
+
+
     }
 
     private void initializeViews() {
         ua_ad_banner = findViewById(R.id.ua_ad_banner);
         ua_bt_logout = findViewById(R.id.ua_bt_logout);
+        ua_bt_send_email_verification = findViewById(R.id.ua_bt_send_email_verification);
+        ua_ib_set_usernic = findViewById(R.id.ua_ib_set_usernic);
+        ua_ib_copy_uuid = findViewById(R.id.ua_ib_copy_uuid);
         ua_tv_usernic_value = findViewById(R.id.ua_tv_usernic_value);
         ua_tv_username_value = findViewById(R.id.ua_tv_username_value);
         ua_tv_useremail_value = findViewById(R.id.ua_tv_useremail_value);
@@ -329,5 +369,27 @@ public class UserActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+    }
+
+    public void sendEmailVerification(View view) {
+
+        GameActivity.fbUser.sendEmailVerification()
+                .addOnCompleteListener(UserActivity.this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        if (task.isSuccessful()) {
+                            Toast.makeText(UserActivity.this,
+                                    "Verification email sent to " + GameActivity.fbUser.getEmail(),
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Log.e(TAG, "sendEmailVerification", task.getException());
+                            Toast.makeText(UserActivity.this,
+                                    "Failed to send verification email.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
     }
 }
