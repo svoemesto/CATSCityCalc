@@ -12,17 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CCACar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/CCACar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +124,7 @@
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -375,42 +367,46 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1591439411633" />
-    <state width="2679" height="352" key="GridCell.Tab.0.bottom" timestamp="1591548142971">
+    <state width="3397" height="375" key="GridCell.Tab.0.bottom" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="352" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591548142971" />
-    <state width="2679" height="352" key="GridCell.Tab.0.center" timestamp="1591548142971">
+    <state width="3397" height="375" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.0.center" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="352" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591548142971" />
-    <state width="2679" height="352" key="GridCell.Tab.0.left" timestamp="1591548142971">
+    <state width="3397" height="375" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.0.left" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="352" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591548142971" />
-    <state width="2679" height="352" key="GridCell.Tab.0.right" timestamp="1591548142971">
+    <state width="3397" height="375" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.0.right" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="352" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591548142971" />
-    <state width="2679" height="373" key="GridCell.Tab.1.bottom" timestamp="1591530834151">
+    <state width="3397" height="375" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.1.bottom" timestamp="1591599395060">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="373" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591530834151" />
-    <state width="2679" height="373" key="GridCell.Tab.1.center" timestamp="1591530834142">
+    <state width="3397" height="375" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395060" />
+    <state width="3397" height="375" key="GridCell.Tab.1.center" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="373" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591530834142" />
-    <state width="2679" height="373" key="GridCell.Tab.1.left" timestamp="1591530834134">
+    <state width="3397" height="375" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.1.left" timestamp="1591599395059">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="373" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591530834134" />
-    <state width="2679" height="373" key="GridCell.Tab.1.right" timestamp="1591530834149">
+    <state width="3397" height="375" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395059" />
+    <state width="3397" height="375" key="GridCell.Tab.1.right" timestamp="1591599395060">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2679" height="373" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591530834149" />
-    <state width="1369" height="700" key="XDebugger.FullValuePopup" timestamp="1591530754556">
+    <state width="3397" height="375" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591599395060" />
+    <state x="1221" y="342" key="SettingsEditor" timestamp="1591598367783">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1369" height="700" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591530754556" />
+    <state x="1221" y="342" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1591598367783" />
+    <state width="1728" height="708" key="XDebugger.FullValuePopup" timestamp="1591598843548">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state width="1728" height="708" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591598843548" />
     <state x="1163" y="513" key="com.intellij.ide.util.TipDialog" timestamp="1591438008803">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

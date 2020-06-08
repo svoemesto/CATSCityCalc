@@ -67,7 +67,7 @@ public class CCACar extends CityCalcArea {
                 car.setCarPictureDefencing(areaPicture.bmpSrc);
             }
 
-            if (isStatebox3) { // если есть сейтбокс1 - машина гарантированно ремонтируется
+            if (isStatebox3) { // если есть сейтбокс3 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
