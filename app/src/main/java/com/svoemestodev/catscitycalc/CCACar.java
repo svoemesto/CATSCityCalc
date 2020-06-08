@@ -58,7 +58,7 @@ public class CCACar extends CityCalcArea {
             car.setCarPicture(areaPicture.bmpSrc);
         } else {
 
-            if (isStatebox1) { // если есть сейтбокс1 - машина гарантированно ремонтируется
+            if (isStatebox1) { // если есть стейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox1.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());
@@ -67,7 +67,7 @@ public class CCACar extends CityCalcArea {
                 car.setCarPictureDefencing(areaPicture.bmpSrc);
             }
 
-            if (isStatebox3) { // если есть сейтбокс1 - машина гарантированно ремонтируется
+            if (isStatebox3) { // если есть стейтбокс1 - машина гарантированно ремонтируется
                 // парсим и устанавливаем время ремонта
                 secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.ocrText);
                 screenshotDate = new Date(this.cityCalc.fileScreenshot.lastModified());

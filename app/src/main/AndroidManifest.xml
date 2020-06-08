@@ -15,7 +15,10 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CarActivity"></activity>
+        <activity android:name=".UserActivity"
+            android:label="@string/open_login"/>
+        
+        <activity android:name=".CarActivity" />
         <activity
             android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -25,33 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Splash"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/SplashTheme">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".LanguageActivity"
-            android:label="@string/sett_language" />
-        <activity
             android:name=".StrategyActivity"
             android:label="@string/sett_strategy" />
         <activity
             android:name=".GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleInstance">
-
-            <!-- <meta-data -->
-            <!-- android:name="com.google.android.gms.vision.DEPENDENCIES" -->
-            <!-- android:value="orc" /> -->
-
         </activity>
         <activity
             android:name=".ColorsdetectActivity"

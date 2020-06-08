@@ -11,7 +11,7 @@
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ad_ga_banner"
+        android:id="@+id/ga_ad_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -24,16 +24,22 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ad_ga_banner"
+        android:layout_above="@id/ga_ad_banner"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            
+            <TextView
+                android:id="@+id/ga_tv_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            
             <Switch
-                android:id="@+id/sw_ga_listen_new_file"
+                android:id="@+id/ga_sw_listen_new_file"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="5dp"
@@ -58,7 +64,7 @@
                         android:layout_gravity="center_horizontal|center_vertical">
 
                         <ImageButton
-                            android:id="@+id/ib_ga_car1"
+                            android:id="@+id/ga_ib_car1"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
@@ -66,7 +72,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car1_number"
+                            android:id="@+id/ga_tv_car1_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="30sp"
@@ -77,7 +83,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/tv_ga_car1_name"
+                        android:id="@+id/ga_tv_car1_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal|center_vertical" />
@@ -89,17 +95,17 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car1_health"
+                            android:id="@+id/ga_iv_car1_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:src="@drawable/ic_baseline_health_black_24" />
 
                         <TextView
-                            android:id="@+id/tv_ga_car1_health"
+                            android:id="@+id/ga_tv_car1_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car1_health" />
+                            android:layout_toEndOf="@id/ga_iv_car1_health" />
                         
                     </RelativeLayout>
 
@@ -109,7 +115,7 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car1_shield"
+                            android:id="@+id/ga_iv_car1_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -117,10 +123,10 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car1_shield"
+                            android:id="@+id/ga_tv_car1_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car1_shield" />
+                            android:layout_toEndOf="@id/ga_iv_car1_shield" />
 
                     </RelativeLayout>
 
@@ -130,15 +136,15 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
-                            android:id="@+id/tv_ga_car1_repair"
+                            android:id="@+id/ga_tv_car1_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
                         <ImageView
-                            android:id="@+id/iv_ga_car1_house"
+                            android:id="@+id/ga_iv_car1_house"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/tv_ga_car1_repair"
+                            android:layout_toEndOf="@id/ga_tv_car1_repair"
                             />
                         
                     </RelativeLayout>
@@ -161,7 +167,7 @@
                         android:layout_gravity="center_horizontal|center_vertical">
 
                         <ImageButton
-                            android:id="@+id/ib_ga_car2"
+                            android:id="@+id/ga_ib_car2"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
@@ -169,7 +175,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car2_number"
+                            android:id="@+id/ga_tv_car2_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="30sp"
@@ -180,7 +186,7 @@
                     </RelativeLayout>
 
                     <TextView
-                        android:id="@+id/tv_ga_car2_name"
+                        android:id="@+id/ga_tv_car2_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal|center_vertical" />
@@ -191,17 +197,17 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car2_health"
+                            android:id="@+id/ga_iv_car2_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:src="@drawable/ic_baseline_health_black_24" />
 
                         <TextView
-                            android:id="@+id/tv_ga_car2_health"
+                            android:id="@+id/ga_tv_car2_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car2_health" />
+                            android:layout_toEndOf="@id/ga_iv_car2_health" />
 
                     </RelativeLayout>
 
@@ -211,7 +217,7 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car2_shield"
+                            android:id="@+id/ga_iv_car2_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -219,10 +225,10 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car2_shield"
+                            android:id="@+id/ga_tv_car2_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car2_shield" />
+                            android:layout_toEndOf="@id/ga_iv_car2_shield" />
 
                     </RelativeLayout>
 
@@ -232,15 +238,15 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
-                            android:id="@+id/tv_ga_car2_repair"
+                            android:id="@+id/ga_tv_car2_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
                         <ImageView
-                            android:id="@+id/iv_ga_car2_house"
+                            android:id="@+id/ga_iv_car2_house"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/tv_ga_car2_repair"
+                            android:layout_toEndOf="@id/ga_tv_car2_repair"
                             />
 
                     </RelativeLayout>
@@ -261,7 +267,7 @@
                         android:layout_gravity="center_horizontal|center_vertical">
 
                         <ImageButton
-                            android:id="@+id/ib_ga_car3"
+                            android:id="@+id/ga_ib_car3"
                             android:layout_width="match_parent"
                             android:layout_height="70dp"
                             android:layout_gravity="center_horizontal"
@@ -269,7 +275,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car3_number"
+                            android:id="@+id/ga_tv_car3_number"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="30sp"
@@ -281,7 +287,7 @@
 
 
                     <TextView
-                        android:id="@+id/tv_ga_car3_name"
+                        android:id="@+id/ga_tv_car3_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal|center_vertical" />
@@ -292,17 +298,17 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car3_health"
+                            android:id="@+id/ga_iv_car3_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:src="@drawable/ic_baseline_health_black_24" />
 
                         <TextView
-                            android:id="@+id/tv_ga_car3_health"
+                            android:id="@+id/ga_tv_car3_health"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car3_health" />
+                            android:layout_toEndOf="@id/ga_iv_car3_health" />
 
                     </RelativeLayout>
 
@@ -312,7 +318,7 @@
                         android:layout_gravity="center_horizontal">
 
                         <ImageView
-                            android:id="@+id/iv_ga_car3_shield"
+                            android:id="@+id/ga_iv_car3_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
@@ -320,10 +326,10 @@
                             />
 
                         <TextView
-                            android:id="@+id/tv_ga_car3_shield"
+                            android:id="@+id/ga_tv_car3_shield"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/iv_ga_car3_shield" />
+                            android:layout_toEndOf="@id/ga_iv_car3_shield" />
 
                     </RelativeLayout>
 
@@ -333,15 +339,15 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
-                            android:id="@+id/tv_ga_car3_repair"
+                            android:id="@+id/ga_tv_car3_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
                         <ImageView
-                            android:id="@+id/iv_ga_car3_house"
+                            android:id="@+id/ga_iv_car3_house"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/tv_ga_car3_repair"
+                            android:layout_toEndOf="@id/ga_tv_car3_repair"
                             />
 
                     </RelativeLayout>
@@ -359,7 +365,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_ga_start_game_time"
+                    android:id="@+id/ga_tv_start_game_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -370,7 +376,7 @@
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/tv_ga_end_game_time"
+                    android:id="@+id/ga_tv_end_game_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -389,13 +395,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/iv_ga_our_team_name"
+                    android:id="@+id/ga_iv_our_team_name"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/tv_ga_vs"
+                    android:id="@+id/ga_tv_vs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -405,7 +411,7 @@
                     android:text="@string/versus"/>
 
                 <ImageView
-                    android:id="@+id/iv_ga_enemy_team_name"
+                    android:id="@+id/ga_iv_enemy_team_name"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1" />
@@ -424,7 +430,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_our_increase"
+                        android:id="@+id/ga_tv_our_increase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -434,7 +440,7 @@
                         android:background="#4179d8" />
 
                     <TextView
-                        android:id="@+id/tv_ga_our_points"
+                        android:id="@+id/ga_tv_our_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingStart="10dp"
@@ -453,7 +459,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_total_time"
+                        android:id="@+id/ga_tv_total_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -471,7 +477,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_enemy_points"
+                        android:id="@+id/ga_tv_enemy_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingEnd="10dp"
@@ -482,7 +488,7 @@
                         android:background="#f0f0f0" />
 
                     <TextView
-                        android:id="@+id/tv_ga_enemy_increase"
+                        android:id="@+id/ga_tv_enemy_increase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -508,7 +514,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_our_end_time"
+                        android:id="@+id/ga_tv_our_end_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -527,7 +533,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_early_win"
+                        android:id="@+id/ga_tv_early_win"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -545,7 +551,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_ga_enemy_end_time"
+                        android:id="@+id/ga_tv_enemy_end_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -565,7 +571,7 @@
                 >
 
                 <ImageView
-                    android:id="@+id/iv_ga_game_car_black"
+                    android:id="@+id/ga_iv_game_car_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_weight="1"
@@ -574,7 +580,7 @@
                     android:src="@drawable/ic_car_black_36dp"/>
 
                 <TextView
-                    android:id="@+id/tv_ga_game_slots"
+                    android:id="@+id/ga_tv_game_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -582,7 +588,7 @@
                     android:textColor="#000000" />
 
                 <ImageView
-                    android:id="@+id/iv_ga_game_car_our"
+                    android:id="@+id/ga_iv_game_car_our"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_weight="1"
@@ -591,7 +597,7 @@
                     android:src="@drawable/ic_car_our_36dp"/>
 
                 <TextView
-                    android:id="@+id/tv_ga_game_slots_our"
+                    android:id="@+id/ga_tv_game_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -599,7 +605,7 @@
                     android:textColor="#4179d8" />
 
                 <ImageView
-                    android:id="@+id/iv_ga_game_car_empty"
+                    android:id="@+id/ga_iv_game_car_empty"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_weight="1"
@@ -608,7 +614,7 @@
                     android:src="@drawable/ic_car_empty_36dp"/>
 
                 <TextView
-                    android:id="@+id/tv_ga_game_slots_empty"
+                    android:id="@+id/ga_tv_game_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -616,7 +622,7 @@
                     android:textColor="#5e6a84" />
 
                 <ImageView
-                    android:id="@+id/iv_ga_game_car_enemy"
+                    android:id="@+id/ga_iv_game_car_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:layout_weight="1"
@@ -625,7 +631,7 @@
                     android:src="@drawable/ic_car_enemy_36dp"/>
 
                 <TextView
-                    android:id="@+id/tv_ga_game_slots_enemy"
+                    android:id="@+id/ga_tv_game_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -638,7 +644,7 @@
 
 
             <TextView
-                android:id="@+id/tv_ga_status"
+                android:id="@+id/ga_tv_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -661,14 +667,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_ga_blt_name"
+                        android:id="@+id/ga_iv_blt_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_x2"
+                        android:id="@+id/ga_tv_blt_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -676,7 +682,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_points"
+                        android:id="@+id/ga_tv_blt_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -694,14 +700,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_name"
+                        android:id="@+id/ga_iv_brt_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_x2"
+                        android:id="@+id/ga_tv_brt_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -709,7 +715,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_points"
+                        android:id="@+id/ga_tv_brt_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -737,7 +743,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blt_car_black"
+                        android:id="@+id/ga_iv_blt_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -746,14 +752,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_slots"
+                        android:id="@+id/ga_tv_blt_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blt_car_our"
+                        android:id="@+id/ga_iv_blt_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -762,14 +768,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_slots_our"
+                        android:id="@+id/ga_tv_blt_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blt_car_empty"
+                        android:id="@+id/ga_iv_blt_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -778,14 +784,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_slots_empty"
+                        android:id="@+id/ga_tv_blt_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blt_car_enemy"
+                        android:id="@+id/ga_iv_blt_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -794,7 +800,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blt_slots_enemy"
+                        android:id="@+id/ga_tv_blt_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -811,7 +817,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_car_black"
+                        android:id="@+id/ga_iv_brt_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -820,14 +826,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_slots"
+                        android:id="@+id/ga_tv_brt_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_car_our"
+                        android:id="@+id/ga_iv_brt_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -836,14 +842,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_slots_our"
+                        android:id="@+id/ga_tv_brt_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_car_empty"
+                        android:id="@+id/ga_iv_brt_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -852,14 +858,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_slots_empty"
+                        android:id="@+id/ga_tv_brt_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_car_enemy"
+                        android:id="@+id/ga_iv_brt_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -868,7 +874,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brt_slots_enemy"
+                        android:id="@+id/ga_tv_brt_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -893,7 +899,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blt_progress"
+                        android:id="@+id/ga_iv_blt_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -908,7 +914,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brt_progress"
+                        android:id="@+id/ga_iv_brt_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -935,14 +941,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_ga_blc_name"
+                        android:id="@+id/ga_iv_blc_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_x2"
+                        android:id="@+id/ga_tv_blc_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -950,7 +956,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_points"
+                        android:id="@+id/ga_tv_blc_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -968,14 +974,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_name"
+                        android:id="@+id/ga_iv_brc_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_x2"
+                        android:id="@+id/ga_tv_brc_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -983,7 +989,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_points"
+                        android:id="@+id/ga_tv_brc_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -1009,7 +1015,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blc_car_black"
+                        android:id="@+id/ga_iv_blc_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1018,14 +1024,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_slots"
+                        android:id="@+id/ga_tv_blc_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blc_car_our"
+                        android:id="@+id/ga_iv_blc_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1034,14 +1040,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_slots_our"
+                        android:id="@+id/ga_tv_blc_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blc_car_empty"
+                        android:id="@+id/ga_iv_blc_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1050,14 +1056,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_slots_empty"
+                        android:id="@+id/ga_tv_blc_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blc_car_enemy"
+                        android:id="@+id/ga_iv_blc_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1066,7 +1072,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blc_slots_enemy"
+                        android:id="@+id/ga_tv_blc_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1083,7 +1089,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_car_black"
+                        android:id="@+id/ga_iv_brc_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1092,14 +1098,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_slots"
+                        android:id="@+id/ga_tv_brc_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_car_our"
+                        android:id="@+id/ga_iv_brc_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1108,14 +1114,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_slots_our"
+                        android:id="@+id/ga_tv_brc_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_car_empty"
+                        android:id="@+id/ga_iv_brc_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1124,14 +1130,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_slots_empty"
+                        android:id="@+id/ga_tv_brc_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_car_enemy"
+                        android:id="@+id/ga_iv_brc_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1140,7 +1146,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brc_slots_enemy"
+                        android:id="@+id/ga_tv_brc_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1165,7 +1171,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blc_progress"
+                        android:id="@+id/ga_iv_blc_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -1180,7 +1186,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brc_progress"
+                        android:id="@+id/ga_iv_brc_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -1206,14 +1212,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_ga_blb_name"
+                        android:id="@+id/ga_iv_blb_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_x2"
+                        android:id="@+id/ga_tv_blb_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -1221,7 +1227,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_points"
+                        android:id="@+id/ga_tv_blb_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -1239,14 +1245,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_name"
+                        android:id="@+id/ga_iv_brb_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_x2"
+                        android:id="@+id/ga_tv_brb_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -1254,7 +1260,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_points"
+                        android:id="@+id/ga_tv_brb_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -1282,7 +1288,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blb_car_black"
+                        android:id="@+id/ga_iv_blb_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1291,14 +1297,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_slots"
+                        android:id="@+id/ga_tv_blb_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blb_car_our"
+                        android:id="@+id/ga_iv_blb_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1307,14 +1313,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_slots_our"
+                        android:id="@+id/ga_tv_blb_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blb_car_empty"
+                        android:id="@+id/ga_iv_blb_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1323,14 +1329,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_slots_empty"
+                        android:id="@+id/ga_tv_blb_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_blb_car_enemy"
+                        android:id="@+id/ga_iv_blb_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1339,7 +1345,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_blb_slots_enemy"
+                        android:id="@+id/ga_tv_blb_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1356,7 +1362,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_car_black"
+                        android:id="@+id/ga_iv_brb_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1365,14 +1371,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_slots"
+                        android:id="@+id/ga_tv_brb_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_car_our"
+                        android:id="@+id/ga_iv_brb_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1381,14 +1387,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_slots_our"
+                        android:id="@+id/ga_tv_brb_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_car_empty"
+                        android:id="@+id/ga_iv_brb_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1397,14 +1403,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_slots_empty"
+                        android:id="@+id/ga_tv_brb_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_car_enemy"
+                        android:id="@+id/ga_iv_brb_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1413,7 +1419,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_ga_brb_slots_enemy"
+                        android:id="@+id/ga_tv_brb_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1438,7 +1444,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_ga_blb_progress"
+                        android:id="@+id/ga_iv_blb_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -1453,7 +1459,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_ga_brb_progress"
+                        android:id="@+id/ga_iv_brb_progress"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1" />
@@ -1466,7 +1472,7 @@
 
 
             <Button
-                android:id="@+id/bt_ga_strategy"
+                android:id="@+id/ga_bt_strategy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/strategic_planning"

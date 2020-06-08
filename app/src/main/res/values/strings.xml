@@ -5,6 +5,7 @@
     <string name="banner_ad_ga_unit_id" translatable="false">ca-app-pub-2870168293382158/7950570922</string>
     <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
     <string name="banner_ad_ca_unit_id" translatable="false">ca-app-pub-2870168293382158/8639364851</string>
+    <string name="banner_ad_ua_unit_id" translatable="false">ca-app-pub-2870168293382158/2328450838</string>
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
     <string name="last_screenshot_file_name" translatable="false">last_screenshot.PNG</string>
@@ -27,6 +28,15 @@
     <string name="set_free_and_repair">Set free / repair</string>
     <string name="time_reparing_hhmmss">Repairing time HH:MM:SS (without ":")</string>
 
+    <string name="uuid">User UID</string>
+    <string name="uuid_colon">User UID:</string>
+    <string name="usernic">User Nic</string>
+    <string name="usernic_colon">User Nic:</string>
+    <string name="username">User Name</string>
+    <string name="username_colon">User Name:</string>
+    <string name="useremail">User Email</string>
+    <string name="useremail_colon">User Email:</string>
+
     <string name="plus_us">+ us</string>
     <string name="time">Time</string>
     <string name="plus_they">+ them</string>
@@ -42,6 +52,7 @@
     <string name="result">Result</string>
     <string name="settings">Settings</string>
     <string name="open_screenshot">Open screenshot</string>
+    <string name="open_login">User account</string>
     <string name="set_screenshot_folder">Select screenshot folder</string>
     <string name="about_us">About</string>
     <string name="exit">Exit</string>
@@ -204,9 +215,8 @@
     <string name="colors_brb_increase" translatable="false">BRB increase</string>
     <string name="colors_brb_slots" translatable="false">BRB slots</string>
     <string name="colors_brb_progress" translatable="false">BRB progress</string>
-    
-    
-    
+
+
     <string name="red" translatable="false">RED</string>
     <string name="green" translatable="false">GREEN</string>
     <string name="blue" translatable="false">BLUE</string>
@@ -414,6 +424,10 @@
     <string name="dingbat1" translatable="false">➊</string>
     <string name="dingbat2" translatable="false">➋</string>
     <string name="dingbat3" translatable="false">➌</string>
+    <string name="uid_copied_to_clipboard">User UID was copied to clipboard</string>
+    <string name="your_signed_out">You have been signed out.</string>
+    <string name="welcome">Welcome</string>
+    <string name="could_not_sing_in">We couldn\'t sign you in. Please try again later.</string>
 
     <string-array name="pref_colors_entries">
         <item>Car Box1</item>

@@ -117,6 +117,19 @@
     <string name="building_colon">Здание:</string>
     <string name="set_free_and_repair">Сделать свободной / починить</string>
     <string name="time_reparing_hhmmss">Время ремонта ЧЧ:ММ:СС (без \":\")</string>
+    <string name="open_login">Кабинет пользователя</string>
+    <string name="uuid">User UID</string>
+    <string name="uuid_colon">User UID:</string>
+    <string name="usernic">User Nic</string>
+    <string name="usernic_colon">User Nic:</string>
+    <string name="username">User Name</string>
+    <string name="username_colon">User Name:</string>
+    <string name="useremail">User Email</string>
+    <string name="useremail_colon">User Email:</string>
+    <string name="uid_copied_to_clipboard">User UID был успешно скопирован в буфер обмена</string>
+    <string name="your_signed_out">Вы разлогинились.</string>
+    <string name="welcome">Привет</string>
+    <string name="could_not_sing_in">Вы не залогинились. Попробуйте еще раз.</string>
 
 
 </resources>
