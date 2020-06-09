@@ -36,6 +36,10 @@
     <string name="username_colon">User Name:</string>
     <string name="useremail">User Email</string>
     <string name="useremail_colon">User Email:</string>
+    <string name="team">Team</string>
+    <string name="team_colon">Team:</string>
+    <string name="role">Role</string>
+    <string name="role_colon">Role:</string>
 
     <string name="plus_us">+ us</string>
     <string name="time">Time</string>

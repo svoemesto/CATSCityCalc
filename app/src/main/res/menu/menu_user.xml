@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_user_logout"
+        android:orderInCategory="1"
+        android:title="Logout" />
+    <item
+        android:id="@+id/menu_user_send_email_verification"
+        android:orderInCategory="2"
+        android:title="Send email verification" />
+    <item
+        android:id="@+id/menu_user_create_team"
+        android:orderInCategory="3"
+        android:title="Create team" />
+    <item
+        android:id="@+id/menu_user_leave_team"
+        android:orderInCategory="4"
+        android:title="Leave team" />
+    <item
+        android:id="@+id/menu_user_manage_team"
+        android:orderInCategory="4"
+        android:title="Manage team" />
+
+</menu>

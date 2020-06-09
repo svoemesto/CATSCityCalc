@@ -12,13 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbTeam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbTeamUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_user.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/GameActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/UserActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +92,9 @@
       <list>
         <option value="Interface" />
         <option value="valueResourceFile" />
-        <option value="resourceFile" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -117,7 +121,7 @@
     <property name="ApkExportedModule" value="app" />
     <property name="BundleExportedModule" value="app" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5_API_R" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-08T14:35:33.937Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-08T16:48:50.182Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -354,10 +358,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591617790033">
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591635713243">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591617790033" />
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591635713243" />
     <state x="661" y="431" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591432489451">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -366,6 +370,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1300" y="455" key="AndroidCreateResourceDirectoryDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591343340325" />
+    <state x="1300" y="455" key="AndroidCreateResourceFileDialog" timestamp="1591686110589">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1300" y="455" key="AndroidCreateResourceFileDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591686110589" />
     <state x="1578" y="513" key="AndroidCreateXmlResourceDialog" timestamp="1591616076264">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -374,38 +382,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1591439411633" />
-    <state width="3397" height="398" key="GridCell.Tab.0.bottom" timestamp="1591626944270">
+    <state width="3397" height="445" key="GridCell.Tab.0.bottom" timestamp="1591688540073">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="398" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591626944270" />
-    <state width="3397" height="398" key="GridCell.Tab.0.center" timestamp="1591626944270">
+    <state width="3397" height="445" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591688540073" />
+    <state width="3397" height="445" key="GridCell.Tab.0.center" timestamp="1591688540073">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="398" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591626944270" />
-    <state width="3397" height="398" key="GridCell.Tab.0.left" timestamp="1591626944269">
+    <state width="3397" height="445" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591688540073" />
+    <state width="3397" height="445" key="GridCell.Tab.0.left" timestamp="1591688540073">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="398" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591626944269" />
-    <state width="3397" height="398" key="GridCell.Tab.0.right" timestamp="1591626944270">
+    <state width="3397" height="445" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591688540073" />
+    <state width="3397" height="445" key="GridCell.Tab.0.right" timestamp="1591688540073">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="398" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591626944270" />
-    <state width="2494" height="332" key="GridCell.Tab.1.bottom" timestamp="1591623366641">
+    <state width="3397" height="445" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591688540073" />
+    <state width="3397" height="332" key="GridCell.Tab.1.bottom" timestamp="1591684994701">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2494" height="332" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591623366641" />
-    <state width="2494" height="332" key="GridCell.Tab.1.center" timestamp="1591623366639">
+    <state width="3397" height="332" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591684994701" />
+    <state width="3397" height="332" key="GridCell.Tab.1.center" timestamp="1591684994701">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2494" height="332" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591623366639" />
-    <state width="2494" height="332" key="GridCell.Tab.1.left" timestamp="1591623366639">
+    <state width="3397" height="332" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591684994701" />
+    <state width="3397" height="332" key="GridCell.Tab.1.left" timestamp="1591684994701">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2494" height="332" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591623366639" />
-    <state width="2494" height="332" key="GridCell.Tab.1.right" timestamp="1591623366640">
+    <state width="3397" height="332" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591684994701" />
+    <state width="3397" height="332" key="GridCell.Tab.1.right" timestamp="1591684994701">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2494" height="332" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591623366640" />
+    <state width="3397" height="332" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591684994701" />
     <state width="1369" height="700" key="XDebugger.FullValuePopup" timestamp="1591530754556">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -422,10 +430,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1130" y="453" width="540" height="496" key="extract.method.dialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591275588514" />
-    <state x="1376" y="330" width="672" height="677" key="run.anything.popup" timestamp="1591349438721">
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup" timestamp="1591633583809">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1376" y="330" width="672" height="677" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1591349438721" />
+    <state x="1376" y="330" width="672" height="677" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1591633583809" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

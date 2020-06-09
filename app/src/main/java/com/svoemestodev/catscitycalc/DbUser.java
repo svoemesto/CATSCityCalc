@@ -6,6 +6,7 @@ public class DbUser {
     String userName;
     String userEmail;
     String userNIC;
+    String teamID;
 
     public DbUser() {
     }
@@ -16,6 +17,14 @@ public class DbUser {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
     }
 
     public String getUserUID() {

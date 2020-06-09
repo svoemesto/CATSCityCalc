@@ -245,7 +245,7 @@ public class GameActivity extends AppCompatActivity {
 
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
-        fbUser.reload();
+
 
         context = getBaseContext();
 
@@ -256,6 +256,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (fbUser != null) {
             Toast.makeText(this,getString(R.string.welcome) + " " + fbUser.getDisplayName(), Toast.LENGTH_LONG).show();
+            fbUser.reload();
             ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "(email VERIFIED)" : "(email NOT VERIFIED)"));
         } else {
             ga_tv_user.setText("Login, please!!!");
@@ -1281,9 +1282,10 @@ public class GameActivity extends AppCompatActivity {
 
             fbAuth = FirebaseAuth.getInstance();
             fbUser = fbAuth.getCurrentUser();
-            fbUser.reload();
+
             if (fbUser != null) {
                 ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "(email VERIFIED)" : "(email NOT VERIFIED)"));
+                fbUser.reload();
             } else {
                 ga_tv_user.setText("Login, please!!!");
             }
