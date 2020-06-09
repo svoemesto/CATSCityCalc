@@ -2,10 +2,18 @@ package com.svoemestodev.catscitycalc;
 
 public class DbTeamUser {
 
+    String teamUserID;
     String teamID;
     String userID;
     String userRole;
 
+    public String getTeamUserID() {
+        return teamUserID;
+    }
+
+    public void setTeamUserID(String teamUserID) {
+        this.teamUserID = teamUserID;
+    }
 
     public String getTeamID() {
         return teamID;

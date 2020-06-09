@@ -73,7 +73,9 @@ public class UserActivity extends AppCompatActivity {
 
     private static final int SIGN_IN_REQUEST_CODE = 1;
     private static final String TAG = "UserActivity";
-    private static boolean dbTeamWaiting;
+
+    private static DbTeam dbTeam;
+    private static DbTeamUser dbTeamUser;
 
     private static DocumentReference userDocument;
 
@@ -123,7 +125,103 @@ public class UserActivity extends AppCompatActivity {
 
     private void doMenuLeaveTeam() {
 
+        if (isHaveTeam) {
+            if (isTeamLeader) {
+                // если ты в банде лидер - надо проверить, есть ли еще в банде еще хоть кто-то. Если нет - удалить банду. Если да - проверить, есть ли среди них хоть один лидер. Если нет - выходить из банды нельзя.
+
+                CollectionReference crTeamUsers = GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).collection("teamUsers");
+                crTeamUsers.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                int countUsersInTeam = 0;
+                                int countLeadersInTeam = 0;
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    for (DbTeamUser teamUser: listTeamUsers) {
+                                        countUsersInTeam++;
+                                        if (teamUser.getUserRole().equals("leader")) {
+                                            countLeadersInTeam++;
+                                        }
+                                    }
+                                }
+                                if (countUsersInTeam == 1) {
+                                    dbUser.setTeamID(null);
+                                    leaveTeam(dbTeam.getTeamID(), dbUser.getUserID(), dbTeamUser.getTeamUserID());
+                                    deleteTeam(dbTeam.getTeamID());
+                                } else if (countLeadersInTeam > 1) {
+                                    dbUser.setTeamID(null);
+                                    leaveTeam(dbTeam.getTeamID(), dbUser.getUserID(), dbTeamUser.getTeamUserID());
+                                } else {
+                                    Toast.makeText(UserActivity.this, "В банде есть еще пользователи, и ни один из них не является лидером. Прежде чем покинуть такую банду нужно или назначить кого-то лидером, или удалить всех пользователей из банды.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        }
+                    }
+
+                });
+
+
+            } else {
+                // если ты в банде не лидер - смело можно покидать банду
+                dbUser.setTeamID(null);
+                leaveTeam(dbTeam.getTeamID(), dbUser.getUserID(), dbTeamUser.getTeamUserID());
+            }
+        }
+
     }
+
+    private void deleteTeam(String teamID) {
+
+        DocumentReference drTeam = GameActivity.fbDb.collection("teams").document(teamID);
+
+        drTeam.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                loadDataToViews();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadDataToViews();
+            }
+        });
+
+    }
+
+    private void leaveTeam(String teamID, String userID, String teamUserID) {
+
+        DocumentReference drUser = GameActivity.fbDb.collection("users").document(userID);
+
+        drUser.update("teamID", null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                loadDataToViews();
+            }
+        })
+        .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadDataToViews();
+            }
+        });
+
+        DocumentReference drTeamUser = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(teamUserID);
+        drTeamUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                loadDataToViews();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                loadDataToViews();
+            }
+        });
+
+    }
+
 
     private void doMenuCreateTeam() {
 
@@ -140,13 +238,10 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String newValue = input.getText().toString();
 
-                final String collectionName = "teams";
-                final String idFieldName = "teamID";
-
-                CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
+                CollectionReference collectionReference = GameActivity.fbDb.collection("teams");
 
                 Map<String, Object> mapNewItem = new HashMap<>();
-                mapNewItem.put(idFieldName, null);
+                mapNewItem.put("teamID", null);
                 mapNewItem.put("teamName", newValue);
                 mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
@@ -156,9 +251,9 @@ public class UserActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                         String newDocumentID = documentReference.getId();
-                        CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
+                        CollectionReference collectionReference = GameActivity.fbDb.collection("teams");
                         Map<String, Object> mapUpdateItem = new HashMap<>();
-                        mapUpdateItem.put(idFieldName, newDocumentID);
+                        mapUpdateItem.put("teamID", newDocumentID);
                         mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
                         collectionReference.document(newDocumentID).update(mapUpdateItem);
 
@@ -168,10 +263,7 @@ public class UserActivity extends AppCompatActivity {
                         users.document(dbUser.getUserID()).update(updateUser);
                         dbUser.setTeamID(newDocumentID);
 
-                        final String subCollectionName = "teamUsers";
-                        final String subIdFieldName = "teamUserID";
-
-                        collectionReference = GameActivity.fbDb.collection(collectionName).document(newDocumentID).collection(subCollectionName);
+                        collectionReference = GameActivity.fbDb.collection("teams").document(newDocumentID).collection("teamUsers");
                         Map<String, Object> mapNewItem = new HashMap<>();
                         mapNewItem.put("teamID", newDocumentID);
                         mapNewItem.put("userID", dbUser.getUserID());
@@ -184,9 +276,9 @@ public class UserActivity extends AppCompatActivity {
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                 String newDocumentID = documentReference.getId();
-                                CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName).document(newDocumentID).collection(subCollectionName);
+                                CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(newDocumentID).collection("teamUsers");
                                 Map<String, Object> mapUpdateItem = new HashMap<>();
-                                mapUpdateItem.put(subIdFieldName, newDocumentID);
+                                mapUpdateItem.put("teamUserID", newDocumentID);
                                 mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
                                 collectionReference.document(newDocumentID).update(mapUpdateItem);
 
@@ -264,13 +356,9 @@ public class UserActivity extends AppCompatActivity {
             startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_REQUEST_CODE);
         } else {
 
-            final String collectionName = "users";
-            final String idFieldName = "userID";
-            String uidFieldName = "userUID";
-            final String uidFieldValue = GameActivity.fbUser.getUid();
 
-            CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
-            Query query = collectionReference.whereEqualTo(uidFieldName, uidFieldValue);
+            CollectionReference collectionReference = GameActivity.fbDb.collection("users");
+            Query query = collectionReference.whereEqualTo("userUID", GameActivity.fbUser.getUid());
             query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -280,7 +368,7 @@ public class UserActivity extends AppCompatActivity {
                         }
                         if (task.getResult().isEmpty()) {
                             // результат запроса пустой, такого юзера еще нет - создаем его
-                            dbUser.userUID = uidFieldValue;
+                            dbUser.userUID = GameActivity.fbUser.getUid();
                             dbUser.userName = GameActivity.fbUser.getDisplayName();
                             dbUser.userEmail = GameActivity.fbUser.getEmail();
                             dbUser.userNIC = GameActivity.fbUser.getDisplayName();
@@ -296,15 +384,15 @@ public class UserActivity extends AppCompatActivity {
                             mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
                             // Add a new document with a generated ID
-                            GameActivity.fbDb.collection(collectionName).add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            GameActivity.fbDb.collection("users").add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                     String newDocumentID = documentReference.getId();
                                     dbUser.userID = newDocumentID;
-                                    CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
+                                    CollectionReference collectionReference = GameActivity.fbDb.collection("users");
                                     Map<String, Object> mapUpdateItem = new HashMap<>();
-                                    mapUpdateItem.put(idFieldName, newDocumentID);
+                                    mapUpdateItem.put("userID", newDocumentID);
                                     mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
                                     collectionReference.document(newDocumentID).update(mapUpdateItem);
                                 }
@@ -357,14 +445,8 @@ public class UserActivity extends AppCompatActivity {
         if(requestCode == SIGN_IN_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
 
-                final String collectionName = "users";
-                final String idFieldName = "userID";
-                String uidFieldName = "userUID";
-                final String uidFieldValue = GameActivity.fbUser.getUid();
-
-
-                CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
-                Query query = collectionReference.whereEqualTo(uidFieldName, uidFieldValue);
+                CollectionReference collectionReference = GameActivity.fbDb.collection("users");
+                Query query = collectionReference.whereEqualTo("userUID", GameActivity.fbUser.getUid());
                 query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -374,7 +456,7 @@ public class UserActivity extends AppCompatActivity {
                             }
                             if (task.getResult().isEmpty()) {
                                 // результат запроса пустой, такого юзера еще нет - создаем его
-                                dbUser.userUID = uidFieldValue;
+                                dbUser.userUID = GameActivity.fbUser.getUid();
                                 dbUser.userName = GameActivity.fbUser.getDisplayName();
                                 dbUser.userEmail = GameActivity.fbUser.getEmail();
                                 dbUser.userNIC = GameActivity.fbUser.getDisplayName();
@@ -390,15 +472,15 @@ public class UserActivity extends AppCompatActivity {
                                 mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
                                 // Add a new document with a generated ID
-                                GameActivity.fbDb.collection(collectionName).add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                GameActivity.fbDb.collection("users").add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
                                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                         String newDocumentID = documentReference.getId();
                                         dbUser.userID = newDocumentID;
-                                        CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
+                                        CollectionReference collectionReference = GameActivity.fbDb.collection("users");
                                         Map<String, Object> mapUpdateItem = new HashMap<>();
-                                        mapUpdateItem.put(idFieldName, newDocumentID);
+                                        mapUpdateItem.put("userID", newDocumentID);
                                         mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
                                         collectionReference.document(newDocumentID).update(mapUpdateItem);
 
@@ -474,18 +556,14 @@ public class UserActivity extends AppCompatActivity {
 
         if (dbUser.getTeamID() != null) {
             isHaveTeam = true;
-            final String collectionName = "teams";
-            final String idFieldName = "teamID";
-            String uidFieldName = "userUID";
-            String idFieldValue = dbUser.getTeamID();
 
-            CollectionReference collectionReference = GameActivity.fbDb.collection(collectionName);
+            CollectionReference collectionReference = GameActivity.fbDb.collection("teams");
             try {
-                final DocumentReference documentReference = collectionReference.document(idFieldValue);
+                final DocumentReference documentReference = collectionReference.document(dbUser.getTeamID());
                 documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        DbTeam dbTeam = documentSnapshot.toObject(DbTeam.class);
+                        dbTeam = documentSnapshot.toObject(DbTeam.class);
                         ua_tv_team_value.setText(dbTeam.getTeamName());
 
                         CollectionReference subCollectionReference = documentReference.collection("teamUsers");
@@ -496,7 +574,8 @@ public class UserActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                        DbTeamUser dbTeamUser = document.toObject(DbTeamUser.class);
+                                        dbTeamUser = document.toObject(DbTeamUser.class);
+                                        dbTeamUser.setTeamUserID(document.getId());
                                         ua_tv_role_value.setText(dbTeamUser.getUserRole());
                                         if (dbTeamUser.getUserRole().equals("leader")) {
                                             isTeamLeader = true;
@@ -560,8 +639,6 @@ public class UserActivity extends AppCompatActivity {
             }
 
         }
-
-
 
 
     }
