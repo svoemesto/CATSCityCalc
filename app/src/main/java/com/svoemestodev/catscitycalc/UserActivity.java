@@ -256,22 +256,22 @@ public class UserActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                        String newDocumentID = documentReference.getId();
+                        final String teamID = documentReference.getId();
                         CollectionReference collectionReference = GameActivity.fbDb.collection("teams");
                         Map<String, Object> mapUpdateItem = new HashMap<>();
-                        mapUpdateItem.put("teamID", newDocumentID);
+                        mapUpdateItem.put("teamID", teamID);
                         mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
-                        collectionReference.document(newDocumentID).update(mapUpdateItem);
+                        collectionReference.document(teamID).update(mapUpdateItem);
 
                         CollectionReference users = GameActivity.fbDb.collection("users");
                         Map<String, Object> updateUser = new HashMap<>();
-                        updateUser.put("teamID", newDocumentID);
+                        updateUser.put("teamID", teamID);
                         users.document(dbUser.getUserID()).update(updateUser);
-                        dbUser.setTeamID(newDocumentID);
+                        dbUser.setTeamID(teamID);
 
-                        collectionReference = GameActivity.fbDb.collection("teams").document(newDocumentID).collection("teamUsers");
+                        collectionReference = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers");
                         Map<String, Object> mapNewItem = new HashMap<>();
-                        mapNewItem.put("teamID", newDocumentID);
+                        mapNewItem.put("teamID", teamID);
                         mapNewItem.put("userID", dbUser.getUserID());
                         mapNewItem.put("userRole", "leader");
                         mapNewItem.put("userNIC", dbUser.getUserNIC());
@@ -283,7 +283,7 @@ public class UserActivity extends AppCompatActivity {
                             public void onSuccess(DocumentReference documentReference) {
                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                 String newDocumentID = documentReference.getId();
-                                CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(newDocumentID).collection("teamUsers");
+                                CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers");
                                 Map<String, Object> mapUpdateItem = new HashMap<>();
                                 mapUpdateItem.put("teamUserID", newDocumentID);
                                 mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());

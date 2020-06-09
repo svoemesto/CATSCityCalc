@@ -192,7 +192,7 @@ public class TeamActivity extends AppCompatActivity {
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
                                                 String newDocumentID = documentReference.getId();
-                                                CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(newDocumentID).collection("teamUsers");
+                                                CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers");
                                                 Map<String, Object> mapUpdateItem = new HashMap<>();
                                                 mapUpdateItem.put("teamUserID", newDocumentID);
                                                 mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
@@ -267,7 +267,6 @@ public class TeamActivity extends AppCompatActivity {
                     if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
                         Toast.makeText(TeamActivity.this, "Нельзя удалить из банды самого себя.", Toast.LENGTH_LONG).show();
                     } else {
-                        final String userRole = "leader";
                         final String userID = dbTeamUser.getUserID();
                         final String teamID = dbTeam.getTeamID();
 
@@ -288,7 +287,7 @@ public class TeamActivity extends AppCompatActivity {
                                     mapUpdateItem.put("teamID", null);
                                     mapUpdateItem.put("leaderUID", null);
                                     GameActivity.fbDb.collection("users").document(userID).update(mapUpdateItem);
-                                    
+
                                 }
                             }
                         });

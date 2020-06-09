@@ -34,9 +34,14 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -256,8 +261,45 @@ public class GameActivity extends AppCompatActivity {
 
         if (fbUser != null) {
             Toast.makeText(this,getString(R.string.welcome) + " " + fbUser.getDisplayName(), Toast.LENGTH_LONG).show();
-            fbUser.reload();
-            ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "(email VERIFIED)" : "(email NOT VERIFIED)"));
+            fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
+
+                    fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            final String teamID = (String)documentSnapshot.get("teamID");
+                            if (teamID == null || teamID.equals("")) {
+                                ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
+                            } else {
+                                fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        String teamName = (String)documentSnapshot.get("teamName");
+                                        ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
+
+                                        fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                                if (listTeamUsers.size() >0) {
+                                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                                    String userRole = dbTeamUser.getUserRole();
+                                                    ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+                                                }
+                                            }
+                                        });
+
+                                    }
+                                });
+
+                            }
+                        }
+                    });
+
+                }
+            });
         } else {
             ga_tv_user.setText("Login, please!!!");
         }
@@ -1284,8 +1326,46 @@ public class GameActivity extends AppCompatActivity {
             fbUser = fbAuth.getCurrentUser();
 
             if (fbUser != null) {
-                ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "(email VERIFIED)" : "(email NOT VERIFIED)"));
-                fbUser.reload();
+
+                fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
+
+                        fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                final String teamID = (String)documentSnapshot.get("teamID");
+                                if (teamID == null || teamID.equals("")) {
+                                    ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
+                                } else {
+                                    fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            String teamName = (String)documentSnapshot.get("teamName");
+                                            ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
+
+                                            fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                                    if (listTeamUsers.size() >0) {
+                                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                                        String userRole = dbTeamUser.getUserRole();
+                                                        ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+                                                    }
+                                                }
+                                            });
+
+                                        }
+                                    });
+
+                                }
+                            }
+                        });
+
+                    }
+                });
             } else {
                 ga_tv_user.setText("Login, please!!!");
             }
