@@ -37,6 +37,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -263,7 +264,36 @@ public class TeamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    displayRecords();
+                    if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
+                        Toast.makeText(TeamActivity.this, "Нельзя удалить из банды самого себя.", Toast.LENGTH_LONG).show();
+                    } else {
+                        final String userRole = "leader";
+                        final String userID = dbTeamUser.getUserID();
+                        final String teamID = dbTeam.getTeamID();
+
+                        Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            displayRecords();
+                                        }
+                                    });
+                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                    mapUpdateItem.put("teamID", null);
+                                    mapUpdateItem.put("leaderUID", null);
+                                    GameActivity.fbDb.collection("users").document(userID).update(mapUpdateItem);
+                                    
+                                }
+                            }
+                        });
+                    }
+
                 }
             });
 
@@ -271,7 +301,51 @@ public class TeamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    displayRecords();
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                    builder.setTitle(R.string.usernic);
+                    String defaultValue = dbTeamUser.getUserNIC();
+                    final EditText input = new EditText(TeamActivity.this);
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
+                    input.setText(defaultValue);
+                    builder.setView(input);
+
+                    builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            final String userNIC = input.getText().toString();
+                            final String userID = dbTeamUser.getUserID();
+                            final String teamID = dbTeam.getTeamID();
+
+                            Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                    if (listTeamUsers.size() > 0) {
+                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                        Map<String, Object> mapUpdateItem = new HashMap<>();
+                                        mapUpdateItem.put("userNIC", userNIC);
+                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).update(mapUpdateItem).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                displayRecords();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+                        }
+                    });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+
                 }
             });
 
@@ -279,7 +353,35 @@ public class TeamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    displayRecords();
+                    if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
+                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                    } else {
+                        final String userRole = "leader";
+                        final String userID = dbTeamUser.getUserID();
+                        final String teamID = dbTeam.getTeamID();
+
+                        Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                    mapUpdateItem.put("userRole", userRole);
+                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).update(mapUpdateItem).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            displayRecords();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+
+
+
                 }
             });
 
@@ -287,7 +389,33 @@ public class TeamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    displayRecords();
+                    if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
+                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                    } else {
+                        final String userRole = "captain";
+                        final String userID = dbTeamUser.getUserID();
+                        final String teamID = dbTeam.getTeamID();
+
+                        Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                    mapUpdateItem.put("userRole", userRole);
+                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).update(mapUpdateItem).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            displayRecords();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+
                 }
             });
 
@@ -295,7 +423,33 @@ public class TeamActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    displayRecords();
+                    if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
+                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                    } else {
+                        final String userRole = "meat";
+                        final String userID = dbTeamUser.getUserID();
+                        final String teamID = dbTeam.getTeamID();
+
+                        Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                    mapUpdateItem.put("userRole", userRole);
+                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).update(mapUpdateItem).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            displayRecords();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+
                 }
             });
 
