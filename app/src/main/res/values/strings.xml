@@ -40,6 +40,8 @@
     <string name="team_colon">Team:</string>
     <string name="role">Role</string>
     <string name="role_colon">Role:</string>
+    <string name="leaderuid">Lider UID</string>
+    <string name="leaderuid_colon">Lider UID:</string>
 
     <string name="plus_us">+ us</string>
     <string name="time">Time</string>

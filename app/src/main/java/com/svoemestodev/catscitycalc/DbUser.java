@@ -7,8 +7,17 @@ public class DbUser {
     String userEmail;
     String userNIC;
     String teamID;
+    String leaderUID;
 
     public DbUser() {
+    }
+
+    public String getLeaderUID() {
+        return leaderUID;
+    }
+
+    public void setLeaderUID(String leaderUID) {
+        this.leaderUID = leaderUID;
     }
 
     public String getUserID() {

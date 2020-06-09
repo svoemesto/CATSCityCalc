@@ -201,6 +201,51 @@
                 android:gravity="center"
                 >
 
+                <ImageButton
+                    android:id="@+id/ua_ib_set_leaderuid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setLeaderUID"
+                    />
+
+                <TextView
+                    android:id="@+id/ua_tv_leaderuid_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/leaderuid_colon"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/ua_tv_leaderuid_label"
+                    android:layout_alignBottom="@+id/ua_tv_leaderuid_label"
+                    android:layout_toStartOf="@+id/ua_tv_leaderuid_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/ua_tv_leaderuid_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/ua_ib_set_leaderuid"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
                 <TextView
                     android:id="@+id/ua_tv_team_label"
                     android:layout_width="wrap_content"

@@ -134,6 +134,8 @@
     <string name="team_colon">Банда:</string>
     <string name="role">Роль</string>
     <string name="role_colon">Роль:</string>
+    <string name="leaderuid">UID лидера</string>
+    <string name="leaderuid_colon">UID лидера:</string>
 
 
 </resources>

@@ -60,6 +60,8 @@ public class UserActivity extends AppCompatActivity {
     AdView ua_ad_banner;
     ImageButton ua_ib_set_usernic;
     ImageButton ua_ib_copy_uuid;
+    ImageButton ua_ib_set_leaderuid;
+    TextView ua_tv_leaderuid_value;
     TextView ua_tv_usernic_value;
     TextView ua_tv_username_value;
     TextView ua_tv_useremail_value;
@@ -553,6 +555,8 @@ public class UserActivity extends AppCompatActivity {
         ua_tv_username_value.setText(dbUser.getUserName());
         ua_tv_useremail_value.setText(dbUser.getUserEmail());
         ua_tv_uuid_value.setText(dbUser.getUserUID());
+        String leaderUID = dbUser.getLeaderUID() == null ? "" : dbUser.getLeaderUID();
+        ua_tv_leaderuid_value.setText(leaderUID);
 
         if (dbUser.getTeamID() != null) {
             isHaveTeam = true;
@@ -609,6 +613,7 @@ public class UserActivity extends AppCompatActivity {
             Toast.makeText(UserActivity.this, "Емейл не подтвержден!", Toast.LENGTH_LONG).show();
             ua_ib_set_usernic.setEnabled(false);
             ua_ib_copy_uuid.setEnabled(false);
+            ua_ib_set_leaderuid.setEnabled(false);
 
             if (userMenu != null) menuItemLogout.setVisible(true);
             if (userMenu != null) menuItemSendEmailVerification.setVisible(true);
@@ -619,6 +624,7 @@ public class UserActivity extends AppCompatActivity {
         } else {
             ua_ib_set_usernic.setEnabled(true);
             ua_ib_copy_uuid.setEnabled(true);
+            ua_ib_set_leaderuid.setEnabled(true);
 
             if (userMenu != null) menuItemLogout.setVisible(true);
             if (userMenu != null) menuItemSendEmailVerification.setVisible(false);
@@ -653,6 +659,9 @@ public class UserActivity extends AppCompatActivity {
         ua_tv_uuid_value = findViewById(R.id.ua_tv_uuid_value);
         ua_tv_team_value = findViewById(R.id.ua_tv_team_value);
         ua_tv_role_value = findViewById(R.id.ua_tv_role_value);
+        ua_ib_set_leaderuid = findViewById(R.id.ua_ib_set_leaderuid);
+        ua_tv_leaderuid_value = findViewById(R.id.ua_tv_leaderuid_value);
+
     }
 
     public void copyUUIDtoClipboard(View view) {
@@ -677,9 +686,8 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String newValue = input.getText().toString();
                 dbUser.setUserNIC(newValue);
-                CollectionReference users = GameActivity.fbDb.collection("users");
                 Map<String, Object> updateUser = new HashMap<>();
-                updateUser.put("userNIC", dbUser.userNIC);
+                updateUser.put("userNIC", dbUser.getUserNIC());
                 GameActivity.fbDb.collection("users").document(dbUser.getUserID()).update(updateUser);
 
                 loadDataToViews();
@@ -696,4 +704,37 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    public void setLeaderUID(View view) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(UserActivity.this);
+        builder.setTitle(R.string.leaderuid);
+        String defaultValue = dbUser.getLeaderUID();
+        final EditText input = new EditText(UserActivity.this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setText(defaultValue);
+        builder.setView(input);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String newValue = input.getText().toString();
+                if (newValue.equals("")) newValue = null;
+                dbUser.setLeaderUID(newValue);
+                Map<String, Object> updateUser = new HashMap<>();
+                updateUser.put("leaderUID", dbUser.getLeaderUID());
+                GameActivity.fbDb.collection("users").document(dbUser.getUserID()).update(updateUser);
+
+                loadDataToViews();
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
 }
