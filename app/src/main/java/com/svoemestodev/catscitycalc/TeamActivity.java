@@ -232,6 +232,38 @@ public class TeamActivity extends AppCompatActivity {
 
     }
 
+    public void renameTeam(View view) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+        builder.setTitle(R.string.team);
+        String defaultValue = dbTeam.getTeamName();
+        final EditText input = new EditText(TeamActivity.this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setText(defaultValue);
+        builder.setView(input);
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String newValue = input.getText().toString();
+                dbTeam.setTeamName(newValue);
+                Map<String, Object> updateTeam = new HashMap<>();
+                updateTeam.put("teamName", newValue);
+                GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).update(updateTeam);
+                ta_tv_name.setText(newValue);
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
+
     private class ListDbTeamUsersAdapter extends ArrayAdapter<DbTeamUser> {
 
         public ListDbTeamUsersAdapter(@NonNull Context context) {

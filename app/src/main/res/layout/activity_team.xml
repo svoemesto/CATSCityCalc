@@ -30,6 +30,15 @@
         android:onClick="inviteUser"
         />
 
+    <ImageButton
+        android:id="@+id/ta_bt_rename_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_keyboard_24"
+        android:layout_alignParentEnd="true"
+        android:onClick="renameTeam"
+        />
+
     <TextView
         android:id="@+id/ta_tv_name"
         android:layout_width="match_parent"
@@ -42,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ta_bt_invite_user"
-        android:layout_below="@id/ta_tv_name"
+        android:layout_below="@id/ta_bt_rename_team"
         />
 
 
