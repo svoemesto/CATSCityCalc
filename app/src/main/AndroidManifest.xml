@@ -15,9 +15,12 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserActivity"
-            android:label="@string/open_login"/>
-
+        <activity android:name=".TeamActivity"
+            android:label="@string/team"
+            />
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/open_login" />
         <activity android:name=".CarActivity" />
         <activity
             android:name=".SplashActivity"
@@ -28,13 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-            android:name=".StrategyActivity"
-            android:label="@string/sett_strategy" />
         <activity
             android:name=".GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleInstance">
-        </activity>
+            android:launchMode="singleInstance"></activity>
         <activity
             android:name=".ColorsdetectActivity"
             android:label="@string/sett_colors" />

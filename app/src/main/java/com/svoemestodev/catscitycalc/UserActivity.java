@@ -123,6 +123,10 @@ public class UserActivity extends AppCompatActivity {
 
     private void doMenuManageTeam() {
 
+        TeamActivity.dbTeam = dbTeam;
+        Intent intent = new Intent(this, TeamActivity.class);
+        startActivityForResult(intent, 0);
+
     }
 
     private void doMenuLeaveTeam() {
@@ -270,6 +274,7 @@ public class UserActivity extends AppCompatActivity {
                         mapNewItem.put("teamID", newDocumentID);
                         mapNewItem.put("userID", dbUser.getUserID());
                         mapNewItem.put("userRole", "leader");
+                        mapNewItem.put("userNIC", dbUser.getUserNIC());
                         mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
                         // Add a new document with a generated ID
@@ -385,18 +390,18 @@ public class UserActivity extends AppCompatActivity {
                             mapNewItem.put("teamID", dbUser.teamID);
                             mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
-                            // Add a new document with a generated ID
-                            GameActivity.fbDb.collection("users").add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            GameActivity.fbDb.collection("users").document(dbUser.userUID).set(mapNewItem).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                    String newDocumentID = documentReference.getId();
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    String newDocumentID = dbUser.userUID;
                                     dbUser.userID = newDocumentID;
                                     CollectionReference collectionReference = GameActivity.fbDb.collection("users");
                                     Map<String, Object> mapUpdateItem = new HashMap<>();
                                     mapUpdateItem.put("userID", newDocumentID);
                                     mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
                                     collectionReference.document(newDocumentID).update(mapUpdateItem);
+
+                                    loadDataToViews();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -457,6 +462,7 @@ public class UserActivity extends AppCompatActivity {
                                 dbUser.userID = document.getId();
                             }
                             if (task.getResult().isEmpty()) {
+
                                 // результат запроса пустой, такого юзера еще нет - создаем его
                                 dbUser.userUID = GameActivity.fbUser.getUid();
                                 dbUser.userName = GameActivity.fbUser.getDisplayName();
@@ -473,12 +479,10 @@ public class UserActivity extends AppCompatActivity {
                                 mapNewItem.put("teamID", dbUser.teamID);
                                 mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
-                                // Add a new document with a generated ID
-                                GameActivity.fbDb.collection("users").add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                GameActivity.fbDb.collection("users").document(dbUser.userUID).set(mapNewItem).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                        String newDocumentID = documentReference.getId();
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        String newDocumentID = dbUser.userUID;
                                         dbUser.userID = newDocumentID;
                                         CollectionReference collectionReference = GameActivity.fbDb.collection("users");
                                         Map<String, Object> mapUpdateItem = new HashMap<>();

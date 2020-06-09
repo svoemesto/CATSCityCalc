@@ -12,12 +12,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6161a039-4ea8-4a21-be58-034cef449eec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/TeamActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_delete_forever_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_edit_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_star_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_star_border_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_baseline_star_half_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_team.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_teamuser.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbTeamUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/DbTeamUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/UserActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_user.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,10 +137,10 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/raw" />
-    <property name="project.structure.last.edited" value="Dependencies" />
+    <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -140,14 +153,11 @@
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable-v24" />
     </key>
-    <key name="android.template.-1577744293">
-      <recent name="com.svoemestodev.catscitycalc" />
-    </key>
     <key name="android.template.packageName">
       <recent name="com.svoemestodev.catscitycalc" />
       <recent name="com.mrt.catscitycalc" />
     </key>
-    <key name="android.template.1080728018">
+    <key name="android.template.-1577744293">
       <recent name="com.svoemestodev.catscitycalc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -155,6 +165,12 @@
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\assets\tesseract" />
       <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\raw" />
       <recent name="D:\Dropbox\AndroidStudioProjects\CATSCityCalc\app\src\main\res\layout" />
+    </key>
+    <key name="android.template.1080728018">
+      <recent name="com.svoemestodev.catscitycalc" />
+    </key>
+    <key name="android.template.-765870531">
+      <recent name="com.svoemestodev.catscitycalc" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -353,10 +369,14 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591694954347">
+    <state x="1237" y="432" key="#PSD" timestamp="1591698453057">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591694954347" />
+    <state x="1237" y="432" key="#PSD/0.0.3440.1400@0.0.3440.1400" timestamp="1591698453057" />
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1591700336917">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1525" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591700336917" />
     <state x="661" y="431" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591432489451">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -409,6 +429,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="3397" height="332" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591693393811" />
+    <state x="1221" y="342" key="SettingsEditor" timestamp="1591699052182">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1221" y="342" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1591699052182" />
     <state width="1369" height="700" key="XDebugger.FullValuePopup" timestamp="1591530754556">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

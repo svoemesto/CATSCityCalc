@@ -6,6 +6,15 @@ public class DbTeamUser {
     String teamID;
     String userID;
     String userRole;
+    String userNIC;
+
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
 
     public String getTeamUserID() {
         return teamUserID;

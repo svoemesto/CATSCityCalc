@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".TeamActivity">
+
+    <com.google.android.gms.ads.AdView
+
+        android:id="@+id/ta_ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_ta_unit_id"
+        />
+
+    <Button
+        android:id="@+id/ta_bt_invite_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ta_ad_banner"
+        android:text="Invite user"
+        android:onClick="inviteUser"
+        />
+
+    <TextView
+        android:id="@+id/ta_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <ListView
+        android:id="@+id/ta_lv_users"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ta_bt_invite_user"
+        android:layout_below="@id/ta_tv_name"
+        />
+
+
+</RelativeLayout>

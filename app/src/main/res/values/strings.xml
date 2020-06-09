@@ -6,6 +6,7 @@
     <string name="banner_ad_sa_unit_id" translatable="false">ca-app-pub-2870168293382158/9000455374</string>
     <string name="banner_ad_ca_unit_id" translatable="false">ca-app-pub-2870168293382158/8639364851</string>
     <string name="banner_ad_ua_unit_id" translatable="false">ca-app-pub-2870168293382158/2328450838</string>
+    <string name="banner_ad_ta_unit_id" translatable="false">ca-app-pub-2870168293382158/8858996327</string>
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
     <string name="last_screenshot_file_name" translatable="false">last_screenshot.PNG</string>
