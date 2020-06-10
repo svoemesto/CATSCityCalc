@@ -136,19 +136,55 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/ga_tv_car1_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Здание:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car1_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car1_building" />
+                        
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/ga_tv_car1_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Задача:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car1_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car1_task" />
+
+                    </RelativeLayout>
+                    
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
                             android:id="@+id/ga_tv_car1_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
-                        <ImageView
-                            android:id="@+id/ga_iv_car1_house"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/ga_tv_car1_repair"
-                            />
                         
                     </RelativeLayout>
-
+                    
                     
                     
                 </LinearLayout>
@@ -238,16 +274,52 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/ga_tv_car2_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Здание:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car2_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car2_building" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/ga_tv_car2_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Задача:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car2_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car2_task" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
                             android:id="@+id/ga_tv_car2_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
-                        <ImageView
-                            android:id="@+id/ga_iv_car2_house"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/ga_tv_car2_repair"
-                            />
 
                     </RelativeLayout>
 
@@ -339,19 +411,54 @@
                         android:layout_gravity="center_horizontal">
 
                         <TextView
+                            android:id="@+id/ga_tv_car3_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Здание:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car3_building"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car3_building" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/ga_tv_car3_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="Задача:"
+                            />
+
+                        <ImageView
+                            android:id="@+id/ga_iv_car3_task"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/ga_tv_car3_task" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal">
+
+                        <TextView
                             android:id="@+id/ga_tv_car3_repair"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true" />
-                        <ImageView
-                            android:id="@+id/ga_iv_car3_house"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/ga_tv_car3_repair"
-                            />
 
                     </RelativeLayout>
-
 
                 </LinearLayout>
 

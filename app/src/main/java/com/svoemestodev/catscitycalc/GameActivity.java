@@ -184,7 +184,8 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_car1_shield;
     TextView ga_tv_car1_shield;
     TextView ga_tv_car1_repair;
-    ImageView ga_iv_car1_house;
+    ImageView ga_iv_car1_building;
+    ImageView ga_iv_car1_task;
 
     ImageButton ga_ib_car2;
     TextView ga_tv_car2_number;
@@ -194,7 +195,8 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_car2_shield;
     TextView ga_tv_car2_shield;
     TextView ga_tv_car2_repair;
-    ImageView ga_iv_car2_house;
+    ImageView ga_iv_car2_building;
+    ImageView ga_iv_car2_task;
 
     ImageButton ga_ib_car3;
     TextView ga_tv_car3_number;
@@ -204,7 +206,8 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_car3_shield;
     TextView ga_tv_car3_shield;
     TextView ga_tv_car3_repair;
-    ImageView ga_iv_car3_house;
+    ImageView ga_iv_car3_building;
+    ImageView ga_iv_car3_task;
     
     Button ga_bt_strategy;
 
@@ -1058,7 +1061,8 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_car1_shield = findViewById(R.id.ga_iv_car1_shield);
         ga_tv_car1_shield = findViewById(R.id.ga_tv_car1_shield);
         ga_tv_car1_repair = findViewById(R.id.ga_tv_car1_repair);
-        ga_iv_car1_house = findViewById(R.id.ga_iv_car1_house);
+        ga_iv_car1_building = findViewById(R.id.ga_iv_car1_building);
+        ga_iv_car1_task = findViewById(R.id.ga_iv_car1_task);
 
         ga_ib_car2 = findViewById(R.id.ga_ib_car2);
         ga_tv_car2_name = findViewById(R.id.ga_tv_car2_name);
@@ -1068,7 +1072,8 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_car2_shield = findViewById(R.id.ga_iv_car2_shield);
         ga_tv_car2_shield = findViewById(R.id.ga_tv_car2_shield);
         ga_tv_car2_repair = findViewById(R.id.ga_tv_car2_repair);
-        ga_iv_car2_house = findViewById(R.id.ga_iv_car2_house);
+        ga_iv_car2_building = findViewById(R.id.ga_iv_car2_building);
+        ga_iv_car2_task = findViewById(R.id.ga_iv_car2_task);
 
         ga_ib_car3 = findViewById(R.id.ga_ib_car3);
         ga_tv_car3_name = findViewById(R.id.ga_tv_car3_name);
@@ -1078,7 +1083,8 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_car3_shield = findViewById(R.id.ga_iv_car3_shield);
         ga_tv_car3_shield = findViewById(R.id.ga_tv_car3_shield);
         ga_tv_car3_repair = findViewById(R.id.ga_tv_car3_repair);
-        ga_iv_car3_house = findViewById(R.id.ga_iv_car3_house);
+        ga_iv_car3_building = findViewById(R.id.ga_iv_car3_building);
+        ga_iv_car3_task = findViewById(R.id.ga_iv_car3_task);
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
 
@@ -1124,6 +1130,7 @@ public class GameActivity extends AppCompatActivity {
 
             Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
             Bitmap car1BuildingBitmap = car1.getBuildingPicture();
+            Bitmap car1TaskBitmap = car1.getTaskPicture();
             if (car1CarBitmap != null) ga_ib_car1.setImageBitmap(car1CarBitmap);
             ga_ib_car1.setImageBitmap(car1.getCarPicture());
             if (car1.isFree()) ga_tv_car1_number.setTextColor(Color.BLUE);
@@ -1133,14 +1140,20 @@ public class GameActivity extends AppCompatActivity {
             String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
             ga_tv_car1_repair.setText(car1textRepair);
             if (car1.isDefencing()) {
-                ga_iv_car1_house.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car1BuildingBitmap != null) ga_iv_car1_house.setImageBitmap(car1BuildingBitmap);
+                ga_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car1BuildingBitmap != null) ga_iv_car1_building.setImageBitmap(car1BuildingBitmap);
             } else {
-                ga_iv_car1_house.setVisibility(View.INVISIBLE);
+                ga_iv_car1_building.setVisibility(View.INVISIBLE);
             }
+            if (car1.getBuildingTask() > 0) {
+                ga_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car1TaskBitmap != null) ga_iv_car1_task.setImageBitmap(car1TaskBitmap);
+            }
+
 
             Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
             Bitmap car2BuildingBitmap = car2.getBuildingPicture();
+            Bitmap car2TaskBitmap = car2.getTaskPicture();
             if (car2CarBitmap != null) ga_ib_car2.setImageBitmap(car2CarBitmap);
             ga_ib_car2.setImageBitmap(car2.getCarPicture());
             if (car2.isFree()) ga_tv_car2_number.setTextColor(Color.BLUE);
@@ -1150,14 +1163,19 @@ public class GameActivity extends AppCompatActivity {
             String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
             ga_tv_car2_repair.setText(car2textRepair);
             if (car2.isDefencing()) {
-                ga_iv_car2_house.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car2BuildingBitmap != null) ga_iv_car2_house.setImageBitmap(car2BuildingBitmap);
+                ga_iv_car2_building.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car2BuildingBitmap != null) ga_iv_car2_building.setImageBitmap(car2BuildingBitmap);
             } else {
-                ga_iv_car2_house.setVisibility(View.INVISIBLE);
+                ga_iv_car2_building.setVisibility(View.INVISIBLE);
+            }
+            if (car2.getBuildingTask() > 0) {
+                ga_iv_car2_task.setVisibility(car2TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car2TaskBitmap != null) ga_iv_car2_task.setImageBitmap(car2TaskBitmap);
             }
 
             Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
             Bitmap car3BuildingBitmap = car3.getBuildingPicture();
+            Bitmap car3TaskBitmap = car3.getTaskPicture();
             if (car3CarBitmap != null) ga_ib_car3.setImageBitmap(car3CarBitmap);
             ga_ib_car3.setImageBitmap(car3.getCarPicture());
             if (car3.isFree()) ga_tv_car3_number.setTextColor(Color.BLUE);
@@ -1167,10 +1185,14 @@ public class GameActivity extends AppCompatActivity {
             String car3textRepair = car3.isRepairing() ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
             ga_tv_car3_repair.setText(car3textRepair);
             if (car3.isDefencing()) {
-                ga_iv_car3_house.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car3BuildingBitmap != null) ga_iv_car3_house.setImageBitmap(car3BuildingBitmap);
+                ga_iv_car3_building.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car3BuildingBitmap != null) ga_iv_car3_building.setImageBitmap(car3BuildingBitmap);
             } else {
-                ga_iv_car3_house.setVisibility(View.INVISIBLE);
+                ga_iv_car3_building.setVisibility(View.INVISIBLE);
+            }
+            if (car3.getBuildingTask() > 0) {
+                ga_iv_car3_task.setVisibility(car3TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                if (car3TaskBitmap != null) ga_iv_car3_task.setImageBitmap(car3TaskBitmap);
             }
 
         } catch (Exception ignored) {
@@ -1432,10 +1454,7 @@ public class GameActivity extends AppCompatActivity {
         if(sharedFile.exists()) {
             intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
-
-//            Uri fileURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", sharedFile);
-//            Uri fileURI = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", sharedFile);
-//            intentShareFile.setType("application/pdf");
+            
             intentShareFile.setType("*/*");
             intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
 

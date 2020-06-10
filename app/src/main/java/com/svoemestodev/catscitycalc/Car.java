@@ -26,10 +26,12 @@ public class Car implements Serializable {
     int shield;     // защита
     Date repair = null; // дата/время начала ремонта. если null - машина "здорова"
     int building = -1;  // номер занятого здания. если -1 - машина свободна. 0 - занято неизвестное здание. 1-6 - занято конкретное здание.
+    int buildingTask = -1;  // номер занятого здания. если -1 - машина свободна. 0 - занято неизвестное здание. 1-6 - занято конкретное здание.
     byte[] imageByteArrayCar = null; // картинка машины
     byte[] imageByteArrayCarDefencing = null; // картинка машины
     byte[] imageByteArrayCarRepairing = null; // картинка машины
     byte[] imageByteArrayBuilding = null; // катинка здания
+    byte[] imageByteArrayTask = null; // катинка здания
 
     transient public static String pathToFile;
     transient public static String pathToCATScalcFolder;
@@ -119,7 +121,23 @@ public class Car implements Serializable {
 
     }
 
+    public Bitmap getTaskPicture() {
+        if (imageByteArrayTask != null) {
+            return BitmapFactory.decodeByteArray(imageByteArrayTask, 0, imageByteArrayTask.length);
+        } else {
+            return null;
+        }
+    }
 
+    public void setTaskPicture(Bitmap picture) {
+        if (picture != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            imageByteArrayTask = stream.toByteArray();
+        }
+
+    }
+    
     public Car(String name, int slot, int health, int shield) {
         this.name = name;
         this.slot = slot;
@@ -194,6 +212,14 @@ public class Car implements Serializable {
 
     public int getBuilding() {
         return building;
+    }
+
+    public int getBuildingTask() {
+        return buildingTask;
+    }
+
+    public void setBuildingTask(int buildingTask) {
+        this.buildingTask = buildingTask;
     }
 
     public void setRepairingStateTillNow(long secondsToEndRepairing) {
