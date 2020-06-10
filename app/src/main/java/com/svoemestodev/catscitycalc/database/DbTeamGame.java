@@ -1,9 +1,21 @@
 package com.svoemestodev.catscitycalc.database;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DbTeamGame {
@@ -102,6 +114,7 @@ public class DbTeamGame {
     private int slots_brb_empty;
     private int slots_brb_enemy;
 
+    private static final String TAG = "DbTeamGame";
 
     public DbTeamGame() {
     }
@@ -198,13 +211,34 @@ public class DbTeamGame {
         this.slots_brb_our = ccaGame.getSlots_brb_our();
         this.slots_brb_empty = ccaGame.getSlots_brb_empty();
         this.slots_brb_enemy = ccaGame.getSlots_brb_enemy();
-        
+
+        if (GameActivity.fbUser != null) { // есть юзер
+            if (GameActivity.fbUser.isEmailVerified()) { // емейл подтвержден
+                final String userUID = GameActivity.fbUser.getUid();
+                GameActivity.fbDb.collection("users").document(userUID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        final String teamID = (String)documentSnapshot.get("teamID");
+                        if (teamID != null && !teamID.equals("")) {
+                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.i(TAG, "added");
+                                }
+                            });
+
+                        }
+                    }
+                });
+            }
+        }
+
     }
 
-    public Map<String, Object> getMap() {
+    public Map<String, Object> getMap(String userUID) {
         Map<String, Object> map = new HashMap<>();
 
-        map.put("timestamp", timestamp);
+        map.put("timestamp", FieldValue.serverTimestamp());
         map.put("userUID", userUID);
 
         map.put("dateStartGame", dateStartGame);     

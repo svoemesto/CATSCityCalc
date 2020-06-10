@@ -376,174 +376,151 @@ public class StrategyActivity extends AppCompatActivity {
                 ccaGame.setCcagPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
 
             }
+
+            if (ccaGame.isPresent_blt()) {
+                ccaGame.setBuildingIsOur_blt(sa_sb_blt.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_blt(sa_sb_blt.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_blt(sa_sb_blt.getProgress() == 2);
+                ccaGame.setSlots_blt_our(ccaGame.isBuildingIsOur_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+                ccaGame.setSlots_blt_empty(ccaGame.isBuildingIsEmpty_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+                ccaGame.setSlots_blt_enemy(ccaGame.isBuildingIsEnemy_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_blt_our();
+                slotsEmpty += ccaGame.getSlots_blt_empty();
+                slotsEnemy += ccaGame.getSlots_blt_enemy();
+                countMayX2 += ccaGame.isMayX2_blt() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEmpty_blt() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEnemy_blt() ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_blc()) {
+                ccaGame.setBuildingIsOur_blc(sa_sb_blc.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_blc(sa_sb_blc.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_blc(sa_sb_blc.getProgress() == 2);
+                ccaGame.setSlots_blc_our(ccaGame.isBuildingIsOur_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+                ccaGame.setSlots_blc_empty(ccaGame.isBuildingIsEmpty_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+                ccaGame.setSlots_blc_enemy(ccaGame.isBuildingIsEnemy_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_blc_our();
+                slotsEmpty += ccaGame.getSlots_blc_empty();
+                slotsEnemy += ccaGame.getSlots_blc_enemy();
+                countMayX2 += ccaGame.isMayX2_blc() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEmpty_blc() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEnemy_blc() ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_blb()) {
+                ccaGame.setBuildingIsOur_blb(sa_sb_blb.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_blb(sa_sb_blb.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_blb(sa_sb_blb.getProgress() == 2);
+                ccaGame.setSlots_blb_our(ccaGame.isBuildingIsOur_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+                ccaGame.setSlots_blb_empty(ccaGame.isBuildingIsEmpty_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+                ccaGame.setSlots_blb_enemy(ccaGame.isBuildingIsEnemy_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_blb_our();
+                slotsEmpty += ccaGame.getSlots_blb_empty();
+                slotsEnemy += ccaGame.getSlots_blb_enemy();
+                countMayX2 += ccaGame.isMayX2_blb() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEmpty_blb() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEnemy_blb() ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brt()) {
+                ccaGame.setBuildingIsOur_brt(sa_sb_brt.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_brt(sa_sb_brt.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_brt(sa_sb_brt.getProgress() == 2);
+                ccaGame.setSlots_brt_our(ccaGame.isBuildingIsOur_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+                ccaGame.setSlots_brt_empty(ccaGame.isBuildingIsEmpty_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+                ccaGame.setSlots_brt_enemy(ccaGame.isBuildingIsEnemy_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_brt_our();
+                slotsEmpty += ccaGame.getSlots_brt_empty();
+                slotsEnemy += ccaGame.getSlots_brt_enemy();
+                countMayX2 += ccaGame.isMayX2_brt() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEmpty_brt() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEnemy_brt() ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brc()) {
+                ccaGame.setBuildingIsOur_brc(sa_sb_brc.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_brc(sa_sb_brc.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_brc(sa_sb_brc.getProgress() == 2);
+                ccaGame.setSlots_brc_our(ccaGame.isBuildingIsOur_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+                ccaGame.setSlots_brc_empty(ccaGame.isBuildingIsEmpty_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+                ccaGame.setSlots_brc_enemy(ccaGame.isBuildingIsEnemy_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_brc_our();
+                slotsEmpty += ccaGame.getSlots_brc_empty();
+                slotsEnemy += ccaGame.getSlots_brc_enemy();
+                countMayX2 += ccaGame.isMayX2_brc() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEmpty_brc() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEnemy_brc() ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brb()) {
+                ccaGame.setBuildingIsOur_brb(sa_sb_brb.getProgress() == 0);
+                ccaGame.setBuildingIsEmpty_brb(sa_sb_brb.getProgress() == 1);
+                ccaGame.setBuildingIsEnemy_brb(sa_sb_brb.getProgress() == 2);
+                ccaGame.setSlots_brb_our(ccaGame.isBuildingIsOur_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+                ccaGame.setSlots_brb_empty(ccaGame.isBuildingIsEmpty_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+                ccaGame.setSlots_brb_enemy(ccaGame.isBuildingIsEnemy_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+                slotsOur += ccaGame.getSlots_brb_our();
+                slotsEmpty += ccaGame.getSlots_brb_empty();
+                slotsEnemy += ccaGame.getSlots_brb_enemy();
+                countMayX2 += ccaGame.isMayX2_brb() ? 1 : 0;
+                countMayX2our += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb() ? 1 : 0;
+                countMayX2empty += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEmpty_brb() ? 1 : 0;
+                countMayX2enemy += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEnemy_brb() ? 1 : 0;
+            }
             
-            if (ccaBLT != null) {
-                if (ccaBLT.isPresent()) {
-                    ccaBLT.setBuildingIsOur(sa_sb_blt.getProgress() == 0);
-                    ccaBLT.setBuildingIsEmpty(sa_sb_blt.getProgress() == 1);
-                    ccaBLT.setBuildingIsEnemy(sa_sb_blt.getProgress() == 2);
-                    ccaBLT.setSlots_our(ccaBLT.isBuildingIsOur() ? (int)Math.ceil(ccaBLT.getSlots() / 2.0d) : 0); 
-                    ccaBLT.setSlots_empty(ccaBLT.isBuildingIsEmpty() ? (int)Math.ceil(ccaBLT.getSlots() / 2.0d) : 0); 
-                    ccaBLT.setSlots_enemy(ccaBLT.isBuildingIsEnemy() ? (int)Math.ceil(ccaBLT.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBLT.getSlots_our();
-                    slotsEmpty += ccaBLT.getSlots_empty();
-                    slotsEnemy += ccaBLT.getSlots_enemy();
-                    countMayX2 += ccaBLT.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBLT.isMayX2() && ccaBLT.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBLT.isMayX2() && ccaBLT.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBLT.isMayX2() && ccaBLT.isBuildingIsEnemy() ? 1 : 0;
-                }
-            }
 
-            if (ccaBLC != null) {
-                if (ccaBLC.isPresent()) {
-                    ccaBLC.setBuildingIsOur(sa_sb_blc.getProgress() == 0);
-                    ccaBLC.setBuildingIsEmpty(sa_sb_blc.getProgress() == 1);
-                    ccaBLC.setBuildingIsEnemy(sa_sb_blc.getProgress() == 2);
-                    ccaBLC.setSlots_our(ccaBLC.isBuildingIsOur() ? (int)Math.ceil(ccaBLC.getSlots() / 2.0d) : 0);
-                    ccaBLC.setSlots_empty(ccaBLC.isBuildingIsEmpty() ? (int)Math.ceil(ccaBLC.getSlots() / 2.0d) : 0);
-                    ccaBLC.setSlots_enemy(ccaBLC.isBuildingIsEnemy() ? (int)Math.ceil(ccaBLC.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBLC.getSlots_our();
-                    slotsEmpty += ccaBLC.getSlots_empty();
-                    slotsEnemy += ccaBLC.getSlots_enemy();
-                    countMayX2 += ccaBLC.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBLC.isMayX2() && ccaBLC.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBLC.isMayX2() && ccaBLC.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBLC.isMayX2() && ccaBLC.isBuildingIsEnemy() ? 1 : 0;
-                }
-            }
-
-            if (ccaBLB != null) {
-                if (ccaBLB.isPresent()) {
-                    ccaBLB.setBuildingIsOur(sa_sb_blb.getProgress() == 0);
-                    ccaBLB.setBuildingIsEmpty(sa_sb_blb.getProgress() == 1);
-                    ccaBLB.setBuildingIsEnemy(sa_sb_blb.getProgress() == 2);
-                    ccaBLB.setSlots_our(ccaBLB.isBuildingIsOur() ? (int)Math.ceil(ccaBLB.getSlots() / 2.0d) : 0);
-                    ccaBLB.setSlots_empty(ccaBLB.isBuildingIsEmpty() ? (int)Math.ceil(ccaBLB.getSlots() / 2.0d) : 0);
-                    ccaBLB.setSlots_enemy(ccaBLB.isBuildingIsEnemy() ? (int)Math.ceil(ccaBLB.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBLB.getSlots_our();
-                    slotsEmpty += ccaBLB.getSlots_empty();
-                    slotsEnemy += ccaBLB.getSlots_enemy();
-                    countMayX2 += ccaBLB.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBLB.isMayX2() && ccaBLB.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBLB.isMayX2() && ccaBLB.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBLB.isMayX2() && ccaBLB.isBuildingIsEnemy() ? 1 : 0;
-                }
-            }
-
-            if (ccaBRT != null) {
-                if (ccaBRT.isPresent()) {
-                    ccaBRT.setBuildingIsOur(sa_sb_brt.getProgress() == 0);
-                    ccaBRT.setBuildingIsEmpty(sa_sb_brt.getProgress() == 1);
-                    ccaBRT.setBuildingIsEnemy(sa_sb_brt.getProgress() == 2);
-                    ccaBRT.setSlots_our(ccaBRT.isBuildingIsOur() ? (int)Math.ceil(ccaBRT.getSlots() / 2.0d) : 0);
-                    ccaBRT.setSlots_empty(ccaBRT.isBuildingIsEmpty() ? (int)Math.ceil(ccaBRT.getSlots() / 2.0d) : 0);
-                    ccaBRT.setSlots_enemy(ccaBRT.isBuildingIsEnemy() ? (int)Math.ceil(ccaBRT.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBRT.getSlots_our();
-                    slotsEmpty += ccaBRT.getSlots_empty();
-                    slotsEnemy += ccaBRT.getSlots_enemy();
-                    countMayX2 += ccaBRT.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBRT.isMayX2() && ccaBRT.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBRT.isMayX2() && ccaBRT.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBRT.isMayX2() && ccaBRT.isBuildingIsEnemy() ? 1 : 0;
-                }
-            }
-
-            if (ccaBRC != null) {
-                if (ccaBRC.isPresent()) {
-                    ccaBRC.setBuildingIsOur(sa_sb_brc.getProgress() == 0);
-                    ccaBRC.setBuildingIsEmpty(sa_sb_brc.getProgress() == 1);
-                    ccaBRC.setBuildingIsEnemy(sa_sb_brc.getProgress() == 2);
-                    ccaBRC.setSlots_our(ccaBRC.isBuildingIsOur() ? (int)Math.ceil(ccaBRC.getSlots() / 2.0d) : 0);
-                    ccaBRC.setSlots_empty(ccaBRC.isBuildingIsEmpty() ? (int)Math.ceil(ccaBRC.getSlots() / 2.0d) : 0);
-                    ccaBRC.setSlots_enemy(ccaBRC.isBuildingIsEnemy() ? (int)Math.ceil(ccaBRC.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBRC.getSlots_our();
-                    slotsEmpty += ccaBRC.getSlots_empty();
-                    slotsEnemy += ccaBRC.getSlots_enemy();
-                    countMayX2 += ccaBRC.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBRC.isMayX2() && ccaBRC.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBRC.isMayX2() && ccaBRC.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBRC.isMayX2() && ccaBRC.isBuildingIsEnemy() ? 1 : 0;
-                }
-            }
-
-            if (ccaBRB != null) {
-                if (ccaBRB.isPresent()) {
-                    ccaBRB.setBuildingIsOur(sa_sb_brb.getProgress() == 0);
-                    ccaBRB.setBuildingIsEmpty(sa_sb_brb.getProgress() == 1);
-                    ccaBRB.setBuildingIsEnemy(sa_sb_brb.getProgress() == 2);
-                    ccaBRB.setSlots_our(ccaBRB.isBuildingIsOur() ? (int)Math.ceil(ccaBRB.getSlots() / 2.0d) : 0);
-                    ccaBRB.setSlots_empty(ccaBRB.isBuildingIsEmpty() ? (int)Math.ceil(ccaBRB.getSlots() / 2.0d) : 0);
-                    ccaBRB.setSlots_enemy(ccaBRB.isBuildingIsEnemy() ? (int)Math.ceil(ccaBRB.getSlots() / 2.0d) : 0);
-                    slotsOur += ccaBRB.getSlots_our();
-                    slotsEmpty += ccaBRB.getSlots_empty();
-                    slotsEnemy += ccaBRB.getSlots_enemy();
-                    countMayX2 += ccaBRB.isMayX2() ? 1 : 0;
-                    countMayX2our += ccaBRB.isMayX2() && ccaBRB.isBuildingIsOur() ? 1 : 0;
-                    countMayX2empty += ccaBRB.isMayX2() && ccaBRB.isBuildingIsEmpty() ? 1 : 0;
-                    countMayX2enemy += ccaBRB.isMayX2() && ccaBRB.isBuildingIsEnemy() ? 1 : 0;
-                }
+            if (ccaGame.isPresent_blt()) {
+                ccaGame.setOur_points_blt(!ccaGame.isBuildingIsOur_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_blt(!ccaGame.isBuildingIsEnemy_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_blt();
+                increaseEnemy += ccaGame.getEnemy_points_blt();
+                ccaGame.setX2_blt(ccaGame.isMayX2_blt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
 
 
-            if (ccaBLT != null) {
-                if (ccaBLT.isPresent()) {
-                    ccaBLT.setOur_points(!ccaBLT.isBuildingIsOur() ? 0 : ccaBLT.getSlots() * (!ccaBLT.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBLT.setEnemy_points(!ccaBLT.isBuildingIsEnemy() ? 0 : ccaBLT.getSlots() * (!ccaBLT.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBLT.getOur_points();
-                    increaseEnemy += ccaBLT.getEnemy_points();
-                    ccaBLT.setX2(ccaBLT.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
+            if (ccaGame.isPresent_blc()) {
+                ccaGame.setOur_points_blc(!ccaGame.isBuildingIsOur_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_blc(!ccaGame.isBuildingIsEnemy_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_blc();
+                increaseEnemy += ccaGame.getEnemy_points_blc();
+                ccaGame.setX2_blc(ccaGame.isMayX2_blc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
 
-            if (ccaBLC != null) {
-                if (ccaBLC.isPresent()) {
-                    ccaBLC.setOur_points(!ccaBLC.isBuildingIsOur() ? 0 : ccaBLC.getSlots() * (!ccaBLC.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBLC.setEnemy_points(!ccaBLC.isBuildingIsEnemy() ? 0 : ccaBLC.getSlots() * (!ccaBLC.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBLC.getOur_points();
-                    increaseEnemy += ccaBLC.getEnemy_points();
-                    ccaBLC.setX2(ccaBLC.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
+            if (ccaGame.isPresent_blb()) {
+                ccaGame.setOur_points_blb(!ccaGame.isBuildingIsOur_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_blb(!ccaGame.isBuildingIsEnemy_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_blb();
+                increaseEnemy += ccaGame.getEnemy_points_blb();
+                ccaGame.setX2_blb(ccaGame.isMayX2_blb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
 
-            if (ccaBLB != null) {
-                if (ccaBLB.isPresent()) {
-                    ccaBLB.setOur_points(!ccaBLB.isBuildingIsOur() ? 0 : ccaBLB.getSlots() * (!ccaBLB.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBLB.setEnemy_points(!ccaBLB.isBuildingIsEnemy() ? 0 : ccaBLB.getSlots() * (!ccaBLB.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBLB.getOur_points();
-                    increaseEnemy += ccaBLB.getEnemy_points();
-                    ccaBLB.setX2(ccaBLB.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
+            if (ccaGame.isPresent_brt()) {
+                ccaGame.setOur_points_brt(!ccaGame.isBuildingIsOur_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_brt(!ccaGame.isBuildingIsEnemy_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_brt();
+                increaseEnemy += ccaGame.getEnemy_points_brt();
+                ccaGame.setX2_brt(ccaGame.isMayX2_brt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
 
-            if (ccaBRT != null) {
-                if (ccaBRT.isPresent()) {
-                    ccaBRT.setOur_points(!ccaBRT.isBuildingIsOur() ? 0 : ccaBRT.getSlots() * (!ccaBRT.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBRT.setEnemy_points(!ccaBRT.isBuildingIsEnemy() ? 0 : ccaBRT.getSlots() * (!ccaBRT.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBRT.getOur_points();
-                    increaseEnemy += ccaBRT.getEnemy_points();
-                    ccaBRT.setX2(ccaBRT.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
+            if (ccaGame.isPresent_brc()) {
+                ccaGame.setOur_points_brc(!ccaGame.isBuildingIsOur_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_brc(!ccaGame.isBuildingIsEnemy_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_brc();
+                increaseEnemy += ccaGame.getEnemy_points_brc();
+                ccaGame.setX2_brc(ccaGame.isMayX2_brc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
 
-            if (ccaBRC != null) {
-                if (ccaBRC.isPresent()) {
-                    ccaBRC.setOur_points(!ccaBRC.isBuildingIsOur() ? 0 : ccaBRC.getSlots() * (!ccaBRC.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBRC.setEnemy_points(!ccaBRC.isBuildingIsEnemy() ? 0 : ccaBRC.getSlots() * (!ccaBRC.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBRC.getOur_points();
-                    increaseEnemy += ccaBRC.getEnemy_points();
-                    ccaBRC.setX2(ccaBRC.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
-            }
-
-            if (ccaBRB != null) {
-                if (ccaBRB.isPresent()) {
-                    ccaBRB.setOur_points(!ccaBRB.isBuildingIsOur() ? 0 : ccaBRB.getSlots() * (!ccaBRB.isMayX2() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                    ccaBRB.setEnemy_points(!ccaBRB.isBuildingIsEnemy() ? 0 : ccaBRB.getSlots() * (!ccaBRB.isMayX2() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
-                    increaseOur += ccaBRB.getOur_points();
-                    increaseEnemy += ccaBRB.getEnemy_points();
-                    ccaBRB.setX2(ccaBRB.isMayX2() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
-                }
+            if (ccaGame.isPresent_brb()) {
+                ccaGame.setOur_points_brb(!ccaGame.isBuildingIsOur_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+                ccaGame.setEnemy_points_brb(!ccaGame.isBuildingIsEnemy_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+                increaseOur += ccaGame.getOur_points_brb();
+                increaseEnemy += ccaGame.getEnemy_points_brb();
+                ccaGame.setX2_brb(ccaGame.isMayX2_brb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
             }
             
             if (ccaGame != null) {

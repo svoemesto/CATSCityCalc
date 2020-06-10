@@ -251,6 +251,8 @@ public class CCAGame extends CityCalcArea {
             this.ccagEarlyWin = Integer.parseInt(ccaEarlyWin.getFinText()); // очки до досрочной победы
         }
 
+        new DbTeamGame(this);
+
     }
 
     public int getMinutesToFinalGame() {
