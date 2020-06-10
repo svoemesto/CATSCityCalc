@@ -26,18 +26,18 @@
                 android:resource="@xml/file_provider_paths"/>
         </provider>
 
-        <activity android:name=".TeamActivity"
+        <activity android:name=".activities.TeamActivity"
             android:label="@string/team"
             />
 
         <activity
-            android:name=".UserActivity"
+            android:name=".activities.UserActivity"
             android:label="@string/open_login" />
 
-        <activity android:name=".CarActivity" />
+        <activity android:name=".activities.CarActivity" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,16 +47,16 @@
         </activity>
 
         <activity
-            android:name=".GameActivity"
+            android:name=".activities.GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleInstance"/>
 
         <activity
-            android:name=".ColorsdetectActivity"
+            android:name=".activities.ColorsdetectActivity"
             android:label="@string/sett_colors" />
 
         <activity
-            android:name=".BordersActivity"
+            android:name=".activities.BordersActivity"
             android:label="@string/sett_borders" />
 
         <meta-data
@@ -64,15 +64,15 @@
             android:value="ca-app-pub-2870168293382158~9528759362" />
 
         <activity
-            android:name=".CalibrateActivity"
+            android:name=".activities.CalibrateActivity"
             android:label="@string/sett_calibrate_center_screen" />
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activities.SettingsActivity"
             android:label="@string/settings" />
 
         <activity
-            android:name=".StrategyActivity"
+            android:name=".activities.StrategyActivity"
             android:label="@string/strategic_planning" />
 
     </application>
