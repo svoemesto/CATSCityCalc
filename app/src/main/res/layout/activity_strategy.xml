@@ -9,7 +9,7 @@
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ad_sa_banner"
+        android:id="@+id/sa_ad_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -22,7 +22,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ad_sa_banner"
+        android:layout_above="@id/sa_ad_banner"
         >
 
         <LinearLayout
@@ -31,7 +31,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_sa_title"
+                android:id="@+id/sa_tv_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -46,7 +46,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_sa_start_game_time"
+                    android:id="@+id/sa_tv_start_game_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -57,7 +57,7 @@
                     android:textColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/tv_sa_end_game_time"
+                    android:id="@+id/sa_tv_end_game_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -76,13 +76,13 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/iv_sa_our_team_name"
+                    android:id="@+id/sa_iv_our_team_name"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/tv_sa_vs"
+                    android:id="@+id/sa_tv_vs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -91,7 +91,7 @@
                     android:textColor="@android:color/black" />
 
                 <ImageView
-                    android:id="@+id/iv_sa_enemy_team_name"
+                    android:id="@+id/sa_iv_enemy_team_name"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_weight="1" />
@@ -110,7 +110,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_our_increase"
+                        android:id="@+id/sa_tv_our_increase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -120,7 +120,7 @@
                         android:background="#4179d8" />
 
                     <TextView
-                        android:id="@+id/tv_sa_our_points"
+                        android:id="@+id/sa_tv_our_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingStart="10dp"
@@ -139,7 +139,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_total_time"
+                        android:id="@+id/sa_tv_total_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -157,7 +157,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_enemy_points"
+                        android:id="@+id/sa_tv_enemy_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:paddingEnd="10dp"
@@ -168,7 +168,7 @@
                         android:background="#f0f0f0" />
 
                     <TextView
-                        android:id="@+id/tv_sa_enemy_increase"
+                        android:id="@+id/sa_tv_enemy_increase"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -194,7 +194,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_our_end_time"
+                        android:id="@+id/sa_tv_our_end_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -213,7 +213,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_early_win"
+                        android:id="@+id/sa_tv_early_win"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -231,7 +231,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/tv_sa_enemy_end_time"
+                        android:id="@+id/sa_tv_enemy_end_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -247,7 +247,7 @@
 
 
             <TextView
-                android:id="@+id/tv_sa_status"
+                android:id="@+id/sa_tv_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
@@ -270,14 +270,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_sa_blt_name"
+                        android:id="@+id/sa_iv_blt_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_x2"
+                        android:id="@+id/sa_tv_blt_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -285,7 +285,7 @@
                         android:textColor="#000000"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_points"
+                        android:id="@+id/sa_tv_blt_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -303,14 +303,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_brt_name"
+                        android:id="@+id/sa_iv_brt_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_x2"
+                        android:id="@+id/sa_tv_brt_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -318,7 +318,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_points"
+                        android:id="@+id/sa_tv_brt_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -346,7 +346,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_blt_car_black"
+                        android:id="@+id/sa_iv_blt_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -355,14 +355,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_slots"
+                        android:id="@+id/sa_tv_blt_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blt_car_our"
+                        android:id="@+id/sa_iv_blt_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -371,14 +371,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_slots_our"
+                        android:id="@+id/sa_tv_blt_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blt_car_empty"
+                        android:id="@+id/sa_iv_blt_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -387,14 +387,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_slots_empty"
+                        android:id="@+id/sa_tv_blt_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blt_car_enemy"
+                        android:id="@+id/sa_iv_blt_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -403,7 +403,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blt_slots_enemy"
+                        android:id="@+id/sa_tv_blt_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -421,7 +421,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_sa_brt_car_black"
+                        android:id="@+id/sa_iv_brt_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -430,13 +430,13 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_slots"
+                        android:id="@+id/sa_tv_brt_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brt_car_our"
+                        android:id="@+id/sa_iv_brt_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -445,7 +445,7 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_slots_our"
+                        android:id="@+id/sa_tv_brt_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -453,7 +453,7 @@
                         tools:visibility="visible" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brt_car_empty"
+                        android:id="@+id/sa_iv_brt_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -462,13 +462,13 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_slots_empty"
+                        android:id="@+id/sa_tv_brt_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brt_car_enemy"
+                        android:id="@+id/sa_iv_brt_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -477,7 +477,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brt_slots_enemy"
+                        android:id="@+id/sa_tv_brt_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1" />
@@ -501,7 +501,7 @@
                     >
 
                     <SeekBar
-                        android:id="@+id/sb_sa_blt"
+                        android:id="@+id/sa_sb_blt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -524,7 +524,7 @@
                     android:layout_weight="1">
 
                     <SeekBar
-                        android:id="@+id/sb_sa_brt"
+                        android:id="@+id/sa_sb_brt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -567,14 +567,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_sa_blc_name"
+                        android:id="@+id/sa_iv_blc_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_x2"
+                        android:id="@+id/sa_tv_blc_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -583,7 +583,7 @@
     />
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_points"
+                        android:id="@+id/sa_tv_blc_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -601,14 +601,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_brc_name"
+                        android:id="@+id/sa_iv_brc_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_x2"
+                        android:id="@+id/sa_tv_brc_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -616,7 +616,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_points"
+                        android:id="@+id/sa_tv_brc_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -642,7 +642,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_blc_car_black"
+                        android:id="@+id/sa_iv_blc_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -651,14 +651,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_slots"
+                        android:id="@+id/sa_tv_blc_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blc_car_our"
+                        android:id="@+id/sa_iv_blc_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -667,14 +667,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_slots_our"
+                        android:id="@+id/sa_tv_blc_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blc_car_empty"
+                        android:id="@+id/sa_iv_blc_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -683,14 +683,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_slots_empty"
+                        android:id="@+id/sa_tv_blc_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_blc_car_enemy"
+                        android:id="@+id/sa_iv_blc_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -699,7 +699,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blc_slots_enemy"
+                        android:id="@+id/sa_tv_blc_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -716,7 +716,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_sa_brc_car_black"
+                        android:id="@+id/sa_iv_brc_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -725,14 +725,14 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_slots"
+                        android:id="@+id/sa_tv_brc_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brc_car_our"
+                        android:id="@+id/sa_iv_brc_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -741,14 +741,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_slots_our"
+                        android:id="@+id/sa_tv_brc_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brc_car_empty"
+                        android:id="@+id/sa_iv_brc_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -757,14 +757,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_slots_empty"
+                        android:id="@+id/sa_tv_brc_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brc_car_enemy"
+                        android:id="@+id/sa_iv_brc_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -773,7 +773,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brc_slots_enemy"
+                        android:id="@+id/sa_tv_brc_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -798,7 +798,7 @@
                     >
 
                     <SeekBar
-                        android:id="@+id/sb_sa_blc"
+                        android:id="@+id/sa_sb_blc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -819,7 +819,7 @@
                     android:layout_weight="1">
 
                     <SeekBar
-                        android:id="@+id/sb_sa_brc"
+                        android:id="@+id/sa_sb_brc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -851,14 +851,14 @@
                     android:paddingEnd="10dp"
                     >
                     <ImageView
-                        android:id="@+id/iv_sa_blb_name"
+                        android:id="@+id/sa_iv_blb_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_x2"
+                        android:id="@+id/sa_tv_blb_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -866,7 +866,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_points"
+                        android:id="@+id/sa_tv_blb_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -884,14 +884,14 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_brb_name"
+                        android:id="@+id/sa_iv_brb_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="left|center_vertical"
                         android:layout_weight="1" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_x2"
+                        android:id="@+id/sa_tv_brb_x2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -899,7 +899,7 @@
                         android:textColor="#000000" />
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_points"
+                        android:id="@+id/sa_tv_brb_points"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal|center_vertical"
@@ -927,7 +927,7 @@
                     >
 
                     <ImageView
-                        android:id="@+id/iv_sa_blb_car_black"
+                        android:id="@+id/sa_iv_blb_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -936,7 +936,7 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_slots"
+                        android:id="@+id/sa_tv_blb_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -944,7 +944,7 @@
                         android:text="0"/>
 
                     <ImageView
-                        android:id="@+id/iv_sa_blb_car_our"
+                        android:id="@+id/sa_iv_blb_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -953,7 +953,7 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_slots_our"
+                        android:id="@+id/sa_tv_blb_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -961,7 +961,7 @@
                         android:text="0"/>
 
                     <ImageView
-                        android:id="@+id/iv_sa_blb_car_empty"
+                        android:id="@+id/sa_iv_blb_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -970,7 +970,7 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_slots_empty"
+                        android:id="@+id/sa_tv_blb_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -978,7 +978,7 @@
                         android:text="0"/>
 
                     <ImageView
-                        android:id="@+id/iv_sa_blb_car_enemy"
+                        android:id="@+id/sa_iv_blb_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -987,7 +987,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_blb_slots_enemy"
+                        android:id="@+id/sa_tv_blb_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1005,7 +1005,7 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_sa_brb_car_black"
+                        android:id="@+id/sa_iv_brb_car_black"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1014,7 +1014,7 @@
                         android:src="@drawable/ic_car_black_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_slots"
+                        android:id="@+id/sa_tv_brb_slots"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1023,7 +1023,7 @@
                         android:textColor="#000000" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brb_car_our"
+                        android:id="@+id/sa_iv_brb_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1032,14 +1032,14 @@
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_slots_our"
+                        android:id="@+id/sa_tv_brb_slots_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#4179d8" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brb_car_empty"
+                        android:id="@+id/sa_iv_brb_car_empty"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1048,14 +1048,14 @@
                         android:src="@drawable/ic_car_empty_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_slots_empty"
+                        android:id="@+id/sa_tv_brb_slots_empty"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:textColor="#5e6a84" />
 
                     <ImageView
-                        android:id="@+id/iv_sa_brb_car_enemy"
+                        android:id="@+id/sa_iv_brb_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
@@ -1064,7 +1064,7 @@
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_brb_slots_enemy"
+                        android:id="@+id/sa_tv_brb_slots_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1089,7 +1089,7 @@
                     >
 
                     <SeekBar
-                        android:id="@+id/sb_sa_blb"
+                        android:id="@+id/sa_sb_blb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -1110,7 +1110,7 @@
                     android:layout_weight="1">
 
                     <SeekBar
-                        android:id="@+id/sb_sa_brb"
+                        android:id="@+id/sa_sb_brb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -1142,7 +1142,7 @@
                     >
 
                     <SeekBar
-                        android:id="@+id/sb_sa_person_our"
+                        android:id="@+id/sa_sb_person_our"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -1161,7 +1161,7 @@
                     android:layout_weight="1">
 
                     <SeekBar
-                        android:id="@+id/sb_sa_person_enemy"
+                        android:id="@+id/sa_sb_person_enemy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:min="0"
@@ -1189,14 +1189,14 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_sa_person_our"
+                        android:id="@+id/sa_iv_person_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_person_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_person_our"
+                        android:id="@+id/sa_tv_person_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1204,14 +1204,14 @@
                         android:text="0"/>
 
                     <ImageView
-                        android:id="@+id/iv_sa_car_our"
+                        android:id="@+id/sa_iv_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_car_our_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_car_our"
+                        android:id="@+id/sa_tv_car_our"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1229,14 +1229,14 @@
                     android:layout_weight="1">
 
                     <ImageView
-                        android:id="@+id/iv_sa_person_enemy"
+                        android:id="@+id/sa_iv_person_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_person_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_person_enemy"
+                        android:id="@+id/sa_tv_person_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1244,14 +1244,14 @@
                         android:text="0"/>
 
                     <ImageView
-                        android:id="@+id/iv_sa_car_enemy"
+                        android:id="@+id/sa_iv_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_car_enemy_24dp"/>
 
                     <TextView
-                        android:id="@+id/tv_sa_car_enemy"
+                        android:id="@+id/sa_tv_car_enemy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -1264,27 +1264,27 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/bt_sa_calc_timed_win"
+                android:id="@+id/sa_bt_calc_timed_win"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calculate_victory"
                 android:onClick="calcTimedWin"/>
             <Button
-                android:id="@+id/bt_sa_calc_timed_win_without_x2"
+                android:id="@+id/sa_bt_calc_timed_win_without_x2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calculate_victory_without_x2"
                 android:onClick="calcTimedWinWithoutx2"/>
 
             <Button
-                android:id="@+id/bt_sa_calc_early_win"
+                android:id="@+id/sa_bt_calc_early_win"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calculate_an_early_victory"
                 android:onClick="calcEarlyWin"/>
 
             <Button
-                android:id="@+id/bt_sa_calc_early_win_without_x2"
+                android:id="@+id/sa_bt_calc_early_win_without_x2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/calculate_an_early_victory_without_x2"

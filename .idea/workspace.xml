@@ -25,20 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/BordersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/BordersActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/ColorsdetectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/ColorsdetectActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/Area.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCATeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCATeam.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalcArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalcArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,10 +156,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591791147697">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591798901913">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591791147697" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591798901913" />
     <state x="2284" y="92" width="1064" height="532" key="AVDManager" timestamp="1591776640460">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

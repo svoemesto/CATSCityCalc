@@ -19,6 +19,14 @@ import java.util.Map;
 
 public class Utils {
 
+    public static String  getProgressString(int progress) {
+        String result = "";
+        for (int i = 0; i < progress; i++) {
+            result += "█";
+        }
+        return result;
+    }
+
 
     public static void copyFile(String sourcePath, String targetPath) {
         File sourceLocation = new File(sourcePath);
