@@ -240,11 +240,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
         
-        key = getString(R.string.borders_blt_increase); mapAreas.put(key, new MyArea(key, Area.BLT_POINTS, 
-                getString(R.string.pref_cut_blt_increase_x1), getString(R.string.pref_cut_blt_increase_x2), getString(R.string.pref_cut_blt_increase_y1), getString(R.string.pref_cut_blt_increase_y2),
-                getString(R.string.def_cut_blt_points_x1), getString(R.string.def_cut_blt_points_x2), getString(R.string.def_cut_blt_points_y1), getString(R.string.def_cut_blt_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_blt_increase); mapAreas.put(key, new MyArea(key, Area.BLT_POINTS,
+//                getString(R.string.pref_cut_blt_increase_x1), getString(R.string.pref_cut_blt_increase_x2), getString(R.string.pref_cut_blt_increase_y1), getString(R.string.pref_cut_blt_increase_y2),
+//                getString(R.string.def_cut_blt_points_x1), getString(R.string.def_cut_blt_points_x2), getString(R.string.def_cut_blt_points_y1), getString(R.string.def_cut_blt_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
         
         key = getString(R.string.borders_blt_slots); mapAreas.put(key, new MyArea(key, Area.BLT_SLOTS, 
                 getString(R.string.pref_cut_blt_slots_x1), getString(R.string.pref_cut_blt_slots_x2), getString(R.string.pref_cut_blt_slots_y1), getString(R.string.pref_cut_blt_slots_y2),
@@ -271,11 +271,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
 
-        key = getString(R.string.borders_blc_increase); mapAreas.put(key, new MyArea(key, Area.BLC_POINTS,
-                getString(R.string.pref_cut_blc_increase_x1), getString(R.string.pref_cut_blc_increase_x2), getString(R.string.pref_cut_blc_increase_y1), getString(R.string.pref_cut_blc_increase_y2),
-                getString(R.string.def_cut_blc_points_x1), getString(R.string.def_cut_blc_points_x2), getString(R.string.def_cut_blc_points_y1), getString(R.string.def_cut_blc_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_blc_increase); mapAreas.put(key, new MyArea(key, Area.BLC_POINTS,
+//                getString(R.string.pref_cut_blc_increase_x1), getString(R.string.pref_cut_blc_increase_x2), getString(R.string.pref_cut_blc_increase_y1), getString(R.string.pref_cut_blc_increase_y2),
+//                getString(R.string.def_cut_blc_points_x1), getString(R.string.def_cut_blc_points_x2), getString(R.string.def_cut_blc_points_y1), getString(R.string.def_cut_blc_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
 
         key = getString(R.string.borders_blc_slots); mapAreas.put(key, new MyArea(key, Area.BLC_SLOTS,
                 getString(R.string.pref_cut_blc_slots_x1), getString(R.string.pref_cut_blc_slots_x2), getString(R.string.pref_cut_blc_slots_y1), getString(R.string.pref_cut_blc_slots_y2),
@@ -302,11 +302,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
 
-        key = getString(R.string.borders_blb_increase); mapAreas.put(key, new MyArea(key, Area.BLB_POINTS,
-                getString(R.string.pref_cut_blb_increase_x1), getString(R.string.pref_cut_blb_increase_x2), getString(R.string.pref_cut_blb_increase_y1), getString(R.string.pref_cut_blb_increase_y2),
-                getString(R.string.def_cut_blb_points_x1), getString(R.string.def_cut_blb_points_x2), getString(R.string.def_cut_blb_points_y1), getString(R.string.def_cut_blb_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_blb_increase); mapAreas.put(key, new MyArea(key, Area.BLB_POINTS,
+//                getString(R.string.pref_cut_blb_increase_x1), getString(R.string.pref_cut_blb_increase_x2), getString(R.string.pref_cut_blb_increase_y1), getString(R.string.pref_cut_blb_increase_y2),
+//                getString(R.string.def_cut_blb_points_x1), getString(R.string.def_cut_blb_points_x2), getString(R.string.def_cut_blb_points_y1), getString(R.string.def_cut_blb_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
 
         key = getString(R.string.borders_blb_slots); mapAreas.put(key, new MyArea(key, Area.BLB_SLOTS,
                 getString(R.string.pref_cut_blb_slots_x1), getString(R.string.pref_cut_blb_slots_x2), getString(R.string.pref_cut_blb_slots_y1), getString(R.string.pref_cut_blb_slots_y2),
@@ -333,11 +333,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
 
-        key = getString(R.string.borders_brt_increase); mapAreas.put(key, new MyArea(key, Area.BRT_POINTS,
-                getString(R.string.pref_cut_brt_increase_x1), getString(R.string.pref_cut_brt_increase_x2), getString(R.string.pref_cut_brt_increase_y1), getString(R.string.pref_cut_brt_increase_y2),
-                getString(R.string.def_cut_brt_points_x1), getString(R.string.def_cut_brt_points_x2), getString(R.string.def_cut_brt_points_y1), getString(R.string.def_cut_brt_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_brt_increase); mapAreas.put(key, new MyArea(key, Area.BRT_POINTS,
+//                getString(R.string.pref_cut_brt_increase_x1), getString(R.string.pref_cut_brt_increase_x2), getString(R.string.pref_cut_brt_increase_y1), getString(R.string.pref_cut_brt_increase_y2),
+//                getString(R.string.def_cut_brt_points_x1), getString(R.string.def_cut_brt_points_x2), getString(R.string.def_cut_brt_points_y1), getString(R.string.def_cut_brt_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
 
         key = getString(R.string.borders_brt_slots); mapAreas.put(key, new MyArea(key, Area.BRT_SLOTS,
                 getString(R.string.pref_cut_brt_slots_x1), getString(R.string.pref_cut_brt_slots_x2), getString(R.string.pref_cut_brt_slots_y1), getString(R.string.pref_cut_brt_slots_y2),
@@ -364,11 +364,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
 
-        key = getString(R.string.borders_brc_increase); mapAreas.put(key, new MyArea(key, Area.BRC_POINTS,
-                getString(R.string.pref_cut_brc_increase_x1), getString(R.string.pref_cut_brc_increase_x2), getString(R.string.pref_cut_brc_increase_y1), getString(R.string.pref_cut_brc_increase_y2),
-                getString(R.string.def_cut_brc_points_x1), getString(R.string.def_cut_brc_points_x2), getString(R.string.def_cut_brc_points_y1), getString(R.string.def_cut_brc_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_brc_increase); mapAreas.put(key, new MyArea(key, Area.BRC_POINTS,
+//                getString(R.string.pref_cut_brc_increase_x1), getString(R.string.pref_cut_brc_increase_x2), getString(R.string.pref_cut_brc_increase_y1), getString(R.string.pref_cut_brc_increase_y2),
+//                getString(R.string.def_cut_brc_points_x1), getString(R.string.def_cut_brc_points_x2), getString(R.string.def_cut_brc_points_y1), getString(R.string.def_cut_brc_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
 
         key = getString(R.string.borders_brc_slots); mapAreas.put(key, new MyArea(key, Area.BRC_SLOTS,
                 getString(R.string.pref_cut_brc_slots_x1), getString(R.string.pref_cut_brc_slots_x2), getString(R.string.pref_cut_brc_slots_y1), getString(R.string.pref_cut_brc_slots_y2),
@@ -395,11 +395,11 @@ public class BordersActivity extends AppCompatActivity {
                 getString(R.string.pref_rgb_bxx_name_main), getString(R.string.pref_rgb_bxx_name_back1), getString(R.string.pref_rgb_bxx_name_thm), getString(R.string.pref_rgb_bxx_name_thp),
                 getString(R.string.def_rgb_bxx_name_our_main), getString(R.string.def_rgb_bxx_name_our_back1), getString(R.string.def_rgb_bxx_name_our_thm), getString(R.string.def_rgb_bxx_name_our_thp)));
 
-        key = getString(R.string.borders_brb_increase); mapAreas.put(key, new MyArea(key, Area.BRB_POINTS,
-                getString(R.string.pref_cut_brb_increase_x1), getString(R.string.pref_cut_brb_increase_x2), getString(R.string.pref_cut_brb_increase_y1), getString(R.string.pref_cut_brb_increase_y2),
-                getString(R.string.def_cut_brb_points_x1), getString(R.string.def_cut_brb_points_x2), getString(R.string.def_cut_brb_points_y1), getString(R.string.def_cut_brb_points_y2),
-                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
-                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
+//        key = getString(R.string.borders_brb_increase); mapAreas.put(key, new MyArea(key, Area.BRB_POINTS,
+//                getString(R.string.pref_cut_brb_increase_x1), getString(R.string.pref_cut_brb_increase_x2), getString(R.string.pref_cut_brb_increase_y1), getString(R.string.pref_cut_brb_increase_y2),
+//                getString(R.string.def_cut_brb_points_x1), getString(R.string.def_cut_brb_points_x2), getString(R.string.def_cut_brb_points_y1), getString(R.string.def_cut_brb_points_y2),
+//                getString(R.string.pref_rgb_bxx_increase_main), getString(R.string.pref_rgb_bxx_increase_back1), getString(R.string.pref_rgb_bxx_increase_thm), getString(R.string.pref_rgb_bxx_increase_thp),
+//                getString(R.string.def_rgb_bxx_points_our_main), getString(R.string.def_rgb_bxx_points_our_back1), getString(R.string.def_rgb_bxx_points_our_thm), getString(R.string.def_rgb_bxx_points_our_thp)));
 
         key = getString(R.string.borders_brb_slots); mapAreas.put(key, new MyArea(key, Area.BRB_SLOTS,
                 getString(R.string.pref_cut_brb_slots_x1), getString(R.string.pref_cut_brb_slots_x2), getString(R.string.pref_cut_brb_slots_y1), getString(R.string.pref_cut_brb_slots_y2),

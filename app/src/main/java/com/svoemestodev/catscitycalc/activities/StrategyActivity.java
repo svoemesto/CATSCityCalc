@@ -230,20 +230,14 @@ public class StrategyActivity extends AppCompatActivity {
 
         mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context));
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-        CCATeam ccaTeamOur = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
-        CCATeam ccaTeamEnemy = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
+
         if (ccaGame != null) {
             dateScreenshotMain = ccaGame.getCcagDateScreenshot();
+            increaseOurMain = ccaGame.getCcagIncreaseOur();
+            increaseEnemyMain = ccaGame.getCcagIncreaseEnemy();
+            pointsInScreenshotOurMain = ccaGame.getCcagPointsOurInScreenshot();
+            pointsInScreenshotEnemyMain = ccaGame.getCcagPointsEnemyInScreenshot();
         }
-        if (ccaTeamOur != null) {
-            increaseOurMain = ccaTeamOur.getCcatIncrease();
-            pointsInScreenshotOurMain = ccaTeamOur.getCcatPointsInScreenshot();
-        }
-        if (ccaTeamEnemy != null) {
-            increaseEnemyMain = ccaTeamEnemy.getCcatIncrease();
-            pointsInScreenshotEnemyMain = ccaTeamEnemy.getCcatPointsInScreenshot();
-        }
-
 
         CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
         CCABuilding ccaBLC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
@@ -351,8 +345,6 @@ public class StrategyActivity extends AppCompatActivity {
         if (mainCityCalc != null) {
 
             CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-            CCATeam ccaTeamOur = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
-            CCATeam ccaTeamEnemy = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
             CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
             CCABuilding ccaBLC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
             CCABuilding ccaBLB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
@@ -369,30 +361,20 @@ public class StrategyActivity extends AppCompatActivity {
             countMayX2our = 0;
             countMayX2enemy = 0;
             countMayX2empty = 0;
-            
-            if (ccaTeamOur != null) {
-                ccaTeamOur.setCcatIncrease(increaseOurMain);
-                ccaTeamOur.setCcatPointsInScreenshot(pointsInScreenshotOurMain);
-            }
 
-            if (ccaTeamEnemy != null) {
-                ccaTeamEnemy.setCcatIncrease(increaseEnemyMain);
-                ccaTeamEnemy.setCcatPointsInScreenshot(pointsInScreenshotEnemyMain);
-            }
-            
             if (ccaGame != null) {
+                ccaGame.setCcagIncreaseOur(increaseOurMain);
+                ccaGame.setCcagPointsOurInScreenshot(pointsInScreenshotOurMain);
+                ccaGame.setCcagIncreaseEnemy(increaseEnemyMain);
+                ccaGame.setCcagPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
                 ccaGame.setCcagDateScreenshot(dateScreenshotMain);
+
                 ccaGame.calcWin();
-            }
 
-            if (ccaTeamOur != null) {
-                ccaTeamOur.setCcatPointsInScreenshot(ccaTeamOur.getPoints());
-            }
+                ccaGame.setCcagPointsOurInScreenshot(ccaGame.getPointsOur());
+                ccaGame.setCcagPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
 
-            if (ccaTeamEnemy != null) {
-                ccaTeamEnemy.setCcatPointsInScreenshot(ccaTeamEnemy.getPoints());
             }
-
             
             if (ccaBLT != null) {
                 if (ccaBLT.isPresent()) {
@@ -565,14 +547,8 @@ public class StrategyActivity extends AppCompatActivity {
             
             if (ccaGame != null) {
                 ccaGame.setCcagDateScreenshot(new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000));
-            }
-
-            if (ccaTeamOur != null) {
-                ccaTeamOur.setCcatIncrease(increaseOur);
-            }
-
-            if (ccaTeamEnemy != null) {
-                ccaTeamEnemy.setCcatIncrease(increaseEnemy);
+                ccaGame.setCcagIncreaseOur(increaseOur);
+                ccaGame.setCcagIncreaseEnemy(increaseEnemy);
             }
             
         }
@@ -616,35 +592,35 @@ public class StrategyActivity extends AppCompatActivity {
                 tv_sa_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
             }
 
+            if (ccaOurTeam != null) iv_sa_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
+            if (ccaEnemyTeam != null) iv_sa_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
+
             tv_sa_early_win.setText(String.valueOf(ccaGame.getCcagEarlyWin())); // очки до досрочной победы
-            if (ccaOurTeam != null && ccaEnemyTeam != null) {   // если команды не пустые
 
-                iv_sa_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
-                tv_sa_our_increase.setText(ccaOurTeam.getCcatIncrease() == 0 ? "" : " +" + ccaOurTeam.getCcatIncrease() + " ");   // прирост нашей команды
-                tv_sa_our_points.setText(String.valueOf(ccaOurTeam.getPoints()));  // очки нашей команды
+            tv_sa_our_increase.setText(ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " ");   // прирост нашей команды
+            tv_sa_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
 
-                iv_sa_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
-                tv_sa_enemy_increase.setText(ccaEnemyTeam.getCcatIncrease() == 0 ? "" : " +" + ccaEnemyTeam.getCcatIncrease() + " "); // прирост команды противника
-                tv_sa_enemy_points.setText(String.valueOf(ccaEnemyTeam.getPoints()));    // очки команды противника
 
-                if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+            tv_sa_enemy_increase.setText(ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "); // прирост команды противника
+            tv_sa_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
+
+            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+                tv_sa_our_end_time.setText(""); // наше время пустое
+                tv_sa_enemy_end_time.setText(""); // время противника пустое
+            } else { // если игра незакончена
+                if (ccaGame.isCcagWillOurWin()) {
+                    tv_sa_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    tv_sa_enemy_end_time.setText("");   // время противника пустое
+                } else if (ccaGame.isCcagWillEnemyWin()) {
                     tv_sa_our_end_time.setText(""); // наше время пустое
-                    tv_sa_enemy_end_time.setText(""); // время противника пустое
-                } else { // если игра незакончена
-                    if (ccaGame.isCcagWillOurWin()) {
-                        tv_sa_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                        tv_sa_enemy_end_time.setText("");   // время противника пустое
-                    } else if (ccaGame.isCcagWillEnemyWin()) {
-                        tv_sa_our_end_time.setText(""); // наше время пустое
-                        tv_sa_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                    } else if (ccaGame.isCcagWillNobodyWin()) {
-                        tv_sa_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                        tv_sa_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                    }
-
+                    tv_sa_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                } else if (ccaGame.isCcagWillNobodyWin()) {
+                    tv_sa_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    tv_sa_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                 }
 
             }
+
 
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
             int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));

@@ -39,7 +39,7 @@ public class CCABuilding extends CityCalcArea {
         }
     }
 
-    public void calc(CityCalcArea ccaBuildingPoints, CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {
+    public void calc(CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {
 
         if (this.isPresent) {
             this.slots = Integer.parseInt(ccaBuildingSlots.getFinText());

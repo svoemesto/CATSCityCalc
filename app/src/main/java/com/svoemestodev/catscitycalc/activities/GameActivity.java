@@ -422,48 +422,47 @@ public class GameActivity extends AppCompatActivity {
             Log.i(TAG, logMsgPref + "getCcagEarlyWin() = " + ccaGame.getCcagEarlyWin());
             ga_tv_early_win.setText(String.valueOf(ccaGame.getCcagEarlyWin())); // очки до досрочной победы
 
-            if (ccaOurTeam != null && ccaEnemyTeam != null) {   // если команды не пустые
+            if (ccaOurTeam != null) ga_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
+            if (ccaEnemyTeam != null) ga_iv_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
 
-                ga_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
-                ga_tv_our_increase.setText(ccaOurTeam.getCcatIncrease() == 0 ? "" : " +" + ccaOurTeam.getCcatIncrease() + " ");   // прирост нашей команды
-                Log.i(TAG, logMsgPref + "ga_tv_our_increase = " + (ccaOurTeam.getCcatIncrease() == 0 ? "" : " +" + ccaOurTeam.getCcatIncrease() + " "));
-                ga_tv_our_points.setText(String.valueOf(ccaOurTeam.getPoints()));  // очки нашей команды
-                Log.i(TAG, logMsgPref + "ga_tv_our_points = " + String.valueOf(ccaOurTeam.getPoints()));
 
-                ga_iv_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
-                ga_tv_enemy_increase.setText(ccaEnemyTeam.getCcatIncrease() == 0 ? "" : " +" + ccaEnemyTeam.getCcatIncrease() + " "); // прирост команды противника
-                Log.i(TAG, logMsgPref + "ga_tv_enemy_increase = " + (ccaEnemyTeam.getCcatIncrease() == 0 ? "" : " +" + ccaEnemyTeam.getCcatIncrease() + " "));
-                ga_tv_enemy_points.setText(String.valueOf(ccaEnemyTeam.getPoints()));    // очки команды противника
-                Log.i(TAG, logMsgPref + "ga_tv_enemy_points = " + String.valueOf(ccaEnemyTeam.getPoints()));
+            ga_tv_our_increase.setText(ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " ");   // прирост нашей команды
+            Log.i(TAG, logMsgPref + "ga_tv_our_increase = " + (ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " "));
+            ga_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
+            Log.i(TAG, logMsgPref + "ga_tv_our_points = " + String.valueOf(ccaGame.getPointsOur()));
 
-                if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+
+            ga_tv_enemy_increase.setText(ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "); // прирост команды противника
+            Log.i(TAG, logMsgPref + "ga_tv_enemy_increase = " + (ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "));
+            ga_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
+            Log.i(TAG, logMsgPref + "ga_tv_enemy_points = " + String.valueOf(ccaGame.getPointsEnemy()));
+
+            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+                ga_tv_our_end_time.setText(""); // наше время пустое
+                ga_tv_enemy_end_time.setText(""); // время противника пустое
+            } else { // если игра незакончена
+                if (ccaGame.isCcagWillOurWin()) {
+                    Log.i(TAG, logMsgPref + "isCcagWillOurWin() = " + ccaGame.isCcagWillOurWin());
+
+                    ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
+
+                    ga_tv_enemy_end_time.setText("");   // время противника пустое
+                } else if (ccaGame.isCcagWillEnemyWin()) {
+                    Log.i(TAG, logMsgPref + "isCcagWillEnemyWin() = " + ccaGame.isCcagWillEnemyWin());
+
                     ga_tv_our_end_time.setText(""); // наше время пустое
-                    ga_tv_enemy_end_time.setText(""); // время противника пустое
-                } else { // если игра незакончена
-                    if (ccaGame.isCcagWillOurWin()) {
-                        Log.i(TAG, logMsgPref + "isCcagWillOurWin() = " + ccaGame.isCcagWillOurWin());
+                    ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                    Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
 
-                        ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                        Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
+                } else if (ccaGame.isCcagWillNobodyWin()) {
+                    Log.i(TAG, logMsgPref + "isCcagWillNobodyWin() = " + ccaGame.isCcagWillNobodyWin());
 
-                        ga_tv_enemy_end_time.setText("");   // время противника пустое
-                    } else if (ccaGame.isCcagWillEnemyWin()) {
-                        Log.i(TAG, logMsgPref + "isCcagWillEnemyWin() = " + ccaGame.isCcagWillEnemyWin());
+                    ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
 
-                        ga_tv_our_end_time.setText(""); // наше время пустое
-                        ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                        Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-
-                    } else if (ccaGame.isCcagWillNobodyWin()) {
-                        Log.i(TAG, logMsgPref + "isCcagWillNobodyWin() = " + ccaGame.isCcagWillNobodyWin());
-
-                        ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                        Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-
-                        ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                        Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-                    }
-
+                    ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                    Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
                 }
 
             }

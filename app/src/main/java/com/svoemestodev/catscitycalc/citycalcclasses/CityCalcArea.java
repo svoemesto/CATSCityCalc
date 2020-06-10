@@ -60,36 +60,36 @@ public class CityCalcArea {
             case POINTS_OUR:
             case POINTS_AND_INCREASE_ENEMY:
             case POINTS_ENEMY:
-            case INCREASE_OUR:
-            case INCREASE_ENEMY:
+//            case INCREASE_OUR:
+//            case INCREASE_ENEMY:
             case BLT_AREA:
             case BLT:
-            case BLT_POINTS:
+//            case BLT_POINTS:
             case BLT_SLOTS:
             case BLT_PROGRESS:
             case BLC_AREA:
             case BLC:
-            case BLC_POINTS:
+//            case BLC_POINTS:
             case BLC_SLOTS:
             case BLC_PROGRESS:
             case BLB_AREA:
             case BLB:
-            case BLB_POINTS:
+//            case BLB_POINTS:
             case BLB_SLOTS:
             case BLB_PROGRESS:
             case BRT_AREA:
             case BRT:
-            case BRT_POINTS:
+//            case BRT_POINTS:
             case BRT_SLOTS:
             case BRT_PROGRESS:
             case BRC_AREA:
             case BRC:
-            case BRC_POINTS:
+//            case BRC_POINTS:
             case BRC_SLOTS:
             case BRC_PROGRESS:
             case BRB_AREA:
             case BRB:
-            case BRB_POINTS:
+//            case BRB_POINTS:
             case BRB_SLOTS:
             case BRB_PROGRESS:
             default:

@@ -16,6 +16,11 @@ public class CCAGame extends CityCalcArea {
     private Date ccagDateFinal;         // дата реального окончания игры
     private int ccagEarlyWin;           // нужно очков до досрочной победы
 
+    private int ccagPointsOurInScreenshot;
+    private int ccagPointsEnemyInScreenshot;
+    private int ccagIncreaseOur;
+    private int ccagIncreaseEnemy;
+
     private boolean ccagIsGameOver;         // игра окончена
     private boolean ccagIsGameOverEarly;    // игра окончена досрочно
     private boolean ccagIsWinOur;           // победили мы
@@ -75,85 +80,127 @@ public class CCAGame extends CityCalcArea {
         return minutes;
     }
 
+    /**
+     * Возвращаем количество очков на дату. Не может быть меньше нуля или больше очков досрочки
+     * @param date - дата
+     * @return - очки
+     */
+    public int getPointsOur(Date date) {
+        int minutes = Utils.getMinutesBetweenDates(this.getCcagDateScreenshot(), date);
+        int points = this.ccagPointsOurInScreenshot + this.ccagIncreaseOur * minutes;
+        if (points < 0) points = 0;
+        if (points > this.getCcagEarlyWin()) points = this.getCcagEarlyWin();
+        return points;
+    }
+
+    public int getPointsOur() {
+        Date date = this.getCcagDateFinal().getTime() > this.getCcagDateCurrent().getTime() ? this.getCcagDateCurrent() : this.getCcagDateFinal();
+        return getPointsOur(date);
+    }
+
+    public int getPointsEnemy(Date date) {
+        int minutes = Utils.getMinutesBetweenDates(this.getCcagDateScreenshot(), date);
+        int points = this.ccagPointsEnemyInScreenshot + this.ccagIncreaseEnemy * minutes;
+        if (points < 0) points = 0;
+        if (points > this.getCcagEarlyWin()) points = this.getCcagEarlyWin();
+        return points;
+    }
+
+    public int getPointsEnemy() {
+        Date date = this.getCcagDateFinal().getTime() > this.getCcagDateCurrent().getTime() ? this.getCcagDateCurrent() : this.getCcagDateFinal();
+        return getPointsEnemy(date);
+    }
+
+    /**
+     * @return - дата досрочной победы. Если она невозможно - +месяц он начала игры
+     */
+    public Date getDateEarlyWinOur() {
+        if (this.ccagIncreaseOur == 0) {
+            return new Date(this.getCcagDateStartGame().getTime() + 25*60*60*1000);
+        } else {
+            return Utils.addMinutesToDate(this.getCcagDateScreenshot(), (this.getCcagEarlyWin() - this.ccagPointsOurInScreenshot) / this.ccagIncreaseOur);
+        }
+    }
+
+    public Date getDateEarlyWinEnemy() {
+        if (this.ccagIncreaseEnemy == 0) {
+            return new Date(this.getCcagDateStartGame().getTime() + 25*60*60*1000);
+        } else {
+            return Utils.addMinutesToDate(this.getCcagDateScreenshot(), (this.getCcagEarlyWin() - this.ccagPointsEnemyInScreenshot) / this.ccagIncreaseEnemy);
+        }
+    }
+
     public void calcWin() {
 
         String pattern = "dd MMM HH:mm";
 
-        CCATeam ccatOurTeam = (CCATeam) this.getCityCalc().getMapAreas().get(Area.TEAM_NAME_OUR);
-        CCATeam ccatEnemyTeam = (CCATeam)  this.getCityCalc().getMapAreas().get(Area.TEAM_NAME_ENEMY);
-
-        if (ccatOurTeam != null && ccatEnemyTeam != null) {
-
-            this.ccagDateCurrent = new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000); // текущая дата
-            Date dateEarlyOutTeam = ccatOurTeam.getDateEarlyWin(); // дата досрочной победы нашей команды
-            Date dateEarlyEnemyTeam = ccatEnemyTeam.getDateEarlyWin(); // дата досрочной победы команды противника
-            this.ccagWillEarlyWin = (dateEarlyOutTeam.getTime() < this.ccagDateEndGame.getTime() || dateEarlyEnemyTeam.getTime() < this.ccagDateEndGame.getTime()); // будет ли досрочная победа
-            if (this.ccagWillEarlyWin) { // если будет досрочная победа
-                this.ccagWillOurWin = (dateEarlyOutTeam.getTime() < dateEarlyEnemyTeam.getTime()); // будет ли наша досрочная победа
-                this.ccagWillEnemyWin = (dateEarlyOutTeam.getTime() > dateEarlyEnemyTeam.getTime()); // будет ли досрочная победа противника
-                this.ccagWillNobodyWin = (dateEarlyOutTeam.getTime() == dateEarlyEnemyTeam.getTime()); // будет ли досрочная ничья
-                this.ccagDateFinal = this.ccagWillOurWin || this.ccagWillNobodyWin ? dateEarlyOutTeam : dateEarlyEnemyTeam;
-            } else {
-                this.ccagDateFinal = this.ccagDateEndGame;
-                this.ccagWillOurWin = (ccatOurTeam.getPoints(this.ccagDateFinal) > ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли наша победа
-                this.ccagWillEnemyWin = (ccatOurTeam.getPoints(this.ccagDateFinal) < ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли победа противника
-                this.ccagWillNobodyWin = (ccatOurTeam.getPoints(this.ccagDateFinal) == ccatEnemyTeam.getPoints(this.ccagDateFinal)); // будет ли ничья
-            }
-
-            this.ccagIsGameOver = this.ccagDateFinal.getTime() <= this.ccagDateCurrent.getTime(); // закончилась ли игра
-            this.ccagIsGameOverEarly = this.ccagIsGameOver && this.ccagWillEarlyWin; // закончилась ли игра досрочно
-
-            if (this.ccagIsGameOver) { // если игра закончилась
-                this.ccagIsWinOur = ccatOurTeam.getPoints(this.ccagDateFinal) > ccatEnemyTeam.getPoints(this.ccagDateFinal); // победили ли мы
-                this.ccagIsWinEnemy = ccatOurTeam.getPoints(this.ccagDateFinal) < ccatEnemyTeam.getPoints(this.ccagDateFinal); // победил ли противник
-                this.ccagIsWinNobody = ccatOurTeam.getPoints(this.ccagDateFinal) == ccatEnemyTeam.getPoints(this.ccagDateFinal); // была ли ничья
-            }
-
-            differentPoints = Math.abs(ccatOurTeam.getPoints(this.ccagDateFinal) - ccatEnemyTeam.getPoints(this.ccagDateFinal)); // разница в очках на момент окончания игры
-
-            if (this.ccagIsGameOver) { // игра закончена
-                if (this.ccagIsGameOverEarly) { // игра закончена досрочно
-                    if (this.ccagIsWinOur) { // досрочная наша победа
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_instance_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagIsWinEnemy) { // досрочная победа противника
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_instance_lose)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagIsWinNobody) { // досрочная ничья
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.instance_nowinner)  + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    }
-                } else { // игра закончена по времени
-                    if (this.ccagIsWinOur) { // наша победа
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagIsWinEnemy) { // победа противника
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_lost)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagIsWinNobody) { // ничья
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.nowin)  + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    }
-                }
-            } else { // игра еще идет
-                int minutesToEndGame = Utils.getMinutesBetweenDates(this.ccagDateCurrent, this.ccagDateFinal);
-                if (this.ccagWillEarlyWin) { // игра будет закончена досрочно
-                    if (this.ccagWillOurWin) { // будет досрочная наша победа
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_instance_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagWillEnemyWin) { // будет досрочная победа противника
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_instance_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagWillNobodyWin) { // будет досрочная ничья
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.will_instance_nowin_after)  + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    }
-                } else { // игра будет закончена по времени
-                    if (this.ccagWillOurWin) { // будет наша победа
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagWillEnemyWin) { // будет победа противника
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    } else if (this.ccagWillNobodyWin) { // будет ничья
-                        this.ccagStatus = this.getCityCalc().getContext().getString(R.string.will_nowin) + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
-                    }
-                }
-            } // игра закончена
-            
-            if  (this.ccagIsErrorRecognize) this.ccagStatus = getCityCalc().getContext().getString(R.string.error_recognizing) + "  " + this.ccagStatus;
-            
+        this.ccagDateCurrent = new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000); // текущая дата
+        Date dateEarlyOutTeam = getDateEarlyWinOur(); // дата досрочной победы нашей команды
+        Date dateEarlyEnemyTeam = getDateEarlyWinEnemy(); // дата досрочной победы команды противника
+        this.ccagWillEarlyWin = (dateEarlyOutTeam.getTime() < this.ccagDateEndGame.getTime() || dateEarlyEnemyTeam.getTime() < this.ccagDateEndGame.getTime()); // будет ли досрочная победа
+        if (this.ccagWillEarlyWin) { // если будет досрочная победа
+            this.ccagWillOurWin = (dateEarlyOutTeam.getTime() < dateEarlyEnemyTeam.getTime()); // будет ли наша досрочная победа
+            this.ccagWillEnemyWin = (dateEarlyOutTeam.getTime() > dateEarlyEnemyTeam.getTime()); // будет ли досрочная победа противника
+            this.ccagWillNobodyWin = (dateEarlyOutTeam.getTime() == dateEarlyEnemyTeam.getTime()); // будет ли досрочная ничья
+            this.ccagDateFinal = this.ccagWillOurWin || this.ccagWillNobodyWin ? dateEarlyOutTeam : dateEarlyEnemyTeam;
+        } else {
+            this.ccagDateFinal = this.ccagDateEndGame;
+            this.ccagWillOurWin = (getPointsOur(this.ccagDateFinal) > getPointsEnemy(this.ccagDateFinal)); // будет ли наша победа
+            this.ccagWillEnemyWin = (getPointsOur(this.ccagDateFinal) < getPointsEnemy(this.ccagDateFinal)); // будет ли победа противника
+            this.ccagWillNobodyWin = (getPointsOur(this.ccagDateFinal) == getPointsEnemy(this.ccagDateFinal)); // будет ли ничья
         }
 
+        this.ccagIsGameOver = this.ccagDateFinal.getTime() <= this.ccagDateCurrent.getTime(); // закончилась ли игра
+        this.ccagIsGameOverEarly = this.ccagIsGameOver && this.ccagWillEarlyWin; // закончилась ли игра досрочно
+
+        if (this.ccagIsGameOver) { // если игра закончилась
+            this.ccagIsWinOur = getPointsOur(this.ccagDateFinal) > getPointsEnemy(this.ccagDateFinal); // победили ли мы
+            this.ccagIsWinEnemy = getPointsOur(this.ccagDateFinal) < getPointsEnemy(this.ccagDateFinal); // победил ли противник
+            this.ccagIsWinNobody = getPointsOur(this.ccagDateFinal) == getPointsEnemy(this.ccagDateFinal); // была ли ничья
+        }
+
+        differentPoints = Math.abs(getPointsOur(this.ccagDateFinal) - getPointsEnemy(this.ccagDateFinal)); // разница в очках на момент окончания игры
+
+        if (this.ccagIsGameOver) { // игра закончена
+            if (this.ccagIsGameOverEarly) { // игра закончена досрочно
+                if (this.ccagIsWinOur) { // досрочная наша победа
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_instance_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagIsWinEnemy) { // досрочная победа противника
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_instance_lose)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagIsWinNobody) { // досрочная ничья
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.instance_nowinner)  + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                }
+            } else { // игра закончена по времени
+                if (this.ccagIsWinOur) { // наша победа
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagIsWinEnemy) { // победа противника
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_lost)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagIsWinNobody) { // ничья
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.nowin)  + " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                }
+            }
+        } else { // игра еще идет
+            int minutesToEndGame = Utils.getMinutesBetweenDates(this.ccagDateCurrent, this.ccagDateFinal);
+            if (this.ccagWillEarlyWin) { // игра будет закончена досрочно
+                if (this.ccagWillOurWin) { // будет досрочная наша победа
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_instance_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagWillEnemyWin) { // будет досрочная победа противника
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_instance_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagWillNobodyWin) { // будет досрочная ничья
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.will_instance_nowin_after)  + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                }
+            } else { // игра будет закончена по времени
+                if (this.ccagWillOurWin) { // будет наша победа
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagWillEnemyWin) { // будет победа противника
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.we_will_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                } else if (this.ccagWillNobodyWin) { // будет ничья
+                    this.ccagStatus = this.getCityCalc().getContext().getString(R.string.will_nowin) + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.ccagDateFinal, pattern) + ")";
+                }
+            }
+        } // игра закончена
+
+        if  (this.ccagIsErrorRecognize) this.ccagStatus = getCityCalc().getContext().getString(R.string.error_recognizing) + "  " + this.ccagStatus;
 
 
     }
@@ -309,5 +356,37 @@ public class CCAGame extends CityCalcArea {
 
     public void setCcagStatus(String ccagStatus) {
         this.ccagStatus = ccagStatus;
+    }
+
+    public int getCcagPointsOurInScreenshot() {
+        return ccagPointsOurInScreenshot;
+    }
+
+    public void setCcagPointsOurInScreenshot(int ccagPointsOurInScreenshot) {
+        this.ccagPointsOurInScreenshot = ccagPointsOurInScreenshot;
+    }
+
+    public int getCcagPointsEnemyInScreenshot() {
+        return ccagPointsEnemyInScreenshot;
+    }
+
+    public void setCcagPointsEnemyInScreenshot(int ccagPointsEnemyInScreenshot) {
+        this.ccagPointsEnemyInScreenshot = ccagPointsEnemyInScreenshot;
+    }
+
+    public int getCcagIncreaseOur() {
+        return ccagIncreaseOur;
+    }
+
+    public void setCcagIncreaseOur(int ccagIncreaseOur) {
+        this.ccagIncreaseOur = ccagIncreaseOur;
+    }
+
+    public int getCcagIncreaseEnemy() {
+        return ccagIncreaseEnemy;
+    }
+
+    public void setCcagIncreaseEnemy(int ccagIncreaseEnemy) {
+        this.ccagIncreaseEnemy = ccagIncreaseEnemy;
     }
 }
