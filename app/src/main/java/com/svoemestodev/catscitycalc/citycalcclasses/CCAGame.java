@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.util.Calendar;
@@ -132,6 +133,102 @@ public class CCAGame extends CityCalcArea {
                 ccagDateScreenshot = new Date((cityCalc.getFileScreenshot().lastModified() / 60_000) * 60_000); // дата/время создания скриншота с точностью до минуты
             }
         }
+    }
+
+    public void updateFromDb(DbTeamGame dbTeamGame) {
+
+        this.ccagDateStartGame = dbTeamGame.getDateStartGame();
+        this.ccagDateScreenshot = dbTeamGame.getDateScreenshot();
+        this.ccagDateEndGame = dbTeamGame.getDateEndGame();
+        this.ccagEarlyWin = dbTeamGame.getEarlyWin();
+
+        this.ccagPointsOurInScreenshot = dbTeamGame.getPointsOurInScreenshot();
+        this.ccagPointsEnemyInScreenshot = dbTeamGame.getPointsEnemyInScreenshot();
+        this.ccagIncreaseOur = dbTeamGame.getIncreaseOur();
+        this.ccagIncreaseEnemy = dbTeamGame.getIncreaseEnemy();
+
+        this.isPresent_blt = dbTeamGame.isPresent_blt();
+        this.isPresent_blc = dbTeamGame.isPresent_blc();
+        this.isPresent_blb = dbTeamGame.isPresent_blb();
+        this.isPresent_brt = dbTeamGame.isPresent_brt();
+        this.isPresent_brc = dbTeamGame.isPresent_brc();
+        this.isPresent_brb = dbTeamGame.isPresent_brb();
+
+        this.isX2_blt = dbTeamGame.isX2_blt();
+        this.isX2_blc = dbTeamGame.isX2_blc();
+        this.isX2_blb = dbTeamGame.isX2_blb();
+        this.isX2_brt = dbTeamGame.isX2_brt();
+        this.isX2_brc = dbTeamGame.isX2_brc();
+        this.isX2_brb = dbTeamGame.isX2_brb();
+
+        this.mayX2_blt = dbTeamGame.isMayX2_blt();
+        this.mayX2_blc = dbTeamGame.isMayX2_blc();
+        this.mayX2_blb = dbTeamGame.isMayX2_blb();
+        this.mayX2_brt = dbTeamGame.isMayX2_brt();
+        this.mayX2_brc = dbTeamGame.isMayX2_brc();
+        this.mayX2_brb = dbTeamGame.isMayX2_brb();
+
+        this.buildingIsOur_blt = dbTeamGame.isBuildingIsOur_blt();
+        this.buildingIsOur_blc = dbTeamGame.isBuildingIsOur_blc();
+        this.buildingIsOur_blb = dbTeamGame.isBuildingIsOur_blb();
+        this.buildingIsOur_brt = dbTeamGame.isBuildingIsOur_brt();
+        this.buildingIsOur_brc = dbTeamGame.isBuildingIsOur_brc();
+        this.buildingIsOur_brb = dbTeamGame.isBuildingIsOur_brb();
+
+        this.buildingIsEmpty_blt = dbTeamGame.isBuildingIsEmpty_blt();
+        this.buildingIsEmpty_blc = dbTeamGame.isBuildingIsEmpty_blc();
+        this.buildingIsEmpty_blb = dbTeamGame.isBuildingIsEmpty_blb();
+        this.buildingIsEmpty_brt = dbTeamGame.isBuildingIsEmpty_brt();
+        this.buildingIsEmpty_brc = dbTeamGame.isBuildingIsEmpty_brc();
+        this.buildingIsEmpty_brb = dbTeamGame.isBuildingIsEmpty_brb();
+
+        this.buildingIsEnemy_blt = dbTeamGame.isBuildingIsEnemy_blt();
+        this.buildingIsEnemy_blc = dbTeamGame.isBuildingIsEnemy_blc();
+        this.buildingIsEnemy_blb = dbTeamGame.isBuildingIsEnemy_blb();
+        this.buildingIsEnemy_brt = dbTeamGame.isBuildingIsEnemy_brt();
+        this.buildingIsEnemy_brc = dbTeamGame.isBuildingIsEnemy_brc();
+        this.buildingIsEnemy_brb = dbTeamGame.isBuildingIsEnemy_brb();
+
+        this.our_points_blt = dbTeamGame.getOur_points_blt();
+        this.our_points_blc = dbTeamGame.getOur_points_blc();
+        this.our_points_blb = dbTeamGame.getOur_points_blb();
+        this.our_points_brt = dbTeamGame.getOur_points_brt();
+        this.our_points_brc = dbTeamGame.getOur_points_brc();
+        this.our_points_brb = dbTeamGame.getOur_points_brb();
+
+        this.enemy_points_blt = dbTeamGame.getEnemy_points_blt();
+        this.enemy_points_blc = dbTeamGame.getEnemy_points_blc();
+        this.enemy_points_blb = dbTeamGame.getEnemy_points_blb();
+        this.enemy_points_brt = dbTeamGame.getEnemy_points_brt();
+        this.enemy_points_brc = dbTeamGame.getEnemy_points_brc();
+        this.enemy_points_brb = dbTeamGame.getEnemy_points_brb();
+
+        this.slots_blt = dbTeamGame.getSlots_blt();
+        this.slots_blt_our = dbTeamGame.getSlots_blt_our();
+        this.slots_blt_empty = dbTeamGame.getSlots_blt_empty();
+        this.slots_blt_enemy = dbTeamGame.getSlots_blt_enemy();
+        this.slots_blc = dbTeamGame.getSlots_blc();
+        this.slots_blc_our = dbTeamGame.getSlots_blc_our();
+        this.slots_blc_empty = dbTeamGame.getSlots_blc_empty();
+        this.slots_blc_enemy = dbTeamGame.getSlots_blc_enemy();
+        this.slots_blb = dbTeamGame.getSlots_blb();
+        this.slots_blb_our = dbTeamGame.getSlots_blb_our();
+        this.slots_blb_empty = dbTeamGame.getSlots_blb_empty();
+        this.slots_blb_enemy = dbTeamGame.getSlots_blb_enemy();
+        this.slots_brt = dbTeamGame.getSlots_brt();
+        this.slots_brt_our = dbTeamGame.getSlots_brt_our();
+        this.slots_brt_empty = dbTeamGame.getSlots_brt_empty();
+        this.slots_brt_enemy = dbTeamGame.getSlots_brt_enemy();
+        this.slots_brc = dbTeamGame.getSlots_brc();
+        this.slots_brc_our = dbTeamGame.getSlots_brc_our();
+        this.slots_brc_empty = dbTeamGame.getSlots_brc_empty();
+        this.slots_brc_enemy = dbTeamGame.getSlots_brc_enemy();
+        this.slots_brb = dbTeamGame.getSlots_brb();
+        this.slots_brb_our = dbTeamGame.getSlots_brb_our();
+        this.slots_brb_empty = dbTeamGame.getSlots_brb_empty();
+        this.slots_brb_enemy = dbTeamGame.getSlots_brb_enemy();
+
+        calcWin();
 
     }
 

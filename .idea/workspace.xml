@@ -26,7 +26,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +65,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-10T08:17:49.795Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestChat" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
@@ -149,14 +152,18 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591802316254">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591803713877">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591802316254" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591803713877" />
     <state x="2284" y="92" width="1064" height="532" key="AVDManager" timestamp="1591776640460">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="2284" y="92" width="1064" height="532" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1591776640460" />
+    <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1591805784882">
+      <screen x="0" y="0" width="3440" height="1400" />
+    </state>
+    <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1591805784882" />
     <state width="3396" height="400" key="GridCell.Tab.0.bottom" timestamp="1591780141928">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -177,10 +184,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1221" y="345" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1591777661132" />
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1591778250103">
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1591806815243">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591778250103" />
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591806815243" />
     <state width="498" height="448" key="SwitcherDM" timestamp="1591802160649">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

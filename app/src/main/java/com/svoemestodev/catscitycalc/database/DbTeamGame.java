@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.database;
 
+import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,8 +103,200 @@ public class DbTeamGame {
     private int slots_brb_enemy;
 
 
+    public DbTeamGame() {
+    }
+
+    public DbTeamGame(CCAGame ccaGame) {
+
+        this.dateStartGame = ccaGame.getCcagDateStartGame();
+        this.dateScreenshot = ccaGame.getCcagDateScreenshot();    
+        this.dateEndGame = ccaGame.getCcagDateEndGame();       
+        this.earlyWin = ccaGame.getCcagEarlyWin();           
+
+        this.pointsOurInScreenshot = ccaGame.getCcagPointsOurInScreenshot();
+        this.pointsEnemyInScreenshot = ccaGame.getCcagPointsEnemyInScreenshot();
+        this.increaseOur = ccaGame.getCcagIncreaseOur();
+        this.increaseEnemy = ccaGame.getCcagIncreaseEnemy();
+
+        this.isPresent_blt = ccaGame.isPresent_blt();
+        this.isPresent_blc = ccaGame.isPresent_blc();
+        this.isPresent_blb = ccaGame.isPresent_blb();
+        this.isPresent_brt = ccaGame.isPresent_brt();
+        this.isPresent_brc = ccaGame.isPresent_brc();
+        this.isPresent_brb = ccaGame.isPresent_brb();
+
+        this.isX2_blt = ccaGame.isX2_blt();
+        this.isX2_blc = ccaGame.isX2_blc();
+        this.isX2_blb = ccaGame.isX2_blb();
+        this.isX2_brt = ccaGame.isX2_brt();
+        this.isX2_brc = ccaGame.isX2_brc();
+        this.isX2_brb = ccaGame.isX2_brb();
+
+        this.mayX2_blt = ccaGame.isMayX2_blt();
+        this.mayX2_blc = ccaGame.isMayX2_blc();
+        this.mayX2_blb = ccaGame.isMayX2_blb();
+        this.mayX2_brt = ccaGame.isMayX2_brt();
+        this.mayX2_brc = ccaGame.isMayX2_brc();
+        this.mayX2_brb = ccaGame.isMayX2_brb();
+
+        this.buildingIsOur_blt = ccaGame.isBuildingIsOur_blt();
+        this.buildingIsOur_blc = ccaGame.isBuildingIsOur_blc();
+        this.buildingIsOur_blb = ccaGame.isBuildingIsOur_blb();
+        this.buildingIsOur_brt = ccaGame.isBuildingIsOur_brt();
+        this.buildingIsOur_brc = ccaGame.isBuildingIsOur_brc();
+        this.buildingIsOur_brb = ccaGame.isBuildingIsOur_brb();
+
+        this.buildingIsEmpty_blt = ccaGame.isBuildingIsEmpty_blt();
+        this.buildingIsEmpty_blc = ccaGame.isBuildingIsEmpty_blc();
+        this.buildingIsEmpty_blb = ccaGame.isBuildingIsEmpty_blb();
+        this.buildingIsEmpty_brt = ccaGame.isBuildingIsEmpty_brt();
+        this.buildingIsEmpty_brc = ccaGame.isBuildingIsEmpty_brc();
+        this.buildingIsEmpty_brb = ccaGame.isBuildingIsEmpty_brb();
+
+        this.buildingIsEnemy_blt = ccaGame.isBuildingIsEnemy_blt();
+        this.buildingIsEnemy_blc = ccaGame.isBuildingIsEnemy_blc();
+        this.buildingIsEnemy_blb = ccaGame.isBuildingIsEnemy_blb();
+        this.buildingIsEnemy_brt = ccaGame.isBuildingIsEnemy_brt();
+        this.buildingIsEnemy_brc = ccaGame.isBuildingIsEnemy_brc();
+        this.buildingIsEnemy_brb = ccaGame.isBuildingIsEnemy_brb();
+
+        this.our_points_blt = ccaGame.getOur_points_blt();
+        this.our_points_blc = ccaGame.getOur_points_blc();
+        this.our_points_blb = ccaGame.getOur_points_blb();
+        this.our_points_brt = ccaGame.getOur_points_brt();
+        this.our_points_brc = ccaGame.getOur_points_brc();
+        this.our_points_brb = ccaGame.getOur_points_brb();
+
+        this.enemy_points_blt = ccaGame.getEnemy_points_blt();
+        this.enemy_points_blc = ccaGame.getEnemy_points_blc();
+        this.enemy_points_blb = ccaGame.getEnemy_points_blb();
+        this.enemy_points_brt = ccaGame.getEnemy_points_brt();
+        this.enemy_points_brc = ccaGame.getEnemy_points_brc();
+        this.enemy_points_brb = ccaGame.getEnemy_points_brb();
+
+        this.slots_blt = ccaGame.getSlots_blt();
+        this.slots_blt_our = ccaGame.getSlots_blt_our();
+        this.slots_blt_empty = ccaGame.getSlots_blt_empty();
+        this.slots_blt_enemy = ccaGame.getSlots_blt_enemy();
+        this.slots_blc = ccaGame.getSlots_blc();
+        this.slots_blc_our = ccaGame.getSlots_blc_our();
+        this.slots_blc_empty = ccaGame.getSlots_blc_empty();
+        this.slots_blc_enemy = ccaGame.getSlots_blc_enemy();
+        this.slots_blb = ccaGame.getSlots_blb();
+        this.slots_blb_our = ccaGame.getSlots_blb_our();
+        this.slots_blb_empty = ccaGame.getSlots_blb_empty();
+        this.slots_blb_enemy = ccaGame.getSlots_blb_enemy();
+        this.slots_brt = ccaGame.getSlots_brt();
+        this.slots_brt_our = ccaGame.getSlots_brt_our();
+        this.slots_brt_empty = ccaGame.getSlots_brt_empty();
+        this.slots_brt_enemy = ccaGame.getSlots_brt_enemy();
+        this.slots_brc = ccaGame.getSlots_brc();
+        this.slots_brc_our = ccaGame.getSlots_brc_our();
+        this.slots_brc_empty = ccaGame.getSlots_brc_empty();
+        this.slots_brc_enemy = ccaGame.getSlots_brc_enemy();
+        this.slots_brb = ccaGame.getSlots_brb();
+        this.slots_brb_our = ccaGame.getSlots_brb_our();
+        this.slots_brb_empty = ccaGame.getSlots_brb_empty();
+        this.slots_brb_enemy = ccaGame.getSlots_brb_enemy();
+        
+    }
+
     public Map<String, Object> getMap() {
         Map<String, Object> map = new HashMap<>();
+
+        map.put("timestamp", timestamp);
+        map.put("userUID", userUID);
+
+        map.put("dateStartGame", dateStartGame);     
+        map.put("dateScreenshot", dateScreenshot);    
+        map.put("dateEndGame", dateEndGame);       
+        map.put("earlyWin", earlyWin);           
+
+        map.put("pointsOurInScreenshot", pointsOurInScreenshot);
+        map.put("pointsEnemyInScreenshot", pointsEnemyInScreenshot);
+        map.put("increaseOur", increaseOur);
+        map.put("increaseEnemy", increaseEnemy);
+
+        map.put("isPresent_blt", isPresent_blt);
+        map.put("isPresent_blc", isPresent_blc);
+        map.put("isPresent_blb", isPresent_blb);
+        map.put("isPresent_brt", isPresent_brt);
+        map.put("isPresent_brc", isPresent_brc);
+        map.put("isPresent_brb", isPresent_brb);
+
+        map.put("isX2_blt", isX2_blt);
+        map.put("isX2_blc", isX2_blc);
+        map.put("isX2_blb", isX2_blb);
+        map.put("isX2_brt", isX2_brt);
+        map.put("isX2_brc", isX2_brc);
+        map.put("isX2_brb", isX2_brb);
+
+        map.put("mayX2_blt", mayX2_blt);
+        map.put("mayX2_blc", mayX2_blc);
+        map.put("mayX2_blb", mayX2_blb);
+        map.put("mayX2_brt", mayX2_brt);
+        map.put("mayX2_brc", mayX2_brc);
+        map.put("mayX2_brb", mayX2_brb);
+
+        map.put("buildingIsOur_blt", buildingIsOur_blt);
+        map.put("buildingIsOur_blc", buildingIsOur_blc);
+        map.put("buildingIsOur_blb", buildingIsOur_blb);
+        map.put("buildingIsOur_brt", buildingIsOur_brt);
+        map.put("buildingIsOur_brc", buildingIsOur_brc);
+        map.put("buildingIsOur_brb", buildingIsOur_brb);
+
+        map.put("buildingIsEmpty_blt", buildingIsEmpty_blt);
+        map.put("buildingIsEmpty_blc", buildingIsEmpty_blc);
+        map.put("buildingIsEmpty_blb", buildingIsEmpty_blb);
+        map.put("buildingIsEmpty_brt", buildingIsEmpty_brt);
+        map.put("buildingIsEmpty_brc", buildingIsEmpty_brc);
+        map.put("buildingIsEmpty_brb", buildingIsEmpty_brb);
+
+        map.put("buildingIsEnemy_blt", buildingIsEnemy_blt);
+        map.put("buildingIsEnemy_blc", buildingIsEnemy_blc);
+        map.put("buildingIsEnemy_blb", buildingIsEnemy_blb);
+        map.put("buildingIsEnemy_brt", buildingIsEnemy_brt);
+        map.put("buildingIsEnemy_brc", buildingIsEnemy_brc);
+        map.put("buildingIsEnemy_brb", buildingIsEnemy_brb);
+
+        map.put("our_points_blt", our_points_blt);
+        map.put("our_points_blc", our_points_blc);
+        map.put("our_points_blb", our_points_blb);
+        map.put("our_points_brt", our_points_brt);
+        map.put("our_points_brc", our_points_brc);
+        map.put("our_points_brb", our_points_brb);
+
+        map.put("enemy_points_blt", enemy_points_blt);
+        map.put("enemy_points_blc", enemy_points_blc);
+        map.put("enemy_points_blb", enemy_points_blb);
+        map.put("enemy_points_brt", enemy_points_brt);
+        map.put("enemy_points_brc", enemy_points_brc);
+        map.put("enemy_points_brb", enemy_points_brb);
+
+        map.put("slots_blt", slots_blt);
+        map.put("slots_blt_our", slots_blt_our);
+        map.put("slots_blt_empty", slots_blt_empty);
+        map.put("slots_blt_enemy", slots_blt_enemy);
+        map.put("slots_blc", slots_blc);
+        map.put("slots_blc_our", slots_blc_our);
+        map.put("slots_blc_empty", slots_blc_empty);
+        map.put("slots_blc_enemy", slots_blc_enemy);
+        map.put("slots_blb", slots_blb);
+        map.put("slots_blb_our", slots_blb_our);
+        map.put("slots_blb_empty", slots_blb_empty);
+        map.put("slots_blb_enemy", slots_blb_enemy);
+        map.put("slots_brt", slots_brt);
+        map.put("slots_brt_our", slots_brt_our);
+        map.put("slots_brt_empty", slots_brt_empty);
+        map.put("slots_brt_enemy", slots_brt_enemy);
+        map.put("slots_brc", slots_brc);
+        map.put("slots_brc_our", slots_brc_our);
+        map.put("slots_brc_empty", slots_brc_empty);
+        map.put("slots_brc_enemy", slots_brc_enemy);
+        map.put("slots_brb", slots_brb);
+        map.put("slots_brb_our", slots_brb_our);
+        map.put("slots_brb_empty", slots_brb_empty);
+        map.put("slots_brb_enemy", slots_brb_enemy);
 
         return map;
     }

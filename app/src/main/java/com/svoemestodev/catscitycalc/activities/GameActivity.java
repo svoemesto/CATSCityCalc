@@ -60,6 +60,8 @@ import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -69,6 +71,7 @@ public class GameActivity extends AppCompatActivity {
     // Game views
 
     TextView ga_tv_user;
+    TextView ga_tv_screenshot_time;
     Switch ga_sw_listen_new_file;
     TextView ga_tv_start_game_time;
     TextView ga_tv_end_game_time;
@@ -927,6 +930,7 @@ public class GameActivity extends AppCompatActivity {
 
         // Game views
         ga_sw_listen_new_file = findViewById(R.id.ga_sw_listen_new_file);
+        ga_tv_screenshot_time = findViewById(R.id.ga_tv_screenshot_time);
         ga_tv_start_game_time = findViewById(R.id.ga_tv_start_game_time);
         ga_tv_end_game_time = findViewById(R.id.ga_tv_end_game_time);
         ga_tv_status = findViewById(R.id.ga_tv_status);
@@ -1559,7 +1563,6 @@ public class GameActivity extends AppCompatActivity {
         public void run() {
 
             String logMsgPref = "firstTask: ";
-//            Log.i(TAG, logMsgPref + "run()");
 
             GameActivity.this.runOnUiThread(new Runnable() {
 
@@ -1567,16 +1570,22 @@ public class GameActivity extends AppCompatActivity {
                 public void run() {
 
                     String logMsgPref = "firstTask: ";
-//                    Log.i(TAG, logMsgPref + "runOnUiThread()");
 
                     setDataToCarsViews();
+                    if (mainCityCalc != null) {
+                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                        if (ccaGame != null) {
+                            Date dateScreenshot = ccaGame.getCcagDateScreenshot();
+                            int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
+                            ga_tv_screenshot_time.setText("Скриншот сделан " + minutesFromTakingScreenshot + " минут назад");
+                            ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
+                        }
+                    }
+
 
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
-//                        Log.i(TAG, logMsgPref + "Следить за файлами в папке");
-//                        Log.i(TAG, logMsgPref + "Запрашиваем последний файл в папке");
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
                         if (tmpFile != null) {  // если он не пустой
-//                            Log.i(TAG, logMsgPref + "Последний файл не пустой");
                             if ((!tmpFile.equals(fileGameScreenshot)  && !tmpFile.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
                                 Log.i(TAG, logMsgPref + "Последний файл не равен текущем скриншотам");
                                 Log.i(TAG, logMsgPref + "tmpFile = " + tmpFile.getAbsolutePath());
@@ -1605,7 +1614,6 @@ public class GameActivity extends AppCompatActivity {
                         }
 
                     } else {
-//                        Log.i(TAG, logMsgPref + "Не следить за файлами в папке");
                         if (fileGameScreenshot == null) {
                             File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
                             fileLast = lastScreenshot;
@@ -1639,17 +1647,14 @@ public class GameActivity extends AppCompatActivity {
         public void run() {
 
             String logMsgPref = "secondTask: ";
-//            Log.i(TAG, logMsgPref + "run()");
 
             GameActivity.this.runOnUiThread(new Runnable() {
 
                 @Override
                 public void run() {
                     String logMsgPref = "secondTask: ";
-//                    Log.i(TAG, logMsgPref + "runOnUiThread()");
 
                     if (mainCityCalc != null) {
-//                        Log.i(TAG, logMsgPref + "mainCityCalc не null");
                         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
                         if (ccaGame != null) {
                             Log.i(TAG, logMsgPref + "ccaGame не null");
