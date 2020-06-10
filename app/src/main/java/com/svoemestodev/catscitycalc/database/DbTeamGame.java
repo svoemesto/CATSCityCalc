@@ -22,6 +22,7 @@ public class DbTeamGame {
 
     private Date timestamp;
     private String userUID;
+    private String userNIC;
 
     private Date dateStartGame;     // дата начала игры
     private Date dateScreenshot;    // дата создания скриншота
@@ -119,6 +120,111 @@ public class DbTeamGame {
     public DbTeamGame() {
     }
 
+    public DbTeamGame(DocumentSnapshot documentSnapshot) {
+
+        String key;
+        Map<String, Object> map = documentSnapshot.getData();
+        key = "dateStartGame"; if (map.containsKey(key)) this.dateStartGame = (Date) map.get(key);
+        key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = (Date) map.get(key);
+        key = "dateEndGame"; if (map.containsKey(key)) this.dateEndGame = (Date) map.get(key);
+        key = "earlyWin"; if (map.containsKey(key)) this.earlyWin = (int) map.get(key);
+        
+        key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
+        key = "isPresent_blc"; if (map.containsKey(key)) this.isPresent_blc = (boolean) map.get(key);
+        key = "isPresent_blb"; if (map.containsKey(key)) this.isPresent_blb = (boolean) map.get(key);
+        key = "isPresent_brt"; if (map.containsKey(key)) this.isPresent_brt = (boolean) map.get(key);
+        key = "isPresent_brc"; if (map.containsKey(key)) this.isPresent_brc = (boolean) map.get(key);
+        key = "isPresent_brb"; if (map.containsKey(key)) this.isPresent_brb = (boolean) map.get(key);
+        
+        key = "isX2_blt"; if (map.containsKey(key)) this.isX2_blt = (boolean) map.get(key);
+        key = "isX2_blc"; if (map.containsKey(key)) this.isX2_blc = (boolean) map.get(key);
+        key = "isX2_blb"; if (map.containsKey(key)) this.isX2_blb = (boolean) map.get(key);
+        key = "isX2_brt"; if (map.containsKey(key)) this.isX2_brt = (boolean) map.get(key);
+        key = "isX2_brc"; if (map.containsKey(key)) this.isX2_brc = (boolean) map.get(key);
+        key = "isX2_brb"; if (map.containsKey(key)) this.isX2_brb = (boolean) map.get(key);
+        
+        key = "mayX2_blt"; if (map.containsKey(key)) this.mayX2_blt = (boolean) map.get(key);
+        key = "mayX2_blc"; if (map.containsKey(key)) this.mayX2_blc = (boolean) map.get(key);
+        key = "mayX2_blb"; if (map.containsKey(key)) this.mayX2_blb = (boolean) map.get(key);
+        key = "mayX2_brt"; if (map.containsKey(key)) this.mayX2_brt = (boolean) map.get(key);
+        key = "mayX2_brc"; if (map.containsKey(key)) this.mayX2_brc = (boolean) map.get(key);
+        key = "mayX2_brb"; if (map.containsKey(key)) this.mayX2_brb = (boolean) map.get(key);
+        
+        key = "buildingIsOur_blt"; if (map.containsKey(key)) this.buildingIsOur_blt = (boolean) map.get(key);
+        key = "buildingIsOur_blc"; if (map.containsKey(key)) this.buildingIsOur_blc = (boolean) map.get(key);
+        key = "buildingIsOur_blb"; if (map.containsKey(key)) this.buildingIsOur_blb = (boolean) map.get(key);
+        key = "buildingIsOur_brt"; if (map.containsKey(key)) this.buildingIsOur_brt = (boolean) map.get(key);
+        key = "buildingIsOur_brc"; if (map.containsKey(key)) this.buildingIsOur_brc = (boolean) map.get(key);
+        key = "buildingIsOur_brb"; if (map.containsKey(key)) this.buildingIsOur_brb = (boolean) map.get(key);
+        
+        key = "buildingIsEmpty_blt"; if (map.containsKey(key)) this.buildingIsEmpty_blt = (boolean) map.get(key);
+        key = "buildingIsEmpty_blc"; if (map.containsKey(key)) this.buildingIsEmpty_blc = (boolean) map.get(key);
+        key = "buildingIsEmpty_blb"; if (map.containsKey(key)) this.buildingIsEmpty_blb = (boolean) map.get(key);
+        key = "buildingIsEmpty_brt"; if (map.containsKey(key)) this.buildingIsEmpty_brt = (boolean) map.get(key);
+        key = "buildingIsEmpty_brc"; if (map.containsKey(key)) this.buildingIsEmpty_brc = (boolean) map.get(key);
+        key = "buildingIsEmpty_brb"; if (map.containsKey(key)) this.buildingIsEmpty_brb = (boolean) map.get(key);
+        
+        
+        key = "buildingIsEnemy_blt"; if (map.containsKey(key)) this.buildingIsEnemy_blt = (boolean) map.get(key);
+        key = "buildingIsEnemy_blc"; if (map.containsKey(key)) this.buildingIsEnemy_blc = (boolean) map.get(key);
+        key = "buildingIsEnemy_blb"; if (map.containsKey(key)) this.buildingIsEnemy_blb = (boolean) map.get(key);
+        key = "buildingIsEnemy_brt"; if (map.containsKey(key)) this.buildingIsEnemy_brt = (boolean) map.get(key);
+        key = "buildingIsEnemy_brc"; if (map.containsKey(key)) this.buildingIsEnemy_brc = (boolean) map.get(key);
+        key = "buildingIsEnemy_brb"; if (map.containsKey(key)) this.buildingIsEnemy_brb = (boolean) map.get(key);
+        
+        key = "our_points_blt"; if (map.containsKey(key)) this.our_points_blt = (int) map.get(key);
+        key = "our_points_blc"; if (map.containsKey(key)) this.our_points_blc = (int) map.get(key);
+        key = "our_points_blb"; if (map.containsKey(key)) this.our_points_blb = (int) map.get(key);
+        key = "our_points_brt"; if (map.containsKey(key)) this.our_points_brt = (int) map.get(key);
+        key = "our_points_brc"; if (map.containsKey(key)) this.our_points_brc = (int) map.get(key);
+        key = "our_points_brb"; if (map.containsKey(key)) this.our_points_brb = (int) map.get(key);
+
+        key = "enemy_points_blt"; if (map.containsKey(key)) this.enemy_points_blt = (int) map.get(key);
+        key = "enemy_points_blc"; if (map.containsKey(key)) this.enemy_points_blc = (int) map.get(key);
+        key = "enemy_points_blb"; if (map.containsKey(key)) this.enemy_points_blb = (int) map.get(key);
+        key = "enemy_points_brt"; if (map.containsKey(key)) this.enemy_points_brt = (int) map.get(key);
+        key = "enemy_points_brc"; if (map.containsKey(key)) this.enemy_points_brc = (int) map.get(key);
+        key = "enemy_points_brb"; if (map.containsKey(key)) this.enemy_points_brb = (int) map.get(key);
+
+        
+        key = "slots_blt"; if (map.containsKey(key)) this.slots_blt = (int) map.get(key);
+        key = "slots_blt_our"; if (map.containsKey(key)) this.slots_blt_our = (int) map.get(key);
+        key = "slots_blt_empty"; if (map.containsKey(key)) this.slots_blt_empty = (int) map.get(key);
+        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = (int) map.get(key);
+        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = (int) map.get(key);
+
+        key = "slots_blc"; if (map.containsKey(key)) this.slots_blc = (int) map.get(key);
+        key = "slots_blc_our"; if (map.containsKey(key)) this.slots_blc_our = (int) map.get(key);
+        key = "slots_blc_empty"; if (map.containsKey(key)) this.slots_blc_empty = (int) map.get(key);
+        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = (int) map.get(key);
+        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = (int) map.get(key);
+
+        key = "slots_blb"; if (map.containsKey(key)) this.slots_blb = (int) map.get(key);
+        key = "slots_blb_our"; if (map.containsKey(key)) this.slots_blb_our = (int) map.get(key);
+        key = "slots_blb_empty"; if (map.containsKey(key)) this.slots_blb_empty = (int) map.get(key);
+        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = (int) map.get(key);
+        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = (int) map.get(key);
+
+        key = "slots_brt"; if (map.containsKey(key)) this.slots_brt = (int) map.get(key);
+        key = "slots_brt_our"; if (map.containsKey(key)) this.slots_brt_our = (int) map.get(key);
+        key = "slots_brt_empty"; if (map.containsKey(key)) this.slots_brt_empty = (int) map.get(key);
+        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = (int) map.get(key);
+        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = (int) map.get(key);
+
+        key = "slots_brc"; if (map.containsKey(key)) this.slots_brc = (int) map.get(key);
+        key = "slots_brc_our"; if (map.containsKey(key)) this.slots_brc_our = (int) map.get(key);
+        key = "slots_brc_empty"; if (map.containsKey(key)) this.slots_brc_empty = (int) map.get(key);
+        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = (int) map.get(key);
+        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = (int) map.get(key);
+
+        key = "slots_brb"; if (map.containsKey(key)) this.slots_brb = (int) map.get(key);
+        key = "slots_brb_our"; if (map.containsKey(key)) this.slots_brb_our = (int) map.get(key);
+        key = "slots_brb_empty"; if (map.containsKey(key)) this.slots_brb_empty = (int) map.get(key);
+        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = (int) map.get(key);
+        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = (int) map.get(key);
+
+    }
+    
     public DbTeamGame(CCAGame ccaGame) {
 
         this.dateStartGame = ccaGame.getCcagDateStartGame();
@@ -219,8 +325,9 @@ public class DbTeamGame {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         final String teamID = (String)documentSnapshot.get("teamID");
+                        final String userNIC = (String)documentSnapshot.get("userNIC");
                         if (teamID != null && !teamID.equals("")) {
-                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.i(TAG, "added");
@@ -235,11 +342,12 @@ public class DbTeamGame {
 
     }
 
-    public Map<String, Object> getMap(String userUID) {
+    public Map<String, Object> getMap(String userUID, String userNIC) {
         Map<String, Object> map = new HashMap<>();
 
         map.put("timestamp", FieldValue.serverTimestamp());
         map.put("userUID", userUID);
+        map.put("userNIC", userNIC);
 
         map.put("dateStartGame", dateStartGame);     
         map.put("dateScreenshot", dateScreenshot);    
@@ -335,6 +443,13 @@ public class DbTeamGame {
         return map;
     }
 
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
 
     public Date getTimestamp() {
         return timestamp;

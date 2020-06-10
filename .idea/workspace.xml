@@ -27,8 +27,10 @@
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,10 +154,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591803713877">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1591817208862">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591803713877" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591817208862" />
     <state x="2284" y="92" width="1064" height="532" key="AVDManager" timestamp="1591776640460">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -184,10 +186,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1221" y="345" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1591777661132" />
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1591806815243">
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1591818408757">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591806815243" />
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1591818408757" />
     <state width="498" height="448" key="SwitcherDM" timestamp="1591802160649">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

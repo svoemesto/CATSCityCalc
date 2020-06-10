@@ -229,7 +229,7 @@ public class StrategyActivity extends AppCompatActivity {
 
 
 
-        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context));
+        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context), false);
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
         if (ccaGame != null) {

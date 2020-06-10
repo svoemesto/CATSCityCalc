@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.PictureProcessorDirection;
 import com.svoemestodev.catscitycalc.R;
@@ -318,7 +319,7 @@ public class CityCalc extends Activity {
                 if (this.bmpScreenshot != null) {
                     if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) {
 
-                        thisCityCalc = new CityCalc(this);
+                        thisCityCalc = new CityCalc(this, false);
 
                         this.mapAreas = thisCityCalc.mapAreas;
 
@@ -1460,7 +1461,7 @@ public class CityCalc extends Activity {
     }
     
     // конструктор
-    public CityCalc(CityCalc checkedCityCalc) {
+    public CityCalc(CityCalc checkedCityCalc, boolean isRealtimeScreenshot) {
 
         String logMsgPref = "конструктор: ";
         Log.i(TAG, logMsgPref + "start");
@@ -1645,6 +1646,7 @@ public class CityCalc extends Activity {
                                         (((CCABuilding)mapAreas.get(Area.BRB)).isPresent() ? ((CCABuilding)mapAreas.get(Area.BRB)).getEnemy_points() : 0));
 
                         ((CCAGame)mapAreas.get(Area.CITY)).calc();
+                        if (isRealtimeScreenshot) new DbTeamGame((CCAGame)mapAreas.get(Area.CITY));
                         ((CCAGame)mapAreas.get(Area.CITY)).calcWin();
 
                         if (!fileScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG")) {

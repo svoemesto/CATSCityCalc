@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -39,11 +40,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.Utils;
@@ -410,6 +415,11 @@ public class GameActivity extends AppCompatActivity {
 
             Log.i(TAG, logMsgPref + "вызываем ccaGame.calcWin()");
             ccaGame.calcWin();
+
+            Date dateScreenshot = ccaGame.getCcagDateScreenshot();
+            int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
+            ga_tv_screenshot_time.setText("Скриншот сделан " + minutesFromTakingScreenshot + " минут назад" + (ccaGame.getUserNIC() != null ? " пользователем " + ccaGame.getUserNIC() + "." : "."));
+            ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
 //            ga_bt_strategy.setEnabled(!ccaGame.isCcagIsGameOver());
             ga_bt_strategy.setVisibility(!ccaGame.isCcagIsGameOver() ? View.VISIBLE : View.INVISIBLE);
@@ -1348,7 +1358,7 @@ public class GameActivity extends AppCompatActivity {
                 Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                    mainCityCalc = new CityCalc(tmpCityCalc);
+                    mainCityCalc = new CityCalc(tmpCityCalc, false);
                     Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
                     loadDataToViews(false);
                 }
@@ -1385,6 +1395,33 @@ public class GameActivity extends AppCompatActivity {
                                                         DbTeamUser dbTeamUser = listTeamUsers.get(0);
                                                         String userRole = dbTeamUser.getUserRole();
                                                         ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+
+                                                        final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+                                                        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                if (e != null) {
+                                                                    Log.w(TAG, "Listen failed.", e);
+                                                                    return;
+                                                                }
+                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                    Log.d(TAG, "Current data: " + documentSnapshot.getData());
+
+                                                                    if (mainCityCalc != null) {
+                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                        if (ccaGame != null) {
+                                                                            DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
+                                                                            ccaGame.updateFromDb(dbTeamGame);
+                                                                            loadDataToViews(true);
+                                                                        }
+                                                                    }
+
+                                                                } else {
+                                                                    Log.d(TAG, "Current data: null");
+                                                                }
+                                                            }
+                                                        });
+
                                                     }
                                                 }
                                             });
@@ -1501,11 +1538,11 @@ public class GameActivity extends AppCompatActivity {
 
                             Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
                             Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                            mainCityCalc = new CityCalc(tmpCityCalc);
+                            mainCityCalc = new CityCalc(tmpCityCalc, false);
                             Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                             loadDataToViews(true);
                         } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                            CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                            CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
                             ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
                             fileCarScreenshot = newFile;
 
@@ -1572,15 +1609,6 @@ public class GameActivity extends AppCompatActivity {
                     String logMsgPref = "firstTask: ";
 
                     setDataToCarsViews();
-                    if (mainCityCalc != null) {
-                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                        if (ccaGame != null) {
-                            Date dateScreenshot = ccaGame.getCcagDateScreenshot();
-                            int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
-                            ga_tv_screenshot_time.setText("Скриншот сделан " + minutesFromTakingScreenshot + " минут назад");
-                            ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
-                        }
-                    }
 
 
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
@@ -1595,17 +1623,19 @@ public class GameActivity extends AppCompatActivity {
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
 
+                                    boolean isRealtimeScreenshot = true;
                                     if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
+                                        isRealtimeScreenshot = false;
                                         Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
                                         Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
                                         Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                                     }
 
-                                    mainCityCalc = new CityCalc(tmpCityCalc);
+                                    mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
                                     ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
                                     fileCarScreenshot = tmpFile;
                                 }
@@ -1623,11 +1653,11 @@ public class GameActivity extends AppCompatActivity {
                                 Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
                                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                    mainCityCalc = new CityCalc(tmpCityCalc);
+                                    mainCityCalc = new CityCalc(tmpCityCalc, false);
                                     Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc);
+                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
                                     ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
                                 }
                             }

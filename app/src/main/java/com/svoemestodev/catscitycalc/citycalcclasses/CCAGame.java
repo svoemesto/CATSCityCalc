@@ -16,6 +16,7 @@ public class CCAGame extends CityCalcArea {
     private Date ccagDateEndGame;       // дата окончания игры по времени
     private Date ccagDateFinal;         // дата реального окончания игры
     private int ccagEarlyWin;           // нужно очков до досрочной победы
+    private String userNIC;
 
     private int ccagPointsOurInScreenshot;
     private int ccagPointsEnemyInScreenshot;
@@ -137,6 +138,7 @@ public class CCAGame extends CityCalcArea {
 
     public void updateFromDb(DbTeamGame dbTeamGame) {
 
+        this.userNIC = dbTeamGame.getUserNIC();
         this.ccagDateStartGame = dbTeamGame.getDateStartGame();
         this.ccagDateScreenshot = dbTeamGame.getDateScreenshot();
         this.ccagDateEndGame = dbTeamGame.getDateEndGame();
@@ -1200,5 +1202,13 @@ public class CCAGame extends CityCalcArea {
 
     public void setEnemy_points_brb(int enemy_points_brb) {
         this.enemy_points_brb = enemy_points_brb;
+    }
+
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
     }
 }
