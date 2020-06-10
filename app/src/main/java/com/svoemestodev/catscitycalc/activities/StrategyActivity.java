@@ -639,6 +639,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_blt_car_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blt_car_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blt_car_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_blt.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blt()) {
 
@@ -684,6 +685,8 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_blc_car_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blc_car_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blc_car_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_blc.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+
             if (ccaGame.isPresent_blc()) {
 
                 if (ccaBLC != null) sa_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
@@ -729,6 +732,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_blb_car_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blb_car_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_blb_car_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_blb.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blb()) {
 
@@ -775,6 +779,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_brt_car_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brt_car_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brt_car_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_brt.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brt()) {
 
@@ -820,6 +825,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_brc_car_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brc_car_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brc_car_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_brc.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brc()) {
 
@@ -866,6 +872,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_iv_brb_car_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brb_car_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             sa_iv_brb_car_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            sa_sb_brb.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brb()) {
 
