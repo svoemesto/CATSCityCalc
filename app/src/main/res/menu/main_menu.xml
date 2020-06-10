@@ -12,6 +12,10 @@
         android:id="@+id/menu_open_login"
         android:orderInCategory="3"
         android:title="@string/open_login" />
+    <item
+        android:id="@+id/menu_share"
+        android:orderInCategory="4"
+        android:title="Share" />
 <!--    <item-->
 <!--        android:id="@+id/menu_open_language"-->
 <!--        android:orderInCategory="2"-->

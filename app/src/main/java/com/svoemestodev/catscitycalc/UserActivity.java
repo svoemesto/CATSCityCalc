@@ -638,6 +638,7 @@ public class UserActivity extends AppCompatActivity {
                 ua_tv_role_value.setText("У вас нет роли");
                 if (userMenu != null) menuItemCreateTeam.setVisible(true);
                 if (userMenu != null) menuItemLeaveTeam.setVisible(false);
+                if (userMenu != null) menuItemManageTeam.setVisible(false);
             } else {
                 if (userMenu != null) menuItemCreateTeam.setVisible(false);
                 if (userMenu != null) menuItemLeaveTeam.setVisible(true);

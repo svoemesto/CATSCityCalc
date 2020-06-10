@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -1404,8 +1406,12 @@ public class GameActivity extends AppCompatActivity {
                 Log.i(TAG, logMsgPref + "вызываем selectScreenshot()");
                 selectScreenshot();
                 return true;
-            case R.id.menu_open_login :    // "Открыть скриншот"
+            case R.id.menu_open_login :
                 openLogin();
+                return true;
+
+            case R.id.menu_share :
+                shareFile();
                 return true;
 //            case R.id.menu_open_language :  // "Язык"
 //                Log.i(TAG, logMsgPref + "выбран пункт Язык");
@@ -1414,6 +1420,29 @@ public class GameActivity extends AppCompatActivity {
 //                return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private void shareFile() {
+
+        Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+        File sharedFile = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+
+        if(sharedFile.exists()) {
+            intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
+
+//            Uri fileURI = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", sharedFile);
+//            Uri fileURI = FileProvider.getUriForFile(getApplicationContext(), getApplicationContext().getPackageName() + ".provider", sharedFile);
+//            intentShareFile.setType("application/pdf");
+            intentShareFile.setType("*/*");
+            intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
+
+            intentShareFile.putExtra(Intent.EXTRA_SUBJECT, "Sharing File...");
+            intentShareFile.putExtra(Intent.EXTRA_TEXT, "Sharing File...");
+
+            startActivity(Intent.createChooser(intentShareFile, "Share File"));
         }
 
     }

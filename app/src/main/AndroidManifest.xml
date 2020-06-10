@@ -15,13 +15,27 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:grantUriPermissions="true"
+            android:exported="false"
+            android:authorities="${applicationId}">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"/>
+        </provider>
+
         <activity android:name=".TeamActivity"
             android:label="@string/team"
             />
+
         <activity
             android:name=".UserActivity"
             android:label="@string/open_login" />
+
         <activity android:name=".CarActivity" />
+
         <activity
             android:name=".SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -31,13 +45,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleInstance"></activity>
+            android:launchMode="singleInstance"/>
+
         <activity
             android:name=".ColorsdetectActivity"
             android:label="@string/sett_colors" />
+
         <activity
             android:name=".BordersActivity"
             android:label="@string/sett_borders" />
@@ -49,9 +66,15 @@
         <activity
             android:name=".CalibrateActivity"
             android:label="@string/sett_calibrate_center_screen" />
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/settings" />
+
+        <activity
+            android:name=".StrategyActivity"
+            android:label="@string/strategic_planning" />
+
     </application>
 
 </manifest>
