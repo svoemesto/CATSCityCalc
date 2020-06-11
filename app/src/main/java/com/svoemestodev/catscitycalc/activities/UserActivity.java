@@ -455,96 +455,99 @@ public class UserActivity extends AppCompatActivity {
         if(requestCode == SIGN_IN_REQUEST_CODE) {
             if(resultCode == RESULT_OK) {
 
-                CollectionReference collectionReference = GameActivity.fbDb.collection("users");
-                Query query = collectionReference.whereEqualTo("userUID", GameActivity.fbUser.getUid());
-                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                dbUser.setUserID(document.getId());
-                            }
-                            if (task.getResult().isEmpty()) {
+                if (GameActivity.fbUser != null) {
 
-                                // результат запроса пустой, такого юзера еще нет - создаем его
-                                dbUser.setUserUID(GameActivity.fbUser.getUid());
-                                dbUser.setUserName(GameActivity.fbUser.getDisplayName());
-                                dbUser.setUserEmail(GameActivity.fbUser.getEmail());
-                                dbUser.setUserNIC(GameActivity.fbUser.getDisplayName());
-                                dbUser.setTeamID(null);
+                    CollectionReference collectionReference = GameActivity.fbDb.collection("users");
+                    Query query = collectionReference.whereEqualTo("userUID", GameActivity.fbUser.getUid());
+                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    dbUser.setUserID(document.getId());
+                                }
+                                if (task.getResult().isEmpty()) {
 
-                                Map<String, Object> mapNewItem = new HashMap<>();
-                                mapNewItem.put("userID", dbUser.getUserID());
-                                mapNewItem.put("userUID", dbUser.getUserUID());
-                                mapNewItem.put("userName", dbUser.getUserName());
-                                mapNewItem.put("userEmail", dbUser.getUserEmail());
-                                mapNewItem.put("userNIC", dbUser.getUserNIC());
-                                mapNewItem.put("teamID", dbUser.getTeamID());
-                                mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+                                    // результат запроса пустой, такого юзера еще нет - создаем его
+                                    dbUser.setUserUID(GameActivity.fbUser.getUid());
+                                    dbUser.setUserName(GameActivity.fbUser.getDisplayName());
+                                    dbUser.setUserEmail(GameActivity.fbUser.getEmail());
+                                    dbUser.setUserNIC(GameActivity.fbUser.getDisplayName());
+                                    dbUser.setTeamID(null);
 
-                                GameActivity.fbDb.collection("users").document(dbUser.getUserUID()).set(mapNewItem).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        String newDocumentID = dbUser.getUserUID();
-                                        dbUser.setUserID(newDocumentID);
-                                        CollectionReference collectionReference = GameActivity.fbDb.collection("users");
-                                        Map<String, Object> mapUpdateItem = new HashMap<>();
-                                        mapUpdateItem.put("userID", newDocumentID);
-                                        mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
-                                        collectionReference.document(newDocumentID).update(mapUpdateItem);
+                                    Map<String, Object> mapNewItem = new HashMap<>();
+                                    mapNewItem.put("userID", dbUser.getUserID());
+                                    mapNewItem.put("userUID", dbUser.getUserUID());
+                                    mapNewItem.put("userName", dbUser.getUserName());
+                                    mapNewItem.put("userEmail", dbUser.getUserEmail());
+                                    mapNewItem.put("userNIC", dbUser.getUserNIC());
+                                    mapNewItem.put("teamID", dbUser.getTeamID());
+                                    mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
-                                        GameActivity.fbUser.sendEmailVerification().addOnCompleteListener(UserActivity.this, new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                    GameActivity.fbDb.collection("users").document(dbUser.getUserUID()).set(mapNewItem).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            String newDocumentID = dbUser.getUserUID();
+                                            dbUser.setUserID(newDocumentID);
+                                            CollectionReference collectionReference = GameActivity.fbDb.collection("users");
+                                            Map<String, Object> mapUpdateItem = new HashMap<>();
+                                            mapUpdateItem.put("userID", newDocumentID);
+                                            mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                            collectionReference.document(newDocumentID).update(mapUpdateItem);
 
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(UserActivity.this, "Verification email sent to " + GameActivity.fbUser.getEmail(), Toast.LENGTH_SHORT).show();
-                                                } else {
-                                                    Log.e(TAG, "sendEmailVerification", task.getException());
-                                                    Toast.makeText(UserActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                            GameActivity.fbUser.sendEmailVerification().addOnCompleteListener(UserActivity.this, new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                    if (task.isSuccessful()) {
+                                                        Toast.makeText(UserActivity.this, "Verification email sent to " + GameActivity.fbUser.getEmail(), Toast.LENGTH_SHORT).show();
+                                                    } else {
+                                                        Log.e(TAG, "sendEmailVerification", task.getException());
+                                                        Toast.makeText(UserActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }
-                                            }
-                                        });
+                                            });
 
+                                            loadDataToViews();
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.e(TAG, "Error adding document", e);
+                                                }
+                                            });
+                                    loadDataToViews();
+
+                                } else {
+                                    // результат запроса не пустой, такой юзер есть - считываем его
+                                    List<DbUser> listUsers = task.getResult().toObjects(DbUser.class);
+                                    if (listUsers.size() >0) {
+                                        dbUser = listUsers.get(0);
                                         loadDataToViews();
                                     }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e(TAG, "Error adding document", e);
-                                    }
-                                });
-                                loadDataToViews();
+                                }
 
                             } else {
-                                // результат запроса не пустой, такой юзер есть - считываем его
-                                List<DbUser> listUsers = task.getResult().toObjects(DbUser.class);
-                                if (listUsers.size() >0) {
-                                    dbUser = listUsers.get(0);
-                                    loadDataToViews();
-                                }
+                                Log.e(TAG, "Error getting documents: ", task.getException());
+
                             }
-
-                        } else {
-                            Log.e(TAG, "Error getting documents: ", task.getException());
-
                         }
-                    }
-                });
+                    });
+
+                    initializeViews();
+                    loadDataToViews();
 
 
-                initializeViews();
-                loadDataToViews();
+                    MobileAds.initialize(this, new OnInitializationCompleteListener() {
+                        @Override
+                        public void onInitializationComplete(InitializationStatus initializationStatus) {
+                        }
+                    });
+                    AdRequest adRequest = new AdRequest.Builder().build();
+                    ua_ad_banner.loadAd(adRequest);
 
-
-                MobileAds.initialize(this, new OnInitializationCompleteListener() {
-                    @Override
-                    public void onInitializationComplete(InitializationStatus initializationStatus) {
-                    }
-                });
-                AdRequest adRequest = new AdRequest.Builder().build();
-                ua_ad_banner.loadAd(adRequest);
+                }
 
             } else {
                 Toast.makeText(UserActivity.this, R.string.could_not_sing_in, Toast.LENGTH_LONG).show();

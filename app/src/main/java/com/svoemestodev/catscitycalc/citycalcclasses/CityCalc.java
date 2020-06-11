@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.PictureProcessorDirection;
@@ -1648,8 +1649,8 @@ public class CityCalc extends Activity {
                         ((CCAGame)mapAreas.get(Area.CITY)).calc(isRealtimeScreenshot);
                         ((CCAGame)mapAreas.get(Area.CITY)).calcWin();
 
-                        if (!fileScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG")) {
-                            Utils.copyFile(fileScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG");
+                        if (!fileScreenshot.getAbsolutePath().equals(GameActivity.pathToCATScalcFolder + "/last_screenshot.PNG")) {
+                            Utils.copyFile(fileScreenshot.getAbsolutePath(), GameActivity.pathToCATScalcFolder + "/last_screenshot.PNG");
                         }
 
                     } else if (cityCalcType.equals(CityCalcType.CAR)) {

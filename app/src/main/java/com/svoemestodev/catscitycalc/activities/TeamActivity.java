@@ -299,7 +299,7 @@ public class TeamActivity extends AppCompatActivity {
             ltu_bt_set_leader.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_set_captain.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_set_meat.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            
+
             String userNIC = dbTeamUser.getUserNIC() == null ? "N/A" : dbTeamUser.getUserNIC();
             String userRole = dbTeamUser.getUserRole() == null ? "N/A" : dbTeamUser.getUserRole();
 

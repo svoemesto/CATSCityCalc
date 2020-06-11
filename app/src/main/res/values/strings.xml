@@ -10,6 +10,9 @@
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
     <string name="last_screenshot_file_name" translatable="false">last_screenshot.PNG</string>
+    <string name="stub_car1_file_name" translatable="false">stub_car1.jpg</string>
+    <string name="stub_car2_file_name" translatable="false">stub_car2.jpg</string>
+    <string name="stub_car3_file_name" translatable="false">stub_car3.jpg</string>
 
     <string name="file_list_cars" translatable="false">Cars</string>
 

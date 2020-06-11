@@ -84,17 +84,6 @@ public class SplashActivity extends AppCompatActivity {
 
                 createProgramDir();
 
-//                Log.i(TAG, "sharedPreferences...");
-//                SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
-//                String languageToLoad = sharedPreferences.getString(getString(R.string.pref_language_interface),sharedPreferences.getString(getString(R.string.pref_def_language_interface),"en"));
-//                Log.i(TAG, "languageToLoad: " + languageToLoad);
-//
-//                Locale locale = new Locale(languageToLoad);
-//                Locale.setDefault(locale);
-//                Configuration config = new Configuration();
-//                config.locale = locale;
-//                getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-
                 startActivity(new Intent(SplashActivity.this, GameActivity.class));
 
                 finish();
@@ -103,7 +92,8 @@ public class SplashActivity extends AppCompatActivity {
 
         String[] PERMISSIONS = {
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.INTERNET
         };
 
         if(!UtilPermissions.hasPermissions(this, PERMISSIONS)){
@@ -125,13 +115,11 @@ public class SplashActivity extends AppCompatActivity {
             index++;
         }
 
-        if((PermissionsMap.get(Manifest.permission.READ_EXTERNAL_STORAGE) != 0)
-                || PermissionsMap.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) != 0){
+        if ((PermissionsMap.containsKey(Manifest.permission.READ_EXTERNAL_STORAGE) && PermissionsMap.get(Manifest.permission.READ_EXTERNAL_STORAGE) != 0) ||
+           (PermissionsMap.containsKey(Manifest.permission.WRITE_EXTERNAL_STORAGE) && PermissionsMap.get(Manifest.permission.WRITE_EXTERNAL_STORAGE)!= 0)) {
             Toast.makeText(this, "Read and write storage permissions are a must", Toast.LENGTH_SHORT).show();
             finish();
-        }
-        else
-        {
+        } else {
             h.postDelayed(r, 1500);
         }
     }
@@ -143,13 +131,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
 
-        Car.pathToFile = getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.file_list_cars);
-        Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
 
-        File cars = new File(Car.pathToFile);
-        if (!cars.exists()) {
-            Car.saveList(Car.getDefaultList());
-        }
 
         File tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name) );       // файл картинки - путь к папке программы + имя файла
 
@@ -172,6 +154,69 @@ public class SplashActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.stub_car1_file_name) );
+        if (!tmp.exists()) {    // если файла нет
+            try {
+                InputStream inputStream = getAssets().open(getString(R.string.stub_car1_file_name));
+                OutputStream outputStream = new FileOutputStream(tmp);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buf)) > 0) {
+                    outputStream.write(buf, 0, len);
+                }
+                inputStream.close();
+                outputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.stub_car2_file_name) );
+        if (!tmp.exists()) {    // если файла нет
+            try {
+                InputStream inputStream = getAssets().open(getString(R.string.stub_car2_file_name));
+                OutputStream outputStream = new FileOutputStream(tmp);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buf)) > 0) {
+                    outputStream.write(buf, 0, len);
+                }
+                inputStream.close();
+                outputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.stub_car3_file_name) );
+        if (!tmp.exists()) {    // если файла нет
+            try {
+                InputStream inputStream = getAssets().open(getString(R.string.stub_car3_file_name));
+                OutputStream outputStream = new FileOutputStream(tmp);
+                byte[] buf = new byte[1024];
+                int len;
+                while ((len = inputStream.read(buf)) > 0) {
+                    outputStream.write(buf, 0, len);
+                }
+                inputStream.close();
+                outputStream.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        Car.pathToFile = getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.file_list_cars);
+        Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
+        GameActivity.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
+
+        File cars = new File(Car.pathToFile);
+        if (!cars.exists()) {
+            Car.saveList(Car.getDefaultList());
         }
 
     }

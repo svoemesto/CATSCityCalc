@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
+import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
@@ -147,20 +148,35 @@ public class Car implements Serializable {
 
     }
     
-    public Car(String name, int slot, int health, int shield) {
+    public Car(String name, int slot, int health, int shield, byte[] imageByteArrayCar) {
         this.name = name;
         this.slot = slot;
         this.health = health;
         this.shield = shield;
+        this.imageByteArrayCar = imageByteArrayCar;
     }
 
     public static List<Car> getDefaultList() {
 
         List<Car> list = new ArrayList<>();
 
-        list.add(new Car("Car #1", 1, 0, 0));
-        list.add(new Car("Car #2", 2, 0, 0));
-        list.add(new Car("Car #3", 3, 0, 0));
+        Bitmap picture1 = BitmapFactory.decodeFile( pathToCATScalcFolder + "/stub_car1.jpg");
+        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+        picture1.compress(Bitmap.CompressFormat.PNG, 100, stream1);
+        byte[] imageByteArrayBuilding1 = stream1.toByteArray();
+        list.add(new Car("Car #1", 1, 0, 0, imageByteArrayBuilding1));
+
+        Bitmap picture2 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car2.jpg");
+        ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+        picture2.compress(Bitmap.CompressFormat.PNG, 100, stream2);
+        byte[] imageByteArrayBuilding2 = stream2.toByteArray();
+        list.add(new Car("Car #2", 2, 0, 0,imageByteArrayBuilding2));
+
+        Bitmap picture3 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car3.jpg");
+        ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
+        picture3.compress(Bitmap.CompressFormat.PNG, 100, stream3);
+        byte[] imageByteArrayBuilding3 = stream3.toByteArray();
+        list.add(new Car("Car #3", 3, 0, 0, imageByteArrayBuilding3));
 
         return list;
     }

@@ -25,18 +25,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/stub_car1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/stub_car2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/stub_car3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/SplashActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/TeamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/TeamActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/UserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/UserActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_teamuser.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_teamuser.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Nexus_5_API_R]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Pixel_4_Android_10.0_Q_]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -62,8 +70,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Nexus_5_API_R" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-10T08:17:49.795Z" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_4_Android_10.0_Q_" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-11T15:03:01.802Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../TestChat" />
@@ -156,6 +165,9 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1507" y="499" key="#Gradle" timestamp="1591863254121">
       <screen x="0" y="0" width="3440" height="1400" />
@@ -173,46 +185,46 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1591880258046" />
-    <state x="1765" y="92" width="1583" height="767" key="AVDManager" timestamp="1591869738701">
+    <state x="1210" y="142" width="1583" height="767" key="AVDManager" timestamp="1591890781395">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1765" y="92" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1591869738701" />
+    <state x="1210" y="142" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1591890781395" />
     <state x="1500" y="455" key="FileChooserDialogImpl" timestamp="1591863249436">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1591863249436" />
-    <state width="2703" height="325" key="GridCell.Tab.0.bottom" timestamp="1591885512518">
+    <state width="2703" height="323" key="GridCell.Tab.0.bottom" timestamp="1591891394242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="325" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591885512518" />
-    <state width="2703" height="325" key="GridCell.Tab.0.center" timestamp="1591885512517">
+    <state width="2703" height="323" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591891394242" />
+    <state width="2703" height="323" key="GridCell.Tab.0.center" timestamp="1591891394242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="325" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591885512517" />
-    <state width="2703" height="325" key="GridCell.Tab.0.left" timestamp="1591885512517">
+    <state width="2703" height="323" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591891394242" />
+    <state width="2703" height="323" key="GridCell.Tab.0.left" timestamp="1591891394242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="325" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591885512517" />
-    <state width="2703" height="325" key="GridCell.Tab.0.right" timestamp="1591885512518">
+    <state width="2703" height="323" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591891394242" />
+    <state width="2703" height="323" key="GridCell.Tab.0.right" timestamp="1591891394242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="325" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591885512518" />
-    <state width="3396" height="400" key="GridCell.Tab.1.bottom" timestamp="1591873624668">
+    <state width="2703" height="323" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591891394242" />
+    <state width="2703" height="390" key="GridCell.Tab.1.bottom" timestamp="1591890364110">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="400" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591873624668" />
-    <state width="3396" height="400" key="GridCell.Tab.1.center" timestamp="1591873624668">
+    <state width="2703" height="390" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1591890364110" />
+    <state width="2703" height="390" key="GridCell.Tab.1.center" timestamp="1591890364110">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="400" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591873624668" />
-    <state width="3396" height="400" key="GridCell.Tab.1.left" timestamp="1591873624667">
+    <state width="2703" height="390" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1591890364110" />
+    <state width="2703" height="390" key="GridCell.Tab.1.left" timestamp="1591890364110">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="400" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591873624667" />
-    <state width="3396" height="400" key="GridCell.Tab.1.right" timestamp="1591873624668">
+    <state width="2703" height="390" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1591890364110" />
+    <state width="2703" height="390" key="GridCell.Tab.1.right" timestamp="1591890364110">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="400" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591873624668" />
+    <state width="2703" height="390" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1591890364110" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1591861857400">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

@@ -243,6 +243,7 @@ public class GameActivity extends AppCompatActivity {
     
     Button ga_bt_strategy;
 
+    public transient static String pathToCATScalcFolder;
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
     public static File fileGameScreenshot = null;    // текущий файл скриншота
