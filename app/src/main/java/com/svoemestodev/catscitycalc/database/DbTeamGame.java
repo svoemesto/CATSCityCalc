@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -326,13 +327,22 @@ public class DbTeamGame {
                         final String teamID = (String)documentSnapshot.get("teamID");
                         final String userNIC = (String)documentSnapshot.get("userNIC");
                         if (teamID != null && !teamID.equals("")) {
-                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+                            DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+                            doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.i(TAG, "added");
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    Map<String, Object> map = getMap(userUID, userNIC);
+                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.i(TAG, "added");
+                                            }
+                                        });
+                                    }
                                 }
                             });
-
                         }
                     }
                 });

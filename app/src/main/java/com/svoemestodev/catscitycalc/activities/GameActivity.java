@@ -339,9 +339,11 @@ public class GameActivity extends AppCompatActivity {
                                                                     CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                                                                     if (ccaGame != null) {
                                                                         DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-                                                                        ccaGame.updateFromDb(dbTeamGame);
-                                                                        Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-                                                                        loadDataToViews(true);
+                                                                        if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
+                                                                            ccaGame.updateFromDb(dbTeamGame);
+                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+                                                                            loadDataToViews(true);
+                                                                        }
                                                                     }
                                                                 }
 
@@ -453,26 +455,20 @@ public class GameActivity extends AppCompatActivity {
             ga_bt_strategy.setVisibility(!ccaGame.isCcagIsGameOver() ? View.VISIBLE : View.INVISIBLE);
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getCcagDateStartGame(), pattern);    // дата/время начала игры
-            Log.i(TAG, logMsgPref + "textStartGameTime = " + textStartGameTime);
 
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getCcagDateEndGame(), pattern);          // дата/время окончания игры
-            Log.i(TAG, logMsgPref + "textEndGameTime = " + textEndGameTime);
 
             ga_tv_status.setText(ccaGame.getCcagStatus());   // статус
-            Log.i(TAG, logMsgPref + "ccagStatus = " + ccaGame.getCcagStatus());
 
             ga_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             ga_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
 
-            Log.i(TAG, logMsgPref + "isCcagIsGameOver() = " + ccaGame.isCcagIsGameOver());
             if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
                 ga_tv_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
                 ga_tv_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
-                Log.i(TAG, logMsgPref + "ga_tv_total_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame()));
             }
 
-            Log.i(TAG, logMsgPref + "getCcagEarlyWin() = " + ccaGame.getCcagEarlyWin());
             ga_tv_early_win.setText(String.valueOf(ccaGame.getCcagEarlyWin())); // очки до досрочной победы
 
             if (ccaOurTeam != null) ga_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
@@ -480,42 +476,24 @@ public class GameActivity extends AppCompatActivity {
 
 
             ga_tv_our_increase.setText(ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " ");   // прирост нашей команды
-            Log.i(TAG, logMsgPref + "ga_tv_our_increase = " + (ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " "));
             ga_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
-            Log.i(TAG, logMsgPref + "ga_tv_our_points = " + String.valueOf(ccaGame.getPointsOur()));
-
 
             ga_tv_enemy_increase.setText(ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "); // прирост команды противника
-            Log.i(TAG, logMsgPref + "ga_tv_enemy_increase = " + (ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "));
             ga_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
-            Log.i(TAG, logMsgPref + "ga_tv_enemy_points = " + String.valueOf(ccaGame.getPointsEnemy()));
 
             if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
                 ga_tv_our_end_time.setText(""); // наше время пустое
                 ga_tv_enemy_end_time.setText(""); // время противника пустое
             } else { // если игра незакончена
                 if (ccaGame.isCcagWillOurWin()) {
-                    Log.i(TAG, logMsgPref + "isCcagWillOurWin() = " + ccaGame.isCcagWillOurWin());
-
                     ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                    Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-
                     ga_tv_enemy_end_time.setText("");   // время противника пустое
                 } else if (ccaGame.isCcagWillEnemyWin()) {
-                    Log.i(TAG, logMsgPref + "isCcagWillEnemyWin() = " + ccaGame.isCcagWillEnemyWin());
-
                     ga_tv_our_end_time.setText(""); // наше время пустое
                     ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                    Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-
                 } else if (ccaGame.isCcagWillNobodyWin()) {
-                    Log.i(TAG, logMsgPref + "isCcagWillNobodyWin() = " + ccaGame.isCcagWillNobodyWin());
-
                     ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                    Log.i(TAG, logMsgPref + "ga_tv_our_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
-
                     ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                    Log.i(TAG, logMsgPref + "ga_tv_enemy_end_time = " + Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));
                 }
 
             }
@@ -544,7 +522,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_blt()) {
 
                 if (ccaBLT != null) ga_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBLTname = " + ccaGame.getName_blt());
 
                 ga_tv_blt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blt_our()));
                 ga_tv_blt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blt_empty()));
@@ -554,7 +531,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our()));
                 ga_tv_blt_slots_empty.setText(String.valueOf(ccaGame.getSlots_blt_empty()));
                 ga_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBLT: slots = " + ccaGame.getSlots_blt() + ", slots_our = " + ccaGame.getSlots_blt_our() + ", slots_empty = " + ccaGame.getSlots_blt_empty() + ", slots_enemy = " + ccaGame.getSlots_blt_enemy());
 
                 slots += ccaGame.getSlots_blt();
                 slots_our += ccaGame.getSlots_blt_our();
@@ -562,27 +538,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blt_enemy();
 
                 if (ccaGame.isBuildingIsOur_blt()) {
-                    Log.i(TAG, logMsgPref + "ccaBLT buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBLT our_points = +" + ccaGame.getOur_points_blt());
                     ga_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
                     ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_blt()) {
-                    Log.i(TAG, logMsgPref + "ccaBLT buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBLT enemy_points = +" + ccaGame.getEnemy_points_blt());
                     ga_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
                     ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_blt()) {
-                    Log.i(TAG, logMsgPref + "ccaBLT buildingIsEmpty");
                     ga_tv_blt_points.setText("");
                     ga_tv_blt_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_blt()) {
-                    Log.i(TAG, logMsgPref + "ccaBLT isX2");
                     ga_tv_blt_x2.setText("X2");
                     ga_tv_blt_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blt()) {
-                        Log.i(TAG, logMsgPref + "ccaBLT mayX2");
                         ga_tv_blt_x2.setText("X2");
                         ga_tv_blt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -610,7 +579,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_blc()) {
 
                 if (ccaBLC != null) ga_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBLCname = " + ccaGame.getName_blc());
 
                 ga_tv_blc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blc_our()));
                 ga_tv_blc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blc_empty()));
@@ -620,7 +588,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our()));
                 ga_tv_blc_slots_empty.setText(String.valueOf(ccaGame.getSlots_blc_empty()));
                 ga_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBLC: slots = " + ccaGame.getSlots_blc() + ", slots_our = " + ccaGame.getSlots_blc_our() + ", slots_empty = " + ccaGame.getSlots_blc_empty() + ", slots_enemy = " + ccaGame.getSlots_blc_enemy());
 
                 slots += ccaGame.getSlots_blc();
                 slots_our += ccaGame.getSlots_blc_our();
@@ -628,27 +595,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blc_enemy();
 
                 if (ccaGame.isBuildingIsOur_blc()) {
-                    Log.i(TAG, logMsgPref + "ccaBLC buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBLC our_points = +" + ccaGame.getOur_points_blc());
                     ga_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
                     ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_blc()) {
-                    Log.i(TAG, logMsgPref + "ccaBLC buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBLC enemy_points = +" + ccaGame.getEnemy_points_blc());
                     ga_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
                     ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_blc()) {
-                    Log.i(TAG, logMsgPref + "ccaBLC buildingIsEmpty");
                     ga_tv_blc_points.setText("");
                     ga_tv_blc_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_blc()) {
-                    Log.i(TAG, logMsgPref + "ccaBLC isX2");
                     ga_tv_blc_x2.setText("X2");
                     ga_tv_blc_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blc()) {
-                        Log.i(TAG, logMsgPref + "ccaBLC mayX2");
                         ga_tv_blc_x2.setText("X2");
                         ga_tv_blc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -677,7 +637,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_blb()) {
 
                 if (ccaBLB != null) ga_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBLBname = " + ccaGame.getName_blb());
 
                 ga_tv_blb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blb_our()));
                 ga_tv_blb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blb_empty()));
@@ -687,7 +646,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our()));
                 ga_tv_blb_slots_empty.setText(String.valueOf(ccaGame.getSlots_blb_empty()));
                 ga_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBLB: slots = " + ccaGame.getSlots_blb() + ", slots_our = " + ccaGame.getSlots_blb_our() + ", slots_empty = " + ccaGame.getSlots_blb_empty() + ", slots_enemy = " + ccaGame.getSlots_blb_enemy());
 
                 slots += ccaGame.getSlots_blb();
                 slots_our += ccaGame.getSlots_blb_our();
@@ -695,27 +653,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blb_enemy();
 
                 if (ccaGame.isBuildingIsOur_blb()) {
-                    Log.i(TAG, logMsgPref + "ccaBLB buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBLB our_points = +" + ccaGame.getOur_points_blb());
                     ga_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
                     ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_blb()) {
-                    Log.i(TAG, logMsgPref + "ccaBLB buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBLB enemy_points = +" + ccaGame.getEnemy_points_blb());
                     ga_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
                     ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_blb()) {
-                    Log.i(TAG, logMsgPref + "ccaBLB buildingIsEmpty");
                     ga_tv_blb_points.setText("");
                     ga_tv_blb_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_blb()) {
-                    Log.i(TAG, logMsgPref + "ccaBLB isX2");
                     ga_tv_blb_x2.setText("X2");
                     ga_tv_blb_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blb()) {
-                        Log.i(TAG, logMsgPref + "ccaBLB mayX2");
                         ga_tv_blb_x2.setText("X2");
                         ga_tv_blb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -744,7 +695,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_brt()) {
 
                 if (ccaBRT != null) ga_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBRTname = " + ccaGame.getName_brt());
 
                 ga_tv_brt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brt_our()));
                 ga_tv_brt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brt_empty()));
@@ -754,7 +704,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our()));
                 ga_tv_brt_slots_empty.setText(String.valueOf(ccaGame.getSlots_brt_empty()));
                 ga_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBRT: slots = " + ccaGame.getSlots_brt() + ", slots_our = " + ccaGame.getSlots_brt_our() + ", slots_empty = " + ccaGame.getSlots_brt_empty() + ", slots_enemy = " + ccaGame.getSlots_brt_enemy());
 
                 slots += ccaGame.getSlots_brt();
                 slots_our += ccaGame.getSlots_brt_our();
@@ -762,27 +711,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brt_enemy();
 
                 if (ccaGame.isBuildingIsOur_brt()) {
-                    Log.i(TAG, logMsgPref + "ccaBRT buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBRT our_points = +" + ccaGame.getOur_points_brt());
                     ga_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
                     ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_brt()) {
-                    Log.i(TAG, logMsgPref + "ccaBRT buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBRT enemy_points = +" + ccaGame.getEnemy_points_brt());
                     ga_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
                     ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_brt()) {
-                    Log.i(TAG, logMsgPref + "ccaBRT buildingIsEmpty");
                     ga_tv_brt_points.setText("");
                     ga_tv_brt_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_brt()) {
-                    Log.i(TAG, logMsgPref + "ccaBRT isX2");
                     ga_tv_brt_x2.setText("X2");
                     ga_tv_brt_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brt()) {
-                        Log.i(TAG, logMsgPref + "ccaBRT mayX2");
                         ga_tv_brt_x2.setText("X2");
                         ga_tv_brt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -810,7 +752,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_brc()) {
 
                 if (ccaBRC != null) ga_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBRCname = " + ccaGame.getName_brc());
 
                 ga_tv_brc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brc_our()));
                 ga_tv_brc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brc_empty()));
@@ -820,7 +761,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our()));
                 ga_tv_brc_slots_empty.setText(String.valueOf(ccaGame.getSlots_brc_empty()));
                 ga_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBRC: slots = " + ccaGame.getSlots_brc() + ", slots_our = " + ccaGame.getSlots_brc_our() + ", slots_empty = " + ccaGame.getSlots_brc_empty() + ", slots_enemy = " + ccaGame.getSlots_brc_enemy());
 
                 slots += ccaGame.getSlots_brc();
                 slots_our += ccaGame.getSlots_brc_our();
@@ -828,27 +768,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brc_enemy();
 
                 if (ccaGame.isBuildingIsOur_brc()) {
-                    Log.i(TAG, logMsgPref + "ccaBRC buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBRC our_points = +" + ccaGame.getOur_points_brc());
                     ga_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
                     ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_brc()) {
-                    Log.i(TAG, logMsgPref + "ccaBRC buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBRC enemy_points = +" + ccaGame.getEnemy_points_brc());
                     ga_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
                     ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_brc()) {
-                    Log.i(TAG, logMsgPref + "ccaBRC buildingIsEmpty");
                     ga_tv_brc_points.setText("");
                     ga_tv_brc_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_brc()) {
-                    Log.i(TAG, logMsgPref + "ccaBRC isX2");
                     ga_tv_brc_x2.setText("X2");
                     ga_tv_brc_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brc()) {
-                        Log.i(TAG, logMsgPref + "ccaBRC mayX2");
                         ga_tv_brc_x2.setText("X2");
                         ga_tv_brc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -877,7 +810,6 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame.isPresent_brb()) {
 
                 if (ccaBRB != null) ga_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
-                Log.i(TAG, logMsgPref + "ccaBRBname = " + ccaGame.getName_brb());
 
                 ga_tv_brb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brb_our()));
                 ga_tv_brb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brb_empty()));
@@ -887,7 +819,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our()));
                 ga_tv_brb_slots_empty.setText(String.valueOf(ccaGame.getSlots_brb_empty()));
                 ga_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy()));
-                Log.i(TAG, logMsgPref + "ccaBRB: slots = " + ccaGame.getSlots_brb() + ", slots_our = " + ccaGame.getSlots_brb_our() + ", slots_empty = " + ccaGame.getSlots_brb_empty() + ", slots_enemy = " + ccaGame.getSlots_brb_enemy());
 
                 slots += ccaGame.getSlots_brb();
                 slots_our += ccaGame.getSlots_brb_our();
@@ -895,27 +826,20 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brb_enemy();
 
                 if (ccaGame.isBuildingIsOur_brb()) {
-                    Log.i(TAG, logMsgPref + "ccaBRB buildingIsOur");
-                    Log.i(TAG, logMsgPref + "ccaBRB our_points = +" + ccaGame.getOur_points_brb());
                     ga_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
                     ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
                 } else if (ccaGame.isBuildingIsEnemy_brb()) {
-                    Log.i(TAG, logMsgPref + "ccaBRB buildingIsEnemy");
-                    Log.i(TAG, logMsgPref + "ccaBRB enemy_points = +" + ccaGame.getEnemy_points_brb());
                     ga_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
                     ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
                 } else if (ccaGame.isBuildingIsEmpty_brb()) {
-                    Log.i(TAG, logMsgPref + "ccaBRB buildingIsEmpty");
                     ga_tv_brb_points.setText("");
                     ga_tv_brb_points.setBackgroundColor(0xFFFFFFFF);
                 }
                 if (ccaGame.isX2_brb()) {
-                    Log.i(TAG, logMsgPref + "ccaBRB isX2");
                     ga_tv_brb_x2.setText("X2");
                     ga_tv_brb_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brb()) {
-                        Log.i(TAG, logMsgPref + "ccaBRB mayX2");
                         ga_tv_brb_x2.setText("X2");
                         ga_tv_brb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
@@ -1424,33 +1348,6 @@ public class GameActivity extends AppCompatActivity {
                                                         String userRole = dbTeamUser.getUserRole();
                                                         ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
 
-//                                                        final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-//                                                        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                                                            @Override
-//                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                                                                if (e != null) {
-//                                                                    Log.w(TAG, "Listen failed.", e);
-//                                                                    return;
-//                                                                }
-//                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
-//                                                                    Log.d(TAG, "Current data: " + documentSnapshot.getData());
-//
-//                                                                    if (mainCityCalc != null) {
-//                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-//                                                                        if (ccaGame != null) {
-//                                                                            DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-//                                                                            ccaGame.updateFromDb(dbTeamGame);
-//                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-//                                                                            loadDataToViews(true);
-//                                                                        }
-//                                                                    }
-//
-//                                                                } else {
-//                                                                    Log.d(TAG, "Current data: null");
-//                                                                }
-//                                                            }
-//                                                        });
-
                                                     }
                                                 }
                                             });
@@ -1509,11 +1406,7 @@ public class GameActivity extends AppCompatActivity {
             case R.id.menu_share :
                 shareFile();
                 return true;
-//            case R.id.menu_open_language :  // "Язык"
-//                Log.i(TAG, logMsgPref + "выбран пункт Язык");
-//                Log.i(TAG, logMsgPref + "вызываем openLanguage()");
-//                openLanguage();
-//                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -1639,7 +1532,6 @@ public class GameActivity extends AppCompatActivity {
 
                     setDataToCarsViews();
 
-
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
                         if (tmpFile != null) {  // если он не пустой
@@ -1716,10 +1608,7 @@ public class GameActivity extends AppCompatActivity {
                     if (mainCityCalc != null) {
                         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
                         if (ccaGame != null) {
-                            Log.i(TAG, logMsgPref + "ccaGame не null");
-                            Log.i(TAG, logMsgPref + "вызываем ccaGame.calcWin()");
                             ccaGame.calcWin();
-                            Log.i(TAG, logMsgPref + "вызываем loadDataToViews() без нотификации");
                             loadDataToViews(false);
                         }
                     }
