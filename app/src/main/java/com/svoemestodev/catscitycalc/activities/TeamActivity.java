@@ -42,6 +42,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.database.UserRole;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +53,7 @@ public class TeamActivity extends AppCompatActivity {
 
     AdView ta_ad_banner;
     Button ta_bt_invite_user;
+    ImageButton ta_bt_rename_team;
     ListView ta_lv_users;
     TextView ta_tv_name;
 
@@ -87,8 +89,11 @@ public class TeamActivity extends AppCompatActivity {
     private void initializeViews() {
         ta_ad_banner = findViewById(R.id.ta_ad_banner);
         ta_bt_invite_user = findViewById(R.id.ta_bt_invite_user);
+        ta_bt_rename_team = findViewById(R.id.ta_bt_rename_team);
         ta_lv_users = findViewById(R.id.ta_lv_users);
         ta_tv_name = findViewById(R.id.ta_tv_name);
+        ta_bt_invite_user.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+        ta_bt_rename_team.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
     }
 
     @Override
@@ -289,6 +294,12 @@ public class TeamActivity extends AppCompatActivity {
             TextView ltu_tv_nic_value = convertView.findViewById(R.id.ltu_tv_nic_value);
             TextView ltu_tv_role_value = convertView.findViewById(R.id.ltu_tv_role_value);
 
+            ltu_bt_delete.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_edit.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_leader.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_captain.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_meat.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            
             String userNIC = dbTeamUser.getUserNIC() == null ? "N/A" : dbTeamUser.getUserNIC();
             String userRole = dbTeamUser.getUserRole() == null ? "N/A" : dbTeamUser.getUserRole();
 

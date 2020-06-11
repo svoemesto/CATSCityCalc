@@ -42,6 +42,7 @@ import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import com.svoemestodev.catscitycalc.database.DbUser;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.database.UserRole;
 
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +73,7 @@ public class UserActivity extends AppCompatActivity {
     TextView ua_tv_role_value;
 
     private static boolean isHaveTeam;
-    private static boolean isTeamLeader;
+    public static UserRole userRole;
     private static boolean isVerified;
 
     private static final int SIGN_IN_REQUEST_CODE = 1;
@@ -134,7 +135,7 @@ public class UserActivity extends AppCompatActivity {
     private void doMenuLeaveTeam() {
 
         if (isHaveTeam) {
-            if (isTeamLeader) {
+            if (userRole.equals(UserRole.LEADER)) {
                 // если ты в банде лидер - надо проверить, есть ли еще в банде еще хоть кто-то. Если нет - удалить банду. Если да - проверить, есть ли среди них хоть один лидер. Если нет - выходить из банды нельзя.
 
                 CollectionReference crTeamUsers = GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).collection("teamUsers");
@@ -588,9 +589,11 @@ public class UserActivity extends AppCompatActivity {
                                         dbTeamUser.setTeamUserID(document.getId());
                                         ua_tv_role_value.setText(dbTeamUser.getUserRole());
                                         if (dbTeamUser.getUserRole().equals("leader")) {
-                                            isTeamLeader = true;
+                                            userRole = UserRole.LEADER;
+                                        } else if (dbTeamUser.getUserRole().equals("captain")){
+                                            userRole = UserRole.CAPTAIN;
                                         } else {
-                                            isTeamLeader = false;
+                                            userRole = UserRole.MEAT;
                                         }
                                         break;
                                     }
@@ -644,11 +647,12 @@ public class UserActivity extends AppCompatActivity {
             } else {
                 if (userMenu != null) menuItemCreateTeam.setVisible(false);
                 if (userMenu != null) menuItemLeaveTeam.setVisible(true);
-                if (isTeamLeader) {
-                    if (userMenu != null) menuItemManageTeam.setVisible(true);
-                } else {
-                    if (userMenu != null) menuItemManageTeam.setVisible(false);
-                }
+                if (userMenu != null) menuItemManageTeam.setVisible(true);
+//                if (isTeamLeader) {
+//                    if (userMenu != null) menuItemManageTeam.setVisible(true);
+//                } else {
+//                    if (userMenu != null) menuItemManageTeam.setVisible(false);
+//                }
             }
 
         }
