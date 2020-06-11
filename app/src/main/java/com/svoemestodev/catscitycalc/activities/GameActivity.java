@@ -1652,9 +1652,9 @@ public class GameActivity extends AppCompatActivity {
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
 
-                                    boolean isRealtimeScreenshot = true;
+                                    boolean isRealtimeScreenshot = false;
                                     if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
-                                        isRealtimeScreenshot = false;
+                                        isRealtimeScreenshot = true;
                                         Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
                                         Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
                                         Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
