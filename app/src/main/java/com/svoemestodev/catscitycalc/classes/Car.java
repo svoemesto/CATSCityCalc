@@ -4,6 +4,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
@@ -17,7 +22,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Car implements Serializable {
@@ -169,6 +176,7 @@ public class Car implements Serializable {
         } catch (ClassNotFoundException | IOException e) {
             Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
             list = getDefaultList();
+            saveList(list);
         }
         return list;
     }
@@ -187,6 +195,17 @@ public class Car implements Serializable {
         }
         if (!isFind) listNew.add(this);
         saveList(listNew);
+
+        if (GameActivity.fbUser != null) {
+            if (GameActivity.fbUser.isEmailVerified()) {
+                final String userUID = GameActivity.fbUser.getUid();
+                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
+                String docRefCarName = "car" + this.slot;
+                DocumentReference docRefCar = userCars.document(docRefCarName);
+                docRefCar.set(getMap());
+            }
+        }
+
     }
 
     public static boolean saveList(List<Car> list) {
@@ -202,6 +221,24 @@ public class Car implements Serializable {
             return false;
         }
     }
+
+    public Map<String, Object> getMap() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("timestamp", FieldValue.serverTimestamp());
+        map.put("carUID", uuid.toString());
+        map.put("carName", name);
+        map.put("carSlot", slot);
+        map.put("carHealth", health);
+        map.put("carShield", shield);
+        map.put("carRepair", repair);
+        map.put("carBuilding", building);
+        map.put("carBuildingTask", buildingTask);
+
+        return map;
+    }
+
+
 
     public void setStateFree() {
         this.building = -1;

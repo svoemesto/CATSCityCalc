@@ -1,5 +1,9 @@
 package com.svoemestodev.catscitycalc.database;
 
+import com.svoemestodev.catscitycalc.classes.Car;
+
+import java.util.List;
+
 public class DbTeamUser {
 
     private String teamUserID;
@@ -7,6 +11,8 @@ public class DbTeamUser {
     private String userID;
     private String userRole;
     private String userNIC;
+
+    private List<Car> userCars;
 
     public String getUserNIC() {
         return userNIC;
@@ -46,5 +52,13 @@ public class DbTeamUser {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+
+    public List<Car> getUserCars() {
+        return userCars;
+    }
+
+    public void setUserCars(List<Car> userCars) {
+        this.userCars = userCars;
     }
 }
