@@ -323,6 +323,34 @@ public class GameActivity extends AppCompatActivity {
                                                     DbTeamUser dbTeamUser = listTeamUsers.get(0);
                                                     String userRole = dbTeamUser.getUserRole();
                                                     ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+
+                                                    final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+                                                    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                            if (e != null) {
+                                                                Log.w(TAG, "Listen failed.", e);
+                                                                return;
+                                                            }
+                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                Log.d(TAG, "Current data: " + documentSnapshot.getData());
+
+                                                                if (mainCityCalc != null) {
+                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                    if (ccaGame != null) {
+                                                                        DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
+                                                                        ccaGame.updateFromDb(dbTeamGame);
+                                                                        Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+                                                                        loadDataToViews(true);
+                                                                    }
+                                                                }
+
+                                                            } else {
+                                                                Log.d(TAG, "Current data: null");
+                                                            }
+                                                        }
+                                                    });
+
                                                 }
                                             }
                                         });
@@ -1396,32 +1424,32 @@ public class GameActivity extends AppCompatActivity {
                                                         String userRole = dbTeamUser.getUserRole();
                                                         ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
 
-                                                        final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                                                        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                            @Override
-                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                                if (e != null) {
-                                                                    Log.w(TAG, "Listen failed.", e);
-                                                                    return;
-                                                                }
-                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                    Log.d(TAG, "Current data: " + documentSnapshot.getData());
-
-                                                                    if (mainCityCalc != null) {
-                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                        if (ccaGame != null) {
-                                                                            DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-                                                                            ccaGame.updateFromDb(dbTeamGame);
-                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-                                                                            loadDataToViews(true);
-                                                                        }
-                                                                    }
-
-                                                                } else {
-                                                                    Log.d(TAG, "Current data: null");
-                                                                }
-                                                            }
-                                                        });
+//                                                        final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+//                                                        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                                                            @Override
+//                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                                                                if (e != null) {
+//                                                                    Log.w(TAG, "Listen failed.", e);
+//                                                                    return;
+//                                                                }
+//                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+//                                                                    Log.d(TAG, "Current data: " + documentSnapshot.getData());
+//
+//                                                                    if (mainCityCalc != null) {
+//                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                        if (ccaGame != null) {
+//                                                                            DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
+//                                                                            ccaGame.updateFromDb(dbTeamGame);
+//                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+//                                                                            loadDataToViews(true);
+//                                                                        }
+//                                                                    }
+//
+//                                                                } else {
+//                                                                    Log.d(TAG, "Current data: null");
+//                                                                }
+//                                                            }
+//                                                        });
 
                                                     }
                                                 }

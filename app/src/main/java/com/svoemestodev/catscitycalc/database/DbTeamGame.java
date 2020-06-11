@@ -130,7 +130,10 @@ public class DbTeamGame {
         key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = documentSnapshot.getTimestamp(key).toDate();
         key = "dateEndGame"; if (map.containsKey(key)) this.dateEndGame = documentSnapshot.getTimestamp(key).toDate();
         key = "earlyWin"; if (map.containsKey(key)) this.earlyWin = ((Long) map.get(key)).intValue();
-        
+
+        key = "pointsOurInScreenshot"; if (map.containsKey(key)) this.earlyWin = ((Long) map.get(key)).intValue();
+        key = "pointsEnemyInScreenshot"; if (map.containsKey(key)) this.earlyWin = ((Long) map.get(key)).intValue();
+
         key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
         key = "isPresent_blc"; if (map.containsKey(key)) this.isPresent_blc = (boolean) map.get(key);
         key = "isPresent_blb"; if (map.containsKey(key)) this.isPresent_blb = (boolean) map.get(key);
