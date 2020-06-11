@@ -124,9 +124,9 @@ public class DbTeamGame {
 
         String key;
         Map<String, Object> map = documentSnapshot.getData();
-        key = "dateStartGame"; if (map.containsKey(key)) this.dateStartGame = (Date) map.get(key);
-        key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = (Date) map.get(key);
-        key = "dateEndGame"; if (map.containsKey(key)) this.dateEndGame = (Date) map.get(key);
+        key = "dateStartGame"; if (map.containsKey(key)) this.dateStartGame = documentSnapshot.getTimestamp(key).toDate();
+        key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = documentSnapshot.getTimestamp(key).toDate();
+        key = "dateEndGame"; if (map.containsKey(key)) this.dateEndGame = documentSnapshot.getTimestamp(key).toDate();
         key = "earlyWin"; if (map.containsKey(key)) this.earlyWin = (int) map.get(key);
         
         key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
