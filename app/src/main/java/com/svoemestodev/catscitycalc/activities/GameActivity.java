@@ -1412,6 +1412,7 @@ public class GameActivity extends AppCompatActivity {
                                                                         if (ccaGame != null) {
                                                                             DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
                                                                             ccaGame.updateFromDb(dbTeamGame);
+                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
                                                                             loadDataToViews(true);
                                                                         }
                                                                     }

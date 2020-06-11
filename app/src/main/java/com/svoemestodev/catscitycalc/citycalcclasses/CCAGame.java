@@ -234,7 +234,7 @@ public class CCAGame extends CityCalcArea {
 
     }
 
-    public void calc() {
+    public void calc(boolean isRealtimeScreenshot) {
 
         CityCalcArea ccaTotalTime = this.getCityCalc().getMapAreas().get(Area.TOTAL_TIME); // время
         CityCalcArea ccaEarlyWin = this.getCityCalc().getMapAreas().get(Area.EARLY_WIN);   // очки досрочки
@@ -252,8 +252,7 @@ public class CCAGame extends CityCalcArea {
             this.ccagDateEndGame = Utils.addMinutesToDate(this.ccagDateStartGame, 24*60); // дата конца игры по времени
             this.ccagEarlyWin = Integer.parseInt(ccaEarlyWin.getFinText()); // очки до досрочной победы
         }
-
-        new DbTeamGame(this);
+        if (isRealtimeScreenshot) new DbTeamGame(this);
 
     }
 

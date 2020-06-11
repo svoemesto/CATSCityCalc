@@ -1645,8 +1645,7 @@ public class CityCalc extends Activity {
                                         (((CCABuilding)mapAreas.get(Area.BRC)).isPresent() ? ((CCABuilding)mapAreas.get(Area.BRC)).getEnemy_points() : 0) +
                                         (((CCABuilding)mapAreas.get(Area.BRB)).isPresent() ? ((CCABuilding)mapAreas.get(Area.BRB)).getEnemy_points() : 0));
 
-                        ((CCAGame)mapAreas.get(Area.CITY)).calc();
-                        if (isRealtimeScreenshot) new DbTeamGame((CCAGame)mapAreas.get(Area.CITY));
+                        ((CCAGame)mapAreas.get(Area.CITY)).calc(isRealtimeScreenshot);
                         ((CCAGame)mapAreas.get(Area.CITY)).calcWin();
 
                         if (!fileScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/last_screenshot.PNG")) {

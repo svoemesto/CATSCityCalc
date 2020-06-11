@@ -127,7 +127,7 @@ public class DbTeamGame {
         key = "dateStartGame"; if (map.containsKey(key)) this.dateStartGame = documentSnapshot.getTimestamp(key).toDate();
         key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = documentSnapshot.getTimestamp(key).toDate();
         key = "dateEndGame"; if (map.containsKey(key)) this.dateEndGame = documentSnapshot.getTimestamp(key).toDate();
-        key = "earlyWin"; if (map.containsKey(key)) this.earlyWin = (int) map.get(key);
+        key = "earlyWin"; if (map.containsKey(key)) this.earlyWin = ((Long) map.get(key)).intValue();
         
         key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
         key = "isPresent_blc"; if (map.containsKey(key)) this.isPresent_blc = (boolean) map.get(key);
@@ -172,56 +172,56 @@ public class DbTeamGame {
         key = "buildingIsEnemy_brc"; if (map.containsKey(key)) this.buildingIsEnemy_brc = (boolean) map.get(key);
         key = "buildingIsEnemy_brb"; if (map.containsKey(key)) this.buildingIsEnemy_brb = (boolean) map.get(key);
         
-        key = "our_points_blt"; if (map.containsKey(key)) this.our_points_blt = (int) map.get(key);
-        key = "our_points_blc"; if (map.containsKey(key)) this.our_points_blc = (int) map.get(key);
-        key = "our_points_blb"; if (map.containsKey(key)) this.our_points_blb = (int) map.get(key);
-        key = "our_points_brt"; if (map.containsKey(key)) this.our_points_brt = (int) map.get(key);
-        key = "our_points_brc"; if (map.containsKey(key)) this.our_points_brc = (int) map.get(key);
-        key = "our_points_brb"; if (map.containsKey(key)) this.our_points_brb = (int) map.get(key);
+        key = "our_points_blt"; if (map.containsKey(key)) this.our_points_blt = ((Long) map.get(key)).intValue();
+        key = "our_points_blc"; if (map.containsKey(key)) this.our_points_blc = ((Long) map.get(key)).intValue();
+        key = "our_points_blb"; if (map.containsKey(key)) this.our_points_blb = ((Long) map.get(key)).intValue();
+        key = "our_points_brt"; if (map.containsKey(key)) this.our_points_brt = ((Long) map.get(key)).intValue();
+        key = "our_points_brc"; if (map.containsKey(key)) this.our_points_brc = ((Long) map.get(key)).intValue();
+        key = "our_points_brb"; if (map.containsKey(key)) this.our_points_brb = ((Long) map.get(key)).intValue();
 
-        key = "enemy_points_blt"; if (map.containsKey(key)) this.enemy_points_blt = (int) map.get(key);
-        key = "enemy_points_blc"; if (map.containsKey(key)) this.enemy_points_blc = (int) map.get(key);
-        key = "enemy_points_blb"; if (map.containsKey(key)) this.enemy_points_blb = (int) map.get(key);
-        key = "enemy_points_brt"; if (map.containsKey(key)) this.enemy_points_brt = (int) map.get(key);
-        key = "enemy_points_brc"; if (map.containsKey(key)) this.enemy_points_brc = (int) map.get(key);
-        key = "enemy_points_brb"; if (map.containsKey(key)) this.enemy_points_brb = (int) map.get(key);
+        key = "enemy_points_blt"; if (map.containsKey(key)) this.enemy_points_blt = ((Long) map.get(key)).intValue();
+        key = "enemy_points_blc"; if (map.containsKey(key)) this.enemy_points_blc = ((Long) map.get(key)).intValue();
+        key = "enemy_points_blb"; if (map.containsKey(key)) this.enemy_points_blb = ((Long) map.get(key)).intValue();
+        key = "enemy_points_brt"; if (map.containsKey(key)) this.enemy_points_brt = ((Long) map.get(key)).intValue();
+        key = "enemy_points_brc"; if (map.containsKey(key)) this.enemy_points_brc = ((Long) map.get(key)).intValue();
+        key = "enemy_points_brb"; if (map.containsKey(key)) this.enemy_points_brb = ((Long) map.get(key)).intValue();
 
         
-        key = "slots_blt"; if (map.containsKey(key)) this.slots_blt = (int) map.get(key);
-        key = "slots_blt_our"; if (map.containsKey(key)) this.slots_blt_our = (int) map.get(key);
-        key = "slots_blt_empty"; if (map.containsKey(key)) this.slots_blt_empty = (int) map.get(key);
-        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = (int) map.get(key);
-        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = (int) map.get(key);
+        key = "slots_blt"; if (map.containsKey(key)) this.slots_blt = ((Long) map.get(key)).intValue();
+        key = "slots_blt_our"; if (map.containsKey(key)) this.slots_blt_our = ((Long) map.get(key)).intValue();
+        key = "slots_blt_empty"; if (map.containsKey(key)) this.slots_blt_empty = ((Long) map.get(key)).intValue();
+        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_blc"; if (map.containsKey(key)) this.slots_blc = (int) map.get(key);
-        key = "slots_blc_our"; if (map.containsKey(key)) this.slots_blc_our = (int) map.get(key);
-        key = "slots_blc_empty"; if (map.containsKey(key)) this.slots_blc_empty = (int) map.get(key);
-        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = (int) map.get(key);
-        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = (int) map.get(key);
+        key = "slots_blc"; if (map.containsKey(key)) this.slots_blc = ((Long) map.get(key)).intValue();
+        key = "slots_blc_our"; if (map.containsKey(key)) this.slots_blc_our = ((Long) map.get(key)).intValue();
+        key = "slots_blc_empty"; if (map.containsKey(key)) this.slots_blc_empty = ((Long) map.get(key)).intValue();
+        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_blb"; if (map.containsKey(key)) this.slots_blb = (int) map.get(key);
-        key = "slots_blb_our"; if (map.containsKey(key)) this.slots_blb_our = (int) map.get(key);
-        key = "slots_blb_empty"; if (map.containsKey(key)) this.slots_blb_empty = (int) map.get(key);
-        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = (int) map.get(key);
-        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = (int) map.get(key);
+        key = "slots_blb"; if (map.containsKey(key)) this.slots_blb = ((Long) map.get(key)).intValue();
+        key = "slots_blb_our"; if (map.containsKey(key)) this.slots_blb_our = ((Long) map.get(key)).intValue();
+        key = "slots_blb_empty"; if (map.containsKey(key)) this.slots_blb_empty = ((Long) map.get(key)).intValue();
+        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brt"; if (map.containsKey(key)) this.slots_brt = (int) map.get(key);
-        key = "slots_brt_our"; if (map.containsKey(key)) this.slots_brt_our = (int) map.get(key);
-        key = "slots_brt_empty"; if (map.containsKey(key)) this.slots_brt_empty = (int) map.get(key);
-        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = (int) map.get(key);
-        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = (int) map.get(key);
+        key = "slots_brt"; if (map.containsKey(key)) this.slots_brt = ((Long) map.get(key)).intValue();
+        key = "slots_brt_our"; if (map.containsKey(key)) this.slots_brt_our = ((Long) map.get(key)).intValue();
+        key = "slots_brt_empty"; if (map.containsKey(key)) this.slots_brt_empty = ((Long) map.get(key)).intValue();
+        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brc"; if (map.containsKey(key)) this.slots_brc = (int) map.get(key);
-        key = "slots_brc_our"; if (map.containsKey(key)) this.slots_brc_our = (int) map.get(key);
-        key = "slots_brc_empty"; if (map.containsKey(key)) this.slots_brc_empty = (int) map.get(key);
-        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = (int) map.get(key);
-        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = (int) map.get(key);
+        key = "slots_brc"; if (map.containsKey(key)) this.slots_brc = ((Long) map.get(key)).intValue();
+        key = "slots_brc_our"; if (map.containsKey(key)) this.slots_brc_our = ((Long) map.get(key)).intValue();
+        key = "slots_brc_empty"; if (map.containsKey(key)) this.slots_brc_empty = ((Long) map.get(key)).intValue();
+        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brb"; if (map.containsKey(key)) this.slots_brb = (int) map.get(key);
-        key = "slots_brb_our"; if (map.containsKey(key)) this.slots_brb_our = (int) map.get(key);
-        key = "slots_brb_empty"; if (map.containsKey(key)) this.slots_brb_empty = (int) map.get(key);
-        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = (int) map.get(key);
-        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = (int) map.get(key);
+        key = "slots_brb"; if (map.containsKey(key)) this.slots_brb = ((Long) map.get(key)).intValue();
+        key = "slots_brb_our"; if (map.containsKey(key)) this.slots_brb_our = ((Long) map.get(key)).intValue();
+        key = "slots_brb_empty"; if (map.containsKey(key)) this.slots_brb_empty = ((Long) map.get(key)).intValue();
+        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = ((Long) map.get(key)).intValue();
 
     }
     
