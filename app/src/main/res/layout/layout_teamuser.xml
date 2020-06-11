@@ -88,7 +88,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
-                        android:onClick="openCar1"
                         />
 
                     <TextView
@@ -227,7 +226,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
-                        android:onClick="openCar2"
                         />
 
                     <TextView
@@ -363,7 +361,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
-                        android:onClick="openCar3"
                         />
 
                     <TextView

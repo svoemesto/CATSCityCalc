@@ -1,8 +1,11 @@
 package com.svoemestodev.catscitycalc.database;
 
+import java.util.Date;
+
 public class DbTeam {
     private String teamID;
     private String teamName;
+    private Date timestamp;
 
     public String getTeamID() {
         return teamID;
@@ -18,5 +21,13 @@ public class DbTeam {
 
     public void setTeamName(String teamName) {
         this.teamName = teamName;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }

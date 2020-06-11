@@ -197,6 +197,22 @@ public class Car implements Serializable {
         return list;
     }
 
+    public static List<Car> loadList(String userUID) {
+        List<Car> list;
+        File file = new File(pathToFile + "_" + userUID);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+            list = (List<Car>) ois.readObject();
+            ois.close();
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
+            list = getDefaultList();
+            saveList(list, userUID);
+        }
+        return list;
+    }
+
     public void save() {
         List<Car> list = loadList();
         List<Car> listNew = new ArrayList<>();
@@ -224,8 +240,48 @@ public class Car implements Serializable {
 
     }
 
+    public void save(String userUID) {
+        List<Car> list = loadList(userUID);
+        List<Car> listNew = new ArrayList<>();
+        boolean isFind = false;
+        for (Car car : list) {
+            if (car.getUuid().equals(this.getUuid())) {
+                isFind = true;
+                listNew.add(this);
+            } else {
+                listNew.add(car);
+            }
+        }
+        if (!isFind) listNew.add(this);
+        saveList(listNew, userUID);
+
+//        if (GameActivity.fbUser != null) {
+//            if (GameActivity.fbUser.isEmailVerified()) {
+//                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
+//                String docRefCarName = "car" + this.slot;
+//                DocumentReference docRefCar = userCars.document(docRefCarName);
+//                docRefCar.set(getMap());
+//            }
+//        }
+
+    }
+
     public static boolean saveList(List<Car> list) {
         File file = new File(pathToFile);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+            oos.writeObject(list);
+            oos.close();
+            return true;
+        } catch (IOException e) {
+            Log.e("Car", "saveList. Ошибка сериализации");
+            return false;
+        }
+    }
+
+    public static boolean saveList(List<Car> list, String userUID) {
+        File file = new File(pathToFile + "_" + userUID);
         try {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);

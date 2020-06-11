@@ -2,6 +2,7 @@ package com.svoemestodev.catscitycalc.database;
 
 import com.svoemestodev.catscitycalc.classes.Car;
 
+import java.util.Date;
 import java.util.List;
 
 public class DbTeamUser {
@@ -11,6 +12,7 @@ public class DbTeamUser {
     private String userID;
     private String userRole;
     private String userNIC;
+    private Date timestamp;
 
     private List<Car> userCars;
 
@@ -60,5 +62,13 @@ public class DbTeamUser {
 
     public void setUserCars(List<Car> userCars) {
         this.userCars = userCars;
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 }
