@@ -48,6 +48,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
@@ -301,7 +302,7 @@ public class GameActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(Void aVoid) {
                     ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
-
+                    
                     fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -329,11 +330,11 @@ public class GameActivity extends AppCompatActivity {
                                                         @Override
                                                         public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                                                             if (e != null) {
-                                                                Log.w(TAG, "Listen failed.", e);
+                                                                Log.w(TAG, "Listen game failed.", e);
                                                                 return;
                                                             }
                                                             if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                Log.d(TAG, "Current data: " + documentSnapshot.getData());
+                                                                Log.d(TAG, "Current game data: " + documentSnapshot.getData());
 
                                                                 if (mainCityCalc != null) {
                                                                     CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
@@ -348,11 +349,149 @@ public class GameActivity extends AppCompatActivity {
                                                                 }
 
                                                             } else {
-                                                                Log.d(TAG, "Current data: null");
+                                                                Log.d(TAG, "Current game data: null");
                                                             }
                                                         }
                                                     });
 
+                                                    final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
+                                                    docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                            if (e != null) {
+                                                                Log.w(TAG, "Listen car1 failed.", e);
+                                                                return;
+                                                            }
+                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
+
+                                                                if (mainCityCalc != null) {
+                                                                    List<Car> listCars = Car.loadList();
+                                                                    Car car = listCars.get(0);
+                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                            Bitmap taskBitmap = null;
+                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                            }
+                                                                            car.setTaskPicture(taskBitmap);
+                                                                            car.save();
+                                                                            setDataToCarsViews();
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            } else {
+                                                                Log.d(TAG, "Current car1 data: null");
+                                                            }
+                                                        }
+                                                    });
+
+                                                    final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
+                                                    docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                            if (e != null) {
+                                                                Log.w(TAG, "Listen car2 failed.", e);
+                                                                return;
+                                                            }
+                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
+
+                                                                if (mainCityCalc != null) {
+                                                                    List<Car> listCars = Car.loadList();
+                                                                    Car car = listCars.get(1);
+                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                            Bitmap taskBitmap = null;
+                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                            }
+                                                                            car.setTaskPicture(taskBitmap);
+                                                                            car.save();
+                                                                            setDataToCarsViews();
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            } else {
+                                                                Log.d(TAG, "Current car2 data: null");
+                                                            }
+                                                        }
+                                                    });
+
+                                                    final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
+                                                    docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                            if (e != null) {
+                                                                Log.w(TAG, "Listen car3 failed.", e);
+                                                                return;
+                                                            }
+                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
+
+                                                                if (mainCityCalc != null) {
+                                                                    List<Car> listCars = Car.loadList();
+                                                                    Car car = listCars.get(2);
+                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                            Bitmap taskBitmap = null;
+                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                            }
+                                                                            car.setTaskPicture(taskBitmap);
+                                                                            car.save();
+                                                                            setDataToCarsViews();
+                                                                        }
+                                                                    }
+                                                                }
+
+                                                            } else {
+                                                                Log.d(TAG, "Current car3 data: null");
+                                                            }
+                                                        }
+                                                    });
+                                                    
                                                 }
                                             }
                                         });
