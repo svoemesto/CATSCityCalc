@@ -7,10 +7,12 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -18,38 +20,50 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.database.Database;
 import com.svoemestodev.catscitycalc.database.DbCar;
+import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
+import com.svoemestodev.catscitycalc.database.DbUser;
+import com.svoemestodev.catscitycalc.database.UserRole;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.Utils;
@@ -59,7 +73,6 @@ import com.svoemestodev.catscitycalc.citycalcclasses.CCACar;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCATeam;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalc;
-import com.svoemestodev.catscitycalc.citycalcclasses.CityCalcArea;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalcType;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 
@@ -68,7 +81,9 @@ import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -242,6 +257,7 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_car3_task;
     
     Button ga_bt_strategy;
+    private static final int SIGN_IN_REQUEST_CODE = 1;
 
     public transient static String pathToCATScalcFolder;
     private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
@@ -272,6 +288,26 @@ public class GameActivity extends AppCompatActivity {
     public static FirebaseUser fbUser;
     public static FirebaseAuth fbAuth;
     public static FirebaseFirestore fbDb = FirebaseFirestore.getInstance();
+    public static boolean userHaveTeam;
+    public static UserRole userRole;
+    public static String userTeamID;
+    public static DbUser mainDbUser;
+    public static DbTeam mainDbTeam;
+    public static DbTeamUser mainDbTeamUser;
+
+    public static Menu mainMenu;
+    public static MenuItem menu_main_open_settings;
+    public static MenuItem menu_main_open_screenshot;
+    public static MenuItem menu_main_user_account;
+    public static MenuItem menu_main_share;
+    public static MenuItem menu_main_login;
+    public static MenuItem menu_main_logout;
+    public static MenuItem menu_main_email_verification_send;
+    public static MenuItem menu_main_email_verification_check;
+    public static MenuItem menu_main_team_manage;
+    public static MenuItem menu_main_team_create;
+    public static MenuItem menu_main_team_leave;
+    public static MenuItem menu_main_team_find;
 
     @Override
     protected void onResume() {
@@ -289,244 +325,242 @@ public class GameActivity extends AppCompatActivity {
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
 
-
         context = getBaseContext();
 
         setContentView(R.layout.activity_game);
 
-        Log.i(TAG, "onCreate initializeViews()");
         initializeViews(); // Инициализация вьюшек
 
-        if (fbUser != null) {
-            Toast.makeText(this,getString(R.string.welcome) + " " + fbUser.getDisplayName(), Toast.LENGTH_LONG).show();
-            fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
-                    
-                    fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            final String teamID = (String)documentSnapshot.get("teamID");
-                            if (teamID == null || teamID.equals("")) {
-                                ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
-                            } else {
-                                fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        String teamName = (String)documentSnapshot.get("teamName");
-                                        ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
+//        checkMenuVisibility();
 
-                                        fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
-                                                if (listTeamUsers.size() >0) {
-                                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
-                                                    String userRole = dbTeamUser.getUserRole();
-                                                    ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
 
-                                                    final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                                                    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                        @Override
-                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                            if (e != null) {
-                                                                Log.w(TAG, "Listen game failed.", e);
-                                                                return;
-                                                            }
-                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                Log.d(TAG, "Current game data: " + documentSnapshot.getData());
-
-                                                                if (mainCityCalc != null) {
-                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                    if (ccaGame != null) {
-                                                                        DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-                                                                        if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
-                                                                            ccaGame.updateFromDb(dbTeamGame);
-                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-                                                                            loadDataToViews(true);
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            } else {
-                                                                Log.d(TAG, "Current game data: null");
-                                                            }
-                                                        }
-                                                    });
-
-                                                    final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
-                                                    docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                        @Override
-                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                            if (e != null) {
-                                                                Log.w(TAG, "Listen car1 failed.", e);
-                                                                return;
-                                                            }
-                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
-
-                                                                if (mainCityCalc != null) {
-                                                                    List<Car> listCars = Car.loadList();
-                                                                    Car car = listCars.get(0);
-                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                            Bitmap taskBitmap = null;
-                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                            }
-                                                                            car.setTaskPicture(taskBitmap);
-                                                                            car.save();
-                                                                            setDataToCarsViews();
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            } else {
-                                                                Log.d(TAG, "Current car1 data: null");
-                                                            }
-                                                        }
-                                                    });
-
-                                                    final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
-                                                    docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                        @Override
-                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                            if (e != null) {
-                                                                Log.w(TAG, "Listen car2 failed.", e);
-                                                                return;
-                                                            }
-                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
-
-                                                                if (mainCityCalc != null) {
-                                                                    List<Car> listCars = Car.loadList();
-                                                                    Car car = listCars.get(1);
-                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                            Bitmap taskBitmap = null;
-                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                            }
-                                                                            car.setTaskPicture(taskBitmap);
-                                                                            car.save();
-                                                                            setDataToCarsViews();
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            } else {
-                                                                Log.d(TAG, "Current car2 data: null");
-                                                            }
-                                                        }
-                                                    });
-
-                                                    final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
-                                                    docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                        @Override
-                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                            if (e != null) {
-                                                                Log.w(TAG, "Listen car3 failed.", e);
-                                                                return;
-                                                            }
-                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
-
-                                                                if (mainCityCalc != null) {
-                                                                    List<Car> listCars = Car.loadList();
-                                                                    Car car = listCars.get(2);
-                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                            Bitmap taskBitmap = null;
-                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                            }
-                                                                            car.setTaskPicture(taskBitmap);
-                                                                            car.save();
-                                                                            setDataToCarsViews();
-                                                                        }
-                                                                    }
-                                                                }
-
-                                                            } else {
-                                                                Log.d(TAG, "Current car3 data: null");
-                                                            }
-                                                        }
-                                                    });
-                                                    
-                                                }
-                                            }
-                                        });
-
-                                    }
-                                });
-
-                            }
-                        }
-                    });
-
-                }
-            });
-        } else {
-            ga_tv_user.setText("Login, please!!!");
-        }
+//
+//        if (fbUser != null) {
+//            Toast.makeText(this,getString(R.string.welcome) + " " + fbUser.getDisplayName(), Toast.LENGTH_LONG).show();
+//            fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                @Override
+//                public void onSuccess(Void aVoid) {
+//                    ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
+//
+//                    fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                        @Override
+//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                            final String teamID = (String)documentSnapshot.get("teamID");
+//                            if (teamID == null || teamID.equals("")) {
+//                                ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
+//                            } else {
+//                                fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                                    @Override
+//                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                                        String teamName = (String)documentSnapshot.get("teamName");
+//                                        ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
+//
+//                                        fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+//                                                if (listTeamUsers.size() >0) {
+//                                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
+//                                                    String userRole = dbTeamUser.getUserRole();
+//                                                    ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+//
+//                                                    final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+//                                                    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                                                        @Override
+//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                                                            if (e != null) {
+//                                                                Log.w(TAG, "Listen game failed.", e);
+//                                                                return;
+//                                                            }
+//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+//                                                                Log.d(TAG, "Current game data: " + documentSnapshot.getData());
+//
+//                                                                if (mainCityCalc != null) {
+//                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                    if (ccaGame != null) {
+//                                                                        DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
+//                                                                        if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
+//                                                                            ccaGame.updateFromDb(dbTeamGame);
+//                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+//                                                                            loadDataToViews(true);
+//                                                                        }
+//                                                                    }
+//                                                                }
+//
+//                                                            } else {
+//                                                                Log.d(TAG, "Current game data: null");
+//                                                            }
+//                                                        }
+//                                                    });
+//
+//                                                    final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
+//                                                    docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                                                        @Override
+//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                                                            if (e != null) {
+//                                                                Log.w(TAG, "Listen car1 failed.", e);
+//                                                                return;
+//                                                            }
+//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+//                                                                Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
+//
+//                                                                if (mainCityCalc != null) {
+//                                                                    List<Car> listCars = Car.loadList();
+//                                                                    Car car = listCars.get(0);
+//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                            Bitmap taskBitmap = null;
+//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+//                                                                            }
+//                                                                            car.setTaskPicture(taskBitmap);
+//                                                                            car.save();
+//                                                                            setDataToCarsViews();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//
+//                                                            } else {
+//                                                                Log.d(TAG, "Current car1 data: null");
+//                                                            }
+//                                                        }
+//                                                    });
+//
+//                                                    final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
+//                                                    docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                                                        @Override
+//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                                                            if (e != null) {
+//                                                                Log.w(TAG, "Listen car2 failed.", e);
+//                                                                return;
+//                                                            }
+//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+//                                                                Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
+//
+//                                                                if (mainCityCalc != null) {
+//                                                                    List<Car> listCars = Car.loadList();
+//                                                                    Car car = listCars.get(1);
+//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                            Bitmap taskBitmap = null;
+//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+//                                                                            }
+//                                                                            car.setTaskPicture(taskBitmap);
+//                                                                            car.save();
+//                                                                            setDataToCarsViews();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//
+//                                                            } else {
+//                                                                Log.d(TAG, "Current car2 data: null");
+//                                                            }
+//                                                        }
+//                                                    });
+//
+//                                                    final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
+//                                                    docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+//                                                        @Override
+//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                                                            if (e != null) {
+//                                                                Log.w(TAG, "Listen car3 failed.", e);
+//                                                                return;
+//                                                            }
+//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
+//                                                                Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
+//
+//                                                                if (mainCityCalc != null) {
+//                                                                    List<Car> listCars = Car.loadList();
+//                                                                    Car car = listCars.get(2);
+//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
+//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
+//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                            Bitmap taskBitmap = null;
+//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+//                                                                            }
+//                                                                            car.setTaskPicture(taskBitmap);
+//                                                                            car.save();
+//                                                                            setDataToCarsViews();
+//                                                                        }
+//                                                                    }
+//                                                                }
+//
+//                                                            } else {
+//                                                                Log.d(TAG, "Current car3 data: null");
+//                                                            }
+//                                                        }
+//                                                    });
+//
+//                                                }
+//                                            }
+//                                        });
+//
+//                                    }
+//                                });
+//
+//                            }
+//                        }
+//                    });
+//
+//                }
+//            });
+//        } else {
+//            ga_tv_user.setText("Login, please!!!");
+//        }
 
         // отслеживание изменения свича "Следить за файлами в папке"
         ga_sw_listen_new_file.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключили
-                String logMsgPref = "ga_sw_listen_new_file onCheckedChanged: ";
-                Log.i(TAG, logMsgPref + "sharedPreferences...");
                 // обновляем соответствующий пермишн и переменную
                 SharedPreferences sharedPreferences = GameActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putBoolean(getString(R.string.pref_listen_last_file), isChecked);
-                Log.i(TAG, logMsgPref + "preference " + (getString(R.string.pref_listen_last_file) + " = " + isChecked));
                 editor.apply();
                 isListenToNewFileInFolder = isChecked;
             }
         });
 
-        Log.i(TAG, "onCreate MobileAds.initialize");
         // инициализация рекламного блока
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
@@ -534,30 +568,16 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-//        MobileAds.setRequestConfiguration(
-//                new RequestConfiguration.Builder().setTestDeviceIds(Arrays.asList(AdRequest.DEVICE_ID_EMULATOR))
-//                        .build());
-
-        Log.i(TAG, logMsgPref + "adRequest = new AdRequest.Builder().build()");
         AdRequest adRequest = new AdRequest.Builder().build();
-
-        Log.i(TAG, logMsgPref + "ad_ga_banner.loadAd(adRequest)");
         ga_ad_banner.loadAd(adRequest);
 
-
-//        Log.i(TAG, logMsgPref + "вызываем createProgramDirAndInitializeScreenshot()");
-//        createProgramDirAndInitializeScreenshot(); // создаем папку программы (если её нет) и инициализируем скриншот
-
         // нотификейшт менеджер
-        Log.i(TAG, logMsgPref + "Инициализируем notificationManager");
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
-        Log.i(TAG, logMsgPref + "вызываем readPreferences()");
         readPreferences(); // считываем преференцы
 
         ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
 
-        Log.i(TAG, logMsgPref + "вызываем startTimer()");
         startTimer();   // стартуем таймер
 
     }
@@ -1435,76 +1455,376 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         String logMsgPref = "onActivityResult: ";
-        Log.i(TAG, logMsgPref + "start");
 
         super.onActivityResult(requestCode, resultCode, data);
         // если произошел возврат со страницы настрок - обновляем контролы в текущей активности
         if (requestCode == REQUEST_CODE_SECOND_ACTIVITY) {
-            Log.i(TAG, logMsgPref + "был возврат из предыдущей активности");
-            Log.i(TAG, logMsgPref + "вызов readPreferences()");
             readPreferences();
             fileGameScreenshotPrevious = null;
             ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
             if (fileGameScreenshot != null) {
-                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
-                Log.i(TAG, logMsgPref + "инициализация mainCityCalc");
                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                     mainCityCalc = new CityCalc(tmpCityCalc, false);
-                    Log.i(TAG, logMsgPref + "вызов loadDataToViews без нотификации");
                     loadDataToViews(false);
                 }
             }
 
-            fbAuth = FirebaseAuth.getInstance();
-            fbUser = fbAuth.getCurrentUser();
+//            fbAuth = FirebaseAuth.getInstance();
+//            fbUser = fbAuth.getCurrentUser();
+//
+//            if (fbUser != null) {
+//
+//                fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
+//
+//                        fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                                final String teamID = (String)documentSnapshot.get("teamID");
+//                                if (teamID == null || teamID.equals("")) {
+//                                    ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
+//                                } else {
+//                                    fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                                        @Override
+//                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                                            String teamName = (String)documentSnapshot.get("teamName");
+//                                            ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
+//
+//                                            fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                                                @Override
+//                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+//                                                    if (listTeamUsers.size() >0) {
+//                                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
+//                                                        String userRole = dbTeamUser.getUserRole();
+//                                                        ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
+//
+//                                                    }
+//                                                }
+//                                            });
+//
+//                                        }
+//                                    });
+//
+//                                }
+//                            }
+//                        });
+//
+//                    }
+//                });
+//            } else {
+//                ga_tv_user.setText("Login, please!!!");
+//            }
+        }
 
-            if (fbUser != null) {
-
+        if(requestCode == SIGN_IN_REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                fbUser = fbAuth.getCurrentUser();
                 fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
+                        checkMenuVisibility();
+                    }
+                });
+            }
+        } else {
+            Toast.makeText(GameActivity.this, R.string.could_not_sing_in, Toast.LENGTH_LONG).show();
+            fbUser = fbAuth.getCurrentUser();
+            checkMenuVisibility();
+        }
 
-                        fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                final String teamID = (String)documentSnapshot.get("teamID");
-                                if (teamID == null || teamID.equals("")) {
-                                    ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
-                                } else {
-                                    fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+    }
+
+
+    private void checkMenuVisibility() {
+
+        menu_main_open_settings.setVisible(true);
+        menu_main_open_screenshot.setVisible(true);
+        String userText = "";
+        if (fbUser == null) { // юзер не залогинился
+
+            menu_main_login.setVisible(true);
+            menu_main_logout.setVisible(false);
+            menu_main_user_account.setVisible(false);
+            menu_main_email_verification_send.setVisible(false);
+            menu_main_email_verification_check.setVisible(false);
+            menu_main_team_manage.setVisible(false);
+            menu_main_team_create.setVisible(false);
+            menu_main_team_leave.setVisible(false);
+            menu_main_team_find.setVisible(false);
+
+            userText = "Login, please.";
+            ga_tv_user.setText(userText);
+
+        } else { // юзер залогинился
+
+            userText = fbUser.getDisplayName();
+            ga_tv_user.setText(userText);
+
+            menu_main_login.setVisible(false);
+            menu_main_logout.setVisible(true);
+            boolean isVerified = fbUser.isEmailVerified();
+
+            if (!isVerified) { // почта не подтверждена
+
+                userText = userText + " (not verified)";
+                ga_tv_user.setText(userText);
+
+                menu_main_user_account.setVisible(false);
+                menu_main_email_verification_send.setVisible(true);
+                menu_main_email_verification_check.setVisible(true);
+                menu_main_team_manage.setVisible(false);
+                menu_main_team_create.setVisible(false);
+                menu_main_team_leave.setVisible(false);
+                menu_main_team_find.setVisible(false);
+
+            } else { // почта подтверждена
+
+                menu_main_user_account.setVisible(true);
+                menu_main_email_verification_send.setVisible(false);
+                menu_main_email_verification_check.setVisible(false);
+
+                DocumentReference docRefUser = fbDb.collection("users").document(fbUser.getUid());
+                docRefUser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        mainDbUser = new DbUser(documentSnapshot);
+
+                        userHaveTeam = (mainDbUser.getTeamID() != null);
+                        if (!userHaveTeam) { // юзер не состоит в команде
+
+                            String userText = fbUser.getDisplayName() + " (no team)";
+                            ga_tv_user.setText(userText);
+
+                            menu_main_team_manage.setVisible(false);
+                            menu_main_team_create.setVisible(true);
+                            menu_main_team_leave.setVisible(false);
+                            menu_main_team_find.setVisible(true);
+
+                        } else { // юзер состоит в команде
+
+                            final DocumentReference docRefTeam = fbDb.collection("teams").document(mainDbUser.getTeamID());
+                            docRefTeam.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    mainDbTeam = new DbTeam(documentSnapshot);
+
+                                    String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ")";
+                                    ga_tv_user.setText(userText);
+
+                                    Query query = docRefTeam.collection("teamUsers").whereEqualTo("userID", mainDbUser.getUserID());
+
+                                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                         @Override
-                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                            String teamName = (String)documentSnapshot.get("teamName");
-                                            ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
-
-                                            fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
-                                                    if (listTeamUsers.size() >0) {
-                                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
-                                                        String userRole = dbTeamUser.getUserRole();
-                                                        ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
-
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    mainDbTeamUser = document.toObject(DbTeamUser.class);
+                                                    mainDbTeamUser.setTeamUserID(document.getId());
+                                                    if (mainDbTeamUser.getUserRole().equals("leader")) {
+                                                        userRole = UserRole.LEADER;
+                                                    } else if (mainDbTeamUser.getUserRole().equals("captain")){
+                                                        userRole = UserRole.CAPTAIN;
+                                                    } else {
+                                                        userRole = UserRole.MEAT;
                                                     }
+                                                    String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ") [" + userRole + "]";
+                                                    ga_tv_user.setText(userText);
+                                                    break;
                                                 }
-                                            });
+                                                menu_main_team_manage.setVisible(true);
+                                                menu_main_team_create.setVisible(false);
+                                                menu_main_team_leave.setVisible(true);
+                                                menu_main_team_find.setVisible(false);
 
+
+                                                final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
+                                                docRefTeamGame.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                        if (e != null) {
+                                                            Log.w(TAG, "Listen game failed.", e);
+                                                            return;
+                                                        }
+                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                            Log.d(TAG, "Current game data: " + documentSnapshot.getData());
+
+                                                            if (mainCityCalc != null) {
+                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                if (ccaGame != null) {
+                                                                    DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
+                                                                    if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
+                                                                        ccaGame.updateFromDb(dbTeamGame);
+                                                                        Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+                                                                        loadDataToViews(true);
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        } else {
+                                                            Log.d(TAG, "Current game data: null");
+                                                        }
+                                                    }
+                                                });
+
+                                                final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
+                                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                        if (e != null) {
+                                                            Log.w(TAG, "Listen car1 failed.", e);
+                                                            return;
+                                                        }
+                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                            Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
+
+                                                            if (mainCityCalc != null) {
+                                                                List<Car> listCars = Car.loadList();
+                                                                Car car = listCars.get(0);
+                                                                DbCar dbCar = new DbCar(documentSnapshot);
+                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                        Bitmap taskBitmap = null;
+                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                        }
+                                                                        car.setTaskPicture(taskBitmap);
+                                                                        car.save();
+                                                                        setDataToCarsViews();
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        } else {
+                                                            Log.d(TAG, "Current car1 data: null");
+                                                        }
+                                                    }
+                                                });
+
+                                                final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
+                                                docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                        if (e != null) {
+                                                            Log.w(TAG, "Listen car2 failed.", e);
+                                                            return;
+                                                        }
+                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                            Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
+
+                                                            if (mainCityCalc != null) {
+                                                                List<Car> listCars = Car.loadList();
+                                                                Car car = listCars.get(1);
+                                                                DbCar dbCar = new DbCar(documentSnapshot);
+                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                        Bitmap taskBitmap = null;
+                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                        }
+                                                                        car.setTaskPicture(taskBitmap);
+                                                                        car.save();
+                                                                        setDataToCarsViews();
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        } else {
+                                                            Log.d(TAG, "Current car2 data: null");
+                                                        }
+                                                    }
+                                                });
+
+                                                final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
+                                                docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                        if (e != null) {
+                                                            Log.w(TAG, "Listen car3 failed.", e);
+                                                            return;
+                                                        }
+                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                            Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
+
+                                                            if (mainCityCalc != null) {
+                                                                List<Car> listCars = Car.loadList();
+                                                                Car car = listCars.get(2);
+                                                                DbCar dbCar = new DbCar(documentSnapshot);
+                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
+                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
+                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                        Bitmap taskBitmap = null;
+                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                        }
+                                                                        car.setTaskPicture(taskBitmap);
+                                                                        car.save();
+                                                                        setDataToCarsViews();
+                                                                    }
+                                                                }
+                                                            }
+
+                                                        } else {
+                                                            Log.d(TAG, "Current car3 data: null");
+                                                        }
+                                                    }
+                                                });
+
+                                            } else {
+                                                Log.e(TAG, "Error getting documents: ", task.getException());
+                                                menu_main_team_manage.setVisible(false);
+                                                menu_main_team_create.setVisible(true);
+                                                menu_main_team_leave.setVisible(false);
+                                                menu_main_team_find.setVisible(true);
+                                            }
                                         }
                                     });
 
                                 }
-                            }
-                        });
+                            });
 
+                        }
                     }
                 });
-            } else {
-                ga_tv_user.setText("Login, please!!!");
             }
-
         }
 
     }
@@ -1514,9 +1834,24 @@ public class GameActivity extends AppCompatActivity {
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        String logMsgPref = "onCreateOptionsMenu: ";
-        Log.i(TAG, logMsgPref + "start");
         getMenuInflater().inflate(R.menu.main_menu, menu);  // создаем меню
+        mainMenu = menu;
+
+        menu_main_open_settings = mainMenu.findItem(R.id.menu_main_open_settings);
+        menu_main_open_screenshot = mainMenu.findItem(R.id.menu_main_open_screenshot);
+        menu_main_user_account = mainMenu.findItem(R.id.menu_main_user_account);
+        menu_main_share = mainMenu.findItem(R.id.menu_main_share);
+        menu_main_login = mainMenu.findItem(R.id.menu_main_login);
+        menu_main_logout = mainMenu.findItem(R.id.menu_main_logout);
+        menu_main_email_verification_send = mainMenu.findItem(R.id.menu_main_email_verification_send);
+        menu_main_email_verification_check = mainMenu.findItem(R.id.menu_main_email_verification_check);
+        menu_main_team_manage = mainMenu.findItem(R.id.menu_main_team_manage);
+        menu_main_team_create = mainMenu.findItem(R.id.menu_main_team_create);
+        menu_main_team_leave = mainMenu.findItem(R.id.menu_main_team_leave);
+        menu_main_team_find = mainMenu.findItem(R.id.menu_main_team_find);
+
+        checkMenuVisibility();
+
         return true;
     }
 
@@ -1525,35 +1860,346 @@ public class GameActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        String logMsgPref = "onOptionsItemSelected: ";
-        Log.i(TAG, logMsgPref + "start");
         int id = item.getItemId();  // айди элемента меню
         switch(id){
-            case R.id.menu_open_settings :  // "Настройки"
-                Log.i(TAG, logMsgPref + "выбран пункт Настройки");
-                Log.i(TAG, logMsgPref + "вызываем openSettings()");
-                openSettings();
+            case R.id.menu_main_open_settings:
+                doMenuOpenSettings();
                 return true;
-            case R.id.menu_open_screenshot :    // "Открыть скриншот"
-                Log.i(TAG, logMsgPref + "выбран пункт Открыть скриншот");
-                Log.i(TAG, logMsgPref + "вызываем selectScreenshot()");
-                selectScreenshot();
+            case R.id.menu_main_open_screenshot :
+                doMenuOpenScreenshot();
                 return true;
-            case R.id.menu_open_login :
-                openLogin();
+            case R.id.menu_main_user_account :
+                doMenuOpenUserAccount();
                 return true;
-
-            case R.id.menu_share :
-                shareFile();
+            case R.id.menu_main_share :
+                doMenuShareFile();
                 return true;
-
+            case R.id.menu_main_login :
+                doMenuLogin();
+                return true;
+            case R.id.menu_main_logout :
+                doMenuLogout();
+                return true;
+            case R.id.menu_main_email_verification_send :
+                doMenuEmailVerificationSend();
+                return true;
+            case R.id.menu_main_email_verification_check :
+                doMenuEmailVerificationCheck();
+                return true;
+            case R.id.menu_main_team_manage :
+                doMenuManageTeam();
+                return true;
+            case R.id.menu_main_team_create :
+                doMenuCreateTeam();
+                return true;
+            case R.id.menu_main_team_leave :
+                doMenuLeaveTeam();
+                return true;
+            case R.id.menu_main_team_find :
+                doMenuFindTeam();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
+
     }
 
-    private void shareFile() {
+    private void doMenuFindTeam() {
+        Toast.makeText(GameActivity.this, "Тут будет активити поиска банд.", Toast.LENGTH_LONG).show();
+    }
+
+    private void doMenuLeaveTeam() {
+
+        if (userHaveTeam) {
+            if (userRole.equals(UserRole.LEADER)) {
+                // если ты в банде лидер - надо проверить, есть ли еще в банде еще хоть кто-то. Если нет - удалить банду. Если да - проверить, есть ли среди них хоть один лидер. Если нет - выходить из банды нельзя.
+
+                CollectionReference crTeamUsers = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamUsers");
+                crTeamUsers.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (!task.getResult().isEmpty()) {
+                                int countUsersInTeam = 0;
+                                int countLeadersInTeam = 0;
+                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                if (listTeamUsers.size() > 0) {
+                                    for (DbTeamUser teamUser: listTeamUsers) {
+                                        countUsersInTeam++;
+                                        if (teamUser.getUserRole().equals("leader")) {
+                                            countLeadersInTeam++;
+                                        }
+                                    }
+                                }
+
+                                if (countUsersInTeam >= 1) {
+
+                                    AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
+                                    builderConfirmation.setCancelable(true);
+                                    builderConfirmation.setTitle("Выйти из банды");
+                                    builderConfirmation.setMessage("Вы уверены?");
+                                    int finalCountUsersInTeam = countUsersInTeam;
+                                    builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if (finalCountUsersInTeam == 1) {
+                                                mainDbUser.setTeamID(null);
+                                                Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
+                                                Database.deleteTeam(mainDbTeam.getTeamID());
+                                            } else {
+                                                mainDbUser.setTeamID(null);
+                                                Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
+                                            }
+                                        }
+                                    });
+                                    builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    });
+                                    AlertDialog dialog = builderConfirmation.create();
+                                    dialog.show();
+
+                                } else {
+                                    Toast.makeText(GameActivity.this, "В банде есть еще пользователи, и ни один из них не является лидером. Прежде чем покинуть такую банду нужно или назначить кого-то лидером, или удалить всех пользователей из банды.", Toast.LENGTH_LONG).show();
+                                }
+
+                            }
+                        }
+                    }
+
+                });
+
+
+            } else {
+                // если ты в банде не лидер - смело можно покидать банду
+
+                AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
+                builderConfirmation.setCancelable(true);
+                builderConfirmation.setTitle("Выйти из банды");
+                builderConfirmation.setMessage("Вы уверены?");
+                builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mainDbUser.setTeamID(null);
+                        Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
+                    }
+                });
+                builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog dialog = builderConfirmation.create();
+                dialog.show();
+
+            }
+        }
+
+    }
+
+    private void doMenuCreateTeam() {
+        AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
+        builderConfirmation.setCancelable(true);
+        builderConfirmation.setTitle("Создать новую команду");
+        builderConfirmation.setMessage("Вы уверены?");
+        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                builder.setTitle(R.string.team);
+                String defaultValue = "New team";
+                final EditText input = new EditText(GameActivity.this);
+                input.setInputType(InputType.TYPE_CLASS_TEXT);
+                input.setText(defaultValue);
+                builder.setView(input);
+
+                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String newValue = input.getText().toString();
+
+                        CollectionReference collectionReference = fbDb.collection("teams");
+
+                        Map<String, Object> mapNewItem = new HashMap<>();
+                        mapNewItem.put("teamID", null);
+                        mapNewItem.put("teamName", newValue);
+                        mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+
+                        // Add a new document with a generated ID
+                        collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                final String teamID = documentReference.getId();
+                                CollectionReference collectionReference = fbDb.collection("teams");
+                                Map<String, Object> mapUpdateItem = new HashMap<>();
+                                mapUpdateItem.put("teamID", teamID);
+                                mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                collectionReference.document(teamID).update(mapUpdateItem);
+
+                                CollectionReference users = fbDb.collection("users");
+                                Map<String, Object> updateUser = new HashMap<>();
+                                updateUser.put("teamID", teamID);
+                                users.document(mainDbUser.getUserID()).update(updateUser);
+                                mainDbUser.setTeamID(teamID);
+
+                                collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
+                                Map<String, Object> mapNewItem = new HashMap<>();
+                                mapNewItem.put("teamID", teamID);
+                                mapNewItem.put("userID", mainDbUser.getUserID());
+                                mapNewItem.put("userRole", "leader");
+                                mapNewItem.put("userNIC", mainDbUser.getUserNIC());
+                                mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+
+                                // Add a new document with a generated ID
+                                collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                        String newDocumentID = documentReference.getId();
+                                        CollectionReference collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
+                                        Map<String, Object> mapUpdateItem = new HashMap<>();
+                                        mapUpdateItem.put("teamUserID", newDocumentID);
+                                        mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                        collectionReference.document(newDocumentID).update(mapUpdateItem);
+
+                                        checkMenuVisibility();
+
+                                    }
+                                })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.e(TAG, "Error adding document", e);
+                                            }
+                                        });
+
+                            }
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.e(TAG, "Error adding document", e);
+                                    }
+                                });
+
+                        checkMenuVisibility();
+                    }
+                });
+                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                builder.show();
+
+
+            }
+        });
+        builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builderConfirmation.create();
+        dialog.show();
+    }
+
+    private void doMenuManageTeam() {
+        TeamActivity.dbTeam = mainDbTeam;
+        Intent intent = new Intent(this, TeamActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    private void doMenuEmailVerificationCheck() {
+        fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                checkMenuVisibility();
+            }
+        });
+    }
+
+    private void doMenuEmailVerificationSend() {
+
+        AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
+        builderConfirmation.setCancelable(true);
+        builderConfirmation.setTitle("Send email verification");
+        builderConfirmation.setMessage("Вы уверены?");
+        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AuthUI.getInstance().signOut(GameActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        fbUser.sendEmailVerification().addOnCompleteListener(GameActivity.this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(GameActivity.this, "Verification email sent to " + fbUser.getEmail(), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Log.e(TAG, "sendEmailVerification", task.getException());
+                                    Toast.makeText(GameActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                }
+                                checkMenuVisibility();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builderConfirmation.create();
+        dialog.show();
+
+
+    }
+
+    private void doMenuLogout() {
+
+        AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
+        builderConfirmation.setCancelable(true);
+        builderConfirmation.setTitle("Logout");
+        builderConfirmation.setMessage("Вы уверены?");
+        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AuthUI.getInstance().signOut(GameActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(GameActivity.this, R.string.your_signed_out, Toast.LENGTH_LONG).show();
+                        fbUser = null;
+                        checkMenuVisibility();
+                    }
+                });
+            }
+        });
+        builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builderConfirmation.create();
+        dialog.show();
+
+
+    }
+
+    private void doMenuLogin() {
+        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_REQUEST_CODE);
+    }
+
+    private void doMenuShareFile() {
 
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         File sharedFile = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
@@ -1573,10 +2219,19 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    /**
-     *  Выбор скриншота
-     */
-    private void selectScreenshot() {
+    private void doMenuOpenSettings() {
+        String logMsgPref = "openSettings: ";
+        Log.i(TAG, logMsgPref + "start");
+        Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
+    }
+
+    private void doMenuOpenUserAccount() {
+        Intent intent = new Intent(this, UserActivity.class);   // создаем интент активики Настроек
+        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
+    }
+
+    private void doMenuOpenScreenshot() {
 
         String logMsgPref = "selectScreenshot: ";
         Log.i(TAG, logMsgPref + "start");
@@ -1615,20 +2270,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Открытие Настроек
-     */
-    private void openSettings() {
-        String logMsgPref = "openSettings: ";
-        Log.i(TAG, logMsgPref + "start");
-        Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
-        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
-    }
-
-    private void openLogin() {
-        Intent intent = new Intent(this, UserActivity.class);   // создаем интент активики Настроек
-        startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
-    }
 
     public void openStrategyActivity(View view) {
         String logMsgPref = "openStrategyActivity: ";

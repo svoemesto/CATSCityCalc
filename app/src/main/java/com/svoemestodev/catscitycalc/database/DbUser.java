@@ -1,5 +1,10 @@
 package com.svoemestodev.catscitycalc.database;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.Date;
+import java.util.Map;
+
 public class DbUser {
     private String userID;
     private String userUID;
@@ -8,8 +13,39 @@ public class DbUser {
     private String userNIC;
     private String teamID;
     private String leaderUID;
+    private Date timestamp;
 
     public DbUser() {
+    }
+
+    public DbUser(DocumentSnapshot documentSnapshot) {
+
+        String key;
+        Map<String, Object> map = documentSnapshot.getData();
+
+        key = "userID"; if (map.containsKey(key)) this.userID = map.get(key).toString();
+        key = "userUID"; if (map.containsKey(key)) this.userUID = map.get(key).toString();
+        key = "userName"; if (map.containsKey(key)) this.userName = map.get(key).toString();
+        key = "userEmail"; if (map.containsKey(key)) this.userEmail = map.get(key).toString();
+        key = "userNIC"; if (map.containsKey(key)) this.userNIC = map.get(key).toString();
+        key = "teamID"; if (map.containsKey(key)) this.teamID = map.get(key).toString();
+        key = "leaderUID"; if (map.containsKey(key)) this.leaderUID = map.get(key).toString();
+        key = "timestamp"; if (map.containsKey(key)) {
+            if (documentSnapshot.getTimestamp(key) == null) {
+                this.timestamp = null;
+            } else {
+                this.timestamp = documentSnapshot.getTimestamp(key).toDate();
+            }
+        }
+
+    }
+
+    public Date getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public String getLeaderUID() {
@@ -67,4 +103,8 @@ public class DbUser {
     public void setUserNIC(String userNIC) {
         this.userNIC = userNIC;
     }
+
+
+
+
 }

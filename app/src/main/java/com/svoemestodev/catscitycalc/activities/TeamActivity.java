@@ -104,8 +104,8 @@ public class TeamActivity extends AppCompatActivity {
         ta_bt_rename_team = findViewById(R.id.ta_bt_rename_team);
         ta_lv_users = findViewById(R.id.ta_lv_users);
         ta_tv_name = findViewById(R.id.ta_tv_name);
-        ta_bt_invite_user.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-        ta_bt_rename_team.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+        ta_bt_invite_user.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+        ta_bt_rename_team.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
     }
 
     @Override
@@ -348,15 +348,15 @@ public class TeamActivity extends AppCompatActivity {
             TextView ltu_tv_car3_repair = convertView.findViewById(R.id.ltu_tv_car3_repair);
             TextView ltu_tv_car3_star = convertView.findViewById(R.id.ltu_tv_car3_star);
             
-            ltu_bt_delete.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_bt_edit.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_bt_set_leader.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_bt_set_captain.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_bt_set_meat.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_delete.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_edit.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_leader.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_captain.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_bt_set_meat.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
             
-            ltu_ib_car1.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_ib_car2.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
-            ltu_ib_car3.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
+            ltu_ib_car1.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_ib_car2.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_ib_car3.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
 
             String userUID = dbTeamUser.getUserID() == null ? "" : dbTeamUser.getUserID();
             String userNIC = dbTeamUser.getUserNIC() == null ? "N/A" : dbTeamUser.getUserNIC();
