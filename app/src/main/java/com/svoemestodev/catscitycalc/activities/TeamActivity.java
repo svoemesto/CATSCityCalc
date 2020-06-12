@@ -44,8 +44,10 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
 import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
+import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeam;
@@ -363,76 +365,6 @@ public class TeamActivity extends AppCompatActivity {
 
             DocumentReference docRefCar1 = GameActivity.fbDb.collection("users").document(userUID).collection("userCars").document("car1");
 
-//            docRefCar1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                @Override
-//                public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                    if (documentSnapshot != null && documentSnapshot.exists()) {
-//                        if (GameActivity.mainCityCalc != null) {
-//                            List<Car> listCars = Car.loadList(userUID);
-//                            Car car1 = listCars.get(0);
-//                            DbCar dbCar = new DbCar(documentSnapshot);
-////                            if (car1.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car1.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                    car1.setBuildingTask(dbCar.getCarBuildingTask());
-//                                    CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
-//                                    Bitmap taskBitmap = null;
-//                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                    }
-//                                    car1.setTaskPicture(taskBitmap);
-//                                    car1.save(userUID);
-//
-//                                    ltu_tv_car1_name.setText(car1.getName());
-//                                    ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
-//                                    ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
-//
-//                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-//                                        if (!car1.isFree()) {
-//                                            car1.setStateFree();
-//                                            car1.save(userUID);
-//                                        }
-//                                    }
-//
-//                                    Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
-//                                    Bitmap car1BuildingBitmap = car1.getBuildingPicture();
-//                                    Bitmap car1TaskBitmap = car1.getTaskPicture();
-//                                    if (car1CarBitmap != null) ltu_ib_car1.setImageBitmap(car1CarBitmap);
-//                                    ltu_ib_car1.setImageBitmap(car1.getCarPicture());
-//                                    if (car1.isFree()) ltu_tv_car1_number.setTextColor(Color.BLUE);
-//                                    if (car1.isRepairing() && !car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.RED);
-//                                    if (!car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.GREEN);
-//                                    if (car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.YELLOW);
-//                                    String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
-//                                    ltu_tv_car1_repair.setText(car1textRepair);
-//                                    if (car1.isDefencing()) {
-//                                        ltu_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car1BuildingBitmap != null) ltu_iv_car1_building.setImageBitmap(car1BuildingBitmap);
-//                                    } else {
-//                                        ltu_iv_car1_building.setVisibility(View.INVISIBLE);
-//                                    }
-//                                    if (car1.getBuildingTask() > 0) {
-//                                        ltu_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car1TaskBitmap != null) ltu_iv_car1_task.setImageBitmap(car1TaskBitmap);
-//                                    }
-//
-//                                }
-////                            }
-//                        }
-//                    }
-//
-//                }
-//            });
-            
             docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -447,89 +379,117 @@ public class TeamActivity extends AppCompatActivity {
                             List<Car> listCars = Car.loadList(userUID);
                             Car car1 = listCars.get(0);
                             DbCar dbCar1 = new DbCar(documentSnapshot);
-//                            if (car1.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car1.getBuildingTask() != dbCar1.getCarBuildingTask()) {
                             
-                                    car1.setUuid(UUID.fromString(dbCar1.getCarUID()));
-                                    car1.setSlot(dbCar1.getCarSlot());
-                                    car1.setName(dbCar1.getCarName());
-                                    car1.setHealth(dbCar1.getCarHealth());
-                                    car1.setShield(dbCar1.getCarShield());
-                                    car1.setBuilding(dbCar1.getCarBuilding());
-                                    car1.setBuildingTask(dbCar1.getCarBuildingTask());
-                                    car1.setRepair(dbCar1.getCarRepair());
-                                    
-                                    CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
-                                    
-                                    Bitmap taskBitmap = null;
-                                    if (dbCar1.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                    } else if (dbCar1.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                    } else if (dbCar1.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                    } else if (dbCar1.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                    } else if (dbCar1.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                    } else if (dbCar1.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                    }
-                                    car1.setTaskPicture(taskBitmap);
-                                    
-                                    Bitmap bldBitmap = null;
-                                    if (dbCar1.getCarBuilding() == 1 && ccaGame.isPresent_blt()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                    } else if (dbCar1.getCarBuilding() == 2 && ccaGame.isPresent_blc()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                    } else if (dbCar1.getCarBuilding() == 3 && ccaGame.isPresent_blb()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                    } else if (dbCar1.getCarBuilding() == 4 && ccaGame.isPresent_brt()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                    } else if (dbCar1.getCarBuilding() == 5 && ccaGame.isPresent_brc()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                    } else if (dbCar1.getCarBuilding() == 6 && ccaGame.isPresent_brb()) {
-                                        bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                    }
-                                    car1.setBuildingPicture(bldBitmap);
-                                    
+                            car1.setUuid(UUID.fromString(dbCar1.getCarUID()));
+                            car1.setSlot(dbCar1.getCarSlot());
+                            car1.setName(dbCar1.getCarName());
+                            car1.setHealth(dbCar1.getCarHealth());
+                            car1.setShield(dbCar1.getCarShield());
+                            car1.setBuilding(dbCar1.getCarBuilding());
+                            car1.setBuildingTask(dbCar1.getCarBuildingTask());
+                            car1.setRepair(dbCar1.getCarRepair());
+                            
+                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
+                            
+                            Bitmap taskBitmap = null;
+                            if (dbCar1.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                            } else if (dbCar1.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                            } else if (dbCar1.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                            } else if (dbCar1.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                            } else if (dbCar1.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                            } else if (dbCar1.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                            }
+                            car1.setTaskPicture(taskBitmap);
+                            
+                            Bitmap bldBitmap = null;
+                            if (dbCar1.getCarBuilding() == 1 && ccaGame.isPresent_blt()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                            } else if (dbCar1.getCarBuilding() == 2 && ccaGame.isPresent_blc()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                            } else if (dbCar1.getCarBuilding() == 3 && ccaGame.isPresent_blb()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                            } else if (dbCar1.getCarBuilding() == 4 && ccaGame.isPresent_brt()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                            } else if (dbCar1.getCarBuilding() == 5 && ccaGame.isPresent_brc()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                            } else if (dbCar1.getCarBuilding() == 6 && ccaGame.isPresent_brb()) {
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                            }
+                            car1.setBuildingPicture(bldBitmap);
+                            
+                            car1.save(userUID);
+
+                            ltu_tv_car1_name.setText(car1.getName());
+                            ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
+                            ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
+
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                                if (!car1.isFree()) {
+                                    car1.setStateFree();
                                     car1.save(userUID);
+                                }
+                            }
 
-                                    ltu_tv_car1_name.setText(car1.getName());
-                                    ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
-                                    ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
+                            Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
+                            Bitmap car1BuildingBitmap = car1.getBuildingPicture();
+                            Bitmap car1TaskBitmap = car1.getTaskPicture();
+                            if (car1CarBitmap != null) ltu_ib_car1.setImageBitmap(car1CarBitmap);
+                            ltu_ib_car1.setImageBitmap(car1.getCarPicture());
+                            if (car1.isFree()) ltu_tv_car1_number.setTextColor(Color.BLUE);
+                            if (car1.isRepairing() && !car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.RED);
+                            if (!car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.GREEN);
+                            if (car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.YELLOW);
+                            String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car1_repair.setText(car1textRepair);
+                            if (car1.isDefencing()) {
+                                ltu_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car1BuildingBitmap != null) ltu_iv_car1_building.setImageBitmap(car1BuildingBitmap);
+                            } else {
+                                ltu_iv_car1_building.setVisibility(View.INVISIBLE);
+                            }
+                            if (car1.getBuildingTask() > 0) {
+                                ltu_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car1TaskBitmap != null) ltu_iv_car1_task.setImageBitmap(car1TaskBitmap);
+                            }
 
-                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-                                        if (!car1.isFree()) {
-                                            car1.setStateFree();
-                                            car1.save(userUID);
+                            ltu_ib_car1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                                    builder.setCancelable(true);
+                                    builder.setTitle(R.string.building);
+
+                                    final ListBuildingAdapter arrayAdapter = new ListBuildingAdapter(TeamActivity.this);
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
                                         }
-                                    }
+                                    });
 
-                                    Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
-                                    Bitmap car1BuildingBitmap = car1.getBuildingPicture();
-                                    Bitmap car1TaskBitmap = car1.getTaskPicture();
-                                    if (car1CarBitmap != null) ltu_ib_car1.setImageBitmap(car1CarBitmap);
-                                    ltu_ib_car1.setImageBitmap(car1.getCarPicture());
-                                    if (car1.isFree()) ltu_tv_car1_number.setTextColor(Color.BLUE);
-                                    if (car1.isRepairing() && !car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.RED);
-                                    if (!car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.GREEN);
-                                    if (car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.YELLOW);
-                                    String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
-                                    ltu_tv_car1_repair.setText(car1textRepair);
-                                    if (car1.isDefencing()) {
-                                        ltu_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car1BuildingBitmap != null) ltu_iv_car1_building.setImageBitmap(car1BuildingBitmap);
-                                    } else {
-                                        ltu_iv_car1_building.setVisibility(View.INVISIBLE);
-                                    }
-                                    if (car1.getBuildingTask() > 0) {
-                                        ltu_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car1TaskBitmap != null) ltu_iv_car1_task.setImageBitmap(car1TaskBitmap);
-                                    }
-
-//                                }
-//                            }
+                                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Building item = arrayAdapter.getItem(which);
+                                            car1.setTaskPicture(item.getBitmap());
+                                            car1.setBuildingTask(item.getSlot());
+                                            car1.save(userUID);
+                                            Map<String, Object> map = new HashMap<>();
+                                            map.put("carBuildingTask", item.getSlot());
+                                            docRefCar1.update(map);
+                                        }
+                                    });
+                                    builder.show();
+                                }
+                            });
+                            
+                            
                         }
 
                     } else {
@@ -541,77 +501,6 @@ public class TeamActivity extends AppCompatActivity {
 
             DocumentReference docRefCar2 = GameActivity.fbDb.collection("users").document(userUID).collection("userCars").document("car2");
 
-
-//            docRefCar2.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                @Override
-//                public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                    if (documentSnapshot != null && documentSnapshot.exists()) {
-//                        if (GameActivity.mainCityCalc != null) {
-//                            List<Car> listCars = Car.loadList(userUID);
-//                            Car car2 = listCars.get(1);
-//                            DbCar dbCar = new DbCar(documentSnapshot);
-////                            if (car2.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car2.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                    car2.setBuildingTask(dbCar.getCarBuildingTask());
-//                                    CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
-//                                    Bitmap taskBitmap = null;
-//                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                    }
-//                                    car2.setTaskPicture(taskBitmap);
-//                                    car2.save(userUID);
-//
-//                                    ltu_tv_car2_name.setText(car2.getName());
-//                                    ltu_tv_car2_health.setText(String.valueOf(car2.getHealth()));
-//                                    ltu_tv_car2_shield.setText(String.valueOf(car2.getShield()));
-//
-//                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-//                                        if (!car2.isFree()) {
-//                                            car2.setStateFree();
-//                                            car2.save(userUID);
-//                                        }
-//                                    }
-//
-//                                    Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
-//                                    Bitmap car2BuildingBitmap = car2.getBuildingPicture();
-//                                    Bitmap car2TaskBitmap = car2.getTaskPicture();
-//                                    if (car2CarBitmap != null) ltu_ib_car2.setImageBitmap(car2CarBitmap);
-//                                    ltu_ib_car2.setImageBitmap(car2.getCarPicture());
-//                                    if (car2.isFree()) ltu_tv_car2_number.setTextColor(Color.BLUE);
-//                                    if (car2.isRepairing() && !car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.RED);
-//                                    if (!car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.GREEN);
-//                                    if (car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.YELLOW);
-//                                    String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
-//                                    ltu_tv_car2_repair.setText(car2textRepair);
-//                                    if (car2.isDefencing()) {
-//                                        ltu_iv_car2_building.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car2BuildingBitmap != null) ltu_iv_car2_building.setImageBitmap(car2BuildingBitmap);
-//                                    } else {
-//                                        ltu_iv_car2_building.setVisibility(View.INVISIBLE);
-//                                    }
-//                                    if (car2.getBuildingTask() > 0) {
-//                                        ltu_iv_car2_task.setVisibility(car2TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car2TaskBitmap != null) ltu_iv_car2_task.setImageBitmap(car2TaskBitmap);
-//                                    }
-//
-//                                }
-////                            }
-//                        }
-//                    }
-//
-//                }
-//            });
-//
             docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -626,8 +515,6 @@ public class TeamActivity extends AppCompatActivity {
                             List<Car> listCars = Car.loadList(userUID);
                             Car car2 = listCars.get(1);
                             DbCar dbCar2 = new DbCar(documentSnapshot);
-//                            if (car2.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car2.getBuildingTask() != dbCar2.getCarBuildingTask()) {
                             car2.setUuid(UUID.fromString(dbCar2.getCarUID()));
                             car2.setSlot(dbCar2.getCarSlot());
                             car2.setName(dbCar2.getCarName());
@@ -673,41 +560,71 @@ public class TeamActivity extends AppCompatActivity {
 
                             car2.save(userUID);
                             
-                                    ltu_tv_car2_name.setText(car2.getName());
-                                    ltu_tv_car2_health.setText(String.valueOf(car2.getHealth()));
-                                    ltu_tv_car2_shield.setText(String.valueOf(car2.getShield()));
+                            ltu_tv_car2_name.setText(car2.getName());
+                            ltu_tv_car2_health.setText(String.valueOf(car2.getHealth()));
+                            ltu_tv_car2_shield.setText(String.valueOf(car2.getShield()));
 
-                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-                                        if (!car2.isFree()) {
-                                            car2.setStateFree();
-                                            car2.save(userUID);
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                                if (!car2.isFree()) {
+                                    car2.setStateFree();
+                                    car2.save(userUID);
+                                }
+                            }
+
+                            Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
+                            Bitmap car2BuildingBitmap = car2.getBuildingPicture();
+                            Bitmap car2TaskBitmap = car2.getTaskPicture();
+                            if (car2CarBitmap != null) ltu_ib_car2.setImageBitmap(car2CarBitmap);
+                            ltu_ib_car2.setImageBitmap(car2.getCarPicture());
+                            if (car2.isFree()) ltu_tv_car2_number.setTextColor(Color.BLUE);
+                            if (car2.isRepairing() && !car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.RED);
+                            if (!car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.GREEN);
+                            if (car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.YELLOW);
+                            String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car2_repair.setText(car2textRepair);
+                            if (car2.isDefencing()) {
+                                ltu_iv_car2_building.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car2BuildingBitmap != null) ltu_iv_car2_building.setImageBitmap(car2BuildingBitmap);
+                            } else {
+                                ltu_iv_car2_building.setVisibility(View.INVISIBLE);
+                            }
+                            if (car2.getBuildingTask() > 0) {
+                                ltu_iv_car2_task.setVisibility(car2TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car2TaskBitmap != null) ltu_iv_car2_task.setImageBitmap(car2TaskBitmap);
+                            }
+
+                            ltu_ib_car2.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                                    builder.setCancelable(true);
+                                    builder.setTitle(R.string.building);
+
+                                    final ListBuildingAdapter arrayAdapter = new ListBuildingAdapter(TeamActivity.this);
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
                                         }
-                                    }
+                                    });
 
-                                    Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
-                                    Bitmap car2BuildingBitmap = car2.getBuildingPicture();
-                                    Bitmap car2TaskBitmap = car2.getTaskPicture();
-                                    if (car2CarBitmap != null) ltu_ib_car2.setImageBitmap(car2CarBitmap);
-                                    ltu_ib_car2.setImageBitmap(car2.getCarPicture());
-                                    if (car2.isFree()) ltu_tv_car2_number.setTextColor(Color.BLUE);
-                                    if (car2.isRepairing() && !car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.RED);
-                                    if (!car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.GREEN);
-                                    if (car2.isRepairing() && car2.isDefencing()) ltu_tv_car2_number.setTextColor(Color.YELLOW);
-                                    String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
-                                    ltu_tv_car2_repair.setText(car2textRepair);
-                                    if (car2.isDefencing()) {
-                                        ltu_iv_car2_building.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car2BuildingBitmap != null) ltu_iv_car2_building.setImageBitmap(car2BuildingBitmap);
-                                    } else {
-                                        ltu_iv_car2_building.setVisibility(View.INVISIBLE);
-                                    }
-                                    if (car2.getBuildingTask() > 0) {
-                                        ltu_iv_car2_task.setVisibility(car2TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car2TaskBitmap != null) ltu_iv_car2_task.setImageBitmap(car2TaskBitmap);
-                                    }
-
-//                                }
-//                            }
+                                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Building item = arrayAdapter.getItem(which);
+                                            car2.setTaskPicture(item.getBitmap());
+                                            car2.setBuildingTask(item.getSlot());
+                                            car2.save(userUID);
+                                            Map<String, Object> map = new HashMap<>();
+                                            map.put("carBuildingTask", item.getSlot());
+                                            docRefCar2.update(map);
+                                        }
+                                    });
+                                    builder.show();
+                                }
+                            });
+                            
+                            
                         }
 
                     } else {
@@ -718,76 +635,6 @@ public class TeamActivity extends AppCompatActivity {
 
             DocumentReference docRefCar3 = GameActivity.fbDb.collection("users").document(userUID).collection("userCars").document("car3");
 
-//            docRefCar1.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                @Override
-//                public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                    if (documentSnapshot != null && documentSnapshot.exists()) {
-//                        if (GameActivity.mainCityCalc != null) {
-//                            List<Car> listCars = Car.loadList(userUID);
-//                            Car car1 = listCars.get(2);
-//                            DbCar dbCar = new DbCar(documentSnapshot);
-////                            if (car1.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car1.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                    car1.setBuildingTask(dbCar.getCarBuildingTask());
-//                                    CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
-//                                    Bitmap taskBitmap = null;
-//                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                        taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                    }
-//                                    car1.setTaskPicture(taskBitmap);
-//                                    car1.save(userUID);
-//
-//                                    ltu_tv_car1_name.setText(car1.getName());
-//                                    ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
-//                                    ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
-//
-//                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-//                                        if (!car1.isFree()) {
-//                                            car1.setStateFree();
-//                                            car1.save(userUID);
-//                                        }
-//                                    }
-//
-//                                    Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
-//                                    Bitmap car1BuildingBitmap = car1.getBuildingPicture();
-//                                    Bitmap car1TaskBitmap = car1.getTaskPicture();
-//                                    if (car1CarBitmap != null) ltu_ib_car1.setImageBitmap(car1CarBitmap);
-//                                    ltu_ib_car1.setImageBitmap(car1.getCarPicture());
-//                                    if (car1.isFree()) ltu_tv_car1_number.setTextColor(Color.BLUE);
-//                                    if (car1.isRepairing() && !car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.RED);
-//                                    if (!car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.GREEN);
-//                                    if (car1.isRepairing() && car1.isDefencing()) ltu_tv_car1_number.setTextColor(Color.YELLOW);
-//                                    String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
-//                                    ltu_tv_car1_repair.setText(car1textRepair);
-//                                    if (car1.isDefencing()) {
-//                                        ltu_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car1BuildingBitmap != null) ltu_iv_car1_building.setImageBitmap(car1BuildingBitmap);
-//                                    } else {
-//                                        ltu_iv_car1_building.setVisibility(View.INVISIBLE);
-//                                    }
-//                                    if (car1.getBuildingTask() > 0) {
-//                                        ltu_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-//                                        if (car1TaskBitmap != null) ltu_iv_car1_task.setImageBitmap(car1TaskBitmap);
-//                                    }
-//
-//                                }
-////                            }
-//                        }
-//                    }
-//
-//                }
-//            });
-//
             docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
@@ -802,8 +649,6 @@ public class TeamActivity extends AppCompatActivity {
                             List<Car> listCars = Car.loadList(userUID);
                             Car car3 = listCars.get(2);
                             DbCar dbCar3 = new DbCar(documentSnapshot);
-//                            if (car3.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                if (car3.getBuildingTask() != dbCar3.getCarBuildingTask()) {
                             car3.setUuid(UUID.fromString(dbCar3.getCarUID()));
                             car3.setSlot(dbCar3.getCarSlot());
                             car3.setName(dbCar3.getCarName());
@@ -849,41 +694,70 @@ public class TeamActivity extends AppCompatActivity {
 
                             car3.save(userUID);
                             
-                                    ltu_tv_car3_name.setText(car3.getName());
-                                    ltu_tv_car3_health.setText(String.valueOf(car3.getHealth()));
-                                    ltu_tv_car3_shield.setText(String.valueOf(car3.getShield()));
+                            ltu_tv_car3_name.setText(car3.getName());
+                            ltu_tv_car3_health.setText(String.valueOf(car3.getHealth()));
+                            ltu_tv_car3_shield.setText(String.valueOf(car3.getShield()));
 
-                                    if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
-                                        if (!car3.isFree()) {
-                                            car3.setStateFree();
-                                            car3.save(userUID);
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                                if (!car3.isFree()) {
+                                    car3.setStateFree();
+                                    car3.save(userUID);
+                                }
+                            }
+
+                            Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
+                            Bitmap car3BuildingBitmap = car3.getBuildingPicture();
+                            Bitmap car3TaskBitmap = car3.getTaskPicture();
+                            if (car3CarBitmap != null) ltu_ib_car3.setImageBitmap(car3CarBitmap);
+                            ltu_ib_car3.setImageBitmap(car3.getCarPicture());
+                            if (car3.isFree()) ltu_tv_car3_number.setTextColor(Color.BLUE);
+                            if (car3.isRepairing() && !car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.RED);
+                            if (!car3.isRepairing() && car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.GREEN);
+                            if (car3.isRepairing() && car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.YELLOW);
+                            String car3textRepair = car3.isRepairing() ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car3_repair.setText(car3textRepair);
+                            if (car3.isDefencing()) {
+                                ltu_iv_car3_building.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car3BuildingBitmap != null) ltu_iv_car3_building.setImageBitmap(car3BuildingBitmap);
+                            } else {
+                                ltu_iv_car3_building.setVisibility(View.INVISIBLE);
+                            }
+                            if (car3.getBuildingTask() > 0) {
+                                ltu_iv_car3_task.setVisibility(car3TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
+                                if (car3TaskBitmap != null) ltu_iv_car3_task.setImageBitmap(car3TaskBitmap);
+                            }
+
+                            ltu_ib_car3.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
+                                    builder.setCancelable(true);
+                                    builder.setTitle(R.string.building);
+
+                                    final ListBuildingAdapter arrayAdapter = new ListBuildingAdapter(TeamActivity.this);
+                                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
                                         }
-                                    }
+                                    });
 
-                                    Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
-                                    Bitmap car3BuildingBitmap = car3.getBuildingPicture();
-                                    Bitmap car3TaskBitmap = car3.getTaskPicture();
-                                    if (car3CarBitmap != null) ltu_ib_car3.setImageBitmap(car3CarBitmap);
-                                    ltu_ib_car3.setImageBitmap(car3.getCarPicture());
-                                    if (car3.isFree()) ltu_tv_car3_number.setTextColor(Color.BLUE);
-                                    if (car3.isRepairing() && !car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.RED);
-                                    if (!car3.isRepairing() && car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.GREEN);
-                                    if (car3.isRepairing() && car3.isDefencing()) ltu_tv_car3_number.setTextColor(Color.YELLOW);
-                                    String car3textRepair = car3.isRepairing() ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
-                                    ltu_tv_car3_repair.setText(car3textRepair);
-                                    if (car3.isDefencing()) {
-                                        ltu_iv_car3_building.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car3BuildingBitmap != null) ltu_iv_car3_building.setImageBitmap(car3BuildingBitmap);
-                                    } else {
-                                        ltu_iv_car3_building.setVisibility(View.INVISIBLE);
-                                    }
-                                    if (car3.getBuildingTask() > 0) {
-                                        ltu_iv_car3_task.setVisibility(car3TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                                        if (car3TaskBitmap != null) ltu_iv_car3_task.setImageBitmap(car3TaskBitmap);
-                                    }
-
-//                                }
-//                            }
+                                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Building item = arrayAdapter.getItem(which);
+                                            car3.setTaskPicture(item.getBitmap());
+                                            car3.setBuildingTask(item.getSlot());
+                                            car3.save(userUID);
+                                            Map<String, Object> map = new HashMap<>();
+                                            map.put("carBuildingTask", item.getSlot());
+                                            docRefCar3.update(map);
+                                        }
+                                    });
+                                    builder.show();
+                                }
+                            });
+                            
                         }
 
                     } else {
