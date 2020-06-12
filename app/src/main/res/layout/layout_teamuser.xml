@@ -99,6 +99,17 @@
                         android:text="@string/dingbat1"
                         />
 
+                    <TextView
+                        android:id="@+id/ltu_tv_car1_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="#ecad20"
+                        android:text="@string/star"
+                        android:visibility="invisible"
+                        />
+
                 </RelativeLayout>
 
                 <TextView
@@ -237,6 +248,17 @@
                         android:text="@string/dingbat2"
                         />
 
+                    <TextView
+                        android:id="@+id/ltu_tv_car2_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="#ecad20"
+                        android:text="@string/star"
+                        android:visibility="invisible"
+                        />
+
                 </RelativeLayout>
 
                 <TextView
@@ -370,6 +392,17 @@
                         android:textSize="30sp"
                         android:layout_alignParentStart="true"
                         android:text="@string/dingbat3" />
+
+                    <TextView
+                        android:id="@+id/ltu_tv_car3_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="#ecad20"
+                        android:text="@string/star"
+                        android:visibility="invisible"
+                        />
 
 
                 </RelativeLayout>

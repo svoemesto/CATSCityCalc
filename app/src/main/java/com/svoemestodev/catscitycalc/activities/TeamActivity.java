@@ -318,6 +318,7 @@ public class TeamActivity extends AppCompatActivity {
             ImageView ltu_iv_car1_task = convertView.findViewById(R.id.ltu_iv_car1_task);
             TextView ltu_tv_car1_task = convertView.findViewById(R.id.ltu_tv_car1_task);
             TextView ltu_tv_car1_repair = convertView.findViewById(R.id.ltu_tv_car1_repair);
+            TextView ltu_tv_car1_star = convertView.findViewById(R.id.ltu_tv_car1_star);
 
             ImageButton ltu_ib_car2 = convertView.findViewById(R.id.ltu_ib_car2);
             TextView ltu_tv_car2_number = convertView.findViewById(R.id.ltu_tv_car2_number);
@@ -331,6 +332,7 @@ public class TeamActivity extends AppCompatActivity {
             ImageView ltu_iv_car2_task = convertView.findViewById(R.id.ltu_iv_car2_task);
             TextView ltu_tv_car2_task = convertView.findViewById(R.id.ltu_tv_car2_task);
             TextView ltu_tv_car2_repair = convertView.findViewById(R.id.ltu_tv_car2_repair);
+            TextView ltu_tv_car2_star = convertView.findViewById(R.id.ltu_tv_car2_star);
 
             ImageButton ltu_ib_car3 = convertView.findViewById(R.id.ltu_ib_car3);
             TextView ltu_tv_car3_number = convertView.findViewById(R.id.ltu_tv_car3_number);
@@ -344,7 +346,7 @@ public class TeamActivity extends AppCompatActivity {
             ImageView ltu_iv_car3_task = convertView.findViewById(R.id.ltu_iv_car3_task);
             TextView ltu_tv_car3_task = convertView.findViewById(R.id.ltu_tv_car3_task);
             TextView ltu_tv_car3_repair = convertView.findViewById(R.id.ltu_tv_car3_repair);
-            
+            TextView ltu_tv_car3_star = convertView.findViewById(R.id.ltu_tv_car3_star);
             
             ltu_bt_delete.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_edit.setEnabled(UserActivity.userRole.equals(UserRole.LEADER));
@@ -428,6 +430,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car1_name.setText(car1.getName());
                             ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
                             ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
+                            ltu_tv_car1_star.setVisibility(car1.getBuilding() == car1.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
                                 if (!car1.isFree()) {
@@ -563,6 +566,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car2_name.setText(car2.getName());
                             ltu_tv_car2_health.setText(String.valueOf(car2.getHealth()));
                             ltu_tv_car2_shield.setText(String.valueOf(car2.getShield()));
+                            ltu_tv_car2_star.setVisibility(car2.getBuilding() == car2.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
                                 if (!car2.isFree()) {
@@ -697,6 +701,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car3_name.setText(car3.getName());
                             ltu_tv_car3_health.setText(String.valueOf(car3.getHealth()));
                             ltu_tv_car3_shield.setText(String.valueOf(car3.getShield()));
+                            ltu_tv_car3_star.setVisibility(car3.getBuilding() == car3.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
                                 if (!car3.isFree()) {

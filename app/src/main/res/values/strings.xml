@@ -431,6 +431,7 @@
     <string name="version">version</string>
     <string name="request_permissions">Request permissions</string>
     <string name="final_symbols">Final symbols</string>
+    <string name="star" translatable="false">✯</string>
     <string name="dingbat1" translatable="false">➊</string>
     <string name="dingbat2" translatable="false">➋</string>
     <string name="dingbat3" translatable="false">➌</string>
