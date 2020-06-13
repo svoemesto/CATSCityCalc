@@ -91,223 +91,223 @@ public class GameActivity extends AppCompatActivity {
 
     // Game views
 
-    TextView ga_tv_user;
-    TextView ga_tv_screenshot_time;
-    Switch ga_sw_listen_new_file;
-    TextView ga_tv_start_game_time;
-    TextView ga_tv_end_game_time;
-    TextView ga_tv_status;
-    TextView ga_tv_vs;
+    TextView ga_tv_user;                // имя пользователя, банда, роль
+    TextView ga_tv_screenshot_time;     // информация о времени последнего скриншота
+    Switch ga_sw_listen_new_file;       // переключатель "следить за файлами в папке"
+    TextView ga_tv_start_game_time;     // время начала игры
+    TextView ga_tv_end_game_time;       // время конца игры
+    TextView ga_tv_status;              // текущий статус игры
+    TextView ga_tv_vs;                  // "против"
     
     // Time views
-    TextView ga_tv_total_time;
-    TextView ga_tv_early_win;
+    TextView ga_tv_total_time;          // время до конца игры
+    TextView ga_tv_early_win;           // очки до досрочной победы
     
     // Our team views
-    ImageView ga_iv_our_team_name;
-    TextView ga_tv_our_increase;
-    TextView ga_tv_our_points;
-    TextView ga_tv_our_end_time;
+    ImageView ga_iv_our_team_name;      // название нашей команды (картинка)
+    TextView ga_tv_our_increase;        // прибавка нашей команды
+    TextView ga_tv_our_points;          // очки нашей команды
+    TextView ga_tv_our_end_time;        // время до конца игры для нашей команды
     
     // Enemy team views
-    ImageView ga_iv_enemy_team_name;
-    TextView ga_tv_enemy_increase;
-    TextView ga_tv_enemy_points;
-    TextView ga_tv_enemy_end_time;
+    ImageView ga_iv_enemy_team_name;    // название команды противника (картинка)
+    TextView ga_tv_enemy_increase;      // прибавка команды противника
+    TextView ga_tv_enemy_points;        // очки команды противника
+    TextView ga_tv_enemy_end_time;      // время до конца игры для команды противника
     
     // BLT views
-    ImageView ga_iv_blt_name;
-    TextView ga_tv_blt_x2;
-    TextView ga_tv_blt_points;
-    TextView ga_tv_blt_slots;
-    TextView ga_tv_blt_slots_our;
-    TextView ga_tv_blt_slots_empty;
-    TextView ga_tv_blt_slots_enemy;
-    ImageView ga_iv_blt_car_black;
-    ImageView ga_iv_blt_car_our;
-    ImageView ga_iv_blt_car_empty;
-    ImageView ga_iv_blt_car_enemy;
-    TextView ga_tv_blt_progress_our;
-    TextView ga_tv_blt_progress_empty;
-    TextView ga_tv_blt_progress_enemy;
+    ImageView ga_iv_blt_name;           // blt - название здания (картинка)
+    TextView ga_tv_blt_x2;              // blt - х2
+    TextView ga_tv_blt_points;          // blt - очки
+    TextView ga_tv_blt_slots;           // blt - слоты 
+    TextView ga_tv_blt_slots_our;       // blt - наши слоты
+    TextView ga_tv_blt_slots_empty;     // blt - слоты противника
+    TextView ga_tv_blt_slots_enemy;     // blt - пустые слоты
+    ImageView ga_iv_blt_car_black;      // blt - картинка машинки (черная)
+    ImageView ga_iv_blt_car_our;        // blt - картинка машинки (синяя)
+    ImageView ga_iv_blt_car_empty;      // blt - картинка машинки (серая)
+    ImageView ga_iv_blt_car_enemy;      // blt - картинка машинки (красная)
+    TextView ga_tv_blt_progress_our;    // blt - прогресс наш (синий)
+    TextView ga_tv_blt_progress_empty;  // blt - прогресс пустой (серый)
+    TextView ga_tv_blt_progress_enemy;  // blt - прогресс противника (красный)
 
     // BLC views
-    ImageView ga_iv_blc_name;
-    TextView ga_tv_blc_x2;
-    TextView ga_tv_blc_points;
-    TextView ga_tv_blc_slots;
-    TextView ga_tv_blc_slots_our;
-    TextView ga_tv_blc_slots_empty;
-    TextView ga_tv_blc_slots_enemy;
-    ImageView ga_iv_blc_car_black;
-    ImageView ga_iv_blc_car_our;
-    ImageView ga_iv_blc_car_empty;
-    ImageView ga_iv_blc_car_enemy;
-    TextView ga_tv_blc_progress_our;
-    TextView ga_tv_blc_progress_empty;
-    TextView ga_tv_blc_progress_enemy;
+    ImageView ga_iv_blc_name;           // blc - название здания (картинка)
+    TextView ga_tv_blc_x2;              // blc - х2
+    TextView ga_tv_blc_points;          // blc - очки
+    TextView ga_tv_blc_slots;           // blc - слоты 
+    TextView ga_tv_blc_slots_our;       // blc - наши слоты
+    TextView ga_tv_blc_slots_empty;     // blc - слоты противника
+    TextView ga_tv_blc_slots_enemy;     // blc - пустые слоты
+    ImageView ga_iv_blc_car_black;      // blc - картинка машинки (черная)
+    ImageView ga_iv_blc_car_our;        // blc - картинка машинки (синяя)
+    ImageView ga_iv_blc_car_empty;      // blc - картинка машинки (серая)
+    ImageView ga_iv_blc_car_enemy;      // blc - картинка машинки (красная)
+    TextView ga_tv_blc_progress_our;    // blc - прогресс наш (синий)
+    TextView ga_tv_blc_progress_empty;  // blc - прогресс пустой (серый)
+    TextView ga_tv_blc_progress_enemy;  // blc - прогресс противника (красный)
 
     // BLB views
-    ImageView ga_iv_blb_name;
-    TextView ga_tv_blb_x2;
-    TextView ga_tv_blb_points;
-    TextView ga_tv_blb_slots;
-    TextView ga_tv_blb_slots_our;
-    TextView ga_tv_blb_slots_empty;
-    TextView ga_tv_blb_slots_enemy;
-    ImageView ga_iv_blb_car_black;
-    ImageView ga_iv_blb_car_our;
-    ImageView ga_iv_blb_car_empty;
-    ImageView ga_iv_blb_car_enemy;
-    TextView ga_tv_blb_progress_our;
-    TextView ga_tv_blb_progress_empty;
-    TextView ga_tv_blb_progress_enemy;
+    ImageView ga_iv_blb_name;           // blb - название здания (картинка)
+    TextView ga_tv_blb_x2;              // blb - х2
+    TextView ga_tv_blb_points;          // blb - очки
+    TextView ga_tv_blb_slots;           // blb - слоты 
+    TextView ga_tv_blb_slots_our;       // blb - наши слоты
+    TextView ga_tv_blb_slots_empty;     // blb - слоты противника
+    TextView ga_tv_blb_slots_enemy;     // blb - пустые слоты
+    ImageView ga_iv_blb_car_black;      // blb - картинка машинки (черная)
+    ImageView ga_iv_blb_car_our;        // blb - картинка машинки (синяя)
+    ImageView ga_iv_blb_car_empty;      // blb - картинка машинки (серая)
+    ImageView ga_iv_blb_car_enemy;      // blb - картинка машинки (красная)
+    TextView ga_tv_blb_progress_our;    // blb - прогресс наш (синий)
+    TextView ga_tv_blb_progress_empty;  // blb - прогресс пустой (серый)
+    TextView ga_tv_blb_progress_enemy;  // blb - прогресс противника (красный)
 
     // BRT views
-    ImageView ga_iv_brt_name;
-    TextView ga_tv_brt_x2;
-    TextView ga_tv_brt_points;
-    TextView ga_tv_brt_slots;
-    TextView ga_tv_brt_slots_our;
-    TextView ga_tv_brt_slots_empty;
-    TextView ga_tv_brt_slots_enemy;
-    ImageView ga_iv_brt_car_black;
-    ImageView ga_iv_brt_car_our;
-    ImageView ga_iv_brt_car_empty;
-    ImageView ga_iv_brt_car_enemy;
-    TextView ga_tv_brt_progress_our;
-    TextView ga_tv_brt_progress_empty;
-    TextView ga_tv_brt_progress_enemy;
+    ImageView ga_iv_brt_name;           // brt - название здания (картинка)
+    TextView ga_tv_brt_x2;              // brt - х2
+    TextView ga_tv_brt_points;          // brt - очки
+    TextView ga_tv_brt_slots;           // brt - слоты 
+    TextView ga_tv_brt_slots_our;       // brt - наши слоты
+    TextView ga_tv_brt_slots_empty;     // brt - слоты противника
+    TextView ga_tv_brt_slots_enemy;     // brt - пустые слоты
+    ImageView ga_iv_brt_car_black;      // brt - картинка машинки (черная)
+    ImageView ga_iv_brt_car_our;        // brt - картинка машинки (синяя)
+    ImageView ga_iv_brt_car_empty;      // brt - картинка машинки (серая)
+    ImageView ga_iv_brt_car_enemy;      // brt - картинка машинки (красная)
+    TextView ga_tv_brt_progress_our;    // brt - прогресс наш (синий)
+    TextView ga_tv_brt_progress_empty;  // brt - прогресс пустой (серый)
+    TextView ga_tv_brt_progress_enemy;  // brt - прогресс противника (красный)
 
     // BRC views
-    ImageView ga_iv_brc_name;
-    TextView ga_tv_brc_x2;
-    TextView ga_tv_brc_points;
-    TextView ga_tv_brc_slots;
-    TextView ga_tv_brc_slots_our;
-    TextView ga_tv_brc_slots_empty;
-    TextView ga_tv_brc_slots_enemy;
-    ImageView ga_iv_brc_car_black;
-    ImageView ga_iv_brc_car_our;
-    ImageView ga_iv_brc_car_empty;
-    ImageView ga_iv_brc_car_enemy;
-    TextView ga_tv_brc_progress_our;
-    TextView ga_tv_brc_progress_empty;
-    TextView ga_tv_brc_progress_enemy;
+    ImageView ga_iv_brc_name;           // brc - название здания (картинка)
+    TextView ga_tv_brc_x2;              // brc - х2
+    TextView ga_tv_brc_points;          // brc - очки
+    TextView ga_tv_brc_slots;           // brc - слоты 
+    TextView ga_tv_brc_slots_our;       // brc - наши слоты
+    TextView ga_tv_brc_slots_empty;     // brc - слоты противника
+    TextView ga_tv_brc_slots_enemy;     // brc - пустые слоты
+    ImageView ga_iv_brc_car_black;      // brc - картинка машинки (черная)
+    ImageView ga_iv_brc_car_our;        // brc - картинка машинки (синяя)
+    ImageView ga_iv_brc_car_empty;      // brc - картинка машинки (серая)
+    ImageView ga_iv_brc_car_enemy;      // brc - картинка машинки (красная)
+    TextView ga_tv_brc_progress_our;    // brc - прогресс наш (синий)
+    TextView ga_tv_brc_progress_empty;  // brc - прогресс пустой (серый)
+    TextView ga_tv_brc_progress_enemy;  // brc - прогресс противника (красный)
 
     // BRB views
-    ImageView ga_iv_brb_name;
-    TextView ga_tv_brb_x2;
-    TextView ga_tv_brb_points;
-    TextView ga_tv_brb_slots;
-    TextView ga_tv_brb_slots_our;
-    TextView ga_tv_brb_slots_empty;
-    TextView ga_tv_brb_slots_enemy;
-    ImageView ga_iv_brb_car_black;
-    ImageView ga_iv_brb_car_our;
-    ImageView ga_iv_brb_car_empty;
-    ImageView ga_iv_brb_car_enemy;
-    TextView ga_tv_brb_progress_our;
-    TextView ga_tv_brb_progress_empty;
-    TextView ga_tv_brb_progress_enemy;
+    ImageView ga_iv_brb_name;           // brb - название здания (картинка)
+    TextView ga_tv_brb_x2;              // brb - х2
+    TextView ga_tv_brb_points;          // brb - очки
+    TextView ga_tv_brb_slots;           // brb - слоты 
+    TextView ga_tv_brb_slots_our;       // brb - наши слоты
+    TextView ga_tv_brb_slots_empty;     // brb - слоты противника
+    TextView ga_tv_brb_slots_enemy;     // brb - пустые слоты
+    ImageView ga_iv_brb_car_black;      // brb - картинка машинки (черная)
+    ImageView ga_iv_brb_car_our;        // brb - картинка машинки (синяя)
+    ImageView ga_iv_brb_car_empty;      // brb - картинка машинки (серая)
+    ImageView ga_iv_brb_car_enemy;      // brb - картинка машинки (красная)
+    TextView ga_tv_brb_progress_our;    // brb - прогресс наш (синий)
+    TextView ga_tv_brb_progress_empty;  // brb - прогресс пустой (серый)
+    TextView ga_tv_brb_progress_enemy;  // brb - прогресс противника (красный)
 
     // Рекламный блок
-    AdView ga_ad_banner;
+    AdView ga_ad_banner;                // баннер
 
-    ImageView ga_iv_game_car_black;
-    ImageView ga_iv_game_car_our;
-    ImageView ga_iv_game_car_empty;
-    ImageView ga_iv_game_car_enemy;
-    TextView ga_tv_game_slots;
-    TextView ga_tv_game_slots_our;
-    TextView ga_tv_game_slots_empty;
-    TextView ga_tv_game_slots_enemy;
+    ImageView ga_iv_game_car_black;     // машинка черная большая (картинка)
+    ImageView ga_iv_game_car_our;       // машинка синяя большая (картинка)
+    ImageView ga_iv_game_car_empty;     // машинка серая большая (картинка)
+    ImageView ga_iv_game_car_enemy;     // машинка красная большая (картинка)
+    TextView ga_tv_game_slots;          // слотов в игре всего
+    TextView ga_tv_game_slots_our;      // слотов в игре наших
+    TextView ga_tv_game_slots_empty;    // слотов в игре пустых
+    TextView ga_tv_game_slots_enemy;    // слотов в игре противника
 
-    ImageButton ga_ib_car1;
-    TextView ga_tv_car1_number;
-    TextView ga_tv_car1_name;
-    ImageView ga_iv_car1_health;
-    TextView ga_tv_car1_health;
-    ImageView ga_iv_car1_shield;
-    TextView ga_tv_car1_shield;
-    TextView ga_tv_car1_repair;
-    ImageView ga_iv_car1_building;
-    ImageView ga_iv_car1_task;
+    ImageButton ga_ib_car1;             // кнопка-картинка 1-й машинки
+    TextView ga_tv_car1_number;         // номер 1-й машинки
+    TextView ga_tv_car1_name;           // название 1-й машинки
+    ImageView ga_iv_car1_health;        // картинка "здоровье" для 1-й машинки
+    TextView ga_tv_car1_health;         // здоровье 1-й машинки
+    ImageView ga_iv_car1_shield;        // картинка "щит" 1-й машинки
+    TextView ga_tv_car1_shield;         // щит 1-й машинки
+    TextView ga_tv_car1_repair;         // время ремонта 1-й машинки
+    ImageView ga_iv_car1_building;      // картинка названия здания 1-й машинки
+    ImageView ga_iv_car1_task;          // картинка названия здания задания 1-й машинки
 
-    ImageButton ga_ib_car2;
-    TextView ga_tv_car2_number;
-    TextView ga_tv_car2_name;
-    ImageView ga_iv_car2_health;
-    TextView ga_tv_car2_health;
-    ImageView ga_iv_car2_shield;
-    TextView ga_tv_car2_shield;
-    TextView ga_tv_car2_repair;
-    ImageView ga_iv_car2_building;
-    ImageView ga_iv_car2_task;
+    ImageButton ga_ib_car2;             // кнопка-картинка 2-й машинки
+    TextView ga_tv_car2_number;         // номер 2-й машинки
+    TextView ga_tv_car2_name;           // название 2-й машинки
+    ImageView ga_iv_car2_health;        // картинка "здоровье" для 2-й машинки
+    TextView ga_tv_car2_health;         // здоровье 2-й машинки
+    ImageView ga_iv_car2_shield;        // картинка "щит" 2-й машинки
+    TextView ga_tv_car2_shield;         // щит 2-й машинки
+    TextView ga_tv_car2_repair;         // время ремонта 2-й машинки
+    ImageView ga_iv_car2_building;      // картинка названия здания 2-й машинки
+    ImageView ga_iv_car2_task;          // картинка названия здания задания 2-й машинки
 
-    ImageButton ga_ib_car3;
-    TextView ga_tv_car3_number;
-    TextView ga_tv_car3_name;
-    ImageView ga_iv_car3_health;
-    TextView ga_tv_car3_health;
-    ImageView ga_iv_car3_shield;
-    TextView ga_tv_car3_shield;
-    TextView ga_tv_car3_repair;
-    ImageView ga_iv_car3_building;
-    ImageView ga_iv_car3_task;
+    ImageButton ga_ib_car3;             // кнопка-картинка 3-й машинки
+    TextView ga_tv_car3_number;         // номер 3-й машинки
+    TextView ga_tv_car3_name;           // название 3-й машинки
+    ImageView ga_iv_car3_health;        // картинка "здоровье" для 3-й машинки
+    TextView ga_tv_car3_health;         // здоровье 3-й машинки
+    ImageView ga_iv_car3_shield;        // картинка "щит" 3-й машинки
+    TextView ga_tv_car3_shield;         // щит 3-й машинки
+    TextView ga_tv_car3_repair;         // время ремонта 3-й машинки
+    ImageView ga_iv_car3_building;      // картинка названия здания 3-й машинки
+    ImageView ga_iv_car3_task;          // картинка названия здания задания 3-й машинки
     
-    Button ga_bt_strategy;
+    Button ga_bt_strategy;              // кнопка "Стратегичское планирование"
+    
     private static final int SIGN_IN_REQUEST_CODE = 1;
 
-    public transient static String pathToCATScalcFolder;
-    private static final int MY_PERMISSIONS_REQUESTREAD_MULTIPERMISIONS = 4;   // код пермишенс
-    public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова Настроек
-    public static File fileGameScreenshot = null;    // текущий файл скриншота
-    public static File fileGameScreenshotPrevious;    // предыдущий файл скриншота
-    public static File fileLastInFolder;    // последний файл в папке
-    public static File fileCarScreenshot = null;    // текущий файл скриншота
-    public static File fileCarScreenshotPrevious;    // предыдущий файл скриншота
-    public static File fileLast;    // последний файл в папке
-    private NotificationManager notificationManager;    // нотификатор
-    private static final int NOTIFY_ID = 1;             // айди нотификатора
+    public transient static String pathToCATScalcFolder;        // путь к папке программы
+    public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова второй активности
+    public static File fileGameScreenshot = null;               // текущий файл скриншота
+    public static File fileGameScreenshotPrevious;              // предыдущий файл скриншота
+    public static File fileLastInFolder;                        // последний файл в папке
+    public static File fileCarScreenshot = null;                // текущий файл скриншота
+    public static File fileCarScreenshotPrevious;               // предыдущий файл скриншота
+    public static File fileLast;                                // последний файл в папке
+    private NotificationManager notificationManager;            // нотификатор
+    private static final int NOTIFY_ID = 1;                     // айди нотификатора
     private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
-    public static String pathToScreenshotDir = "";    // путь к папке скриншотов
-    public static boolean isListenToNewFileInFolder;  // флаг "Следить за новыми файлами в папке"
-    public static boolean isAllFieldsCorrect;         // флаг "Все поля заполнены правильно"
+    public static String pathToScreenshotDir = "";              // путь к папке скриншотов
+    public static boolean isListenToNewFileInFolder;            // флаг "Следить за новыми файлами в папке"
+    public static boolean isAllFieldsCorrect;                   // флаг "Все поля заполнены правильно"
     public static int calibrateX;                              // калибровка
     public static int calibrateY;                              // калибровка
-    private Timer timer;                        // таймер
-    public static boolean isDebugMode;
-    public static Context context;
-    public static CityCalc mainCityCalc;
+    private Timer timer;                                        // таймер
+    public static boolean isDebugMode;                          // флаг "Режим отладки"
+    public static Context context;                              // контекст
+    public static CityCalc mainCityCalc;                        // текущая игра
 
-    private static final String TAG = "GameActivity";
+    private static final String TAG = "GameActivity";           // таг для лога
 
-    public boolean isResumed;
+    public boolean isResumed;                                   // isResumed
 
-    public static FirebaseUser fbUser;
-    public static FirebaseAuth fbAuth;
-    public static FirebaseFirestore fbDb = FirebaseFirestore.getInstance();
-    public static boolean userHaveTeam;
-    public static UserRole userRole;
-    public static String userTeamID;
-    public static DbUser mainDbUser;
-    public static DbTeam mainDbTeam;
-    public static DbTeamUser mainDbTeamUser;
+    public static FirebaseUser fbUser;          // юзер файрбейса
+    public static FirebaseAuth fbAuth;          // аутентификация файрбейса
+    public static FirebaseFirestore fbDb = FirebaseFirestore.getInstance(); // база данных файрбейса
+    public static boolean userHaveTeam;         // флаг "у юзера есть команда"
+    public static UserRole userRole;            // роль юзера в команде
+    public static String userTeamID;            // ID команды
+    public static DbUser mainDbUser;            // юзер БД
+    public static DbTeam mainDbTeam;            // банда БД
+    public static DbTeamUser mainDbTeamUser;    // юзер банды БД
 
-    public static Menu mainMenu;
-    public static MenuItem menu_main_open_settings;
-    public static MenuItem menu_main_open_screenshot;
-    public static MenuItem menu_main_user_account;
-    public static MenuItem menu_main_share;
-    public static MenuItem menu_main_login;
-    public static MenuItem menu_main_logout;
-    public static MenuItem menu_main_email_verification_send;
-    public static MenuItem menu_main_email_verification_check;
-    public static MenuItem menu_main_team_manage;
-    public static MenuItem menu_main_team_create;
-    public static MenuItem menu_main_team_leave;
-    public static MenuItem menu_main_team_find;
+    public static Menu mainMenu;                                // меню
+    public static MenuItem menu_main_open_settings;             // пункт меню "Настройки"
+    public static MenuItem menu_main_open_screenshot;           // пункт меню "Открыть скриншот"
+    public static MenuItem menu_main_user_account;              // пункт меню "Кабинет пользователя"
+    public static MenuItem menu_main_share;                     // пункт меню "Шара"
+    public static MenuItem menu_main_login;                     // пункт меню "Логин"
+    public static MenuItem menu_main_logout;                    // пункт меню "Логаут"
+    public static MenuItem menu_main_email_verification_send;   // пункт меню "Заслать письмо с подтверждением почты"
+    public static MenuItem menu_main_email_verification_check;  // пункт меню "Зарефрешить юзера"
+    public static MenuItem menu_main_team_manage;               // пункт меню "Банда"
+    public static MenuItem menu_main_team_create;               // пункт меню "Создать банду"
+    public static MenuItem menu_main_team_leave;                // пункт меню "Выйти из банды"
+    public static MenuItem menu_main_team_find;                 // пункт меню "Найти банду"
 
     @Override
     protected void onResume() {
@@ -331,224 +331,6 @@ public class GameActivity extends AppCompatActivity {
 
         initializeViews(); // Инициализация вьюшек
 
-//        checkMenuVisibility();
-
-
-//
-//        if (fbUser != null) {
-//            Toast.makeText(this,getString(R.string.welcome) + " " + fbUser.getDisplayName(), Toast.LENGTH_LONG).show();
-//            fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                @Override
-//                public void onSuccess(Void aVoid) {
-//                    ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
-//
-//                    fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                        @Override
-//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                            final String teamID = (String)documentSnapshot.get("teamID");
-//                            if (teamID == null || teamID.equals("")) {
-//                                ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
-//                            } else {
-//                                fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                                    @Override
-//                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                                        String teamName = (String)documentSnapshot.get("teamName");
-//                                        ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
-//
-//                                        fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                                List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
-//                                                if (listTeamUsers.size() >0) {
-//                                                    DbTeamUser dbTeamUser = listTeamUsers.get(0);
-//                                                    String userRole = dbTeamUser.getUserRole();
-//                                                    ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
-//
-//                                                    final DocumentReference docRef = fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-//                                                    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                                                        @Override
-//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                                                            if (e != null) {
-//                                                                Log.w(TAG, "Listen game failed.", e);
-//                                                                return;
-//                                                            }
-//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-//                                                                Log.d(TAG, "Current game data: " + documentSnapshot.getData());
-//
-//                                                                if (mainCityCalc != null) {
-//                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-//                                                                    if (ccaGame != null) {
-//                                                                        DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-//                                                                        if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
-//                                                                            ccaGame.updateFromDb(dbTeamGame);
-//                                                                            Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-//                                                                            loadDataToViews(true);
-//                                                                        }
-//                                                                    }
-//                                                                }
-//
-//                                                            } else {
-//                                                                Log.d(TAG, "Current game data: null");
-//                                                            }
-//                                                        }
-//                                                    });
-//
-//                                                    final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
-//                                                    docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                                                        @Override
-//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                                                            if (e != null) {
-//                                                                Log.w(TAG, "Listen car1 failed.", e);
-//                                                                return;
-//                                                            }
-//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-//                                                                Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
-//
-//                                                                if (mainCityCalc != null) {
-//                                                                    List<Car> listCars = Car.loadList();
-//                                                                    Car car = listCars.get(0);
-//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-//                                                                            Bitmap taskBitmap = null;
-//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                                                            }
-//                                                                            car.setTaskPicture(taskBitmap);
-//                                                                            car.save();
-//                                                                            setDataToCarsViews();
-//                                                                        }
-//                                                                    }
-//                                                                }
-//
-//                                                            } else {
-//                                                                Log.d(TAG, "Current car1 data: null");
-//                                                            }
-//                                                        }
-//                                                    });
-//
-//                                                    final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
-//                                                    docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                                                        @Override
-//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                                                            if (e != null) {
-//                                                                Log.w(TAG, "Listen car2 failed.", e);
-//                                                                return;
-//                                                            }
-//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-//                                                                Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
-//
-//                                                                if (mainCityCalc != null) {
-//                                                                    List<Car> listCars = Car.loadList();
-//                                                                    Car car = listCars.get(1);
-//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-//                                                                            Bitmap taskBitmap = null;
-//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                                                            }
-//                                                                            car.setTaskPicture(taskBitmap);
-//                                                                            car.save();
-//                                                                            setDataToCarsViews();
-//                                                                        }
-//                                                                    }
-//                                                                }
-//
-//                                                            } else {
-//                                                                Log.d(TAG, "Current car2 data: null");
-//                                                            }
-//                                                        }
-//                                                    });
-//
-//                                                    final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
-//                                                    docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-//                                                        @Override
-//                                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-//                                                            if (e != null) {
-//                                                                Log.w(TAG, "Listen car3 failed.", e);
-//                                                                return;
-//                                                            }
-//                                                            if (documentSnapshot != null && documentSnapshot.exists()) {
-//                                                                Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
-//
-//                                                                if (mainCityCalc != null) {
-//                                                                    List<Car> listCars = Car.loadList();
-//                                                                    Car car = listCars.get(2);
-//                                                                    DbCar dbCar = new DbCar(documentSnapshot);
-//                                                                    if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-//                                                                        if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-//                                                                            car.setBuildingTask(dbCar.getCarBuildingTask());
-//                                                                            CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-//                                                                            Bitmap taskBitmap = null;
-//                                                                            if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-//                                                                            } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-//                                                                                taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-//                                                                            }
-//                                                                            car.setTaskPicture(taskBitmap);
-//                                                                            car.save();
-//                                                                            setDataToCarsViews();
-//                                                                        }
-//                                                                    }
-//                                                                }
-//
-//                                                            } else {
-//                                                                Log.d(TAG, "Current car3 data: null");
-//                                                            }
-//                                                        }
-//                                                    });
-//
-//                                                }
-//                                            }
-//                                        });
-//
-//                                    }
-//                                });
-//
-//                            }
-//                        }
-//                    });
-//
-//                }
-//            });
-//        } else {
-//            ga_tv_user.setText("Login, please!!!");
-//        }
-
-        // отслеживание изменения свича "Следить за файлами в папке"
         ga_sw_listen_new_file.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключили
@@ -567,7 +349,6 @@ public class GameActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-
         AdRequest adRequest = new AdRequest.Builder().build();
         ga_ad_banner.loadAd(adRequest);
 
@@ -575,9 +356,7 @@ public class GameActivity extends AppCompatActivity {
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         readPreferences(); // считываем преференцы
-
         ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
-
         startTimer();   // стартуем таймер
 
     }
@@ -585,11 +364,9 @@ public class GameActivity extends AppCompatActivity {
     public void loadDataToViews(boolean withNotify) {
 
         String logMsgPref = "loadDataToViews: ";
-        Log.i(TAG, logMsgPref + "start");
 
         String textStartGameTime;
         String textEndGameTime;
-        String textStatus;
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
         CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
         CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
@@ -603,7 +380,6 @@ public class GameActivity extends AppCompatActivity {
 
         if (ccaGame != null && ccaGame.getCcagDateStartGame() != null) {
 
-            Log.i(TAG, logMsgPref + "вызываем ccaGame.calcWin()");
             ccaGame.calcWin();
 
             Date dateScreenshot = ccaGame.getCcagDateScreenshot();
@@ -611,7 +387,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_screenshot_time.setText("Скриншот сделан " + minutesFromTakingScreenshot + " минут назад" + (ccaGame.getUserNIC() != null ? " пользователем " + ccaGame.getUserNIC() + "." : "."));
             ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
-//            ga_bt_strategy.setEnabled(!ccaGame.isCcagIsGameOver());
             ga_bt_strategy.setVisibility(!ccaGame.isCcagIsGameOver() ? View.VISIBLE : View.INVISIBLE);
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getCcagDateStartGame(), pattern);    // дата/время начала игры
@@ -619,7 +394,6 @@ public class GameActivity extends AppCompatActivity {
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getCcagDateEndGame(), pattern);          // дата/время окончания игры
 
             ga_tv_status.setText(ccaGame.getCcagStatus());   // статус
-
             ga_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             ga_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
 
@@ -1369,13 +1143,9 @@ public class GameActivity extends AppCompatActivity {
     private File getLastFileInFolder(String pathToFolder) {
 
         String logMsgPref = "getLastFileInFolder: ";
-        Log.i(TAG, logMsgPref + "start");
 
         File temp = null;           // временный файл
         File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
-        Log.i(TAG, logMsgPref + "lastScreenshot = " + lastScreenshot.getAbsolutePath());
-        Log.i(TAG, logMsgPref + "pathToFolder = " + pathToFolder);
-
         File dir = new File(pathToFolder); // папка
         File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
             @Override
@@ -1385,17 +1155,13 @@ public class GameActivity extends AppCompatActivity {
         });
         List<File> listFiles = new ArrayList<>(); // лист
         if (files != null) {    // если файлы в папке есть
-            Log.i(TAG, logMsgPref + "Файлы в папке есть");
             for (File file : files) {   // цикл по файлам
                 listFiles.add(file);    // добавляем файл в лист
             }
-        } else {
-            Log.i(TAG, logMsgPref + "Файлов в папке нет");
         }
 
         if  (listFiles.size() > 0) {    // если в листе есть файлы
             long maxLastModified = 0;   // максимальная дата (ноль для начала)
-
             for (File file : listFiles) {   // цикл по листу
                 if (file.lastModified() > maxLastModified) {    // если дата создания файла из листа больше максимальной
                     maxLastModified = file.lastModified();      // максимальная дата = дате файла из листа
@@ -1404,18 +1170,13 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (temp != null) { // если найден самый свежий файл
-                Log.i(TAG, logMsgPref + "Самый свежий файл: " + temp.getAbsolutePath() + ", дата: " + maxLastModified);
                 fileLast = temp;
                 if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
-                    Log.i(TAG, logMsgPref + "найденный файл не совпадает с ранее найденным последним файлом");
-
                     CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context);
-                    Log.i(TAG, logMsgPref + "CityCalcType = " + tmpCityCalc.getCityCalcType());
                     if (!tmpCityCalc.getCityCalcType().equals(CityCalcType.ERROR)) {
                         fileLastInFolder = temp;    // последний найденный файл - текущий найденный
                     } else {
                         if (fileLastInFolder == null) {
-                            Log.i(TAG, logMsgPref + "вернем последний скриншот если он есть");
                             temp = lastScreenshot;
                             if (!temp.exists()) temp = null;
                         } else {
@@ -1428,7 +1189,6 @@ public class GameActivity extends AppCompatActivity {
         }
 
         if (temp == null && lastScreenshot.exists()) {
-            Log.i(TAG, logMsgPref + "возвращаем " + lastScreenshot.getAbsolutePath());
             temp = lastScreenshot;
         }
 
@@ -1440,8 +1200,6 @@ public class GameActivity extends AppCompatActivity {
      * Создание канала нотификации
      */
     public static void createChannelIfNeeded(NotificationManager manager) {
-        String logMsgPref = "createChannelIfNeeded: ";
-        Log.i(TAG, logMsgPref + "start");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(notificationChannel);
@@ -1470,58 +1228,13 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
-//            fbAuth = FirebaseAuth.getInstance();
-//            fbUser = fbAuth.getCurrentUser();
-//
-//            if (fbUser != null) {
-//
-//                fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        ga_tv_user.setText(fbUser.getDisplayName() + (fbUser.isEmailVerified() ? "" : "(email NOT VERIFIED)"));
-//
-//                        fbDb.collection("users").document(fbUser.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                            @Override
-//                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                                final String teamID = (String)documentSnapshot.get("teamID");
-//                                if (teamID == null || teamID.equals("")) {
-//                                    ga_tv_user.setText(ga_tv_user.getText() + " [no team]");
-//                                } else {
-//                                    fbDb.collection("teams").document(teamID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                                        @Override
-//                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                                            String teamName = (String)documentSnapshot.get("teamName");
-//                                            ga_tv_user.setText(ga_tv_user.getText() + " [" + teamName + "]");
-//
-//                                            fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", fbUser.getUid()).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                                                @Override
-//                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
-//                                                    if (listTeamUsers.size() >0) {
-//                                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
-//                                                        String userRole = dbTeamUser.getUserRole();
-//                                                        ga_tv_user.setText(ga_tv_user.getText() + " (" + userRole + ")");
-//
-//                                                    }
-//                                                }
-//                                            });
-//
-//                                        }
-//                                    });
-//
-//                                }
-//                            }
-//                        });
-//
-//                    }
-//                });
-//            } else {
-//                ga_tv_user.setText("Login, please!!!");
-//            }
         }
 
+        // если был возврат из логина
         if(requestCode == SIGN_IN_REQUEST_CODE) {
+            // и логин был успешный
             if (resultCode == RESULT_OK) {
+                // зарефрешим юзера, дождемся рефреша и обновим меню
                 fbUser = fbAuth.getCurrentUser();
                 fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -1529,11 +1242,11 @@ public class GameActivity extends AppCompatActivity {
                         checkMenuVisibility();
                     }
                 });
+            } else {
+                Toast.makeText(GameActivity.this, R.string.could_not_sing_in, Toast.LENGTH_LONG).show();
+                fbUser = fbAuth.getCurrentUser();
+                checkMenuVisibility();
             }
-        } else {
-            Toast.makeText(GameActivity.this, R.string.could_not_sing_in, Toast.LENGTH_LONG).show();
-            fbUser = fbAuth.getCurrentUser();
-            checkMenuVisibility();
         }
 
     }
@@ -1541,11 +1254,13 @@ public class GameActivity extends AppCompatActivity {
 
     private void checkMenuVisibility() {
 
+        // пунты меню "Настройка" и "Открыть скриншот" видны в любом случае
         menu_main_open_settings.setVisible(true);
         menu_main_open_screenshot.setVisible(true);
         String userText = "";
         if (fbUser == null) { // юзер не залогинился
 
+            // виден пункт меню "Логин", остальные скрываем
             menu_main_login.setVisible(true);
             menu_main_logout.setVisible(false);
             menu_main_user_account.setVisible(false);
@@ -1556,23 +1271,30 @@ public class GameActivity extends AppCompatActivity {
             menu_main_team_leave.setVisible(false);
             menu_main_team_find.setVisible(false);
 
+            // обновляем инфо юзера
             userText = "Login, please.";
             ga_tv_user.setText(userText);
 
         } else { // юзер залогинился
 
+            // обновляем инфо юзера
             userText = fbUser.getDisplayName();
             ga_tv_user.setText(userText);
 
+            // пункт меню "Логин" скрываем, "Логаут" - показываем
             menu_main_login.setVisible(false);
             menu_main_logout.setVisible(true);
+            
+            // проверяем, подтвержден ли емейл
             boolean isVerified = fbUser.isEmailVerified();
 
             if (!isVerified) { // почта не подтверждена
 
+                // обновляем инфо юзера
                 userText = userText + " (not verified)";
                 ga_tv_user.setText(userText);
 
+                // показываем пунты меню "Выслать письмо..." и "Обновить...", остальные скрываем
                 menu_main_user_account.setVisible(false);
                 menu_main_email_verification_send.setVisible(true);
                 menu_main_email_verification_check.setVisible(true);
@@ -1583,249 +1305,322 @@ public class GameActivity extends AppCompatActivity {
 
             } else { // почта подтверждена
 
+                // показываем пункт меню "Кабинет пользователя", скрываем "Выслать письмо..." и "Обновить..."
                 menu_main_user_account.setVisible(true);
                 menu_main_email_verification_send.setVisible(false);
                 menu_main_email_verification_check.setVisible(false);
 
+                // ищем запись о текущем юзере
                 DocumentReference docRefUser = fbDb.collection("users").document(fbUser.getUid());
-                docRefUser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                docRefUser.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        mainDbUser = new DbUser(documentSnapshot);
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot docSnapUser = task.getResult();
+                            if (docSnapUser.exists()) { // запись о юзере найдена
 
-                        userHaveTeam = (mainDbUser.getTeamID() != null);
-                        if (!userHaveTeam) { // юзер не состоит в команде
+                                // нашли текущего юзера в базе, считываем его
+                                mainDbUser = new DbUser(docSnapUser);
 
-                            String userText = fbUser.getDisplayName() + " (no team)";
-                            ga_tv_user.setText(userText);
+                                // устанавливем флаг "у юзера есть команда"
+                                userHaveTeam = (mainDbUser.getTeamID() != null);
 
-                            menu_main_team_manage.setVisible(false);
-                            menu_main_team_create.setVisible(true);
-                            menu_main_team_leave.setVisible(false);
-                            menu_main_team_find.setVisible(true);
+                                if (!userHaveTeam) { // юзер не состоит в команде
 
-                        } else { // юзер состоит в команде
-
-                            final DocumentReference docRefTeam = fbDb.collection("teams").document(mainDbUser.getTeamID());
-                            docRefTeam.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    mainDbTeam = new DbTeam(documentSnapshot);
-
-                                    String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ")";
+                                    // обновляем инфо юзера
+                                    String userText = fbUser.getDisplayName() + " (no team)";
                                     ga_tv_user.setText(userText);
 
-                                    Query query = docRefTeam.collection("teamUsers").whereEqualTo("userID", mainDbUser.getUserID());
+                                    // выводим пункт "Создать банду", скрываем пункты "Банда", "Покинуть банду" и "Найти банду"
+                                    menu_main_team_manage.setVisible(false);
+                                    menu_main_team_create.setVisible(true);
+                                    menu_main_team_leave.setVisible(false);
+                                    menu_main_team_find.setVisible(true);
 
-                                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                } else { // юзер состоит в команде
+
+                                    // ищем запись о команде
+                                    final DocumentReference docRefTeam = fbDb.collection("teams").document(mainDbUser.getTeamID());
+                                    docRefTeam.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                         @Override
-                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                            if (task.isSuccessful()) {
-                                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                                    mainDbTeamUser = document.toObject(DbTeamUser.class);
-                                                    mainDbTeamUser.setTeamUserID(document.getId());
-                                                    if (mainDbTeamUser.getUserRole().equals("leader")) {
-                                                        userRole = UserRole.LEADER;
-                                                    } else if (mainDbTeamUser.getUserRole().equals("captain")){
-                                                        userRole = UserRole.CAPTAIN;
+                                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                            // нашли команду, считываем ее
+                                            mainDbTeam = new DbTeam(documentSnapshot);
+
+                                            // обновляем инфо юзера
+                                            String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ")";
+                                            ga_tv_user.setText(userText);
+
+                                            // запрос на наличие записи о юзере в таблице teamUsers
+                                            Query query = docRefTeam.collection("teamUsers").whereEqualTo("userID", mainDbUser.getUserID());
+                                            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                                    // запрос обработался
+                                                    if (task.isSuccessful()) {
+                                                        // запрос обработался удачно
+                                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                                            // проходимся по записям запроса, но запись должна быть одна
+
+                                                            // считываем тимЮзера и заполняем его поля, включая роль
+                                                            mainDbTeamUser = document.toObject(DbTeamUser.class);
+                                                            mainDbTeamUser.setTeamUserID(document.getId());
+                                                            if (mainDbTeamUser.getUserRole().equals("leader")) {
+                                                                userRole = UserRole.LEADER;
+                                                            } else if (mainDbTeamUser.getUserRole().equals("captain")){
+                                                                userRole = UserRole.CAPTAIN;
+                                                            } else {
+                                                                userRole = UserRole.MEAT;
+                                                            }
+                                                            // обновляем инфо юзера
+                                                            String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ") [" + userRole + "]";
+                                                            ga_tv_user.setText(userText);
+                                                            break;
+                                                        }
+                                                        // выбодим пунткы меню "Банда" и "Покинуть банду", скрываем "Создать банду" и "Найти банду"
+                                                        menu_main_team_manage.setVisible(true);
+                                                        menu_main_team_create.setVisible(false);
+                                                        menu_main_team_leave.setVisible(true);
+                                                        menu_main_team_find.setVisible(false);
+
+                                                        // "слушаем" запись о текущей игре
+                                                        final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
+                                                        docRefTeamGame.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                if (e != null) {
+                                                                    // произошла ошибка "слушателся"
+                                                                    Log.w(TAG, "Listen game failed.", e);
+                                                                    return;
+                                                                }
+                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                    // "слушатель" отработал и вернул документ
+                                                                    Log.d(TAG, "Current game data: " + documentSnapshot.getData());
+
+                                                                    if (mainCityCalc != null) { // если текущая игра есть
+                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                        if (ccaGame != null) {
+                                                                            DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);                                   // считываем тимГейм из базы
+                                                                            if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                                                ccaGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+                                                                                // выводим тост и обновляем контролы в активити
+                                                                                Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
+                                                                                loadDataToViews(true);
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                } else {
+                                                                    // запсь в базе отсутствует
+                                                                    Log.d(TAG, "Current game data: null");
+                                                                }
+                                                            }
+                                                        });
+
+                                                        // "слушаем" запись о 1-й машине
+                                                        final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
+                                                        docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                if (e != null) {
+                                                                    // произошла ошибка "слушателя"
+                                                                    Log.w(TAG, "Listen car1 failed.", e);
+                                                                    return;
+                                                                }
+                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                    // "слушатель" отработал и вернул документ
+                                                                    Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
+
+                                                                    if (mainCityCalc != null) {                                         // если текущая игра есть
+                                                                        List<Car> listCars = Car.loadList();                            // получаем локальный список машин
+                                                                        Car car = listCars.get(0);                                      // берем из списка 1-ю машину
+                                                                        DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 1-ю машину из базы
+                                                                        if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                } else {
+                                                                    Log.d(TAG, "Current car1 data: null");
+                                                                }
+                                                            }
+                                                        });
+
+                                                        // "слушаем" запись о 2-й машине
+                                                        final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
+                                                        docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                if (e != null) {
+                                                                    // произошла ошибка "слушателя"
+                                                                    Log.w(TAG, "Listen car2 failed.", e);
+                                                                    return;
+                                                                }
+                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                    // "слушатель" отработал и вернул документ
+                                                                    Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
+
+                                                                    if (mainCityCalc != null) {                                         // если текущая игра есть
+                                                                        List<Car> listCars = Car.loadList();                            // получаем локальный список машин
+                                                                        Car car = listCars.get(1);                                      // берем из списка 2-ю машину
+                                                                        DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 2-ю машину из базы
+                                                                        if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                } else {
+                                                                    Log.d(TAG, "Current car2 data: null");
+                                                                }
+                                                            }
+                                                        });
+
+                                                        // "слушаем" запись о 3-й машине
+                                                        final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
+                                                        docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                            @Override
+                                                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                if (e != null) {
+                                                                    // произошла ошибка "слушателя"
+                                                                    Log.w(TAG, "Listen car3 failed.", e);
+                                                                    return;
+                                                                }
+                                                                if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                    // "слушатель" отработал и вернул документ
+                                                                    Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
+
+                                                                    if (mainCityCalc != null) {                                         // если текущая игра есть
+                                                                        List<Car> listCars = Car.loadList();                            // получаем локальный список машин
+                                                                        Car car = listCars.get(2);                                      // берем из списка 3-ю машину
+                                                                        DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 3-ю машину из базы
+                                                                        if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                } else {
+                                                                    Log.d(TAG, "Current car3 data: null");
+                                                                }
+                                                            }
+                                                        });
+
                                                     } else {
-                                                        userRole = UserRole.MEAT;
-                                                    }
-                                                    String userText = fbUser.getDisplayName() + " (" + mainDbTeam.getTeamName()  + ") [" + userRole + "]";
-                                                    ga_tv_user.setText(userText);
-                                                    break;
-                                                }
-                                                menu_main_team_manage.setVisible(true);
-                                                menu_main_team_create.setVisible(false);
-                                                menu_main_team_leave.setVisible(true);
-                                                menu_main_team_find.setVisible(false);
+                                                        // запрос обработался неудачно
+                                                        Log.e(TAG, "Error getting documents: ", task.getException());
+                                                        // выводим пункт "Создать банду", скрываем пункты "Банда", "Покинуть банду" и "Найти банду"
+                                                        menu_main_team_manage.setVisible(false);
+                                                        menu_main_team_create.setVisible(true);
+                                                        menu_main_team_leave.setVisible(false);
+                                                        menu_main_team_find.setVisible(true);
+                                                    } // кесли запрос обработался удачно
+                                                } // onComplete
+                                            }); // query.get().addOnCompleteListener
+                                        } // onSuccess
+                                    }); // docRefTeam.get().addOnSuccessListener
+                                } // if (!userHaveTeam)
 
 
-                                                final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
-                                                docRefTeamGame.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                        if (e != null) {
-                                                            Log.w(TAG, "Listen game failed.", e);
-                                                            return;
-                                                        }
-                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                            Log.d(TAG, "Current game data: " + documentSnapshot.getData());
+                            } else { // запись о юзере не найдена - ее надо создать
 
-                                                            if (mainCityCalc != null) {
-                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                if (ccaGame != null) {
-                                                                    DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);
-                                                                    if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) {
-                                                                        ccaGame.updateFromDb(dbTeamGame);
-                                                                        Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-                                                                        loadDataToViews(true);
-                                                                    }
-                                                                }
-                                                            }
+                                mainDbUser = new DbUser();
+                                mainDbUser.setUserID(fbUser.getUid());
+                                mainDbUser.setUserUID(fbUser.getUid());
+                                mainDbUser.setUserName(fbUser.getDisplayName());
+                                mainDbUser.setUserNIC(fbUser.getDisplayName());
+                                mainDbUser.setUserEmail(fbUser.getEmail());
+                                mainDbUser.setTeamID(null);
+                                mainDbUser.setLeaderUID(null);
+                                docRefUser.set(mainDbUser.getMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        userHaveTeam = false;
+                                        // обновляем инфо юзера
+                                        String userText = fbUser.getDisplayName() + " (no team)";
+                                        ga_tv_user.setText(userText);
 
-                                                        } else {
-                                                            Log.d(TAG, "Current game data: null");
-                                                        }
-                                                    }
-                                                });
+                                        // выводим пункт "Создать банду", скрываем пункты "Банда", "Покинуть банду" и "Найти банду"
+                                        menu_main_team_manage.setVisible(false);
+                                        menu_main_team_create.setVisible(true);
+                                        menu_main_team_leave.setVisible(false);
+                                        menu_main_team_find.setVisible(true);
+                                    }
+                                });
 
-                                                final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
-                                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                        if (e != null) {
-                                                            Log.w(TAG, "Listen car1 failed.", e);
-                                                            return;
-                                                        }
-                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                            Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
-
-                                                            if (mainCityCalc != null) {
-                                                                List<Car> listCars = Car.loadList();
-                                                                Car car = listCars.get(0);
-                                                                DbCar dbCar = new DbCar(documentSnapshot);
-                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                        Bitmap taskBitmap = null;
-                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                        }
-                                                                        car.setTaskPicture(taskBitmap);
-                                                                        car.save();
-                                                                        setDataToCarsViews();
-                                                                    }
-                                                                }
-                                                            }
-
-                                                        } else {
-                                                            Log.d(TAG, "Current car1 data: null");
-                                                        }
-                                                    }
-                                                });
-
-                                                final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
-                                                docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                        if (e != null) {
-                                                            Log.w(TAG, "Listen car2 failed.", e);
-                                                            return;
-                                                        }
-                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                            Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
-
-                                                            if (mainCityCalc != null) {
-                                                                List<Car> listCars = Car.loadList();
-                                                                Car car = listCars.get(1);
-                                                                DbCar dbCar = new DbCar(documentSnapshot);
-                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                        Bitmap taskBitmap = null;
-                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                        }
-                                                                        car.setTaskPicture(taskBitmap);
-                                                                        car.save();
-                                                                        setDataToCarsViews();
-                                                                    }
-                                                                }
-                                                            }
-
-                                                        } else {
-                                                            Log.d(TAG, "Current car2 data: null");
-                                                        }
-                                                    }
-                                                });
-
-                                                final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
-                                                docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                        if (e != null) {
-                                                            Log.w(TAG, "Listen car3 failed.", e);
-                                                            return;
-                                                        }
-                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                            Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
-
-                                                            if (mainCityCalc != null) {
-                                                                List<Car> listCars = Car.loadList();
-                                                                Car car = listCars.get(2);
-                                                                DbCar dbCar = new DbCar(documentSnapshot);
-                                                                if (car.getUuid().toString().equals(dbCar.getCarUID())) {
-                                                                    if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {
-                                                                        car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                        Bitmap taskBitmap = null;
-                                                                        if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                        } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                            taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                        }
-                                                                        car.setTaskPicture(taskBitmap);
-                                                                        car.save();
-                                                                        setDataToCarsViews();
-                                                                    }
-                                                                }
-                                                            }
-
-                                                        } else {
-                                                            Log.d(TAG, "Current car3 data: null");
-                                                        }
-                                                    }
-                                                });
-
-                                            } else {
-                                                Log.e(TAG, "Error getting documents: ", task.getException());
-                                                menu_main_team_manage.setVisible(false);
-                                                menu_main_team_create.setVisible(true);
-                                                menu_main_team_leave.setVisible(false);
-                                                menu_main_team_find.setVisible(true);
-                                            }
-                                        }
-                                    });
-
-                                }
-                            });
+                            }
 
                         }
                     }
                 });
-            }
-        }
+
+
+            } // if (!isVerified)
+        } //if (fbUser == null)
 
     }
 

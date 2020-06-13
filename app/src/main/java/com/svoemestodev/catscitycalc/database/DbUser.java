@@ -1,8 +1,10 @@
 package com.svoemestodev.catscitycalc.database;
 
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DbUser {
@@ -38,6 +40,21 @@ public class DbUser {
             }
         }
 
+    }
+
+    public Map<String, Object> getMap() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("timestamp", FieldValue.serverTimestamp());
+        map.put("userID", userID);
+        map.put("userUID", userUID);
+        map.put("userName", userName);
+        map.put("userEmail", userEmail);
+        map.put("userNIC", userNIC);
+        map.put("teamID", teamID);
+        map.put("leaderUID", leaderUID);
+
+        return map;
     }
 
     public Date getTimestamp() {
