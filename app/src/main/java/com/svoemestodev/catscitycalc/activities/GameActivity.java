@@ -1236,10 +1236,12 @@ public class GameActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // зарефрешим юзера, дождемся рефреша и обновим меню
                 fbUser = fbAuth.getCurrentUser();
-                fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+                fbUser.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onSuccess(Void aVoid) {
-                        checkMenuVisibility();
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            checkMenuVisibility();
+                        }
                     }
                 });
             } else {
@@ -1912,10 +1914,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void doMenuEmailVerificationCheck() {
-        fbUser.reload().addOnSuccessListener(new OnSuccessListener<Void>() {
+        fbUser.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onSuccess(Void aVoid) {
-                checkMenuVisibility();
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    checkMenuVisibility();
+                }
             }
         });
     }
