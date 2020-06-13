@@ -174,7 +174,7 @@ public class TeamActivity extends AppCompatActivity {
                 final String teamID = dbTeam.getTeamID();
 
                 if (leaderUID.equals(userUID)) {
-                    Toast.makeText(TeamActivity.this, "Нельзя добавить в банду самого себя.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(TeamActivity.this, getString(R.string.unable_add_self_to_team), Toast.LENGTH_LONG).show();
                 } else {
                     boolean isFind = false;
                     for (DbTeamUser teamUser : listDbTeamUsers) {
@@ -184,7 +184,7 @@ public class TeamActivity extends AppCompatActivity {
                         }
                     }
                     if (isFind) {
-                        Toast.makeText(TeamActivity.this, "Этот пользователь уже в банде.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamActivity.this, getString(R.string.user_already_in_team), Toast.LENGTH_LONG).show();
                     } else {
                         final DocumentReference drUser = GameActivity.fbDb.collection("users").document(userUID);
                         drUser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -195,10 +195,10 @@ public class TeamActivity extends AppCompatActivity {
                                 String userNIC = (String)documentSnapshot.get("userNIC");
 
                                 if (userTeamID != null && !userTeamID.equals("")) {
-                                    Toast.makeText(TeamActivity.this, "Этот пользователь состоит в другой банде.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(TeamActivity.this, getString(R.string.user_already_in_another_team), Toast.LENGTH_LONG).show();
                                 } else {
                                     if (!userLeaderUID.equals(leaderUID)) {
-                                        Toast.makeText(TeamActivity.this, "Этот пользователь не установил ваш UID как UID лидера.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(TeamActivity.this, getString(R.string.not_equals_uid), Toast.LENGTH_LONG).show();
                                     } else {
                                         Map<String, Object> mapUpdateItem = new HashMap<>();
                                         mapUpdateItem.put("teamID", teamID);
@@ -760,7 +760,7 @@ public class TeamActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
-                        Toast.makeText(TeamActivity.this, "Нельзя удалить из банды самого себя.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamActivity.this, getString(R.string.unable_delete_self), Toast.LENGTH_LONG).show();
                     } else {
                         final String userID = dbTeamUser.getUserID();
                         final String teamID = dbTeam.getTeamID();
@@ -848,7 +848,7 @@ public class TeamActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
-                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamActivity.this, getString(R.string.unable_chage_self_role), Toast.LENGTH_LONG).show();
                     } else {
                         final String userRole = "leader";
                         final String userID = dbTeamUser.getUserID();
@@ -884,7 +884,7 @@ public class TeamActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
-                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamActivity.this, getString(R.string.unable_chage_self_role), Toast.LENGTH_LONG).show();
                     } else {
                         final String userRole = "captain";
                         final String userID = dbTeamUser.getUserID();
@@ -918,7 +918,7 @@ public class TeamActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
-                        Toast.makeText(TeamActivity.this, "Нельзя изменить роль самому себе.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(TeamActivity.this, getString(R.string.unable_chage_self_role), Toast.LENGTH_LONG).show();
                     } else {
                         final String userRole = "meat";
                         final String userID = dbTeamUser.getUserID();

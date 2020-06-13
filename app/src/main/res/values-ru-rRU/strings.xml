@@ -136,6 +136,41 @@
     <string name="role_colon">Роль:</string>
     <string name="leaderuid">UID лидера</string>
     <string name="leaderuid_colon">UID лидера:</string>
+    <string name="invite_user">Пригласить пользователя</string>
+    <string name="team_is_public">Публичная банда</string>
+    <string name="team_is_opened">Открытая банда</string>
+    <string name="max_count_teams_expired">Навозможно собдать новую банду. Превышен лимит банд на сервере.</string>
+    <string name="creating_new_team">Создание новой банды</string>
+    <string name="a_you_sure">Вы уверены?</string>
+    <string name="yes_sure">Да, уверен</string>
+    <string name="new_team">New team</string>
+    <string name="send_email_verification">Выслать e-mail для подтверждения аккаунта</string>
+    <string name="email_sent_to">Письмо выслано на адрес</string>
+    <string name="failed_sent_email">Не получилось отправить письмо.</string>
+    <string name="leaving_team">Выход из банды</string>
+    <string name="team_have_another_users">В банде есть еще пользователи, и ни один из них не является лидером. Прежде чем покинуть такую банду нужно или назначить кого-то лидером, или удалить всех пользователей из банды.</string>
+    <string name="joined_team">Выступление в банду</string>
+    <string name="sure_joined_team">Вы уверены, что хотите вступить в банду</string>
+    <string name="screenshot_will_create">Скриншот сделан</string>
+    <string name="minutes_ago">минут назад</string>
+    <string name="by_user">пользователем</string>
+    <string name="unable_add_self_to_team">Нельзя добавить в банду самого себя.</string>
+    <string name="user_already_in_team">Этот пользователь уже в банде.</string>
+    <string name="user_already_in_another_team">Этот пользователь состоит в другой банде.</string>
+    <string name="not_equals_uid">Этот пользователь не установил ваш UID как UID лидера.</string>
+    <string name="unable_delete_self">Нельзя удалить из банды самого себя.</string>
+    <string name="unable_chage_self_role">Нельзя изменить роль самому себе.</string>
+    <string name="you_hane_no_team">Вы не состоите ни в какой банде</string>
+    <string name="you_hane_no_role">У вас нет роли</string>
+    <string name="logout">Logout</string>
+    <string name="no_team">(нет банды)</string>
+    <string name="share">Поделиться</string>
+    <string name="login">Login</string>
+    <string name="re_login">Re-login</string>
+    <string name="manage_team">Банда</string>
+    <string name="create_team">Создать банду</string>
+    <string name="leave_team">Выйти из банды</string>
+    <string name="find_team">Выступить в открытую банду</string>
 
 
 </resources>

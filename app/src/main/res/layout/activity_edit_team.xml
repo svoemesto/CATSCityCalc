@@ -88,7 +88,7 @@
                     android:id="@+id/te_sw_team_is_public"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Team is public"
+                    android:text="@string/team_is_public"
                     />
 
             </RelativeLayout>
@@ -104,7 +104,7 @@
                     android:id="@+id/te_sw_team_is_opened"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Team is opened"
+                    android:text="@string/team_is_opened"
                     />
 
             </RelativeLayout>

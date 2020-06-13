@@ -387,7 +387,8 @@ public class GameActivity extends AppCompatActivity {
 
             Date dateScreenshot = ccaGame.getCcagDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
-            ga_tv_screenshot_time.setText("Скриншот сделан " + minutesFromTakingScreenshot + " минут назад" + (ccaGame.getUserNIC() != null ? " пользователем " + ccaGame.getUserNIC() + "." : "."));
+            String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + (ccaGame.getUserNIC() != null ? " " + getString(R.string.by_user) + " " + ccaGame.getUserNIC() + "." : ".");
+            ga_tv_screenshot_time.setText(screenshotTimeText);
             ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
             ga_bt_strategy.setVisibility(!ccaGame.isCcagIsGameOver() ? View.VISIBLE : View.INVISIBLE);
@@ -1606,7 +1607,7 @@ public class GameActivity extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         userHaveTeam = false;
                                         // обновляем инфо юзера
-                                        String userText = fbUser.getDisplayName() + " (no team)";
+                                        String userText = fbUser.getDisplayName() + " " + getString(R.string.no_team);
                                         ga_tv_user.setText(userText);
 
                                         // выводим пункт "Создать банду", скрываем пункты "Банда", "Покинуть банду" и "Найти банду"
@@ -1736,9 +1737,9 @@ public class GameActivity extends AppCompatActivity {
 
                             AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
                             builderConfirmation.setCancelable(true);
-                            builderConfirmation.setTitle("Выступление в банду");
-                            builderConfirmation.setMessage("Вы уверены, что хотите вступить в банду \"" + dbTeam.getTeamName() + "\"?");
-                            builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                            builderConfirmation.setTitle(R.string.joined_team);
+                            builderConfirmation.setMessage(getString(R.string.sure_joined_team) + " \"" + dbTeam.getTeamName() + "\"?");
+                            builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog2, int which) {
 
@@ -1832,10 +1833,10 @@ public class GameActivity extends AppCompatActivity {
 
                                     AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
                                     builderConfirmation.setCancelable(true);
-                                    builderConfirmation.setTitle("Выйти из банды");
-                                    builderConfirmation.setMessage("Вы уверены?");
+                                    builderConfirmation.setTitle(R.string.leaving_team);
+                                    builderConfirmation.setMessage(R.string.a_you_sure);
                                     int finalCountUsersInTeam = countUsersInTeam;
-                                    builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                                    builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             DocumentReference drUser = GameActivity.fbDb.collection("users").document(mainDbUser.getUserID());
@@ -1869,7 +1870,7 @@ public class GameActivity extends AppCompatActivity {
                                     dialog.show();
 
                                 } else {
-                                    Toast.makeText(GameActivity.this, "В банде есть еще пользователи, и ни один из них не является лидером. Прежде чем покинуть такую банду нужно или назначить кого-то лидером, или удалить всех пользователей из банды.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(GameActivity.this, getString(R.string.team_have_another_users), Toast.LENGTH_LONG).show();
                                 }
 
                             }
@@ -1884,9 +1885,9 @@ public class GameActivity extends AppCompatActivity {
 
                 AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
                 builderConfirmation.setCancelable(true);
-                builderConfirmation.setTitle("Выйти из банды");
-                builderConfirmation.setMessage("Вы уверены?");
-                builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                builderConfirmation.setTitle(R.string.leaving_team);
+                builderConfirmation.setMessage(R.string.a_you_sure);
+                builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DocumentReference drUser = GameActivity.fbDb.collection("users").document(mainDbUser.getUserID());
@@ -1933,21 +1934,21 @@ public class GameActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 if (task.getResult().size() >= maxCountTeams) {
 
-                                    Toast.makeText(GameActivity.this, "Навозможно собдать новую банду. Превышен лимит банд на сервере.", Toast.LENGTH_LONG);
+                                    Toast.makeText(GameActivity.this, R.string.max_count_teams_expired, Toast.LENGTH_LONG);
 
                                 } else {
 
                                     AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
                                     builderConfirmation.setCancelable(true);
-                                    builderConfirmation.setTitle("Создать новую команду");
-                                    builderConfirmation.setMessage("Вы уверены?");
-                                    builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                                    builderConfirmation.setTitle(R.string.creating_new_team);
+                                    builderConfirmation.setMessage(R.string.a_you_sure);
+                                    builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
 
                                             final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
                                             builder.setTitle(R.string.team);
-                                            String defaultValue = "New team";
+                                            String defaultValue = getString(R.string.new_team);
                                             final EditText input = new EditText(GameActivity.this);
                                             input.setInputType(InputType.TYPE_CLASS_TEXT);
                                             input.setText(defaultValue);
@@ -2087,9 +2088,9 @@ public class GameActivity extends AppCompatActivity {
 
         AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
         builderConfirmation.setCancelable(true);
-        builderConfirmation.setTitle("Send email verification");
-        builderConfirmation.setMessage("Вы уверены?");
-        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+        builderConfirmation.setTitle(R.string.send_email_verification);
+        builderConfirmation.setMessage(R.string.a_you_sure);
+        builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 AuthUI.getInstance().signOut(GameActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -2100,10 +2101,9 @@ public class GameActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<Void> task) {
 
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(GameActivity.this, "Verification email sent to " + fbUser.getEmail(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(GameActivity.this, getString(R.string.email_sent_to) + " " + fbUser.getEmail(), Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Log.e(TAG, "sendEmailVerification", task.getException());
-                                    Toast.makeText(GameActivity.this, "Failed to send verification email.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(GameActivity.this, getString(R.string.failed_sent_email), Toast.LENGTH_SHORT).show();
                                 }
                                 checkMenuVisibility();
                             }
@@ -2127,9 +2127,9 @@ public class GameActivity extends AppCompatActivity {
 
         AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
         builderConfirmation.setCancelable(true);
-        builderConfirmation.setTitle("Logout");
-        builderConfirmation.setMessage("Вы уверены?");
-        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+        builderConfirmation.setTitle(R.string.logout);
+        builderConfirmation.setMessage(R.string.a_you_sure);
+        builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 AuthUI.getInstance().signOut(GameActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {

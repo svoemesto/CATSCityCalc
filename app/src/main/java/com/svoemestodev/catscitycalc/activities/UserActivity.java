@@ -116,8 +116,8 @@ public class UserActivity extends AppCompatActivity {
             ua_tv_team_value.setText(GameActivity.mainDbTeam.getTeamName());
             ua_tv_role_value.setText(GameActivity.mainDbTeamUser.getUserRole());
         } else {
-            ua_tv_team_value.setText("Вы не состоите ни в какой банде");
-            ua_tv_role_value.setText("У вас нет роли");
+            ua_tv_team_value.setText(R.string.you_hane_no_team);
+            ua_tv_role_value.setText(R.string.you_hane_no_role);
         }
 
     }
