@@ -1919,116 +1919,149 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void doMenuCreateTeam() {
-        AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(this);
-        builderConfirmation.setCancelable(true);
-        builderConfirmation.setTitle("Создать новую команду");
-        builderConfirmation.setMessage("Вы уверены?");
-        builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+
+        DocumentReference docRefDbPref = fbDb.collection("database").document("preferences");
+        docRefDbPref.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    final long maxCountTeams = (long) task.getResult().get("maxCountTeams");
+                    Query query = fbDb.collection("teams");
+                    query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isSuccessful()) {
+                                if (task.getResult().size() >= maxCountTeams) {
 
-                final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
-                builder.setTitle(R.string.team);
-                String defaultValue = "New team";
-                final EditText input = new EditText(GameActivity.this);
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                input.setText(defaultValue);
-                builder.setView(input);
+                                    Toast.makeText(GameActivity.this, "Навозможно собдать новую банду. Превышен лимит банд на сервере.", Toast.LENGTH_LONG);
 
-                builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String newValue = input.getText().toString();
+                                } else {
 
-                        CollectionReference collectionReference = fbDb.collection("teams");
+                                    AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
+                                    builderConfirmation.setCancelable(true);
+                                    builderConfirmation.setTitle("Создать новую команду");
+                                    builderConfirmation.setMessage("Вы уверены?");
+                                    builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
 
-                        Map<String, Object> mapNewItem = new HashMap<>();
-                        mapNewItem.put("teamID", null);
-                        mapNewItem.put("teamIsPublic", false);
-                        mapNewItem.put("teamIsOpened", false);
-                        mapNewItem.put("teamName", newValue);
-                        mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+                                            final AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                                            builder.setTitle(R.string.team);
+                                            String defaultValue = "New team";
+                                            final EditText input = new EditText(GameActivity.this);
+                                            input.setInputType(InputType.TYPE_CLASS_TEXT);
+                                            input.setText(defaultValue);
+                                            builder.setView(input);
 
-                        // Add a new document with a generated ID
-                        collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                final String teamID = documentReference.getId();
-                                CollectionReference collectionReference = fbDb.collection("teams");
-                                Map<String, Object> mapUpdateItem = new HashMap<>();
-                                mapUpdateItem.put("teamID", teamID);
-                                mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
-                                collectionReference.document(teamID).update(mapUpdateItem);
+                                            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    String newValue = input.getText().toString();
 
-                                CollectionReference users = fbDb.collection("users");
-                                Map<String, Object> updateUser = new HashMap<>();
-                                updateUser.put("teamID", teamID);
-                                users.document(mainDbUser.getUserID()).update(updateUser);
-                                mainDbUser.setTeamID(teamID);
+                                                    CollectionReference collectionReference = fbDb.collection("teams");
 
-                                collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
-                                Map<String, Object> mapNewItem = new HashMap<>();
-                                mapNewItem.put("teamID", teamID);
-                                mapNewItem.put("userID", mainDbUser.getUserID());
-                                mapNewItem.put("userRole", "leader");
-                                mapNewItem.put("userNIC", mainDbUser.getUserNIC());
-                                mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+                                                    Map<String, Object> mapNewItem = new HashMap<>();
+                                                    mapNewItem.put("teamID", null);
+                                                    mapNewItem.put("teamIsPublic", false);
+                                                    mapNewItem.put("teamIsOpened", false);
+                                                    mapNewItem.put("teamName", newValue);
+                                                    mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
-                                // Add a new document with a generated ID
-                                collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                    @Override
-                                    public void onSuccess(DocumentReference documentReference) {
-                                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                                        String newDocumentID = documentReference.getId();
-                                        CollectionReference collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
-                                        Map<String, Object> mapUpdateItem = new HashMap<>();
-                                        mapUpdateItem.put("teamUserID", newDocumentID);
-                                        mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
-                                        collectionReference.document(newDocumentID).update(mapUpdateItem);
+                                                    // Add a new document with a generated ID
+                                                    collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                        @Override
+                                                        public void onSuccess(DocumentReference documentReference) {
+                                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                                            final String teamID = documentReference.getId();
+                                                            CollectionReference collectionReference = fbDb.collection("teams");
+                                                            Map<String, Object> mapUpdateItem = new HashMap<>();
+                                                            mapUpdateItem.put("teamID", teamID);
+                                                            mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                                            collectionReference.document(teamID).update(mapUpdateItem);
 
-                                        checkMenuVisibility();
+                                                            CollectionReference users = fbDb.collection("users");
+                                                            Map<String, Object> updateUser = new HashMap<>();
+                                                            updateUser.put("teamID", teamID);
+                                                            users.document(mainDbUser.getUserID()).update(updateUser);
+                                                            mainDbUser.setTeamID(teamID);
 
-                                    }
-                                })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.e(TAG, "Error adding document", e);
-                                            }
-                                        });
+                                                            collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
+                                                            Map<String, Object> mapNewItem = new HashMap<>();
+                                                            mapNewItem.put("teamID", teamID);
+                                                            mapNewItem.put("userID", mainDbUser.getUserID());
+                                                            mapNewItem.put("userRole", "leader");
+                                                            mapNewItem.put("userNIC", mainDbUser.getUserNIC());
+                                                            mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+
+                                                            // Add a new document with a generated ID
+                                                            collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                                @Override
+                                                                public void onSuccess(DocumentReference documentReference) {
+                                                                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                                                    String newDocumentID = documentReference.getId();
+                                                                    CollectionReference collectionReference = fbDb.collection("teams").document(teamID).collection("teamUsers");
+                                                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                                                    mapUpdateItem.put("teamUserID", newDocumentID);
+                                                                    mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                                                    collectionReference.document(newDocumentID).update(mapUpdateItem);
+
+                                                                    checkMenuVisibility();
+
+                                                                }
+                                                            })
+                                                                    .addOnFailureListener(new OnFailureListener() {
+                                                                        @Override
+                                                                        public void onFailure(@NonNull Exception e) {
+                                                                            Log.e(TAG, "Error adding document", e);
+                                                                        }
+                                                                    });
+
+                                                        }
+                                                    })
+                                                            .addOnFailureListener(new OnFailureListener() {
+                                                                @Override
+                                                                public void onFailure(@NonNull Exception e) {
+                                                                    Log.e(TAG, "Error adding document", e);
+                                                                }
+                                                            });
+
+                                                    checkMenuVisibility();
+                                                }
+                                            });
+                                            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.cancel();
+                                                }
+                                            });
+
+                                            builder.show();
+
+
+                                        }
+                                    });
+                                    builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                        }
+                                    });
+                                    AlertDialog dialog = builderConfirmation.create();
+                                    dialog.show();
+
+
+                                }
 
                             }
-                        })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.e(TAG, "Error adding document", e);
-                                    }
-                                });
+                        }
+                    });
 
-                        checkMenuVisibility();
-                    }
-                });
-                builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                builder.show();
-
-
+                }
             }
         });
-        builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
-        AlertDialog dialog = builderConfirmation.create();
-        dialog.show();
+
+
+
+
     }
 
     private void doMenuManageTeam() {
