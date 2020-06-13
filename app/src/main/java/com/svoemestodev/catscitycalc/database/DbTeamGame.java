@@ -329,20 +329,33 @@ public class DbTeamGame {
                         if (teamID != null && !teamID.equals("")) {
 
                             DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                            doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    Map<String, Object> map = getMap(userUID, userNIC);
-                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
-                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void aVoid) {
-                                                Log.i(TAG, "added");
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        if (task.getResult().exists()) {
+                                            DocumentSnapshot documentSnapshot = task.getResult();
+                                            Map<String, Object> map = getMap(userUID, userNIC);
+                                            if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+                                                GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                    @Override
+                                                    public void onSuccess(Void aVoid) {
+                                                        Log.i(TAG, "added");
+                                                    }
+                                                });
                                             }
-                                        });
+                                        } else {
+                                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.i(TAG, "added");
+                                                }
+                                            });
+                                        }
                                     }
                                 }
                             });
+
                         }
                     }
                 });

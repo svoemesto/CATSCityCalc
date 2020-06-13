@@ -528,7 +528,7 @@ public class CityCalc extends Activity {
                 thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_our_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_our_thm), Integer.parseInt(context.getString(R.string.def_rgb_points_our_thm))));
                 thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_our_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_our_thp), Integer.parseInt(context.getString(R.string.def_rgb_points_our_thp))));
 
-                Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, true);
+                Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.90f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, true);
 
                 CityCalcArea ccaPointsOur = null;
                 CityCalcArea ccaIncreaseOur = null;
@@ -613,7 +613,7 @@ public class CityCalc extends Activity {
                 thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_enemy_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_enemy_thm), Integer.parseInt(context.getString(R.string.def_rgb_points_enemy_thm))));
                 thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_points_enemy_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_points_enemy_thp), Integer.parseInt(context.getString(R.string.def_rgb_points_enemy_thp))));
 
-                Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.85f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT, true);
+                Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.90f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT, true);
 
                 CityCalcArea ccaPointsEnemy = null;
                 CityCalcArea ccaIncreaseEnemy = null;
