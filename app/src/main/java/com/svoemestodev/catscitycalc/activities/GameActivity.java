@@ -1822,6 +1822,8 @@ public class GameActivity extends AppCompatActivity {
 
                         Map<String, Object> mapNewItem = new HashMap<>();
                         mapNewItem.put("teamID", null);
+                        mapNewItem.put("teamIsPublic", false);
+                        mapNewItem.put("teamIsOpened", false);
                         mapNewItem.put("teamName", newValue);
                         mapNewItem.put("timestamp", FieldValue.serverTimestamp());
 
@@ -1914,14 +1916,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void doMenuEmailVerificationCheck() {
-        fbUser.reload().addOnCompleteListener(new OnCompleteListener<Void>() {
+
+        AuthUI.getInstance().signOut(GameActivity.this).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    checkMenuVisibility();
-                }
+                Toast.makeText(GameActivity.this, R.string.your_signed_out, Toast.LENGTH_LONG).show();
+                fbUser = null;
+                startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().build(), SIGN_IN_REQUEST_CODE);
             }
         });
+
     }
 
     private void doMenuEmailVerificationSend() {
@@ -2019,8 +2023,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void doMenuOpenSettings() {
-        String logMsgPref = "openSettings: ";
-        Log.i(TAG, logMsgPref + "start");
         Intent intent = new Intent(this, SettingsActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, REQUEST_CODE_SECOND_ACTIVITY);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }

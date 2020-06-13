@@ -16,27 +16,25 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.EditTeamActivity"></activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:grantUriPermissions="true"
+            android:authorities="${applicationId}"
             android:exported="false"
-            android:authorities="${applicationId}">
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_provider_paths"/>
+                android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <activity android:name=".activities.TeamActivity"
-            android:label="@string/team"
-            />
-
+        <activity
+            android:name=".activities.TeamActivity"
+            android:label="@string/team" />
         <activity
             android:name=".activities.UserActivity"
             android:label="@string/open_login" />
-
         <activity android:name=".activities.CarActivity" />
-
         <activity
             android:name=".activities.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
@@ -46,16 +44,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.GameActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleInstance"/>
-
+            android:launchMode="singleInstance" />
         <activity
             android:name=".activities.ColorsdetectActivity"
             android:label="@string/sett_colors" />
-
         <activity
             android:name=".activities.BordersActivity"
             android:label="@string/sett_borders" />
@@ -67,15 +62,12 @@
         <activity
             android:name=".activities.CalibrateActivity"
             android:label="@string/sett_calibrate_center_screen" />
-
         <activity
             android:name=".activities.SettingsActivity"
             android:label="@string/settings" />
-
         <activity
             android:name=".activities.StrategyActivity"
             android:label="@string/strategic_planning" />
-
     </application>
 
 </manifest>

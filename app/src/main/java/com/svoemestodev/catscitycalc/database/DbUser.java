@@ -30,8 +30,24 @@ public class DbUser {
         key = "userName"; if (map.containsKey(key)) this.userName = map.get(key).toString();
         key = "userEmail"; if (map.containsKey(key)) this.userEmail = map.get(key).toString();
         key = "userNIC"; if (map.containsKey(key)) this.userNIC = map.get(key).toString();
-        key = "teamID"; if (map.containsKey(key)) this.teamID = map.get(key).toString();
-        key = "leaderUID"; if (map.containsKey(key)) this.leaderUID = map.get(key).toString();
+
+        key = "teamID"; if (map.containsKey(key)) {
+            if (documentSnapshot.get(key) == null) {
+                this.teamID = null;
+            } else {
+                this.teamID = documentSnapshot.get(key).toString();
+            }
+        }
+
+        key = "leaderUID"; if (map.containsKey(key)) {
+            if (documentSnapshot.get(key) == null) {
+                this.leaderUID = null;
+            } else {
+                this.leaderUID = documentSnapshot.get(key).toString();
+            }
+        }
+
+
         key = "timestamp"; if (map.containsKey(key)) {
             if (documentSnapshot.getTimestamp(key) == null) {
                 this.timestamp = null;

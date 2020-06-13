@@ -65,7 +65,7 @@ public class TeamActivity extends AppCompatActivity {
 
     AdView ta_ad_banner;
     Button ta_bt_invite_user;
-    ImageButton ta_bt_rename_team;
+    ImageButton ta_bt_edit_team;
     ListView ta_lv_users;
     TextView ta_tv_name;
 
@@ -101,11 +101,11 @@ public class TeamActivity extends AppCompatActivity {
     private void initializeViews() {
         ta_ad_banner = findViewById(R.id.ta_ad_banner);
         ta_bt_invite_user = findViewById(R.id.ta_bt_invite_user);
-        ta_bt_rename_team = findViewById(R.id.ta_bt_rename_team);
+        ta_bt_edit_team = findViewById(R.id.ta_bt_edit_team);
         ta_lv_users = findViewById(R.id.ta_lv_users);
         ta_tv_name = findViewById(R.id.ta_tv_name);
         ta_bt_invite_user.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
-        ta_bt_rename_team.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+        ta_bt_edit_team.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
     }
 
     @Override
@@ -131,7 +131,13 @@ public class TeamActivity extends AppCompatActivity {
 
     private void displayRecords() {
 
-        ta_tv_name.setText(dbTeam.getTeamName());
+        String symbolOpened = "\uD83D\uDD13";
+        String symbolClosed = "\uD83D\uDD12";
+        String symbolEye = "\uD83D\uDC41";
+
+        String textName = (dbTeam.isTeamIsPublic() ? symbolEye :"") + (dbTeam.isTeamIsOpened() ? symbolOpened : symbolClosed) + dbTeam.getTeamName();
+
+        ta_tv_name.setText(textName);
 
         CollectionReference crTeamUsers = GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).collection("teamUsers");
         crTeamUsers.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -252,35 +258,10 @@ public class TeamActivity extends AppCompatActivity {
 
     }
 
-    public void renameTeam(View view) {
+    public void editTeam(View view) {
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(TeamActivity.this);
-        builder.setTitle(R.string.team);
-        String defaultValue = dbTeam.getTeamName();
-        final EditText input = new EditText(TeamActivity.this);
-        input.setInputType(InputType.TYPE_CLASS_TEXT);
-        input.setText(defaultValue);
-        builder.setView(input);
-
-        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String newValue = input.getText().toString();
-                dbTeam.setTeamName(newValue);
-                Map<String, Object> updateTeam = new HashMap<>();
-                updateTeam.put("teamName", newValue);
-                GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).update(updateTeam);
-                ta_tv_name.setText(newValue);
-            }
-        });
-        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
+        Intent intent = new Intent(this, EditTeamActivity.class);
+        startActivityForResult(intent, REQUEST_CODE_TEAM_ACTIVITY);
 
     }
 

@@ -2,6 +2,7 @@ package com.svoemestodev.catscitycalc.database;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
+import com.svoemestodev.catscitycalc.classes.Car;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +20,17 @@ public class DbCar {
     private int carBuildingTask;
 
     public DbCar() {
+    }
+
+    public DbCar(Car car) {
+        this.carUID = car.getUuid().toString();
+        this.carName = car.getName();
+        this.carSlot = car.getSlot();
+        this.carHealth = car.getHealth();
+        this.carShield = car.getShield();
+        this.carRepair = car.getRepair();
+        this.carBuilding = car.getBuilding();
+        this.carBuildingTask = car.getBuildingTask();
     }
 
     public DbCar(DocumentSnapshot documentSnapshot) {

@@ -7,6 +7,7 @@
     <string name="banner_ad_ca_unit_id" translatable="false">ca-app-pub-2870168293382158/8639364851</string>
     <string name="banner_ad_ua_unit_id" translatable="false">ca-app-pub-2870168293382158/2328450838</string>
     <string name="banner_ad_ta_unit_id" translatable="false">ca-app-pub-2870168293382158/8858996327</string>
+    <string name="banner_ad_te_unit_id" translatable="false">ca-app-pub-2870168293382158/6461376771</string>
 
     <string name="app_name" translatable="false">C.A.T.S. City Calculator</string>
     <string name="last_screenshot_file_name" translatable="false">last_screenshot.PNG</string>
@@ -129,32 +130,32 @@
     <string name="borders_enemy_team_name" translatable="false">Enemy\'s team name</string>
     <string name="borders_blt" translatable="false">Building left-top (BLT)</string>
     <string name="borders_blt_name" translatable="false">BLT name</string>
-<!--    <string name="borders_blt_increase" translatable="false">BLT increase</string>-->
+    <!--    <string name="borders_blt_increase" translatable="false">BLT increase</string>-->
     <string name="borders_blt_slots" translatable="false">BLT slots</string>
     <string name="borders_blt_progress" translatable="false">BLT progress</string>
     <string name="borders_blc" translatable="false">Building left-center (BLC)</string>
     <string name="borders_blc_name" translatable="false">BLC name</string>
-<!--    <string name="borders_blc_increase" translatable="false">BLC increase</string>-->
+    <!--    <string name="borders_blc_increase" translatable="false">BLC increase</string>-->
     <string name="borders_blc_slots" translatable="false">BLC slots</string>
     <string name="borders_blc_progress" translatable="false">BLC progress</string>
     <string name="borders_blb" translatable="false">Building left-bottom (BLB)</string>
     <string name="borders_blb_name" translatable="false">BLB name</string>
-<!--    <string name="borders_blb_increase" translatable="false">BLB increase</string>-->
+    <!--    <string name="borders_blb_increase" translatable="false">BLB increase</string>-->
     <string name="borders_blb_slots" translatable="false">BLB slots</string>
     <string name="borders_blb_progress" translatable="false">BLB progress</string>
     <string name="borders_brt" translatable="false">Building right-top (BRT)</string>
     <string name="borders_brt_name" translatable="false">BRT name</string>
-<!--    <string name="borders_brt_increase" translatable="false">BRT increase</string>-->
+    <!--    <string name="borders_brt_increase" translatable="false">BRT increase</string>-->
     <string name="borders_brt_slots" translatable="false">BRT slots</string>
     <string name="borders_brt_progress" translatable="false">BRT progress</string>
     <string name="borders_brc" translatable="false">Building right-center (BRC)</string>
     <string name="borders_brc_name" translatable="false">BRC name</string>
-<!--    <string name="borders_brc_increase" translatable="false">BRC increase</string>-->
+    <!--    <string name="borders_brc_increase" translatable="false">BRC increase</string>-->
     <string name="borders_brc_slots" translatable="false">BRC slots</string>
     <string name="borders_brc_progress" translatable="false">BRC progress</string>
     <string name="borders_brb" translatable="false">Building right-bottom (BRB)</string>
     <string name="borders_brb_name" translatable="false">BRB name</string>
-<!--    <string name="borders_brb_increase" translatable="false">BRB increase</string>-->
+    <!--    <string name="borders_brb_increase" translatable="false">BRB increase</string>-->
     <string name="borders_brb_slots" translatable="false">BRB slots</string>
     <string name="borders_brb_progress" translatable="false">BRB progress</string>
 
@@ -197,32 +198,32 @@
     <string name="colors_enemy_team_name" translatable="false">Enemy\'s team name</string>
     <string name="colors_blt" translatable="false">Building left-top (BLT)</string>
     <string name="colors_blt_name" translatable="false">BLT name</string>
-<!--    <string name="colors_blt_increase" translatable="false">BLT increase</string>-->
+    <!--    <string name="colors_blt_increase" translatable="false">BLT increase</string>-->
     <string name="colors_blt_slots" translatable="false">BLT slots</string>
     <string name="colors_blt_progress" translatable="false">BLT progress</string>
     <string name="colors_blc" translatable="false">Building left-center (BLC)</string>
     <string name="colors_blc_name" translatable="false">BLC name</string>
-<!--    <string name="colors_blc_increase" translatable="false">BLC increase</string>-->
+    <!--    <string name="colors_blc_increase" translatable="false">BLC increase</string>-->
     <string name="colors_blc_slots" translatable="false">BLC slots</string>
     <string name="colors_blc_progress" translatable="false">BLC progress</string>
     <string name="colors_blb" translatable="false">Building left-bottom (BLB)</string>
     <string name="colors_blb_name" translatable="false">BLB name</string>
-<!--    <string name="colors_blb_increase" translatable="false">BLB increase</string>-->
+    <!--    <string name="colors_blb_increase" translatable="false">BLB increase</string>-->
     <string name="colors_blb_slots" translatable="false">BLB slots</string>
     <string name="colors_blb_progress" translatable="false">BLB progress</string>
     <string name="colors_brt" translatable="false">Building right-top (BRT)</string>
     <string name="colors_brt_name" translatable="false">BRT name</string>
-<!--    <string name="colors_brt_increase" translatable="false">BRT increase</string>-->
+    <!--    <string name="colors_brt_increase" translatable="false">BRT increase</string>-->
     <string name="colors_brt_slots" translatable="false">BRT slots</string>
     <string name="colors_brt_progress" translatable="false">BRT progress</string>
     <string name="colors_brc" translatable="false">Building right-center (BRC)</string>
     <string name="colors_brc_name" translatable="false">BRC name</string>
-<!--    <string name="colors_brc_increase" translatable="false">BRC increase</string>-->
+    <!--    <string name="colors_brc_increase" translatable="false">BRC increase</string>-->
     <string name="colors_brc_slots" translatable="false">BRC slots</string>
     <string name="colors_brc_progress" translatable="false">BRC progress</string>
     <string name="colors_brb" translatable="false">Building right-bottom (BRB)</string>
     <string name="colors_brb_name" translatable="false">BRB name</string>
-<!--    <string name="colors_brb_increase" translatable="false">BRB increase</string>-->
+    <!--    <string name="colors_brb_increase" translatable="false">BRB increase</string>-->
     <string name="colors_brb_slots" translatable="false">BRB slots</string>
     <string name="colors_brb_progress" translatable="false">BRB progress</string>
 
@@ -274,32 +275,32 @@
         <item>Enemy\'s team name</item>
         <item>Building left-top (BLT)</item>
         <item>BLT name</item>
-<!--        <item>BLT increase</item>-->
+        <!--        <item>BLT increase</item>-->
         <item>BLT slots</item>
         <item>BLT progress</item>
         <item>Building left-center (BLC)</item>
         <item>BLC name</item>
-<!--        <item>BLC increase</item>-->
+        <!--        <item>BLC increase</item>-->
         <item>BLC slots</item>
         <item>BLC progress</item>
         <item>Building left-bottom (BLB)</item>
         <item>BLB name</item>
-<!--        <item>BLB increase</item>-->
+        <!--        <item>BLB increase</item>-->
         <item>BLB slots</item>
         <item>BLB progress</item>
         <item>Building right-top (BRT)</item>
         <item>BRT name</item>
-<!--        <item>BRT increase</item>-->
+        <!--        <item>BRT increase</item>-->
         <item>BRT slots</item>
         <item>BRT progress</item>
         <item>Building right-center (BRC)</item>
         <item>BRC name</item>
-<!--        <item>BRC increase</item>-->
+        <!--        <item>BRC increase</item>-->
         <item>BRC slots</item>
         <item>BRC progress</item>
         <item>Building right-bottom (BRB)</item>
         <item>BRB name</item>
-<!--        <item>BRB increase</item>-->
+        <!--        <item>BRB increase</item>-->
         <item>BRB slots</item>
         <item>BRB progress</item>
     </string-array>
@@ -333,32 +334,32 @@
         <item>Enemy\'s team name</item>
         <item>Building left-top (BLT)</item>
         <item>BLT name</item>
-<!--        <item>BLT increase</item>-->
+        <!--        <item>BLT increase</item>-->
         <item>BLT slots</item>
         <item>BLT progress</item>
         <item>Building left-center (BLC)</item>
         <item>BLC name</item>
-<!--        <item>BLC increase</item>-->
+        <!--        <item>BLC increase</item>-->
         <item>BLC slots</item>
         <item>BLC progress</item>
         <item>Building left-bottom (BLB)</item>
         <item>BLB name</item>
-<!--        <item>BLB increase</item>-->
+        <!--        <item>BLB increase</item>-->
         <item>BLB slots</item>
         <item>BLB progress</item>
         <item>Building right-top (BRT)</item>
         <item>BRT name</item>
-<!--        <item>BRT increase</item>-->
+        <!--        <item>BRT increase</item>-->
         <item>BRT slots</item>
         <item>BRT progress</item>
         <item>Building right-center (BRC)</item>
         <item>BRC name</item>
-<!--        <item>BRC increase</item>-->
+        <!--        <item>BRC increase</item>-->
         <item>BRC slots</item>
         <item>BRC progress</item>
         <item>Building right-bottom (BRB)</item>
         <item>BRB name</item>
-<!--        <item>BRB increase</item>-->
+        <!--        <item>BRB increase</item>-->
         <item>BRB slots</item>
         <item>BRB progress</item>
     </string-array>
@@ -469,32 +470,32 @@
         <item>Enemy\'s team name</item>
         <item>Building left-top (BLT)</item>
         <item>BLT name</item>
-<!--        <item>BLT increase</item>-->
+        <!--        <item>BLT increase</item>-->
         <item>BLT slots</item>
         <item>BLT progress</item>
         <item>Building left-center (BLC)</item>
         <item>BLC name</item>
-<!--        <item>BLC increase</item>-->
+        <!--        <item>BLC increase</item>-->
         <item>BLC slots</item>
         <item>BLC progress</item>
         <item>Building left-bottom (BLB)</item>
         <item>BLB name</item>
-<!--        <item>BLB increase</item>-->
+        <!--        <item>BLB increase</item>-->
         <item>BLB slots</item>
         <item>BLB progress</item>
         <item>Building right-top (BRT)</item>
         <item>BRT name</item>
-<!--        <item>BRT increase</item>-->
+        <!--        <item>BRT increase</item>-->
         <item>BRT slots</item>
         <item>BRT progress</item>
         <item>Building right-center (BRC)</item>
         <item>BRC name</item>
-<!--        <item>BRC increase</item>-->
+        <!--        <item>BRC increase</item>-->
         <item>BRC slots</item>
         <item>BRC progress</item>
         <item>Building right-bottom (BRB)</item>
         <item>BRB name</item>
-<!--        <item>BRB increase</item>-->
+        <!--        <item>BRB increase</item>-->
         <item>BRB slots</item>
         <item>BRB progress</item>
     </string-array>
@@ -528,32 +529,32 @@
         <item>Enemy\'s team name</item>
         <item>Building left-top (BLT)</item>
         <item>BLT name</item>
-<!--        <item>BLT increase</item>-->
+        <!--        <item>BLT increase</item>-->
         <item>BLT slots</item>
         <item>BLT progress</item>
         <item>Building left-center (BLC)</item>
         <item>BLC name</item>
-<!--        <item>BLC increase</item>-->
+        <!--        <item>BLC increase</item>-->
         <item>BLC slots</item>
         <item>BLC progress</item>
         <item>Building left-bottom (BLB)</item>
         <item>BLB name</item>
-<!--        <item>BLB increase</item>-->
+        <!--        <item>BLB increase</item>-->
         <item>BLB slots</item>
         <item>BLB progress</item>
         <item>Building right-top (BRT)</item>
         <item>BRT name</item>
-<!--        <item>BRT increase</item>-->
+        <!--        <item>BRT increase</item>-->
         <item>BRT slots</item>
         <item>BRT progress</item>
         <item>Building right-center (BRC)</item>
         <item>BRC name</item>
-<!--        <item>BRC increase</item>-->
+        <!--        <item>BRC increase</item>-->
         <item>BRC slots</item>
         <item>BRC progress</item>
         <item>Building right-bottom (BRB)</item>
         <item>BRB name</item>
-<!--        <item>BRB increase</item>-->
+        <!--        <item>BRB increase</item>-->
         <item>BRB slots</item>
         <item>BRB progress</item>
     </string-array>
