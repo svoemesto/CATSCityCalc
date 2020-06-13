@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FieldValue;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -15,7 +16,7 @@ public class DbTeam {
     private Date timestamp;         // таймстамп
     private boolean teamIsPublic;   // банда - публичная (видна в списке банд)
     private boolean teamIsOpened;   // в банду открыт прием игроков
-
+    public static List<DbTeam> listTeams;
 
     public DbTeam() {
     }

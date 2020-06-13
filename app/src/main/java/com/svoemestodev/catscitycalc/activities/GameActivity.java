@@ -57,6 +57,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
+import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
+import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
+import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.database.Database;
 import com.svoemestodev.catscitycalc.database.DbCar;
@@ -1703,7 +1706,102 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void doMenuFindTeam() {
-        Toast.makeText(GameActivity.this, "Тут будет активити поиска банд.", Toast.LENGTH_LONG).show();
+
+        Query query = GameActivity.fbDb.collection("teams").whereEqualTo("teamIsPublic", true).whereEqualTo("teamIsOpened", true);
+        query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    List<DbTeam> listTeams = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        listTeams.add(document.toObject(DbTeam.class));
+                    }
+                    DbTeam.listTeams = listTeams;
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.this);
+                    builder.setCancelable(true);
+                    builder.setTitle(R.string.team);
+
+                    final ListTeamsAdapter arrayAdapter = new ListTeamsAdapter(GameActivity.this);
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+                    builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            DbTeam dbTeam = arrayAdapter.getItem(which);
+
+                            AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(GameActivity.this);
+                            builderConfirmation.setCancelable(true);
+                            builderConfirmation.setTitle("Выступление в банду");
+                            builderConfirmation.setMessage("Вы уверены, что хотите вступить в банду \"" + dbTeam.getTeamName() + "\"?");
+                            builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog2, int which) {
+
+                                    DocumentReference drUser = fbDb.collection("users").document(fbUser.getUid());
+
+                                    Map<String, Object> mapUpdateItem = new HashMap<>();
+                                    mapUpdateItem.put("teamID", dbTeam.getTeamID());
+                                    drUser.update(mapUpdateItem);
+                                    mainDbUser.setTeamID(dbTeam.getTeamID());
+
+                                    CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).collection("teamUsers");
+                                    Map<String, Object> mapNewItem = new HashMap<>();
+                                    mapNewItem.put("teamID", dbTeam.getTeamID());
+                                    mapNewItem.put("userID", fbUser.getUid());
+                                    mapNewItem.put("userRole", "meat");
+                                    mapNewItem.put("userNIC", mainDbUser.getUserNIC());
+                                    mapNewItem.put("timestamp", FieldValue.serverTimestamp());
+
+                                    // Add a new document with a generated ID
+                                    collectionReference.add(mapNewItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                            String newDocumentID = documentReference.getId();
+                                            CollectionReference collectionReference = GameActivity.fbDb.collection("teams").document(dbTeam.getTeamID()).collection("teamUsers");
+                                            Map<String, Object> mapUpdateItem = new HashMap<>();
+                                            mapUpdateItem.put("teamUserID", newDocumentID);
+                                            mapUpdateItem.put("timestamp", FieldValue.serverTimestamp());
+                                            collectionReference.document(newDocumentID).update(mapUpdateItem);
+
+                                            checkMenuVisibility();
+
+                                        }
+                                    })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.e(TAG, "Error adding document", e);
+                                                }
+                                            });
+
+                                }
+                            });
+                            builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+                            AlertDialog dialog2 = builderConfirmation.create();
+                            dialog2.show();
+
+
+
+                        }
+                    });
+                    builder.show();
+
+
+                }
+            }
+        });
+
+
     }
 
     private void doMenuLeaveTeam() {
@@ -1740,14 +1838,26 @@ public class GameActivity extends AppCompatActivity {
                                     builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            if (finalCountUsersInTeam == 1) {
-                                                mainDbUser.setTeamID(null);
-                                                Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
-                                                Database.deleteTeam(mainDbTeam.getTeamID());
-                                            } else {
-                                                mainDbUser.setTeamID(null);
-                                                Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
-                                            }
+                                            DocumentReference drUser = GameActivity.fbDb.collection("users").document(mainDbUser.getUserID());
+                                            drUser.update("teamID", null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    DocumentReference drTeamUser = GameActivity.fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamUsers").document(mainDbTeamUser.getTeamUserID());
+                                                    drTeamUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (finalCountUsersInTeam == 1) {
+                                                                DocumentReference drTeam = GameActivity.fbDb.collection("teams").document(mainDbTeam.getTeamID());
+                                                                drTeam.delete();
+                                                            }
+                                                            mainDbUser.setTeamID(null);
+                                                            checkMenuVisibility();
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
                                         }
                                     });
                                     builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -1779,8 +1889,20 @@ public class GameActivity extends AppCompatActivity {
                 builderConfirmation.setPositiveButton("Да, уверен", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        mainDbUser.setTeamID(null);
-                        Database.leaveTeam(mainDbTeam.getTeamID(), mainDbUser.getUserID(), mainDbTeamUser.getTeamUserID());
+                        DocumentReference drUser = GameActivity.fbDb.collection("users").document(mainDbUser.getUserID());
+                        drUser.update("teamID", null).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                DocumentReference drTeamUser = GameActivity.fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamUsers").document(mainDbTeamUser.getTeamUserID());
+                                drTeamUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        mainDbUser.setTeamID(null);
+                                        checkMenuVisibility();
+                                    }
+                                });
+                            }
+                        });
                     }
                 });
                 builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

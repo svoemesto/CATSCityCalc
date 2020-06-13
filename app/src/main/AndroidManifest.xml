@@ -16,7 +16,7 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.EditTeamActivity"></activity>
+        <activity android:name=".activities.EditTeamActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
