@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import android.graphics.Bitmap;
+
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 public class CCABuilding extends CityCalcArea {
@@ -15,7 +17,6 @@ public class CCABuilding extends CityCalcArea {
     private boolean mayX2;
     private boolean isX2;
     private boolean isPresent;
-
 
     public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
@@ -43,11 +44,25 @@ public class CCABuilding extends CityCalcArea {
 
         if (this.isPresent) {
             this.slots = Integer.parseInt(ccaBuildingSlots.getFinText());
-            float frqOurSlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[0],10, 10);
-            float frqEnemySlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[1],10, 10);
-            this.slots_our = (int)Math.ceil((float)this.slots * frqOurSlots);
-            this.slots_enemy = (int)Math.ceil((float)this.slots * frqEnemySlots);
-            this.slots_empty = this.slots - this.slots_our - this.slots_enemy;
+            int[] colors = new int[]{ccaBuildingProgress.getColors()[0], ccaBuildingProgress.getColors()[1], ccaBuildingProgress.getColors()[2]};
+            long[] countColors = PictureProcessor.countPixelInBitmap(ccaBuildingProgress.getBmpSrc(), colors,10, 10);
+            long countPixelsOur = countColors[0];
+            long countPixelsEnemy = countColors[1];
+            long countPixelsEmpty = countColors[2];
+            long countPixelsTotal = ccaBuildingProgress.getBmpSrc().getWidth() * ccaBuildingProgress.getBmpSrc().getHeight();
+            float frqOurSlots = (float) countPixelsOur / countPixelsTotal;
+            float frqEnemySlots = (float) countPixelsEnemy / countPixelsTotal;
+            float frqEmptySlots = (float) countPixelsEmpty / countPixelsTotal;
+            this.slots_our = (int)Math.round((float)this.slots * frqOurSlots);
+            this.slots_enemy = (int)Math.round((float)this.slots * frqEnemySlots);
+            this.slots_empty = (int)Math.round((float)this.slots * frqEmptySlots);
+            int[] counts = new int[]{this.slots_our, this.slots_enemy, this.slots_empty};
+
+//            float frqOurSlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[0],10, 10);
+//            float frqEnemySlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[1],10, 10);
+//            this.slots_our = (int)Math.ceil((float)this.slots * frqOurSlots);
+//            this.slots_enemy = (int)Math.ceil((float)this.slots * frqEnemySlots);
+//            this.slots_empty = this.slots - this.slots_our - this.slots_enemy;
             this.our_points = this.buildingIsOur ? this.slots * (this.isX2 ? 2 : 1) : 0;
             this.enemy_points = this.buildingIsEnemy ? this.slots * (this.isX2 ? 2 : 1) : 0;
         }

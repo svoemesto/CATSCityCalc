@@ -226,9 +226,7 @@ public class StrategyActivity extends AppCompatActivity {
         sa_sb_brb.setOnSeekBarChangeListener(brbSeekBarChangeListener);
         sa_sb_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
         sa_sb_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
-
-
-
+        
         mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context), false);
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
@@ -240,83 +238,64 @@ public class StrategyActivity extends AppCompatActivity {
             pointsInScreenshotEnemyMain = ccaGame.getCcagPointsEnemyInScreenshot();
         }
 
-        CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
-        CCABuilding ccaBLC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
-        CCABuilding ccaBLB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
-        CCABuilding ccaBRT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
-        CCABuilding ccaBRC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
-        CCABuilding ccaBRB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
-
         slotsTotal = 0;
         slotsOur = 0;
         slotsEnemy = 0;
 
         needUpdateSlots = false;
         
-        if (ccaBLT != null) {
-            if (ccaBLT.isPresent()) {
-                if (ccaBLT.isBuildingIsOur()) sa_sb_blt.setProgress(0);
-                if (ccaBLT.isBuildingIsEmpty()) sa_sb_blt.setProgress(1);
-                if (ccaBLT.isBuildingIsEnemy()) sa_sb_blt.setProgress(2);
-                slotsTotal += ccaBLT.getSlots();
-                slotsOur += ccaBLT.getSlots_our();
-                slotsEnemy += ccaBLT.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_blt()) {
+            if (ccaGame.isBuildingIsOur_blt()) sa_sb_blt.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_blt()) sa_sb_blt.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_blt()) sa_sb_blt.setProgress(2);
+            slotsTotal += ccaGame.getSlots_blt();
+            slotsOur += ccaGame.getSlots_blt_our();
+            slotsEnemy += ccaGame.getSlots_blt_enemy();
         }
 
-        if (ccaBLC != null) {
-            if (ccaBLC.isPresent()) {
-                if (ccaBLC.isBuildingIsOur()) sa_sb_blc.setProgress(0);
-                if (ccaBLC.isBuildingIsEmpty()) sa_sb_blc.setProgress(1);
-                if (ccaBLC.isBuildingIsEnemy()) sa_sb_blc.setProgress(2);
-                slotsTotal += ccaBLC.getSlots();
-                slotsOur += ccaBLC.getSlots_our();
-                slotsEnemy += ccaBLC.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_blc()) {
+            if (ccaGame.isBuildingIsOur_blc()) sa_sb_blc.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_blc()) sa_sb_blc.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_blc()) sa_sb_blc.setProgress(2);
+            slotsTotal += ccaGame.getSlots_blc();
+            slotsOur += ccaGame.getSlots_blc_our();
+            slotsEnemy += ccaGame.getSlots_blc_enemy();
         }
 
-        if (ccaBLB != null) {
-            if (ccaBLB.isPresent()) {
-                if (ccaBLB.isBuildingIsOur()) sa_sb_blb.setProgress(0);
-                if (ccaBLB.isBuildingIsEmpty()) sa_sb_blb.setProgress(1);
-                if (ccaBLB.isBuildingIsEnemy()) sa_sb_blb.setProgress(2);
-                slotsTotal += ccaBLB.getSlots();
-                slotsOur += ccaBLB.getSlots_our();
-                slotsEnemy += ccaBLB.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_blb()) {
+            if (ccaGame.isBuildingIsOur_blb()) sa_sb_blb.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_blb()) sa_sb_blb.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_blb()) sa_sb_blb.setProgress(2);
+            slotsTotal += ccaGame.getSlots_blb();
+            slotsOur += ccaGame.getSlots_blb_our();
+            slotsEnemy += ccaGame.getSlots_blb_enemy();
         }
 
-        if (ccaBRT != null) {
-            if (ccaBRT.isPresent()) {
-                if (ccaBRT.isBuildingIsOur()) sa_sb_brt.setProgress(0);
-                if (ccaBRT.isBuildingIsEmpty()) sa_sb_brt.setProgress(1);
-                if (ccaBRT.isBuildingIsEnemy()) sa_sb_brt.setProgress(2);
-                slotsTotal += ccaBRT.getSlots();
-                slotsOur += ccaBRT.getSlots_our();
-                slotsEnemy += ccaBRT.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_brt()) {
+            if (ccaGame.isBuildingIsOur_brt()) sa_sb_brt.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_brt()) sa_sb_brt.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_brt()) sa_sb_brt.setProgress(2);
+            slotsTotal += ccaGame.getSlots_brt();
+            slotsOur += ccaGame.getSlots_brt_our();
+            slotsEnemy += ccaGame.getSlots_brt_enemy();
         }
 
-        if (ccaBRC != null) {
-            if (ccaBRC.isPresent()) {
-                if (ccaBRC.isBuildingIsOur()) sa_sb_brc.setProgress(0);
-                if (ccaBRC.isBuildingIsEmpty()) sa_sb_brc.setProgress(1);
-                if (ccaBRC.isBuildingIsEnemy()) sa_sb_brc.setProgress(2);
-                slotsTotal += ccaBRC.getSlots();
-                slotsOur += ccaBRC.getSlots_our();
-                slotsEnemy += ccaBRC.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_brc()) {
+            if (ccaGame.isBuildingIsOur_brc()) sa_sb_brc.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_brc()) sa_sb_brc.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_brc()) sa_sb_brc.setProgress(2);
+            slotsTotal += ccaGame.getSlots_brc();
+            slotsOur += ccaGame.getSlots_brc_our();
+            slotsEnemy += ccaGame.getSlots_brc_enemy();
         }
 
-        if (ccaBRB != null) {
-            if (ccaBRB.isPresent()) {
-                if (ccaBRB.isBuildingIsOur()) sa_sb_brb.setProgress(0);
-                if (ccaBRB.isBuildingIsEmpty()) sa_sb_brb.setProgress(1);
-                if (ccaBRB.isBuildingIsEnemy()) sa_sb_brb.setProgress(2);
-                slotsTotal += ccaBRB.getSlots();
-                slotsOur += ccaBRB.getSlots_our();
-                slotsEnemy += ccaBRB.getSlots_enemy();
-            }
+        if (ccaGame.isPresent_brb()) {
+            if (ccaGame.isBuildingIsOur_brb()) sa_sb_brb.setProgress(0);
+            if (ccaGame.isBuildingIsEmpty_brb()) sa_sb_brb.setProgress(1);
+            if (ccaGame.isBuildingIsEnemy_brb()) sa_sb_brb.setProgress(2);
+            slotsTotal += ccaGame.getSlots_brb();
+            slotsOur += ccaGame.getSlots_brb_our();
+            slotsEnemy += ccaGame.getSlots_brb_enemy();
         }
 
         maxPersons = (int)Math.ceil (slotsTotal / 3.0d);
@@ -346,12 +325,6 @@ public class StrategyActivity extends AppCompatActivity {
         if (mainCityCalc != null) {
 
             CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-            CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
-            CCABuilding ccaBLC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
-            CCABuilding ccaBLB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
-            CCABuilding ccaBRT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
-            CCABuilding ccaBRC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
-            CCABuilding ccaBRB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
 
             slotsOur = 0;
             slotsEnemy = 0;
@@ -1418,13 +1391,12 @@ public class StrategyActivity extends AppCompatActivity {
                 this.willEarlyWin = ccaGame.isCcagWillEarlyWin();
                 this.willOurWin = ccaGame.isCcagWillOurWin();
                 this.differentPoints = ccaGame.getDifferentPoints();
-                CCABuilding ccab;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
-                ccab = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB); if (ccab.isPresent() && ccab.isMayX2() && ccab.isBuildingIsOur()) countOurX2++;
+                if (ccaGame.isPresent_blt() && ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt()) countOurX2++;
+                if (ccaGame.isPresent_blc() && ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc()) countOurX2++;
+                if (ccaGame.isPresent_blb() && ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb()) countOurX2++;
+                if (ccaGame.isPresent_brt() && ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt()) countOurX2++;
+                if (ccaGame.isPresent_brc() && ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc()) countOurX2++;
+                if (ccaGame.isPresent_brb() && ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb()) countOurX2++;
                 this.countOurX2 = countOurX2;
             }
 

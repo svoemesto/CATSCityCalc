@@ -69,6 +69,7 @@ import com.svoemestodev.catscitycalc.database.DbUser;
 import com.svoemestodev.catscitycalc.database.UserRole;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.Utils;
 import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
@@ -130,9 +131,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blt_car_our;        // blt - картинка машинки (синяя)
     ImageView ga_iv_blt_car_empty;      // blt - картинка машинки (серая)
     ImageView ga_iv_blt_car_enemy;      // blt - картинка машинки (красная)
-    TextView ga_tv_blt_progress_our;    // blt - прогресс наш (синий)
-    TextView ga_tv_blt_progress_empty;  // blt - прогресс пустой (серый)
-    TextView ga_tv_blt_progress_enemy;  // blt - прогресс противника (красный)
+    ImageView ga_iv_blt_progress;       // blt - прогресс
+//    TextView ga_tv_blt_progress_our;    // blt - прогресс наш (синий)
+//    TextView ga_tv_blt_progress_empty;  // blt - прогресс пустой (серый)
+//    TextView ga_tv_blt_progress_enemy;  // blt - прогресс противника (красный)
 
     // BLC views
     ImageView ga_iv_blc_name;           // blc - название здания (картинка)
@@ -146,9 +148,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blc_car_our;        // blc - картинка машинки (синяя)
     ImageView ga_iv_blc_car_empty;      // blc - картинка машинки (серая)
     ImageView ga_iv_blc_car_enemy;      // blc - картинка машинки (красная)
-    TextView ga_tv_blc_progress_our;    // blc - прогресс наш (синий)
-    TextView ga_tv_blc_progress_empty;  // blc - прогресс пустой (серый)
-    TextView ga_tv_blc_progress_enemy;  // blc - прогресс противника (красный)
+    ImageView ga_iv_blc_progress;       // blc - прогресс
+//    TextView ga_tv_blc_progress_our;    // blc - прогресс наш (синий)
+//    TextView ga_tv_blc_progress_empty;  // blc - прогресс пустой (серый)
+//    TextView ga_tv_blc_progress_enemy;  // blc - прогресс противника (красный)
 
     // BLB views
     ImageView ga_iv_blb_name;           // blb - название здания (картинка)
@@ -162,9 +165,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blb_car_our;        // blb - картинка машинки (синяя)
     ImageView ga_iv_blb_car_empty;      // blb - картинка машинки (серая)
     ImageView ga_iv_blb_car_enemy;      // blb - картинка машинки (красная)
-    TextView ga_tv_blb_progress_our;    // blb - прогресс наш (синий)
-    TextView ga_tv_blb_progress_empty;  // blb - прогресс пустой (серый)
-    TextView ga_tv_blb_progress_enemy;  // blb - прогресс противника (красный)
+    ImageView ga_iv_blb_progress;       // blb - прогресс
+//    TextView ga_tv_blb_progress_our;    // blb - прогресс наш (синий)
+//    TextView ga_tv_blb_progress_empty;  // blb - прогресс пустой (серый)
+//    TextView ga_tv_blb_progress_enemy;  // blb - прогресс противника (красный)
 
     // BRT views
     ImageView ga_iv_brt_name;           // brt - название здания (картинка)
@@ -178,9 +182,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brt_car_our;        // brt - картинка машинки (синяя)
     ImageView ga_iv_brt_car_empty;      // brt - картинка машинки (серая)
     ImageView ga_iv_brt_car_enemy;      // brt - картинка машинки (красная)
-    TextView ga_tv_brt_progress_our;    // brt - прогресс наш (синий)
-    TextView ga_tv_brt_progress_empty;  // brt - прогресс пустой (серый)
-    TextView ga_tv_brt_progress_enemy;  // brt - прогресс противника (красный)
+    ImageView ga_iv_brt_progress;       // brt - прогресс
+//    TextView ga_tv_brt_progress_our;    // brt - прогресс наш (синий)
+//    TextView ga_tv_brt_progress_empty;  // brt - прогресс пустой (серый)
+//    TextView ga_tv_brt_progress_enemy;  // brt - прогресс противника (красный)
 
     // BRC views
     ImageView ga_iv_brc_name;           // brc - название здания (картинка)
@@ -194,9 +199,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brc_car_our;        // brc - картинка машинки (синяя)
     ImageView ga_iv_brc_car_empty;      // brc - картинка машинки (серая)
     ImageView ga_iv_brc_car_enemy;      // brc - картинка машинки (красная)
-    TextView ga_tv_brc_progress_our;    // brc - прогресс наш (синий)
-    TextView ga_tv_brc_progress_empty;  // brc - прогресс пустой (серый)
-    TextView ga_tv_brc_progress_enemy;  // brc - прогресс противника (красный)
+    ImageView ga_iv_brc_progress;       // brc - прогресс
+//    TextView ga_tv_brc_progress_our;    // brc - прогресс наш (синий)
+//    TextView ga_tv_brc_progress_empty;  // brc - прогресс пустой (серый)
+//    TextView ga_tv_brc_progress_enemy;  // brc - прогресс противника (красный)
 
     // BRB views
     ImageView ga_iv_brb_name;           // brb - название здания (картинка)
@@ -210,9 +216,10 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brb_car_our;        // brb - картинка машинки (синяя)
     ImageView ga_iv_brb_car_empty;      // brb - картинка машинки (серая)
     ImageView ga_iv_brb_car_enemy;      // brb - картинка машинки (красная)
-    TextView ga_tv_brb_progress_our;    // brb - прогресс наш (синий)
-    TextView ga_tv_brb_progress_empty;  // brb - прогресс пустой (серый)
-    TextView ga_tv_brb_progress_enemy;  // brb - прогресс противника (красный)
+    ImageView ga_iv_brb_progress;       // blt - прогресс
+//    TextView ga_tv_brb_progress_our;    // brb - прогресс наш (синий)
+//    TextView ga_tv_brb_progress_empty;  // brb - прогресс пустой (серый)
+//    TextView ga_tv_brb_progress_enemy;  // brb - прогресс противника (красный)
 
     // Рекламный блок
     AdView ga_ad_banner;                // баннер
@@ -453,17 +460,27 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blt_car_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_car_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_car_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_progress_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_progress_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_progress_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blt_progress_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blt_progress_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blt_progress_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
+            int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
+            int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
+            int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
+            int progressBitmapWidth = 300;
+            int progressBitmapHeight = 20;
+            
             if (ccaGame.isPresent_blt()) {
 
                 if (ccaBLT != null) ga_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
 
-                ga_tv_blt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blt_our()));
-                ga_tv_blt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blt_empty()));
-                ga_tv_blt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blt_enemy()));
+                ga_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy}, 
+                        new int[]{ccaGame.getSlots_blt_our(), ccaGame.getSlots_blt_empty(), ccaGame.getSlots_blt_enemy()}));
+//                ga_tv_blt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blt_our()));
+//                ga_tv_blt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blt_empty()));
+//                ga_tv_blt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blt_enemy()));
 
                 ga_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
                 ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our()));
@@ -510,17 +527,20 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blc_car_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_car_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_car_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_progress_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_progress_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_progress_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blc_progress_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blc_progress_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blc_progress_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blc()) {
 
                 if (ccaBLC != null) ga_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
-
-                ga_tv_blc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blc_our()));
-                ga_tv_blc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blc_empty()));
-                ga_tv_blc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blc_enemy()));
+                ga_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                        new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
+//                ga_tv_blc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blc_our()));
+//                ga_tv_blc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blc_empty()));
+//                ga_tv_blc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blc_enemy()));
 
                 ga_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
                 ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our()));
@@ -568,17 +588,21 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blb_car_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_car_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_car_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_progress_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_progress_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_progress_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blb_progress_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blb_progress_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_blb_progress_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blb()) {
 
                 if (ccaBLB != null) ga_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
 
-                ga_tv_blb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blb_our()));
-                ga_tv_blb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blb_empty()));
-                ga_tv_blb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blb_enemy()));
+                ga_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                        new int[]{ccaGame.getSlots_blb_our(), ccaGame.getSlots_blb_empty(), ccaGame.getSlots_blb_enemy()}));
+//                ga_tv_blb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blb_our()));
+//                ga_tv_blb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blb_empty()));
+//                ga_tv_blb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blb_enemy()));
 
                 ga_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
                 ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our()));
@@ -626,17 +650,21 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brt_car_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_car_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_car_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_progress_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_progress_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_progress_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brt_progress_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brt_progress_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brt_progress_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brt()) {
 
                 if (ccaBRT != null) ga_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
 
-                ga_tv_brt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brt_our()));
-                ga_tv_brt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brt_empty()));
-                ga_tv_brt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brt_enemy()));
+                ga_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                        new int[]{ccaGame.getSlots_brt_our(), ccaGame.getSlots_brt_empty(), ccaGame.getSlots_brt_enemy()}));
+//                ga_tv_brt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brt_our()));
+//                ga_tv_brt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brt_empty()));
+//                ga_tv_brt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brt_enemy()));
 
                 ga_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
                 ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our()));
@@ -683,17 +711,21 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brc_car_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_car_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_car_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_progress_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_progress_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_progress_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brc_progress_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brc_progress_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brc_progress_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brc()) {
 
                 if (ccaBRC != null) ga_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
 
-                ga_tv_brc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brc_our()));
-                ga_tv_brc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brc_empty()));
-                ga_tv_brc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brc_enemy()));
+                ga_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                        new int[]{ccaGame.getSlots_brc_our(), ccaGame.getSlots_brc_empty(), ccaGame.getSlots_brc_enemy()}));
+//                ga_tv_brc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brc_our()));
+//                ga_tv_brc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brc_empty()));
+//                ga_tv_brc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brc_enemy()));
 
                 ga_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
                 ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our()));
@@ -741,17 +773,21 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brb_car_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_car_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_car_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_progress_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_progress_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_progress_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brb_progress_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brb_progress_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+//            ga_tv_brb_progress_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brb()) {
 
                 if (ccaBRB != null) ga_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
 
-                ga_tv_brb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brb_our()));
-                ga_tv_brb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brb_empty()));
-                ga_tv_brb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brb_enemy()));
+                ga_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                        new int[]{ccaGame.getSlots_brb_our(), ccaGame.getSlots_brb_empty(), ccaGame.getSlots_brb_enemy()}));
+//                ga_tv_brb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brb_our()));
+//                ga_tv_brb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brb_empty()));
+//                ga_tv_brb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brb_enemy()));
 
                 ga_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
                 ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our()));
@@ -864,9 +900,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blt_car_our = findViewById(R.id.ga_iv_blt_car_our);
         ga_iv_blt_car_empty = findViewById(R.id.ga_iv_blt_car_empty);
         ga_iv_blt_car_enemy = findViewById(R.id.ga_iv_blt_car_enemy);
-        ga_tv_blt_progress_our = findViewById(R.id.ga_tv_blt_progress_our);
-        ga_tv_blt_progress_empty = findViewById(R.id.ga_tv_blt_progress_empty);
-        ga_tv_blt_progress_enemy = findViewById(R.id.ga_tv_blt_progress_enemy);
+        ga_iv_blt_progress = findViewById(R.id.ga_iv_blt_progress);
+//        ga_tv_blt_progress_our = findViewById(R.id.ga_tv_blt_progress_our);
+//        ga_tv_blt_progress_empty = findViewById(R.id.ga_tv_blt_progress_empty);
+//        ga_tv_blt_progress_enemy = findViewById(R.id.ga_tv_blt_progress_enemy);
 
         // BLC views
         ga_iv_blc_name = findViewById(R.id.ga_iv_blc_name);
@@ -880,9 +917,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blc_car_our = findViewById(R.id.ga_iv_blc_car_our);
         ga_iv_blc_car_empty = findViewById(R.id.ga_iv_blc_car_empty);
         ga_iv_blc_car_enemy = findViewById(R.id.ga_iv_blc_car_enemy);
-        ga_tv_blc_progress_our = findViewById(R.id.ga_tv_blc_progress_our);
-        ga_tv_blc_progress_empty = findViewById(R.id.ga_tv_blc_progress_empty);
-        ga_tv_blc_progress_enemy = findViewById(R.id.ga_tv_blc_progress_enemy);
+        ga_iv_blc_progress = findViewById(R.id.ga_iv_blc_progress);
+//        ga_tv_blc_progress_our = findViewById(R.id.ga_tv_blc_progress_our);
+//        ga_tv_blc_progress_empty = findViewById(R.id.ga_tv_blc_progress_empty);
+//        ga_tv_blc_progress_enemy = findViewById(R.id.ga_tv_blc_progress_enemy);
 
         // BLB views
         ga_iv_blb_name = findViewById(R.id.ga_iv_blb_name);
@@ -896,9 +934,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blb_car_our = findViewById(R.id.ga_iv_blb_car_our);
         ga_iv_blb_car_empty = findViewById(R.id.ga_iv_blb_car_empty);
         ga_iv_blb_car_enemy = findViewById(R.id.ga_iv_blb_car_enemy);
-        ga_tv_blb_progress_our = findViewById(R.id.ga_tv_blb_progress_our);
-        ga_tv_blb_progress_empty = findViewById(R.id.ga_tv_blb_progress_empty);
-        ga_tv_blb_progress_enemy = findViewById(R.id.ga_tv_blb_progress_enemy);
+        ga_iv_blb_progress = findViewById(R.id.ga_iv_blb_progress);
+//        ga_tv_blb_progress_our = findViewById(R.id.ga_tv_blb_progress_our);
+//        ga_tv_blb_progress_empty = findViewById(R.id.ga_tv_blb_progress_empty);
+//        ga_tv_blb_progress_enemy = findViewById(R.id.ga_tv_blb_progress_enemy);
 
         // BRT views
         ga_iv_brt_name = findViewById(R.id.ga_iv_brt_name);
@@ -912,9 +951,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brt_car_our = findViewById(R.id.ga_iv_brt_car_our);
         ga_iv_brt_car_empty = findViewById(R.id.ga_iv_brt_car_empty);
         ga_iv_brt_car_enemy = findViewById(R.id.ga_iv_brt_car_enemy);
-        ga_tv_brt_progress_our = findViewById(R.id.ga_tv_brt_progress_our);
-        ga_tv_brt_progress_empty = findViewById(R.id.ga_tv_brt_progress_empty);
-        ga_tv_brt_progress_enemy = findViewById(R.id.ga_tv_brt_progress_enemy);
+        ga_iv_brt_progress = findViewById(R.id.ga_iv_brt_progress);
+//        ga_tv_brt_progress_our = findViewById(R.id.ga_tv_brt_progress_our);
+//        ga_tv_brt_progress_empty = findViewById(R.id.ga_tv_brt_progress_empty);
+//        ga_tv_brt_progress_enemy = findViewById(R.id.ga_tv_brt_progress_enemy);
 
         // BRC views
         ga_iv_brc_name = findViewById(R.id.ga_iv_brc_name);
@@ -928,9 +968,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brc_car_our = findViewById(R.id.ga_iv_brc_car_our);
         ga_iv_brc_car_empty = findViewById(R.id.ga_iv_brc_car_empty);
         ga_iv_brc_car_enemy = findViewById(R.id.ga_iv_brc_car_enemy);
-        ga_tv_brc_progress_our = findViewById(R.id.ga_tv_brc_progress_our);
-        ga_tv_brc_progress_empty = findViewById(R.id.ga_tv_brc_progress_empty);
-        ga_tv_brc_progress_enemy = findViewById(R.id.ga_tv_brc_progress_enemy);
+        ga_iv_brc_progress = findViewById(R.id.ga_iv_brc_progress);
+//        ga_tv_brc_progress_our = findViewById(R.id.ga_tv_brc_progress_our);
+//        ga_tv_brc_progress_empty = findViewById(R.id.ga_tv_brc_progress_empty);
+//        ga_tv_brc_progress_enemy = findViewById(R.id.ga_tv_brc_progress_enemy);
 
         // BRB views
         ga_iv_brb_name = findViewById(R.id.ga_iv_brb_name);
@@ -944,9 +985,10 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brb_car_our = findViewById(R.id.ga_iv_brb_car_our);
         ga_iv_brb_car_empty = findViewById(R.id.ga_iv_brb_car_empty);
         ga_iv_brb_car_enemy = findViewById(R.id.ga_iv_brb_car_enemy);
-        ga_tv_brb_progress_our = findViewById(R.id.ga_tv_brb_progress_our);
-        ga_tv_brb_progress_empty = findViewById(R.id.ga_tv_brb_progress_empty);
-        ga_tv_brb_progress_enemy = findViewById(R.id.ga_tv_brb_progress_enemy);
+        ga_iv_brb_progress = findViewById(R.id.ga_iv_brb_progress);
+//        ga_tv_brb_progress_our = findViewById(R.id.ga_tv_brb_progress_our);
+//        ga_tv_brb_progress_empty = findViewById(R.id.ga_tv_brb_progress_empty);
+//        ga_tv_brb_progress_enemy = findViewById(R.id.ga_tv_brb_progress_enemy);
 
         // Рекламный блок
         ga_ad_banner = findViewById(R.id.ga_ad_banner);
@@ -2169,10 +2211,12 @@ public class GameActivity extends AppCompatActivity {
             intentShareFile.setType("*/*");
             intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
 
-            intentShareFile.putExtra(Intent.EXTRA_SUBJECT, "Sharing File...");
-            intentShareFile.putExtra(Intent.EXTRA_TEXT, "Sharing File...");
+            String text = ga_tv_status.getText().toString();
 
-            startActivity(Intent.createChooser(intentShareFile, "Share File"));
+            intentShareFile.putExtra(Intent.EXTRA_SUBJECT, text);
+            intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
+
+            startActivity(Intent.createChooser(intentShareFile, text));
         }
 
     }

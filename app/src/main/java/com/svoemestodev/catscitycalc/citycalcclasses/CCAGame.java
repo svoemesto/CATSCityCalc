@@ -1,7 +1,10 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import android.graphics.Bitmap;
+
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
+import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.util.Calendar;
@@ -29,6 +32,7 @@ public class CCAGame extends CityCalcArea {
     private boolean isPresent_brt;
     private boolean isPresent_brc;
     private boolean isPresent_brb;
+
 
     private String name_blt;
     private String name_blc;
@@ -1210,4 +1214,5 @@ public class CCAGame extends CityCalcArea {
     public void setUserNIC(String userNIC) {
         this.userNIC = userNIC;
     }
+
 }

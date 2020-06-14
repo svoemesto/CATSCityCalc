@@ -1011,29 +1011,34 @@
                     android:paddingEnd="10dp"
                     >
 
-                    <TextView
-                        android:id="@+id/ga_tv_blt_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_blt_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_blt_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blt_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_blt_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blt_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blt_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
 
                 </LinearLayout>
@@ -1045,29 +1050,34 @@
                     android:paddingStart="10dp"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/ga_tv_brt_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_brt_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_brt_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brt_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_brt_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brt_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brt_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
 
                 </LinearLayout>
@@ -1320,29 +1330,34 @@
                     android:paddingEnd="10dp"
                     >
 
-                    <TextView
-                        android:id="@+id/ga_tv_blc_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_blc_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_blc_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blc_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_blc_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blc_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blc_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
                 </LinearLayout>
 
@@ -1353,29 +1368,34 @@
                     android:paddingStart="10dp"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/ga_tv_brc_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_brc_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_brc_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brc_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_brc_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brc_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brc_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
 
                 </LinearLayout>
@@ -1629,29 +1649,34 @@
                     android:paddingEnd="10dp"
                     >
 
-                    <TextView
-                        android:id="@+id/ga_tv_blb_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_blb_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_blb_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blb_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_blb_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blb_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_blb_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
                 </LinearLayout>
 
@@ -1662,29 +1687,34 @@
                     android:paddingStart="10dp"
                     android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/ga_tv_brb_progress_our"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#90b3eb"
-                        />
+                    <ImageView
+                        android:id="@+id/ga_iv_brb_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
-                    <TextView
-                        android:id="@+id/ga_tv_brb_progress_empty"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#91a7bf"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brb_progress_our"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#90b3eb"-->
+<!--                        />-->
 
-                    <TextView
-                        android:id="@+id/ga_tv_brb_progress_enemy"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:textColor="#ff8e98"
-                        />
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brb_progress_empty"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#91a7bf"-->
+<!--                        />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ga_tv_brb_progress_enemy"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="10sp"-->
+<!--                        android:textColor="#ff8e98"-->
+<!--                        />-->
 
 
                 </LinearLayout>

@@ -16,6 +16,7 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -286,6 +287,69 @@ public class PictureProcessor extends Activity {
         } else {
             return 0;
         }
+
+    }
+
+    public static long countPixelInBitmap(Bitmap picture, int color, int thm, int thp) {
+
+        if (picture != null) {
+            int width = picture.getWidth();      // ширина исходной картинки
+            int height = picture.getHeight();    // высота исходной картинки
+            long countTruePixels = 0;
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int pixel = picture.getPixel(x , y);
+                    countTruePixels += isPixelTrue(pixel, color, thm, thp) ? 1 : 0;
+                }
+            }
+            return countTruePixels;
+        } else {
+            return 0;
+        }
+
+    }
+
+    public static long[] countPixelInBitmap(Bitmap picture, int[] colors, int thm, int thp) {
+
+        long[] countTruePixels = new long[colors.length];
+        if (picture != null) {
+            int width = picture.getWidth();      // ширина исходной картинки
+            int height = picture.getHeight();    // высота исходной картинки
+            for (int x = 0; x < width; x++) {
+                for (int y = 0; y < height; y++) {
+                    int pixel = picture.getPixel(x , y);
+                    for (int i = 0; i < colors.length; i++) {
+                        countTruePixels[i] += isPixelTrue(pixel, colors[i], thm, thp) ? 1 : 0;
+                    }
+                }
+            }
+        }
+        return countTruePixels;
+    }
+
+    public static Bitmap getProgressBitmap(int width, int height, int[] colors, int[] counts) {
+
+        int countBoxes = 0;
+        for (int cnt: counts) {
+            countBoxes += cnt;
+        }
+        int boxWidth = width / countBoxes;
+        int[] pixels = new int[width*height];
+        int x = 0, l = 0;
+        for (int i = 0; i < colors.length; i++) {
+            l = boxWidth * counts[i];
+            if (l > 0) {
+                for (int j = 0; j < height; j++) {
+                    int xFrom = width*j + x;
+                    int xTo = xFrom + l;
+                    Arrays.fill(pixels, xFrom, xTo, colors[i]);
+                }
+
+                x += l;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
+        return bitmap;
 
     }
 
