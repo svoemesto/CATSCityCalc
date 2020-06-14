@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.storage.StorageReference;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.utils.Utils;
@@ -235,6 +236,13 @@ public class Car implements Serializable {
                 String docRefCarName = "car" + this.slot;
                 DocumentReference docRefCar = userCars.document(docRefCarName);
                 docRefCar.set(getMap());
+                String pathToFileOnServer = "users/" + userUID + "/" + docRefCarName;
+                StorageReference storRefCarFree = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_free");
+                StorageReference storRefCarDef = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_def");
+                StorageReference storRefCarRep = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_rep");
+                if (this.imageByteArrayCar != null) storRefCarFree.putBytes(this.imageByteArrayCar);
+                if (this.imageByteArrayCarDefencing != null) storRefCarDef.putBytes(this.imageByteArrayCarDefencing);
+                if (this.imageByteArrayCarRepairing != null) storRefCarRep.putBytes(this.imageByteArrayCarRepairing);
             }
         }
 
@@ -311,6 +319,45 @@ public class Car implements Serializable {
     }
 
 
+    public byte[] getImageByteArrayCar() {
+        return imageByteArrayCar;
+    }
+
+    public void setImageByteArrayCar(byte[] imageByteArrayCar) {
+        this.imageByteArrayCar = imageByteArrayCar;
+    }
+
+    public byte[] getImageByteArrayCarDefencing() {
+        return imageByteArrayCarDefencing;
+    }
+
+    public void setImageByteArrayCarDefencing(byte[] imageByteArrayCarDefencing) {
+        this.imageByteArrayCarDefencing = imageByteArrayCarDefencing;
+    }
+
+    public byte[] getImageByteArrayCarRepairing() {
+        return imageByteArrayCarRepairing;
+    }
+
+    public void setImageByteArrayCarRepairing(byte[] imageByteArrayCarRepairing) {
+        this.imageByteArrayCarRepairing = imageByteArrayCarRepairing;
+    }
+
+    public byte[] getImageByteArrayBuilding() {
+        return imageByteArrayBuilding;
+    }
+
+    public void setImageByteArrayBuilding(byte[] imageByteArrayBuilding) {
+        this.imageByteArrayBuilding = imageByteArrayBuilding;
+    }
+
+    public byte[] getImageByteArrayTask() {
+        return imageByteArrayTask;
+    }
+
+    public void setImageByteArrayTask(byte[] imageByteArrayTask) {
+        this.imageByteArrayTask = imageByteArrayTask;
+    }
 
     public void setStateFree() {
         this.building = -1;
