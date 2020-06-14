@@ -333,23 +333,27 @@ public class PictureProcessor extends Activity {
         for (int cnt: counts) {
             countBoxes += cnt;
         }
-        int boxWidth = width / countBoxes;
-        int[] pixels = new int[width*height];
-        int x = 0, l = 0;
-        for (int i = 0; i < colors.length; i++) {
-            l = boxWidth * counts[i];
-            if (l > 0) {
-                for (int j = 0; j < height; j++) {
-                    int xFrom = width*j + x;
-                    int xTo = xFrom + l;
-                    Arrays.fill(pixels, xFrom, xTo, colors[i]);
+        if (countBoxes > 0) {
+            int boxWidth = width / countBoxes;
+            int[] pixels = new int[width*height];
+            int x = 0, l = 0;
+            for (int i = 0; i < colors.length; i++) {
+                l = boxWidth * counts[i];
+                if (l > 0) {
+                    for (int j = 0; j < height; j++) {
+                        int xFrom = width*j + x;
+                        int xTo = xFrom + l;
+                        Arrays.fill(pixels, xFrom, xTo, colors[i]);
+                    }
+                    x += l;
                 }
-
-                x += l;
             }
+            Bitmap bitmap = Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
+            return bitmap;
+        } else {
+            return null;
         }
-        Bitmap bitmap = Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
-        return bitmap;
+
 
     }
 

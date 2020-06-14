@@ -49,7 +49,7 @@ public class CCABuilding extends CityCalcArea {
             long countPixelsOur = countColors[0];
             long countPixelsEnemy = countColors[1];
             long countPixelsEmpty = countColors[2];
-            long countPixelsTotal = ccaBuildingProgress.getBmpSrc().getWidth() * ccaBuildingProgress.getBmpSrc().getHeight();
+            long countPixelsTotal = countPixelsOur + countPixelsEnemy + countPixelsEmpty;
             float frqOurSlots = (float) countPixelsOur / countPixelsTotal;
             float frqEnemySlots = (float) countPixelsEnemy / countPixelsTotal;
             float frqEmptySlots = (float) countPixelsEmpty / countPixelsTotal;

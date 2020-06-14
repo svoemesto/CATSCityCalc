@@ -56,6 +56,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
@@ -132,9 +133,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blt_car_empty;      // blt - картинка машинки (серая)
     ImageView ga_iv_blt_car_enemy;      // blt - картинка машинки (красная)
     ImageView ga_iv_blt_progress;       // blt - прогресс
-//    TextView ga_tv_blt_progress_our;    // blt - прогресс наш (синий)
-//    TextView ga_tv_blt_progress_empty;  // blt - прогресс пустой (серый)
-//    TextView ga_tv_blt_progress_enemy;  // blt - прогресс противника (красный)
 
     // BLC views
     ImageView ga_iv_blc_name;           // blc - название здания (картинка)
@@ -149,9 +147,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blc_car_empty;      // blc - картинка машинки (серая)
     ImageView ga_iv_blc_car_enemy;      // blc - картинка машинки (красная)
     ImageView ga_iv_blc_progress;       // blc - прогресс
-//    TextView ga_tv_blc_progress_our;    // blc - прогресс наш (синий)
-//    TextView ga_tv_blc_progress_empty;  // blc - прогресс пустой (серый)
-//    TextView ga_tv_blc_progress_enemy;  // blc - прогресс противника (красный)
 
     // BLB views
     ImageView ga_iv_blb_name;           // blb - название здания (картинка)
@@ -166,9 +161,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_blb_car_empty;      // blb - картинка машинки (серая)
     ImageView ga_iv_blb_car_enemy;      // blb - картинка машинки (красная)
     ImageView ga_iv_blb_progress;       // blb - прогресс
-//    TextView ga_tv_blb_progress_our;    // blb - прогресс наш (синий)
-//    TextView ga_tv_blb_progress_empty;  // blb - прогресс пустой (серый)
-//    TextView ga_tv_blb_progress_enemy;  // blb - прогресс противника (красный)
 
     // BRT views
     ImageView ga_iv_brt_name;           // brt - название здания (картинка)
@@ -183,9 +175,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brt_car_empty;      // brt - картинка машинки (серая)
     ImageView ga_iv_brt_car_enemy;      // brt - картинка машинки (красная)
     ImageView ga_iv_brt_progress;       // brt - прогресс
-//    TextView ga_tv_brt_progress_our;    // brt - прогресс наш (синий)
-//    TextView ga_tv_brt_progress_empty;  // brt - прогресс пустой (серый)
-//    TextView ga_tv_brt_progress_enemy;  // brt - прогресс противника (красный)
 
     // BRC views
     ImageView ga_iv_brc_name;           // brc - название здания (картинка)
@@ -200,9 +189,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brc_car_empty;      // brc - картинка машинки (серая)
     ImageView ga_iv_brc_car_enemy;      // brc - картинка машинки (красная)
     ImageView ga_iv_brc_progress;       // brc - прогресс
-//    TextView ga_tv_brc_progress_our;    // brc - прогресс наш (синий)
-//    TextView ga_tv_brc_progress_empty;  // brc - прогресс пустой (серый)
-//    TextView ga_tv_brc_progress_enemy;  // brc - прогресс противника (красный)
 
     // BRB views
     ImageView ga_iv_brb_name;           // brb - название здания (картинка)
@@ -217,9 +203,6 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_brb_car_empty;      // brb - картинка машинки (серая)
     ImageView ga_iv_brb_car_enemy;      // brb - картинка машинки (красная)
     ImageView ga_iv_brb_progress;       // blt - прогресс
-//    TextView ga_tv_brb_progress_our;    // brb - прогресс наш (синий)
-//    TextView ga_tv_brb_progress_empty;  // brb - прогресс пустой (серый)
-//    TextView ga_tv_brb_progress_enemy;  // brb - прогресс противника (красный)
 
     // Рекламный блок
     AdView ga_ad_banner;                // баннер
@@ -297,6 +280,7 @@ public class GameActivity extends AppCompatActivity {
 
     public static FirebaseUser fbUser;          // юзер файрбейса
     public static FirebaseAuth fbAuth;          // аутентификация файрбейса
+    public static FirebaseStorage fbStor = FirebaseStorage.getInstance();       // стораж файрбейса
     public static FirebaseFirestore fbDb = FirebaseFirestore.getInstance(); // база данных файрбейса
     public static boolean userHaveTeam;         // флаг "у юзера есть команда"
     public static UserRole userRole;            // роль юзера в команде
