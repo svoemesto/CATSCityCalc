@@ -12,7 +12,7 @@ android {
 
 
         versionCode 58
-        versionName "1.0.18b"
+        versionName "1.0.18"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
