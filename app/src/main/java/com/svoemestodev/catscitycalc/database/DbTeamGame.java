@@ -1,5 +1,6 @@
 package com.svoemestodev.catscitycalc.database;
 
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 
@@ -337,18 +340,34 @@ public class DbTeamGame {
                                             DocumentSnapshot documentSnapshot = task.getResult();
                                             Map<String, Object> map = getMap(userUID, userNIC);
                                             if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
-                                                GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
+                                                String storRefGamePathOnServer = "teams/" + teamID + "/teamGame";
+                                                StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+                                                storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                     @Override
-                                                    public void onSuccess(Void aVoid) {
-                                                        Log.i(TAG, "added");
+                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                Log.i(TAG, "added");
+                                                            }
+                                                        });
                                                     }
                                                 });
                                             }
                                         } else {
-                                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
+                                            String storRefGamePathOnServer = "teams/" + teamID + "/teamGame";
+                                            StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+                                            storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                                 @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Log.i(TAG, "added");
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            Log.i(TAG, "added");
+                                                        }
+                                                    });
                                                 }
                                             });
                                         }
