@@ -1436,16 +1436,18 @@ public class GameActivity extends AppCompatActivity {
                                                                         if (ccaGame != null) {
                                                                             DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);                                   // считываем тимГейм из базы
                                                                             if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                                                // надо взять с сервера скрин того юзера, кто обновил игру
                                                                                 File teamGameScreenshot = new File(pathToCATScalcFolder + "/teamGameScreenshot");
-                                                                                String storRefGamePathOnServer = "teams/" + mainDbTeam.getTeamID() + "/teamGame";
+                                                                                String storRefGamePathOnServer = "users/" + dbTeamGame.getUserUID() + "/last_screenshot";
                                                                                 StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
                                                                                 storRefGame.getFile(teamGameScreenshot).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                                                                                     @Override
                                                                                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                                                                        // скрин скачался с сервера удачно
                                                                                         CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context);
                                                                                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-
+                                                                                            Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
                                                                                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                                                             loadDataToViews(true);
                                                                                         }
@@ -1453,6 +1455,7 @@ public class GameActivity extends AppCompatActivity {
                                                                                 }).addOnFailureListener(new OnFailureListener() {
                                                                                     @Override
                                                                                     public void onFailure(@NonNull Exception e) {
+                                                                                        // не удалось скачать скрин с сервера
                                                                                         ccaGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
                                                                                         // выводим тост и обновляем контролы в активити
                                                                                         Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
@@ -2322,32 +2325,45 @@ public class GameActivity extends AppCompatActivity {
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
                         File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
                         if (tmpFile != null) {  // если он не пустой
-                            if ((!tmpFile.equals(fileGameScreenshot)  && !tmpFile.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
-                                Log.i(TAG, logMsgPref + "Последний файл не равен текущем скриншотам");
-                                Log.i(TAG, logMsgPref + "tmpFile = " + tmpFile.getAbsolutePath());
+                            if ((!tmpFile.equals(fileGameScreenshot) && !tmpFile.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
 
-                                Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
-                                CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context);
-                                if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                    fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
-
-                                    boolean isRealtimeScreenshot = false;
-                                    if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
-                                        isRealtimeScreenshot = true;
-                                        Log.i(TAG, logMsgPref + "fileScreenshot != last_screenshot.PNG");
-                                        Log.i(TAG, logMsgPref + "Вызываем копирование файла fileScreenshot в last_screenshot.PNG");
-                                        Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                boolean needProceedFile = false;
+                                // надо проверить, не является ли текущая игра взятая из скрина на свервере
+                                if (mainCityCalc != null) { // если игра есть
+                                    // если в игре - скрин с сервера
+                                    if (mainCityCalc.getFileScreenshot().getAbsolutePath().equals(pathToCATScalcFolder + "/teamGameScreenshot")) {
+                                        // если последний скрин из папки - более поздний, чем в игре
+                                        if (tmpFile.lastModified() > mainCityCalc.getFileScreenshot().lastModified()) {
+                                            needProceedFile = true;
+                                        }
                                     }
-
-                                    mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
-                                    Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
-                                    loadDataToViews(true);
-                                } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
-                                    fileCarScreenshot = tmpFile;
+                                } else {
+                                    needProceedFile = true;
                                 }
-                                if (isResumed) isResumed = false;
+
+                                if (needProceedFile) {
+
+                                    CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context);
+                                    if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                        fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+
+                                        boolean isRealtimeScreenshot = false;
+                                        if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
+                                            isRealtimeScreenshot = true;
+                                            Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                        }
+
+                                        mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
+                                        loadDataToViews(true);
+                                    } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+                                        CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
+                                        ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
+                                        fileCarScreenshot = tmpFile;
+                                    }
+                                    if (isResumed) isResumed = false;
+
+                                }
+
                             }
                         }
 
@@ -2357,12 +2373,9 @@ public class GameActivity extends AppCompatActivity {
                             fileLast = lastScreenshot;
                             if (lastScreenshot.exists()) {
                                 fileGameScreenshot = lastScreenshot;
-                                Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
-                                Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
                                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                    Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);

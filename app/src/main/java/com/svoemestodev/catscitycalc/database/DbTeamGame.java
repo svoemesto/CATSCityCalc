@@ -336,25 +336,29 @@ public class DbTeamGame {
                 GameActivity.fbDb.collection("users").document(userUID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        final String teamID = (String)documentSnapshot.get("teamID");
-                        final String userNIC = (String)documentSnapshot.get("userNIC");
-                        if (teamID != null && !teamID.equals("")) {
 
-                            DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                            doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        if (task.getResult().exists()) {
-                                            DocumentSnapshot documentSnapshot = task.getResult();
-                                            Map<String, Object> map = getMap(userUID, userNIC);
-                                            if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
-                                                Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
-                                                String storRefGamePathOnServer = "teams/" + teamID + "/teamGame";
-                                                StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
-                                                storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                    @Override
-                                                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // есть запись о юзере - сохраняем скрин на сервере по пути "users/userUID/last_screenshot"
+                        Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
+                        String storRefGamePathOnServer = "users/" + userUID + "/last_screenshot";
+                        StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+                        storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                // скрин удачно залился на сервер - можно заливать инфу об игре
+
+                                final String teamID = (String)documentSnapshot.get("teamID");
+                                final String userNIC = (String)documentSnapshot.get("userNIC");
+                                if (teamID != null && !teamID.equals("")) {
+
+                                    DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+                                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                if (task.getResult().exists()) {
+                                                    DocumentSnapshot documentSnapshot = task.getResult();
+                                                    Map<String, Object> map = getMap(userUID, userNIC);
+                                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
                                                         GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override
                                                             public void onSuccess(Void aVoid) {
@@ -362,15 +366,7 @@ public class DbTeamGame {
                                                             }
                                                         });
                                                     }
-                                                });
-                                            }
-                                        } else {
-                                            Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
-                                            String storRefGamePathOnServer = "teams/" + teamID + "/teamGame";
-                                            StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
-                                            storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                                @Override
-                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                } else {
                                                     GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(getMap(userUID, userNIC)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                         @Override
                                                         public void onSuccess(Void aVoid) {
@@ -378,13 +374,15 @@ public class DbTeamGame {
                                                         }
                                                     });
                                                 }
-                                            });
+                                            }
                                         }
-                                    }
-                                }
-                            });
+                                    });
 
-                        }
+                                }
+
+                            }
+                        });
+
                     }
                 });
             }
