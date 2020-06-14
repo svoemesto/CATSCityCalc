@@ -28,6 +28,9 @@ public class DbTeamGame {
     private String userUID;
     private String userNIC;
 
+    private int calibrateX;
+    private int calibrateY;
+
     private Date dateStartGame;     // дата начала игры
     private Date dateScreenshot;    // дата создания скриншота
     private Date dateEndGame;       // дата окончания игры по времени
@@ -129,6 +132,9 @@ public class DbTeamGame {
         String key;
         Map<String, Object> map = documentSnapshot.getData();
         key = "userNIC"; if (map.containsKey(key)) this.userNIC = map.get(key).toString();
+
+        key = "calibrateX"; if (map.containsKey(key)) this.calibrateX = ((Long) map.get(key)).intValue();
+        key = "calibrateY"; if (map.containsKey(key)) this.calibrateY = ((Long) map.get(key)).intValue();
 
         key = "dateStartGame"; if (map.containsKey(key)) this.dateStartGame = documentSnapshot.getTimestamp(key).toDate();
         key = "dateScreenshot"; if (map.containsKey(key)) this.dateScreenshot = documentSnapshot.getTimestamp(key).toDate();
@@ -234,6 +240,9 @@ public class DbTeamGame {
         this.dateScreenshot = ccaGame.getCcagDateScreenshot();    
         this.dateEndGame = ccaGame.getCcagDateEndGame();       
         this.earlyWin = ccaGame.getCcagEarlyWin();           
+
+        this.calibrateX = GameActivity.calibrateX;
+        this.calibrateY = GameActivity.calibrateY;
 
         this.pointsOurInScreenshot = ccaGame.getCcagPointsOurInScreenshot();
         this.pointsEnemyInScreenshot = ccaGame.getCcagPointsEnemyInScreenshot();
@@ -390,7 +399,10 @@ public class DbTeamGame {
         map.put("userUID", userUID);
         map.put("userNIC", userNIC);
 
-        map.put("dateStartGame", dateStartGame);     
+        map.put("calibrateX", calibrateX);
+        map.put("calibrateY", calibrateY);
+
+        map.put("dateStartGame", dateStartGame);
         map.put("dateScreenshot", dateScreenshot);    
         map.put("dateEndGame", dateEndGame);       
         map.put("earlyWin", earlyWin);           
@@ -1146,5 +1158,21 @@ public class DbTeamGame {
 
     public void setSlots_brb_enemy(int slots_brb_enemy) {
         this.slots_brb_enemy = slots_brb_enemy;
+    }
+
+    public int getCalibrateX() {
+        return calibrateX;
+    }
+
+    public void setCalibrateX(int calibrateX) {
+        this.calibrateX = calibrateX;
+    }
+
+    public int getCalibrateY() {
+        return calibrateY;
+    }
+
+    public void setCalibrateY(int calibrateY) {
+        this.calibrateY = calibrateY;
     }
 }

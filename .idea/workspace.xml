@@ -25,9 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,10 +192,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1174" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591861938003" />
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1592132478948">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1592135558930">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1592132478948" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1592135558930" />
     <state x="1450" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592044697997">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -204,10 +204,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1210" y="142" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1591890781395" />
-    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog" timestamp="1592052373104">
+    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog" timestamp="1592134693346">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592052373104" />
+    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592134693346" />
     <state x="1499" y="446" key="AndroidProcessChooserDialog" timestamp="1591899619369">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

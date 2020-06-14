@@ -56,7 +56,9 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
@@ -1434,10 +1436,35 @@ public class GameActivity extends AppCompatActivity {
                                                                         if (ccaGame != null) {
                                                                             DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);                                   // считываем тимГейм из базы
                                                                             if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
-                                                                                ccaGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
-                                                                                // выводим тост и обновляем контролы в активити
-                                                                                Toast.makeText(GameActivity.this, "Скрин  с сервера", Toast.LENGTH_LONG).show();
-                                                                                loadDataToViews(true);
+                                                                                File teamGameScreenshot = new File(pathToCATScalcFolder + "/teamGameScreenshot");
+                                                                                String storRefGamePathOnServer = "teams/" + mainDbTeam.getTeamID() + "/teamGame";
+                                                                                StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+                                                                                storRefGame.getFile(teamGameScreenshot).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+                                                                                    @Override
+                                                                                    public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+                                                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context);
+                                                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+
+                                                                                            boolean isRealtimeScreenshot = false;
+                                                                                            if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
+                                                                                                isRealtimeScreenshot = true;
+                                                                                                Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                                                            }
+                                                                                            mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
+                                                                                            loadDataToViews(true);
+                                                                                        }
+                                                                                    }
+                                                                                }).addOnFailureListener(new OnFailureListener() {
+                                                                                    @Override
+                                                                                    public void onFailure(@NonNull Exception e) {
+                                                                                        ccaGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+                                                                                        // выводим тост и обновляем контролы в активити
+                                                                                        Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
+                                                                                        loadDataToViews(true);
+                                                                                    }
+                                                                                });
+
                                                                             }
                                                                         }
                                                                     }

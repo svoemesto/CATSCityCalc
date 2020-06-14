@@ -476,6 +476,7 @@
     <string name="create_team">Create Team</string>
     <string name="leave_team">Leave Team</string>
     <string name="find_team">Find Team</string>
+    <string name="screen_from_server">Скрин  с сервера</string>
 
     <string-array name="pref_colors_entries">
         <item>Car Box1</item>
