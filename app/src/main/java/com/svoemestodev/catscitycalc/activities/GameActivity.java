@@ -1446,12 +1446,7 @@ public class GameActivity extends AppCompatActivity {
                                                                                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
-                                                                                            boolean isRealtimeScreenshot = false;
-                                                                                            if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
-                                                                                                isRealtimeScreenshot = true;
-                                                                                                Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-                                                                                            }
-                                                                                            mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
+                                                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                                                             loadDataToViews(true);
                                                                                         }
                                                                                     }
