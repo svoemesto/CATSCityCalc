@@ -2213,11 +2213,18 @@ public class GameActivity extends AppCompatActivity {
         Intent intentShareFile = new Intent(Intent.ACTION_SEND);
         File sharedFile = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
 
+//        if (mainCityCalc != null) {
+//            if (mainCityCalc.getFileScreenshot() != null) {
+//                sharedFile = mainCityCalc.getFileScreenshot();
+//            }
+//        }
+
         if(sharedFile.exists()) {
             intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
             
             intentShareFile.setType("*/*");
+//            intentShareFile.setType("image/png");
             intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
 
             String text = ga_tv_status.getText().toString();

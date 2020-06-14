@@ -11,8 +11,8 @@ android {
         targetSdkVersion 29
 
 
-        versionCode 55
-        versionName "1.0.15"
+        versionCode 57
+        versionName "1.0.17"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
