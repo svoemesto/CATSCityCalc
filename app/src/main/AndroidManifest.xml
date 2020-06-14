@@ -18,7 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".activities.EditTeamActivity" />
+        <activity android:name=".activities.EditTeamActivity"
+            android:screenOrientation="portrait"
+            />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -32,13 +34,16 @@
 
         <activity
             android:name=".activities.TeamActivity"
+            android:screenOrientation="portrait"
             android:label="@string/team" />
         <activity
             android:name=".activities.UserActivity"
+            android:screenOrientation="portrait"
             android:label="@string/open_login" />
         <activity android:name=".activities.CarActivity" />
         <activity
             android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,13 +53,16 @@
         </activity>
         <activity
             android:name=".activities.GameActivity"
+            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleInstance" />
         <activity
             android:name=".activities.ColorsdetectActivity"
+            android:screenOrientation="portrait"
             android:label="@string/sett_colors" />
         <activity
             android:name=".activities.BordersActivity"
+            android:screenOrientation="portrait"
             android:label="@string/sett_borders" />
 
         <meta-data
@@ -63,12 +71,15 @@
 
         <activity
             android:name=".activities.CalibrateActivity"
+            android:screenOrientation="portrait"
             android:label="@string/sett_calibrate_center_screen" />
         <activity
             android:name=".activities.SettingsActivity"
+            android:screenOrientation="portrait"
             android:label="@string/settings" />
         <activity
             android:name=".activities.StrategyActivity"
+            android:screenOrientation="portrait"
             android:label="@string/strategic_planning" />
     </application>
 

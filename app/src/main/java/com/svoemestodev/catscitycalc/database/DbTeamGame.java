@@ -132,6 +132,7 @@ public class DbTeamGame {
         String key;
         Map<String, Object> map = documentSnapshot.getData();
         key = "userNIC"; if (map.containsKey(key)) this.userNIC = map.get(key).toString();
+        key = "userUID"; if (map.containsKey(key)) this.userUID = map.get(key).toString();
 
         key = "calibrateX"; if (map.containsKey(key)) this.calibrateX = ((Long) map.get(key)).intValue();
         key = "calibrateY"; if (map.containsKey(key)) this.calibrateY = ((Long) map.get(key)).intValue();

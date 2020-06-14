@@ -2336,6 +2336,8 @@ public class GameActivity extends AppCompatActivity {
                                         if (tmpFile.lastModified() > mainCityCalc.getFileScreenshot().lastModified()) {
                                             needProceedFile = true;
                                         }
+                                    } else {
+                                        needProceedFile = true;
                                     }
                                 } else {
                                     needProceedFile = true;
