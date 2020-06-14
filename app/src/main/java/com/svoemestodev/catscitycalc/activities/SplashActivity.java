@@ -131,8 +131,6 @@ public class SplashActivity extends AppCompatActivity {
 
         // путь к папке программы в корне файловой системы. Если такой папки нет - создаем её
 
-
-
         File tmp = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name) );       // файл картинки - путь к папке программы + имя файла
 
         if (!tmp.exists()) {    // если файла нет

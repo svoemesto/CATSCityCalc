@@ -57,7 +57,6 @@ import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.database.UserRole;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -416,7 +415,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car1_shield.setText(String.valueOf(car1.getShield()));
                             ltu_tv_car1_star.setVisibility(car1.getBuilding() == car1.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car1.isFree()) {
                                     car1.setStateFree();
                                     car1.save(userUID);
@@ -571,7 +570,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car2_shield.setText(String.valueOf(car2.getShield()));
                             ltu_tv_car2_star.setVisibility(car2.getBuilding() == car2.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car2.isFree()) {
                                     car2.setStateFree();
                                     car2.save(userUID);
@@ -723,7 +722,7 @@ public class TeamActivity extends AppCompatActivity {
                             ltu_tv_car3_shield.setText(String.valueOf(car3.getShield()));
                             ltu_tv_car3_star.setVisibility(car3.getBuilding() == car3.getBuildingTask() ? View.VISIBLE : View.INVISIBLE);
 
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car3.isFree()) {
                                     car3.setStateFree();
                                     car3.save(userUID);

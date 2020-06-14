@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.utils;
 
+import com.svoemestodev.catscitycalc.classes.LastModified;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,6 +49,7 @@ public class Utils {
             }
             in.close();
             out.close();
+            LastModified.setLastModified(sourcePath);
         } catch (IOException e) {
             e.printStackTrace();
         }

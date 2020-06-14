@@ -60,11 +60,9 @@ import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.svoemestodev.catscitycalc.BuildConfig;
-import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
-import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.classes.Car;
-import com.svoemestodev.catscitycalc.database.Database;
+import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
@@ -275,6 +273,7 @@ public class GameActivity extends AppCompatActivity {
     public static boolean isDebugMode;                          // флаг "Режим отладки"
     public static Context context;                              // контекст
     public static CityCalc mainCityCalc;                        // текущая игра
+    public static CCAGame mainCCAGame;                        // текущая игра
 
     private static final String TAG = "GameActivity";           // таг для лога
 
@@ -348,7 +347,7 @@ public class GameActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         ga_ad_banner.loadAd(adRequest);
 
-        // нотификейшт менеджер
+        // нотификейшн менеджер
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         readPreferences(); // считываем преференцы
@@ -363,7 +362,8 @@ public class GameActivity extends AppCompatActivity {
 
         String textStartGameTime;
         String textEndGameTime;
-        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+//        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+        CCAGame ccaGame = mainCCAGame;
         CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
         CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
         CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
@@ -374,55 +374,55 @@ public class GameActivity extends AppCompatActivity {
         CCABuilding ccaBRB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
         String pattern = "dd MMM HH:mm";
 
-        if (ccaGame != null && ccaGame.getCcagDateStartGame() != null) {
+        if (ccaGame != null && ccaGame.getDateStartGame() != null) {
 
             ccaGame.calcWin();
 
-            Date dateScreenshot = ccaGame.getCcagDateScreenshot();
+            Date dateScreenshot = ccaGame.getDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
-            String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + (ccaGame.getUserNIC() != null ? " " + getString(R.string.by_user) + " " + ccaGame.getUserNIC() + "." : ".");
+            String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + (mainCCAGame.getUserNIC() != null ? " " + getString(R.string.by_user) + " " + mainCCAGame.getUserNIC() + "." : ".");
             ga_tv_screenshot_time.setText(screenshotTimeText);
             ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
-            ga_bt_strategy.setVisibility(!ccaGame.isCcagIsGameOver() ? View.VISIBLE : View.INVISIBLE);
+            ga_bt_strategy.setVisibility(!ccaGame.isGameOver() ? View.VISIBLE : View.INVISIBLE);
 
-            textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getCcagDateStartGame(), pattern);    // дата/время начала игры
+            textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getDateStartGame(), pattern);    // дата/время начала игры
 
-            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getCcagDateEndGame(), pattern);          // дата/время окончания игры
+            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
-            ga_tv_status.setText(ccaGame.getCcagStatus());   // статус
+            ga_tv_status.setText(ccaGame.getStatus());   // статус
             ga_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             ga_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
 
-            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+            if (ccaGame.isGameOver()) {   // если игра закончена
                 ga_tv_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
                 ga_tv_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
             }
 
-            ga_tv_early_win.setText(String.valueOf(ccaGame.getCcagEarlyWin())); // очки до досрочной победы
+            ga_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
 
             if (ccaOurTeam != null) ga_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
             if (ccaEnemyTeam != null) ga_iv_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
 
 
-            ga_tv_our_increase.setText(ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " ");   // прирост нашей команды
+            ga_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
             ga_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
 
-            ga_tv_enemy_increase.setText(ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "); // прирост команды противника
+            ga_tv_enemy_increase.setText(ccaGame.getIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getIncreaseEnemy() + " "); // прирост команды противника
             ga_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
 
-            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+            if (ccaGame.isGameOver()) {   // если игра закончена
                 ga_tv_our_end_time.setText(""); // наше время пустое
                 ga_tv_enemy_end_time.setText(""); // время противника пустое
             } else { // если игра незакончена
-                if (ccaGame.isCcagWillOurWin()) {
+                if (ccaGame.isWillOurWin()) {
                     ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
                     ga_tv_enemy_end_time.setText("");   // время противника пустое
-                } else if (ccaGame.isCcagWillEnemyWin()) {
+                } else if (ccaGame.isWillEnemyWin()) {
                     ga_tv_our_end_time.setText(""); // наше время пустое
                     ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                } else if (ccaGame.isCcagWillNobodyWin()) {
+                } else if (ccaGame.isWillNobodyWin()) {
                     ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
                     ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                 }
@@ -447,9 +447,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blt_car_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_car_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blt_progress_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blt_progress_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blt_progress_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
             int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
@@ -464,9 +461,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy}, 
                         new int[]{ccaGame.getSlots_blt_our(), ccaGame.getSlots_blt_empty(), ccaGame.getSlots_blt_enemy()}));
-//                ga_tv_blt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blt_our()));
-//                ga_tv_blt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blt_empty()));
-//                ga_tv_blt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blt_enemy()));
 
                 ga_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
                 ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our()));
@@ -514,9 +508,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blc_car_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_car_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blc_progress_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blc_progress_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blc_progress_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blc()) {
 
@@ -524,9 +515,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
-//                ga_tv_blc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blc_our()));
-//                ga_tv_blc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blc_empty()));
-//                ga_tv_blc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blc_enemy()));
 
                 ga_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
                 ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our()));
@@ -575,9 +563,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_blb_car_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_car_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blb_progress_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blb_progress_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_blb_progress_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blb()) {
 
@@ -586,9 +571,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_blb_our(), ccaGame.getSlots_blb_empty(), ccaGame.getSlots_blb_enemy()}));
-//                ga_tv_blb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_blb_our()));
-//                ga_tv_blb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_blb_empty()));
-//                ga_tv_blb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_blb_enemy()));
 
                 ga_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
                 ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our()));
@@ -637,9 +619,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brt_car_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_car_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brt_progress_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brt_progress_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brt_progress_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brt()) {
 
@@ -648,9 +627,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brt_our(), ccaGame.getSlots_brt_empty(), ccaGame.getSlots_brt_enemy()}));
-//                ga_tv_brt_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brt_our()));
-//                ga_tv_brt_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brt_empty()));
-//                ga_tv_brt_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brt_enemy()));
 
                 ga_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
                 ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our()));
@@ -698,9 +674,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brc_car_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_car_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brc_progress_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brc_progress_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brc_progress_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brc()) {
 
@@ -709,9 +682,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brc_our(), ccaGame.getSlots_brc_empty(), ccaGame.getSlots_brc_enemy()}));
-//                ga_tv_brc_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brc_our()));
-//                ga_tv_brc_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brc_empty()));
-//                ga_tv_brc_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brc_enemy()));
 
                 ga_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
                 ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our()));
@@ -760,9 +730,6 @@ public class GameActivity extends AppCompatActivity {
             ga_iv_brb_car_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_car_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brb_progress_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brb_progress_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-//            ga_tv_brb_progress_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brb()) {
 
@@ -771,9 +738,6 @@ public class GameActivity extends AppCompatActivity {
                 ga_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brb_our(), ccaGame.getSlots_brb_empty(), ccaGame.getSlots_brb_enemy()}));
-//                ga_tv_brb_progress_our.setText(Utils.getProgressString(ccaGame.getSlots_brb_our()));
-//                ga_tv_brb_progress_empty.setText(Utils.getProgressString(ccaGame.getSlots_brb_empty()));
-//                ga_tv_brb_progress_enemy.setText(Utils.getProgressString(ccaGame.getSlots_brb_enemy()));
 
                 ga_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
                 ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our()));
@@ -823,7 +787,7 @@ public class GameActivity extends AppCompatActivity {
         if (withNotify) {
             Log.i(TAG, logMsgPref + "withNotify");
             if (ccaGame != null) {
-                Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.getCcagStatus());
+                Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.getStatus());
                 Intent intent = new Intent(this, GameActivity.class);
                 intent.setAction(Intent.ACTION_MAIN);
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -836,8 +800,8 @@ public class GameActivity extends AppCompatActivity {
                                 .setSmallIcon(R.drawable.ic_catscalciconsmall)
                                 .setWhen(System.currentTimeMillis())
                                 .setContentIntent(pendingIntent)
-                                .setContentText(ccaGame.getCcagStatus())
-                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.getCcagStatus()));
+                                .setContentText(ccaGame.getStatus())
+                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.getStatus()));
                 createChannelIfNeeded(notificationManager);
                 notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
             }
@@ -887,9 +851,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blt_car_empty = findViewById(R.id.ga_iv_blt_car_empty);
         ga_iv_blt_car_enemy = findViewById(R.id.ga_iv_blt_car_enemy);
         ga_iv_blt_progress = findViewById(R.id.ga_iv_blt_progress);
-//        ga_tv_blt_progress_our = findViewById(R.id.ga_tv_blt_progress_our);
-//        ga_tv_blt_progress_empty = findViewById(R.id.ga_tv_blt_progress_empty);
-//        ga_tv_blt_progress_enemy = findViewById(R.id.ga_tv_blt_progress_enemy);
 
         // BLC views
         ga_iv_blc_name = findViewById(R.id.ga_iv_blc_name);
@@ -904,9 +865,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blc_car_empty = findViewById(R.id.ga_iv_blc_car_empty);
         ga_iv_blc_car_enemy = findViewById(R.id.ga_iv_blc_car_enemy);
         ga_iv_blc_progress = findViewById(R.id.ga_iv_blc_progress);
-//        ga_tv_blc_progress_our = findViewById(R.id.ga_tv_blc_progress_our);
-//        ga_tv_blc_progress_empty = findViewById(R.id.ga_tv_blc_progress_empty);
-//        ga_tv_blc_progress_enemy = findViewById(R.id.ga_tv_blc_progress_enemy);
 
         // BLB views
         ga_iv_blb_name = findViewById(R.id.ga_iv_blb_name);
@@ -921,9 +879,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_blb_car_empty = findViewById(R.id.ga_iv_blb_car_empty);
         ga_iv_blb_car_enemy = findViewById(R.id.ga_iv_blb_car_enemy);
         ga_iv_blb_progress = findViewById(R.id.ga_iv_blb_progress);
-//        ga_tv_blb_progress_our = findViewById(R.id.ga_tv_blb_progress_our);
-//        ga_tv_blb_progress_empty = findViewById(R.id.ga_tv_blb_progress_empty);
-//        ga_tv_blb_progress_enemy = findViewById(R.id.ga_tv_blb_progress_enemy);
 
         // BRT views
         ga_iv_brt_name = findViewById(R.id.ga_iv_brt_name);
@@ -938,9 +893,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brt_car_empty = findViewById(R.id.ga_iv_brt_car_empty);
         ga_iv_brt_car_enemy = findViewById(R.id.ga_iv_brt_car_enemy);
         ga_iv_brt_progress = findViewById(R.id.ga_iv_brt_progress);
-//        ga_tv_brt_progress_our = findViewById(R.id.ga_tv_brt_progress_our);
-//        ga_tv_brt_progress_empty = findViewById(R.id.ga_tv_brt_progress_empty);
-//        ga_tv_brt_progress_enemy = findViewById(R.id.ga_tv_brt_progress_enemy);
 
         // BRC views
         ga_iv_brc_name = findViewById(R.id.ga_iv_brc_name);
@@ -955,9 +907,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brc_car_empty = findViewById(R.id.ga_iv_brc_car_empty);
         ga_iv_brc_car_enemy = findViewById(R.id.ga_iv_brc_car_enemy);
         ga_iv_brc_progress = findViewById(R.id.ga_iv_brc_progress);
-//        ga_tv_brc_progress_our = findViewById(R.id.ga_tv_brc_progress_our);
-//        ga_tv_brc_progress_empty = findViewById(R.id.ga_tv_brc_progress_empty);
-//        ga_tv_brc_progress_enemy = findViewById(R.id.ga_tv_brc_progress_enemy);
 
         // BRB views
         ga_iv_brb_name = findViewById(R.id.ga_iv_brb_name);
@@ -972,9 +921,6 @@ public class GameActivity extends AppCompatActivity {
         ga_iv_brb_car_empty = findViewById(R.id.ga_iv_brb_car_empty);
         ga_iv_brb_car_enemy = findViewById(R.id.ga_iv_brb_car_enemy);
         ga_iv_brb_progress = findViewById(R.id.ga_iv_brb_progress);
-//        ga_tv_brb_progress_our = findViewById(R.id.ga_tv_brb_progress_our);
-//        ga_tv_brb_progress_empty = findViewById(R.id.ga_tv_brb_progress_empty);
-//        ga_tv_brb_progress_enemy = findViewById(R.id.ga_tv_brb_progress_enemy);
 
         // Рекламный блок
         ga_ad_banner = findViewById(R.id.ga_ad_banner);
@@ -1047,7 +993,7 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_car3_shield.setText(String.valueOf(car3.getShield()));
 
         try {
-            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isCcagIsGameOver()) {
+            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
 
                 if (!car1.isFree()) {
                     car1.setStateFree();
@@ -1149,12 +1095,6 @@ public class GameActivity extends AppCompatActivity {
         calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_x),0));
         calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_y),0));
 
-        Log.i(TAG, logMsgPref + "pathToScreenshotDir = " + pathToScreenshotDir);
-        Log.i(TAG, logMsgPref + "isListenToNewFileInFolder = " + isListenToNewFileInFolder);
-        Log.i(TAG, logMsgPref + "isDebugMode = " + isDebugMode);
-        Log.i(TAG, logMsgPref + "calibrateX = " + calibrateX);
-        Log.i(TAG, logMsgPref + "calibrateY = " + calibrateY);
-
     }
 
     private void startTimer() {
@@ -1164,9 +1104,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (timer == null) {    // если таймер не запущен
             timer = new Timer();    // запускаем таймер
-            Log.i(TAG, logMsgPref + "firstTask");
             timer.schedule(new firstTask(), 0,3000); // запускаем такс таймера
-            Log.i(TAG, logMsgPref + "secondTask");
             timer.schedule(new secondTask(), 60000,60000); // запускаем такс таймера
         }
 
@@ -1195,8 +1133,8 @@ public class GameActivity extends AppCompatActivity {
         if  (listFiles.size() > 0) {    // если в листе есть файлы
             long maxLastModified = 0;   // максимальная дата (ноль для начала)
             for (File file : listFiles) {   // цикл по листу
-                if (file.lastModified() > maxLastModified) {    // если дата создания файла из листа больше максимальной
-                    maxLastModified = file.lastModified();      // максимальная дата = дате файла из листа
+                if (LastModified.getLastModified(file).getTime() > maxLastModified) {    // если дата создания файла из листа больше максимальной
+                    maxLastModified = LastModified.getLastModified(file).getTime();      // максимальная дата = дате файла из листа
                     temp = file;    // временный файл равен файлу из листа
                 }
             }
@@ -1256,6 +1194,7 @@ public class GameActivity extends AppCompatActivity {
                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                     mainCityCalc = new CityCalc(tmpCityCalc, false);
+                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                     loadDataToViews(false);
                 }
             }
@@ -1325,7 +1264,7 @@ public class GameActivity extends AppCompatActivity {
             if (!isVerified) { // почта не подтверждена
 
                 // обновляем инфо юзера
-                userText = userText + " (not verified)";
+                userText = userText + " " + getString(R.string.not_verified);
                 ga_tv_user.setText(userText);
 
                 // показываем пунты меню "Выслать письмо..." и "Обновить...", остальные скрываем
@@ -1362,7 +1301,7 @@ public class GameActivity extends AppCompatActivity {
                                 if (!userHaveTeam) { // юзер не состоит в команде
 
                                     // обновляем инфо юзера
-                                    String userText = fbUser.getDisplayName() + " (no team)";
+                                    String userText = fbUser.getDisplayName()  + " " + getString(R.string.no_team);
                                     ga_tv_user.setText(userText);
 
                                     // выводим пункт "Создать банду", скрываем пункты "Банда", "Покинуть банду" и "Найти банду"
@@ -1432,10 +1371,9 @@ public class GameActivity extends AppCompatActivity {
                                                                     Log.d(TAG, "Current game data: " + documentSnapshot.getData());
 
                                                                     if (mainCityCalc != null) { // если текущая игра есть
-                                                                        CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                        if (ccaGame != null) {
+                                                                        if (mainCCAGame != null) {
                                                                             DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);                                   // считываем тимГейм из базы
-                                                                            if (dbTeamGame.getDateScreenshot().getTime() > ccaGame.getCcagDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                                            if (dbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
                                                                                 // надо взять с сервера скрин того юзера, кто обновил игру
                                                                                 File teamGameScreenshot = new File(pathToCATScalcFolder + "/teamGameScreenshot");
                                                                                 String storRefGamePathOnServer = "users/" + dbTeamGame.getUserUID() + "/last_screenshot";
@@ -1449,6 +1387,7 @@ public class GameActivity extends AppCompatActivity {
                                                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                                                             Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
                                                                                             mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
                                                                                             loadDataToViews(true);
                                                                                         }
                                                                                     }
@@ -1456,7 +1395,7 @@ public class GameActivity extends AppCompatActivity {
                                                                                     @Override
                                                                                     public void onFailure(@NonNull Exception e) {
                                                                                         // не удалось скачать скрин с сервера
-                                                                                        ccaGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+                                                                                        mainCCAGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
                                                                                         // выводим тост и обновляем контролы в активити
                                                                                         Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
                                                                                         loadDataToViews(true);
@@ -2269,10 +2208,8 @@ public class GameActivity extends AppCompatActivity {
                             ga_sw_listen_new_file.setChecked(false); // устанавливаем контрол флажка
                             fileLastInFolder = null;    // сбрасываем последний файл в папке
 
-                            Log.i(TAG, logMsgPref + "fileScreenshot = " + fileGameScreenshot.getAbsolutePath());
-                            Log.i(TAG, logMsgPref + "инициализинуем mainCityCalc");
                             mainCityCalc = new CityCalc(tmpCityCalc, false);
-                            Log.i(TAG, logMsgPref + "вызываем loadDataToViews()");
+                            mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                             loadDataToViews(true);
                         } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                             CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
@@ -2340,7 +2277,7 @@ public class GameActivity extends AppCompatActivity {
                                     // если в игре - скрин с сервера
                                     if (mainCityCalc.getFileScreenshot().getAbsolutePath().equals(pathToCATScalcFolder + "/teamGameScreenshot")) {
                                         // если последний скрин из папки - более поздний, чем в игре
-                                        if (tmpFile.lastModified() > mainCityCalc.getFileScreenshot().lastModified()) {
+                                        if (LastModified.getLastModified(tmpFile).getTime() > LastModified.getLastModified(mainCityCalc.getFileScreenshot()).getTime()) {
                                             needProceedFile = true;
                                         }
                                     } else {
@@ -2363,6 +2300,7 @@ public class GameActivity extends AppCompatActivity {
                                         }
 
                                         mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
+                                        mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                                         loadDataToViews(true);
                                     } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                         CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
@@ -2385,6 +2323,7 @@ public class GameActivity extends AppCompatActivity {
                                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);

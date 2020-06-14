@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +30,6 @@ import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCATeam;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalc;
-import com.svoemestodev.catscitycalc.citycalcclasses.CityCalcArea;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
@@ -231,11 +229,11 @@ public class StrategyActivity extends AppCompatActivity {
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
         if (ccaGame != null) {
-            dateScreenshotMain = ccaGame.getCcagDateScreenshot();
-            increaseOurMain = ccaGame.getCcagIncreaseOur();
-            increaseEnemyMain = ccaGame.getCcagIncreaseEnemy();
-            pointsInScreenshotOurMain = ccaGame.getCcagPointsOurInScreenshot();
-            pointsInScreenshotEnemyMain = ccaGame.getCcagPointsEnemyInScreenshot();
+            dateScreenshotMain = ccaGame.getDateScreenshot();
+            increaseOurMain = ccaGame.getIncreaseOur();
+            increaseEnemyMain = ccaGame.getIncreaseEnemy();
+            pointsInScreenshotOurMain = ccaGame.getPointsOurInScreenshot();
+            pointsInScreenshotEnemyMain = ccaGame.getPointsEnemyInScreenshot();
         }
 
         slotsTotal = 0;
@@ -337,16 +335,16 @@ public class StrategyActivity extends AppCompatActivity {
             countMayX2empty = 0;
 
             if (ccaGame != null) {
-                ccaGame.setCcagIncreaseOur(increaseOurMain);
-                ccaGame.setCcagPointsOurInScreenshot(pointsInScreenshotOurMain);
-                ccaGame.setCcagIncreaseEnemy(increaseEnemyMain);
-                ccaGame.setCcagPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
-                ccaGame.setCcagDateScreenshot(dateScreenshotMain);
+                ccaGame.setIncreaseOur(increaseOurMain);
+                ccaGame.setPointsOurInScreenshot(pointsInScreenshotOurMain);
+                ccaGame.setIncreaseEnemy(increaseEnemyMain);
+                ccaGame.setPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
+                ccaGame.setDateScreenshot(dateScreenshotMain);
 
                 ccaGame.calcWin();
 
-                ccaGame.setCcagPointsOurInScreenshot(ccaGame.getPointsOur());
-                ccaGame.setCcagPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
+                ccaGame.setPointsOurInScreenshot(ccaGame.getPointsOur());
+                ccaGame.setPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
 
             }
 
@@ -497,9 +495,9 @@ public class StrategyActivity extends AppCompatActivity {
             }
             
             if (ccaGame != null) {
-                ccaGame.setCcagDateScreenshot(new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000));
-                ccaGame.setCcagIncreaseOur(increaseOur);
-                ccaGame.setCcagIncreaseEnemy(increaseEnemy);
+                ccaGame.setDateScreenshot(new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000));
+                ccaGame.setIncreaseOur(increaseOur);
+                ccaGame.setIncreaseEnemy(increaseEnemy);
             }
             
         }
@@ -531,13 +529,13 @@ public class StrategyActivity extends AppCompatActivity {
 
             ccaGame.calcWin();
 
-            textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getCcagDateStartGame(), pattern);    // дата/время начала игры
-            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getCcagDateEndGame(), pattern);          // дата/время окончания игры
+            textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getDateStartGame(), pattern);    // дата/время начала игры
+            textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
-            sa_tv_status.setText(ccaGame.getCcagStatus());   // статус
+            sa_tv_status.setText(ccaGame.getStatus());   // статус
             sa_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             sa_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
-            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+            if (ccaGame.isGameOver()) {   // если игра закончена
                 sa_tv_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
                 sa_tv_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
@@ -546,26 +544,26 @@ public class StrategyActivity extends AppCompatActivity {
             if (ccaOurTeam != null) sa_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
             if (ccaEnemyTeam != null) sa_iv_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
 
-            sa_tv_early_win.setText(String.valueOf(ccaGame.getCcagEarlyWin())); // очки до досрочной победы
+            sa_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
 
-            sa_tv_our_increase.setText(ccaGame.getCcagIncreaseOur() == 0 ? "" : " +" + ccaGame.getCcagIncreaseOur() + " ");   // прирост нашей команды
+            sa_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
             sa_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
 
 
-            sa_tv_enemy_increase.setText(ccaGame.getCcagIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getCcagIncreaseEnemy() + " "); // прирост команды противника
+            sa_tv_enemy_increase.setText(ccaGame.getIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getIncreaseEnemy() + " "); // прирост команды противника
             sa_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
 
-            if (ccaGame.isCcagIsGameOver()) {   // если игра закончена
+            if (ccaGame.isGameOver()) {   // если игра закончена
                 sa_tv_our_end_time.setText(""); // наше время пустое
                 sa_tv_enemy_end_time.setText(""); // время противника пустое
             } else { // если игра незакончена
-                if (ccaGame.isCcagWillOurWin()) {
+                if (ccaGame.isWillOurWin()) {
                     sa_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
                     sa_tv_enemy_end_time.setText("");   // время противника пустое
-                } else if (ccaGame.isCcagWillEnemyWin()) {
+                } else if (ccaGame.isWillEnemyWin()) {
                     sa_tv_our_end_time.setText(""); // наше время пустое
                     sa_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
-                } else if (ccaGame.isCcagWillNobodyWin()) {
+                } else if (ccaGame.isWillNobodyWin()) {
                     sa_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
                     sa_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                 }
@@ -1388,8 +1386,8 @@ public class StrategyActivity extends AppCompatActivity {
             CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
             if (ccaGame != null) {
                 int countOurX2 = 0;
-                this.willEarlyWin = ccaGame.isCcagWillEarlyWin();
-                this.willOurWin = ccaGame.isCcagWillOurWin();
+                this.willEarlyWin = ccaGame.isWillEarlyWin();
+                this.willOurWin = ccaGame.isWillOurWin();
                 this.differentPoints = ccaGame.getDifferentPoints();
                 if (ccaGame.isPresent_blt() && ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt()) countOurX2++;
                 if (ccaGame.isPresent_blc() && ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc()) countOurX2++;
