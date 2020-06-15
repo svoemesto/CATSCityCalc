@@ -380,7 +380,7 @@ public class GameActivity extends AppCompatActivity {
 
             Date dateScreenshot = ccaGame.getDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
-            String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + (mainCCAGame.getUserNIC() != null ? " " + getString(R.string.by_user) + " " + mainCCAGame.getUserNIC() + "." : ".");
+            String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + ((mainCCAGame.getUserNIC() != null && !mainCCAGame.getUserNIC().equals("")) ? " " + getString(R.string.by_user) + " " + mainCCAGame.getUserNIC() + "." : ".");
             ga_tv_screenshot_time.setText(screenshotTimeText);
             ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
@@ -1142,7 +1142,7 @@ public class GameActivity extends AppCompatActivity {
             if (temp != null) { // если найден самый свежий файл
                 fileLast = temp;
                 if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
-                    CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context);
+                    CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context,"");
                     if (!tmpCityCalc.getCityCalcType().equals(CityCalcType.ERROR)) {
                         fileLastInFolder = temp;    // последний найденный файл - текущий найденный
                     } else {
@@ -1191,7 +1191,7 @@ public class GameActivity extends AppCompatActivity {
             fileGameScreenshotPrevious = null;
             ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
             if (fileGameScreenshot != null) {
-                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
+                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, "");
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                     mainCityCalc = new CityCalc(tmpCityCalc, false);
                     mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
@@ -1382,7 +1382,10 @@ public class GameActivity extends AppCompatActivity {
                                                                                     @Override
                                                                                     public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                                                                         // скрин скачался с сервера удачно
-                                                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context);
+                                                                                        // устанавливаем у скачанного файла правильный ластмодифай
+                                                                                        LastModified.setLastModified(teamGameScreenshot, dbTeamGame.getDateScreenshot());
+                                                                                        fileLast = teamGameScreenshot;
+                                                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context, dbTeamGame.getUserNIC());
                                                                                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                                                             Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
@@ -2200,7 +2203,7 @@ public class GameActivity extends AppCompatActivity {
                         String logMsgPref = "OnSelectedFile: ";
                         File newFile = new File(fileName);
                         fileLast = newFile;
-                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context);
+                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,"");
                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                             fileGameScreenshot = newFile; // файл скриншота - возавращенный из диалога
                             if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
@@ -2289,7 +2292,7 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (needProceedFile) {
 
-                                    CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context);
+                                    CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context, "");
                                     if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                         fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
 
@@ -2320,7 +2323,7 @@ public class GameActivity extends AppCompatActivity {
                             fileLast = lastScreenshot;
                             if (lastScreenshot.exists()) {
                                 fileGameScreenshot = lastScreenshot;
-                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context);
+                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, "");
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
                                     mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);

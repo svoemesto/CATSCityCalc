@@ -20,11 +20,32 @@ public class LastModified implements Serializable {
         return setLastModified(fileFrom.getAbsolutePath(), fileTo.getAbsolutePath());
     }
 
+    public static boolean setLastModified(File fileTo, Date dateLastModified) {
+        if (fileTo.exists()) {
+            File fileML = new File(fileTo.getAbsolutePath() + ".lastModified");
+            LastModified lastModified = new LastModified(fileTo.getAbsolutePath(), dateLastModified);
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(fileML);
+                ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+                oos.writeObject(lastModified);
+                oos.close();
+                return true;
+            } catch (IOException e) {
+                Log.e("LastModified", "setLastModified. Ошибка сериализации");
+                return false;
+            }
+        } else {
+            return false;
+        }
+
+    }
+
     public static boolean setLastModified(String sourcePath, String targetPath) {
         File fileFrom = new File(sourcePath);
         if (fileFrom.exists()) {
             File fileML = new File(targetPath + ".lastModified");
-            LastModified lastModified = new LastModified(targetPath, new Date(fileFrom.lastModified()));
+            Date dateLastModified = getLastModified(sourcePath);
+            LastModified lastModified = new LastModified(targetPath, dateLastModified);
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(fileML);
                 ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);

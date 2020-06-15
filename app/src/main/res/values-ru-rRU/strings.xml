@@ -171,6 +171,8 @@
     <string name="create_team">Создать банду</string>
     <string name="leave_team">Выйти из банды</string>
     <string name="find_team">Выступить в открытую банду</string>
+    <string name="screen_from_server">Скрин  с сервера</string>
+    <string name="not_verified">(почта не подтверждена)</string>
 
 
 </resources>

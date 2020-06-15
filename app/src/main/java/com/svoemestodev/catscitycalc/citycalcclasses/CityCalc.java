@@ -25,6 +25,7 @@ public class CityCalc extends Activity {
     private int calibrateX;             // сдвиг центра по X
     private int calibrateY;             // сдвиг центра по Y
     private CityCalcType cityCalcType;
+    private String userNIC = "";
 
     private Map<Area, CityCalcArea> mapAreas = new HashMap<>(); // мап областей
     private Context context;            // контекст
@@ -191,6 +192,14 @@ public class CityCalc extends Activity {
         this.context = context;
     }
 
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
+
     private void initVariables() {
 
         sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
@@ -332,12 +341,12 @@ public class CityCalc extends Activity {
 
 
     // конструктор для проверки боксов
-    public CityCalc(File file, int calibrateX, int calibrateY, Context context) {
+    public CityCalc(File file, int calibrateX, int calibrateY, Context context, String userNIC) {
         String logMsgPref = "конструктор для для проверки боксов: ";
         Log.i(TAG, logMsgPref + "start");
 
 
-
+        this.userNIC = userNIC;
         this.cityCalcType = CityCalcType.ERROR;
         this.fileScreenshot = file;
         this.calibrateX = calibrateX;
@@ -1349,6 +1358,7 @@ public class CityCalc extends Activity {
         int calibrateY = checkedCityCalc.calibrateY;
         Context context = checkedCityCalc.context;
 
+        this.userNIC = checkedCityCalc.userNIC;
         this.cityCalcType = cityCalcType;
         this.fileScreenshot = file;
         this.bmpScreenshot = checkedCityCalc.bmpScreenshot;

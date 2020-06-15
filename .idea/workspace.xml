@@ -27,10 +27,13 @@
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/LastModified.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/LastModified.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,10 +195,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1174" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591861938003" />
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1592166052465">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1592207803257">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1592166052465" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1592207803257" />
     <state x="1450" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592044697997">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -216,38 +219,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592053476594" />
-    <state width="2703" height="264" key="GridCell.Tab.0.bottom" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.0.bottom" timestamp="1592208273003">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
-    <state width="2703" height="264" key="GridCell.Tab.0.center" timestamp="1592204665895">
+    <state width="2703" height="264" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273003" />
+    <state width="2703" height="264" key="GridCell.Tab.0.center" timestamp="1592208273002">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665895" />
-    <state width="2703" height="264" key="GridCell.Tab.0.left" timestamp="1592204665895">
+    <state width="2703" height="264" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273002" />
+    <state width="2703" height="264" key="GridCell.Tab.0.left" timestamp="1592208273002">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665895" />
-    <state width="2703" height="264" key="GridCell.Tab.0.right" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273002" />
+    <state width="2703" height="264" key="GridCell.Tab.0.right" timestamp="1592208273003">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
-    <state width="2703" height="264" key="GridCell.Tab.1.bottom" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273003" />
+    <state width="2703" height="264" key="GridCell.Tab.1.bottom" timestamp="1592208273004">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
-    <state width="2703" height="264" key="GridCell.Tab.1.center" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273004" />
+    <state width="2703" height="264" key="GridCell.Tab.1.center" timestamp="1592208273004">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
-    <state width="2703" height="264" key="GridCell.Tab.1.left" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273004" />
+    <state width="2703" height="264" key="GridCell.Tab.1.left" timestamp="1592208273003">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
-    <state width="2703" height="264" key="GridCell.Tab.1.right" timestamp="1592204665896">
+    <state width="2703" height="264" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273003" />
+    <state width="2703" height="264" key="GridCell.Tab.1.right" timestamp="1592208273004">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="264" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592208273004" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

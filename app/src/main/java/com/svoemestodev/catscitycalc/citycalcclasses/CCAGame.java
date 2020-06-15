@@ -141,6 +141,7 @@ public class CCAGame extends CityCalcArea {
 //                this.dateScreenshot = new Date((cityCalc.getFileScreenshot().lastModified() / 60_000) * 60_000); // дата/время создания скриншота с точностью до минуты
                 this.screenshotFile = cityCalc.getFileScreenshot();
                 this.dateScreenshot = LastModified.getLastModified(this.screenshotFile);
+                this.userNIC = cityCalc.getUserNIC();
             }
         }
         if (GameActivity.fbUser != null) {
@@ -148,9 +149,6 @@ public class CCAGame extends CityCalcArea {
                 this.userUID = GameActivity.fbUser.getUid();
                 if (GameActivity.mainDbTeam != null) {
                     this.teamID = GameActivity.mainDbTeam.getTeamID();
-                    if (GameActivity.mainDbTeamUser != null) {
-                        this.userNIC = GameActivity.mainDbTeamUser.getUserNIC();
-                    }
                 }
             }
         }
