@@ -495,11 +495,13 @@ public class StrategyActivity extends AppCompatActivity {
             }
             
             if (ccaGame != null) {
-                ccaGame.setDateScreenshot(new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000));
+                ccaGame.setDateScreenshot(Calendar.getInstance().getTime());
+                ccaGame.calcWin();
                 ccaGame.setIncreaseOur(increaseOur);
                 ccaGame.setIncreaseEnemy(increaseEnemy);
+
             }
-            
+
         }
 
         loadDataToViews();
@@ -1247,6 +1249,10 @@ public class StrategyActivity extends AppCompatActivity {
         int index=0;
         for (int i = 0; i < matrixArray.length; i++) {
             matrix = (MatrixProgress) matrixArray[i];
+//            if (matrix.blt_progress == 2 && matrix.blc_progress == 0 && matrix.blb_progress == 0 && matrix.brt_progress == 0 && matrix.brc_progress == 0 && matrix.brb_progress == 2) {
+//                index = i;
+//                isFound = true;
+//            }
             if (matrix.willOurWin && !matrix.willEarlyWin && matrix.countOurX2 == 0) {
                 index = i;
                 isFound = true;
