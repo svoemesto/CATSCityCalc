@@ -22,7 +22,7 @@ public class CCABuilding extends CityCalcArea {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
         this.isPresent = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), 0xFFFFFFFF, 10, 10) > 0.2f;
         if (this.isPresent) {
-            this.mayX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[3],10, 10) > 0.01f || PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
+            this.mayX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[3],10, 10) > 0.02f || PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
             this.isX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
             this.buildingIsOur = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[0],10, 10) > 0.01f;
             this.buildingIsEnemy = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[1],10, 10) > 0.01f;

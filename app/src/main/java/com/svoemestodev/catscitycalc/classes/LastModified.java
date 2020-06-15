@@ -16,15 +16,15 @@ public class LastModified implements Serializable {
     private String pathToFile;
     private Date lastModified;
 
-    public static boolean setLastModified(File file) {
-        return setLastModified(file.getAbsolutePath());
+    public static boolean setLastModified(File fileFrom, File fileTo) {
+        return setLastModified(fileFrom.getAbsolutePath(), fileTo.getAbsolutePath());
     }
 
-    public static boolean setLastModified(String pathToFile) {
-        File file = new File(pathToFile);
-        if (file.exists()) {
-            File fileML = new File(pathToFile + ".lastModified");
-            LastModified lastModified = new LastModified(pathToFile, new Date(file.lastModified()));
+    public static boolean setLastModified(String sourcePath, String targetPath) {
+        File fileFrom = new File(sourcePath);
+        if (fileFrom.exists()) {
+            File fileML = new File(targetPath + ".lastModified");
+            LastModified lastModified = new LastModified(targetPath, new Date(fileFrom.lastModified()));
             try {
                 FileOutputStream fileOutputStream = new FileOutputStream(fileML);
                 ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);

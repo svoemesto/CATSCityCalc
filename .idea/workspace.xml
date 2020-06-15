@@ -28,6 +28,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/LastModified.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/LastModified.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,6 @@
     <option name="KEY_STORE_PATH" value="D:\Dropbox\keystores\android.jks" />
     <option name="KEY_ALIAS" value="smandroidkey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,8 +76,6 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-11T15:03:01.802Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
-    <property name="ExportApk.SignV1" value="true" />
-    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="D:/Dropbox/keystores/android.jks" />
@@ -216,38 +216,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592053476594" />
-    <state width="3396" height="330" key="GridCell.Tab.0.bottom" timestamp="1592169761346">
+    <state width="2703" height="264" key="GridCell.Tab.0.bottom" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="330" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592169761346" />
-    <state width="3396" height="330" key="GridCell.Tab.0.center" timestamp="1592169761345">
+    <state width="2703" height="264" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.0.center" timestamp="1592204665895">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="330" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592169761345" />
-    <state width="3396" height="330" key="GridCell.Tab.0.left" timestamp="1592169761345">
+    <state width="2703" height="264" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665895" />
+    <state width="2703" height="264" key="GridCell.Tab.0.left" timestamp="1592204665895">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="330" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592169761345" />
-    <state width="3396" height="330" key="GridCell.Tab.0.right" timestamp="1592169761346">
+    <state width="2703" height="264" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665895" />
+    <state width="2703" height="264" key="GridCell.Tab.0.right" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="330" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592169761346" />
-    <state width="3396" height="264" key="GridCell.Tab.1.bottom" timestamp="1592169471826">
+    <state width="2703" height="264" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.1.bottom" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="264" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592169471826" />
-    <state width="3396" height="264" key="GridCell.Tab.1.center" timestamp="1592169471825">
+    <state width="2703" height="264" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.1.center" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="264" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592169471825" />
-    <state width="3396" height="264" key="GridCell.Tab.1.left" timestamp="1592169471825">
+    <state width="2703" height="264" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.1.left" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="264" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592169471825" />
-    <state width="3396" height="264" key="GridCell.Tab.1.right" timestamp="1592169471825">
+    <state width="2703" height="264" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
+    <state width="2703" height="264" key="GridCell.Tab.1.right" timestamp="1592204665896">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3396" height="264" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592169471825" />
+    <state width="2703" height="264" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592204665896" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -280,6 +280,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java</url>
           <line>348</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java</url>
+          <line>216</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

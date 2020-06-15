@@ -49,7 +49,7 @@ public class Utils {
             }
             in.close();
             out.close();
-            LastModified.setLastModified(sourcePath);
+            LastModified.setLastModified(sourcePath, targetPath);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -251,8 +251,8 @@ public class Utils {
             }
         } else if (listWords.size() == 2) {
             char lastChar = listWords.get(1).charAt(listWords.get(1).length()-1); // запоминаем последний символ
-            listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
-            listWords.set(1, listWords.get(1).substring(0,listWords.get(1).length()-1));
+
+//            listWords.set(1, listWords.get(1).substring(0,listWords.get(1).length()-1));
             if (lastChar == 'M' || lastChar == 'М') {
                 try {
                     minutes = Integer.parseInt(listWords.get(0));
@@ -260,11 +260,12 @@ public class Utils {
                 }
             } else {
                 try {
+                    listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1));
                     hours = Integer.parseInt(listWords.get(0));
                 } catch (NumberFormatException e) {
                 }
             }
-        } else if (listWords.size() == 1) { // если один - это часы. отрезам последний символ
+        } else if (listWords.size() == 1) { // если один - это часы. отрезаем последний символ
             listWords.set(0, listWords.get(0).substring(0,listWords.get(0).length()-1)); // отрезаем последний символ
             try {
                 hours = Integer.parseInt(listWords.get(0));
