@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.database;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
@@ -16,6 +18,11 @@ import com.google.firebase.storage.UploadTask;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -346,43 +353,60 @@ public class DbTeamGame {
 
                                 if (!ccaGame.isGameOver()) {
                                     // есть запись о юзере - сохраняем скрин на сервере по пути "users/userUID/last_screenshot"
-                                    Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
-                                    String storRefGamePathOnServer = "users/" + userUID + "/last_screenshot";
-                                    StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
-                                    storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                        @Override
-                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                            // скрин удачно залился на сервер - можно заливать инфу об игре
+                                    // пережимаем файл в жпег
+                                    String fileToUploadPath = GameActivity.pathToCATScalcFolder + "/screenshot_to_upload.jpg";
+                                    Bitmap bitmapSource = BitmapFactory.decodeFile(GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath());
+                                    File fileToUpload = new File(fileToUploadPath);
+                                    try {
+                                        OutputStream fOut = new FileOutputStream(fileToUpload);
+                                        bitmapSource.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                        fOut.flush();
+                                        fOut.close();
 
-                                            final String teamID = (String)documentSnapshot.get("teamID");
-                                            final String userNIC = (String)documentSnapshot.get("userNIC");
-                                            if (teamID != null && !teamID.equals("")) {
+                                        //                                    Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
+                                        Uri uriFile = Uri.fromFile(fileToUpload);
+                                        String storRefGamePathOnServer = "users/" + userUID + "/last_screenshot";
+                                        StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+                                        storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                // скрин удачно залился на сервер - можно заливать инфу об игре
 
-                                                dbTeamGame.userNIC = userNIC;
-                                                dbTeamGame.teamID = teamID;
+                                                final String teamID = (String)documentSnapshot.get("teamID");
+                                                final String userNIC = (String)documentSnapshot.get("userNIC");
+                                                if (teamID != null && !teamID.equals("")) {
 
-                                                DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                                                doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                        if (task.isSuccessful()) {
-                                                            if (task.getResult().exists()) {
-                                                                DocumentSnapshot documentSnapshot = task.getResult();
-                                                                Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
-                                                                if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+                                                    dbTeamGame.userNIC = userNIC;
+                                                    dbTeamGame.teamID = teamID;
+
+                                                    DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+                                                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                            if (task.isSuccessful()) {
+                                                                if (task.getResult().exists()) {
+                                                                    DocumentSnapshot documentSnapshot = task.getResult();
+                                                                    Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
+                                                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+                                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
+                                                                    }
+                                                                } else {
                                                                     GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
                                                                 }
-                                                            } else {
-                                                                GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
                                                             }
                                                         }
-                                                    }
-                                                });
+                                                    });
+
+                                                }
 
                                             }
+                                        });
 
-                                        }
-                                    });
+
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+
                                 }
 
                             }
