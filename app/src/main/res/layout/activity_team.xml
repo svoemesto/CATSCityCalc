@@ -30,6 +30,15 @@
         android:onClick="inviteUser"
         />
 
+    <Button
+        android:id="@+id/ta_bt_clear_tasks_cars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ta_bt_invite_user"
+        android:text="@string/clear_tasks_cars"
+        android:onClick="clearTaskCars"
+        />
+
     <ImageButton
         android:id="@+id/ta_bt_edit_team"
         android:layout_width="wrap_content"
@@ -50,7 +59,7 @@
         android:id="@+id/ta_lv_users"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/ta_bt_invite_user"
+        android:layout_above="@id/ta_bt_clear_tasks_cars"
         android:layout_below="@id/ta_bt_edit_team"
         />
 

@@ -26,23 +26,13 @@
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/BordersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/BordersActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/ColorsdetectActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/ColorsdetectActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/TeamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/TeamActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/Area.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/Area.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCACar.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCACar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalcArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CityCalcArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_teamuser.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_teamuser.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/select_bitmap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/select_bitmap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/preferences.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_team.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_team.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/variables.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,10 +209,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1210" y="142" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1592166739917" />
-    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog" timestamp="1592162470435">
+    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog" timestamp="1592319321270">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592162470435" />
+    <state x="1564" y="490" key="AndroidCreateXmlResourceDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592319321270" />
     <state x="1499" y="446" key="AndroidProcessChooserDialog" timestamp="1591899619369">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -231,22 +221,22 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592053476594" />
-    <state width="2703" height="322" key="GridCell.Tab.0.bottom" timestamp="1592318117751">
+    <state width="2703" height="322" key="GridCell.Tab.0.bottom" timestamp="1592322176165">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592318117751" />
-    <state width="2703" height="322" key="GridCell.Tab.0.center" timestamp="1592318117751">
+    <state width="2703" height="322" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592322176165" />
+    <state width="2703" height="322" key="GridCell.Tab.0.center" timestamp="1592322176164">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592318117751" />
-    <state width="2703" height="322" key="GridCell.Tab.0.left" timestamp="1592318117751">
+    <state width="2703" height="322" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592322176164" />
+    <state width="2703" height="322" key="GridCell.Tab.0.left" timestamp="1592322176164">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592318117751" />
-    <state width="2703" height="322" key="GridCell.Tab.0.right" timestamp="1592318117751">
+    <state width="2703" height="322" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592322176164" />
+    <state width="2703" height="322" key="GridCell.Tab.0.right" timestamp="1592322176165">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592318117751" />
+    <state width="2703" height="322" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592322176165" />
     <state width="2703" height="385" key="GridCell.Tab.1.bottom" timestamp="1592316696395">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

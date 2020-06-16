@@ -1742,6 +1742,7 @@ public class CityCalc extends Activity {
 
                         setAreaToMap(Area.CAR_IN_CITY_BOX1);
                         setAreaToMap(Area.CAR_IN_CITY_BOX2);
+                        setAreaToMap(Area.BOX_INFO_CAR);
                         setAreaToMap(Area.CAR_IN_CITY_STATEBOX1);
                         setAreaToMap(Area.CAR_IN_CITY_STATEBOX2);
                         setAreaToMap(Area.CAR_IN_CITY_STATEBOX3);

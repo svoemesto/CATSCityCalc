@@ -35,6 +35,9 @@ public class CCACar extends CityCalcArea {
         int color_car_in_city_box1_main = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_main),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_main), (int)Long.parseLong(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_main), 16)));
         int color_car_in_city_box1_thm = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thm),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thm), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thm))));
         int color_car_in_city_box1_thp = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thp),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thp), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thp))));
+        int color_box_info_car_main = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_main),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_main), (int)Long.parseLong(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_main), 16)));
+        int color_box_info_car_thm = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_thm),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_thm), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_thm))));
+        int color_box_info_car_thp = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_thp),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_thp), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_thp))));
 
         boolean isCarInCity = PictureProcessor.frequencyPixelInBitmap(areaCarInCityBox1.getBmpSrc(), color_car_in_city_box1_main, color_car_in_city_box1_thm, color_car_in_city_box1_thp) > 0.50f;
 
@@ -99,9 +102,13 @@ public class CCACar extends CityCalcArea {
 
                 if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании
                     // устанавливаем нулевое здание и его картинку
-                    car.setBuilding(0);
-                    car.setBuildingPicture(areaCarInCityBuilding.getBmpSrc());
-                    car.setCarPictureDefencing(areaCarInCityPicture.getBmpSrc());
+//                    CityCalcArea areaBoxInfoCar = this.getCityCalc().getMapAreas().get(Area.BOX_INFO_CAR);
+                    boolean isCarInBuilding = PictureProcessor.frequencyPixelInBitmap(areaCarInCityBuilding.getBmpSrc(), color_box_info_car_main, color_box_info_car_thm, color_box_info_car_thp) > 0.01f;
+                    if (isCarInBuilding) {
+                        car.setBuilding(0);
+                        car.setBuildingPicture(areaCarInCityBuilding.getBmpSrc());
+                        car.setCarPictureDefencing(areaCarInCityPicture.getBmpSrc());
+                    }
                 }
 
             }

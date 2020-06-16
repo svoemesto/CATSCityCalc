@@ -45,6 +45,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
@@ -65,10 +66,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.svoemestodev.catscitycalc.activities.GameActivity.mainDbTeam;
+import static com.svoemestodev.catscitycalc.activities.GameActivity.mainDbTeamUser;
+import static com.svoemestodev.catscitycalc.activities.GameActivity.mainDbUser;
+
 public class TeamActivity extends AppCompatActivity {
 
     AdView ta_ad_banner;
     Button ta_bt_invite_user;
+    Button ta_bt_clear_tasks_cars;
     ImageButton ta_bt_edit_team;
     ListView ta_lv_users;
     TextView ta_tv_name;
@@ -105,11 +111,13 @@ public class TeamActivity extends AppCompatActivity {
     private void initializeViews() {
         ta_ad_banner = findViewById(R.id.ta_ad_banner);
         ta_bt_invite_user = findViewById(R.id.ta_bt_invite_user);
+        ta_bt_clear_tasks_cars = findViewById(R.id.ta_bt_clear_tasks_cars);
         ta_bt_edit_team = findViewById(R.id.ta_bt_edit_team);
         ta_lv_users = findViewById(R.id.ta_lv_users);
         ta_tv_name = findViewById(R.id.ta_tv_name);
         ta_bt_invite_user.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
         ta_bt_edit_team.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+        ta_bt_clear_tasks_cars.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
     }
 
     @Override
@@ -267,6 +275,49 @@ public class TeamActivity extends AppCompatActivity {
         Intent intent = new Intent(this, EditTeamActivity.class);
         startActivityForResult(intent, REQUEST_CODE_TEAM_ACTIVITY);
 
+    }
+
+    public void clearTaskCars(View view) {
+
+        AlertDialog.Builder builderConfirmation = new AlertDialog.Builder(TeamActivity.this);
+        builderConfirmation.setCancelable(true);
+        builderConfirmation.setTitle(R.string.clear_tasks_cars);
+        builderConfirmation.setMessage(R.string.sure_clear_tasks_cars);
+        builderConfirmation.setPositiveButton(R.string.yes_sure, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Query queryTeamUsers = GameActivity.fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamUsers");
+                queryTeamUsers.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                DbTeamUser dbTeamUser = document.toObject(DbTeamUser.class);
+                                Map<String, Object> map = new HashMap<>();
+                                map.put("carBuildingTask", -1);
+
+                                DocumentReference drUserCar1 = GameActivity.fbDb.collection("users").document(dbTeamUser.getUserID()).collection("userCars").document("car1");
+                                drUserCar1.update(map);
+                                DocumentReference drUserCar2 = GameActivity.fbDb.collection("users").document(dbTeamUser.getUserID()).collection("userCars").document("car2");
+                                drUserCar2.update(map);
+                                DocumentReference drUserCar3 = GameActivity.fbDb.collection("users").document(dbTeamUser.getUserID()).collection("userCars").document("car3");
+                                drUserCar3.update(map);
+                            }
+                        }
+                    }
+                });
+
+
+            }
+        });
+        builderConfirmation.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        AlertDialog dialog = builderConfirmation.create();
+        dialog.show();
+        
     }
 
     private class ListDbTeamUsersAdapter extends ArrayAdapter<DbTeamUser> {
