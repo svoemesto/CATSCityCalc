@@ -2222,7 +2222,7 @@ public class GameActivity extends AppCompatActivity {
                             loadDataToViews(true);
                         } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                             CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
-                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
+                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                             fileCarScreenshot = newFile;
 
                         }
@@ -2313,7 +2313,7 @@ public class GameActivity extends AppCompatActivity {
                                         loadDataToViews(true);
                                     } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                         CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                                        ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
+                                        ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                                         fileCarScreenshot = tmpFile;
                                     }
                                     if (isResumed) isResumed = false;
@@ -2336,7 +2336,7 @@ public class GameActivity extends AppCompatActivity {
                                     loadDataToViews(true);
                                 } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
-                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_INFO)).parseCar();
+                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                                 }
                             }
                         }

@@ -30,27 +30,37 @@ public class CityCalcArea {
 
     private CropPosition getCropPosition(Area area) {
         switch (area) {
-            case CAR_INFO:
-            case CAR_PICTURE:
-            case CAR_BOX1:
-            case CAR_BOX2:
-            case CAR_STATEBOX1:
-            case CAR_STATEBOX2:
-            case CAR_STATEBOX3:
-            case CAR_SLOT1:
-            case CAR_SLOT2:
-            case CAR_SLOT3:
-            case CAR_HEALTH:
-            case CAR_SHIELD:
-            case CAR_STATE:
-            case CAR_HEALBOX:
-            case CAR_TIMEBOX1:
-            case CAR_TIMEBOX2:
+            case CAR_IN_CITY_INFO:
+            case CAR_IN_CITY_PICTURE:
+            case CAR_IN_CITY_BOX1:
+            case CAR_IN_CITY_BOX2:
+            case CAR_IN_CITY_STATEBOX1:
+            case CAR_IN_CITY_STATEBOX2:
+            case CAR_IN_CITY_STATEBOX3:
+            case CAR_IN_CITY_SLOT1:
+            case CAR_IN_CITY_SLOT2:
+            case CAR_IN_CITY_SLOT3:
+            case CAR_IN_CITY_HEALTH:
+            case CAR_IN_CITY_SHIELD:
+            case CAR_IN_CITY_STATE:
+            case CAR_IN_CITY_HEALBOX:
+            case CAR_IN_CITY_TIMEBOX1:
+            case CAR_IN_CITY_TIMEBOX2:
+            case BOX_BACK:
                 return CropPosition.LEFT;
 
-            case CAR_BUILDING:
-            case BOX1_INFO:
-            case BOX2_INFO:
+            case CAR_IN_GARAGE_SLOT1:
+            case CAR_IN_GARAGE_SLOT2:
+            case CAR_IN_GARAGE_SLOT3:
+                return CropPosition.RIGHT;
+
+            case CAR_IN_CITY_BUILDING:
+            case CAR_IN_GARAGE_PICTURE:
+            case CAR_IN_GARAGE_HEALTH:
+            case CAR_IN_GARAGE_SHIELD:
+            case BOX_INFO_CITY:
+            case BOX_INFO_CAR:
+            case BOX_INFO_GARAGE:
             case CITY:
             case TOTAL_TIME:
             case EARLY_WIN:
@@ -60,36 +70,28 @@ public class CityCalcArea {
             case POINTS_OUR:
             case POINTS_AND_INCREASE_ENEMY:
             case POINTS_ENEMY:
-//            case INCREASE_OUR:
-//            case INCREASE_ENEMY:
             case BLT_AREA:
             case BLT:
-//            case BLT_POINTS:
             case BLT_SLOTS:
             case BLT_PROGRESS:
             case BLC_AREA:
             case BLC:
-//            case BLC_POINTS:
             case BLC_SLOTS:
             case BLC_PROGRESS:
             case BLB_AREA:
             case BLB:
-//            case BLB_POINTS:
             case BLB_SLOTS:
             case BLB_PROGRESS:
             case BRT_AREA:
             case BRT:
-//            case BRT_POINTS:
             case BRT_SLOTS:
             case BRT_PROGRESS:
             case BRC_AREA:
             case BRC:
-//            case BRC_POINTS:
             case BRC_SLOTS:
             case BRC_PROGRESS:
             case BRB_AREA:
             case BRB:
-//            case BRB_POINTS:
             case BRB_SLOTS:
             case BRB_PROGRESS:
             default:
@@ -120,7 +122,7 @@ public class CityCalcArea {
     // конструктор "дженериков"
     public CityCalcArea(CityCalc cityCalc, Area area, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
 
-        if (area.equals(Area.CAR_INFO)) this.cropPosition = CropPosition.LEFT;
+        if (area.equals(Area.CAR_IN_CITY_INFO)) this.cropPosition = CropPosition.LEFT;
         this.isGeneric = true;
         this.cityCalc = cityCalc;
         this.area = area;
@@ -131,11 +133,19 @@ public class CityCalcArea {
     }
 
     public void doOCR() {
-        doOCR(0,0,1, true, 6.0f, 4.0f);
+        if (this.area.equals(Area.CAR_IN_GARAGE_HEALTH) && this.area.equals(Area.CAR_IN_GARAGE_SHIELD)) {
+            if (PictureProcessor.frequencyPixelInBitmap(this.bmpSrc,this.colors[1],this.ths[0], this.ths[1]) > 0.001f) {
+                doOCR(1,0,1, true, 6.0f, 4.0f);
+            } else {
+                doOCR(2,0,1, true, 6.0f, 4.0f);
+            }
+        } else {
+            doOCR(0,0,1, true, 6.0f, 4.0f);
+        }
     }
 
     public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doScale, float scaleX, float scaleY) {
-        if (this.needOcr) {
+        if (this.needOcr && this.bmpSrc != null) {
             this.bmpPrc = this.needBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]) : this.bmpSrc;
             this.bmpPrc = doScale ? PictureProcessor.doScale(this.bmpPrc, scaleX, scaleY) : this.bmpPrc;
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.getContext());
@@ -175,11 +185,28 @@ public class CityCalcArea {
                         x2 = (int) (heightSource * this.x2);
                         y1 = (int) (heightSource + heightSource * this.y1);
                         y2 = (int) (heightSource + heightSource * this.y2);
+                    } else if (this.cropPosition == CropPosition.RIGHT) {
+                        x1 = widthSource + (int)(heightSource * this.x1);
+                        x2 = widthSource + (int)(heightSource * this.x2);
+                        y1 = (int) (heightSource + heightSource * this.y1);
+                        y2 = (int) (heightSource + heightSource * this.y2);
                     }
 
                     // если координаты вылезаю за границы скриншота - приводим их к границам
                     x1 = Math.max(x1, 0); x2 = Math.min(x2, widthSource);
                     y1 = Math.max(y1, 0);  y2 = Math.min(y2, heightSource);
+
+                    if (x1 > x2) {
+                        int tmp = x1;
+                        x1 = x2;
+                        x2 = tmp;
+                    }
+
+                    if (y1 > y2) {
+                        int tmp = y1;
+                        y1 = y2;
+                        y2 = tmp;
+                    }
 
                     return Bitmap.createBitmap(sourceBitmap, x1, y1, x2 - x1, y2 - y1);
                 }

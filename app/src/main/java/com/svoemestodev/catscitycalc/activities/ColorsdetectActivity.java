@@ -79,119 +79,169 @@ public class ColorsdetectActivity extends AppCompatActivity {
         mapAreas = new HashMap<>();
         String key;
 
-        key = getString(R.string.borders_box1_info); mapAreas.put(key, new MyArea(key, Area.BOX1_INFO,
-                getString(R.string.pref_cut_box1_info_x1), getString(R.string.pref_cut_box1_info_x2), getString(R.string.pref_cut_box1_info_y1), getString(R.string.pref_cut_box1_info_y2),
-                getString(R.string.def_cut_box1_info_x1), getString(R.string.def_cut_box1_info_x2), getString(R.string.def_cut_box1_info_y1), getString(R.string.def_cut_box1_info_y2),
-                getString(R.string.pref_rgb_box1_info_main), getString(R.string.pref_rgb_box1_info_back1), getString(R.string.pref_rgb_box1_info_thm), getString(R.string.pref_rgb_box1_info_thp),
-                getString(R.string.def_rgb_box1_info_main), getString(R.string.def_rgb_box1_info_back1), getString(R.string.def_rgb_box1_info_thm), getString(R.string.def_rgb_box1_info_thp)));
+        key = getString(R.string.borders_box_info_city); mapAreas.put(key, new MyArea(key, Area.BOX_INFO_CITY,
+                getString(R.string.pref_cut_box_info_city_x1), getString(R.string.pref_cut_box_info_city_x2), getString(R.string.pref_cut_box_info_city_y1), getString(R.string.pref_cut_box_info_city_y2),
+                getString(R.string.def_cut_box_info_city_x1), getString(R.string.def_cut_box_info_city_x2), getString(R.string.def_cut_box_info_city_y1), getString(R.string.def_cut_box_info_city_y2),
+                getString(R.string.pref_rgb_box_info_city_main), getString(R.string.pref_rgb_box_info_city_back1), getString(R.string.pref_rgb_box_info_city_thm), getString(R.string.pref_rgb_box_info_city_thp),
+                getString(R.string.def_rgb_box_info_city_main), getString(R.string.def_rgb_box_info_city_back1), getString(R.string.def_rgb_box_info_city_thm), getString(R.string.def_rgb_box_info_city_thp)));
 
-        key = getString(R.string.borders_box2_info); mapAreas.put(key, new MyArea(key, Area.BOX2_INFO,
-                getString(R.string.pref_cut_box2_info_x1), getString(R.string.pref_cut_box2_info_x2), getString(R.string.pref_cut_box2_info_y1), getString(R.string.pref_cut_box2_info_y2),
-                getString(R.string.def_cut_box2_info_x1), getString(R.string.def_cut_box2_info_x2), getString(R.string.def_cut_box2_info_y1), getString(R.string.def_cut_box2_info_y2),
-                getString(R.string.pref_rgb_box2_info_main), getString(R.string.pref_rgb_box2_info_back1), getString(R.string.pref_rgb_box2_info_thm), getString(R.string.pref_rgb_box2_info_thp),
-                getString(R.string.def_rgb_box2_info_main), getString(R.string.def_rgb_box2_info_back1), getString(R.string.def_rgb_box2_info_thm), getString(R.string.def_rgb_box2_info_thp)));
+        key = getString(R.string.borders_box_info_car); mapAreas.put(key, new MyArea(key, Area.BOX_INFO_CAR,
+                getString(R.string.pref_cut_box_info_car_x1), getString(R.string.pref_cut_box_info_car_x2), getString(R.string.pref_cut_box_info_car_y1), getString(R.string.pref_cut_box_info_car_y2),
+                getString(R.string.def_cut_box_info_car_x1), getString(R.string.def_cut_box_info_car_x2), getString(R.string.def_cut_box_info_car_y1), getString(R.string.def_cut_box_info_car_y2),
+                getString(R.string.pref_rgb_box_info_car_main), getString(R.string.pref_rgb_box_info_car_back1), getString(R.string.pref_rgb_box_info_car_thm), getString(R.string.pref_rgb_box_info_car_thp),
+                getString(R.string.def_rgb_box_info_car_main), getString(R.string.def_rgb_box_info_car_back1), getString(R.string.def_rgb_box_info_car_thm), getString(R.string.def_rgb_box_info_car_thp)));
 
-        key = getString(R.string.borders_car_info); mapAreas.put(key, new MyArea(key, Area.CAR_INFO,
-                getString(R.string.pref_cut_car_info_x1), getString(R.string.pref_cut_car_info_x2), getString(R.string.pref_cut_car_info_y1), getString(R.string.pref_cut_car_info_y2),
-                getString(R.string.def_cut_car_info_x1), getString(R.string.def_cut_car_info_x2), getString(R.string.def_cut_car_info_y1), getString(R.string.def_cut_car_info_y2),
-                getString(R.string.pref_rgb_car_info_main), getString(R.string.pref_rgb_car_info_back1), getString(R.string.pref_rgb_car_info_thm), getString(R.string.pref_rgb_car_info_thp),
-                getString(R.string.def_rgb_car_info_main), getString(R.string.def_rgb_car_info_back1), getString(R.string.def_rgb_car_info_thm), getString(R.string.def_rgb_car_info_thp)));
+        key = getString(R.string.borders_box_info_garage); mapAreas.put(key, new MyArea(key, Area.BOX_INFO_GARAGE,
+                getString(R.string.pref_cut_box_info_garage_x1), getString(R.string.pref_cut_box_info_garage_x2), getString(R.string.pref_cut_box_info_garage_y1), getString(R.string.pref_cut_box_info_garage_y2),
+                getString(R.string.def_cut_box_info_garage_x1), getString(R.string.def_cut_box_info_garage_x2), getString(R.string.def_cut_box_info_garage_y1), getString(R.string.def_cut_box_info_garage_y2),
+                getString(R.string.pref_rgb_box_info_garage_main), getString(R.string.pref_rgb_box_info_garage_back1), getString(R.string.pref_rgb_box_info_garage_thm), getString(R.string.pref_rgb_box_info_garage_thp),
+                getString(R.string.def_rgb_box_info_garage_main), getString(R.string.def_rgb_box_info_garage_back1), getString(R.string.def_rgb_box_info_garage_thm), getString(R.string.def_rgb_box_info_garage_thp)));
 
-        key = getString(R.string.borders_car_building); mapAreas.put(key, new MyArea(key, Area.CAR_BUILDING,
-                getString(R.string.pref_cut_car_building_x1), getString(R.string.pref_cut_car_building_x2), getString(R.string.pref_cut_car_building_y1), getString(R.string.pref_cut_car_building_y2),
-                getString(R.string.def_cut_car_building_x1), getString(R.string.def_cut_car_building_x2), getString(R.string.def_cut_car_building_y1), getString(R.string.def_cut_car_building_y2),
-                getString(R.string.pref_rgb_car_building_main), getString(R.string.pref_rgb_car_building_back1), getString(R.string.pref_rgb_car_building_thm), getString(R.string.pref_rgb_car_building_thp),
-                getString(R.string.def_rgb_car_building_main), getString(R.string.def_rgb_car_building_back1), getString(R.string.def_rgb_car_building_thm), getString(R.string.def_rgb_car_building_thp)));
+        key = getString(R.string.borders_box_back); mapAreas.put(key, new MyArea(key, Area.BOX_BACK,
+                getString(R.string.pref_cut_box_back_x1), getString(R.string.pref_cut_box_back_x2), getString(R.string.pref_cut_box_back_y1), getString(R.string.pref_cut_box_back_y2),
+                getString(R.string.def_cut_box_back_x1), getString(R.string.def_cut_box_back_x2), getString(R.string.def_cut_box_back_y1), getString(R.string.def_cut_box_back_y2),
+                getString(R.string.pref_rgb_box_back_main), getString(R.string.pref_rgb_box_back_back1), getString(R.string.pref_rgb_box_back_thm), getString(R.string.pref_rgb_box_back_thp),
+                getString(R.string.def_rgb_box_back_main), getString(R.string.def_rgb_box_back_back1), getString(R.string.def_rgb_box_back_thm), getString(R.string.def_rgb_box_back_thp)));
 
-        key = getString(R.string.borders_car_picture); mapAreas.put(key, new MyArea(key, Area.CAR_PICTURE,
-                getString(R.string.pref_cut_car_picture_x1), getString(R.string.pref_cut_car_picture_x2), getString(R.string.pref_cut_car_picture_y1), getString(R.string.pref_cut_car_picture_y2),
-                getString(R.string.def_cut_car_picture_x1), getString(R.string.def_cut_car_picture_x2), getString(R.string.def_cut_car_picture_y1), getString(R.string.def_cut_car_picture_y2),
-                getString(R.string.pref_rgb_car_picture_main), getString(R.string.pref_rgb_car_picture_back1), getString(R.string.pref_rgb_car_picture_thm), getString(R.string.pref_rgb_car_picture_thp),
-                getString(R.string.def_rgb_car_picture_main), getString(R.string.def_rgb_car_picture_back1), getString(R.string.def_rgb_car_picture_thm), getString(R.string.def_rgb_car_picture_thp)));
+        key = getString(R.string.borders_car_in_city_info); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_INFO,
+                getString(R.string.pref_cut_car_in_city_info_x1), getString(R.string.pref_cut_car_in_city_info_x2), getString(R.string.pref_cut_car_in_city_info_y1), getString(R.string.pref_cut_car_in_city_info_y2),
+                getString(R.string.def_cut_car_in_city_info_x1), getString(R.string.def_cut_car_in_city_info_x2), getString(R.string.def_cut_car_in_city_info_y1), getString(R.string.def_cut_car_in_city_info_y2),
+                getString(R.string.pref_rgb_car_in_city_info_main), getString(R.string.pref_rgb_car_in_city_info_back1), getString(R.string.pref_rgb_car_in_city_info_thm), getString(R.string.pref_rgb_car_in_city_info_thp),
+                getString(R.string.def_rgb_car_in_city_info_main), getString(R.string.def_rgb_car_in_city_info_back1), getString(R.string.def_rgb_car_in_city_info_thm), getString(R.string.def_rgb_car_in_city_info_thp)));
 
-        key = getString(R.string.borders_car_box1); mapAreas.put(key, new MyArea(key, Area.CAR_BOX1,
-                getString(R.string.pref_cut_car_box1_x1), getString(R.string.pref_cut_car_box1_x2), getString(R.string.pref_cut_car_box1_y1), getString(R.string.pref_cut_car_box1_y2),
-                getString(R.string.def_cut_car_box1_x1), getString(R.string.def_cut_car_box1_x2), getString(R.string.def_cut_car_box1_y1), getString(R.string.def_cut_car_box1_y2),
-                getString(R.string.pref_rgb_car_box1_main), getString(R.string.pref_rgb_car_box1_back1), getString(R.string.pref_rgb_car_box1_thm), getString(R.string.pref_rgb_car_box1_thp),
-                getString(R.string.def_rgb_car_box1_main), getString(R.string.def_rgb_car_box1_back1), getString(R.string.def_rgb_car_box1_thm), getString(R.string.def_rgb_car_box1_thp)));
+        key = getString(R.string.borders_car_in_city_building); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_BUILDING,
+                getString(R.string.pref_cut_car_in_city_building_x1), getString(R.string.pref_cut_car_in_city_building_x2), getString(R.string.pref_cut_car_in_city_building_y1), getString(R.string.pref_cut_car_in_city_building_y2),
+                getString(R.string.def_cut_car_in_city_building_x1), getString(R.string.def_cut_car_in_city_building_x2), getString(R.string.def_cut_car_in_city_building_y1), getString(R.string.def_cut_car_in_city_building_y2),
+                getString(R.string.pref_rgb_car_in_city_building_main), getString(R.string.pref_rgb_car_in_city_building_back1), getString(R.string.pref_rgb_car_in_city_building_thm), getString(R.string.pref_rgb_car_in_city_building_thp),
+                getString(R.string.def_rgb_car_in_city_building_main), getString(R.string.def_rgb_car_in_city_building_back1), getString(R.string.def_rgb_car_in_city_building_thm), getString(R.string.def_rgb_car_in_city_building_thp)));
 
-        key = getString(R.string.borders_car_box2); mapAreas.put(key, new MyArea(key, Area.CAR_BOX2,
-                getString(R.string.pref_cut_car_box2_x1), getString(R.string.pref_cut_car_box2_x2), getString(R.string.pref_cut_car_box2_y1), getString(R.string.pref_cut_car_box2_y2),
-                getString(R.string.def_cut_car_box2_x1), getString(R.string.def_cut_car_box2_x2), getString(R.string.def_cut_car_box2_y1), getString(R.string.def_cut_car_box2_y2),
-                getString(R.string.pref_rgb_car_box2_main), getString(R.string.pref_rgb_car_box2_back1), getString(R.string.pref_rgb_car_box2_thm), getString(R.string.pref_rgb_car_box2_thp),
-                getString(R.string.def_rgb_car_box2_main), getString(R.string.def_rgb_car_box2_back1), getString(R.string.def_rgb_car_box2_thm), getString(R.string.def_rgb_car_box2_thp)));
+        key = getString(R.string.borders_car_in_city_picture); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_PICTURE,
+                getString(R.string.pref_cut_car_in_city_picture_x1), getString(R.string.pref_cut_car_in_city_picture_x2), getString(R.string.pref_cut_car_in_city_picture_y1), getString(R.string.pref_cut_car_in_city_picture_y2),
+                getString(R.string.def_cut_car_in_city_picture_x1), getString(R.string.def_cut_car_in_city_picture_x2), getString(R.string.def_cut_car_in_city_picture_y1), getString(R.string.def_cut_car_in_city_picture_y2),
+                getString(R.string.pref_rgb_car_in_city_picture_main), getString(R.string.pref_rgb_car_in_city_picture_back1), getString(R.string.pref_rgb_car_in_city_picture_thm), getString(R.string.pref_rgb_car_in_city_picture_thp),
+                getString(R.string.def_rgb_car_in_city_picture_main), getString(R.string.def_rgb_car_in_city_picture_back1), getString(R.string.def_rgb_car_in_city_picture_thm), getString(R.string.def_rgb_car_in_city_picture_thp)));
 
-        key = getString(R.string.borders_car_slot1); mapAreas.put(key, new MyArea(key, Area.CAR_SLOT1,
-                getString(R.string.pref_cut_car_slot1_x1), getString(R.string.pref_cut_car_slot1_x2), getString(R.string.pref_cut_car_slot1_y1), getString(R.string.pref_cut_car_slot1_y2),
-                getString(R.string.def_cut_car_slot1_x1), getString(R.string.def_cut_car_slot1_x2), getString(R.string.def_cut_car_slot1_y1), getString(R.string.def_cut_car_slot1_y2),
-                getString(R.string.pref_rgb_car_slot_main), getString(R.string.pref_rgb_car_slot_back1), getString(R.string.pref_rgb_car_slot_thm), getString(R.string.pref_rgb_car_slot_thp),
-                getString(R.string.def_rgb_car_slot_main), getString(R.string.def_rgb_car_slot_back1), getString(R.string.def_rgb_car_slot_thm), getString(R.string.def_rgb_car_slot_thp)));
+        key = getString(R.string.borders_car_in_garage_picture); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_PICTURE,
+                getString(R.string.pref_cut_car_in_garage_picture_x1), getString(R.string.pref_cut_car_in_garage_picture_x2), getString(R.string.pref_cut_car_in_garage_picture_y1), getString(R.string.pref_cut_car_in_garage_picture_y2),
+                getString(R.string.def_cut_car_in_garage_picture_x1), getString(R.string.def_cut_car_in_garage_picture_x2), getString(R.string.def_cut_car_in_garage_picture_y1), getString(R.string.def_cut_car_in_garage_picture_y2),
+                getString(R.string.pref_rgb_car_in_garage_picture_main), getString(R.string.pref_rgb_car_in_garage_picture_back1), getString(R.string.pref_rgb_car_in_garage_picture_thm), getString(R.string.pref_rgb_car_in_garage_picture_thp),
+                getString(R.string.def_rgb_car_in_garage_picture_main), getString(R.string.def_rgb_car_in_garage_picture_back1), getString(R.string.def_rgb_car_in_garage_picture_thm), getString(R.string.def_rgb_car_in_garage_picture_thp)));
 
-        key = getString(R.string.borders_car_slot2); mapAreas.put(key, new MyArea(key, Area.CAR_SLOT2,
-                getString(R.string.pref_cut_car_slot2_x1), getString(R.string.pref_cut_car_slot2_x2), getString(R.string.pref_cut_car_slot2_y1), getString(R.string.pref_cut_car_slot2_y2),
-                getString(R.string.def_cut_car_slot2_x1), getString(R.string.def_cut_car_slot2_x2), getString(R.string.def_cut_car_slot2_y1), getString(R.string.def_cut_car_slot2_y2),
-                getString(R.string.pref_rgb_car_slot_main), getString(R.string.pref_rgb_car_slot_back1), getString(R.string.pref_rgb_car_slot_thm), getString(R.string.pref_rgb_car_slot_thp),
-                getString(R.string.def_rgb_car_slot_main), getString(R.string.def_rgb_car_slot_back1), getString(R.string.def_rgb_car_slot_thm), getString(R.string.def_rgb_car_slot_thp)));
 
-        key = getString(R.string.borders_car_slot3); mapAreas.put(key, new MyArea(key, Area.CAR_SLOT3,
-                getString(R.string.pref_cut_car_slot3_x1), getString(R.string.pref_cut_car_slot3_x2), getString(R.string.pref_cut_car_slot3_y1), getString(R.string.pref_cut_car_slot3_y2),
-                getString(R.string.def_cut_car_slot3_x1), getString(R.string.def_cut_car_slot3_x2), getString(R.string.def_cut_car_slot3_y1), getString(R.string.def_cut_car_slot3_y2),
-                getString(R.string.pref_rgb_car_slot_main), getString(R.string.pref_rgb_car_slot_back1), getString(R.string.pref_rgb_car_slot_thm), getString(R.string.pref_rgb_car_slot_thp),
-                getString(R.string.def_rgb_car_slot_main), getString(R.string.def_rgb_car_slot_back1), getString(R.string.def_rgb_car_slot_thm), getString(R.string.def_rgb_car_slot_thp)));
+        key = getString(R.string.borders_car_in_city_box1); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_BOX1,
+                getString(R.string.pref_cut_car_in_city_box1_x1), getString(R.string.pref_cut_car_in_city_box1_x2), getString(R.string.pref_cut_car_in_city_box1_y1), getString(R.string.pref_cut_car_in_city_box1_y2),
+                getString(R.string.def_cut_car_in_city_box1_x1), getString(R.string.def_cut_car_in_city_box1_x2), getString(R.string.def_cut_car_in_city_box1_y1), getString(R.string.def_cut_car_in_city_box1_y2),
+                getString(R.string.pref_rgb_car_in_city_box1_main), getString(R.string.pref_rgb_car_in_city_box1_back1), getString(R.string.pref_rgb_car_in_city_box1_thm), getString(R.string.pref_rgb_car_in_city_box1_thp),
+                getString(R.string.def_rgb_car_in_city_box1_main), getString(R.string.def_rgb_car_in_city_box1_back1), getString(R.string.def_rgb_car_in_city_box1_thm), getString(R.string.def_rgb_car_in_city_box1_thp)));
 
-        key = getString(R.string.borders_car_health); mapAreas.put(key, new MyArea(key, Area.CAR_HEALTH,
-                getString(R.string.pref_cut_car_health_x1), getString(R.string.pref_cut_car_health_x2), getString(R.string.pref_cut_car_health_y1), getString(R.string.pref_cut_car_health_y2),
-                getString(R.string.def_cut_car_health_x1), getString(R.string.def_cut_car_health_x2), getString(R.string.def_cut_car_health_y1), getString(R.string.def_cut_car_health_y2),
-                getString(R.string.pref_rgb_car_health_main), getString(R.string.pref_rgb_car_health_back1), getString(R.string.pref_rgb_car_health_thm), getString(R.string.pref_rgb_car_health_thp),
-                getString(R.string.def_rgb_car_health_main), getString(R.string.def_rgb_car_health_back1), getString(R.string.def_rgb_car_health_thm), getString(R.string.def_rgb_car_health_thp)));
+        key = getString(R.string.borders_car_in_city_box2); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_BOX2,
+                getString(R.string.pref_cut_car_in_city_box2_x1), getString(R.string.pref_cut_car_in_city_box2_x2), getString(R.string.pref_cut_car_in_city_box2_y1), getString(R.string.pref_cut_car_in_city_box2_y2),
+                getString(R.string.def_cut_car_in_city_box2_x1), getString(R.string.def_cut_car_in_city_box2_x2), getString(R.string.def_cut_car_in_city_box2_y1), getString(R.string.def_cut_car_in_city_box2_y2),
+                getString(R.string.pref_rgb_car_in_city_box2_main), getString(R.string.pref_rgb_car_in_city_box2_back1), getString(R.string.pref_rgb_car_in_city_box2_thm), getString(R.string.pref_rgb_car_in_city_box2_thp),
+                getString(R.string.def_rgb_car_in_city_box2_main), getString(R.string.def_rgb_car_in_city_box2_back1), getString(R.string.def_rgb_car_in_city_box2_thm), getString(R.string.def_rgb_car_in_city_box2_thp)));
 
-        key = getString(R.string.borders_car_shield); mapAreas.put(key, new MyArea(key, Area.CAR_SHIELD,
-                getString(R.string.pref_cut_car_shield_x1), getString(R.string.pref_cut_car_shield_x2), getString(R.string.pref_cut_car_shield_y1), getString(R.string.pref_cut_car_shield_y2),
-                getString(R.string.def_cut_car_shield_x1), getString(R.string.def_cut_car_shield_x2), getString(R.string.def_cut_car_shield_y1), getString(R.string.def_cut_car_shield_y2),
-                getString(R.string.pref_rgb_car_shield_main), getString(R.string.pref_rgb_car_shield_back1), getString(R.string.pref_rgb_car_shield_thm), getString(R.string.pref_rgb_car_shield_thp),
-                getString(R.string.def_rgb_car_shield_main), getString(R.string.def_rgb_car_shield_back1), getString(R.string.def_rgb_car_shield_thm), getString(R.string.def_rgb_car_shield_thp)));
+        key = getString(R.string.borders_car_in_city_slot1); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_SLOT1,
+                getString(R.string.pref_cut_car_in_city_slot1_x1), getString(R.string.pref_cut_car_in_city_slot1_x2), getString(R.string.pref_cut_car_in_city_slot1_y1), getString(R.string.pref_cut_car_in_city_slot1_y2),
+                getString(R.string.def_cut_car_in_city_slot1_x1), getString(R.string.def_cut_car_in_city_slot1_x2), getString(R.string.def_cut_car_in_city_slot1_y1), getString(R.string.def_cut_car_in_city_slot1_y2),
+                getString(R.string.pref_rgb_car_in_city_slot_main), getString(R.string.pref_rgb_car_in_city_slot_back1), getString(R.string.pref_rgb_car_in_city_slot_thm), getString(R.string.pref_rgb_car_in_city_slot_thp),
+                getString(R.string.def_rgb_car_in_city_slot_main), getString(R.string.def_rgb_car_in_city_slot_back1), getString(R.string.def_rgb_car_in_city_slot_thm), getString(R.string.def_rgb_car_in_city_slot_thp)));
 
-        key = getString(R.string.borders_car_state); mapAreas.put(key, new MyArea(key, Area.CAR_STATE,
-                getString(R.string.pref_cut_car_state_x1), getString(R.string.pref_cut_car_state_x2), getString(R.string.pref_cut_car_state_y1), getString(R.string.pref_cut_car_state_y2),
-                getString(R.string.def_cut_car_state_x1), getString(R.string.def_cut_car_state_x2), getString(R.string.def_cut_car_state_y1), getString(R.string.def_cut_car_state_y2),
-                getString(R.string.pref_rgb_car_state_main), getString(R.string.pref_rgb_car_state_back1), getString(R.string.pref_rgb_car_state_thm), getString(R.string.pref_rgb_car_state_thp),
-                getString(R.string.def_rgb_car_state_main), getString(R.string.def_rgb_car_state_back1), getString(R.string.def_rgb_car_state_thm), getString(R.string.def_rgb_car_state_thp)));
+        key = getString(R.string.borders_car_in_city_slot2); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_SLOT2,
+                getString(R.string.pref_cut_car_in_city_slot2_x1), getString(R.string.pref_cut_car_in_city_slot2_x2), getString(R.string.pref_cut_car_in_city_slot2_y1), getString(R.string.pref_cut_car_in_city_slot2_y2),
+                getString(R.string.def_cut_car_in_city_slot2_x1), getString(R.string.def_cut_car_in_city_slot2_x2), getString(R.string.def_cut_car_in_city_slot2_y1), getString(R.string.def_cut_car_in_city_slot2_y2),
+                getString(R.string.pref_rgb_car_in_city_slot_main), getString(R.string.pref_rgb_car_in_city_slot_back1), getString(R.string.pref_rgb_car_in_city_slot_thm), getString(R.string.pref_rgb_car_in_city_slot_thp),
+                getString(R.string.def_rgb_car_in_city_slot_main), getString(R.string.def_rgb_car_in_city_slot_back1), getString(R.string.def_rgb_car_in_city_slot_thm), getString(R.string.def_rgb_car_in_city_slot_thp)));
 
-        key = getString(R.string.borders_car_healbox); mapAreas.put(key, new MyArea(key, Area.CAR_HEALBOX,
-                getString(R.string.pref_cut_car_healbox_x1), getString(R.string.pref_cut_car_healbox_x2), getString(R.string.pref_cut_car_healbox_y1), getString(R.string.pref_cut_car_healbox_y2),
-                getString(R.string.def_cut_car_healbox_x1), getString(R.string.def_cut_car_healbox_x2), getString(R.string.def_cut_car_healbox_y1), getString(R.string.def_cut_car_healbox_y2),
-                getString(R.string.pref_rgb_car_healbox_main), getString(R.string.pref_rgb_car_healbox_back1), getString(R.string.pref_rgb_car_healbox_thm), getString(R.string.pref_rgb_car_healbox_thp),
-                getString(R.string.def_rgb_car_healbox_main), getString(R.string.def_rgb_car_healbox_back1), getString(R.string.def_rgb_car_healbox_thm), getString(R.string.def_rgb_car_healbox_thp)));
+        key = getString(R.string.borders_car_in_city_slot3); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_SLOT3,
+                getString(R.string.pref_cut_car_in_city_slot3_x1), getString(R.string.pref_cut_car_in_city_slot3_x2), getString(R.string.pref_cut_car_in_city_slot3_y1), getString(R.string.pref_cut_car_in_city_slot3_y2),
+                getString(R.string.def_cut_car_in_city_slot3_x1), getString(R.string.def_cut_car_in_city_slot3_x2), getString(R.string.def_cut_car_in_city_slot3_y1), getString(R.string.def_cut_car_in_city_slot3_y2),
+                getString(R.string.pref_rgb_car_in_city_slot_main), getString(R.string.pref_rgb_car_in_city_slot_back1), getString(R.string.pref_rgb_car_in_city_slot_thm), getString(R.string.pref_rgb_car_in_city_slot_thp),
+                getString(R.string.def_rgb_car_in_city_slot_main), getString(R.string.def_rgb_car_in_city_slot_back1), getString(R.string.def_rgb_car_in_city_slot_thm), getString(R.string.def_rgb_car_in_city_slot_thp)));
 
-        key = getString(R.string.borders_car_timebox1); mapAreas.put(key, new MyArea(key, Area.CAR_TIMEBOX1,
-                getString(R.string.pref_cut_car_timebox1_x1), getString(R.string.pref_cut_car_timebox1_x2), getString(R.string.pref_cut_car_timebox1_y1), getString(R.string.pref_cut_car_timebox1_y2),
-                getString(R.string.def_cut_car_timebox1_x1), getString(R.string.def_cut_car_timebox1_x2), getString(R.string.def_cut_car_timebox1_y1), getString(R.string.def_cut_car_timebox1_y2),
-                getString(R.string.pref_rgb_car_timebox1_main), getString(R.string.pref_rgb_car_timebox1_back1), getString(R.string.pref_rgb_car_timebox1_thm), getString(R.string.pref_rgb_car_timebox1_thp),
-                getString(R.string.def_rgb_car_timebox1_main), getString(R.string.def_rgb_car_timebox1_back1), getString(R.string.def_rgb_car_timebox1_thm), getString(R.string.def_rgb_car_timebox1_thp)));
+        key = getString(R.string.borders_car_in_garage_slot1); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_SLOT1,
+                getString(R.string.pref_cut_car_in_garage_slot1_x1), getString(R.string.pref_cut_car_in_garage_slot1_x2), getString(R.string.pref_cut_car_in_garage_slot1_y1), getString(R.string.pref_cut_car_in_garage_slot1_y2),
+                getString(R.string.def_cut_car_in_garage_slot1_x1), getString(R.string.def_cut_car_in_garage_slot1_x2), getString(R.string.def_cut_car_in_garage_slot1_y1), getString(R.string.def_cut_car_in_garage_slot1_y2),
+                getString(R.string.pref_rgb_car_in_garage_slot_main), getString(R.string.pref_rgb_car_in_garage_slot_back1), getString(R.string.pref_rgb_car_in_garage_slot_thm), getString(R.string.pref_rgb_car_in_garage_slot_thp),
+                getString(R.string.def_rgb_car_in_garage_slot_main), getString(R.string.def_rgb_car_in_garage_slot_back1), getString(R.string.def_rgb_car_in_garage_slot_thm), getString(R.string.def_rgb_car_in_garage_slot_thp)));
 
-        key = getString(R.string.borders_car_timebox2); mapAreas.put(key, new MyArea(key, Area.CAR_TIMEBOX2,
-                getString(R.string.pref_cut_car_timebox2_x1), getString(R.string.pref_cut_car_timebox2_x2), getString(R.string.pref_cut_car_timebox2_y1), getString(R.string.pref_cut_car_timebox2_y2),
-                getString(R.string.def_cut_car_timebox2_x1), getString(R.string.def_cut_car_timebox2_x2), getString(R.string.def_cut_car_timebox2_y1), getString(R.string.def_cut_car_timebox2_y2),
-                getString(R.string.pref_rgb_car_timebox2_main), getString(R.string.pref_rgb_car_timebox2_back1), getString(R.string.pref_rgb_car_timebox2_thm), getString(R.string.pref_rgb_car_timebox2_thp),
-                getString(R.string.def_rgb_car_timebox2_main), getString(R.string.def_rgb_car_timebox2_back1), getString(R.string.def_rgb_car_timebox2_thm), getString(R.string.def_rgb_car_timebox2_thp)));
+        key = getString(R.string.borders_car_in_garage_slot2); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_SLOT2,
+                getString(R.string.pref_cut_car_in_garage_slot2_x1), getString(R.string.pref_cut_car_in_garage_slot2_x2), getString(R.string.pref_cut_car_in_garage_slot2_y1), getString(R.string.pref_cut_car_in_garage_slot2_y2),
+                getString(R.string.def_cut_car_in_garage_slot2_x1), getString(R.string.def_cut_car_in_garage_slot2_x2), getString(R.string.def_cut_car_in_garage_slot2_y1), getString(R.string.def_cut_car_in_garage_slot2_y2),
+                getString(R.string.pref_rgb_car_in_garage_slot_main), getString(R.string.pref_rgb_car_in_garage_slot_back1), getString(R.string.pref_rgb_car_in_garage_slot_thm), getString(R.string.pref_rgb_car_in_garage_slot_thp),
+                getString(R.string.def_rgb_car_in_garage_slot_main), getString(R.string.def_rgb_car_in_garage_slot_back1), getString(R.string.def_rgb_car_in_garage_slot_thm), getString(R.string.def_rgb_car_in_garage_slot_thp)));
 
-        key = getString(R.string.borders_car_statebox1); mapAreas.put(key, new MyArea(key, Area.CAR_STATEBOX1,
-                getString(R.string.pref_cut_car_statebox1_x1), getString(R.string.pref_cut_car_statebox1_x2), getString(R.string.pref_cut_car_statebox1_y1), getString(R.string.pref_cut_car_statebox1_y2),
-                getString(R.string.def_cut_car_statebox1_x1), getString(R.string.def_cut_car_statebox1_x2), getString(R.string.def_cut_car_statebox1_y1), getString(R.string.def_cut_car_statebox1_y2),
-                getString(R.string.pref_rgb_car_statebox1_main), getString(R.string.pref_rgb_car_statebox1_back1), getString(R.string.pref_rgb_car_statebox1_thm), getString(R.string.pref_rgb_car_statebox1_thp),
-                getString(R.string.def_rgb_car_statebox1_main), getString(R.string.def_rgb_car_statebox1_back1), getString(R.string.def_rgb_car_statebox1_thm), getString(R.string.def_rgb_car_statebox1_thp)));
+        key = getString(R.string.borders_car_in_garage_slot3); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_SLOT3,
+                getString(R.string.pref_cut_car_in_garage_slot3_x1), getString(R.string.pref_cut_car_in_garage_slot3_x2), getString(R.string.pref_cut_car_in_garage_slot3_y1), getString(R.string.pref_cut_car_in_garage_slot3_y2),
+                getString(R.string.def_cut_car_in_garage_slot3_x1), getString(R.string.def_cut_car_in_garage_slot3_x2), getString(R.string.def_cut_car_in_garage_slot3_y1), getString(R.string.def_cut_car_in_garage_slot3_y2),
+                getString(R.string.pref_rgb_car_in_garage_slot_main), getString(R.string.pref_rgb_car_in_garage_slot_back1), getString(R.string.pref_rgb_car_in_garage_slot_thm), getString(R.string.pref_rgb_car_in_garage_slot_thp),
+                getString(R.string.def_rgb_car_in_garage_slot_main), getString(R.string.def_rgb_car_in_garage_slot_back1), getString(R.string.def_rgb_car_in_garage_slot_thm), getString(R.string.def_rgb_car_in_garage_slot_thp)));
 
-        key = getString(R.string.borders_car_statebox2); mapAreas.put(key, new MyArea(key, Area.CAR_STATEBOX2,
-                getString(R.string.pref_cut_car_statebox2_x1), getString(R.string.pref_cut_car_statebox2_x2), getString(R.string.pref_cut_car_statebox2_y1), getString(R.string.pref_cut_car_statebox2_y2),
-                getString(R.string.def_cut_car_statebox2_x1), getString(R.string.def_cut_car_statebox2_x2), getString(R.string.def_cut_car_statebox2_y1), getString(R.string.def_cut_car_statebox2_y2),
-                getString(R.string.pref_rgb_car_statebox2_main), getString(R.string.pref_rgb_car_statebox2_back1), getString(R.string.pref_rgb_car_statebox2_thm), getString(R.string.pref_rgb_car_statebox2_thp),
-                getString(R.string.def_rgb_car_statebox2_main), getString(R.string.def_rgb_car_statebox2_back1), getString(R.string.def_rgb_car_statebox2_thm), getString(R.string.def_rgb_car_statebox2_thp)));
 
-        key = getString(R.string.borders_car_statebox3); mapAreas.put(key, new MyArea(key, Area.CAR_STATEBOX3,
-                getString(R.string.pref_cut_car_statebox3_x1), getString(R.string.pref_cut_car_statebox3_x2), getString(R.string.pref_cut_car_statebox3_y1), getString(R.string.pref_cut_car_statebox3_y2),
-                getString(R.string.def_cut_car_statebox3_x1), getString(R.string.def_cut_car_statebox3_x2), getString(R.string.def_cut_car_statebox3_y1), getString(R.string.def_cut_car_statebox3_y2),
-                getString(R.string.pref_rgb_car_statebox3_main), getString(R.string.pref_rgb_car_statebox3_back1), getString(R.string.pref_rgb_car_statebox3_thm), getString(R.string.pref_rgb_car_statebox3_thp),
-                getString(R.string.def_rgb_car_statebox3_main), getString(R.string.def_rgb_car_statebox3_back1), getString(R.string.def_rgb_car_statebox3_thm), getString(R.string.def_rgb_car_statebox3_thp)));
+        key = getString(R.string.borders_car_in_city_health); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_HEALTH,
+                getString(R.string.pref_cut_car_in_city_health_x1), getString(R.string.pref_cut_car_in_city_health_x2), getString(R.string.pref_cut_car_in_city_health_y1), getString(R.string.pref_cut_car_in_city_health_y2),
+                getString(R.string.def_cut_car_in_city_health_x1), getString(R.string.def_cut_car_in_city_health_x2), getString(R.string.def_cut_car_in_city_health_y1), getString(R.string.def_cut_car_in_city_health_y2),
+                getString(R.string.pref_rgb_car_in_city_health_main), getString(R.string.pref_rgb_car_in_city_health_back1), getString(R.string.pref_rgb_car_in_city_health_thm), getString(R.string.pref_rgb_car_in_city_health_thp),
+                getString(R.string.def_rgb_car_in_city_health_main), getString(R.string.def_rgb_car_in_city_health_back1), getString(R.string.def_rgb_car_in_city_health_thm), getString(R.string.def_rgb_car_in_city_health_thp)));
+
+        key = getString(R.string.borders_car_in_city_shield); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_SHIELD,
+                getString(R.string.pref_cut_car_in_city_shield_x1), getString(R.string.pref_cut_car_in_city_shield_x2), getString(R.string.pref_cut_car_in_city_shield_y1), getString(R.string.pref_cut_car_in_city_shield_y2),
+                getString(R.string.def_cut_car_in_city_shield_x1), getString(R.string.def_cut_car_in_city_shield_x2), getString(R.string.def_cut_car_in_city_shield_y1), getString(R.string.def_cut_car_in_city_shield_y2),
+                getString(R.string.pref_rgb_car_in_city_shield_main), getString(R.string.pref_rgb_car_in_city_shield_back1), getString(R.string.pref_rgb_car_in_city_shield_thm), getString(R.string.pref_rgb_car_in_city_shield_thp),
+                getString(R.string.def_rgb_car_in_city_shield_main), getString(R.string.def_rgb_car_in_city_shield_back1), getString(R.string.def_rgb_car_in_city_shield_thm), getString(R.string.def_rgb_car_in_city_shield_thp)));
+
+        key = getString(R.string.borders_car_in_garage_health); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_HEALTH,
+                getString(R.string.pref_cut_car_in_garage_health_x1), getString(R.string.pref_cut_car_in_garage_health_x2), getString(R.string.pref_cut_car_in_garage_health_y1), getString(R.string.pref_cut_car_in_garage_health_y2),
+                getString(R.string.def_cut_car_in_garage_health_x1), getString(R.string.def_cut_car_in_garage_health_x2), getString(R.string.def_cut_car_in_garage_health_y1), getString(R.string.def_cut_car_in_garage_health_y2),
+                getString(R.string.pref_rgb_car_in_garage_health_main), getString(R.string.pref_rgb_car_in_garage_health_back1), getString(R.string.pref_rgb_car_in_garage_health_thm), getString(R.string.pref_rgb_car_in_garage_health_thp),
+                getString(R.string.def_rgb_car_in_garage_health_main), getString(R.string.def_rgb_car_in_garage_health_back1), getString(R.string.def_rgb_car_in_garage_health_thm), getString(R.string.def_rgb_car_in_garage_health_thp)));
+
+        key = getString(R.string.borders_car_in_garage_shield); mapAreas.put(key, new MyArea(key, Area.CAR_IN_GARAGE_SHIELD,
+                getString(R.string.pref_cut_car_in_garage_shield_x1), getString(R.string.pref_cut_car_in_garage_shield_x2), getString(R.string.pref_cut_car_in_garage_shield_y1), getString(R.string.pref_cut_car_in_garage_shield_y2),
+                getString(R.string.def_cut_car_in_garage_shield_x1), getString(R.string.def_cut_car_in_garage_shield_x2), getString(R.string.def_cut_car_in_garage_shield_y1), getString(R.string.def_cut_car_in_garage_shield_y2),
+                getString(R.string.pref_rgb_car_in_garage_shield_main), getString(R.string.pref_rgb_car_in_garage_shield_back1), getString(R.string.pref_rgb_car_in_garage_shield_thm), getString(R.string.pref_rgb_car_in_garage_shield_thp),
+                getString(R.string.def_rgb_car_in_garage_shield_main), getString(R.string.def_rgb_car_in_garage_shield_back1), getString(R.string.def_rgb_car_in_garage_shield_thm), getString(R.string.def_rgb_car_in_garage_shield_thp)));
+
+        key = getString(R.string.borders_car_in_city_state); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_STATE,
+                getString(R.string.pref_cut_car_in_city_state_x1), getString(R.string.pref_cut_car_in_city_state_x2), getString(R.string.pref_cut_car_in_city_state_y1), getString(R.string.pref_cut_car_in_city_state_y2),
+                getString(R.string.def_cut_car_in_city_state_x1), getString(R.string.def_cut_car_in_city_state_x2), getString(R.string.def_cut_car_in_city_state_y1), getString(R.string.def_cut_car_in_city_state_y2),
+                getString(R.string.pref_rgb_car_in_city_state_main), getString(R.string.pref_rgb_car_in_city_state_back1), getString(R.string.pref_rgb_car_in_city_state_thm), getString(R.string.pref_rgb_car_in_city_state_thp),
+                getString(R.string.def_rgb_car_in_city_state_main), getString(R.string.def_rgb_car_in_city_state_back1), getString(R.string.def_rgb_car_in_city_state_thm), getString(R.string.def_rgb_car_in_city_state_thp)));
+
+        key = getString(R.string.borders_car_in_city_healbox); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_HEALBOX,
+                getString(R.string.pref_cut_car_in_city_healbox_x1), getString(R.string.pref_cut_car_in_city_healbox_x2), getString(R.string.pref_cut_car_in_city_healbox_y1), getString(R.string.pref_cut_car_in_city_healbox_y2),
+                getString(R.string.def_cut_car_in_city_healbox_x1), getString(R.string.def_cut_car_in_city_healbox_x2), getString(R.string.def_cut_car_in_city_healbox_y1), getString(R.string.def_cut_car_in_city_healbox_y2),
+                getString(R.string.pref_rgb_car_in_city_healbox_main), getString(R.string.pref_rgb_car_in_city_healbox_back1), getString(R.string.pref_rgb_car_in_city_healbox_thm), getString(R.string.pref_rgb_car_in_city_healbox_thp),
+                getString(R.string.def_rgb_car_in_city_healbox_main), getString(R.string.def_rgb_car_in_city_healbox_back1), getString(R.string.def_rgb_car_in_city_healbox_thm), getString(R.string.def_rgb_car_in_city_healbox_thp)));
+
+        key = getString(R.string.borders_car_in_city_timebox1); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_TIMEBOX1,
+                getString(R.string.pref_cut_car_in_city_timebox1_x1), getString(R.string.pref_cut_car_in_city_timebox1_x2), getString(R.string.pref_cut_car_in_city_timebox1_y1), getString(R.string.pref_cut_car_in_city_timebox1_y2),
+                getString(R.string.def_cut_car_in_city_timebox1_x1), getString(R.string.def_cut_car_in_city_timebox1_x2), getString(R.string.def_cut_car_in_city_timebox1_y1), getString(R.string.def_cut_car_in_city_timebox1_y2),
+                getString(R.string.pref_rgb_car_in_city_timebox1_main), getString(R.string.pref_rgb_car_in_city_timebox1_back1), getString(R.string.pref_rgb_car_in_city_timebox1_thm), getString(R.string.pref_rgb_car_in_city_timebox1_thp),
+                getString(R.string.def_rgb_car_in_city_timebox1_main), getString(R.string.def_rgb_car_in_city_timebox1_back1), getString(R.string.def_rgb_car_in_city_timebox1_thm), getString(R.string.def_rgb_car_in_city_timebox1_thp)));
+
+        key = getString(R.string.borders_car_in_city_timebox2); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_TIMEBOX2,
+                getString(R.string.pref_cut_car_in_city_timebox2_x1), getString(R.string.pref_cut_car_in_city_timebox2_x2), getString(R.string.pref_cut_car_in_city_timebox2_y1), getString(R.string.pref_cut_car_in_city_timebox2_y2),
+                getString(R.string.def_cut_car_in_city_timebox2_x1), getString(R.string.def_cut_car_in_city_timebox2_x2), getString(R.string.def_cut_car_in_city_timebox2_y1), getString(R.string.def_cut_car_in_city_timebox2_y2),
+                getString(R.string.pref_rgb_car_in_city_timebox2_main), getString(R.string.pref_rgb_car_in_city_timebox2_back1), getString(R.string.pref_rgb_car_in_city_timebox2_thm), getString(R.string.pref_rgb_car_in_city_timebox2_thp),
+                getString(R.string.def_rgb_car_in_city_timebox2_main), getString(R.string.def_rgb_car_in_city_timebox2_back1), getString(R.string.def_rgb_car_in_city_timebox2_thm), getString(R.string.def_rgb_car_in_city_timebox2_thp)));
+
+        key = getString(R.string.borders_car_in_city_statebox1); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_STATEBOX1,
+                getString(R.string.pref_cut_car_in_city_statebox1_x1), getString(R.string.pref_cut_car_in_city_statebox1_x2), getString(R.string.pref_cut_car_in_city_statebox1_y1), getString(R.string.pref_cut_car_in_city_statebox1_y2),
+                getString(R.string.def_cut_car_in_city_statebox1_x1), getString(R.string.def_cut_car_in_city_statebox1_x2), getString(R.string.def_cut_car_in_city_statebox1_y1), getString(R.string.def_cut_car_in_city_statebox1_y2),
+                getString(R.string.pref_rgb_car_in_city_statebox1_main), getString(R.string.pref_rgb_car_in_city_statebox1_back1), getString(R.string.pref_rgb_car_in_city_statebox1_thm), getString(R.string.pref_rgb_car_in_city_statebox1_thp),
+                getString(R.string.def_rgb_car_in_city_statebox1_main), getString(R.string.def_rgb_car_in_city_statebox1_back1), getString(R.string.def_rgb_car_in_city_statebox1_thm), getString(R.string.def_rgb_car_in_city_statebox1_thp)));
+
+        key = getString(R.string.borders_car_in_city_statebox2); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_STATEBOX2,
+                getString(R.string.pref_cut_car_in_city_statebox2_x1), getString(R.string.pref_cut_car_in_city_statebox2_x2), getString(R.string.pref_cut_car_in_city_statebox2_y1), getString(R.string.pref_cut_car_in_city_statebox2_y2),
+                getString(R.string.def_cut_car_in_city_statebox2_x1), getString(R.string.def_cut_car_in_city_statebox2_x2), getString(R.string.def_cut_car_in_city_statebox2_y1), getString(R.string.def_cut_car_in_city_statebox2_y2),
+                getString(R.string.pref_rgb_car_in_city_statebox2_main), getString(R.string.pref_rgb_car_in_city_statebox2_back1), getString(R.string.pref_rgb_car_in_city_statebox2_thm), getString(R.string.pref_rgb_car_in_city_statebox2_thp),
+                getString(R.string.def_rgb_car_in_city_statebox2_main), getString(R.string.def_rgb_car_in_city_statebox2_back1), getString(R.string.def_rgb_car_in_city_statebox2_thm), getString(R.string.def_rgb_car_in_city_statebox2_thp)));
+
+        key = getString(R.string.borders_car_in_city_statebox3); mapAreas.put(key, new MyArea(key, Area.CAR_IN_CITY_STATEBOX3,
+                getString(R.string.pref_cut_car_in_city_statebox3_x1), getString(R.string.pref_cut_car_in_city_statebox3_x2), getString(R.string.pref_cut_car_in_city_statebox3_y1), getString(R.string.pref_cut_car_in_city_statebox3_y2),
+                getString(R.string.def_cut_car_in_city_statebox3_x1), getString(R.string.def_cut_car_in_city_statebox3_x2), getString(R.string.def_cut_car_in_city_statebox3_y1), getString(R.string.def_cut_car_in_city_statebox3_y2),
+                getString(R.string.pref_rgb_car_in_city_statebox3_main), getString(R.string.pref_rgb_car_in_city_statebox3_back1), getString(R.string.pref_rgb_car_in_city_statebox3_thm), getString(R.string.pref_rgb_car_in_city_statebox3_thp),
+                getString(R.string.def_rgb_car_in_city_statebox3_main), getString(R.string.def_rgb_car_in_city_statebox3_back1), getString(R.string.def_rgb_car_in_city_statebox3_thm), getString(R.string.def_rgb_car_in_city_statebox3_thp)));
 
         key = getString(R.string.borders_city); mapAreas.put(key, new MyArea(key, Area.CITY,
                 getString(R.string.pref_cut_city_x1), getString(R.string.pref_cut_city_x2), getString(R.string.pref_cut_city_y1), getString(R.string.pref_cut_city_y2),

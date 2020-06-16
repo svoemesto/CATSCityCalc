@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,26 +22,40 @@
             android:layout_alignParentStart="true"
             android:src="@drawable/ic_baseline_edit_24"/>
 
+        <Spinner
+            android:id="@+id/ltu_sp_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ltu_bt_edit"
+            android:layout_toStartOf="@id/ltu_bt_delete"
+            />
+
         <ImageButton
             android:id="@+id/ltu_bt_set_leader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ltu_bt_edit"
-            android:src="@drawable/ic_baseline_star_24"/>
+            android:src="@drawable/ic_baseline_star_24"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
         <ImageButton
             android:id="@+id/ltu_bt_set_captain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ltu_bt_set_leader"
-            android:src="@drawable/ic_baseline_star_half_24"/>
+            android:src="@drawable/ic_baseline_star_half_24"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
         <ImageButton
             android:id="@+id/ltu_bt_set_meat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/ltu_bt_set_captain"
-            android:src="@drawable/ic_baseline_star_border_24"/>
+            android:src="@drawable/ic_baseline_star_border_24"
+            android:visibility="invisible"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/ltu_tv_nic_value"
@@ -88,6 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
+                        android:scaleType="fitCenter"
                         />
 
                     <TextView
@@ -103,12 +119,12 @@
                         android:id="@+id/ltu_tv_car1_star"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="30sp"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#ecad20"
                         android:text="@string/star"
+                        android:textColor="#ecad20"
+                        android:textSize="30sp"
                         android:visibility="invisible"
-                        />
+                        tools:visibility="visible" />
 
                 </RelativeLayout>
 
@@ -237,6 +253,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
+                        android:scaleType="fitCenter"
                         />
 
                     <TextView
@@ -252,12 +269,12 @@
                         android:id="@+id/ltu_tv_car2_star"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="30sp"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#ecad20"
                         android:text="@string/star"
+                        android:textColor="#ecad20"
+                        android:textSize="30sp"
                         android:visibility="invisible"
-                        />
+                        tools:visibility="visible" />
 
                 </RelativeLayout>
 
@@ -383,6 +400,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_gravity="center_horizontal"
+                        android:scaleType="fitCenter"
                         />
 
                     <TextView
@@ -397,12 +415,12 @@
                         android:id="@+id/ltu_tv_car3_star"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="30sp"
                         android:layout_alignParentEnd="true"
-                        android:textColor="#ecad20"
                         android:text="@string/star"
+                        android:textColor="#ecad20"
+                        android:textSize="30sp"
                         android:visibility="invisible"
-                        />
+                        tools:visibility="visible" />
 
 
                 </RelativeLayout>
@@ -515,6 +533,7 @@
 
 
         </LinearLayout>
-        
+
+
     </RelativeLayout>
 </LinearLayout>

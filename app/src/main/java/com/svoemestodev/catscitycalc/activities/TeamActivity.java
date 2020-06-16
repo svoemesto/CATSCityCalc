@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -281,6 +283,8 @@ public class TeamActivity extends AppCompatActivity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.layout_teamuser, null);
             }
 
+
+            Spinner ltu_sp_role = convertView.findViewById(R.id.ltu_sp_role);
             ImageButton ltu_bt_delete = convertView.findViewById(R.id.ltu_bt_delete);
             ImageButton ltu_bt_edit = convertView.findViewById(R.id.ltu_bt_edit);
             ImageButton ltu_bt_set_leader = convertView.findViewById(R.id.ltu_bt_set_leader);
@@ -332,6 +336,7 @@ public class TeamActivity extends AppCompatActivity {
             TextView ltu_tv_car3_star = convertView.findViewById(R.id.ltu_tv_car3_star);
             
             ltu_bt_delete.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
+            ltu_sp_role.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_edit.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_set_leader.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
             ltu_bt_set_captain.setEnabled(GameActivity.userRole.equals(UserRole.LEADER));
@@ -343,10 +348,63 @@ public class TeamActivity extends AppCompatActivity {
 
             String userUID = dbTeamUser.getUserID() == null ? "" : dbTeamUser.getUserID();
             String userNIC = dbTeamUser.getUserNIC() == null ? "N/A" : dbTeamUser.getUserNIC();
-            String userRole = dbTeamUser.getUserRole() == null ? "N/A" : dbTeamUser.getUserRole();
+            String userRoleString = dbTeamUser.getUserRole() == null ? "N/A" : dbTeamUser.getUserRole();
 
             ltu_tv_nic_value.setText(userNIC);
-            ltu_tv_role_value.setText(userRole);
+            ltu_tv_role_value.setText(userRoleString);
+
+            UserRole userRole = userRoleString.equals("leader") ? UserRole.LEADER : userRoleString.equals("captain") ? UserRole.CAPTAIN : UserRole.MEAT;
+
+            List<UserRole> listRoles = new ArrayList<UserRole>();
+            listRoles.add(UserRole.LEADER);
+            listRoles.add(UserRole.CAPTAIN);
+            listRoles.add(UserRole.MEAT);
+            ArrayAdapter<UserRole> dataAdapterRoles = new ArrayAdapter<UserRole>(TeamActivity.this, android.R.layout.simple_spinner_item, listRoles);
+            dataAdapterRoles.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            ltu_sp_role.setAdapter(dataAdapterRoles);
+            ltu_sp_role.setSelection(dataAdapterRoles.getPosition(userRole));
+
+            ltu_sp_role.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    UserRole selectedRole = (UserRole) parent.getItemAtPosition(position);
+                    String selectedRoleString = selectedRole.equals(UserRole.LEADER) ? "leader" : selectedRole.equals(UserRole.CAPTAIN) ? "captain" : "meat";
+                    if  (!selectedRoleString.equals(ltu_tv_role_value.getText().toString())) {
+                        if (dbTeamUser.getUserID().equals(GameActivity.fbUser.getUid())) {
+                            Toast.makeText(TeamActivity.this, getString(R.string.unable_chage_self_role), Toast.LENGTH_LONG).show();
+                        } else {
+                            final String userRole = selectedRole.equals(UserRole.LEADER) ? "leader" : selectedRole.equals(UserRole.CAPTAIN) ? "captain" : "meat";
+                            final String userID = dbTeamUser.getUserID();
+                            final String teamID = dbTeam.getTeamID();
+
+                            Query query = GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").whereEqualTo("userID", userID);
+                            query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    List<DbTeamUser> listTeamUsers = task.getResult().toObjects(DbTeamUser.class);
+                                    if (listTeamUsers.size() > 0) {
+                                        DbTeamUser dbTeamUser = listTeamUsers.get(0);
+                                        Map<String, Object> mapUpdateItem = new HashMap<>();
+                                        mapUpdateItem.put("userRole", userRole);
+                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamUsers").document(dbTeamUser.getTeamUserID()).update(mapUpdateItem).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                displayRecords();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
 
             DocumentReference docRefCar1 = GameActivity.fbDb.collection("users").document(userUID).collection("userCars").document("car1");
 

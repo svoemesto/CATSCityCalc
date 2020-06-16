@@ -137,47 +137,48 @@ public class PictureProcessor extends Activity {
                 int secondPicWidth = horizontalMove ? secondPicEnd - secondPicStart : sourceWidth;
                 int secondPicHeight = horizontalMove ? sourceHeight : secondPicEnd - secondPicStart;
 
-                firstBitmap = Bitmap.createBitmap(firstPicWidth, firstPicHeight, sourceBitmap.getConfig());
-                secondBitmap = Bitmap.createBitmap(secondPicWidth, secondPicHeight, sourceBitmap.getConfig());
+                if (firstPicWidth > 0 && firstPicHeight > 0 && secondPicWidth > 0 && secondPicHeight > 0) {
 
-                for (x = 0; x < firstPicWidth; x++) {
-                    for (y = 0; y < firstPicHeight; y++) {
+                    firstBitmap = Bitmap.createBitmap(firstPicWidth, firstPicHeight, sourceBitmap.getConfig());
+                    secondBitmap = Bitmap.createBitmap(secondPicWidth, secondPicHeight, sourceBitmap.getConfig());
 
-                        if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
-                            pixel = horizontalMove ? sourceBitmap.getPixel(x + firstPicStart, y) : sourceBitmap.getPixel(x, y + firstPicStart);
-                            firstBitmap.setPixel(x, y, pixel);
-                        } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
-                            pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + firstPicStart), y);
-                            firstBitmap.setPixel(firstPicWidth - x - 1, y, pixel);
-                        } else {
-                            pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + firstPicStart));
-                            firstBitmap.setPixel(x, firstPicHeight - y - 1, pixel);
+                    for (x = 0; x < firstPicWidth; x++) {
+                        for (y = 0; y < firstPicHeight; y++) {
+
+                            if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                                pixel = horizontalMove ? sourceBitmap.getPixel(x + firstPicStart, y) : sourceBitmap.getPixel(x, y + firstPicStart);
+                                firstBitmap.setPixel(x, y, pixel);
+                            } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
+                                pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + firstPicStart), y);
+                                firstBitmap.setPixel(firstPicWidth - x - 1, y, pixel);
+                            } else {
+                                pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + firstPicStart));
+                                firstBitmap.setPixel(x, firstPicHeight - y - 1, pixel);
+                            }
+
                         }
-
-//                        pixel = horizontalMove ? sourceBitmap.getPixel(x + firstPicStart, y) : sourceBitmap.getPixel(x, y + firstPicStart);
-//                        firstBitmap.setPixel(x, y, pixel);
                     }
-                }
 
-                for (x = 0; x < secondPicWidth; x++) {
-                    for (y = 0; y < secondPicHeight; y++) {
+                    for (x = 0; x < secondPicWidth; x++) {
+                        for (y = 0; y < secondPicHeight; y++) {
 
-                        if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
-                            pixel = horizontalMove ? sourceBitmap.getPixel(x + secondPicStart, y) : sourceBitmap.getPixel(x, y + secondPicStart);
-                            secondBitmap.setPixel(x, y, pixel);
-                        } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
-                            pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + secondPicStart), y);
-                            secondBitmap.setPixel(secondPicWidth - x - 1, y, pixel);
-                        } else {
-                            pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + secondPicStart));
-                            secondBitmap.setPixel(x, secondPicHeight - y - 1, pixel);
+                            if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                                pixel = horizontalMove ? sourceBitmap.getPixel(x + secondPicStart, y) : sourceBitmap.getPixel(x, y + secondPicStart);
+                                secondBitmap.setPixel(x, y, pixel);
+                            } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
+                                pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + secondPicStart), y);
+                                secondBitmap.setPixel(secondPicWidth - x - 1, y, pixel);
+                            } else {
+                                pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + secondPicStart));
+                                secondBitmap.setPixel(x, secondPicHeight - y - 1, pixel);
+                            }
                         }
-                        
-//                        pixel = horizontalMove ? sourceBitmap.getPixel(x + secondPicStart, y) : sourceBitmap.getPixel(x, y + secondPicStart);
-//                        secondBitmap.setPixel(x, y, pixel);
                     }
-                }
 
+                } else {
+                    firstBitmap = null;
+                    secondBitmap = null;
+                }
 
 
             } else {

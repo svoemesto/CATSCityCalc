@@ -43,393 +43,544 @@
 
 
 
-    <!--    car_statebox1-->
-    <string name="pref_cut_car_statebox1_x1" translatable="false">PREF_CUT_CAR_STATEBOX1_X1</string>
-    <string name="pref_cut_car_statebox1_x2" translatable="false">PREF_CUT_CAR_STATEBOX1_X2</string>
-    <string name="pref_cut_car_statebox1_y1" translatable="false">PREF_CUT_CAR_STATEBOX1_Y1</string>
-    <string name="pref_cut_car_statebox1_y2" translatable="false">PREF_CUT_CAR_STATEBOX1_Y2</string>
+    <!--    car_in_city_statebox1-->
+    <string name="pref_cut_car_in_city_statebox1_x1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX1_X1</string>
+    <string name="pref_cut_car_in_city_statebox1_x2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX1_X2</string>
+    <string name="pref_cut_car_in_city_statebox1_y1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX1_Y1</string>
+    <string name="pref_cut_car_in_city_statebox1_y2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX1_Y2</string>
 
-    <string name="pref_def_cut_car_statebox1_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_X1</string>
-    <string name="pref_def_cut_car_statebox1_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_X2</string>
-    <string name="pref_def_cut_car_statebox1_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_Y1</string>
-    <string name="pref_def_cut_car_statebox1_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX1_Y2</string>
+    <string name="pref_def_cut_car_in_city_statebox1_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX1_X1</string>
+    <string name="pref_def_cut_car_in_city_statebox1_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX1_X2</string>
+    <string name="pref_def_cut_car_in_city_statebox1_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX1_Y1</string>
+    <string name="pref_def_cut_car_in_city_statebox1_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX1_Y2</string>
 
-    <string name="pref_rgb_car_statebox1_main" translatable="false">PREF_RGB_CAR_STATEBOX1_MAIN</string>
-    <string name="pref_rgb_car_statebox1_back1" translatable="false">PREF_RGB_CAR_STATEBOX1_BACK1</string>
-    <string name="pref_rgb_car_statebox1_thp" translatable="false">PREF_RGB_CAR_STATEBOX1_THP</string>
-    <string name="pref_rgb_car_statebox1_thm" translatable="false">PREF_RGB_CAR_STATEBOX1_THM</string>
+    <string name="pref_rgb_car_in_city_statebox1_main" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX1_MAIN</string>
+    <string name="pref_rgb_car_in_city_statebox1_back1" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX1_BACK1</string>
+    <string name="pref_rgb_car_in_city_statebox1_thp" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX1_THP</string>
+    <string name="pref_rgb_car_in_city_statebox1_thm" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX1_THM</string>
 
-    <string name="pref_def_rgb_car_statebox1_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_MAIN</string>
-    <string name="pref_def_rgb_car_statebox1_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_BACK1</string>
-    <string name="pref_def_rgb_car_statebox1_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THP</string>
-    <string name="pref_def_rgb_car_statebox1_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX1_THM</string>
+    <string name="pref_def_rgb_car_in_city_statebox1_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX1_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_statebox1_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX1_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_statebox1_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX1_THP</string>
+    <string name="pref_def_rgb_car_in_city_statebox1_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX1_THM</string>
 
 
-    <!--    car_statebox2-->
-    <string name="pref_cut_car_statebox2_x1" translatable="false">PREF_CUT_CAR_STATEBOX2_X1</string>
-    <string name="pref_cut_car_statebox2_x2" translatable="false">PREF_CUT_CAR_STATEBOX2_X2</string>
-    <string name="pref_cut_car_statebox2_y1" translatable="false">PREF_CUT_CAR_STATEBOX2_Y1</string>
-    <string name="pref_cut_car_statebox2_y2" translatable="false">PREF_CUT_CAR_STATEBOX2_Y2</string>
+    <!--    car_in_city_statebox2-->
+    <string name="pref_cut_car_in_city_statebox2_x1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX2_X1</string>
+    <string name="pref_cut_car_in_city_statebox2_x2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX2_X2</string>
+    <string name="pref_cut_car_in_city_statebox2_y1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX2_Y1</string>
+    <string name="pref_cut_car_in_city_statebox2_y2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX2_Y2</string>
 
-    <string name="pref_def_cut_car_statebox2_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_X1</string>
-    <string name="pref_def_cut_car_statebox2_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_X2</string>
-    <string name="pref_def_cut_car_statebox2_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_Y1</string>
-    <string name="pref_def_cut_car_statebox2_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX2_Y2</string>
+    <string name="pref_def_cut_car_in_city_statebox2_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX2_X1</string>
+    <string name="pref_def_cut_car_in_city_statebox2_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX2_X2</string>
+    <string name="pref_def_cut_car_in_city_statebox2_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX2_Y1</string>
+    <string name="pref_def_cut_car_in_city_statebox2_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX2_Y2</string>
 
-    <string name="pref_rgb_car_statebox2_main" translatable="false">PREF_RGB_CAR_STATEBOX2_MAIN</string>
-    <string name="pref_rgb_car_statebox2_back1" translatable="false">PREF_RGB_CAR_STATEBOX2_BACK1</string>
-    <string name="pref_rgb_car_statebox2_thp" translatable="false">PREF_RGB_CAR_STATEBOX2_THP</string>
-    <string name="pref_rgb_car_statebox2_thm" translatable="false">PREF_RGB_CAR_STATEBOX2_THM</string>
+    <string name="pref_rgb_car_in_city_statebox2_main" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX2_MAIN</string>
+    <string name="pref_rgb_car_in_city_statebox2_back1" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX2_BACK1</string>
+    <string name="pref_rgb_car_in_city_statebox2_thp" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX2_THP</string>
+    <string name="pref_rgb_car_in_city_statebox2_thm" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX2_THM</string>
 
-    <string name="pref_def_rgb_car_statebox2_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_MAIN</string>
-    <string name="pref_def_rgb_car_statebox2_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_BACK1</string>
-    <string name="pref_def_rgb_car_statebox2_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THP</string>
-    <string name="pref_def_rgb_car_statebox2_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX2_THM</string>
+    <string name="pref_def_rgb_car_in_city_statebox2_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX2_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_statebox2_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX2_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_statebox2_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX2_THP</string>
+    <string name="pref_def_rgb_car_in_city_statebox2_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX2_THM</string>
 
-    <!--    car_statebox3-->
-    <string name="pref_cut_car_statebox3_x1" translatable="false">PREF_CUT_CAR_STATEBOX3_X1</string>
-    <string name="pref_cut_car_statebox3_x2" translatable="false">PREF_CUT_CAR_STATEBOX3_X2</string>
-    <string name="pref_cut_car_statebox3_y1" translatable="false">PREF_CUT_CAR_STATEBOX3_Y1</string>
-    <string name="pref_cut_car_statebox3_y2" translatable="false">PREF_CUT_CAR_STATEBOX3_Y2</string>
+    <!--    car_in_city_statebox3-->
+    <string name="pref_cut_car_in_city_statebox3_x1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX3_X1</string>
+    <string name="pref_cut_car_in_city_statebox3_x2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX3_X2</string>
+    <string name="pref_cut_car_in_city_statebox3_y1" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX3_Y1</string>
+    <string name="pref_cut_car_in_city_statebox3_y2" translatable="false">PREF_CUT_CAR_IN_CITY_STATEBOX3_Y2</string>
 
-    <string name="pref_def_cut_car_statebox3_x1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_X1</string>
-    <string name="pref_def_cut_car_statebox3_x2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_X2</string>
-    <string name="pref_def_cut_car_statebox3_y1" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_Y1</string>
-    <string name="pref_def_cut_car_statebox3_y2" translatable="false">PREF_DEF_CUT_CAR_STATEBOX3_Y2</string>
+    <string name="pref_def_cut_car_in_city_statebox3_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX3_X1</string>
+    <string name="pref_def_cut_car_in_city_statebox3_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX3_X2</string>
+    <string name="pref_def_cut_car_in_city_statebox3_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX3_Y1</string>
+    <string name="pref_def_cut_car_in_city_statebox3_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATEBOX3_Y2</string>
 
-    <string name="pref_rgb_car_statebox3_main" translatable="false">PREF_RGB_CAR_STATEBOX3_MAIN</string>
-    <string name="pref_rgb_car_statebox3_back1" translatable="false">PREF_RGB_CAR_STATEBOX3_BACK1</string>
-    <string name="pref_rgb_car_statebox3_thp" translatable="false">PREF_RGB_CAR_STATEBOX3_THP</string>
-    <string name="pref_rgb_car_statebox3_thm" translatable="false">PREF_RGB_CAR_STATEBOX3_THM</string>
+    <string name="pref_rgb_car_in_city_statebox3_main" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX3_MAIN</string>
+    <string name="pref_rgb_car_in_city_statebox3_back1" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX3_BACK1</string>
+    <string name="pref_rgb_car_in_city_statebox3_thp" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX3_THP</string>
+    <string name="pref_rgb_car_in_city_statebox3_thm" translatable="false">PREF_RGB_CAR_IN_CITY_STATEBOX3_THM</string>
 
-    <string name="pref_def_rgb_car_statebox3_main" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_MAIN</string>
-    <string name="pref_def_rgb_car_statebox3_back1" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_BACK1</string>
-    <string name="pref_def_rgb_car_statebox3_thp" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THP</string>
-    <string name="pref_def_rgb_car_statebox3_thm" translatable="false">PREF_DEF_RGB_CAR_STATEBOX3_THM</string>
+    <string name="pref_def_rgb_car_in_city_statebox3_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX3_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_statebox3_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX3_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_statebox3_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX3_THP</string>
+    <string name="pref_def_rgb_car_in_city_statebox3_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATEBOX3_THM</string>
     
-    <!--    cut_car_box1-->
-    <string name="pref_cut_car_box1_x1" translatable="false">PREF_CUT_CAR_BOX1_X1</string>
-    <string name="pref_cut_car_box1_x2" translatable="false">PREF_CUT_CAR_BOX1_X2</string>
-    <string name="pref_cut_car_box1_y1" translatable="false">PREF_CUT_CAR_BOX1_Y1</string>
-    <string name="pref_cut_car_box1_y2" translatable="false">PREF_CUT_CAR_BOX1_Y2</string>
+    <!--    cut_car_in_city_box1-->
+    <string name="pref_cut_car_in_city_box1_x1" translatable="false">PREF_CUT_CAR_IN_CITY_BOX1_X1</string>
+    <string name="pref_cut_car_in_city_box1_x2" translatable="false">PREF_CUT_CAR_IN_CITY_BOX1_X2</string>
+    <string name="pref_cut_car_in_city_box1_y1" translatable="false">PREF_CUT_CAR_IN_CITY_BOX1_Y1</string>
+    <string name="pref_cut_car_in_city_box1_y2" translatable="false">PREF_CUT_CAR_IN_CITY_BOX1_Y2</string>
 
-    <string name="pref_def_cut_car_box1_x1" translatable="false">PREF_DEF_CUT_CAR_BOX1_X1</string>
-    <string name="pref_def_cut_car_box1_x2" translatable="false">PREF_DEF_CUT_CAR_BOX1_X2</string>
-    <string name="pref_def_cut_car_box1_y1" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y1</string>
-    <string name="pref_def_cut_car_box1_y2" translatable="false">PREF_DEF_CUT_CAR_BOX1_Y2</string>
+    <string name="pref_def_cut_car_in_city_box1_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX1_X1</string>
+    <string name="pref_def_cut_car_in_city_box1_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX1_X2</string>
+    <string name="pref_def_cut_car_in_city_box1_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX1_Y1</string>
+    <string name="pref_def_cut_car_in_city_box1_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX1_Y2</string>
 
-    <string name="pref_rgb_car_box1_main" translatable="false">PREF_RGB_CAR_BOX1_MAIN</string>
-    <string name="pref_rgb_car_box1_back1" translatable="false">PREF_RGB_CAR_BOX1_BACK1</string>
-    <string name="pref_rgb_car_box1_thp" translatable="false">PREF_RGB_CAR_BOX1_THP</string>
-    <string name="pref_rgb_car_box1_thm" translatable="false">PREF_RGB_CAR_BOX1_THM</string>
+    <string name="pref_rgb_car_in_city_box1_main" translatable="false">PREF_RGB_CAR_IN_CITY_BOX1_MAIN</string>
+    <string name="pref_rgb_car_in_city_box1_back1" translatable="false">PREF_RGB_CAR_IN_CITY_BOX1_BACK1</string>
+    <string name="pref_rgb_car_in_city_box1_thp" translatable="false">PREF_RGB_CAR_IN_CITY_BOX1_THP</string>
+    <string name="pref_rgb_car_in_city_box1_thm" translatable="false">PREF_RGB_CAR_IN_CITY_BOX1_THM</string>
 
-    <string name="pref_def_rgb_car_box1_main" translatable="false">PREF_DEF_RGB_CAR_BOX1_MAIN</string>
-    <string name="pref_def_rgb_car_box1_back1" translatable="false">PREF_DEF_RGB_CAR_BOX1_BACK1</string>
-    <string name="pref_def_rgb_car_box1_thp" translatable="false">PREF_DEF_RGB_CAR_BOX1_THP</string>
-    <string name="pref_def_rgb_car_box1_thm" translatable="false">PREF_DEF_RGB_CAR_BOX1_THM</string>
+    <string name="pref_def_rgb_car_in_city_box1_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX1_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_box1_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX1_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_box1_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX1_THP</string>
+    <string name="pref_def_rgb_car_in_city_box1_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX1_THM</string>
 
-    <!--    car_box2-->
-    <string name="pref_cut_car_box2_x1" translatable="false">PREF_CUT_CAR_BOX2_X1</string>
-    <string name="pref_cut_car_box2_x2" translatable="false">PREF_CUT_CAR_BOX2_X2</string>
-    <string name="pref_cut_car_box2_y1" translatable="false">PREF_CUT_CAR_BOX2_Y1</string>
-    <string name="pref_cut_car_box2_y2" translatable="false">PREF_CUT_CAR_BOX2_Y2</string>
+    <!--    car_in_city_box2-->
+    <string name="pref_cut_car_in_city_box2_x1" translatable="false">PREF_CUT_CAR_IN_CITY_BOX2_X1</string>
+    <string name="pref_cut_car_in_city_box2_x2" translatable="false">PREF_CUT_CAR_IN_CITY_BOX2_X2</string>
+    <string name="pref_cut_car_in_city_box2_y1" translatable="false">PREF_CUT_CAR_IN_CITY_BOX2_Y1</string>
+    <string name="pref_cut_car_in_city_box2_y2" translatable="false">PREF_CUT_CAR_IN_CITY_BOX2_Y2</string>
 
-    <string name="pref_def_cut_car_box2_x1" translatable="false">PREF_DEF_CUT_CAR_BOX2_X1</string>
-    <string name="pref_def_cut_car_box2_x2" translatable="false">PREF_DEF_CUT_CAR_BOX2_X2</string>
-    <string name="pref_def_cut_car_box2_y1" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y1</string>
-    <string name="pref_def_cut_car_box2_y2" translatable="false">PREF_DEF_CUT_CAR_BOX2_Y2</string>
+    <string name="pref_def_cut_car_in_city_box2_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX2_X1</string>
+    <string name="pref_def_cut_car_in_city_box2_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX2_X2</string>
+    <string name="pref_def_cut_car_in_city_box2_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX2_Y1</string>
+    <string name="pref_def_cut_car_in_city_box2_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BOX2_Y2</string>
 
-    <string name="pref_rgb_car_box2_main" translatable="false">PREF_RGB_CAR_BOX2_MAIN</string>
-    <string name="pref_rgb_car_box2_back1" translatable="false">PREF_RGB_CAR_BOX2_BACK1</string>
-    <string name="pref_rgb_car_box2_thp" translatable="false">PREF_RGB_CAR_BOX2_THP</string>
-    <string name="pref_rgb_car_box2_thm" translatable="false">PREF_RGB_CAR_BOX2_THM</string>
+    <string name="pref_rgb_car_in_city_box2_main" translatable="false">PREF_RGB_CAR_IN_CITY_BOX2_MAIN</string>
+    <string name="pref_rgb_car_in_city_box2_back1" translatable="false">PREF_RGB_CAR_IN_CITY_BOX2_BACK1</string>
+    <string name="pref_rgb_car_in_city_box2_thp" translatable="false">PREF_RGB_CAR_IN_CITY_BOX2_THP</string>
+    <string name="pref_rgb_car_in_city_box2_thm" translatable="false">PREF_RGB_CAR_IN_CITY_BOX2_THM</string>
 
-    <string name="pref_def_rgb_car_box2_main" translatable="false">PREF_DEF_RGB_CAR_BOX2_MAIN</string>
-    <string name="pref_def_rgb_car_box2_back1" translatable="false">PREF_DEF_RGB_CAR_BOX2_BACK1</string>
-    <string name="pref_def_rgb_car_box2_thp" translatable="false">PREF_DEF_RGB_CAR_BOX2_THP</string>
-    <string name="pref_def_rgb_car_box2_thm" translatable="false">PREF_DEF_RGB_CAR_BOX2_THM</string>
+    <string name="pref_def_rgb_car_in_city_box2_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX2_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_box2_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX2_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_box2_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX2_THP</string>
+    <string name="pref_def_rgb_car_in_city_box2_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BOX2_THM</string>
 
 
-    <!--    car_picture-->
-    <string name="pref_cut_car_picture_x1" translatable="false">PREF_CUT_CAR_PICTURE_X1</string>
-    <string name="pref_cut_car_picture_x2" translatable="false">PREF_CUT_CAR_PICTURE_X2</string>
-    <string name="pref_cut_car_picture_y1" translatable="false">PREF_CUT_CAR_PICTURE_Y1</string>
-    <string name="pref_cut_car_picture_y2" translatable="false">PREF_CUT_CAR_PICTURE_Y2</string>
+    <!--    car_in_city_picture-->
+    <string name="pref_cut_car_in_city_picture_x1" translatable="false">PREF_CUT_CAR_IN_CITY_PICTURE_X1</string>
+    <string name="pref_cut_car_in_city_picture_x2" translatable="false">PREF_CUT_CAR_IN_CITY_PICTURE_X2</string>
+    <string name="pref_cut_car_in_city_picture_y1" translatable="false">PREF_CUT_CAR_IN_CITY_PICTURE_Y1</string>
+    <string name="pref_cut_car_in_city_picture_y2" translatable="false">PREF_CUT_CAR_IN_CITY_PICTURE_Y2</string>
 
-    <string name="pref_def_cut_car_picture_x1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X1</string>
-    <string name="pref_def_cut_car_picture_x2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_X2</string>
-    <string name="pref_def_cut_car_picture_y1" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y1</string>
-    <string name="pref_def_cut_car_picture_y2" translatable="false">PREF_DEF_CUT_CAR_PICTURE_Y2</string>
+    <string name="pref_def_cut_car_in_city_picture_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_PICTURE_X1</string>
+    <string name="pref_def_cut_car_in_city_picture_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_PICTURE_X2</string>
+    <string name="pref_def_cut_car_in_city_picture_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_PICTURE_Y1</string>
+    <string name="pref_def_cut_car_in_city_picture_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_PICTURE_Y2</string>
 
-    <string name="pref_rgb_car_picture_main" translatable="false">PREF_RGB_CAR_PICTURE_MAIN</string>
-    <string name="pref_rgb_car_picture_back1" translatable="false">PREF_RGB_CAR_PICTURE_BACK1</string>
-    <string name="pref_rgb_car_picture_thp" translatable="false">PREF_RGB_CAR_PICTURE_THP</string>
-    <string name="pref_rgb_car_picture_thm" translatable="false">PREF_RGB_CAR_PICTURE_THM</string>
+    <string name="pref_rgb_car_in_city_picture_main" translatable="false">PREF_RGB_CAR_IN_CITY_PICTURE_MAIN</string>
+    <string name="pref_rgb_car_in_city_picture_back1" translatable="false">PREF_RGB_CAR_IN_CITY_PICTURE_BACK1</string>
+    <string name="pref_rgb_car_in_city_picture_thp" translatable="false">PREF_RGB_CAR_IN_CITY_PICTURE_THP</string>
+    <string name="pref_rgb_car_in_city_picture_thm" translatable="false">PREF_RGB_CAR_IN_CITY_PICTURE_THM</string>
 
-    <string name="pref_def_rgb_car_picture_main" translatable="false">PREF_DEF_RGB_CAR_PICTURE_MAIN</string>
-    <string name="pref_def_rgb_car_picture_back1" translatable="false">PREF_DEF_RGB_CAR_PICTURE_BACK1</string>
-    <string name="pref_def_rgb_car_picture_thp" translatable="false">PREF_DEF_RGB_CAR_PICTURE_THP</string>
-    <string name="pref_def_rgb_car_picture_thm" translatable="false">PREF_DEF_RGB_CAR_PICTURE_THM</string>
+    <string name="pref_def_rgb_car_in_city_picture_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_PICTURE_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_picture_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_PICTURE_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_picture_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_PICTURE_THP</string>
+    <string name="pref_def_rgb_car_in_city_picture_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_PICTURE_THM</string>
+
+
+    <!--    car_in_garage_picture-->
+    <string name="pref_cut_car_in_garage_picture_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_PICTURE_X1</string>
+    <string name="pref_cut_car_in_garage_picture_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_PICTURE_X2</string>
+    <string name="pref_cut_car_in_garage_picture_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_PICTURE_Y1</string>
+    <string name="pref_cut_car_in_garage_picture_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_PICTURE_Y2</string>
+
+    <string name="pref_def_cut_car_in_garage_picture_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_PICTURE_X1</string>
+    <string name="pref_def_cut_car_in_garage_picture_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_PICTURE_X2</string>
+    <string name="pref_def_cut_car_in_garage_picture_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_PICTURE_Y1</string>
+    <string name="pref_def_cut_car_in_garage_picture_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_PICTURE_Y2</string>
+
+    <string name="pref_rgb_car_in_garage_picture_main" translatable="false">PREF_RGB_CAR_IN_GARAGE_PICTURE_MAIN</string>
+    <string name="pref_rgb_car_in_garage_picture_back1" translatable="false">PREF_RGB_CAR_IN_GARAGE_PICTURE_BACK1</string>
+    <string name="pref_rgb_car_in_garage_picture_thp" translatable="false">PREF_RGB_CAR_IN_GARAGE_PICTURE_THP</string>
+    <string name="pref_rgb_car_in_garage_picture_thm" translatable="false">PREF_RGB_CAR_IN_GARAGE_PICTURE_THM</string>
+
+    <string name="pref_def_rgb_car_in_garage_picture_main" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_PICTURE_MAIN</string>
+    <string name="pref_def_rgb_car_in_garage_picture_back1" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_PICTURE_BACK1</string>
+    <string name="pref_def_rgb_car_in_garage_picture_thp" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_PICTURE_THP</string>
+    <string name="pref_def_rgb_car_in_garage_picture_thm" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_PICTURE_THM</string>
     
-<!--    car_building-->
-    <string name="pref_cut_car_building_x1" translatable="false">PREF_CUT_CAR_BUILDING_X1</string>
-    <string name="pref_cut_car_building_x2" translatable="false">PREF_CUT_CAR_BUILDING_X2</string>
-    <string name="pref_cut_car_building_y1" translatable="false">PREF_CUT_CAR_BUILDING_Y1</string>
-    <string name="pref_cut_car_building_y2" translatable="false">PREF_CUT_CAR_BUILDING_Y2</string>
+<!--    car_in_city_building-->
+    <string name="pref_cut_car_in_city_building_x1" translatable="false">PREF_CUT_CAR_IN_CITY_BUILDING_X1</string>
+    <string name="pref_cut_car_in_city_building_x2" translatable="false">PREF_CUT_CAR_IN_CITY_BUILDING_X2</string>
+    <string name="pref_cut_car_in_city_building_y1" translatable="false">PREF_CUT_CAR_IN_CITY_BUILDING_Y1</string>
+    <string name="pref_cut_car_in_city_building_y2" translatable="false">PREF_CUT_CAR_IN_CITY_BUILDING_Y2</string>
 
-    <string name="pref_def_cut_car_building_x1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X1</string>
-    <string name="pref_def_cut_car_building_x2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_X2</string>
-    <string name="pref_def_cut_car_building_y1" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y1</string>
-    <string name="pref_def_cut_car_building_y2" translatable="false">PREF_DEF_CUT_CAR_BUILDING_Y2</string>
+    <string name="pref_def_cut_car_in_city_building_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BUILDING_X1</string>
+    <string name="pref_def_cut_car_in_city_building_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BUILDING_X2</string>
+    <string name="pref_def_cut_car_in_city_building_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BUILDING_Y1</string>
+    <string name="pref_def_cut_car_in_city_building_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_BUILDING_Y2</string>
 
-    <string name="pref_rgb_car_building_main" translatable="false">PREF_RGB_CAR_BUILDING_MAIN</string>
-    <string name="pref_rgb_car_building_back1" translatable="false">PREF_RGB_CAR_BUILDING_BACK1</string>
-    <string name="pref_rgb_car_building_thp" translatable="false">PREF_RGB_CAR_BUILDING_THP</string>
-    <string name="pref_rgb_car_building_thm" translatable="false">PREF_RGB_CAR_BUILDING_THM</string>
+    <string name="pref_rgb_car_in_city_building_main" translatable="false">PREF_RGB_CAR_IN_CITY_BUILDING_MAIN</string>
+    <string name="pref_rgb_car_in_city_building_back1" translatable="false">PREF_RGB_CAR_IN_CITY_BUILDING_BACK1</string>
+    <string name="pref_rgb_car_in_city_building_thp" translatable="false">PREF_RGB_CAR_IN_CITY_BUILDING_THP</string>
+    <string name="pref_rgb_car_in_city_building_thm" translatable="false">PREF_RGB_CAR_IN_CITY_BUILDING_THM</string>
 
-    <string name="pref_def_rgb_car_building_main" translatable="false">PREF_DEF_RGB_CAR_BUILDING_MAIN</string>
-    <string name="pref_def_rgb_car_building_back1" translatable="false">PREF_DEF_RGB_CAR_BUILDING_BACK1</string>
-    <string name="pref_def_rgb_car_building_thp" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THP</string>
-    <string name="pref_def_rgb_car_building_thm" translatable="false">PREF_DEF_RGB_CAR_BUILDING_THM</string>
+    <string name="pref_def_rgb_car_in_city_building_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BUILDING_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_building_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BUILDING_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_building_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BUILDING_THP</string>
+    <string name="pref_def_rgb_car_in_city_building_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_BUILDING_THM</string>
 
 
-<!--    car_info-->
-    <string name="pref_cut_car_info_x1" translatable="false">PREF_CUT_CAR_INFO_X1</string>
-    <string name="pref_cut_car_info_x2" translatable="false">PREF_CUT_CAR_INFO_X2</string>
-    <string name="pref_cut_car_info_y1" translatable="false">PREF_CUT_CAR_INFO_Y1</string>
-    <string name="pref_cut_car_info_y2" translatable="false">PREF_CUT_CAR_INFO_Y2</string>
+<!--    car_in_city_info-->
+    <string name="pref_cut_car_in_city_info_x1" translatable="false">PREF_CUT_CAR_IN_CITY_INFO_X1</string>
+    <string name="pref_cut_car_in_city_info_x2" translatable="false">PREF_CUT_CAR_IN_CITY_INFO_X2</string>
+    <string name="pref_cut_car_in_city_info_y1" translatable="false">PREF_CUT_CAR_IN_CITY_INFO_Y1</string>
+    <string name="pref_cut_car_in_city_info_y2" translatable="false">PREF_CUT_CAR_IN_CITY_INFO_Y2</string>
 
-    <string name="pref_def_cut_car_info_x1" translatable="false">PREF_DEF_CUT_CAR_INFO_X1</string>
-    <string name="pref_def_cut_car_info_x2" translatable="false">PREF_DEF_CUT_CAR_INFO_X2</string>
-    <string name="pref_def_cut_car_info_y1" translatable="false">PREF_DEF_CUT_CAR_INFO_Y1</string>
-    <string name="pref_def_cut_car_info_y2" translatable="false">PREF_DEF_CUT_CAR_INFO_Y2</string>
+    <string name="pref_def_cut_car_in_city_info_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_INFO_X1</string>
+    <string name="pref_def_cut_car_in_city_info_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_INFO_X2</string>
+    <string name="pref_def_cut_car_in_city_info_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_INFO_Y1</string>
+    <string name="pref_def_cut_car_in_city_info_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_INFO_Y2</string>
 
-    <string name="pref_rgb_car_info_main" translatable="false">PREF_RGB_CAR_INFO_MAIN</string>
-    <string name="pref_rgb_car_info_back1" translatable="false">PREF_RGB_CAR_INFO_BACK1</string>
-    <string name="pref_rgb_car_info_thp" translatable="false">PREF_RGB_CAR_INFO_THP</string>
-    <string name="pref_rgb_car_info_thm" translatable="false">PREF_RGB_CAR_INFO_THM</string>
+    <string name="pref_rgb_car_in_city_info_main" translatable="false">PREF_RGB_CAR_IN_CITY_INFO_MAIN</string>
+    <string name="pref_rgb_car_in_city_info_back1" translatable="false">PREF_RGB_CAR_IN_CITY_INFO_BACK1</string>
+    <string name="pref_rgb_car_in_city_info_thp" translatable="false">PREF_RGB_CAR_IN_CITY_INFO_THP</string>
+    <string name="pref_rgb_car_in_city_info_thm" translatable="false">PREF_RGB_CAR_IN_CITY_INFO_THM</string>
 
-    <string name="pref_def_rgb_car_info_main" translatable="false">PREF_DEF_RGB_CAR_INFO_MAIN</string>
-    <string name="pref_def_rgb_car_info_back1" translatable="false">PREF_DEF_RGB_CAR_INFO_BACK1</string>
-    <string name="pref_def_rgb_car_info_thp" translatable="false">PREF_DEF_RGB_CAR_INFO_THP</string>
-    <string name="pref_def_rgb_car_info_thm" translatable="false">PREF_DEF_RGB_CAR_INFO_THM</string>
+    <string name="pref_def_rgb_car_in_city_info_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_INFO_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_info_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_INFO_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_info_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_INFO_THP</string>
+    <string name="pref_def_rgb_car_in_city_info_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_INFO_THM</string>
     
-<!--    car_slot1-->
-    <string name="pref_cut_car_slot1_x1" translatable="false">PREF_CUT_CAR_SLOT1_X1</string>
-    <string name="pref_cut_car_slot1_x2" translatable="false">PREF_CUT_CAR_SLOT1_X2</string>
-    <string name="pref_cut_car_slot1_y1" translatable="false">PREF_CUT_CAR_SLOT1_Y1</string>
-    <string name="pref_cut_car_slot1_y2" translatable="false">PREF_CUT_CAR_SLOT1_Y2</string>
+<!--    car_in_city_slot1-->
+    <string name="pref_cut_car_in_city_slot1_x1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT1_X1</string>
+    <string name="pref_cut_car_in_city_slot1_x2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT1_X2</string>
+    <string name="pref_cut_car_in_city_slot1_y1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT1_Y1</string>
+    <string name="pref_cut_car_in_city_slot1_y2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT1_Y2</string>
 
-    <string name="pref_def_cut_car_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X1</string>
-    <string name="pref_def_cut_car_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_X2</string>
-    <string name="pref_def_cut_car_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y1</string>
-    <string name="pref_def_cut_car_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT1_Y2</string>
+    <string name="pref_def_cut_car_in_city_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT1_X1</string>
+    <string name="pref_def_cut_car_in_city_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT1_X2</string>
+    <string name="pref_def_cut_car_in_city_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT1_Y1</string>
+    <string name="pref_def_cut_car_in_city_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT1_Y2</string>
 
-    <string name="pref_rgb_car_slot_main" translatable="false">PREF_RGB_CAR_SLOT_MAIN</string>
-    <string name="pref_rgb_car_slot_back1" translatable="false">PREF_RGB_CAR_SLOT_BACK1</string>
-    <string name="pref_rgb_car_slot_thp" translatable="false">PREF_RGB_CAR_SLOT_THP</string>
-    <string name="pref_rgb_car_slot_thm" translatable="false">PREF_RGB_CAR_SLOT_THM</string>
+    <string name="pref_rgb_car_in_city_slot_main" translatable="false">PREF_RGB_CAR_IN_CITY_SLOT_MAIN</string>
+    <string name="pref_rgb_car_in_city_slot_back1" translatable="false">PREF_RGB_CAR_IN_CITY_SLOT_BACK1</string>
+    <string name="pref_rgb_car_in_city_slot_thp" translatable="false">PREF_RGB_CAR_IN_CITY_SLOT_THP</string>
+    <string name="pref_rgb_car_in_city_slot_thm" translatable="false">PREF_RGB_CAR_IN_CITY_SLOT_THM</string>
 
-    <string name="pref_def_rgb_car_slot_main" translatable="false">PREF_DEF_RGB_CAR_SLOT_MAIN</string>
-    <string name="pref_def_rgb_car_slot_back1" translatable="false">PREF_DEF_RGB_CAR_SLOT_BACK1</string>
-    <string name="pref_def_rgb_car_slot_thp" translatable="false">PREF_DEF_RGB_CAR_SLOT_THP</string>
-    <string name="pref_def_rgb_car_slot_thm" translatable="false">PREF_DEF_RGB_CAR_SLOT_THM</string>
-
-
-    <!--    car_slot2-->
-    <string name="pref_cut_car_slot2_x1" translatable="false">PREF_CUT_CAR_SLOT2_X1</string>
-    <string name="pref_cut_car_slot2_x2" translatable="false">PREF_CUT_CAR_SLOT2_X2</string>
-    <string name="pref_cut_car_slot2_y1" translatable="false">PREF_CUT_CAR_SLOT2_Y1</string>
-    <string name="pref_cut_car_slot2_y2" translatable="false">PREF_CUT_CAR_SLOT2_Y2</string>
-
-    <string name="pref_def_cut_car_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X1</string>
-    <string name="pref_def_cut_car_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_X2</string>
-    <string name="pref_def_cut_car_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y1</string>
-    <string name="pref_def_cut_car_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT2_Y2</string>
-
-<!--    car_slot3-->
-    <string name="pref_cut_car_slot3_x1" translatable="false">PREF_CUT_CAR_SLOT3_X1</string>
-    <string name="pref_cut_car_slot3_x2" translatable="false">PREF_CUT_CAR_SLOT3_X2</string>
-    <string name="pref_cut_car_slot3_y1" translatable="false">PREF_CUT_CAR_SLOT3_Y1</string>
-    <string name="pref_cut_car_slot3_y2" translatable="false">PREF_CUT_CAR_SLOT3_Y2</string>
-
-    <string name="pref_def_cut_car_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X1</string>
-    <string name="pref_def_cut_car_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_X2</string>
-    <string name="pref_def_cut_car_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y1</string>
-    <string name="pref_def_cut_car_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_SLOT3_Y2</string>
-
-<!--    car_health-->
-    <string name="pref_cut_car_health_x1" translatable="false">PREF_CUT_CAR_HEALTH_X1</string>
-    <string name="pref_cut_car_health_x2" translatable="false">PREF_CUT_CAR_HEALTH_X2</string>
-    <string name="pref_cut_car_health_y1" translatable="false">PREF_CUT_CAR_HEALTH_Y1</string>
-    <string name="pref_cut_car_health_y2" translatable="false">PREF_CUT_CAR_HEALTH_Y2</string>
-
-    <string name="pref_def_cut_car_health_x1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X1</string>
-    <string name="pref_def_cut_car_health_x2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_X2</string>
-    <string name="pref_def_cut_car_health_y1" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y1</string>
-    <string name="pref_def_cut_car_health_y2" translatable="false">PREF_DEF_CUT_CAR_HEALTH_Y2</string>
-
-    <string name="pref_rgb_car_health_main" translatable="false">PREF_RGB_CAR_HEALTH_MAIN</string>
-    <string name="pref_rgb_car_health_back1" translatable="false">PREF_RGB_CAR_HEALTH_BACK1</string>
-    <string name="pref_rgb_car_health_thp" translatable="false">PREF_RGB_CAR_HEALTH_THP</string>
-    <string name="pref_rgb_car_health_thm" translatable="false">PREF_RGB_CAR_HEALTH_THM</string>
-
-    <string name="pref_def_rgb_car_health_main" translatable="false">PREF_DEF_RGB_CAR_HEALTH_MAIN</string>
-    <string name="pref_def_rgb_car_health_back1" translatable="false">PREF_DEF_RGB_CAR_HEALTH_BACK1</string>
-    <string name="pref_def_rgb_car_health_thp" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THP</string>
-    <string name="pref_def_rgb_car_health_thm" translatable="false">PREF_DEF_RGB_CAR_HEALTH_THM</string>
+    <string name="pref_def_rgb_car_in_city_slot_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SLOT_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_slot_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SLOT_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_slot_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SLOT_THP</string>
+    <string name="pref_def_rgb_car_in_city_slot_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SLOT_THM</string>
 
 
-    <!--    car_shield-->
-    <string name="pref_cut_car_shield_x1" translatable="false">PREF_CUT_CAR_SHIELD_X1</string>
-    <string name="pref_cut_car_shield_x2" translatable="false">PREF_CUT_CAR_SHIELD_X2</string>
-    <string name="pref_cut_car_shield_y1" translatable="false">PREF_CUT_CAR_SHIELD_Y1</string>
-    <string name="pref_cut_car_shield_y2" translatable="false">PREF_CUT_CAR_SHIELD_Y2</string>
+    <!--    car_in_city_slot2-->
+    <string name="pref_cut_car_in_city_slot2_x1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT2_X1</string>
+    <string name="pref_cut_car_in_city_slot2_x2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT2_X2</string>
+    <string name="pref_cut_car_in_city_slot2_y1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT2_Y1</string>
+    <string name="pref_cut_car_in_city_slot2_y2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT2_Y2</string>
 
-    <string name="pref_def_cut_car_shield_x1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X1</string>
-    <string name="pref_def_cut_car_shield_x2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_X2</string>
-    <string name="pref_def_cut_car_shield_y1" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y1</string>
-    <string name="pref_def_cut_car_shield_y2" translatable="false">PREF_DEF_CUT_CAR_SHIELD_Y2</string>
+    <string name="pref_def_cut_car_in_city_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT2_X1</string>
+    <string name="pref_def_cut_car_in_city_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT2_X2</string>
+    <string name="pref_def_cut_car_in_city_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT2_Y1</string>
+    <string name="pref_def_cut_car_in_city_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT2_Y2</string>
 
-    <string name="pref_rgb_car_shield_main" translatable="false">PREF_RGB_CAR_SHIELD_MAIN</string>
-    <string name="pref_rgb_car_shield_back1" translatable="false">PREF_RGB_CAR_SHIELD_BACK1</string>
-    <string name="pref_rgb_car_shield_thp" translatable="false">PREF_RGB_CAR_SHIELD_THP</string>
-    <string name="pref_rgb_car_shield_thm" translatable="false">PREF_RGB_CAR_SHIELD_THM</string>
+<!--    car_in_city_slot3-->
+    <string name="pref_cut_car_in_city_slot3_x1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT3_X1</string>
+    <string name="pref_cut_car_in_city_slot3_x2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT3_X2</string>
+    <string name="pref_cut_car_in_city_slot3_y1" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT3_Y1</string>
+    <string name="pref_cut_car_in_city_slot3_y2" translatable="false">PREF_CUT_CAR_IN_CITY_SLOT3_Y2</string>
 
-    <string name="pref_def_rgb_car_shield_main" translatable="false">PREF_DEF_RGB_CAR_SHIELD_MAIN</string>
-    <string name="pref_def_rgb_car_shield_back1" translatable="false">PREF_DEF_RGB_CAR_SHIELD_BACK1</string>
-    <string name="pref_def_rgb_car_shield_thp" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THP</string>
-    <string name="pref_def_rgb_car_shield_thm" translatable="false">PREF_DEF_RGB_CAR_SHIELD_THM</string>
-
-
-    <!--    car_state-->
-    <string name="pref_cut_car_state_x1" translatable="false">PREF_CUT_CAR_STATE_X1</string>
-    <string name="pref_cut_car_state_x2" translatable="false">PREF_CUT_CAR_STATE_X2</string>
-    <string name="pref_cut_car_state_y1" translatable="false">PREF_CUT_CAR_STATE_Y1</string>
-    <string name="pref_cut_car_state_y2" translatable="false">PREF_CUT_CAR_STATE_Y2</string>
-
-    <string name="pref_def_cut_car_state_x1" translatable="false">PREF_DEF_CUT_CAR_STATE_X1</string>
-    <string name="pref_def_cut_car_state_x2" translatable="false">PREF_DEF_CUT_CAR_STATE_X2</string>
-    <string name="pref_def_cut_car_state_y1" translatable="false">PREF_DEF_CUT_CAR_STATE_Y1</string>
-    <string name="pref_def_cut_car_state_y2" translatable="false">PREF_DEF_CUT_CAR_STATE_Y2</string>
-
-    <string name="pref_rgb_car_state_main" translatable="false">PREF_RGB_CAR_STATE_MAIN</string>
-    <string name="pref_rgb_car_state_back1" translatable="false">PREF_RGB_CAR_STATE_BACK1</string>
-    <string name="pref_rgb_car_state_thp" translatable="false">PREF_RGB_CAR_STATE_THP</string>
-    <string name="pref_rgb_car_state_thm" translatable="false">PREF_RGB_CAR_STATE_THM</string>
-
-    <string name="pref_def_rgb_car_state_main" translatable="false">PREF_DEF_RGB_CAR_STATE_MAIN</string>
-    <string name="pref_def_rgb_car_state_back1" translatable="false">PREF_DEF_RGB_CAR_STATE_BACK1</string>
-    <string name="pref_def_rgb_car_state_thp" translatable="false">PREF_DEF_RGB_CAR_STATE_THP</string>
-    <string name="pref_def_rgb_car_state_thm" translatable="false">PREF_DEF_RGB_CAR_STATE_THM</string>
+    <string name="pref_def_cut_car_in_city_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT3_X1</string>
+    <string name="pref_def_cut_car_in_city_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT3_X2</string>
+    <string name="pref_def_cut_car_in_city_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT3_Y1</string>
+    <string name="pref_def_cut_car_in_city_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SLOT3_Y2</string>
 
 
-    <!--    car_healbox-->
-    <string name="pref_cut_car_healbox_x1" translatable="false">PREF_CUT_CAR_HEALBOX_X1</string>
-    <string name="pref_cut_car_healbox_x2" translatable="false">PREF_CUT_CAR_HEALBOX_X2</string>
-    <string name="pref_cut_car_healbox_y1" translatable="false">PREF_CUT_CAR_HEALBOX_Y1</string>
-    <string name="pref_cut_car_healbox_y2" translatable="false">PREF_CUT_CAR_HEALBOX_Y2</string>
+    <!--    car_in_garage_slot1-->
+    <string name="pref_cut_car_in_garage_slot1_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT1_X1</string>
+    <string name="pref_cut_car_in_garage_slot1_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT1_X2</string>
+    <string name="pref_cut_car_in_garage_slot1_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT1_Y1</string>
+    <string name="pref_cut_car_in_garage_slot1_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT1_Y2</string>
 
-    <string name="pref_def_cut_car_healbox_x1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X1</string>
-    <string name="pref_def_cut_car_healbox_x2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_X2</string>
-    <string name="pref_def_cut_car_healbox_y1" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y1</string>
-    <string name="pref_def_cut_car_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_HEALBOX_Y2</string>
+    <string name="pref_def_cut_car_in_garage_slot1_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT1_X1</string>
+    <string name="pref_def_cut_car_in_garage_slot1_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT1_X2</string>
+    <string name="pref_def_cut_car_in_garage_slot1_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT1_Y1</string>
+    <string name="pref_def_cut_car_in_garage_slot1_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT1_Y2</string>
 
-    <string name="pref_rgb_car_healbox_main" translatable="false">PREF_RGB_CAR_HEALBOX_MAIN</string>
-    <string name="pref_rgb_car_healbox_back1" translatable="false">PREF_RGB_CAR_HEALBOX_BACK1</string>
-    <string name="pref_rgb_car_healbox_thp" translatable="false">PREF_RGB_CAR_HEALBOX_THP</string>
-    <string name="pref_rgb_car_healbox_thm" translatable="false">PREF_RGB_CAR_HEALBOX_THM</string>
+    <string name="pref_rgb_car_in_garage_slot_main" translatable="false">PREF_RGB_CAR_IN_GARAGE_SLOT_MAIN</string>
+    <string name="pref_rgb_car_in_garage_slot_back1" translatable="false">PREF_RGB_CAR_IN_GARAGE_SLOT_BACK1</string>
+    <string name="pref_rgb_car_in_garage_slot_thp" translatable="false">PREF_RGB_CAR_IN_GARAGE_SLOT_THP</string>
+    <string name="pref_rgb_car_in_garage_slot_thm" translatable="false">PREF_RGB_CAR_IN_GARAGE_SLOT_THM</string>
 
-    <string name="pref_def_rgb_car_healbox_main" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_MAIN</string>
-    <string name="pref_def_rgb_car_healbox_back1" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_BACK1</string>
-    <string name="pref_def_rgb_car_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THP</string>
-    <string name="pref_def_rgb_car_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_HEALBOX_THM</string>
+    <string name="pref_def_rgb_car_in_garage_slot_main" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SLOT_MAIN</string>
+    <string name="pref_def_rgb_car_in_garage_slot_back1" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SLOT_BACK1</string>
+    <string name="pref_def_rgb_car_in_garage_slot_thp" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SLOT_THP</string>
+    <string name="pref_def_rgb_car_in_garage_slot_thm" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SLOT_THM</string>
 
 
-    <!--    car_timebox1-->
-    <string name="pref_cut_car_timebox1_x1" translatable="false">PREF_CUT_CAR_TIMEBOX1_X1</string>
-    <string name="pref_cut_car_timebox1_x2" translatable="false">PREF_CUT_CAR_TIMEBOX1_X2</string>
-    <string name="pref_cut_car_timebox1_y1" translatable="false">PREF_CUT_CAR_TIMEBOX1_Y1</string>
-    <string name="pref_cut_car_timebox1_y2" translatable="false">PREF_CUT_CAR_TIMEBOX1_Y2</string>
+    <!--    car_in_garage_slot2-->
+    <string name="pref_cut_car_in_garage_slot2_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT2_X1</string>
+    <string name="pref_cut_car_in_garage_slot2_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT2_X2</string>
+    <string name="pref_cut_car_in_garage_slot2_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT2_Y1</string>
+    <string name="pref_cut_car_in_garage_slot2_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT2_Y2</string>
 
-    <string name="pref_def_cut_car_timebox1_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_X1</string>
-    <string name="pref_def_cut_car_timebox1_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_X2</string>
-    <string name="pref_def_cut_car_timebox1_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_Y1</string>
-    <string name="pref_def_cut_car_timebox1_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX1_Y2</string>
+    <string name="pref_def_cut_car_in_garage_slot2_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT2_X1</string>
+    <string name="pref_def_cut_car_in_garage_slot2_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT2_X2</string>
+    <string name="pref_def_cut_car_in_garage_slot2_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT2_Y1</string>
+    <string name="pref_def_cut_car_in_garage_slot2_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT2_Y2</string>
 
-    <string name="pref_rgb_car_timebox1_main" translatable="false">PREF_RGB_CAR_TIMEBOX1_MAIN</string>
-    <string name="pref_rgb_car_timebox1_back1" translatable="false">PREF_RGB_CAR_TIMEBOX1_BACK1</string>
-    <string name="pref_rgb_car_timebox1_thp" translatable="false">PREF_RGB_CAR_TIMEBOX1_THP</string>
-    <string name="pref_rgb_car_timebox1_thm" translatable="false">PREF_RGB_CAR_TIMEBOX1_THM</string>
+    <!--    car_in_garage_slot3-->
+    <string name="pref_cut_car_in_garage_slot3_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT3_X1</string>
+    <string name="pref_cut_car_in_garage_slot3_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT3_X2</string>
+    <string name="pref_cut_car_in_garage_slot3_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT3_Y1</string>
+    <string name="pref_cut_car_in_garage_slot3_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SLOT3_Y2</string>
 
-    <string name="pref_def_rgb_car_timebox1_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_MAIN</string>
-    <string name="pref_def_rgb_car_timebox1_back1" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_BACK1</string>
-    <string name="pref_def_rgb_car_timebox1_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THP</string>
-    <string name="pref_def_rgb_car_timebox1_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX1_THM</string>
+    <string name="pref_def_cut_car_in_garage_slot3_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT3_X1</string>
+    <string name="pref_def_cut_car_in_garage_slot3_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT3_X2</string>
+    <string name="pref_def_cut_car_in_garage_slot3_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT3_Y1</string>
+    <string name="pref_def_cut_car_in_garage_slot3_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SLOT3_Y2</string>
 
-    <!--    car_timebox2-->
-    <string name="pref_cut_car_timebox2_x1" translatable="false">PREF_CUT_CAR_TIMEBOX2_X1</string>
-    <string name="pref_cut_car_timebox2_x2" translatable="false">PREF_CUT_CAR_TIMEBOX2_X2</string>
-    <string name="pref_cut_car_timebox2_y1" translatable="false">PREF_CUT_CAR_TIMEBOX2_Y1</string>
-    <string name="pref_cut_car_timebox2_y2" translatable="false">PREF_CUT_CAR_TIMEBOX2_Y2</string>
 
-    <string name="pref_def_cut_car_timebox2_x1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_X1</string>
-    <string name="pref_def_cut_car_timebox2_x2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_X2</string>
-    <string name="pref_def_cut_car_timebox2_y1" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_Y1</string>
-    <string name="pref_def_cut_car_timebox2_y2" translatable="false">PREF_DEF_CUT_CAR_TIMEBOX2_Y2</string>
 
-    <string name="pref_rgb_car_timebox2_main" translatable="false">PREF_RGB_CAR_TIMEBOX2_MAIN</string>
-    <string name="pref_rgb_car_timebox2_back1" translatable="false">PREF_RGB_CAR_TIMEBOX2_BACK1</string>
-    <string name="pref_rgb_car_timebox2_thp" translatable="false">PREF_RGB_CAR_TIMEBOX2_THP</string>
-    <string name="pref_rgb_car_timebox2_thm" translatable="false">PREF_RGB_CAR_TIMEBOX2_THM</string>
 
-    <string name="pref_def_rgb_car_timebox2_main" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_MAIN</string>
-    <string name="pref_def_rgb_car_timebox2_back1" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_BACK1</string>
-    <string name="pref_def_rgb_car_timebox2_thp" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THP</string>
-    <string name="pref_def_rgb_car_timebox2_thm" translatable="false">PREF_DEF_RGB_CAR_TIMEBOX2_THM</string>
 
-    <!--    box1_info-->
-    <string name="pref_cut_box1_info_x1" translatable="false">PREF_CUT_BOX1_INFO_X1</string>
-    <string name="pref_cut_box1_info_x2" translatable="false">PREF_CUT_BOX1_INFO_X2</string>
-    <string name="pref_cut_box1_info_y1" translatable="false">PREF_CUT_BOX1_INFO_Y1</string>
-    <string name="pref_cut_box1_info_y2" translatable="false">PREF_CUT_BOX1_INFO_Y2</string>
+    <!--    car_in_city_health-->
+    <string name="pref_cut_car_in_city_health_x1" translatable="false">PREF_CUT_CAR_IN_CITY_HEALTH_X1</string>
+    <string name="pref_cut_car_in_city_health_x2" translatable="false">PREF_CUT_CAR_IN_CITY_HEALTH_X2</string>
+    <string name="pref_cut_car_in_city_health_y1" translatable="false">PREF_CUT_CAR_IN_CITY_HEALTH_Y1</string>
+    <string name="pref_cut_car_in_city_health_y2" translatable="false">PREF_CUT_CAR_IN_CITY_HEALTH_Y2</string>
 
-    <string name="pref_def_cut_box1_info_x1" translatable="false">PREF_DEF_CUT_BOX1_INFO_X1</string>
-    <string name="pref_def_cut_box1_info_x2" translatable="false">PREF_DEF_CUT_BOX1_INFO_X2</string>
-    <string name="pref_def_cut_box1_info_y1" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y1</string>
-    <string name="pref_def_cut_box1_info_y2" translatable="false">PREF_DEF_CUT_BOX1_INFO_Y2</string>
+    <string name="pref_def_cut_car_in_city_health_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALTH_X1</string>
+    <string name="pref_def_cut_car_in_city_health_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALTH_X2</string>
+    <string name="pref_def_cut_car_in_city_health_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALTH_Y1</string>
+    <string name="pref_def_cut_car_in_city_health_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALTH_Y2</string>
 
-    <string name="pref_rgb_box1_info_main" translatable="false">PREF_RGB_BOX1_INFO_MAIN</string>
-    <string name="pref_rgb_box1_info_back1" translatable="false">PREF_RGB_BOX1_INFO_BACK1</string>
-    <string name="pref_rgb_box1_info_thp" translatable="false">PREF_RGB_BOX1_INFO_THP</string>
-    <string name="pref_rgb_box1_info_thm" translatable="false">PREF_RGB_BOX1_INFO_THM</string>
+    <string name="pref_rgb_car_in_city_health_main" translatable="false">PREF_RGB_CAR_IN_CITY_HEALTH_MAIN</string>
+    <string name="pref_rgb_car_in_city_health_back1" translatable="false">PREF_RGB_CAR_IN_CITY_HEALTH_BACK1</string>
+    <string name="pref_rgb_car_in_city_health_thp" translatable="false">PREF_RGB_CAR_IN_CITY_HEALTH_THP</string>
+    <string name="pref_rgb_car_in_city_health_thm" translatable="false">PREF_RGB_CAR_IN_CITY_HEALTH_THM</string>
 
-    <string name="pref_def_rgb_box1_info_main" translatable="false">PREF_DEF_RGB_BOX1_INFO_MAIN</string>
-    <string name="pref_def_rgb_box1_info_back1" translatable="false">PREF_DEF_RGB_BOX1_INFO_BACK1</string>
-    <string name="pref_def_rgb_box1_info_thp" translatable="false">PREF_DEF_RGB_BOX1_INFO_THP</string>
-    <string name="pref_def_rgb_box1_info_thm" translatable="false">PREF_DEF_RGB_BOX1_INFO_THM</string>
+    <string name="pref_def_rgb_car_in_city_health_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALTH_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_health_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALTH_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_health_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALTH_THP</string>
+    <string name="pref_def_rgb_car_in_city_health_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALTH_THM</string>
 
-<!--    box2_info-->
-    <string name="pref_cut_box2_info_x1" translatable="false">PREF_CUT_BOX2_INFO_X1</string>
-    <string name="pref_cut_box2_info_x2" translatable="false">PREF_CUT_BOX2_INFO_X2</string>
-    <string name="pref_cut_box2_info_y1" translatable="false">PREF_CUT_BOX2_INFO_Y1</string>
-    <string name="pref_cut_box2_info_y2" translatable="false">PREF_CUT_BOX2_INFO_Y2</string>
 
-    <string name="pref_def_cut_box2_info_x1" translatable="false">PREF_DEF_CUT_BOX2_INFO_X1</string>
-    <string name="pref_def_cut_box2_info_x2" translatable="false">PREF_DEF_CUT_BOX2_INFO_X2</string>
-    <string name="pref_def_cut_box2_info_y1" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y1</string>
-    <string name="pref_def_cut_box2_info_y2" translatable="false">PREF_DEF_CUT_BOX2_INFO_Y2</string>
+    <!--    car_in_city_shield-->
+    <string name="pref_cut_car_in_city_shield_x1" translatable="false">PREF_CUT_CAR_IN_CITY_SHIELD_X1</string>
+    <string name="pref_cut_car_in_city_shield_x2" translatable="false">PREF_CUT_CAR_IN_CITY_SHIELD_X2</string>
+    <string name="pref_cut_car_in_city_shield_y1" translatable="false">PREF_CUT_CAR_IN_CITY_SHIELD_Y1</string>
+    <string name="pref_cut_car_in_city_shield_y2" translatable="false">PREF_CUT_CAR_IN_CITY_SHIELD_Y2</string>
 
-    <string name="pref_rgb_box2_info_main" translatable="false">PREF_RGB_BOX2_INFO_MAIN</string>
-    <string name="pref_rgb_box2_info_back1" translatable="false">PREF_RGB_BOX2_INFO_BACK1</string>
-    <string name="pref_rgb_box2_info_thp" translatable="false">PREF_RGB_BOX2_INFO_THP</string>
-    <string name="pref_rgb_box2_info_thm" translatable="false">PREF_RGB_BOX2_INFO_THM</string>
+    <string name="pref_def_cut_car_in_city_shield_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SHIELD_X1</string>
+    <string name="pref_def_cut_car_in_city_shield_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SHIELD_X2</string>
+    <string name="pref_def_cut_car_in_city_shield_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SHIELD_Y1</string>
+    <string name="pref_def_cut_car_in_city_shield_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_SHIELD_Y2</string>
 
-    <string name="pref_def_rgb_box2_info_main" translatable="false">PREF_DEF_RGB_BOX2_INFO_MAIN</string>
-    <string name="pref_def_rgb_box2_info_back1" translatable="false">PREF_DEF_RGB_BOX2_INFO_BACK1</string>
-    <string name="pref_def_rgb_box2_info_thp" translatable="false">PREF_DEF_RGB_BOX2_INFO_THP</string>
-    <string name="pref_def_rgb_box2_info_thm" translatable="false">PREF_DEF_RGB_BOX2_INFO_THM</string>
+    <string name="pref_rgb_car_in_city_shield_main" translatable="false">PREF_RGB_CAR_IN_CITY_SHIELD_MAIN</string>
+    <string name="pref_rgb_car_in_city_shield_back1" translatable="false">PREF_RGB_CAR_IN_CITY_SHIELD_BACK1</string>
+    <string name="pref_rgb_car_in_city_shield_thp" translatable="false">PREF_RGB_CAR_IN_CITY_SHIELD_THP</string>
+    <string name="pref_rgb_car_in_city_shield_thm" translatable="false">PREF_RGB_CAR_IN_CITY_SHIELD_THM</string>
 
+    <string name="pref_def_rgb_car_in_city_shield_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SHIELD_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_shield_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SHIELD_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_shield_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SHIELD_THP</string>
+    <string name="pref_def_rgb_car_in_city_shield_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_SHIELD_THM</string>
+
+    <!--    car_in_garage_health-->
+    <string name="pref_cut_car_in_garage_health_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_HEALTH_X1</string>
+    <string name="pref_cut_car_in_garage_health_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_HEALTH_X2</string>
+    <string name="pref_cut_car_in_garage_health_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_HEALTH_Y1</string>
+    <string name="pref_cut_car_in_garage_health_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_HEALTH_Y2</string>
+
+    <string name="pref_def_cut_car_in_garage_health_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_HEALTH_X1</string>
+    <string name="pref_def_cut_car_in_garage_health_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_HEALTH_X2</string>
+    <string name="pref_def_cut_car_in_garage_health_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_HEALTH_Y1</string>
+    <string name="pref_def_cut_car_in_garage_health_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_HEALTH_Y2</string>
+
+    <string name="pref_rgb_car_in_garage_health_main" translatable="false">PREF_RGB_CAR_IN_GARAGE_HEALTH_MAIN</string>
+    <string name="pref_rgb_car_in_garage_health_back1" translatable="false">PREF_RGB_CAR_IN_GARAGE_HEALTH_BACK1</string>
+    <string name="pref_rgb_car_in_garage_health_back2" translatable="false">PREF_RGB_CAR_IN_GARAGE_HEALTH_BACK2</string>
+    <string name="pref_rgb_car_in_garage_health_thp" translatable="false">PREF_RGB_CAR_IN_GARAGE_HEALTH_THP</string>
+    <string name="pref_rgb_car_in_garage_health_thm" translatable="false">PREF_RGB_CAR_IN_GARAGE_HEALTH_THM</string>
+
+    <string name="pref_def_rgb_car_in_garage_health_main" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_HEALTH_MAIN</string>
+    <string name="pref_def_rgb_car_in_garage_health_back1" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_HEALTH_BACK1</string>
+    <string name="pref_def_rgb_car_in_garage_health_back2" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_HEALTH_BACK2</string>
+    <string name="pref_def_rgb_car_in_garage_health_thp" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_HEALTH_THP</string>
+    <string name="pref_def_rgb_car_in_garage_health_thm" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_HEALTH_THM</string>
+
+
+    <!--    car_in_garage_shield-->
+    <string name="pref_cut_car_in_garage_shield_x1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SHIELD_X1</string>
+    <string name="pref_cut_car_in_garage_shield_x2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SHIELD_X2</string>
+    <string name="pref_cut_car_in_garage_shield_y1" translatable="false">PREF_CUT_CAR_IN_GARAGE_SHIELD_Y1</string>
+    <string name="pref_cut_car_in_garage_shield_y2" translatable="false">PREF_CUT_CAR_IN_GARAGE_SHIELD_Y2</string>
+
+    <string name="pref_def_cut_car_in_garage_shield_x1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SHIELD_X1</string>
+    <string name="pref_def_cut_car_in_garage_shield_x2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SHIELD_X2</string>
+    <string name="pref_def_cut_car_in_garage_shield_y1" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SHIELD_Y1</string>
+    <string name="pref_def_cut_car_in_garage_shield_y2" translatable="false">PREF_DEF_CUT_CAR_IN_GARAGE_SHIELD_Y2</string>
+
+    <string name="pref_rgb_car_in_garage_shield_main" translatable="false">PREF_RGB_CAR_IN_GARAGE_SHIELD_MAIN</string>
+    <string name="pref_rgb_car_in_garage_shield_back1" translatable="false">PREF_RGB_CAR_IN_GARAGE_SHIELD_BACK1</string>
+    <string name="pref_rgb_car_in_garage_shield_back2" translatable="false">PREF_RGB_CAR_IN_GARAGE_SHIELD_BACK2</string>
+    <string name="pref_rgb_car_in_garage_shield_thp" translatable="false">PREF_RGB_CAR_IN_GARAGE_SHIELD_THP</string>
+    <string name="pref_rgb_car_in_garage_shield_thm" translatable="false">PREF_RGB_CAR_IN_GARAGE_SHIELD_THM</string>
+
+    <string name="pref_def_rgb_car_in_garage_shield_main" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SHIELD_MAIN</string>
+    <string name="pref_def_rgb_car_in_garage_shield_back1" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SHIELD_BACK1</string>
+    <string name="pref_def_rgb_car_in_garage_shield_back2" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SHIELD_BACK2</string>
+    <string name="pref_def_rgb_car_in_garage_shield_thp" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SHIELD_THP</string>
+    <string name="pref_def_rgb_car_in_garage_shield_thm" translatable="false">PREF_DEF_RGB_CAR_IN_GARAGE_SHIELD_THM</string>
+
+
+    <!--    car_in_city_state-->
+    <string name="pref_cut_car_in_city_state_x1" translatable="false">PREF_CUT_CAR_IN_CITY_STATE_X1</string>
+    <string name="pref_cut_car_in_city_state_x2" translatable="false">PREF_CUT_CAR_IN_CITY_STATE_X2</string>
+    <string name="pref_cut_car_in_city_state_y1" translatable="false">PREF_CUT_CAR_IN_CITY_STATE_Y1</string>
+    <string name="pref_cut_car_in_city_state_y2" translatable="false">PREF_CUT_CAR_IN_CITY_STATE_Y2</string>
+
+    <string name="pref_def_cut_car_in_city_state_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATE_X1</string>
+    <string name="pref_def_cut_car_in_city_state_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATE_X2</string>
+    <string name="pref_def_cut_car_in_city_state_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATE_Y1</string>
+    <string name="pref_def_cut_car_in_city_state_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_STATE_Y2</string>
+
+    <string name="pref_rgb_car_in_city_state_main" translatable="false">PREF_RGB_CAR_IN_CITY_STATE_MAIN</string>
+    <string name="pref_rgb_car_in_city_state_back1" translatable="false">PREF_RGB_CAR_IN_CITY_STATE_BACK1</string>
+    <string name="pref_rgb_car_in_city_state_thp" translatable="false">PREF_RGB_CAR_IN_CITY_STATE_THP</string>
+    <string name="pref_rgb_car_in_city_state_thm" translatable="false">PREF_RGB_CAR_IN_CITY_STATE_THM</string>
+
+    <string name="pref_def_rgb_car_in_city_state_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATE_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_state_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATE_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_state_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATE_THP</string>
+    <string name="pref_def_rgb_car_in_city_state_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_STATE_THM</string>
+
+
+    <!--    car_in_city_healbox-->
+    <string name="pref_cut_car_in_city_healbox_x1" translatable="false">PREF_CUT_CAR_IN_CITY_HEALBOX_X1</string>
+    <string name="pref_cut_car_in_city_healbox_x2" translatable="false">PREF_CUT_CAR_IN_CITY_HEALBOX_X2</string>
+    <string name="pref_cut_car_in_city_healbox_y1" translatable="false">PREF_CUT_CAR_IN_CITY_HEALBOX_Y1</string>
+    <string name="pref_cut_car_in_city_healbox_y2" translatable="false">PREF_CUT_CAR_IN_CITY_HEALBOX_Y2</string>
+
+    <string name="pref_def_cut_car_in_city_healbox_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALBOX_X1</string>
+    <string name="pref_def_cut_car_in_city_healbox_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALBOX_X2</string>
+    <string name="pref_def_cut_car_in_city_healbox_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALBOX_Y1</string>
+    <string name="pref_def_cut_car_in_city_healbox_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_HEALBOX_Y2</string>
+
+    <string name="pref_rgb_car_in_city_healbox_main" translatable="false">PREF_RGB_CAR_IN_CITY_HEALBOX_MAIN</string>
+    <string name="pref_rgb_car_in_city_healbox_back1" translatable="false">PREF_RGB_CAR_IN_CITY_HEALBOX_BACK1</string>
+    <string name="pref_rgb_car_in_city_healbox_thp" translatable="false">PREF_RGB_CAR_IN_CITY_HEALBOX_THP</string>
+    <string name="pref_rgb_car_in_city_healbox_thm" translatable="false">PREF_RGB_CAR_IN_CITY_HEALBOX_THM</string>
+
+    <string name="pref_def_rgb_car_in_city_healbox_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALBOX_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_healbox_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALBOX_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_healbox_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALBOX_THP</string>
+    <string name="pref_def_rgb_car_in_city_healbox_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_HEALBOX_THM</string>
+
+
+    <!--    car_in_city_timebox1-->
+    <string name="pref_cut_car_in_city_timebox1_x1" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX1_X1</string>
+    <string name="pref_cut_car_in_city_timebox1_x2" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX1_X2</string>
+    <string name="pref_cut_car_in_city_timebox1_y1" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX1_Y1</string>
+    <string name="pref_cut_car_in_city_timebox1_y2" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX1_Y2</string>
+
+    <string name="pref_def_cut_car_in_city_timebox1_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX1_X1</string>
+    <string name="pref_def_cut_car_in_city_timebox1_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX1_X2</string>
+    <string name="pref_def_cut_car_in_city_timebox1_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX1_Y1</string>
+    <string name="pref_def_cut_car_in_city_timebox1_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX1_Y2</string>
+
+    <string name="pref_rgb_car_in_city_timebox1_main" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX1_MAIN</string>
+    <string name="pref_rgb_car_in_city_timebox1_back1" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX1_BACK1</string>
+    <string name="pref_rgb_car_in_city_timebox1_thp" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX1_THP</string>
+    <string name="pref_rgb_car_in_city_timebox1_thm" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX1_THM</string>
+
+    <string name="pref_def_rgb_car_in_city_timebox1_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX1_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_timebox1_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX1_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_timebox1_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX1_THP</string>
+    <string name="pref_def_rgb_car_in_city_timebox1_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX1_THM</string>
+
+    <!--    car_in_city_timebox2-->
+    <string name="pref_cut_car_in_city_timebox2_x1" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX2_X1</string>
+    <string name="pref_cut_car_in_city_timebox2_x2" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX2_X2</string>
+    <string name="pref_cut_car_in_city_timebox2_y1" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX2_Y1</string>
+    <string name="pref_cut_car_in_city_timebox2_y2" translatable="false">PREF_CUT_CAR_IN_CITY_TIMEBOX2_Y2</string>
+
+    <string name="pref_def_cut_car_in_city_timebox2_x1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX2_X1</string>
+    <string name="pref_def_cut_car_in_city_timebox2_x2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX2_X2</string>
+    <string name="pref_def_cut_car_in_city_timebox2_y1" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX2_Y1</string>
+    <string name="pref_def_cut_car_in_city_timebox2_y2" translatable="false">PREF_DEF_CUT_CAR_IN_CITY_TIMEBOX2_Y2</string>
+
+    <string name="pref_rgb_car_in_city_timebox2_main" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX2_MAIN</string>
+    <string name="pref_rgb_car_in_city_timebox2_back1" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX2_BACK1</string>
+    <string name="pref_rgb_car_in_city_timebox2_thp" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX2_THP</string>
+    <string name="pref_rgb_car_in_city_timebox2_thm" translatable="false">PREF_RGB_CAR_IN_CITY_TIMEBOX2_THM</string>
+
+    <string name="pref_def_rgb_car_in_city_timebox2_main" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX2_MAIN</string>
+    <string name="pref_def_rgb_car_in_city_timebox2_back1" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX2_BACK1</string>
+    <string name="pref_def_rgb_car_in_city_timebox2_thp" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX2_THP</string>
+    <string name="pref_def_rgb_car_in_city_timebox2_thm" translatable="false">PREF_DEF_RGB_CAR_IN_CITY_TIMEBOX2_THM</string>
+
+    <!--    box_info_city-->
+    <string name="pref_cut_box_info_city_x1" translatable="false">PREF_CUT_BOX_INFO_CITY_X1</string>
+    <string name="pref_cut_box_info_city_x2" translatable="false">PREF_CUT_BOX_INFO_CITY_X2</string>
+    <string name="pref_cut_box_info_city_y1" translatable="false">PREF_CUT_BOX_INFO_CITY_Y1</string>
+    <string name="pref_cut_box_info_city_y2" translatable="false">PREF_CUT_BOX_INFO_CITY_Y2</string>
+
+    <string name="pref_def_cut_box_info_city_x1" translatable="false">PREF_DEF_CUT_BOX_INFO_CITY_X1</string>
+    <string name="pref_def_cut_box_info_city_x2" translatable="false">PREF_DEF_CUT_BOX_INFO_CITY_X2</string>
+    <string name="pref_def_cut_box_info_city_y1" translatable="false">PREF_DEF_CUT_BOX_INFO_CITY_Y1</string>
+    <string name="pref_def_cut_box_info_city_y2" translatable="false">PREF_DEF_CUT_BOX_INFO_CITY_Y2</string>
+
+    <string name="pref_rgb_box_info_city_main" translatable="false">PREF_RGB_BOX_INFO_CITY_MAIN</string>
+    <string name="pref_rgb_box_info_city_back1" translatable="false">PREF_RGB_BOX_INFO_CITY_BACK1</string>
+    <string name="pref_rgb_box_info_city_thp" translatable="false">PREF_RGB_BOX_INFO_CITY_THP</string>
+    <string name="pref_rgb_box_info_city_thm" translatable="false">PREF_RGB_BOX_INFO_CITY_THM</string>
+
+    <string name="pref_def_rgb_box_info_city_main" translatable="false">PREF_DEF_RGB_BOX_INFO_CITY_MAIN</string>
+    <string name="pref_def_rgb_box_info_city_back1" translatable="false">PREF_DEF_RGB_BOX_INFO_CITY_BACK1</string>
+    <string name="pref_def_rgb_box_info_city_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_CITY_THP</string>
+    <string name="pref_def_rgb_box_info_city_thm" translatable="false">PREF_DEF_RGB_BOX_INFO_CITY_THM</string>
+
+<!--    box_info_car-->
+    <string name="pref_cut_box_info_car_x1" translatable="false">PREF_CUT_BOX_INFO_CAR_X1</string>
+    <string name="pref_cut_box_info_car_x2" translatable="false">PREF_CUT_BOX_INFO_CAR_X2</string>
+    <string name="pref_cut_box_info_car_y1" translatable="false">PREF_CUT_BOX_INFO_CAR_Y1</string>
+    <string name="pref_cut_box_info_car_y2" translatable="false">PREF_CUT_BOX_INFO_CAR_Y2</string>
+
+    <string name="pref_def_cut_box_info_car_x1" translatable="false">PREF_DEF_CUT_BOX_INFO_CAR_X1</string>
+    <string name="pref_def_cut_box_info_car_x2" translatable="false">PREF_DEF_CUT_BOX_INFO_CAR_X2</string>
+    <string name="pref_def_cut_box_info_car_y1" translatable="false">PREF_DEF_CUT_BOX_INFO_CAR_Y1</string>
+    <string name="pref_def_cut_box_info_car_y2" translatable="false">PREF_DEF_CUT_BOX_INFO_CAR_Y2</string>
+
+    <string name="pref_rgb_box_info_car_main" translatable="false">PREF_RGB_BOX_INFO_CAR_MAIN</string>
+    <string name="pref_rgb_box_info_car_back1" translatable="false">PREF_RGB_BOX_INFO_CAR_BACK1</string>
+    <string name="pref_rgb_box_info_car_thp" translatable="false">PREF_RGB_BOX_INFO_CAR_THP</string>
+    <string name="pref_rgb_box_info_car_thm" translatable="false">PREF_RGB_BOX_INFO_CAR_THM</string>
+
+    <string name="pref_def_rgb_box_info_car_main" translatable="false">PREF_DEF_RGB_BOX_INFO_CAR_MAIN</string>
+    <string name="pref_def_rgb_box_info_car_back1" translatable="false">PREF_DEF_RGB_BOX_INFO_CAR_BACK1</string>
+    <string name="pref_def_rgb_box_info_car_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_CAR_THP</string>
+    <string name="pref_def_rgb_box_info_car_thm" translatable="false">PREF_DEF_RGB_BOX_INFO_CAR_THM</string>
+
+    <!--    box_info_garage-->
+    <string name="pref_cut_box_info_garage_x1" translatable="false">PREF_CUT_BOX_INFO_GARAGE_X1</string>
+    <string name="pref_cut_box_info_garage_x2" translatable="false">PREF_CUT_BOX_INFO_GARAGE_X2</string>
+    <string name="pref_cut_box_info_garage_y1" translatable="false">PREF_CUT_BOX_INFO_GARAGE_Y1</string>
+    <string name="pref_cut_box_info_garage_y2" translatable="false">PREF_CUT_BOX_INFO_GARAGE_Y2</string>
+
+    <string name="pref_def_cut_box_info_garage_x1" translatable="false">PREF_DEF_CUT_BOX_INFO_GARAGE_X1</string>
+    <string name="pref_def_cut_box_info_garage_x2" translatable="false">PREF_DEF_CUT_BOX_INFO_GARAGE_X2</string>
+    <string name="pref_def_cut_box_info_garage_y1" translatable="false">PREF_DEF_CUT_BOX_INFO_GARAGE_Y1</string>
+    <string name="pref_def_cut_box_info_garage_y2" translatable="false">PREF_DEF_CUT_BOX_INFO_GARAGE_Y2</string>
+
+    <string name="pref_rgb_box_info_garage_main" translatable="false">PREF_RGB_BOX_INFO_GARAGE_MAIN</string>
+    <string name="pref_rgb_box_info_garage_back1" translatable="false">PREF_RGB_BOX_INFO_GARAGE_BACK1</string>
+    <string name="pref_rgb_box_info_garage_back2" translatable="false">PREF_RGB_BOX_INFO_GARAGE_BACK2</string>
+    <string name="pref_rgb_box_info_garage_thp" translatable="false">PREF_RGB_BOX_INFO_GARAGE_THP</string>
+    <string name="pref_rgb_box_info_garage_thm" translatable="false">PREF_RGB_BOX_INFO_GARAGE_THM</string>
+
+    <string name="pref_def_rgb_box_info_garage_main" translatable="false">PREF_DEF_RGB_BOX_INFO_GARAGE_MAIN</string>
+    <string name="pref_def_rgb_box_info_garage_back1" translatable="false">PREF_DEF_RGB_BOX_INFO_GARAGE_BACK1</string>
+    <string name="pref_def_rgb_box_info_garage_back2" translatable="false">PREF_DEF_RGB_BOX_INFO_GARAGE_BACK2</string>
+    <string name="pref_def_rgb_box_info_garage_thp" translatable="false">PREF_DEF_RGB_BOX_INFO_GARAGE_THP</string>
+    <string name="pref_def_rgb_box_info_garage_thm" translatable="false">PREF_DEF_RGB_BOX_INFO_GARAGE_THM</string>
+
+    <!--    car_garage-->
+    <string name="pref_cut_car_garage_x1" translatable="false">PREF_CUT_CAR_GARAGE_X1</string>
+    <string name="pref_cut_car_garage_x2" translatable="false">PREF_CUT_CAR_GARAGE_X2</string>
+    <string name="pref_cut_car_garage_y1" translatable="false">PREF_CUT_CAR_GARAGE_Y1</string>
+    <string name="pref_cut_car_garage_y2" translatable="false">PREF_CUT_CAR_GARAGE_Y2</string>
+
+    <string name="pref_def_cut_car_garage_x1" translatable="false">PREF_DEF_CUT_CAR_GARAGE_X1</string>
+    <string name="pref_def_cut_car_garage_x2" translatable="false">PREF_DEF_CUT_CAR_GARAGE_X2</string>
+    <string name="pref_def_cut_car_garage_y1" translatable="false">PREF_DEF_CUT_CAR_GARAGE_Y1</string>
+    <string name="pref_def_cut_car_garage_y2" translatable="false">PREF_DEF_CUT_CAR_GARAGE_Y2</string>
 
 <!--    box_back-->
     <string name="pref_cut_box_back_x1" translatable="false">PREF_CUT_BOX_BACK_X1</string>

@@ -1,218 +1,295 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--  "car_box1"  -->
-    <string name="def_cut_car_box1_x1" translatable="false">+0.360</string>
-    <string name="def_cut_car_box1_x2" translatable="false">+0.448</string>
-    <string name="def_cut_car_box1_y1" translatable="false">-0.280</string>
-    <string name="def_cut_car_box1_y2" translatable="false">-0.155</string>
+    <!--  "car_in_city_box1"  -->
+    <string name="def_cut_car_in_city_box1_x1" translatable="false">+0.360</string>
+    <string name="def_cut_car_in_city_box1_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_in_city_box1_y1" translatable="false">-0.280</string>
+    <string name="def_cut_car_in_city_box1_y2" translatable="false">-0.155</string>
 
-    <string name="def_rgb_car_box1_main" translatable="false">FF8BAFEB</string>
-    <string name="def_rgb_car_box1_back1" translatable="false">FF8BAFEB</string>
-    <string name="def_rgb_car_box1_thm" translatable="false">13</string>
-    <string name="def_rgb_car_box1_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_box1_main" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_in_city_box1_back1" translatable="false">FF8BAFEB</string>
+    <string name="def_rgb_car_in_city_box1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_box1_thp" translatable="false">13</string>
 
-    <!--  "car_box2"  -->
-    <string name="def_cut_car_box2_x1" translatable="false">+0.050</string>
-    <string name="def_cut_car_box2_x2" translatable="false">+0.170</string>
-    <string name="def_cut_car_box2_y1" translatable="false">-0.900</string>
-    <string name="def_cut_car_box2_y2" translatable="false">-0.800</string>
+    <!--  "car_in_city_box2"  -->
+    <string name="def_cut_car_in_city_box2_x1" translatable="false">+0.050</string>
+    <string name="def_cut_car_in_city_box2_x2" translatable="false">+0.170</string>
+    <string name="def_cut_car_in_city_box2_y1" translatable="false">-0.900</string>
+    <string name="def_cut_car_in_city_box2_y2" translatable="false">-0.800</string>
 
-    <string name="def_rgb_car_box2_main" translatable="false">FFFF6661</string>
-    <string name="def_rgb_car_box2_back1" translatable="false">FFFF6661</string>
-    <string name="def_rgb_car_box2_thm" translatable="false">13</string>
-    <string name="def_rgb_car_box2_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_box2_main" translatable="false">FFFF6661</string>
+    <string name="def_rgb_car_in_city_box2_back1" translatable="false">FFFF6661</string>
+    <string name="def_rgb_car_in_city_box2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_box2_thp" translatable="false">13</string>
 
-    <!--  "car_statebox1"  -->
-    <string name="def_cut_car_statebox1_x1" translatable="false">+0.130</string>
-    <string name="def_cut_car_statebox1_x2" translatable="false">+0.170</string>
-    <string name="def_cut_car_statebox1_y1" translatable="false">-0.620</string>
-    <string name="def_cut_car_statebox1_y2" translatable="false">-0.580</string>
+    <!--  "car_in_city_statebox1"  -->
+    <string name="def_cut_car_in_city_statebox1_x1" translatable="false">+0.130</string>
+    <string name="def_cut_car_in_city_statebox1_x2" translatable="false">+0.170</string>
+    <string name="def_cut_car_in_city_statebox1_y1" translatable="false">-0.620</string>
+    <string name="def_cut_car_in_city_statebox1_y2" translatable="false">-0.580</string>
 
-    <string name="def_rgb_car_statebox1_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox1_back1" translatable="false">FF74D72F</string>
-    <string name="def_rgb_car_statebox1_thm" translatable="false">13</string>
-    <string name="def_rgb_car_statebox1_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox1_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_statebox1_back1" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_in_city_statebox1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox1_thp" translatable="false">13</string>
 
-    <!--  "car_statebox2"  -->
-    <string name="def_cut_car_statebox2_x1" translatable="false">+0.290</string>
-    <string name="def_cut_car_statebox2_x2" translatable="false">+0.380</string>
-    <string name="def_cut_car_statebox2_y1" translatable="false">-0.480</string>
-    <string name="def_cut_car_statebox2_y2" translatable="false">-0.390</string>
+    <!--  "car_in_city_statebox2"  -->
+    <string name="def_cut_car_in_city_statebox2_x1" translatable="false">+0.290</string>
+    <string name="def_cut_car_in_city_statebox2_x2" translatable="false">+0.380</string>
+    <string name="def_cut_car_in_city_statebox2_y1" translatable="false">-0.480</string>
+    <string name="def_cut_car_in_city_statebox2_y2" translatable="false">-0.390</string>
 
-    <string name="def_rgb_car_statebox2_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox2_back1" translatable="false">FF74D72F</string>
-    <string name="def_rgb_car_statebox2_thm" translatable="false">13</string>
-    <string name="def_rgb_car_statebox2_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox2_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_statebox2_back1" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_in_city_statebox2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox2_thp" translatable="false">13</string>
 
-    <!--  "car_statebox3"  -->
-    <string name="def_cut_car_statebox3_x1" translatable="false">+0.085</string>
-    <string name="def_cut_car_statebox3_x2" translatable="false">+0.124</string>
-    <string name="def_cut_car_statebox3_y1" translatable="false">-0.616</string>
-    <string name="def_cut_car_statebox3_y2" translatable="false">-0.580</string>
+    <!--  "car_in_city_statebox3"  -->
+    <string name="def_cut_car_in_city_statebox3_x1" translatable="false">+0.085</string>
+    <string name="def_cut_car_in_city_statebox3_x2" translatable="false">+0.124</string>
+    <string name="def_cut_car_in_city_statebox3_y1" translatable="false">-0.616</string>
+    <string name="def_cut_car_in_city_statebox3_y2" translatable="false">-0.580</string>
 
-    <string name="def_rgb_car_statebox3_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_statebox3_back1" translatable="false">FF74D72F</string>
-    <string name="def_rgb_car_statebox3_thm" translatable="false">13</string>
-    <string name="def_rgb_car_statebox3_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox3_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_statebox3_back1" translatable="false">FF74D72F</string>
+    <string name="def_rgb_car_in_city_statebox3_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_statebox3_thp" translatable="false">13</string>
 
-    <!--  "car_building"  -->
-    <string name="def_cut_car_building_x1" translatable="false">-0.140</string>
-    <string name="def_cut_car_building_x2" translatable="false">+0.140</string>
-    <string name="def_cut_car_building_y1" translatable="false">-0.962</string>
-    <string name="def_cut_car_building_y2" translatable="false">-0.824</string>
+    <!--  "car_in_city_building"  -->
+    <string name="def_cut_car_in_city_building_x1" translatable="false">-0.140</string>
+    <string name="def_cut_car_in_city_building_x2" translatable="false">+0.140</string>
+    <string name="def_cut_car_in_city_building_y1" translatable="false">-0.962</string>
+    <string name="def_cut_car_in_city_building_y2" translatable="false">-0.824</string>
 
-    <string name="def_rgb_car_building_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_building_back1" translatable="false">FF95A7BD</string>
-    <string name="def_rgb_car_building_thm" translatable="false">13</string>
-    <string name="def_rgb_car_building_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_building_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_building_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_in_city_building_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_building_thp" translatable="false">13</string>
 
-    <!--  "car_picture"  -->
-    <string name="def_cut_car_picture_x1" translatable="false">+0.060</string>
-    <string name="def_cut_car_picture_x2" translatable="false">+0.360</string>
-    <string name="def_cut_car_picture_y1" translatable="false">-0.560</string>
-    <string name="def_cut_car_picture_y2" translatable="false">-0.380</string>
+    <!--  "car_in_city_picture"  -->
+    <string name="def_cut_car_in_city_picture_x1" translatable="false">+0.060</string>
+    <string name="def_cut_car_in_city_picture_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_in_city_picture_y1" translatable="false">-0.560</string>
+    <string name="def_cut_car_in_city_picture_y2" translatable="false">-0.380</string>
 
-    <string name="def_rgb_car_picture_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_picture_back1" translatable="false">FF95A7BD</string>
-    <string name="def_rgb_car_picture_thm" translatable="false">13</string>
-    <string name="def_rgb_car_picture_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_picture_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_picture_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_in_city_picture_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_picture_thp" translatable="false">13</string>
 
-    <!--  "car_info"  -->
-    <string name="def_cut_car_info_x1" translatable="false">+0.000</string>
-    <string name="def_cut_car_info_x2" translatable="false">+0.448</string>
-    <string name="def_cut_car_info_y1" translatable="false">-0.720</string>
-    <string name="def_cut_car_info_y2" translatable="false">-0.155</string>
+    <!--  "car_in_garage_picture"  -->
+    <string name="def_cut_car_in_garage_picture_x1" translatable="false">-0.550</string>
+    <string name="def_cut_car_in_garage_picture_x2" translatable="false">+0.550</string>
+    <string name="def_cut_car_in_garage_picture_y1" translatable="false">-0.460</string>
+    <string name="def_cut_car_in_garage_picture_y2" translatable="false">+0.730</string>
 
-    <string name="def_rgb_car_info_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_info_back1" translatable="false">FF95A7BD</string>
-    <string name="def_rgb_car_info_thm" translatable="false">13</string>
-    <string name="def_rgb_car_info_thp" translatable="false">13</string>
+    <string name="def_rgb_car_in_garage_picture_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_garage_picture_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_in_garage_picture_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_garage_picture_thp" translatable="false">13</string>
+    
+    <!--  "car_in_city_info"  -->
+    <string name="def_cut_car_in_city_info_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_in_city_info_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_in_city_info_y1" translatable="false">-0.720</string>
+    <string name="def_cut_car_in_city_info_y2" translatable="false">-0.155</string>
 
-    <!--  "car_slot1"  -->
-    <string name="def_cut_car_slot1_x1" translatable="false">+0.050</string>
-    <string name="def_cut_car_slot1_x2" translatable="false">+0.140</string>
-    <string name="def_cut_car_slot1_y1" translatable="false">-0.275</string>
-    <string name="def_cut_car_slot1_y2" translatable="false">-0.185</string>
+    <string name="def_rgb_car_in_city_info_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_info_back1" translatable="false">FF95A7BD</string>
+    <string name="def_rgb_car_in_city_info_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_info_thp" translatable="false">13</string>
 
-    <string name="def_rgb_car_slot_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_slot_back1" translatable="false">FF839FDA</string>
-    <string name="def_rgb_car_slot_thm" translatable="false">13</string>
-    <string name="def_rgb_car_slot_thp" translatable="false">13</string>
+    <!--  "car_in_city_slot1"  -->
+    <string name="def_cut_car_in_city_slot1_x1" translatable="false">+0.050</string>
+    <string name="def_cut_car_in_city_slot1_x2" translatable="false">+0.140</string>
+    <string name="def_cut_car_in_city_slot1_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_in_city_slot1_y2" translatable="false">-0.185</string>
 
-    <!--  "car_slot2"  -->
-    <string name="def_cut_car_slot2_x1" translatable="false">+0.155</string>
-    <string name="def_cut_car_slot2_x2" translatable="false">+0.250</string>
-    <string name="def_cut_car_slot2_y1" translatable="false">-0.275</string>
-    <string name="def_cut_car_slot2_y2" translatable="false">-0.185</string>
+    <string name="def_rgb_car_in_city_slot_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_slot_back1" translatable="false">FF839FDA</string>
+    <string name="def_rgb_car_in_city_slot_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_slot_thp" translatable="false">13</string>
 
-
-    <!--  "car_slot3"  -->
-    <string name="def_cut_car_slot3_x1" translatable="false">+0.265</string>
-    <string name="def_cut_car_slot3_x2" translatable="false">+0.360</string>
-    <string name="def_cut_car_slot3_y1" translatable="false">-0.275</string>
-    <string name="def_cut_car_slot3_y2" translatable="false">-0.185</string>
-
-
-    <!--  "car_health"  -->
-    <string name="def_cut_car_health_x1" translatable="false">+0.000</string>
-    <string name="def_cut_car_health_x2" translatable="false">+0.224</string>
-    <string name="def_cut_car_health_y1" translatable="false">-0.375</string>
-    <string name="def_cut_car_health_y2" translatable="false">-0.305</string>
-
-    <string name="def_rgb_car_health_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_health_back1" translatable="false">FFF2D7C7</string>
-    <string name="def_rgb_car_health_thm" translatable="false">13</string>
-    <string name="def_rgb_car_health_thp" translatable="false">13</string>
+    <!--  "car_in_city_slot2"  -->
+    <string name="def_cut_car_in_city_slot2_x1" translatable="false">+0.155</string>
+    <string name="def_cut_car_in_city_slot2_x2" translatable="false">+0.250</string>
+    <string name="def_cut_car_in_city_slot2_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_in_city_slot2_y2" translatable="false">-0.185</string>
 
 
-    <!--  "car_shield"  -->
-    <string name="def_cut_car_shield_x1" translatable="false">+0.224</string>
-    <string name="def_cut_car_shield_x2" translatable="false">+0.448</string>
-    <string name="def_cut_car_shield_y1" translatable="false">-0.375</string>
-    <string name="def_cut_car_shield_y2" translatable="false">-0.305</string>
+    <!--  "car_in_city_slot3"  -->
+    <string name="def_cut_car_in_city_slot3_x1" translatable="false">+0.265</string>
+    <string name="def_cut_car_in_city_slot3_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_in_city_slot3_y1" translatable="false">-0.275</string>
+    <string name="def_cut_car_in_city_slot3_y2" translatable="false">-0.185</string>
 
-    <string name="def_rgb_car_shield_main" translatable="false">FF8B776B</string>
-    <string name="def_rgb_car_shield_back1" translatable="false">FFF2D7C7</string>
-    <string name="def_rgb_car_shield_thm" translatable="false">13</string>
-    <string name="def_rgb_car_shield_thp" translatable="false">13</string>
+    <!--  "car_in_garage_slot1"  -->
+    <string name="def_cut_car_in_garage_slot1_x1" translatable="false">-0.380</string>
+    <string name="def_cut_car_in_garage_slot1_x2" translatable="false">-0.290</string>
+    <string name="def_cut_car_in_garage_slot1_y1" translatable="false">-0.130</string>
+    <string name="def_cut_car_in_garage_slot1_y2" translatable="false">-0.045</string>
 
-    <!--  "car_state"  -->
-    <string name="def_cut_car_state_x1" translatable="false">+0.000</string>
-    <string name="def_cut_car_state_x2" translatable="false">+0.448</string>
-    <string name="def_cut_car_state_y1" translatable="false">-0.640</string>
-    <string name="def_cut_car_state_y2" translatable="false">-0.560</string>
+    <string name="def_rgb_car_in_garage_slot_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_garage_slot_back1" translatable="false">FF839FDA</string>
+    <string name="def_rgb_car_in_garage_slot_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_garage_slot_thp" translatable="false">13</string>
 
-    <string name="def_rgb_car_state_main" translatable="false">FF77D734</string>
-    <string name="def_rgb_car_state_back1" translatable="false">FF738FE1</string>
-    <string name="def_rgb_car_state_thm" translatable="false">13</string>
-    <string name="def_rgb_car_state_thp" translatable="false">13</string>
-
-    <!--  "car_healbox"  -->
-    <string name="def_cut_car_healbox_x1" translatable="false">+0.280</string>
-    <string name="def_cut_car_healbox_x2" translatable="false">+0.360</string>
-    <string name="def_cut_car_healbox_y1" translatable="false">-0.640</string>
-    <string name="def_cut_car_healbox_y2" translatable="false">-0.560</string>
-
-    <string name="def_rgb_car_healbox_main" translatable="false">FFD32526</string>
-    <string name="def_rgb_car_healbox_back1" translatable="false">FFFFF7C1</string>
-    <string name="def_rgb_car_healbox_thm" translatable="false">13</string>
-    <string name="def_rgb_car_healbox_thp" translatable="false">13</string>
-
-    <!--  "car_timebox1"  -->
-    <string name="def_cut_car_timebox1_x1" translatable="false">+0.180</string>
-    <string name="def_cut_car_timebox1_x2" translatable="false">+0.310</string>
-    <string name="def_cut_car_timebox1_y1" translatable="false">-0.625</string>
-    <string name="def_cut_car_timebox1_y2" translatable="false">-0.570</string>
-
-    <string name="def_rgb_car_timebox1_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox1_back1" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox1_thm" translatable="false">13</string>
-    <string name="def_rgb_car_timebox1_thp" translatable="false">13</string>
-
-    <!--  "car_timebox2"  -->
-    <string name="def_cut_car_timebox2_x1" translatable="false">+0.120</string>
-    <string name="def_cut_car_timebox2_x2" translatable="false">+0.270</string>
-    <string name="def_cut_car_timebox2_y1" translatable="false">-0.625</string>
-    <string name="def_cut_car_timebox2_y2" translatable="false">-0.570</string>
-
-    <string name="def_rgb_car_timebox2_main" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox2_back1" translatable="false">FFFFFFFF</string>
-    <string name="def_rgb_car_timebox2_thm" translatable="false">13</string>
-    <string name="def_rgb_car_timebox2_thp" translatable="false">13</string>
-
-    <!--  "box1_info"  -->
-    <string name="def_cut_box1_info_x1" translatable="false">-0.640</string>
-    <string name="def_cut_box1_info_x2" translatable="false">-0.585</string>
-    <string name="def_cut_box1_info_y1" translatable="false">-0.800</string>
-    <string name="def_cut_box1_info_y2" translatable="false">-0.690</string>
-
-    <string name="def_rgb_box1_info_main" translatable="false">FFCA2728</string>
-    <string name="def_rgb_box1_info_back1" translatable="false">FFCA2728</string>
-    <string name="def_rgb_box1_info_thm" translatable="false">13</string>
-    <string name="def_rgb_box1_info_thp" translatable="false">13</string>
-
-    <!--  "box2_info"  -->
-    <string name="def_cut_box2_info_x1" translatable="false">-0.170</string>
-    <string name="def_cut_box2_info_x2" translatable="false">-0.135</string>
-    <string name="def_cut_box2_info_y1" translatable="false">-0.770</string>
-    <string name="def_cut_box2_info_y2" translatable="false">-0.660</string>
-
-    <string name="def_rgb_box2_info_main" translatable="false">FF91A7BF</string>
-    <string name="def_rgb_box2_info_back1" translatable="false">FF91A7BF</string>
-    <string name="def_rgb_box2_info_thm" translatable="false">13</string>
-    <string name="def_rgb_box2_info_thp" translatable="false">13</string>
+    <!--  "car_in_garage_slot2"  -->
+    <string name="def_cut_car_in_garage_slot2_x1" translatable="false">-0.250</string>
+    <string name="def_cut_car_in_garage_slot2_x2" translatable="false">-0.160</string>
+    <string name="def_cut_car_in_garage_slot2_y1" translatable="false">-0.130</string>
+    <string name="def_cut_car_in_garage_slot2_y2" translatable="false">-0.045</string>
 
 
+    <!--  "car_in_garage_slot3"  -->
+    <string name="def_cut_car_in_garage_slot3_x1" translatable="false">-0.120</string>
+    <string name="def_cut_car_in_garage_slot3_x2" translatable="false">-0.030</string>
+    <string name="def_cut_car_in_garage_slot3_y1" translatable="false">-0.130</string>
+    <string name="def_cut_car_in_garage_slot3_y2" translatable="false">-0.045</string>
+
+    
+    <!--  "car_in_city_health"  -->
+    <string name="def_cut_car_in_city_health_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_in_city_health_x2" translatable="false">+0.224</string>
+    <string name="def_cut_car_in_city_health_y1" translatable="false">-0.375</string>
+    <string name="def_cut_car_in_city_health_y2" translatable="false">-0.305</string>
+
+    <string name="def_rgb_car_in_city_health_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_in_city_health_back1" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_in_city_health_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_health_thp" translatable="false">13</string>
+
+
+    <!--  "car_in_city_shield"  -->
+    <string name="def_cut_car_in_city_shield_x1" translatable="false">+0.224</string>
+    <string name="def_cut_car_in_city_shield_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_in_city_shield_y1" translatable="false">-0.375</string>
+    <string name="def_cut_car_in_city_shield_y2" translatable="false">-0.305</string>
+
+    <string name="def_rgb_car_in_city_shield_main" translatable="false">FF8B776B</string>
+    <string name="def_rgb_car_in_city_shield_back1" translatable="false">FFF2D7C7</string>
+    <string name="def_rgb_car_in_city_shield_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_shield_thp" translatable="false">13</string>
+
+    <!--  "car_in_garage_health"  -->
+    <string name="def_cut_car_in_garage_health_x1" translatable="false">-0.250</string>
+    <string name="def_cut_car_in_garage_health_x2" translatable="false">+0.000</string>
+    <string name="def_cut_car_in_garage_health_y1" translatable="false">+0.750</string>
+    <string name="def_cut_car_in_garage_health_y2" translatable="false">+0.930</string>
+
+    <string name="def_rgb_car_in_garage_health_main" translatable="false">FFEFDFCF</string>
+    <string name="def_rgb_car_in_garage_health_back1" translatable="false">FF785190</string>
+    <string name="def_rgb_car_in_garage_health_back2" translatable="false">FF8A7B6F</string>
+    <string name="def_rgb_car_in_garage_health_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_garage_health_thp" translatable="false">13</string>
+
+
+    <!--  "car_in_garage_shield"  -->
+    <string name="def_cut_car_in_garage_shield_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_in_garage_shield_x2" translatable="false">+0.200</string>
+    <string name="def_cut_car_in_garage_shield_y1" translatable="false">+0.750</string>
+    <string name="def_cut_car_in_garage_shield_y2" translatable="false">+0.930</string>
+
+    <string name="def_rgb_car_in_garage_shield_main" translatable="false">FFEFDFCF</string>
+    <string name="def_rgb_car_in_garage_shield_back1" translatable="false">FF785190</string>
+    <string name="def_rgb_car_in_garage_shield_back2" translatable="false">FF8A7B6F</string>
+    <string name="def_rgb_car_in_garage_shield_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_garage_shield_thp" translatable="false">13</string>
+
+
+    <!--  "car_in_city_state"  -->
+    <string name="def_cut_car_in_city_state_x1" translatable="false">+0.000</string>
+    <string name="def_cut_car_in_city_state_x2" translatable="false">+0.448</string>
+    <string name="def_cut_car_in_city_state_y1" translatable="false">-0.640</string>
+    <string name="def_cut_car_in_city_state_y2" translatable="false">-0.560</string>
+
+    <string name="def_rgb_car_in_city_state_main" translatable="false">FF77D734</string>
+    <string name="def_rgb_car_in_city_state_back1" translatable="false">FF738FE1</string>
+    <string name="def_rgb_car_in_city_state_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_state_thp" translatable="false">13</string>
+
+    <!--  "car_in_city_healbox"  -->
+    <string name="def_cut_car_in_city_healbox_x1" translatable="false">+0.280</string>
+    <string name="def_cut_car_in_city_healbox_x2" translatable="false">+0.360</string>
+    <string name="def_cut_car_in_city_healbox_y1" translatable="false">-0.640</string>
+    <string name="def_cut_car_in_city_healbox_y2" translatable="false">-0.560</string>
+
+    <string name="def_rgb_car_in_city_healbox_main" translatable="false">FFD32526</string>
+    <string name="def_rgb_car_in_city_healbox_back1" translatable="false">FFFFF7C1</string>
+    <string name="def_rgb_car_in_city_healbox_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_healbox_thp" translatable="false">13</string>
+
+    <!--  "car_in_city_timebox1"  -->
+    <string name="def_cut_car_in_city_timebox1_x1" translatable="false">+0.180</string>
+    <string name="def_cut_car_in_city_timebox1_x2" translatable="false">+0.310</string>
+    <string name="def_cut_car_in_city_timebox1_y1" translatable="false">-0.625</string>
+    <string name="def_cut_car_in_city_timebox1_y2" translatable="false">-0.570</string>
+
+    <string name="def_rgb_car_in_city_timebox1_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_timebox1_back1" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_timebox1_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_timebox1_thp" translatable="false">13</string>
+
+    <!--  "car_in_city_timebox2"  -->
+    <string name="def_cut_car_in_city_timebox2_x1" translatable="false">+0.120</string>
+    <string name="def_cut_car_in_city_timebox2_x2" translatable="false">+0.270</string>
+    <string name="def_cut_car_in_city_timebox2_y1" translatable="false">-0.625</string>
+    <string name="def_cut_car_in_city_timebox2_y2" translatable="false">-0.570</string>
+
+    <string name="def_rgb_car_in_city_timebox2_main" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_timebox2_back1" translatable="false">FFFFFFFF</string>
+    <string name="def_rgb_car_in_city_timebox2_thm" translatable="false">13</string>
+    <string name="def_rgb_car_in_city_timebox2_thp" translatable="false">13</string>
+
+    <!--  "box_info_city"  -->
+    <string name="def_cut_box_info_city_x1" translatable="false">-0.640</string>
+    <string name="def_cut_box_info_city_x2" translatable="false">-0.585</string>
+    <string name="def_cut_box_info_city_y1" translatable="false">-0.800</string>
+    <string name="def_cut_box_info_city_y2" translatable="false">-0.690</string>
+
+    <string name="def_rgb_box_info_city_main" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box_info_city_back1" translatable="false">FFCA2728</string>
+    <string name="def_rgb_box_info_city_thm" translatable="false">13</string>
+    <string name="def_rgb_box_info_city_thp" translatable="false">13</string>
+
+    <!--  "box_info_car"  -->
+    <string name="def_cut_box_info_car_x1" translatable="false">-0.170</string>
+    <string name="def_cut_box_info_car_x2" translatable="false">-0.135</string>
+    <string name="def_cut_box_info_car_y1" translatable="false">-0.770</string>
+    <string name="def_cut_box_info_car_y2" translatable="false">-0.660</string>
+
+    <string name="def_rgb_box_info_car_main" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box_info_car_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box_info_car_thm" translatable="false">13</string>
+    <string name="def_rgb_box_info_car_thp" translatable="false">13</string>
+
+    <!--  "box_info_garage"  -->
+    <string name="def_cut_box_info_garage_x1" translatable="false">-0.275</string>
+    <string name="def_cut_box_info_garage_x2" translatable="false">+0.365</string>
+    <string name="def_cut_box_info_garage_y1" translatable="false">+0.750</string>
+    <string name="def_cut_box_info_garage_y2" translatable="false">+0.930</string>
+
+    <string name="def_rgb_box_info_garage_main" translatable="false">FFF1DFD1</string>
+    <string name="def_rgb_box_info_garage_back1" translatable="false">FF8E7F74</string>
+    <string name="def_rgb_box_info_garage_back2" translatable="false">FFEC3402</string>
+    <string name="def_rgb_box_info_garage_thm" translatable="false">13</string>
+    <string name="def_rgb_box_info_garage_thp" translatable="false">13</string>
+
+    <!--  "car_garage"  -->
+    <string name="def_cut_car_garage_x1" translatable="false">-0.275</string>
+    <string name="def_cut_car_garage_x2" translatable="false">+0.365</string>
+    <string name="def_cut_car_garage_y1" translatable="false">+0.750</string>
+    <string name="def_cut_car_garage_y2" translatable="false">+0.930</string>
 
     <!--  "box_back"  -->
-    <string name="def_cut_box_back_x1" translatable="false">-0.977</string>
-    <string name="def_cut_box_back_x2" translatable="false">-0.856</string>
-    <string name="def_cut_box_back_y1" translatable="false">+0.718</string>
-    <string name="def_cut_box_back_y2" translatable="false">+0.964</string>
+    <string name="def_cut_box_back_x1" translatable="false">+0.050</string>
+    <string name="def_cut_box_back_x2" translatable="false">+0.170</string>
+    <string name="def_cut_box_back_y1" translatable="false">-0.145</string>
+    <string name="def_cut_box_back_y2" translatable="false">-0.020</string>
 
-    <string name="def_rgb_box_back_main" translatable="false">FF91A7BF</string>
-    <string name="def_rgb_box_back_back1" translatable="false">FF91A7BF</string>
+    <string name="def_rgb_box_back_main" translatable="false">FFC72325</string>
+    <string name="def_rgb_box_back_back1" translatable="false">FFFFF3BE</string>
     <string name="def_rgb_box_back_thm" translatable="false">13</string>
     <string name="def_rgb_box_back_thp" translatable="false">13</string>
 

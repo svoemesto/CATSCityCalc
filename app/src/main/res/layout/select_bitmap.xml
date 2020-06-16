@@ -4,7 +4,9 @@
     android:id="@+id/select_item_bitmap"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minHeight="40dp"
     android:textSize="20sp"
     android:textColor="@android:color/black"
     android:layout_margin="10dp"
+    android:scaleType="fitCenter"
     />

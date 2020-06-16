@@ -1,5 +1,9 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
@@ -22,130 +26,169 @@ public class CCACar extends CityCalcArea {
 
         car = new Car();
 
-        CityCalcArea areaSlot1 = this.getCityCalc().getMapAreas().get(Area.CAR_SLOT1);
-        CityCalcArea areaSlot2 = this.getCityCalc().getMapAreas().get(Area.CAR_SLOT2);
-        CityCalcArea areaSlot3 = this.getCityCalc().getMapAreas().get(Area.CAR_SLOT3);
-        CityCalcArea areaHealth = this.getCityCalc().getMapAreas().get(Area.CAR_HEALTH);
-        CityCalcArea areaShield = this.getCityCalc().getMapAreas().get(Area.CAR_SHIELD);
-        CityCalcArea areaStatebox1 = this.getCityCalc().getMapAreas().get(Area.CAR_STATEBOX1);
-        CityCalcArea areaStatebox2 = this.getCityCalc().getMapAreas().get(Area.CAR_STATEBOX2);
-        CityCalcArea areaStatebox3 = this.getCityCalc().getMapAreas().get(Area.CAR_STATEBOX3);
-        CityCalcArea areaHealbox = this.getCityCalc().getMapAreas().get(Area.CAR_HEALBOX);
-        CityCalcArea areaTimebox1 = this.getCityCalc().getMapAreas().get(Area.CAR_TIMEBOX1);
-        CityCalcArea areaTimebox2 = this.getCityCalc().getMapAreas().get(Area.CAR_TIMEBOX2);
-        CityCalcArea areaPicture = this.getCityCalc().getMapAreas().get(Area.CAR_PICTURE);
-        CityCalcArea areaBuilding = this.getCityCalc().getMapAreas().get(Area.CAR_BUILDING);
-
         long secondsToEndRepairing = 0;
         Date screenshotDate = Calendar.getInstance().getTime();
 
-        car.setHealth(Integer.parseInt(areaHealth.getFinText()));
-        car.setShield(Integer.parseInt(areaShield.getFinText()));
+        CityCalcArea areaCarInCityBox1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_BOX1);
 
-        // распознаем слоты
-        boolean isSlot1 = PictureProcessor.frequencyPixelInBitmap(areaSlot1.getBmpSrc(), areaSlot1.getColors()[0],areaSlot1.getThs()[0], areaSlot1.getThs()[1]) > 0.01f;    // обнаружен слот 1
-        boolean isSlot2 = PictureProcessor.frequencyPixelInBitmap(areaSlot2.getBmpSrc(), areaSlot2.getColors()[0],areaSlot2.getThs()[0], areaSlot2.getThs()[1]) > 0.01f;    // обнаружен слот 2
-        boolean isSlot3 = PictureProcessor.frequencyPixelInBitmap(areaSlot3.getBmpSrc(), areaSlot3.getColors()[0],areaSlot3.getThs()[0], areaSlot3.getThs()[1]) > 0.01f;    // обнаружен слот 3
+        SharedPreferences sharedPreferences = this.getCityCalc().getContext().getSharedPreferences(this.getCityCalc().getContext().getResources().getString(R.string.pref_preferences_file), Context.MODE_PRIVATE);
+        int color_car_in_city_box1_main = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_main),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_main), (int)Long.parseLong(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_main), 16)));
+        int color_car_in_city_box1_thm = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thm),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thm), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thm))));
+        int color_car_in_city_box1_thp = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thp),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thp), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thp))));
 
-        if (isSlot1) car.setSlot(1); // есть белый цвет в слоте1 - машина №1
-        if (isSlot2) car.setSlot(2); // есть белый цвет в слоте2 - машина №2
-        if (isSlot3) car.setSlot(3); // есть белый цвет в слоте3 - машина №3
+        boolean isCarInCity = PictureProcessor.frequencyPixelInBitmap(areaCarInCityBox1.getBmpSrc(), color_car_in_city_box1_main, color_car_in_city_box1_thm, color_car_in_city_box1_thp) > 0.50f;
 
-        // распознаем стейтбоксы
-        boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaStatebox1.getBmpSrc(), areaStatebox1.getColors()[0],areaStatebox1.getThs()[0], areaStatebox1.getThs()[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ - починка в защите
-        boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaStatebox2.getBmpSrc(), areaStatebox2.getColors()[0],areaStatebox2.getThs()[0], areaStatebox2.getThs()[1]) > 0.50f; // обнаружен стейтбокс2 - в боксе есть белый цвет
-        boolean isStatebox3 = PictureProcessor.frequencyPixelInBitmap(areaStatebox3.getBmpSrc(), areaStatebox3.getColors()[0],areaStatebox3.getThs()[0], areaStatebox3.getThs()[1]) > 0.28f; // обнаружен стейтбокс3 - в боксе есть ключ - починка
-        boolean isHealbox = PictureProcessor.frequencyPixelInBitmap(areaHealbox.getBmpSrc(), areaHealbox.getColors()[0],areaHealbox.getThs()[0], areaHealbox.getThs()[1]) > 0.01f; // обнаружен хилбокс - в боксе есть красный цвет
+        if (isCarInCity) { // машина в городе
 
-        if (!isStatebox2) { // если нет стейтбокса2 - машина гарантированно свободна и починена
-            // устанавливаем свободный статус машины и забираем ее картинку
-            car.setStateFree();
-            car.setCarPicture(areaPicture.getBmpSrc());
-        } else {
+            CityCalcArea areaCarInCitySlot1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_SLOT1);
+            CityCalcArea areaCarInCitySlot2 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_SLOT2);
+            CityCalcArea areaCarInCitySlot3 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_SLOT3);
+            CityCalcArea areaCarInCityHealth = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_HEALTH);
+            CityCalcArea areaCarInCityShield = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_SHIELD);
+            CityCalcArea areaCarInCityStatebox1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_STATEBOX1);
+            CityCalcArea areaCarInCityStatebox2 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_STATEBOX2);
+            CityCalcArea areaCarInCityStatebox3 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_STATEBOX3);
+            CityCalcArea areaCarInCityHealbox = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_HEALBOX);
+            CityCalcArea areaCarInCityTimebox1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_TIMEBOX1);
+            CityCalcArea areaCarInCityTimebox2 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_TIMEBOX2);
+            CityCalcArea areaCarInCityPicture = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_PICTURE);
+            CityCalcArea areaCarInCityBuilding = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_BUILDING);
 
-            if (isStatebox1) { // если есть стейтбокс1 - машина гарантированно ремонтируется
-                // парсим и устанавливаем время ремонта
-                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox1.getOcrText());
-                screenshotDate = new Date(this.getCityCalc().getFileScreenshot().lastModified());
-                car.setRepairingState(screenshotDate,secondsToEndRepairing);
-                car.setCarPictureRepairing(areaPicture.getBmpSrc());
-                car.setCarPictureDefencing(areaPicture.getBmpSrc());
+            car.setHealth(Integer.parseInt(areaCarInCityHealth.getFinText()));
+            car.setShield(Integer.parseInt(areaCarInCityShield.getFinText()));
+
+            // распознаем слоты
+            boolean isSlot1 = PictureProcessor.frequencyPixelInBitmap(areaCarInCitySlot1.getBmpSrc(), areaCarInCitySlot1.getColors()[0],areaCarInCitySlot1.getThs()[0], areaCarInCitySlot1.getThs()[1]) > 0.01f;    // обнаружен слот 1
+            boolean isSlot2 = PictureProcessor.frequencyPixelInBitmap(areaCarInCitySlot2.getBmpSrc(), areaCarInCitySlot2.getColors()[0],areaCarInCitySlot2.getThs()[0], areaCarInCitySlot2.getThs()[1]) > 0.01f;    // обнаружен слот 2
+            boolean isSlot3 = PictureProcessor.frequencyPixelInBitmap(areaCarInCitySlot3.getBmpSrc(), areaCarInCitySlot3.getColors()[0],areaCarInCitySlot3.getThs()[0], areaCarInCitySlot3.getThs()[1]) > 0.01f;    // обнаружен слот 3
+
+            if (isSlot1) car.setSlot(1); // есть белый цвет в слоте1 - машина №1
+            if (isSlot2) car.setSlot(2); // есть белый цвет в слоте2 - машина №2
+            if (isSlot3) car.setSlot(3); // есть белый цвет в слоте3 - машина №3
+
+            // распознаем стейтбоксы
+            boolean isStatebox1 = PictureProcessor.frequencyPixelInBitmap(areaCarInCityStatebox1.getBmpSrc(), areaCarInCityStatebox1.getColors()[0],areaCarInCityStatebox1.getThs()[0], areaCarInCityStatebox1.getThs()[1]) > 0.28f; // обнаружен стейтбокс1 - в боксе есть ключ - починка в защите
+            boolean isStatebox2 = PictureProcessor.frequencyPixelInBitmap(areaCarInCityStatebox2.getBmpSrc(), areaCarInCityStatebox2.getColors()[0],areaCarInCityStatebox2.getThs()[0], areaCarInCityStatebox2.getThs()[1]) > 0.50f; // обнаружен стейтбокс2 - в боксе есть белый цвет
+            boolean isStatebox3 = PictureProcessor.frequencyPixelInBitmap(areaCarInCityStatebox3.getBmpSrc(), areaCarInCityStatebox3.getColors()[0],areaCarInCityStatebox3.getThs()[0], areaCarInCityStatebox3.getThs()[1]) > 0.28f; // обнаружен стейтбокс3 - в боксе есть ключ - починка
+            boolean isHealbox = PictureProcessor.frequencyPixelInBitmap(areaCarInCityHealbox.getBmpSrc(), areaCarInCityHealbox.getColors()[0],areaCarInCityHealbox.getThs()[0], areaCarInCityHealbox.getThs()[1]) > 0.01f; // обнаружен хилбокс - в боксе есть красный цвет
+
+            if (!isStatebox2) { // если нет стейтбокса2 - машина гарантированно свободна и починена
+                // устанавливаем свободный статус машины и забираем ее картинку
+                car.setStateFree();
+                car.setCarPicture(areaCarInCityPicture.getBmpSrc());
+            } else {
+
+                if (isStatebox1) { // если есть стейтбокс1 - машина гарантированно ремонтируется
+                    // парсим и устанавливаем время ремонта
+                    secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaCarInCityTimebox1.getOcrText());
+                    screenshotDate = new Date(this.getCityCalc().getFileScreenshot().lastModified());
+                    car.setRepairingState(screenshotDate,secondsToEndRepairing);
+                    car.setCarPictureRepairing(areaCarInCityPicture.getBmpSrc());
+                    car.setCarPictureDefencing(areaCarInCityPicture.getBmpSrc());
+                }
+
+                if (isStatebox3) { // если есть стейтбокс1 - машина гарантированно ремонтируется
+                    // парсим и устанавливаем время ремонта
+                    secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaCarInCityTimebox2.getOcrText());
+                    screenshotDate = new Date(this.getCityCalc().getFileScreenshot().lastModified());
+                    car.setRepairingState(screenshotDate,secondsToEndRepairing);
+                    car.setCarPictureRepairing(areaCarInCityPicture.getBmpSrc());
+
+
+                }
+
+                if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании
+                    // устанавливаем нулевое здание и его картинку
+                    car.setBuilding(0);
+                    car.setBuildingPicture(areaCarInCityBuilding.getBmpSrc());
+                    car.setCarPictureDefencing(areaCarInCityPicture.getBmpSrc());
+                }
+
             }
 
-            if (isStatebox3) { // если есть стейтбокс1 - машина гарантированно ремонтируется
-                // парсим и устанавливаем время ремонта
-                secondsToEndRepairing = Utils.conversTimeStringWithoutColonsToSeconds(areaTimebox2.getOcrText());
-                screenshotDate = new Date(this.getCityCalc().getFileScreenshot().lastModified());
-                car.setRepairingState(screenshotDate,secondsToEndRepairing);
-                car.setCarPictureRepairing(areaPicture.getBmpSrc());
+            if (car.isDefencing()) {
+                // если машина в защите - попытаемся найти в каком она здании
+                String carBuildingName = areaCarInCityBuilding.getOcrText();
+                CCABuilding ccaBuilding;
 
+                if (GameActivity.mainCityCalc != null) {
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLT);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(1);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLC);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(2);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLB);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(3);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRT);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(4);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRC);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(5);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                    ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRB);
+                    if (ccaBuilding.isPresent()) {
+                        if (ccaBuilding.getOcrText().equals(carBuildingName)) {
+                            car.setBuilding(6);
+                            car.setBuildingPicture(ccaBuilding.getBmpSrc());
+                        }
+                    }
+
+                }
 
             }
 
-            if (!isHealbox) { // если при этом нет хилбокса - значит машина стоит в здании
-                // устанавливаем нулевое здание и его картинку
-                car.setBuilding(0);
-                car.setBuildingPicture(areaBuilding.getBmpSrc());
-                car.setCarPictureDefencing(areaPicture.getBmpSrc());
-            }
+        } else { // машина в гараже
 
-        }
+            CityCalcArea areaCarInGaragePicture = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_PICTURE);
+            CityCalcArea areaCarInGarageSlot1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_SLOT1);
+            CityCalcArea areaCarInGarageSlot2 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_SLOT2);
+            CityCalcArea areaCarInGarageSlot3 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_SLOT3);
+            CityCalcArea areaCarInGarageHealth = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_HEALTH);
+            CityCalcArea areaCarInGarageShield = this.getCityCalc().getMapAreas().get(Area.CAR_IN_GARAGE_SHIELD);
+            // распознаем слоты
+            boolean isSlot1 = PictureProcessor.frequencyPixelInBitmap(areaCarInGarageSlot1.getBmpSrc(), areaCarInGarageSlot1.getColors()[0],areaCarInGarageSlot1.getThs()[0], areaCarInGarageSlot1.getThs()[1]) > 0.01f;    // обнаружен слот 1
+            boolean isSlot2 = PictureProcessor.frequencyPixelInBitmap(areaCarInGarageSlot2.getBmpSrc(), areaCarInGarageSlot2.getColors()[0],areaCarInGarageSlot2.getThs()[0], areaCarInGarageSlot2.getThs()[1]) > 0.01f;    // обнаружен слот 2
+            boolean isSlot3 = PictureProcessor.frequencyPixelInBitmap(areaCarInGarageSlot3.getBmpSrc(), areaCarInGarageSlot3.getColors()[0],areaCarInGarageSlot3.getThs()[0], areaCarInGarageSlot3.getThs()[1]) > 0.01f;    // обнаружен слот 3
 
-        if (car.isDefencing()) {
-            // если машина в защите - попытаемся найти в каком она здании
-            String carBuildingName = areaBuilding.getOcrText();
-            CCABuilding ccaBuilding;
+            if (isSlot1) car.setSlot(1); // есть белый цвет в слоте1 - машина №1
+            if (isSlot2) car.setSlot(2); // есть белый цвет в слоте2 - машина №2
+            if (isSlot3) car.setSlot(3); // есть белый цвет в слоте3 - машина №3
 
-            if (GameActivity.mainCityCalc != null) {
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLT);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(1);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLC);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(2);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLB);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(3);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRT);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(4);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRC);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(5);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
-                ccaBuilding = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BRB);
-                if (ccaBuilding.isPresent()) {
-                    if (ccaBuilding.getOcrText().equals(carBuildingName)) {
-                        car.setBuilding(6);
-                        car.setBuildingPicture(ccaBuilding.getBmpSrc());
-                    }
-                }
-
+            car.setCarPicture(areaCarInGaragePicture.getBmpSrc());
+            try {
+                car.setHealth(Integer.parseInt(areaCarInGarageHealth.getFinText()));
+                car.setShield(Integer.parseInt(areaCarInGarageShield.getFinText()));
+            } catch (NumberFormatException e) {
+                car.setHealth(0);
+                car.setShield(0);
             }
 
         }
@@ -156,20 +199,25 @@ public class CCACar extends CityCalcArea {
             Car updatedCar = listCars.get(car.getSlot()-1);
             updatedCar.setHealth(car.getHealth());
             updatedCar.setShield(car.getShield());
-            if (car.isFree()) {
-                updatedCar.setStateFree();
+            if (!isCarInCity) {
                 updatedCar.setCarPicture(car.getCarPicture());
             } else {
-                if (car.isDefencing()) {
-                    updatedCar.setBuilding(car.getBuilding());
-                    updatedCar.setBuildingPicture(car.getBuildingPicture());
-                    updatedCar.setCarPictureDefencing(car.getCarPictureDefencing());
-                }
-                if (car.isRepairing()) {
-                    updatedCar.setRepairingState(screenshotDate,secondsToEndRepairing);
-                    updatedCar.setCarPictureRepairing(car.getCarPictureRepairing());
+                if (car.isFree()) {
+                    updatedCar.setStateFree();
+                    updatedCar.setCarPicture(car.getCarPicture());
+                } else {
+                    if (car.isDefencing()) {
+                        updatedCar.setBuilding(car.getBuilding());
+                        updatedCar.setBuildingPicture(car.getBuildingPicture());
+                        updatedCar.setCarPictureDefencing(car.getCarPictureDefencing());
+                    }
+                    if (car.isRepairing()) {
+                        updatedCar.setRepairingState(screenshotDate,secondsToEndRepairing);
+                        updatedCar.setCarPictureRepairing(car.getCarPictureRepairing());
+                    }
                 }
             }
+
             updatedCar.save();
         }
     }
