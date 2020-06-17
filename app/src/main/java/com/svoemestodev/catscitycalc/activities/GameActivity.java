@@ -265,6 +265,7 @@ public class GameActivity extends AppCompatActivity {
     public static File fileCarScreenshotPrevious;               // предыдущий файл скриншота
     public static File fileLastScreenshot;                                // последний файл в папке
     public static File fileLastData;                                // последний файл в папке
+    public static File lastDataFile;                                // последний файл в папке
     private NotificationManager notificationManager;            // нотификатор
     private static final int NOTIFY_ID = 1;                     // айди нотификатора
     private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
@@ -1939,8 +1940,8 @@ public class GameActivity extends AppCompatActivity {
             if (mainCCAGame != null) {
 
                 String fileNameCars = Car.pathToFile;
-//                String fileName = pathToCATScalcFolder + "/" + UUID.randomUUID().toString() + ".citycalccars";
-                String fileName = pathToCATScalcFolder + "/cars.citycalccars";
+                String fileName = pathToCATScalcFolder + "/" + UUID.randomUUID().toString() + ".citycalccars";
+//                String fileName = pathToCATScalcFolder + "/cars.citycalccars";
                 Utils.copyFile(fileNameCars, fileName);
 
                 if (fileName != null) {
@@ -2596,87 +2597,89 @@ public class GameActivity extends AppCompatActivity {
                         File tmpFileData = getLastFileInDataFolder(pathToDataDir);    // получаем последний файл из папки
                         if (tmpFileData != null) {  // если он не пустой
 
-                            if (tmpFileData.getAbsolutePath().endsWith(".citycalcteamgame")) {
+                            if (lastDataFile == null || !lastDataFile.equals(tmpFileData)) {
+                                lastDataFile = tmpFileData;
 
-                                if (mainDbTeamUser != null) {
+                                if (tmpFileData.getAbsolutePath().endsWith(".citycalcteamgame")) {
 
-                                    DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
+                                    if (mainDbTeamUser != null) {
 
-                                    // тут файл можно уже удалить
-                                    try {
-                                        tmpFileData.delete();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
+                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
 
-                                    if (loadedDbTeamGame != null) {
-                                        if (mainCityCalc != null) { // если текущая игра есть
-                                            if (mainCCAGame != null) {
+                                        // тут файл можно уже удалить
+//                                    try {
+//                                        tmpFileData.delete();
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+
+                                        if (loadedDbTeamGame != null) {
+                                            if (mainCityCalc != null) { // если текущая игра есть
+                                                if (mainCCAGame != null) {
 //                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
-                                                if (loadedDbTeamGame.getBytesScreenshot() != null) {
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
 
-                                                    try {
-                                                        String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
-                                                        OutputStream fOut = null;
-                                                        File file = new File(fileNameScreenshot);
-                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                        fOut = new FileOutputStream(file);
-                                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                        fOut.flush();
-                                                        fOut.close();
-                                                        File teamGameScreenshot = new File(fileNameScreenshot);
-                                                        // устанавливаем у скачанного файла правильный ластмодифай
-                                                        LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                        fileLastScreenshot = teamGameScreenshot;
-                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-                                                            Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
-                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-                                                            loadDataToViews(true);
+                                                        try {
+                                                            String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                loadDataToViews(true);
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
                                                     }
+
                                                 }
-
                                             }
+
                                         }
+
 
                                     }
 
 
-                                }
+                                } else if (tmpFileData.getAbsolutePath().endsWith(".citycalccars")) {
 
+                                    if (mainDbTeamUser != null) {
+                                        String fileName = tmpFileData.getAbsolutePath();
+                                        List<Car> listCars = Car.loadListFromFile(fileName);
+                                        if (listCars != null) {
+                                            if (listCars.size() > 0) {
+                                                String userUID = listCars.get(0).getUserUID();
+                                                Car.saveList(listCars, userUID);
 
-                            } else if (tmpFileData.getAbsolutePath().endsWith(".citycalccars")) {
+                                                // тут файл можно уже удалить
+//                                            try {
+//                                                tmpFileData.delete();
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
 
-                                if (mainDbTeamUser != null) {
-                                    String fileName = tmpFileData.getAbsolutePath();
-                                    List<Car> listCars = Car.loadListFromFile(fileName);
-                                    if (listCars != null) {
-                                        if (listCars.size() > 0) {
-                                            String userUID = listCars.get(0).getUserUID();
-                                            Car.saveList(listCars, userUID);
-
-                                            // тут файл можно уже удалить
-                                            try {
-                                                tmpFileData.delete();
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
                                             }
-
                                         }
                                     }
+
                                 }
+
 
                             }
-
-
-
 
 
                         }
