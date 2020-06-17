@@ -66,4 +66,14 @@
         android:orderInCategory="14"
         android:title="Team Game Share" />
 
+    <item
+        android:id="@+id/menu_main_user_cars_load"
+        android:orderInCategory="15"
+        android:title="User Cars Load" />
+
+    <item
+        android:id="@+id/menu_main_user_cars_share"
+        android:orderInCategory="16"
+        android:title="User Cars Share" />
+
 </menu>

@@ -141,10 +141,7 @@ public class DbTeamGame implements Serializable {
     private int slots_brb_enemy;
 
     private byte[] bytesScreenshot = null;
-    private byte[] bytesCarFree = null; // картинка машины
-    private byte[] bytesCarDefencing = null; // картинка машины
-    private byte[] bytesCarRepairing = null; // картинка машины
-    
+
     private static final transient String TAG = "DbTeamGame";
 
     public String save(String pathToFolder) {
@@ -1373,30 +1370,6 @@ public class DbTeamGame implements Serializable {
 
     public void setBytesScreenshot(byte[] bytesScreenshot) {
         this.bytesScreenshot = bytesScreenshot;
-    }
-
-    public byte[] getBytesCarFree() {
-        return bytesCarFree;
-    }
-
-    public void setBytesCarFree(byte[] bytesCarFree) {
-        this.bytesCarFree = bytesCarFree;
-    }
-
-    public byte[] getBytesCarDefencing() {
-        return bytesCarDefencing;
-    }
-
-    public void setBytesCarDefencing(byte[] bytesCarDefencing) {
-        this.bytesCarDefencing = bytesCarDefencing;
-    }
-
-    public byte[] getBytesCarRepairing() {
-        return bytesCarRepairing;
-    }
-
-    public void setBytesCarRepairing(byte[] bytesCarRepairing) {
-        this.bytesCarRepairing = bytesCarRepairing;
     }
 
 }

@@ -92,6 +92,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.UUID;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -311,6 +312,8 @@ public class GameActivity extends AppCompatActivity {
     public static MenuItem menu_main_team_find;                 // пункт меню "Найти банду"
     public static MenuItem menu_main_team_game_load;            // пункт меню "Team Game Load"
     public static MenuItem menu_main_team_game_share;           // пункт меню "Team Game Share"
+    public static MenuItem menu_main_user_cars_load;            // пункт меню "User Cars Load"
+    public static MenuItem menu_main_user_cars_share;           // пункт меню "User Cars Share"
 
     @Override
     protected void onResume() {
@@ -1705,6 +1708,8 @@ public class GameActivity extends AppCompatActivity {
         menu_main_team_find = mainMenu.findItem(R.id.menu_main_team_find);
         menu_main_team_game_load = mainMenu.findItem(R.id.menu_main_team_game_load);
         menu_main_team_game_share = mainMenu.findItem(R.id.menu_main_team_game_share);
+        menu_main_user_cars_load = mainMenu.findItem(R.id.menu_main_user_cars_load);
+        menu_main_user_cars_share = mainMenu.findItem(R.id.menu_main_user_cars_share);
 
         checkMenuVisibility();
 
@@ -1760,12 +1765,20 @@ public class GameActivity extends AppCompatActivity {
             case R.id.menu_main_team_game_share :
                 doMenuTeamGameShare();
                 return true;
+            case R.id.menu_main_user_cars_load :
+                doMenuUserCarsLoad();
+                return true;
+            case R.id.menu_main_user_cars_share :
+                doMenuUserCarsShare();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
 
     }
+
+
 
     private void doMenuTeamGameLoad() {
 
@@ -1835,6 +1848,35 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    private void doMenuUserCarsLoad() {
+
+        String logMsgPref = "doMenuTeamGameLoad: ";
+
+        OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)   // диалог выбора скриншота по переданному пути
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))            // иконка папки
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))                // иконка файла
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    public void OnSelectedFile(String fileName) {
+
+                        if (mainDbTeamUser != null) {
+
+                            List<Car> listCars = Car.loadListFromFile(fileName);
+                            if (listCars != null) {
+                                if (listCars.size() > 0) {
+                                    String userUID = listCars.get(0).getUserUID();
+                                    Car.saveList(listCars, userUID);
+                                }
+                            }
+                        }
+
+                    }
+                });
+        fileDialog.show();
+
+    }
+
+
     private void doMenuTeamGameShare() {
 
         if (mainCityCalc != null) { // если текущая игра есть
@@ -1865,9 +1907,45 @@ public class GameActivity extends AppCompatActivity {
             }
         }
 
+    }
 
+
+    private void doMenuUserCarsShare() {
+
+        if (mainCityCalc != null) { // если текущая игра есть
+            if (mainCCAGame != null) {
+
+                String fileNameCars = Car.pathToFile;
+                String fileName = pathToCATScalcFolder + "/" + UUID.randomUUID().toString() + ".citycalccars";
+                Utils.copyFile(fileNameCars, fileName);
+
+                if (fileName != null) {
+
+                    Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+                    File sharedFile = new File(fileName);
+
+                    if(sharedFile.exists()) {
+                        intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
+
+                        intentShareFile.setType("*/*");
+                        intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
+
+                        String text = ga_tv_status.getText().toString();
+
+                        intentShareFile.putExtra(Intent.EXTRA_SUBJECT, text);
+                        intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
+
+                        startActivity(Intent.createChooser(intentShareFile, text));
+                    }
+
+                }
+            }
+        }
 
     }
+
+
 
     private void doMenuFindTeam() {
 
@@ -2547,6 +2625,27 @@ public class GameActivity extends AppCompatActivity {
 
                                 }
 
+
+                            } else if (tmpFileData.getAbsolutePath().endsWith(".citycalccars")) {
+
+                                if (mainDbTeamUser != null) {
+                                    String fileName = tmpFileData.getAbsolutePath();
+                                    List<Car> listCars = Car.loadListFromFile(fileName);
+                                    if (listCars != null) {
+                                        if (listCars.size() > 0) {
+                                            String userUID = listCars.get(0).getUserUID();
+                                            Car.saveList(listCars, userUID);
+
+                                            // тут файл можно уже удалить
+                                            try {
+                                                tmpFileData.delete();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
+
+                                        }
+                                    }
+                                }
 
                             }
 

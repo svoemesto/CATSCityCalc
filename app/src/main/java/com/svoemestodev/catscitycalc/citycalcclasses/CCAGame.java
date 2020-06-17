@@ -135,9 +135,6 @@ public class CCAGame extends CityCalcArea {
     private String status;
 
     private byte[] bytesScreenshot = null;
-    private byte[] bytesCarFree = null; // картинка машины
-    private byte[] bytesCarDefencing = null; // картинка машины
-    private byte[] bytesCarRepairing = null; // картинка машины
 
     public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
@@ -256,9 +253,6 @@ public class CCAGame extends CityCalcArea {
         this.slots_brb_enemy = dbTeamGame.getSlots_brb_enemy();
 
         this.bytesScreenshot = dbTeamGame.getBytesScreenshot();
-        this.bytesCarFree = dbTeamGame.getBytesCarFree();
-        this.bytesCarDefencing = dbTeamGame.getBytesCarDefencing();
-        this.bytesCarRepairing = dbTeamGame.getBytesCarRepairing();
 
         calcWin();
 
@@ -1272,27 +1266,4 @@ public class CCAGame extends CityCalcArea {
         this.bytesScreenshot = bytesScreenshot;
     }
 
-    public byte[] getBytesCarFree() {
-        return bytesCarFree;
-    }
-
-    public void setBytesCarFree(byte[] bytesCarFree) {
-        this.bytesCarFree = bytesCarFree;
-    }
-
-    public byte[] getBytesCarDefencing() {
-        return bytesCarDefencing;
-    }
-
-    public void setBytesCarDefencing(byte[] bytesCarDefencing) {
-        this.bytesCarDefencing = bytesCarDefencing;
-    }
-
-    public byte[] getBytesCarRepairing() {
-        return bytesCarRepairing;
-    }
-
-    public void setBytesCarRepairing(byte[] bytesCarRepairing) {
-        this.bytesCarRepairing = bytesCarRepairing;
-    }
 }

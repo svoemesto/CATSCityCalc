@@ -12,6 +12,9 @@ public class DbCar {
 
     private String carUID;
     private String carName;
+    private String userUID;
+    private String userNIC;
+    private String teamID;
     private int carSlot;
     private int carHealth;
     private int carShield;
@@ -31,6 +34,9 @@ public class DbCar {
         this.carRepair = car.getRepair();
         this.carBuilding = car.getBuilding();
         this.carBuildingTask = car.getBuildingTask();
+        this.userUID = car.getUserUID();
+        this.userNIC = car.getUserNIC();
+        this.teamID = car.getTeamID();
     }
 
     public DbCar(DocumentSnapshot documentSnapshot) {
@@ -53,6 +59,30 @@ public class DbCar {
         key = "carBuilding"; if (map.containsKey(key)) this.carBuilding = ((Long) map.get(key)).intValue();
         key = "carBuildingTask"; if (map.containsKey(key)) this.carBuildingTask = ((Long) map.get(key)).intValue();
 
+        key = "userUID"; if (map.containsKey(key)) {
+            if (documentSnapshot.getTimestamp(key) == null) {
+                this.userUID = null;
+            } else {
+                this.userUID = map.get(key).toString();
+            }
+        }
+
+        key = "userNIC"; if (map.containsKey(key)) {
+            if (documentSnapshot.getTimestamp(key) == null) {
+                this.userNIC = null;
+            } else {
+                this.userNIC = map.get(key).toString();
+            }
+        }
+
+        key = "teamID"; if (map.containsKey(key)) {
+            if (documentSnapshot.getTimestamp(key) == null) {
+                this.teamID = null;
+            } else {
+                this.teamID = map.get(key).toString();
+            }
+        }
+
     }
 
 
@@ -60,6 +90,9 @@ public class DbCar {
         Map<String, Object> map = new HashMap<>();
 
         map.put("timestamp", FieldValue.serverTimestamp());
+        map.put("userUID", userUID);
+        map.put("userNIC", userNIC);
+        map.put("teamID", teamID);
         map.put("carUID", carUID);
         map.put("carName", carName);
         map.put("carSlot", carSlot);
@@ -134,5 +167,29 @@ public class DbCar {
 
     public void setCarBuildingTask(int carBuildingTask) {
         this.carBuildingTask = carBuildingTask;
+    }
+
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
     }
 }

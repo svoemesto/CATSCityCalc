@@ -32,6 +32,11 @@ import java.util.UUID;
 public class Car implements Serializable {
     private UUID uuid = UUID.randomUUID();
     private String name = "";
+
+    private String userUID;
+    private String userNIC;
+    private String teamID;
+
     private int slot;       // слот (1-3)
     private int health;     // здоровье
     private int shield;     // защита
@@ -214,6 +219,21 @@ public class Car implements Serializable {
         return list;
     }
 
+    public static List<Car> loadListFromFile(String pathToFile) {
+        List<Car> list;
+        File file = new File(pathToFile);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+            list = (List<Car>) ois.readObject();
+            ois.close();
+            return list;
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e("Car", "loadListFromFile. Ошибка десериализации. Возвращаем список по-умолчанию.");
+        }
+        return null;
+    }
+
     public void save() {
         List<Car> list = loadList();
         List<Car> listNew = new ArrayList<>();
@@ -307,6 +327,9 @@ public class Car implements Serializable {
 
         map.put("timestamp", FieldValue.serverTimestamp());
         map.put("carUID", uuid.toString());
+        map.put("userUID", userUID);
+        map.put("userNIC", userNIC);
+        map.put("teamID", teamID);
         map.put("carName", name);
         map.put("carSlot", slot);
         map.put("carHealth", health);
@@ -470,4 +493,27 @@ public class Car implements Serializable {
         this.repair = repair;
     }
 
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
+    public String getUserNIC() {
+        return userNIC;
+    }
+
+    public void setUserNIC(String userNIC) {
+        this.userNIC = userNIC;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
+    }
 }

@@ -482,7 +482,10 @@ public class TeamActivity extends AppCompatActivity {
                             car1.setBuilding(dbCar1.getCarBuilding());
                             car1.setBuildingTask(dbCar1.getCarBuildingTask());
                             car1.setRepair(dbCar1.getCarRepair());
-                            
+                            car1.setTeamID(dbCar1.getTeamID());
+                            car1.setUserUID(dbCar1.getUserUID());
+                            car1.setUserNIC(dbCar1.getUserNIC());
+
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
                             
                             Bitmap taskBitmap = null;
@@ -637,6 +640,9 @@ public class TeamActivity extends AppCompatActivity {
                             car2.setBuilding(dbCar2.getCarBuilding());
                             car2.setBuildingTask(dbCar2.getCarBuildingTask());
                             car2.setRepair(dbCar2.getCarRepair());
+                            car2.setTeamID(dbCar2.getTeamID());
+                            car2.setUserUID(dbCar2.getUserUID());
+                            car2.setUserNIC(dbCar2.getUserNIC());
 
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
@@ -789,6 +795,9 @@ public class TeamActivity extends AppCompatActivity {
                             car3.setBuilding(dbCar3.getCarBuilding());
                             car3.setBuildingTask(dbCar3.getCarBuildingTask());
                             car3.setRepair(dbCar3.getCarRepair());
+                            car3.setTeamID(dbCar3.getTeamID());
+                            car3.setUserUID(dbCar3.getUserUID());
+                            car3.setUserNIC(dbCar3.getUserNIC());
 
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
