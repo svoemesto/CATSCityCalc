@@ -225,6 +225,12 @@ public class CCACar extends CityCalcArea {
                 }
             }
 
+            if (GameActivity.fbUser != null) {
+                updatedCar.setUserUID(GameActivity.fbUser.getUid());
+            } else {
+                updatedCar.setUserUID(null);
+            }
+
             updatedCar.save();
         }
     }
