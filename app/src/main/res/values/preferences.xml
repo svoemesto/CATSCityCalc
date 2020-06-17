@@ -9,6 +9,10 @@
     <string name="pref_screenshot_folder" translatable="false">PREF_SCREENSHOT_FOLDER</string>
     <string name="pref_def_screenshot_folder" translatable="false">PREF_DEF_SCREENSHOT_FOLDER</string>
 
+    <!--    data_folder-->
+    <string name="pref_data_folder" translatable="false">PREF_DATA_FOLDER</string>
+    <string name="pref_def_data_folder" translatable="false">PREF_DEF_DATA_FOLDER</string>
+
     <!--    listen_last_file-->
     <string name="pref_listen_last_file" translatable="false">PREF_LISTEN_LAST_FILE</string>
     <string name="pref_def_listen_last_file" translatable="false">PREF_DEF_LISTEN_LAST_FILE</string>

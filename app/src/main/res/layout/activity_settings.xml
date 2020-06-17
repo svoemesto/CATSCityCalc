@@ -22,8 +22,20 @@
     <TextView
         android:id="@+id/tv_screenshotfolder"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_select_data_folder"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sett_screenshot_folder"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/select_data_folder"
+        android:onClick="selectDataFolder"
+        />
+    <TextView
+        android:id="@+id/tv_datafolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Switch
         android:id="@+id/sw_get_last_screenshot"

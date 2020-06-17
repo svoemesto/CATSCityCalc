@@ -556,7 +556,7 @@ public class BordersActivity extends AppCompatActivity {
         btFreq = findViewById(R.id.bt_freq);
         lvFreq = findViewById(R.id.lv_freq);
 
-        mainCityCalc = new CityCalc(GameActivity.fileLast, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.context, CityCalcType.BORDERS);
+        mainCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.context, CityCalcType.BORDERS);
 
         initMap();
         

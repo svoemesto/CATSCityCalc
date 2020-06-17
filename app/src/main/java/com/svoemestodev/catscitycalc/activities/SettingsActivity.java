@@ -30,6 +30,7 @@ public class SettingsActivity extends AppCompatActivity {
 //    boolean listenLastFile;             // флаг "следить за последним файлом в папке"
     TextView tvVersion;        // текствью пути к папке скриншотов
     TextView tvScreenshotFolder;        // текствью пути к папке скриншотов
+    TextView tvDataFolder;        // текствью пути к папке скриншотов
     Switch swListenLastFile;            // свич "следить за последним файлом в папке"
     Switch swLDebugMode;                // свич "дебаг мод"
 //    boolean isDebugMode;                // флаг "дебаг мод"
@@ -71,6 +72,7 @@ public class SettingsActivity extends AppCompatActivity {
         // биндим контролы
         tvVersion = findViewById(R.id.tv_version);
         tvScreenshotFolder = findViewById(R.id.tv_screenshotfolder);
+        tvDataFolder = findViewById(R.id.tv_datafolder);
         swListenLastFile = findViewById(R.id.sw_get_last_screenshot);
         swLDebugMode = findViewById(R.id.sw_debug_mode);
         btnSelectScreenshotFolder = findViewById(R.id.btn_select_screenshot_folder);
@@ -83,6 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
                 // устанавливаем значения контролов
         tvVersion.setText(BuildConfig.VERSION_NAME);
         tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);
+        tvDataFolder.setText(GameActivity.pathToDataDir);
         swListenLastFile.setChecked(GameActivity.isListenToNewFileInFolder);
         swLDebugMode.setChecked(GameActivity.isDebugMode);
 
@@ -159,5 +162,27 @@ public class SettingsActivity extends AppCompatActivity {
     public void openColorsdetectSettings(View view) {
         Intent intent = new Intent(this, ColorsdetectActivity.class);   // создаем интент активики Настроек
         startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
+    }
+
+    public void selectDataFolder(View view) {
+        // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
+        OpenFileDialog fileDialog = new OpenFileDialog(this, GameActivity.pathToDataDir)
+                .setOnlyFoldersFilter()                                             // показывать только папки
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))    // икнока для папок
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))        // иконка для файлов
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    // когда диалог выбора папки вернул новое значение
+                    public void OnSelectedFile(String fileName) {
+                        // изменяем проперти PREF_SCREENSHOT_FOLDER значением, которое вернул диалог выбора папки
+                        SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(getString(R.string.pref_data_folder), fileName);
+                        editor.apply();
+                        GameActivity.pathToDataDir = fileName;                     // устанавливаем переменную новым значением
+                        tvDataFolder.setText(GameActivity.pathToDataDir);    // устанавливаем текс контрола
+                    }
+                });
+        fileDialog.show();
     }
 }

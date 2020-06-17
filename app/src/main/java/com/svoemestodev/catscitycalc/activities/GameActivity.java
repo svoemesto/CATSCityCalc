@@ -57,9 +57,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
 import com.svoemestodev.catscitycalc.classes.Car;
@@ -86,7 +83,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -262,14 +258,17 @@ public class GameActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_SECOND_ACTIVITY = 100; // код реквеста для вызова второй активности
     public static File fileGameScreenshot = null;               // текущий файл скриншота
     public static File fileGameScreenshotPrevious;              // предыдущий файл скриншота
-    public static File fileLastInFolder;                        // последний файл в папке
+    public static File fileLastInFolderScreenshot;                        // последний файл в папке
+    public static File fileLastInFolderData;                        // последний файл в папке
     public static File fileCarScreenshot = null;                // текущий файл скриншота
     public static File fileCarScreenshotPrevious;               // предыдущий файл скриншота
-    public static File fileLast;                                // последний файл в папке
+    public static File fileLastScreenshot;                                // последний файл в папке
+    public static File fileLastData;                                // последний файл в папке
     private NotificationManager notificationManager;            // нотификатор
     private static final int NOTIFY_ID = 1;                     // айди нотификатора
     private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
     public static String pathToScreenshotDir = "";              // путь к папке скриншотов
+    public static String pathToDataDir = "";              // путь к папке скриншотов
     public static boolean isListenToNewFileInFolder;            // флаг "Следить за новыми файлами в папке"
     public static boolean isAllFieldsCorrect;                   // флаг "Все поля заполнены правильно"
     public static int calibrateX;                              // калибровка
@@ -1100,6 +1099,7 @@ public class GameActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
 
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),sharedPreferences.getString(getString(R.string.pref_def_screenshot_folder),""));
+        pathToDataDir = sharedPreferences.getString(getString(R.string.pref_data_folder),sharedPreferences.getString(getString(R.string.pref_def_data_folder),""));
         isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_last_file),false));
         isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),sharedPreferences.getBoolean(getString(R.string.pref_def_debug_mode),false));
         calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_x),0));
@@ -1120,7 +1120,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    private File getLastFileInFolder(String pathToFolder) {
+    private File getLastFileInScreenshotFolder(String pathToFolder) {
 
         String logMsgPref = "getLastFileInFolder: ";
 
@@ -1150,13 +1150,13 @@ public class GameActivity extends AppCompatActivity {
             }
 
             if (temp != null) { // если найден самый свежий файл
-                fileLast = temp;
-                if (!temp.equals(fileLastInFolder)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                fileLastScreenshot = temp;
+                if (!temp.equals(fileLastInFolderScreenshot)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
                     CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context,"");
                     if (!tmpCityCalc.getCityCalcType().equals(CityCalcType.ERROR)) {
-                        fileLastInFolder = temp;    // последний найденный файл - текущий найденный
+                        fileLastInFolderScreenshot = temp;    // последний найденный файл - текущий найденный
                     } else {
-                        if (fileLastInFolder == null) {
+                        if (fileLastInFolderScreenshot == null) {
                             temp = lastScreenshot;
                             if (!temp.exists()) temp = null;
                         } else {
@@ -1175,6 +1175,47 @@ public class GameActivity extends AppCompatActivity {
         return temp;
 
     }
+
+    private File getLastFileInDataFolder(String pathToFolder) {
+
+        String logMsgPref = "getLastFileInDataFolder: ";
+
+        File temp = null;           // временный файл
+        File dir = new File(pathToFolder); // папка
+        File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".citycalcteamgame") || name.toLowerCase().endsWith(".citycalccars");  // фильтр по citycalcteamgame и citycalccars
+            }
+        });
+        List<File> listFiles = new ArrayList<>(); // лист
+        if (files != null) {    // если файлы в папке есть
+            for (File file : files) {   // цикл по файлам
+                listFiles.add(file);    // добавляем файл в лист
+            }
+        }
+
+        if  (listFiles.size() > 0) {    // если в листе есть файлы
+            long maxLastModified = 0;   // максимальная дата (ноль для начала)
+            for (File file : listFiles) {   // цикл по листу
+                if (LastModified.getLastModified(file).getTime() > maxLastModified) {    // если дата создания файла из листа больше максимальной
+                    maxLastModified = LastModified.getLastModified(file).getTime();      // максимальная дата = дате файла из листа
+                    temp = file;    // временный файл равен файлу из листа
+                }
+            }
+
+            if (temp != null) { // если найден самый свежий файл
+                fileLastData = temp;
+                if (!temp.equals(fileLastInFolderData)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                    fileLastInFolderData = temp;
+                }
+            }
+        }
+
+        return temp;
+
+    }
+
 
     /**
      * Создание канала нотификации
@@ -1759,7 +1800,7 @@ public class GameActivity extends AppCompatActivity {
                                                 File teamGameScreenshot = new File(fileNameScreenshot);
                                                 // устанавливаем у скачанного файла правильный ластмодифай
                                                 LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                fileLast = teamGameScreenshot;
+                                                fileLastScreenshot = teamGameScreenshot;
                                                 CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC());
                                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                     fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
@@ -2331,14 +2372,14 @@ public class GameActivity extends AppCompatActivity {
                     public void OnSelectedFile(String fileName) {
                         String logMsgPref = "OnSelectedFile: ";
                         File newFile = new File(fileName);
-                        fileLast = newFile;
+                        fileLastScreenshot = newFile;
                         CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,"");
                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                             fileGameScreenshot = newFile; // файл скриншота - возавращенный из диалога
                             if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                             isListenToNewFileInFolder = false; // снимаем флажок "Следить за файлами в папке"
                             ga_sw_listen_new_file.setChecked(false); // устанавливаем контрол флажка
-                            fileLastInFolder = null;    // сбрасываем последний файл в папке
+                            fileLastInFolderScreenshot = null;    // сбрасываем последний файл в папке
 
                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                             mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
@@ -2399,9 +2440,10 @@ public class GameActivity extends AppCompatActivity {
                     setDataToCarsViews();
 
                     if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
-                        File tmpFile = getLastFileInFolder(pathToScreenshotDir);    // получаем последний файл из папки
-                        if (tmpFile != null) {  // если он не пустой
-                            if ((!tmpFile.equals(fileGameScreenshot) && !tmpFile.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
+
+                        File tmpFileScreenshot = getLastFileInScreenshotFolder(pathToScreenshotDir);    // получаем последний файл из папки
+                        if (tmpFileScreenshot != null) {  // если он не пустой
+                            if ((!tmpFileScreenshot.equals(fileGameScreenshot) && !tmpFileScreenshot.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
 
                                 boolean needProceedFile = false;
                                 // надо проверить, не является ли текущая игра взятая из скрина на свервере
@@ -2409,7 +2451,7 @@ public class GameActivity extends AppCompatActivity {
                                     // если в игре - скрин с сервера
                                     if (mainCityCalc.getFileScreenshot().getAbsolutePath().equals(pathToCATScalcFolder + "/teamGameScreenshot")) {
                                         // если последний скрин из папки - более поздний, чем в игре
-                                        if (LastModified.getLastModified(tmpFile).getTime() > LastModified.getLastModified(mainCityCalc.getFileScreenshot()).getTime()) {
+                                        if (LastModified.getLastModified(tmpFileScreenshot).getTime() > LastModified.getLastModified(mainCityCalc.getFileScreenshot()).getTime()) {
                                             needProceedFile = true;
                                         }
                                     } else {
@@ -2421,9 +2463,9 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (needProceedFile) {
 
-                                    CityCalc tmpCityCalc = new CityCalc(tmpFile, calibrateX, calibrateY, context, "");
+                                    CityCalc tmpCityCalc = new CityCalc(tmpFileScreenshot, calibrateX, calibrateY, context, "");
                                     if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                        fileGameScreenshot = tmpFile;   // текущий скриншот = последнему файлу в папке
+                                        fileGameScreenshot = tmpFileScreenshot;   // текущий скриншот = последнему файлу в папке
 
                                         boolean isRealtimeScreenshot = false;
                                         if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
@@ -2437,7 +2479,7 @@ public class GameActivity extends AppCompatActivity {
                                     } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                         CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
                                         ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
-                                        fileCarScreenshot = tmpFile;
+                                        fileCarScreenshot = tmpFileScreenshot;
                                     }
                                     if (isResumed) isResumed = false;
 
@@ -2446,10 +2488,78 @@ public class GameActivity extends AppCompatActivity {
                             }
                         }
 
+
+                        File tmpFileData = getLastFileInDataFolder(pathToDataDir);    // получаем последний файл из папки
+                        if (tmpFileData != null) {  // если он не пустой
+
+                            if (tmpFileData.getAbsolutePath().endsWith(".citycalcteamgame")) {
+
+                                if (mainDbTeamUser != null) {
+
+                                    DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
+
+                                    // тут файл можно уже удалить
+                                    try {
+                                        tmpFileData.delete();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    if (loadedDbTeamGame != null) {
+                                        if (mainCityCalc != null) { // если текущая игра есть
+                                            if (mainCCAGame != null) {
+//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+
+                                                if (loadedDbTeamGame.getBytesScreenshot() != null) {
+
+                                                    try {
+                                                        String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
+                                                        OutputStream fOut = null;
+                                                        File file = new File(fileNameScreenshot);
+                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                        fOut = new FileOutputStream(file);
+                                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                        fOut.flush();
+                                                        fOut.close();
+                                                        File teamGameScreenshot = new File(fileNameScreenshot);
+                                                        // устанавливаем у скачанного файла правильный ластмодифай
+                                                        LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                        fileLastScreenshot = teamGameScreenshot;
+                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC());
+                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                            Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
+                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                            loadDataToViews(true);
+                                                        }
+                                                    } catch (IOException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+
+                                            }
+                                        }
+
+                                    }
+
+
+                                }
+
+
+                            }
+
+
+
+
+
+                        }
+
                     } else {
                         if (fileGameScreenshot == null) {
                             File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
-                            fileLast = lastScreenshot;
+                            fileLastScreenshot = lastScreenshot;
                             if (lastScreenshot.exists()) {
                                 fileGameScreenshot = lastScreenshot;
                                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, "");
