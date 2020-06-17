@@ -315,6 +315,10 @@ public class GameActivity extends AppCompatActivity {
     public static MenuItem menu_main_user_cars_load;            // пункт меню "User Cars Load"
     public static MenuItem menu_main_user_cars_share;           // пункт меню "User Cars Share"
 
+    public static String mainUserNIC = "";
+    public static String mainUserUID = "";
+    public static String mainTeamID = "";
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -366,7 +370,7 @@ public class GameActivity extends AppCompatActivity {
         ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
 
         File lastScrFile = new File (getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-        CityCalc tmpCityCalc = new CityCalc(lastScrFile, calibrateX, calibrateY, context, "");
+        CityCalc tmpCityCalc = new CityCalc(lastScrFile, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
         fileGameScreenshot = lastScrFile;   // текущий скриншот = последнему файлу в папке
         mainCityCalc = new CityCalc(tmpCityCalc, false);
         mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
@@ -1163,7 +1167,7 @@ public class GameActivity extends AppCompatActivity {
             if (temp != null) { // если найден самый свежий файл
                 fileLastScreenshot = temp;
                 if (!temp.equals(fileLastInFolderScreenshot)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
-                    CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context,"");
+                    CityCalc tmpCityCalc = new CityCalc(temp, calibrateX, calibrateY, context,mainUserNIC, mainUserUID, mainTeamID);
                     if (!tmpCityCalc.getCityCalcType().equals(CityCalcType.ERROR)) {
                         fileLastInFolderScreenshot = temp;    // последний найденный файл - текущий найденный
                     } else {
@@ -1253,7 +1257,8 @@ public class GameActivity extends AppCompatActivity {
             fileGameScreenshotPrevious = null;
             ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
             if (fileGameScreenshot != null) {
-                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, "");
+
+                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                     mainCityCalc = new CityCalc(tmpCityCalc, false);
                     mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
@@ -1318,6 +1323,8 @@ public class GameActivity extends AppCompatActivity {
                 userText = fbUser.getDisplayName();
                 ga_tv_user.setText(userText);
 
+                mainUserUID = fbUser.getUid();
+
                 // пункт меню "Логин" скрываем, "Логаут" - показываем
                 menu_main_login.setVisible(false);
                 menu_main_logout.setVisible(true);
@@ -1362,6 +1369,8 @@ public class GameActivity extends AppCompatActivity {
                                     // устанавливем флаг "у юзера есть команда"
                                     userHaveTeam = (mainDbUser.getTeamID() != null);
 
+                                    mainTeamID = mainDbUser.getTeamID();
+
                                     if (!userHaveTeam) { // юзер не состоит в команде
 
                                         // обновляем инфо юзера
@@ -1402,6 +1411,9 @@ public class GameActivity extends AppCompatActivity {
                                                                 // считываем тимЮзера и заполняем его поля, включая роль
                                                                 mainDbTeamUser = document.toObject(DbTeamUser.class);
                                                                 mainDbTeamUser.setTeamUserID(document.getId());
+
+                                                                mainUserNIC = mainDbTeamUser.getUserNIC();
+
                                                                 if (mainDbTeamUser.getUserRole().equals("leader")) {
                                                                     userRole = UserRole.LEADER;
                                                                 } else if (mainDbTeamUser.getUserRole().equals("captain")){
@@ -1822,7 +1834,7 @@ public class GameActivity extends AppCompatActivity {
                                                 // устанавливаем у скачанного файла правильный ластмодифай
                                                 LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
                                                 fileLastScreenshot = teamGameScreenshot;
-                                                CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC());
+                                                CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
                                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                     fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                     Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
@@ -1890,6 +1902,9 @@ public class GameActivity extends AppCompatActivity {
         if (mainCityCalc != null) { // если текущая игра есть
             if (mainCCAGame != null) {
                 DbTeamGame dbTeamGame = new DbTeamGame(mainCCAGame);
+                dbTeamGame.setUserNIC(mainUserNIC);
+                dbTeamGame.setUserUID(mainUserUID);
+                dbTeamGame.setTeamID(mainTeamID);
                 String fileName = dbTeamGame.save(pathToCATScalcFolder);
                 if (fileName != null) {
 
@@ -2460,7 +2475,7 @@ public class GameActivity extends AppCompatActivity {
                         String logMsgPref = "OnSelectedFile: ";
                         File newFile = new File(fileName);
                         fileLastScreenshot = newFile;
-                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,"");
+                        CityCalc tmpCityCalc = new CityCalc(newFile, calibrateX, calibrateY, context,mainUserNIC, mainUserUID, mainTeamID);
                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                             fileGameScreenshot = newFile; // файл скриншота - возавращенный из диалога
                             if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
@@ -2550,7 +2565,7 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (needProceedFile) {
 
-                                    CityCalc tmpCityCalc = new CityCalc(tmpFileScreenshot, calibrateX, calibrateY, context, "");
+                                    CityCalc tmpCityCalc = new CityCalc(tmpFileScreenshot, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
                                     if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                         fileGameScreenshot = tmpFileScreenshot;   // текущий скриншот = последнему файлу в папке
 
@@ -2614,7 +2629,7 @@ public class GameActivity extends AppCompatActivity {
                                                         // устанавливаем у скачанного файла правильный ластмодифай
                                                         LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
                                                         fileLastScreenshot = teamGameScreenshot;
-                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC());
+                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
                                                         if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                             Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
@@ -2672,7 +2687,7 @@ public class GameActivity extends AppCompatActivity {
                             fileLastScreenshot = lastScreenshot;
                             if (lastScreenshot.exists()) {
                                 fileGameScreenshot = lastScreenshot;
-                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, "");
+                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
                                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
                                     mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);

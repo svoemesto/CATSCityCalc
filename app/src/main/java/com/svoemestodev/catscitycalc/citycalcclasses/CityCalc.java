@@ -26,6 +26,8 @@ public class CityCalc extends Activity {
     private int calibrateY;             // сдвиг центра по Y
     private CityCalcType cityCalcType;
     private String userNIC = "";
+    private String userUID = "";
+    private String teamID = "";
 
     private Map<Area, CityCalcArea> mapAreas = new HashMap<>(); // мап областей
     private Context context;            // контекст
@@ -399,12 +401,14 @@ public class CityCalc extends Activity {
 
 
     // конструктор для проверки боксов
-    public CityCalc(File file, int calibrateX, int calibrateY, Context context, String userNIC) {
+    public CityCalc(File file, int calibrateX, int calibrateY, Context context, String userNIC, String userUID, String teamID) {
         String logMsgPref = "конструктор для для проверки боксов: ";
         Log.i(TAG, logMsgPref + "start");
 
 
         this.userNIC = userNIC;
+        this.userUID = userUID;
+        this.teamID = teamID;
         this.cityCalcType = CityCalcType.ERROR;
         this.fileScreenshot = file;
         this.calibrateX = calibrateX;
@@ -1564,6 +1568,8 @@ public class CityCalc extends Activity {
         Context context = checkedCityCalc.context;
 
         this.userNIC = checkedCityCalc.userNIC;
+        this.userUID = checkedCityCalc.userUID;
+        this.teamID = checkedCityCalc.teamID;
         this.cityCalcType = cityCalcType;
         this.fileScreenshot = file;
         this.bmpScreenshot = checkedCityCalc.bmpScreenshot;

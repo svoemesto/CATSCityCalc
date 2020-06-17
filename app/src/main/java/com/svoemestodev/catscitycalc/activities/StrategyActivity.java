@@ -225,7 +225,7 @@ public class StrategyActivity extends AppCompatActivity {
         sa_sb_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
         sa_sb_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
         
-        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context,""), false);
+        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context, GameActivity.mainUserNIC, GameActivity.mainUserUID, GameActivity.mainTeamID), false);
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
         if (ccaGame != null) {

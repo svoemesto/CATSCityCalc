@@ -147,6 +147,7 @@ public class DbTeamGame implements Serializable {
     public String save(String pathToFolder) {
         String result = null;
         String fileName = "";
+
         if (pathToFolder != null && !pathToFolder.equals("")) {
             File dirToSave = new File(pathToFolder);
             if (dirToSave.exists()) {
