@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -82,7 +83,11 @@ import com.svoemestodev.catscitycalc.citycalcclasses.CityCalcType;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -305,6 +310,8 @@ public class GameActivity extends AppCompatActivity {
     public static MenuItem menu_main_team_create;               // пункт меню "Создать банду"
     public static MenuItem menu_main_team_leave;                // пункт меню "Выйти из банды"
     public static MenuItem menu_main_team_find;                 // пункт меню "Найти банду"
+    public static MenuItem menu_main_team_game_load;            // пункт меню "Team Game Load"
+    public static MenuItem menu_main_team_game_share;           // пункт меню "Team Game Share"
 
     @Override
     protected void onResume() {
@@ -1655,6 +1662,8 @@ public class GameActivity extends AppCompatActivity {
         menu_main_team_create = mainMenu.findItem(R.id.menu_main_team_create);
         menu_main_team_leave = mainMenu.findItem(R.id.menu_main_team_leave);
         menu_main_team_find = mainMenu.findItem(R.id.menu_main_team_find);
+        menu_main_team_game_load = mainMenu.findItem(R.id.menu_main_team_game_load);
+        menu_main_team_game_share = mainMenu.findItem(R.id.menu_main_team_game_share);
 
         checkMenuVisibility();
 
@@ -1704,9 +1713,109 @@ public class GameActivity extends AppCompatActivity {
             case R.id.menu_main_team_find :
                 doMenuFindTeam();
                 return true;
+            case R.id.menu_main_team_game_load :
+                doMenuTeamGameLoad();
+                return true;
+            case R.id.menu_main_team_game_share :
+                doMenuTeamGameShare();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+
+    }
+
+    private void doMenuTeamGameLoad() {
+
+        String logMsgPref = "doMenuTeamGameLoad: ";
+
+        OpenFileDialog fileDialog = new OpenFileDialog(this, pathToScreenshotDir)   // диалог выбора скриншота по переданному пути
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))            // иконка папки
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))                // иконка файла
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    public void OnSelectedFile(String fileName) {
+                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(fileName);
+                        if (loadedDbTeamGame != null) {
+                            if (mainCityCalc != null) { // если текущая игра есть
+                                if (mainCCAGame != null) {
+                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+
+                                        if (loadedDbTeamGame.getBytesScreenshot() != null) {
+
+                                            try {
+                                                String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
+                                                OutputStream fOut = null;
+                                                File file = new File(fileNameScreenshot);
+                                                Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                fOut = new FileOutputStream(file);
+                                                bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                fOut.flush();
+                                                fOut.close();
+                                                File teamGameScreenshot = new File(fileNameScreenshot);
+                                                // устанавливаем у скачанного файла правильный ластмодифай
+                                                LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                fileLast = teamGameScreenshot;
+                                                CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC());
+                                                if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                    fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                    Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
+                                                    mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                    mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                    Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                    loadDataToViews(true);
+                                                }
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+//                                        mainCCAGame.updateFromDb(loadedDbTeamGame);                                                       // обновляем локальную игру инфой из базы
+//                                        // выводим тост и обновляем контролы в активити
+//                                        Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+//                                        loadDataToViews(true);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                });
+        fileDialog.show();
+
+    }
+
+    private void doMenuTeamGameShare() {
+
+        if (mainCityCalc != null) { // если текущая игра есть
+            if (mainCCAGame != null) {
+                DbTeamGame dbTeamGame = new DbTeamGame(mainCCAGame);
+                String fileName = dbTeamGame.save(pathToCATScalcFolder);
+                if (fileName != null) {
+
+                    Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+                    File sharedFile = new File(fileName);
+
+                    if(sharedFile.exists()) {
+                        intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
+
+                        intentShareFile.setType("*/*");
+                        intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
+
+                        String text = ga_tv_status.getText().toString();
+
+                        intentShareFile.putExtra(Intent.EXTRA_SUBJECT, text);
+                        intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
+
+                        startActivity(Intent.createChooser(intentShareFile, text));
+                    }
+
+                }
+            }
+        }
+
 
 
     }

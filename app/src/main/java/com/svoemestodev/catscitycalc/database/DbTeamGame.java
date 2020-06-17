@@ -17,17 +17,25 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
+import com.svoemestodev.catscitycalc.classes.Car;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-public class DbTeamGame {
+public class DbTeamGame implements Serializable {
 
     private Date timestamp;
     private String userUID;
@@ -128,8 +136,70 @@ public class DbTeamGame {
     private int slots_brb_empty;
     private int slots_brb_enemy;
 
-    private static final String TAG = "DbTeamGame";
+    private byte[] bytesScreenshot = null;
+    private byte[] bytesCarFree = null; // картинка машины
+    private byte[] bytesCarDefencing = null; // картинка машины
+    private byte[] bytesCarRepairing = null; // картинка машины
+    
+    private static final transient String TAG = "DbTeamGame";
 
+    public String save(String pathToFolder) {
+        String result = null;
+        String fileName = "";
+        if (pathToFolder != null && !pathToFolder.equals("")) {
+            File dirToSave = new File(pathToFolder);
+            if (dirToSave.exists()) {
+                if (dirToSave.isDirectory()) {
+                    fileName = pathToFolder + "/" + UUID.randomUUID().toString() + ".citycalcteamgame";
+                    try {
+
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        GameActivity.mainCityCalc.getBmpScreenshot().compress(Bitmap.CompressFormat.JPEG, 85, stream);
+                        this.bytesScreenshot = stream.toByteArray();
+                        stream.close();
+
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+                        ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+                        oos.writeObject(this);
+                        oos.close();
+                        result = fileName;
+
+                    } catch (IOException e) {
+                        Log.e(TAG, "save. Ошибка сериализации");
+                        e.printStackTrace();
+                    }
+                    return result;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static DbTeamGame load(String pathToFile) {
+
+        if (pathToFile != null && !pathToFile.equals("")) {
+            File file = new File(pathToFile);
+            if (file.exists()) {
+                try {
+                    FileInputStream fileInputStream = new FileInputStream(file);
+                    ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+                    DbTeamGame loadedDbTeamGame = (DbTeamGame) ois.readObject();
+                    ois.close();
+                    return loadedDbTeamGame;
+                } catch (ClassNotFoundException | IOException e) {
+                    Log.e(TAG, "Ошибка десериализации.");
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
+    public static DbTeamGame load(File file) {
+        return load(file.getAbsolutePath());
+    }
+
+    
     public DbTeamGame() {
     }
 
@@ -1251,4 +1321,37 @@ public class DbTeamGame {
     public void setCalibrateY(int calibrateY) {
         this.calibrateY = calibrateY;
     }
+
+    public byte[] getBytesScreenshot() {
+        return bytesScreenshot;
+    }
+
+    public void setBytesScreenshot(byte[] bytesScreenshot) {
+        this.bytesScreenshot = bytesScreenshot;
+    }
+
+    public byte[] getBytesCarFree() {
+        return bytesCarFree;
+    }
+
+    public void setBytesCarFree(byte[] bytesCarFree) {
+        this.bytesCarFree = bytesCarFree;
+    }
+
+    public byte[] getBytesCarDefencing() {
+        return bytesCarDefencing;
+    }
+
+    public void setBytesCarDefencing(byte[] bytesCarDefencing) {
+        this.bytesCarDefencing = bytesCarDefencing;
+    }
+
+    public byte[] getBytesCarRepairing() {
+        return bytesCarRepairing;
+    }
+
+    public void setBytesCarRepairing(byte[] bytesCarRepairing) {
+        this.bytesCarRepairing = bytesCarRepairing;
+    }
+
 }

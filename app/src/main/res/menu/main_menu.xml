@@ -56,4 +56,14 @@
         android:orderInCategory="12"
         android:title="@string/find_team" />
 
+    <item
+        android:id="@+id/menu_main_team_game_load"
+        android:orderInCategory="13"
+        android:title="Team Game Load" />
+
+    <item
+        android:id="@+id/menu_main_team_game_share"
+        android:orderInCategory="14"
+        android:title="Team Game Share" />
+
 </menu>
