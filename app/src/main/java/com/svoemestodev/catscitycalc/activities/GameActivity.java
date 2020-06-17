@@ -1924,7 +1924,8 @@ public class GameActivity extends AppCompatActivity {
             if (mainCCAGame != null) {
 
                 String fileNameCars = Car.pathToFile;
-                String fileName = pathToCATScalcFolder + "/" + UUID.randomUUID().toString() + ".citycalccars";
+//                String fileName = pathToCATScalcFolder + "/" + UUID.randomUUID().toString() + ".citycalccars";
+                String fileName = pathToCATScalcFolder + "/cars.citycalccars";
                 Utils.copyFile(fileNameCars, fileName);
 
                 if (fileName != null) {
