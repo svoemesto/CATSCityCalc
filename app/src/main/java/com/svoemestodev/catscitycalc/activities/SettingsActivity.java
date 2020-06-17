@@ -122,7 +122,7 @@ public class SettingsActivity extends AppCompatActivity {
         st_btn_select_data_folder.setEnabled(GameActivity.isListenDataFolder);
         st_btn_whatsapp_data_folder.setEnabled(GameActivity.isListenWhatsappFolder);
         st_btn_telegram_data_folder.setEnabled(GameActivity.isListenTelegramFolder);
-        
+
         // лисенер на переключение свича "Следить за последним файлом"
         st_sw_get_last_screenshot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

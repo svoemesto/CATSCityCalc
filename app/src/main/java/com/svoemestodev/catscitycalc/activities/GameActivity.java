@@ -2735,11 +2735,11 @@ public class GameActivity extends AppCompatActivity {
                                         DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
 
                                         // тут файл можно уже удалить
-//                                    try {
-//                                        tmpFileData.delete();
-//                                    } catch (Exception e) {
-//                                        e.printStackTrace();
-//                                    }
+                                    try {
+                                        tmpFileData.delete();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
 
                                         if (loadedDbTeamGame != null) {
                                             if (mainCityCalc != null) { // если текущая игра есть
@@ -2829,11 +2829,11 @@ public class GameActivity extends AppCompatActivity {
                                         DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileWhatsapp, mainDbTeamUser.getTeamID());
 
                                         // тут файл можно уже удалить
-//                                    try {
-//                                        tmpFileData.delete();
-//                                    } catch (Exception e) {
-//                                        e.printStackTrace();
-//                                    }
+                                    try {
+                                        tmpFileWhatsapp.delete();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
 
                                         if (loadedDbTeamGame != null) {
                                             if (mainCityCalc != null) { // если текущая игра есть
