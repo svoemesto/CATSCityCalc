@@ -119,6 +119,10 @@ public class SettingsActivity extends AppCompatActivity {
         st_btn_open_borders_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
         st_btn_open_colors_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
 
+        st_btn_select_data_folder.setEnabled(GameActivity.isListenDataFolder);
+        st_btn_whatsapp_data_folder.setEnabled(GameActivity.isListenWhatsappFolder);
+        st_btn_telegram_data_folder.setEnabled(GameActivity.isListenTelegramFolder);
+        
         // лисенер на переключение свича "Следить за последним файлом"
         st_sw_get_last_screenshot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -141,7 +145,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.pref_listen_data_folder), isChecked);
                 editor.apply();
                 GameActivity.isListenDataFolder = isChecked;
-                st_btn_select_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_select_data_folder.setEnabled(isChecked);
             }
         });
 
@@ -154,7 +158,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.pref_listen_whatsapp_folder), isChecked);
                 editor.apply();
                 GameActivity.isListenWhatsappFolder = isChecked;
-                st_btn_whatsapp_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_whatsapp_data_folder.setEnabled(isChecked);
                 if (isChecked) {
                     if (GameActivity.pathToWhatsappDir.equals("")) {
                         String fileName = Environment.getExternalStorageDirectory().getPath() + "/WhatsApp/Media/WhatsApp Documents";
@@ -177,7 +181,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.pref_listen_telegram_folder), isChecked);
                 editor.apply();
                 GameActivity.isListenTelegramFolder = isChecked;
-                st_btn_telegram_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_telegram_data_folder.setEnabled(isChecked);
                 if (isChecked) {
                     if (GameActivity.pathToTelegramDir.equals("")) {
                         String fileName = Environment.getExternalStorageDirectory().getPath() + "/Telegram/Telegram Documents";

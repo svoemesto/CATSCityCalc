@@ -61,7 +61,7 @@
         android:text="@string/listen_whatsapp_data_folder"
         android:defaultValue="false"/>
     <TextView
-        android:id="@+id/st_tv_telegram_folder"
+        android:id="@+id/st_tv_whatsapp_folder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -82,7 +82,7 @@
         android:text="@string/listen_telegram_data_folder"
         android:defaultValue="false"/>
     <TextView
-        android:id="@+id/st_tv_whatsapp_folder"
+        android:id="@+id/st_tv_telegram_folder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
