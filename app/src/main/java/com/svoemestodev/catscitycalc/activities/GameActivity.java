@@ -2555,9 +2555,11 @@ public class GameActivity extends AppCompatActivity {
                                         mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
                                         loadDataToViews(true);
                                     } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                        CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                                        ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
-                                        fileCarScreenshot = tmpFileScreenshot;
+                                        if (!fileCarScreenshot.equals(tmpFileScreenshot)) {
+                                            CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
+                                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+                                            fileCarScreenshot = tmpFileScreenshot;
+                                        }
                                     }
                                     if (isResumed) isResumed = false;
 
