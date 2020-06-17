@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.io.ByteArrayDataOutput;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -18,13 +19,16 @@ import com.google.firebase.storage.UploadTask;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.utils.Utils;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -158,10 +162,26 @@ public class DbTeamGame implements Serializable {
                         this.bytesScreenshot = stream.toByteArray();
                         stream.close();
 
-                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-                        ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        ObjectOutputStream oos = new ObjectOutputStream(byteArrayOutputStream);
                         oos.writeObject(this);
                         oos.close();
+
+                        byte[] array = byteArrayOutputStream.toByteArray();
+                        byte[] cryptedArray = Utils.cryptArray(array, this.teamID);
+
+                        ByteArrayOutputStream byteArrayOutputStreamCrypted = new ByteArrayOutputStream();
+                        byteArrayOutputStreamCrypted.write(cryptedArray);
+
+                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+                        byteArrayOutputStreamCrypted.writeTo(fileOutputStream);
+                        fileOutputStream.flush();
+                        fileOutputStream.close();
+
+//                        FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+//                        ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+//                        oos.writeObject(this);
+//                        oos.close();
                         result = fileName;
 
                     } catch (IOException e) {
@@ -175,17 +195,38 @@ public class DbTeamGame implements Serializable {
         return result;
     }
 
-    public static DbTeamGame load(String pathToFile) {
+    public static DbTeamGame load(String pathToFile, String teamID) {
 
         if (pathToFile != null && !pathToFile.equals("")) {
             File file = new File(pathToFile);
             if (file.exists()) {
                 try {
+
                     FileInputStream fileInputStream = new FileInputStream(file);
-                    ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = fileInputStream.read(buf)) > 0) {
+                        byteArrayOutputStream.write(buf, 0, len);
+                    }
+                    fileInputStream.close();
+
+                    byte[] array = byteArrayOutputStream.toByteArray();
+                    byte[] cryptedArray = Utils.cryptArray(array, teamID);
+
+                    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(cryptedArray);
+                    ObjectInputStream ois = new ObjectInputStream(byteArrayInputStream);
+
                     DbTeamGame loadedDbTeamGame = (DbTeamGame) ois.readObject();
                     ois.close();
                     return loadedDbTeamGame;
+
+//                    FileInputStream fileInputStream = new FileInputStream(file);
+//                    ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+//                    DbTeamGame loadedDbTeamGame = (DbTeamGame) ois.readObject();
+//                    ois.close();
+//                    return loadedDbTeamGame;
                 } catch (ClassNotFoundException | IOException e) {
                     Log.e(TAG, "Ошибка десериализации.");
                     e.printStackTrace();
@@ -195,8 +236,8 @@ public class DbTeamGame implements Serializable {
         return null;
     }
 
-    public static DbTeamGame load(File file) {
-        return load(file.getAbsolutePath());
+    public static DbTeamGame load(File file, String teamID) {
+        return load(file.getAbsolutePath(), teamID);
     }
 
     
@@ -412,111 +453,115 @@ public class DbTeamGame implements Serializable {
             if (!GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GameActivity.pathToCATScalcFolder + "/last_screenshot.PNG") && !GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GameActivity.pathToCATScalcFolder + "/last_screenshot")) {
                 if (GameActivity.fbUser != null) { // есть юзер
                     if (GameActivity.fbUser.isEmailVerified()) { // емейл подтвержден
-                        final String userUID = GameActivity.fbUser.getUid();
+//                        final String userUID = GameActivity.fbUser.getUid();
 
-                        this.userUID = userUID;
-                        final DbTeamGame dbTeamGame = this;
-
-                        GameActivity.fbDb.collection("users").document(userUID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                            @Override
-                            public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                                if (!ccaGame.isGameOver()) {
-//                                    // есть запись о юзере - сохраняем скрин на сервере по пути "users/userUID/last_screenshot"
-//                                    // пережимаем файл в жпег
-//                                    String fileToUploadPath = GameActivity.pathToCATScalcFolder + "/screenshot_to_upload.jpg";
-//                                    Bitmap bitmapSource = BitmapFactory.decodeFile(GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath());
-//                                    File fileToUpload = new File(fileToUploadPath);
-//                                    try {
-//                                        OutputStream fOut = new FileOutputStream(fileToUpload);
-//                                        bitmapSource.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-//                                        fOut.flush();
-//                                        fOut.close();
+                        this.userUID = GameActivity.fbUser.getUid();
+                        if (GameActivity.mainDbTeamUser != null) {
+                            this.userNIC = GameActivity.mainDbTeamUser.getUserNIC();
+                            this.teamID = GameActivity.mainDbTeamUser.getTeamID();
+                        }
+//                        final DbTeamGame dbTeamGame = this;
 //
-//                                        //                                    Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
-//                                        Uri uriFile = Uri.fromFile(fileToUpload);
-//                                        String storRefGamePathOnServer = "users/" + userUID + "/last_screenshot";
-//                                        StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
-//                                        storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        GameActivity.fbDb.collection("users").document(userUID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                            @Override
+//                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//
+//                                if (!ccaGame.isGameOver()) {
+////                                    // есть запись о юзере - сохраняем скрин на сервере по пути "users/userUID/last_screenshot"
+////                                    // пережимаем файл в жпег
+////                                    String fileToUploadPath = GameActivity.pathToCATScalcFolder + "/screenshot_to_upload.jpg";
+////                                    Bitmap bitmapSource = BitmapFactory.decodeFile(GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath());
+////                                    File fileToUpload = new File(fileToUploadPath);
+////                                    try {
+////                                        OutputStream fOut = new FileOutputStream(fileToUpload);
+////                                        bitmapSource.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+////                                        fOut.flush();
+////                                        fOut.close();
+////
+////                                        //                                    Uri uriFile = Uri.fromFile(GameActivity.mainCityCalc.getFileScreenshot());
+////                                        Uri uriFile = Uri.fromFile(fileToUpload);
+////                                        String storRefGamePathOnServer = "users/" + userUID + "/last_screenshot";
+////                                        StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+////                                        storRefGame.putFile(uriFile).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+////                                            @Override
+////                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+////                                                // скрин удачно залился на сервер - можно заливать инфу об игре
+////
+////                                                final String teamID = (String)documentSnapshot.get("teamID");
+////                                                final String userNIC = (String)documentSnapshot.get("userNIC");
+////                                                if (teamID != null && !teamID.equals("")) {
+////
+////                                                    dbTeamGame.userNIC = userNIC;
+////                                                    dbTeamGame.teamID = teamID;
+////
+////                                                    DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+////                                                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+////                                                        @Override
+////                                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+////                                                            if (task.isSuccessful()) {
+////                                                                if (task.getResult().exists()) {
+////                                                                    DocumentSnapshot documentSnapshot = task.getResult();
+////                                                                    Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
+////                                                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+////                                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
+////                                                                    }
+////                                                                } else {
+////                                                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
+////                                                                }
+////                                                            }
+////                                                        }
+////                                                    });
+////
+////                                                }
+////
+////                                            }
+////                                        });
+////
+////
+////                                    } catch (IOException e) {
+////                                        e.printStackTrace();
+////                                    }
+//
+//
+//
+//
+//                                    final String teamID = (String)documentSnapshot.get("teamID");
+//                                    final String userNIC = (String)documentSnapshot.get("userNIC");
+//                                    if (teamID != null && !teamID.equals("")) {
+//
+//                                        dbTeamGame.userNIC = userNIC;
+//                                        dbTeamGame.teamID = teamID;
+//
+//                                        DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
+//                                        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 //                                            @Override
-//                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                                                // скрин удачно залился на сервер - можно заливать инфу об игре
-//
-//                                                final String teamID = (String)documentSnapshot.get("teamID");
-//                                                final String userNIC = (String)documentSnapshot.get("userNIC");
-//                                                if (teamID != null && !teamID.equals("")) {
-//
-//                                                    dbTeamGame.userNIC = userNIC;
-//                                                    dbTeamGame.teamID = teamID;
-//
-//                                                    DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-//                                                    doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//                                                        @Override
-//                                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                                                            if (task.isSuccessful()) {
-//                                                                if (task.getResult().exists()) {
-//                                                                    DocumentSnapshot documentSnapshot = task.getResult();
-//                                                                    Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
-//                                                                    if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
-//                                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
-//                                                                    }
-//                                                                } else {
-//                                                                    GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
-//                                                                }
-//                                                            }
+//                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                                                if (task.isSuccessful()) {
+//                                                    if (task.getResult().exists()) {
+//                                                        DocumentSnapshot documentSnapshot = task.getResult();
+//                                                        Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
+//                                                        if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
+//                                                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
 //                                                        }
-//                                                    });
-//
+//                                                    } else {
+//                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
+//                                                    }
 //                                                }
-//
 //                                            }
 //                                        });
 //
-//
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
 //                                    }
-
-
-
-
-                                    final String teamID = (String)documentSnapshot.get("teamID");
-                                    final String userNIC = (String)documentSnapshot.get("userNIC");
-                                    if (teamID != null && !teamID.equals("")) {
-
-                                        dbTeamGame.userNIC = userNIC;
-                                        dbTeamGame.teamID = teamID;
-
-                                        DocumentReference doc = GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame");
-                                        doc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                if (task.isSuccessful()) {
-                                                    if (task.getResult().exists()) {
-                                                        DocumentSnapshot documentSnapshot = task.getResult();
-                                                        Map<String, Object> map = dbTeamGame.getMap(userUID, userNIC, teamID);
-                                                        if (documentSnapshot.getTimestamp("dateScreenshot").toDate().getTime() < ((Date)map.get("dateScreenshot")).getTime()) {
-                                                            GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
-                                                        }
-                                                    } else {
-                                                        GameActivity.fbDb.collection("teams").document(teamID).collection("teamGames").document("teamGame").set(dbTeamGame.getMap(userUID, userNIC, teamID));
-                                                    }
-                                                }
-                                            }
-                                        });
-
-                                    }
-
-
-
-
-
-
-
-                                }
-
-                            }
-                        });
+//
+//
+//
+//
+//
+//
+//
+//                                }
+//
+//                            }
+//                        });
                     }
                 }
             }

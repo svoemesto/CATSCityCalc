@@ -1736,10 +1736,13 @@ public class GameActivity extends AppCompatActivity {
                 .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
                     @Override
                     public void OnSelectedFile(String fileName) {
-                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(fileName);
-                        if (loadedDbTeamGame != null) {
-                            if (mainCityCalc != null) { // если текущая игра есть
-                                if (mainCCAGame != null) {
+
+                        if (mainDbTeamUser != null) {
+
+                            DbTeamGame loadedDbTeamGame = DbTeamGame.load(fileName, mainDbTeamUser.getTeamID());
+                            if (loadedDbTeamGame != null) {
+                                if (mainCityCalc != null) { // если текущая игра есть
+                                    if (mainCCAGame != null) {
 //                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
                                         if (loadedDbTeamGame.getBytesScreenshot() != null) {
@@ -1776,10 +1779,15 @@ public class GameActivity extends AppCompatActivity {
 //                                        Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
 //                                        loadDataToViews(true);
 //                                    }
+                                    }
                                 }
+
                             }
 
+
                         }
+
+
                     }
                 });
         fileDialog.show();

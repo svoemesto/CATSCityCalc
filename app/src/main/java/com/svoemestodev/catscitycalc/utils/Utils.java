@@ -32,6 +32,14 @@ public class Utils {
         return result;
     }
 
+    public static byte[] cryptArray(byte[] array, String key) {
+        byte[] cryptedArrray = new byte[array.length];
+        for (int i = 0; i < array.length; i++) {
+            cryptedArrray[i] = (byte)((int)array[i] ^ key.charAt(i % key.length()));
+        }
+        return cryptedArrray;
+    }
+
 
     public static void copyFile(String sourcePath, String targetPath) {
         File sourceLocation = new File(sourcePath);
