@@ -281,8 +281,10 @@ public class GameActivity extends AppCompatActivity {
 
     public static FirebaseUser fbUser;          // юзер файрбейса
     public static FirebaseAuth fbAuth;          // аутентификация файрбейса
-    public static FirebaseStorage fbStor = FirebaseStorage.getInstance();       // стораж файрбейса
+//    public static FirebaseStorage fbStor = FirebaseStorage.getInstance();       // стораж файрбейса
+
     public static FirebaseFirestore fbDb = FirebaseFirestore.getInstance(); // база данных файрбейса
+
     public static boolean userHaveTeam;         // флаг "у юзера есть команда"
     public static UserRole userRole;            // роль юзера в команде
     public static String userTeamID;            // ID команды
@@ -1378,42 +1380,46 @@ public class GameActivity extends AppCompatActivity {
                                                                                 DbTeamGame dbTeamGame = new DbTeamGame(documentSnapshot);                                   // считываем тимГейм из базы
                                                                                 if (dbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
                                                                                     // надо взять с сервера скрин того юзера, кто обновил игру
-                                                                                    File teamGameScreenshot = new File(pathToCATScalcFolder + "/teamGameScreenshot");
-                                                                                    String storRefGamePathOnServer = "users/" + dbTeamGame.getUserUID() + "/last_screenshot";
-                                                                                    StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
-                                                                                    storRefGame.getFile(teamGameScreenshot).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                                                                                        @Override
-                                                                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                                                                                            // скрин скачался с сервера удачно
-                                                                                            // устанавливаем у скачанного файла правильный ластмодифай
-                                                                                            LastModified.setLastModified(teamGameScreenshot, dbTeamGame.getDateScreenshot());
-                                                                                            fileLast = teamGameScreenshot;
-                                                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context, dbTeamGame.getUserNIC());
-                                                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-                                                                                                Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
-                                                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                                loadDataToViews(true);
-                                                                                            }
-                                                                                        }
-                                                                                    }).addOnFailureListener(new OnFailureListener() {
-                                                                                        @Override
-                                                                                        public void onFailure(@NonNull Exception e) {
-                                                                                            // не удалось скачать скрин с сервера
-                                                                                            mainCCAGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
-                                                                                            // выводим тост и обновляем контролы в активити
-                                                                                            Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
-                                                                                            loadDataToViews(true);
-                                                                                        }
-                                                                                    });
+//                                                                                    File teamGameScreenshot = new File(pathToCATScalcFolder + "/teamGameScreenshot");
+//                                                                                    String storRefGamePathOnServer = "users/" + dbTeamGame.getUserUID() + "/last_screenshot";
+//                                                                                    StorageReference storRefGame = GameActivity.fbStor.getReference().child(storRefGamePathOnServer);
+//                                                                                    storRefGame.getFile(teamGameScreenshot).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
+//                                                                                        @Override
+//                                                                                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
+//                                                                                            // скрин скачался с сервера удачно
+//                                                                                            // устанавливаем у скачанного файла правильный ластмодифай
+//                                                                                            LastModified.setLastModified(teamGameScreenshot, dbTeamGame.getDateScreenshot());
+//                                                                                            fileLast = teamGameScreenshot;
+//                                                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, dbTeamGame.getCalibrateX(), dbTeamGame.getCalibrateY(), context, dbTeamGame.getUserNIC());
+//                                                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+//                                                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+//                                                                                                Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
+//                                                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+//                                                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+//                                                                                                loadDataToViews(true);
+//                                                                                            }
+//                                                                                        }
+//                                                                                    }).addOnFailureListener(new OnFailureListener() {
+//                                                                                        @Override
+//                                                                                        public void onFailure(@NonNull Exception e) {
+//                                                                                            // не удалось скачать скрин с сервера
+//                                                                                            mainCCAGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+//                                                                                            // выводим тост и обновляем контролы в активити
+//                                                                                            Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
+//                                                                                            loadDataToViews(true);
+//                                                                                        }
+//                                                                                    });
+                                                                                    mainCCAGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+                                                                                    // выводим тост и обновляем контролы в активити
+                                                                                    Toast.makeText(GameActivity.this, getString(R.string.info_game_from_server), Toast.LENGTH_LONG).show();
+                                                                                    loadDataToViews(true);
 
                                                                                 }
                                                                             }
                                                                         }
 
                                                                     } else {
-                                                                        // запсь в базе отсутствует
+                                                                        // запись в базе отсутствует
                                                                         Log.d(TAG, "Current game data: null");
                                                                     }
                                                                 }

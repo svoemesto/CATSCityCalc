@@ -584,24 +584,24 @@ public class TeamActivity extends AppCompatActivity {
                                 }
                             });
 
-                            StorageReference storRefCar1Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car1_free");
-                            storRefCar1Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                                @Override
-                                public void onSuccess(StorageMetadata storageMetadata) {
-                                    long countBytes = storageMetadata.getSizeBytes();
-                                    if (countBytes > 0) {
-                                        Task<byte[]> taskBytes = storRefCar1Free.getBytes(countBytes);
-                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                            @Override
-                                            public void onSuccess(byte[] bytes) {
-                                                car1.setImageByteArrayCar(bytes);
-                                                car1.save(userUID);
-                                                ltu_ib_car1.setImageBitmap(car1.getCarPicture());
-                                            }
-                                        });
-                                    }
-                                }
-                            });
+//                            StorageReference storRefCar1Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car1_free");
+//                            storRefCar1Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+//                                @Override
+//                                public void onSuccess(StorageMetadata storageMetadata) {
+//                                    long countBytes = storageMetadata.getSizeBytes();
+//                                    if (countBytes > 0) {
+//                                        Task<byte[]> taskBytes = storRefCar1Free.getBytes(countBytes);
+//                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//                                            @Override
+//                                            public void onSuccess(byte[] bytes) {
+//                                                car1.setImageByteArrayCar(bytes);
+//                                                car1.save(userUID);
+//                                                ltu_ib_car1.setImageBitmap(car1.getCarPicture());
+//                                            }
+//                                        });
+//                                    }
+//                                }
+//                            });
 
                         }
 
@@ -739,24 +739,24 @@ public class TeamActivity extends AppCompatActivity {
                                 }
                             });
 
-                            StorageReference storRefCar2Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car2_free");
-                            storRefCar2Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                                @Override
-                                public void onSuccess(StorageMetadata storageMetadata) {
-                                    long countBytes = storageMetadata.getSizeBytes();
-                                    if (countBytes > 0) {
-                                        Task<byte[]> taskBytes = storRefCar2Free.getBytes(countBytes);
-                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                            @Override
-                                            public void onSuccess(byte[] bytes) {
-                                                car2.setImageByteArrayCar(bytes);
-                                                car2.save(userUID);
-                                                ltu_ib_car2.setImageBitmap(car2.getCarPicture());
-                                            }
-                                        });
-                                    }
-                                }
-                            });
+//                            StorageReference storRefCar2Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car2_free");
+//                            storRefCar2Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+//                                @Override
+//                                public void onSuccess(StorageMetadata storageMetadata) {
+//                                    long countBytes = storageMetadata.getSizeBytes();
+//                                    if (countBytes > 0) {
+//                                        Task<byte[]> taskBytes = storRefCar2Free.getBytes(countBytes);
+//                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//                                            @Override
+//                                            public void onSuccess(byte[] bytes) {
+//                                                car2.setImageByteArrayCar(bytes);
+//                                                car2.save(userUID);
+//                                                ltu_ib_car2.setImageBitmap(car2.getCarPicture());
+//                                            }
+//                                        });
+//                                    }
+//                                }
+//                            });
                         }
 
                     } else {
@@ -891,24 +891,24 @@ public class TeamActivity extends AppCompatActivity {
                                 }
                             });
 
-                            StorageReference storRefCar3Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car3_free");
-                            storRefCar3Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
-                                @Override
-                                public void onSuccess(StorageMetadata storageMetadata) {
-                                    long countBytes = storageMetadata.getSizeBytes();
-                                    if (countBytes > 0) {
-                                        Task<byte[]> taskBytes = storRefCar3Free.getBytes(countBytes);
-                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                                            @Override
-                                            public void onSuccess(byte[] bytes) {
-                                                car3.setImageByteArrayCar(bytes);
-                                                car3.save(userUID);
-                                                ltu_ib_car3.setImageBitmap(car3.getCarPicture());
-                                            }
-                                        });
-                                    }
-                                }
-                            });
+//                            StorageReference storRefCar3Free = GameActivity.fbStor.getReference().child("users/" + userUID + "/car3_free");
+//                            storRefCar3Free.getMetadata().addOnSuccessListener(new OnSuccessListener<StorageMetadata>() {
+//                                @Override
+//                                public void onSuccess(StorageMetadata storageMetadata) {
+//                                    long countBytes = storageMetadata.getSizeBytes();
+//                                    if (countBytes > 0) {
+//                                        Task<byte[]> taskBytes = storRefCar3Free.getBytes(countBytes);
+//                                        taskBytes.addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//                                            @Override
+//                                            public void onSuccess(byte[] bytes) {
+//                                                car3.setImageByteArrayCar(bytes);
+//                                                car3.save(userUID);
+//                                                ltu_ib_car3.setImageBitmap(car3.getCarPicture());
+//                                            }
+//                                        });
+//                                    }
+//                                }
+//                            });
                             
                         }
 

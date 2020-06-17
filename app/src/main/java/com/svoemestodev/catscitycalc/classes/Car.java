@@ -236,13 +236,13 @@ public class Car implements Serializable {
                 String docRefCarName = "car" + this.slot;
                 DocumentReference docRefCar = userCars.document(docRefCarName);
                 docRefCar.set(getMap());
-                String pathToFileOnServer = "users/" + userUID + "/" + docRefCarName;
-                StorageReference storRefCarFree = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_free");
-                StorageReference storRefCarDef = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_def");
-                StorageReference storRefCarRep = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_rep");
-                if (this.imageByteArrayCar != null) storRefCarFree.putBytes(this.imageByteArrayCar);
-                if (this.imageByteArrayCarDefencing != null) storRefCarDef.putBytes(this.imageByteArrayCarDefencing);
-                if (this.imageByteArrayCarRepairing != null) storRefCarRep.putBytes(this.imageByteArrayCarRepairing);
+//                String pathToFileOnServer = "users/" + userUID + "/" + docRefCarName;
+//                StorageReference storRefCarFree = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_free");
+//                StorageReference storRefCarDef = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_def");
+//                StorageReference storRefCarRep = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_rep");
+//                if (this.imageByteArrayCar != null) storRefCarFree.putBytes(this.imageByteArrayCar);
+//                if (this.imageByteArrayCarDefencing != null) storRefCarDef.putBytes(this.imageByteArrayCarDefencing);
+//                if (this.imageByteArrayCarRepairing != null) storRefCarRep.putBytes(this.imageByteArrayCarRepairing);
             }
         }
 

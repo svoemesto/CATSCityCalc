@@ -175,6 +175,7 @@
     <string name="not_verified">(почта не подтверждена)</string>
     <string name="sure_clear_tasks_cars">Вы уверены, что хотите сбросить все задания для всех машин всех пользователей банды?</string>
     <string name="clear_tasks_cars">Сбросить задачи машин</string>
+    <string name="info_game_from_server">Информация об игре с сервера</string>
 
 
 </resources>
