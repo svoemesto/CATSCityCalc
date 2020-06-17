@@ -60,7 +60,7 @@ public class DbCar {
         key = "carBuildingTask"; if (map.containsKey(key)) this.carBuildingTask = ((Long) map.get(key)).intValue();
 
         key = "userUID"; if (map.containsKey(key)) {
-            if (documentSnapshot.getTimestamp(key) == null) {
+            if (map.get(key) == null) {
                 this.userUID = null;
             } else {
                 this.userUID = map.get(key).toString();
@@ -68,7 +68,7 @@ public class DbCar {
         }
 
         key = "userNIC"; if (map.containsKey(key)) {
-            if (documentSnapshot.getTimestamp(key) == null) {
+            if (map.get(key) == null) {
                 this.userNIC = null;
             } else {
                 this.userNIC = map.get(key).toString();
@@ -76,7 +76,7 @@ public class DbCar {
         }
 
         key = "teamID"; if (map.containsKey(key)) {
-            if (documentSnapshot.getTimestamp(key) == null) {
+            if (map.get(key) == null) {
                 this.teamID = null;
             } else {
                 this.teamID = map.get(key).toString();
