@@ -470,7 +470,13 @@ public class TeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars = Car.loadList(userUID);
+                            List<Car> listCars;
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+                                listCars = Car.loadList();
+                            } else {
+                                listCars = Car.loadList(userUID);
+                            }
+
                             Car car1 = listCars.get(0);
                             DbCar dbCar1 = new DbCar(documentSnapshot);
                             
@@ -519,8 +525,12 @@ public class TeamActivity extends AppCompatActivity {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car1.setBuildingPicture(bldBitmap);
-                            
-                            car1.save(userUID);
+
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                car1.save();
+                            } else {
+                                car1.save(userUID);
+                            }
 
                             ltu_tv_car1_name.setText(car1.getName());
                             ltu_tv_car1_health.setText(String.valueOf(car1.getHealth()));
@@ -530,7 +540,11 @@ public class TeamActivity extends AppCompatActivity {
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car1.isFree()) {
                                     car1.setStateFree();
-                                    car1.save(userUID);
+                                    if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                        car1.save();
+                                    } else {
+                                        car1.save(userUID);
+                                    }
                                 }
                             }
 
@@ -577,7 +591,11 @@ public class TeamActivity extends AppCompatActivity {
                                             Building item = arrayAdapter.getItem(which);
                                             car1.setTaskPicture(item.getBitmap());
                                             car1.setBuildingTask(item.getSlot());
-                                            car1.save(userUID);
+                                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                                car1.save();
+                                            } else {
+                                                car1.save(userUID);
+                                            }
                                             Map<String, Object> map = new HashMap<>();
                                             map.put("carBuildingTask", item.getSlot());
                                             docRefCar1.update(map);
@@ -629,7 +647,13 @@ public class TeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars = Car.loadList(userUID);
+                            List<Car> listCars;
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+                                listCars = Car.loadList();
+                            } else {
+                                listCars = Car.loadList(userUID);
+                            }
+
                             Car car2 = listCars.get(1);
                             DbCar dbCar2 = new DbCar(documentSnapshot);
                             car2.setUuid(UUID.fromString(dbCar2.getCarUID()));
@@ -678,7 +702,11 @@ public class TeamActivity extends AppCompatActivity {
                             }
                             car2.setBuildingPicture(bldBitmap);
 
-                            car2.save(userUID);
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                car2.save();
+                            } else {
+                                car2.save(userUID);
+                            }
                             
                             ltu_tv_car2_name.setText(car2.getName());
                             ltu_tv_car2_health.setText(String.valueOf(car2.getHealth()));
@@ -688,7 +716,11 @@ public class TeamActivity extends AppCompatActivity {
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car2.isFree()) {
                                     car2.setStateFree();
-                                    car2.save(userUID);
+                                    if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                        car2.save();
+                                    } else {
+                                        car2.save(userUID);
+                                    }
                                 }
                             }
 
@@ -735,7 +767,11 @@ public class TeamActivity extends AppCompatActivity {
                                             Building item = arrayAdapter.getItem(which);
                                             car2.setTaskPicture(item.getBitmap());
                                             car2.setBuildingTask(item.getSlot());
-                                            car2.save(userUID);
+                                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                                car2.save();
+                                            } else {
+                                                car2.save(userUID);
+                                            }
                                             Map<String, Object> map = new HashMap<>();
                                             map.put("carBuildingTask", item.getSlot());
                                             docRefCar2.update(map);
@@ -784,7 +820,13 @@ public class TeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars = Car.loadList(userUID);
+                            List<Car> listCars;
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+                                listCars = Car.loadList();
+                            } else {
+                                listCars = Car.loadList(userUID);
+                            }
+
                             Car car3 = listCars.get(2);
                             DbCar dbCar3 = new DbCar(documentSnapshot);
                             car3.setUuid(UUID.fromString(dbCar3.getCarUID()));
@@ -833,7 +875,12 @@ public class TeamActivity extends AppCompatActivity {
                             }
                             car3.setBuildingPicture(bldBitmap);
 
-                            car3.save(userUID);
+                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                car3.save();
+                            } else {
+                                car3.save(userUID);
+                            }
+
                             
                             ltu_tv_car3_name.setText(car3.getName());
                             ltu_tv_car3_health.setText(String.valueOf(car3.getHealth()));
@@ -843,7 +890,11 @@ public class TeamActivity extends AppCompatActivity {
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car3.isFree()) {
                                     car3.setStateFree();
-                                    car3.save(userUID);
+                                    if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                        car3.save();
+                                    } else {
+                                        car3.save(userUID);
+                                    }
                                 }
                             }
 
@@ -890,7 +941,11 @@ public class TeamActivity extends AppCompatActivity {
                                             Building item = arrayAdapter.getItem(which);
                                             car3.setTaskPicture(item.getBitmap());
                                             car3.setBuildingTask(item.getSlot());
-                                            car3.save(userUID);
+                                            if (userUID.equals(GameActivity.fbUser.getUid())) {
+//                                                car3.save();
+                                            } else {
+                                                car3.save(userUID);
+                                            }
                                             Map<String, Object> map = new HashMap<>();
                                             map.put("carBuildingTask", item.getSlot());
                                             docRefCar3.update(map);
