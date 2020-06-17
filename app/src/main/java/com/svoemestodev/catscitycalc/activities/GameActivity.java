@@ -364,6 +364,14 @@ public class GameActivity extends AppCompatActivity {
 
         readPreferences(); // считываем преференцы
         ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
+
+        File lastScrFile = new File (getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+        CityCalc tmpCityCalc = new CityCalc(lastScrFile, calibrateX, calibrateY, context, "");
+        fileGameScreenshot = lastScrFile;   // текущий скриншот = последнему файлу в папке
+        mainCityCalc = new CityCalc(tmpCityCalc, false);
+        mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+        loadDataToViews(true);
+
         startTimer();   // стартуем таймер
 
     }
