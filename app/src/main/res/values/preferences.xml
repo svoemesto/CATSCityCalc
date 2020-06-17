@@ -13,9 +13,29 @@
     <string name="pref_data_folder" translatable="false">PREF_DATA_FOLDER</string>
     <string name="pref_def_data_folder" translatable="false">PREF_DEF_DATA_FOLDER</string>
 
+    <!--    whatsapp_folder-->
+    <string name="pref_whatsapp_folder" translatable="false">PREF_WHATSAPP_FOLDER</string>
+    <string name="pref_def_whatsapp_folder" translatable="false">PREF_DEF_WHATSAPP_FOLDER</string>
+
+    <!--    telegram_folder-->
+    <string name="pref_telegram_folder" translatable="false">PREF_TELEGRAM_FOLDER</string>
+    <string name="pref_def_telegram_folder" translatable="false">PREF_DEF_TELEGRAM_FOLDER</string>
+
     <!--    listen_last_file-->
     <string name="pref_listen_last_file" translatable="false">PREF_LISTEN_LAST_FILE</string>
     <string name="pref_def_listen_last_file" translatable="false">PREF_DEF_LISTEN_LAST_FILE</string>
+
+    <!--    listen_data_folder-->
+    <string name="pref_listen_data_folder" translatable="false">PREF_LISTEN_DATA_FOLDER</string>
+    <string name="pref_def_listen_data_folder" translatable="false">PREF_DEF_LISTEN_DATA_FOLDER</string>
+
+    <!--    listen_whatsapp_folder-->
+    <string name="pref_listen_whatsapp_folder" translatable="false">PREF_LISTEN_WHATSAPP_FOLDER</string>
+    <string name="pref_def_listen_whatsapp_folder" translatable="false">PREF_DEF_LISTEN_WHATSAPP_FOLDER</string>
+
+    <!--    listen_telegram_folder-->
+    <string name="pref_listen_telegram_folder" translatable="false">PREF_LISTEN_TELEGRAM_FOLDER</string>
+    <string name="pref_def_listen_telegram_folder" translatable="false">PREF_DEF_LISTEN_TELEGRAM_FOLDER</string>
 
     <!--    debug_mode-->
     <string name="pref_debug_mode" translatable="false">PREF_DEBUG_MODE</string>

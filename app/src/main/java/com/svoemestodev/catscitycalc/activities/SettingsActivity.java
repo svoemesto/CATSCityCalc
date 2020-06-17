@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,18 +27,29 @@ import com.svoemestodev.catscitycalc.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
-//    String pathToScreenshotDir = "";    // путь к папке скриншотов
-//    boolean listenLastFile;             // флаг "следить за последним файлом в папке"
-    TextView tvVersion;        // текствью пути к папке скриншотов
-    TextView tvScreenshotFolder;        // текствью пути к папке скриншотов
-    TextView tvDataFolder;        // текствью пути к папке скриншотов
-    Switch swListenLastFile;            // свич "следить за последним файлом в папке"
-    Switch swLDebugMode;                // свич "дебаг мод"
-//    boolean isDebugMode;                // флаг "дебаг мод"
-    Button btnSelectScreenshotFolder;   // кнопка "Выбрать папку скриншотов"
-    Button btnOpenCalibrate;   // кнопка "Выбрать папку скриншотов"
-    Button btnOpenBorder;   // кнопка "Выбрать папку скриншотов"
-    Button btnOpenColors;   // кнопка "Выбрать папку скриншотов"
+
+    TextView st_tv_version;
+
+    Switch st_sw_get_last_screenshot;
+    Button st_btn_select_screenshot_folder;
+    TextView st_tv_screenshot_folder;
+
+    Switch st_sw_listen_data_folder;
+    Button st_btn_select_data_folder;
+    TextView st_tv_data_folder;
+
+    Switch st_sw_listen_whatsapp_folder;
+    Button st_btn_whatsapp_data_folder;
+    TextView st_tv_telegram_folder;
+
+    Switch st_sw_listen_telegram_folder;
+    Button st_btn_telegram_data_folder;
+    TextView st_tv_whatsapp_folder;
+
+    Switch st_sw_debug_mode;
+    Button st_btn_open_calibrate;
+    Button st_btn_open_borders_settings;
+    Button st_btn_open_colors_settings;
 
     public Context context;
 
@@ -70,31 +82,45 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // биндим контролы
-        tvVersion = findViewById(R.id.tv_version);
-        tvScreenshotFolder = findViewById(R.id.tv_screenshotfolder);
-        tvDataFolder = findViewById(R.id.tv_datafolder);
-        swListenLastFile = findViewById(R.id.sw_get_last_screenshot);
-        swLDebugMode = findViewById(R.id.sw_debug_mode);
-        btnSelectScreenshotFolder = findViewById(R.id.btn_select_screenshot_folder);
-        btnOpenCalibrate = findViewById(R.id.btn_open_calibrate);
-        btnOpenBorder = findViewById(R.id.btn_open_borders_settings);
-        btnOpenColors = findViewById(R.id.btn_open_colors_settings);
 
-        context = tvScreenshotFolder.getContext();
+        st_tv_version = findViewById(R.id.st_tv_version);
+        st_sw_get_last_screenshot = findViewById(R.id.st_sw_get_last_screenshot);
+        st_btn_select_screenshot_folder = findViewById(R.id.st_btn_select_screenshot_folder);
+        st_tv_screenshot_folder = findViewById(R.id.st_tv_screenshot_folder);
+        st_sw_listen_data_folder = findViewById(R.id.st_sw_listen_data_folder);
+        st_btn_select_data_folder = findViewById(R.id.st_btn_select_data_folder);
+        st_tv_data_folder = findViewById(R.id.st_tv_data_folder);
+        st_sw_listen_whatsapp_folder = findViewById(R.id.st_sw_listen_whatsapp_folder);
+        st_btn_whatsapp_data_folder = findViewById(R.id.st_btn_whatsapp_data_folder);
+        st_tv_telegram_folder = findViewById(R.id.st_tv_telegram_folder);
+        st_sw_listen_telegram_folder = findViewById(R.id.st_sw_listen_telegram_folder);
+        st_btn_telegram_data_folder = findViewById(R.id.st_btn_telegram_data_folder);
+        st_tv_whatsapp_folder = findViewById(R.id.st_tv_whatsapp_folder);
+        st_sw_debug_mode = findViewById(R.id.st_sw_debug_mode);
+        st_btn_open_calibrate = findViewById(R.id.st_btn_open_calibrate);
+        st_btn_open_borders_settings = findViewById(R.id.st_btn_open_borders_settings);
+        st_btn_open_colors_settings = findViewById(R.id.st_btn_open_colors_settings);
+
+        context = st_tv_screenshot_folder.getContext();
 
                 // устанавливаем значения контролов
-        tvVersion.setText(BuildConfig.VERSION_NAME);
-        tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);
-        tvDataFolder.setText(GameActivity.pathToDataDir);
-        swListenLastFile.setChecked(GameActivity.isListenToNewFileInFolder);
-        swLDebugMode.setChecked(GameActivity.isDebugMode);
+        st_tv_version.setText(BuildConfig.VERSION_NAME);
+        st_tv_screenshot_folder.setText(GameActivity.pathToScreenshotDir);
+        st_tv_data_folder.setText(GameActivity.pathToDataDir);
+        st_tv_whatsapp_folder.setText(GameActivity.pathToWhatsappDir);
+        st_tv_telegram_folder.setText(GameActivity.pathToTelegramDir);
+        st_sw_get_last_screenshot.setChecked(GameActivity.isListenToNewFileInFolder);
+        st_sw_listen_data_folder.setChecked(GameActivity.isListenDataFolder);
+        st_sw_listen_whatsapp_folder.setChecked(GameActivity.isListenWhatsappFolder);
+        st_sw_listen_telegram_folder.setChecked(GameActivity.isListenTelegramFolder);
+        st_sw_debug_mode.setChecked(GameActivity.isDebugMode);
 
-        btnOpenCalibrate.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
-        btnOpenBorder.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
-        btnOpenColors.setVisibility(swLDebugMode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        st_btn_open_calibrate.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        st_btn_open_borders_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        st_btn_open_colors_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
 
         // лисенер на переключение свича "Следить за последним файлом"
-        swListenLastFile.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        st_sw_get_last_screenshot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключился
                 // изменяем проперти PREF_LISTEN_LAST_FILE значением свича
@@ -106,8 +132,67 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        st_sw_listen_data_folder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключился
+                // изменяем проперти PREF_LISTEN_LAST_FILE значением свича
+                SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(getString(R.string.pref_listen_data_folder), isChecked);
+                editor.apply();
+                GameActivity.isListenDataFolder = isChecked;
+                st_btn_select_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+            }
+        });
+
+        st_sw_listen_whatsapp_folder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключился
+                // изменяем проперти PREF_LISTEN_LAST_FILE значением свича
+                SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(getString(R.string.pref_listen_whatsapp_folder), isChecked);
+                editor.apply();
+                GameActivity.isListenWhatsappFolder = isChecked;
+                st_btn_whatsapp_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                if (isChecked) {
+                    if (GameActivity.pathToWhatsappDir.equals("")) {
+                        String fileName = Environment.getExternalStorageDirectory().getPath() + "/WhatsApp/Media/WhatsApp Documents";
+                        editor.putString(getString(R.string.pref_whatsapp_folder), fileName);
+                        editor.apply();
+                        GameActivity.pathToWhatsappDir = fileName;                     // устанавливаем переменную новым значением
+                        st_tv_whatsapp_folder.setText(GameActivity.pathToWhatsappDir);    // устанавливаем текс контрола
+                    }
+
+                }
+            }
+        });
+
+        st_sw_listen_telegram_folder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {    // если свич переключился
+                // изменяем проперти PREF_LISTEN_LAST_FILE значением свича
+                SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean(getString(R.string.pref_listen_telegram_folder), isChecked);
+                editor.apply();
+                GameActivity.isListenTelegramFolder = isChecked;
+                st_btn_telegram_data_folder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                if (isChecked) {
+                    if (GameActivity.pathToTelegramDir.equals("")) {
+                        String fileName = Environment.getExternalStorageDirectory().getPath() + "/Telegram/Telegram Documents";
+                        editor.putString(getString(R.string.pref_telegram_folder), fileName);
+                        editor.apply();
+                        GameActivity.pathToTelegramDir = fileName;                     // устанавливаем переменную новым значением
+                        st_tv_telegram_folder.setText(GameActivity.pathToTelegramDir);    // устанавливаем текс контрола
+                    }
+                }
+            }
+        });
+
+
         // лисенер на переключение свича "дебаг мод"
-        swLDebugMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        st_sw_debug_mode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {     // если свич переключился
                 // изменяем проперти PREF_DEBUG_MODE значением свича
@@ -116,9 +201,9 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.putBoolean(getString(R.string.pref_debug_mode), isChecked);
                 editor.apply();
                 GameActivity.isDebugMode = isChecked;
-                btnOpenCalibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
-                btnOpenBorder.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
-                btnOpenColors.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_open_calibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_open_borders_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_open_colors_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
             }
         });
 
@@ -143,11 +228,12 @@ public class SettingsActivity extends AppCompatActivity {
                         editor.putString(getString(R.string.pref_screenshot_folder), fileName);
                         editor.apply();
                         GameActivity.pathToScreenshotDir = fileName;                     // устанавливаем переменную новым значением
-                        tvScreenshotFolder.setText(GameActivity.pathToScreenshotDir);    // устанавливаем текс контрола
+                        st_tv_screenshot_folder.setText(GameActivity.pathToScreenshotDir);    // устанавливаем текс контрола
                     }
                 });
         fileDialog.show();
     }
+
 
     public void openCalibrate(View view) {
         Intent intent = new Intent(this, CalibrateActivity.class);   // создаем интент активики Настроек
@@ -180,9 +266,54 @@ public class SettingsActivity extends AppCompatActivity {
                         editor.putString(getString(R.string.pref_data_folder), fileName);
                         editor.apply();
                         GameActivity.pathToDataDir = fileName;                     // устанавливаем переменную новым значением
-                        tvDataFolder.setText(GameActivity.pathToDataDir);    // устанавливаем текс контрола
+                        st_tv_data_folder.setText(GameActivity.pathToDataDir);    // устанавливаем текс контрола
                     }
                 });
         fileDialog.show();
     }
+
+    public void selectWhatsappFolder(View view) {
+        // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
+        OpenFileDialog fileDialog = new OpenFileDialog(this, GameActivity.pathToWhatsappDir)
+                .setOnlyFoldersFilter()                                             // показывать только папки
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))    // икнока для папок
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))        // иконка для файлов
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    // когда диалог выбора папки вернул новое значение
+                    public void OnSelectedFile(String fileName) {
+                        // изменяем проперти PREF_SCREENSHOT_FOLDER значением, которое вернул диалог выбора папки
+                        SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(getString(R.string.pref_whatsapp_folder), fileName);
+                        editor.apply();
+                        GameActivity.pathToWhatsappDir = fileName;                     // устанавливаем переменную новым значением
+                        st_tv_whatsapp_folder.setText(GameActivity.pathToWhatsappDir);    // устанавливаем текс контрола
+                    }
+                });
+        fileDialog.show();
+    }
+
+    public void selectTelegramFolder(View view) {
+        // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов
+        OpenFileDialog fileDialog = new OpenFileDialog(this, GameActivity.pathToTelegramDir)
+                .setOnlyFoldersFilter()                                             // показывать только папки
+                .setFolderIcon(ContextCompat.getDrawable(context, R.drawable.ic_folder))    // икнока для папок
+                .setFileIcon(ContextCompat.getDrawable(context, R.drawable.ic_file))        // иконка для файлов
+                .setOpenDialogListener(new OpenFileDialog.OpenDialogListener() {
+                    @Override
+                    // когда диалог выбора папки вернул новое значение
+                    public void OnSelectedFile(String fileName) {
+                        // изменяем проперти PREF_SCREENSHOT_FOLDER значением, которое вернул диалог выбора папки
+                        SharedPreferences sharedPreferences = SettingsActivity.this.getSharedPreferences(getString(R.string.pref_preferences_file), MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(getString(R.string.pref_telegram_folder), fileName);
+                        editor.apply();
+                        GameActivity.pathToTelegramDir = fileName;                     // устанавливаем переменную новым значением
+                        st_tv_telegram_folder.setText(GameActivity.pathToTelegramDir);    // устанавливаем текс контрола
+                    }
+                });
+        fileDialog.show();
+    }
+
 }

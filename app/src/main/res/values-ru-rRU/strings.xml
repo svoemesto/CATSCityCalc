@@ -176,6 +176,18 @@
     <string name="sure_clear_tasks_cars">Вы уверены, что хотите сбросить все задания для всех машин всех пользователей банды?</string>
     <string name="clear_tasks_cars">Сбросить задачи машин</string>
     <string name="info_game_from_server">Информация об игре с сервера</string>
+    <string name="info_game_from_file">Информация об игре из файла</string>
+    <string name="select_data_folder">Выбрать папку с данными</string>
+    <string name="listen_custom_data_folder">Следить за папкой с данными</string>
+    <string name="select_custom_data_folder">Выбрать папку с данными</string>
+    <string name="listen_whatsapp_data_folder">Следить за папкой Whatsapp с данными</string>
+    <string name="select_whatsapp_data_folder">Выбрать папку Whatsapp с данными</string>
+    <string name="select_telegram_data_folder">Выбрать папку Telegram с данными</string>
+    <string name="listen_telegram_data_folder">Следить за папкой Telegram с данными</string>
+    <string name="team_game_load">Открыть файл с даными игры</string>
+    <string name="user_cars_load">Открыть файл с даными машин</string>
+    <string name="team_game_share">Поделиться данными игры</string>
+    <string name="user_cars_share">Поделиться данными машин</string>
 
 
 </resources>

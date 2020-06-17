@@ -261,17 +261,28 @@ public class GameActivity extends AppCompatActivity {
     public static File fileGameScreenshotPrevious;              // предыдущий файл скриншота
     public static File fileLastInFolderScreenshot;                        // последний файл в папке
     public static File fileLastInFolderData;                        // последний файл в папке
+    public static File fileLastInFolderWhatsapp;                        // последний файл в папке
+    public static File fileLastInFolderTelegram;                        // последний файл в папке
     public static File fileCarScreenshot = null;                // текущий файл скриншота
     public static File fileCarScreenshotPrevious;               // предыдущий файл скриншота
     public static File fileLastScreenshot;                                // последний файл в папке
     public static File fileLastData;                                // последний файл в папке
+    public static File fileLastWhatsapp;                                // последний файл в папке
+    public static File fileLastTelegram;                                // последний файл в папке
     public static File lastDataFile;                                // последний файл в папке
+    public static File lastWhatsappFile;                                // последний файл в папке
+    public static File lastTelegramFile;                                // последний файл в папке
     private NotificationManager notificationManager;            // нотификатор
     private static final int NOTIFY_ID = 1;                     // айди нотификатора
     private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
     public static String pathToScreenshotDir = "";              // путь к папке скриншотов
     public static String pathToDataDir = "";              // путь к папке скриншотов
+    public static String pathToWhatsappDir = "";              // путь к папке скриншотов
+    public static String pathToTelegramDir = "";              // путь к папке скриншотов
     public static boolean isListenToNewFileInFolder;            // флаг "Следить за новыми файлами в папке"
+    public static boolean isListenDataFolder;            // флаг "Следить за новыми файлами в папке"
+    public static boolean isListenWhatsappFolder;            // флаг "Следить за новыми файлами в папке"
+    public static boolean isListenTelegramFolder;            // флаг "Следить за новыми файлами в папке"
     public static boolean isAllFieldsCorrect;                   // флаг "Все поля заполнены правильно"
     public static int calibrateX;                              // калибровка
     public static int calibrateY;                              // калибровка
@@ -1116,7 +1127,12 @@ public class GameActivity extends AppCompatActivity {
 
         pathToScreenshotDir = sharedPreferences.getString(getString(R.string.pref_screenshot_folder),sharedPreferences.getString(getString(R.string.pref_def_screenshot_folder),""));
         pathToDataDir = sharedPreferences.getString(getString(R.string.pref_data_folder),sharedPreferences.getString(getString(R.string.pref_def_data_folder),""));
+        pathToWhatsappDir = sharedPreferences.getString(getString(R.string.pref_whatsapp_folder),sharedPreferences.getString(getString(R.string.pref_def_whatsapp_folder),""));
+        pathToTelegramDir = sharedPreferences.getString(getString(R.string.pref_telegram_folder),sharedPreferences.getString(getString(R.string.pref_def_telegram_folder),""));
         isListenToNewFileInFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_last_file),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_last_file),false));
+        isListenDataFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_data_folder),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_data_folder),false));
+        isListenWhatsappFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_whatsapp_folder),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_whatsapp_folder),false));
+        isListenTelegramFolder = sharedPreferences.getBoolean(getString(R.string.pref_listen_telegram_folder),sharedPreferences.getBoolean(getString(R.string.pref_def_listen_telegram_folder),false));
         isDebugMode = sharedPreferences.getBoolean(getString(R.string.pref_debug_mode),sharedPreferences.getBoolean(getString(R.string.pref_def_debug_mode),false));
         calibrateX = sharedPreferences.getInt(getString(R.string.pref_calibrate_x),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_x),0));
         calibrateY = sharedPreferences.getInt(getString(R.string.pref_calibrate_y),sharedPreferences.getInt(getString(R.string.pref_def_calibrate_y),0));
@@ -1232,7 +1248,87 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    private File getLastFileInWhatsappFolder(String pathToFolder) {
 
+        String logMsgPref = "getLastFileInDataFolder: ";
+
+        File temp = null;           // временный файл
+        File dir = new File(pathToFolder); // папка
+        File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".citycalcteamgame") || name.toLowerCase().endsWith(".citycalccars");  // фильтр по citycalcteamgame и citycalccars
+            }
+        });
+        List<File> listFiles = new ArrayList<>(); // лист
+        if (files != null) {    // если файлы в папке есть
+            for (File file : files) {   // цикл по файлам
+                listFiles.add(file);    // добавляем файл в лист
+            }
+        }
+
+        if  (listFiles.size() > 0) {    // если в листе есть файлы
+            long maxLastModified = 0;   // максимальная дата (ноль для начала)
+            for (File file : listFiles) {   // цикл по листу
+                if (LastModified.getLastModified(file).getTime() > maxLastModified) {    // если дата создания файла из листа больше максимальной
+                    maxLastModified = LastModified.getLastModified(file).getTime();      // максимальная дата = дате файла из листа
+                    temp = file;    // временный файл равен файлу из листа
+                }
+            }
+
+            if (temp != null) { // если найден самый свежий файл
+                fileLastWhatsapp = temp;
+                if (!temp.equals(fileLastInFolderWhatsapp)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                    fileLastInFolderWhatsapp = temp;
+                }
+            }
+        }
+
+        return temp;
+
+    }
+
+
+    private File getLastFileInTelegramFolder(String pathToFolder) {
+
+        String logMsgPref = "getLastFileInDataFolder: ";
+
+        File temp = null;           // временный файл
+        File dir = new File(pathToFolder); // папка
+        File[] files = dir.listFiles(new FilenameFilter() { // присок файлов в папке по фильтру
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".citycalcteamgame") || name.toLowerCase().endsWith(".citycalccars");  // фильтр по citycalcteamgame и citycalccars
+            }
+        });
+        List<File> listFiles = new ArrayList<>(); // лист
+        if (files != null) {    // если файлы в папке есть
+            for (File file : files) {   // цикл по файлам
+                listFiles.add(file);    // добавляем файл в лист
+            }
+        }
+
+        if  (listFiles.size() > 0) {    // если в листе есть файлы
+            long maxLastModified = 0;   // максимальная дата (ноль для начала)
+            for (File file : listFiles) {   // цикл по листу
+                if (LastModified.getLastModified(file).getTime() > maxLastModified) {    // если дата создания файла из листа больше максимальной
+                    maxLastModified = LastModified.getLastModified(file).getTime();      // максимальная дата = дате файла из листа
+                    temp = file;    // временный файл равен файлу из листа
+                }
+            }
+
+            if (temp != null) { // если найден самый свежий файл
+                fileLastTelegram = temp;
+                if (!temp.equals(fileLastInFolderTelegram)) {   // если найденный файл не совпадает с раенее найденным "последним файлом"
+                    fileLastInFolderTelegram = temp;
+                }
+            }
+        }
+
+        return temp;
+
+    }
+    
     /**
      * Создание канала нотификации
      */
@@ -1300,6 +1396,10 @@ public class GameActivity extends AppCompatActivity {
             // пунты меню "Настройка" и "Открыть скриншот" видны в любом случае
             menu_main_open_settings.setVisible(true);
             menu_main_open_screenshot.setVisible(true);
+
+            menu_main_team_game_load.setVisible(isDebugMode);
+            menu_main_user_cars_load.setVisible(isDebugMode);
+
             String userText = "";
             if (fbUser == null) { // юзер не залогинился
 
@@ -1432,6 +1532,8 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_create.setVisible(false);
                                                             menu_main_team_leave.setVisible(true);
                                                             menu_main_team_find.setVisible(false);
+                                                            menu_main_team_game_share.setVisible(true);
+                                                            menu_main_user_cars_share.setVisible(true);
 
                                                             // "слушаем" запись о текущей игре
                                                             final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
@@ -1658,6 +1760,8 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_create.setVisible(true);
                                                             menu_main_team_leave.setVisible(false);
                                                             menu_main_team_find.setVisible(true);
+                                                            menu_main_team_game_share.setVisible(false);
+                                                            menu_main_user_cars_share.setVisible(false);
                                                         } // кесли запрос обработался удачно
                                                     } // onComplete
                                                 }); // query.get().addOnCompleteListener
@@ -1689,6 +1793,8 @@ public class GameActivity extends AppCompatActivity {
                                             menu_main_team_create.setVisible(true);
                                             menu_main_team_leave.setVisible(false);
                                             menu_main_team_find.setVisible(true);
+                                            menu_main_team_game_share.setVisible(false);
+                                            menu_main_user_cars_share.setVisible(false);
                                         }
                                     });
 
@@ -2594,6 +2700,28 @@ public class GameActivity extends AppCompatActivity {
                         }
 
 
+                        
+                    } else {
+                        if (fileGameScreenshot == null) {
+                            File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
+                            fileLastScreenshot = lastScreenshot;
+                            if (lastScreenshot.exists()) {
+                                fileGameScreenshot = lastScreenshot;
+                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
+                                if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                    mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                    loadDataToViews(true);
+                                } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
+                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+                                }
+                            }
+                        }
+
+                    }
+
+                    if (isListenDataFolder) {
                         File tmpFileData = getLastFileInDataFolder(pathToDataDir);    // получаем последний файл из папки
                         if (tmpFileData != null) {  // если он не пустой
 
@@ -2684,25 +2812,193 @@ public class GameActivity extends AppCompatActivity {
 
                         }
 
-                    } else {
-                        if (fileGameScreenshot == null) {
-                            File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
-                            fileLastScreenshot = lastScreenshot;
-                            if (lastScreenshot.exists()) {
-                                fileGameScreenshot = lastScreenshot;
-                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, context, mainUserNIC, mainUserUID, mainTeamID);
-                                if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                    mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                    loadDataToViews(true);
-                                } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
-                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
-                                }
-                            }
-                        }
-
                     }
+
+
+                    if (isListenWhatsappFolder) {
+                        File tmpFileWhatsapp = getLastFileInWhatsappFolder(pathToWhatsappDir);    // получаем последний файл из папки
+                        if (tmpFileWhatsapp != null) {  // если он не пустой
+
+                            if (lastWhatsappFile == null || !lastWhatsappFile.equals(tmpFileWhatsapp)) {
+                                lastWhatsappFile = tmpFileWhatsapp;
+
+                                if (tmpFileWhatsapp.getAbsolutePath().endsWith(".citycalcteamgame")) {
+
+                                    if (mainDbTeamUser != null) {
+
+                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileWhatsapp, mainDbTeamUser.getTeamID());
+
+                                        // тут файл можно уже удалить
+//                                    try {
+//                                        tmpFileData.delete();
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+
+                                        if (loadedDbTeamGame != null) {
+                                            if (mainCityCalc != null) { // если текущая игра есть
+                                                if (mainCCAGame != null) {
+//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
+
+                                                        try {
+                                                            String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                loadDataToViews(true);
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+
+                                                }
+                                            }
+
+                                        }
+
+
+                                    }
+
+
+                                } else if (tmpFileWhatsapp.getAbsolutePath().endsWith(".citycalccars")) {
+
+                                    if (mainDbTeamUser != null) {
+                                        String fileName = tmpFileWhatsapp.getAbsolutePath();
+                                        List<Car> listCars = Car.loadListFromFile(fileName);
+                                        if (listCars != null) {
+                                            if (listCars.size() > 0) {
+                                                String userUID = listCars.get(0).getUserUID();
+                                                Car.saveList(listCars, userUID);
+
+                                                // тут файл можно уже удалить
+//                                            try {
+//                                                tmpFileData.delete();
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+
+                                            }
+                                        }
+                                    }
+
+                                }
+                                
+                            }
+                            
+                        }
+                    }
+
+
+                    if (isListenTelegramFolder) {
+                        File tmpFileTelegram = getLastFileInTelegramFolder(pathToTelegramDir);    // получаем последний файл из папки
+                        if (tmpFileTelegram != null) {  // если он не пустой
+
+                            if (lastTelegramFile == null || !lastTelegramFile.equals(tmpFileTelegram)) {
+                                lastTelegramFile = tmpFileTelegram;
+
+                                if (tmpFileTelegram.getAbsolutePath().endsWith(".citycalcteamgame")) {
+
+                                    if (mainDbTeamUser != null) {
+
+                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileTelegram, mainDbTeamUser.getTeamID());
+
+                                        // тут файл можно уже удалить
+//                                    try {
+//                                        tmpFileData.delete();
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+
+                                        if (loadedDbTeamGame != null) {
+                                            if (mainCityCalc != null) { // если текущая игра есть
+                                                if (mainCCAGame != null) {
+//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
+
+                                                        try {
+                                                            String fileNameScreenshot = pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                loadDataToViews(true);
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                    }
+
+                                                }
+                                            }
+
+                                        }
+
+
+                                    }
+
+
+                                } else if (tmpFileTelegram.getAbsolutePath().endsWith(".citycalccars")) {
+
+                                    if (mainDbTeamUser != null) {
+                                        String fileName = tmpFileTelegram.getAbsolutePath();
+                                        List<Car> listCars = Car.loadListFromFile(fileName);
+                                        if (listCars != null) {
+                                            if (listCars.size() > 0) {
+                                                String userUID = listCars.get(0).getUserUID();
+                                                Car.saveList(listCars, userUID);
+
+                                                // тут файл можно уже удалить
+//                                            try {
+//                                                tmpFileData.delete();
+//                                            } catch (Exception e) {
+//                                                e.printStackTrace();
+//                                            }
+
+                                            }
+                                        }
+                                    }
+
+                                }
+
+                            }
+
+                        }
+                    }
+
+
+
+
 
                 }
             });

@@ -6,54 +6,105 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_version"
+        android:id="@+id/st_tv_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-
-    <Button
-        android:id="@+id/btn_select_screenshot_folder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/set_screenshot_folder"
-        android:onClick="selectScreenshotFolder"
-        />
-    <TextView
-        android:id="@+id/tv_screenshotfolder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_select_data_folder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/select_data_folder"
-        android:onClick="selectDataFolder"
-        />
-    <TextView
-        android:id="@+id/tv_datafolder"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <Switch
-        android:id="@+id/sw_get_last_screenshot"
+        android:id="@+id/st_sw_get_last_screenshot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/sett_listen_files_in_screenshot_folder"
         android:defaultValue="false"/>
 
-    <Switch
-        android:id="@+id/sw_debug_mode"
+    <TextView
+        android:id="@+id/st_tv_screenshot_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/st_btn_select_screenshot_folder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="@string/set_screenshot_folder"
+        android:onClick="selectScreenshotFolder"
+        />
+
+
+
+    <Switch
+        android:id="@+id/st_sw_listen_data_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/listen_custom_data_folder"
+        android:defaultValue="false"/>
+    <TextView
+        android:id="@+id/st_tv_data_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/st_btn_select_data_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_custom_data_folder"
+        android:onClick="selectDataFolder"
+        />
+
+
+    <Switch
+        android:id="@+id/st_sw_listen_whatsapp_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/listen_whatsapp_data_folder"
+        android:defaultValue="false"/>
+    <TextView
+        android:id="@+id/st_tv_telegram_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/st_btn_whatsapp_data_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_whatsapp_data_folder"
+        android:onClick="selectWhatsappFolder"
+        />
+
+
+
+    <Switch
+        android:id="@+id/st_sw_listen_telegram_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/listen_telegram_data_folder"
+        android:defaultValue="false"/>
+    <TextView
+        android:id="@+id/st_tv_whatsapp_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/st_btn_telegram_data_folder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_telegram_data_folder"
+        android:onClick="selectTelegramFolder"
+        />
+
+
+
+    <Switch
+        android:id="@+id/st_sw_debug_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="@string/debug_mode"
         android:defaultValue="false"/>
 
     <Button
-        android:id="@+id/btn_open_calibrate"
+        android:id="@+id/st_btn_open_calibrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -62,7 +113,7 @@
         />
 
     <Button
-        android:id="@+id/btn_open_borders_settings"
+        android:id="@+id/st_btn_open_borders_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sett_borders"
@@ -70,7 +121,7 @@
         />
 
     <Button
-        android:id="@+id/btn_open_colors_settings"
+        android:id="@+id/st_btn_open_colors_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sett_colors"
