@@ -1740,7 +1740,7 @@ public class GameActivity extends AppCompatActivity {
                         if (loadedDbTeamGame != null) {
                             if (mainCityCalc != null) { // если текущая игра есть
                                 if (mainCCAGame != null) {
-                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
                                         if (loadedDbTeamGame.getBytesScreenshot() != null) {
 
@@ -1775,7 +1775,7 @@ public class GameActivity extends AppCompatActivity {
 //                                        // выводим тост и обновляем контролы в активити
 //                                        Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
 //                                        loadDataToViews(true);
-                                    }
+//                                    }
                                 }
                             }
 
