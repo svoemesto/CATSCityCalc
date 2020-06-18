@@ -417,6 +417,116 @@ public class CCAGame extends CityCalcArea {
 
     }
 
+    public String getSlots_blt_our_toView() {
+        int countCarsToOwn = slots_blt / 2 + 1;
+        if (slots_blt_our >= countCarsToOwn) {
+            return String.valueOf(slots_blt_our);
+        } else {
+            return slots_blt_our + "/" + (countCarsToOwn - slots_blt_our);
+        }
+    }
+
+    public String getSlots_blc_our_toView() {
+        int countCarsToOwn = slots_blc / 2 + 1;
+        if (slots_blc_our >= countCarsToOwn) {
+            return String.valueOf(slots_blc_our);
+        } else {
+            return slots_blc_our + "/" + (countCarsToOwn - slots_blc_our);
+        }
+    }
+
+    public String getSlots_blb_our_toView() {
+        int countCarsToOwn = slots_blb / 2 + 1;
+        if (slots_blb_our >= countCarsToOwn) {
+            return String.valueOf(slots_blb_our);
+        } else {
+            return slots_blb_our + "/" + (countCarsToOwn - slots_blb_our);
+        }
+    }
+
+    public String getSlots_brt_our_toView() {
+        int countCarsToOwn = slots_brt / 2 + 1;
+        if (slots_brt_our >= countCarsToOwn) {
+            return String.valueOf(slots_brt_our);
+        } else {
+            return slots_brt_our + "/" + (countCarsToOwn - slots_brt_our);
+        }
+    }
+
+    public String getSlots_brc_our_toView() {
+        int countCarsToOwn = slots_brc / 2 + 1;
+        if (slots_brc_our >= countCarsToOwn) {
+            return String.valueOf(slots_brc_our);
+        } else {
+            return slots_brc_our + "/" + (countCarsToOwn - slots_brc_our);
+        }
+    }
+
+    public String getSlots_brb_our_toView() {
+        int countCarsToOwn = slots_brb / 2 + 1;
+        if (slots_brb_our >= countCarsToOwn) {
+            return String.valueOf(slots_brb_our);
+        } else {
+            return slots_brb_our + "/" + (countCarsToOwn - slots_brb_our);
+        }
+    }
+
+
+    public String getSlots_blt_enemy_toView() {
+        int countCarsToOwn = slots_blt / 2 + 1;
+        if (slots_blt_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_blt_enemy);
+        } else {
+            return slots_blt_enemy + "/" + (countCarsToOwn - slots_blt_enemy);
+        }
+    }
+
+    public String getSlots_blc_enemy_toView() {
+        int countCarsToOwn = slots_blc / 2 + 1;
+        if (slots_blc_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_blc_enemy);
+        } else {
+            return slots_blc_enemy + "/" + (countCarsToOwn - slots_blc_enemy);
+        }
+    }
+
+    public String getSlots_blb_enemy_toView() {
+        int countCarsToOwn = slots_blb / 2 + 1;
+        if (slots_blb_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_blb_enemy);
+        } else {
+            return slots_blb_enemy + "/" + (countCarsToOwn - slots_blb_enemy);
+        }
+    }
+
+    public String getSlots_brt_enemy_toView() {
+        int countCarsToOwn = slots_brt / 2 + 1;
+        if (slots_brt_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_brt_enemy);
+        } else {
+            return slots_brt_enemy + "/" + (countCarsToOwn - slots_brt_enemy);
+        }
+    }
+
+    public String getSlots_brc_enemy_toView() {
+        int countCarsToOwn = slots_brc / 2 + 1;
+        if (slots_brc_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_brc_enemy);
+        } else {
+            return slots_brc_enemy + "/" + (countCarsToOwn - slots_brc_enemy);
+        }
+    }
+
+    public String getSlots_brb_enemy_toView() {
+        int countCarsToOwn = slots_brb / 2 + 1;
+        if (slots_brb_enemy >= countCarsToOwn) {
+            return String.valueOf(slots_brb_enemy);
+        } else {
+            return slots_brb_enemy + "/" + (countCarsToOwn - slots_brb_enemy);
+        }
+    }
+
+
     public String getUserUID() {
         return userUID;
     }

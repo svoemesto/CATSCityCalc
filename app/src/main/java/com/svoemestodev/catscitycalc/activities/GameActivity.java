@@ -123,6 +123,7 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_enemy_end_time;      // время до конца игры для команды противника
     
     // BLT views
+    ImageView ga_iv_blt_icon;           // blt - иконка здания (картинка)
     ImageView ga_iv_blt_name;           // blt - название здания (картинка)
     TextView ga_tv_blt_x2;              // blt - х2
     TextView ga_tv_blt_points;          // blt - очки
@@ -130,13 +131,10 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_blt_slots_our;       // blt - наши слоты
     TextView ga_tv_blt_slots_empty;     // blt - слоты противника
     TextView ga_tv_blt_slots_enemy;     // blt - пустые слоты
-    ImageView ga_iv_blt_car_black;      // blt - картинка машинки (черная)
-    ImageView ga_iv_blt_car_our;        // blt - картинка машинки (синяя)
-    ImageView ga_iv_blt_car_empty;      // blt - картинка машинки (серая)
-    ImageView ga_iv_blt_car_enemy;      // blt - картинка машинки (красная)
     ImageView ga_iv_blt_progress;       // blt - прогресс
 
     // BLC views
+    ImageView ga_iv_blc_icon;           // blc - иконка здания (картинка)
     ImageView ga_iv_blc_name;           // blc - название здания (картинка)
     TextView ga_tv_blc_x2;              // blc - х2
     TextView ga_tv_blc_points;          // blc - очки
@@ -144,13 +142,10 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_blc_slots_our;       // blc - наши слоты
     TextView ga_tv_blc_slots_empty;     // blc - слоты противника
     TextView ga_tv_blc_slots_enemy;     // blc - пустые слоты
-    ImageView ga_iv_blc_car_black;      // blc - картинка машинки (черная)
-    ImageView ga_iv_blc_car_our;        // blc - картинка машинки (синяя)
-    ImageView ga_iv_blc_car_empty;      // blc - картинка машинки (серая)
-    ImageView ga_iv_blc_car_enemy;      // blc - картинка машинки (красная)
     ImageView ga_iv_blc_progress;       // blc - прогресс
 
     // BLB views
+    ImageView ga_iv_blb_icon;           // blb - иконка здания (картинка)
     ImageView ga_iv_blb_name;           // blb - название здания (картинка)
     TextView ga_tv_blb_x2;              // blb - х2
     TextView ga_tv_blb_points;          // blb - очки
@@ -158,13 +153,10 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_blb_slots_our;       // blb - наши слоты
     TextView ga_tv_blb_slots_empty;     // blb - слоты противника
     TextView ga_tv_blb_slots_enemy;     // blb - пустые слоты
-    ImageView ga_iv_blb_car_black;      // blb - картинка машинки (черная)
-    ImageView ga_iv_blb_car_our;        // blb - картинка машинки (синяя)
-    ImageView ga_iv_blb_car_empty;      // blb - картинка машинки (серая)
-    ImageView ga_iv_blb_car_enemy;      // blb - картинка машинки (красная)
     ImageView ga_iv_blb_progress;       // blb - прогресс
 
     // BRT views
+    ImageView ga_iv_brt_icon;           // brt - иконка здания (картинка)
     ImageView ga_iv_brt_name;           // brt - название здания (картинка)
     TextView ga_tv_brt_x2;              // brt - х2
     TextView ga_tv_brt_points;          // brt - очки
@@ -172,13 +164,10 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_brt_slots_our;       // brt - наши слоты
     TextView ga_tv_brt_slots_empty;     // brt - слоты противника
     TextView ga_tv_brt_slots_enemy;     // brt - пустые слоты
-    ImageView ga_iv_brt_car_black;      // brt - картинка машинки (черная)
-    ImageView ga_iv_brt_car_our;        // brt - картинка машинки (синяя)
-    ImageView ga_iv_brt_car_empty;      // brt - картинка машинки (серая)
-    ImageView ga_iv_brt_car_enemy;      // brt - картинка машинки (красная)
     ImageView ga_iv_brt_progress;       // brt - прогресс
 
     // BRC views
+    ImageView ga_iv_brc_icon;           // brc - иконка здания (картинка)
     ImageView ga_iv_brc_name;           // brc - название здания (картинка)
     TextView ga_tv_brc_x2;              // brc - х2
     TextView ga_tv_brc_points;          // brc - очки
@@ -186,13 +175,10 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_brc_slots_our;       // brc - наши слоты
     TextView ga_tv_brc_slots_empty;     // brc - слоты противника
     TextView ga_tv_brc_slots_enemy;     // brc - пустые слоты
-    ImageView ga_iv_brc_car_black;      // brc - картинка машинки (черная)
-    ImageView ga_iv_brc_car_our;        // brc - картинка машинки (синяя)
-    ImageView ga_iv_brc_car_empty;      // brc - картинка машинки (серая)
-    ImageView ga_iv_brc_car_enemy;      // brc - картинка машинки (красная)
     ImageView ga_iv_brc_progress;       // brc - прогресс
 
     // BRB views
+    ImageView ga_iv_brb_icon;           // brb - иконка здания (картинка)
     ImageView ga_iv_brb_name;           // brb - название здания (картинка)
     TextView ga_tv_brb_x2;              // brb - х2
     TextView ga_tv_brb_points;          // brb - очки
@@ -200,10 +186,6 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_brb_slots_our;       // brb - наши слоты
     TextView ga_tv_brb_slots_empty;     // brb - слоты противника
     TextView ga_tv_brb_slots_enemy;     // brb - пустые слоты
-    ImageView ga_iv_brb_car_black;      // brb - картинка машинки (черная)
-    ImageView ga_iv_brb_car_our;        // brb - картинка машинки (синяя)
-    ImageView ga_iv_brb_car_empty;      // brb - картинка машинки (серая)
-    ImageView ga_iv_brb_car_enemy;      // brb - картинка машинки (красная)
     ImageView ga_iv_brb_progress;       // blt - прогресс
 
     // Рекламный блок
@@ -219,37 +201,22 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_game_slots_enemy;    // слотов в игре противника
 
     ImageButton ga_ib_car1;             // кнопка-картинка 1-й машинки
-    TextView ga_tv_car1_number;         // номер 1-й машинки
+    ImageView ga_iv_car1_building_icon;
+    ImageView ga_iv_car1_task_icon;             
     TextView ga_tv_car1_name;           // название 1-й машинки
-    ImageView ga_iv_car1_health;        // картинка "здоровье" для 1-й машинки
-    TextView ga_tv_car1_health;         // здоровье 1-й машинки
-    ImageView ga_iv_car1_shield;        // картинка "щит" 1-й машинки
-    TextView ga_tv_car1_shield;         // щит 1-й машинки
     TextView ga_tv_car1_repair;         // время ремонта 1-й машинки
-    ImageView ga_iv_car1_building;      // картинка названия здания 1-й машинки
-    ImageView ga_iv_car1_task;          // картинка названия здания задания 1-й машинки
 
     ImageButton ga_ib_car2;             // кнопка-картинка 2-й машинки
-    TextView ga_tv_car2_number;         // номер 2-й машинки
+    ImageView ga_iv_car2_building_icon;
+    ImageView ga_iv_car2_task_icon;
     TextView ga_tv_car2_name;           // название 2-й машинки
-    ImageView ga_iv_car2_health;        // картинка "здоровье" для 2-й машинки
-    TextView ga_tv_car2_health;         // здоровье 2-й машинки
-    ImageView ga_iv_car2_shield;        // картинка "щит" 2-й машинки
-    TextView ga_tv_car2_shield;         // щит 2-й машинки
     TextView ga_tv_car2_repair;         // время ремонта 2-й машинки
-    ImageView ga_iv_car2_building;      // картинка названия здания 2-й машинки
-    ImageView ga_iv_car2_task;          // картинка названия здания задания 2-й машинки
 
     ImageButton ga_ib_car3;             // кнопка-картинка 3-й машинки
-    TextView ga_tv_car3_number;         // номер 3-й машинки
+    ImageView ga_iv_car3_building_icon;
+    ImageView ga_iv_car3_task_icon;
     TextView ga_tv_car3_name;           // название 3-й машинки
-    ImageView ga_iv_car3_health;        // картинка "здоровье" для 3-й машинки
-    TextView ga_tv_car3_health;         // здоровье 3-й машинки
-    ImageView ga_iv_car3_shield;        // картинка "щит" 3-й машинки
-    TextView ga_tv_car3_shield;         // щит 3-й машинки
     TextView ga_tv_car3_repair;         // время ремонта 3-й машинки
-    ImageView ga_iv_car3_building;      // картинка названия здания 3-й машинки
-    ImageView ga_iv_car3_task;          // картинка названия здания задания 3-й машинки
     
     Button ga_bt_strategy;              // кнопка "Стратегичское планирование"
     
@@ -471,6 +438,7 @@ public class GameActivity extends AppCompatActivity {
 
             int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
 
+            ga_iv_blt_icon.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_name.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blt_x2.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blt_points.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
@@ -478,10 +446,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_blt_slots_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blt_slots_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blt_slots_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_car_black.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_car_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_car_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_car_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
@@ -499,9 +463,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_blt_our(), ccaGame.getSlots_blt_empty(), ccaGame.getSlots_blt_enemy()}));
 
                 ga_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
-                ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our()));
+                ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our_toView()));
                 ga_tv_blt_slots_empty.setText(String.valueOf(ccaGame.getSlots_blt_empty()));
-                ga_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy()));
+                ga_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy_toView()));
 
                 slots += ccaGame.getSlots_blt();
                 slots_our += ccaGame.getSlots_blt_our();
@@ -511,12 +475,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_blt()) {
                     ga_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
                     ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blt()) {
                     ga_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
                     ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
                 } else if (ccaGame.isBuildingIsEmpty_blt()) {
                     ga_tv_blt_points.setText("");
                     ga_tv_blt_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
                 }
                 if (ccaGame.isX2_blt()) {
                     ga_tv_blt_x2.setText("X2");
@@ -532,6 +499,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
+            ga_iv_blc_icon.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_name.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blc_x2.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blc_points.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
@@ -539,10 +507,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_blc_slots_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blc_slots_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blc_slots_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_car_black.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_car_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_car_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_car_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blc()) {
@@ -553,9 +517,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
 
                 ga_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
-                ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our()));
+                ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our_toView()));
                 ga_tv_blc_slots_empty.setText(String.valueOf(ccaGame.getSlots_blc_empty()));
-                ga_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy()));
+                ga_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy_toView()));
 
                 slots += ccaGame.getSlots_blc();
                 slots_our += ccaGame.getSlots_blc_our();
@@ -565,12 +529,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_blc()) {
                     ga_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
                     ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blc()) {
                     ga_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
                     ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
                 } else if (ccaGame.isBuildingIsEmpty_blc()) {
                     ga_tv_blc_points.setText("");
                     ga_tv_blc_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
                 }
                 if (ccaGame.isX2_blc()) {
                     ga_tv_blc_x2.setText("X2");
@@ -587,6 +554,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
 
+            ga_iv_blb_icon.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_name.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blb_x2.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blb_points.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
@@ -594,10 +562,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_blb_slots_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blb_slots_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_blb_slots_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_car_black.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_car_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_car_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_car_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blb()) {
@@ -609,9 +573,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_blb_our(), ccaGame.getSlots_blb_empty(), ccaGame.getSlots_blb_enemy()}));
 
                 ga_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
-                ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our()));
+                ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our_toView()));
                 ga_tv_blb_slots_empty.setText(String.valueOf(ccaGame.getSlots_blb_empty()));
-                ga_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy()));
+                ga_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy_toView()));
 
                 slots += ccaGame.getSlots_blb();
                 slots_our += ccaGame.getSlots_blb_our();
@@ -621,12 +585,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_blb()) {
                     ga_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
                     ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blb()) {
                     ga_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
                     ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
                 } else if (ccaGame.isBuildingIsEmpty_blb()) {
                     ga_tv_blb_points.setText("");
                     ga_tv_blb_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
                 }
                 if (ccaGame.isX2_blb()) {
                     ga_tv_blb_x2.setText("X2");
@@ -643,6 +610,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
 
+            ga_iv_brt_icon.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_name.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brt_x2.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brt_points.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
@@ -650,10 +618,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_brt_slots_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brt_slots_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brt_slots_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_car_black.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_car_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_car_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_car_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brt()) {
@@ -665,9 +629,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_brt_our(), ccaGame.getSlots_brt_empty(), ccaGame.getSlots_brt_enemy()}));
 
                 ga_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
-                ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our()));
+                ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our_toView()));
                 ga_tv_brt_slots_empty.setText(String.valueOf(ccaGame.getSlots_brt_empty()));
-                ga_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy()));
+                ga_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy_toView()));
 
                 slots += ccaGame.getSlots_brt();
                 slots_our += ccaGame.getSlots_brt_our();
@@ -677,12 +641,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_brt()) {
                     ga_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
                     ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brt()) {
                     ga_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
                     ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
                 } else if (ccaGame.isBuildingIsEmpty_brt()) {
                     ga_tv_brt_points.setText("");
                     ga_tv_brt_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
                 }
                 if (ccaGame.isX2_brt()) {
                     ga_tv_brt_x2.setText("X2");
@@ -698,6 +665,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
 
+            ga_iv_brc_icon.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_name.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brc_x2.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brc_points.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
@@ -705,10 +673,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_brc_slots_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brc_slots_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brc_slots_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_car_black.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_car_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_car_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_car_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brc()) {
@@ -720,9 +684,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_brc_our(), ccaGame.getSlots_brc_empty(), ccaGame.getSlots_brc_enemy()}));
 
                 ga_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
-                ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our()));
+                ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our_toView()));
                 ga_tv_brc_slots_empty.setText(String.valueOf(ccaGame.getSlots_brc_empty()));
-                ga_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy()));
+                ga_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy_toView()));
 
                 slots += ccaGame.getSlots_brc();
                 slots_our += ccaGame.getSlots_brc_our();
@@ -732,12 +696,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_brc()) {
                     ga_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
                     ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brc()) {
                     ga_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
                     ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
                 } else if (ccaGame.isBuildingIsEmpty_brc()) {
                     ga_tv_brc_points.setText("");
                     ga_tv_brc_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
                 }
                 if (ccaGame.isX2_brc()) {
                     ga_tv_brc_x2.setText("X2");
@@ -754,6 +721,7 @@ public class GameActivity extends AppCompatActivity {
             }
 
 
+            ga_iv_brb_icon.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_name.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brb_x2.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brb_points.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
@@ -761,10 +729,6 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_brb_slots_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brb_slots_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_tv_brb_slots_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_car_black.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_car_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_car_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_car_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
             ga_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brb()) {
@@ -776,9 +740,9 @@ public class GameActivity extends AppCompatActivity {
                         new int[]{ccaGame.getSlots_brb_our(), ccaGame.getSlots_brb_empty(), ccaGame.getSlots_brb_enemy()}));
 
                 ga_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
-                ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our()));
+                ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our_toView()));
                 ga_tv_brb_slots_empty.setText(String.valueOf(ccaGame.getSlots_brb_empty()));
-                ga_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy()));
+                ga_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy_toView()));
 
                 slots += ccaGame.getSlots_brb();
                 slots_our += ccaGame.getSlots_brb_our();
@@ -788,12 +752,15 @@ public class GameActivity extends AppCompatActivity {
                 if (ccaGame.isBuildingIsOur_brb()) {
                     ga_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
                     ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brb()) {
                     ga_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
                     ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
                 } else if (ccaGame.isBuildingIsEmpty_brb()) {
                     ga_tv_brb_points.setText("");
                     ga_tv_brb_points.setBackgroundColor(0xFFFFFFFF);
+                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
                 }
                 if (ccaGame.isX2_brb()) {
                     ga_tv_brb_x2.setText("X2");
@@ -875,6 +842,7 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_enemy_end_time = findViewById(R.id.ga_tv_enemy_end_time);
 
         // BLT views
+        ga_iv_blt_icon = findViewById(R.id.ga_iv_blt_icon);
         ga_iv_blt_name = findViewById(R.id.ga_iv_blt_name);
         ga_tv_blt_x2 = findViewById(R.id.ga_tv_blt_x2);
         ga_tv_blt_points = findViewById(R.id.ga_tv_blt_points);
@@ -882,13 +850,10 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_blt_slots_our = findViewById(R.id.ga_tv_blt_slots_our);
         ga_tv_blt_slots_empty = findViewById(R.id.ga_tv_blt_slots_empty);
         ga_tv_blt_slots_enemy = findViewById(R.id.ga_tv_blt_slots_enemy);
-        ga_iv_blt_car_black = findViewById(R.id.ga_iv_blt_car_black);
-        ga_iv_blt_car_our = findViewById(R.id.ga_iv_blt_car_our);
-        ga_iv_blt_car_empty = findViewById(R.id.ga_iv_blt_car_empty);
-        ga_iv_blt_car_enemy = findViewById(R.id.ga_iv_blt_car_enemy);
         ga_iv_blt_progress = findViewById(R.id.ga_iv_blt_progress);
 
         // BLC views
+        ga_iv_blc_icon = findViewById(R.id.ga_iv_blc_icon);
         ga_iv_blc_name = findViewById(R.id.ga_iv_blc_name);
         ga_tv_blc_x2 = findViewById(R.id.ga_tv_blc_x2);
         ga_tv_blc_points = findViewById(R.id.ga_tv_blc_points);
@@ -896,13 +861,10 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_blc_slots_our = findViewById(R.id.ga_tv_blc_slots_our);
         ga_tv_blc_slots_empty = findViewById(R.id.ga_tv_blc_slots_empty);
         ga_tv_blc_slots_enemy = findViewById(R.id.ga_tv_blc_slots_enemy);
-        ga_iv_blc_car_black = findViewById(R.id.ga_iv_blc_car_black);
-        ga_iv_blc_car_our = findViewById(R.id.ga_iv_blc_car_our);
-        ga_iv_blc_car_empty = findViewById(R.id.ga_iv_blc_car_empty);
-        ga_iv_blc_car_enemy = findViewById(R.id.ga_iv_blc_car_enemy);
         ga_iv_blc_progress = findViewById(R.id.ga_iv_blc_progress);
 
         // BLB views
+        ga_iv_blb_icon = findViewById(R.id.ga_iv_blb_icon);
         ga_iv_blb_name = findViewById(R.id.ga_iv_blb_name);
         ga_tv_blb_x2 = findViewById(R.id.ga_tv_blb_x2);
         ga_tv_blb_points = findViewById(R.id.ga_tv_blb_points);
@@ -910,13 +872,10 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_blb_slots_our = findViewById(R.id.ga_tv_blb_slots_our);
         ga_tv_blb_slots_empty = findViewById(R.id.ga_tv_blb_slots_empty);
         ga_tv_blb_slots_enemy = findViewById(R.id.ga_tv_blb_slots_enemy);
-        ga_iv_blb_car_black = findViewById(R.id.ga_iv_blb_car_black);
-        ga_iv_blb_car_our = findViewById(R.id.ga_iv_blb_car_our);
-        ga_iv_blb_car_empty = findViewById(R.id.ga_iv_blb_car_empty);
-        ga_iv_blb_car_enemy = findViewById(R.id.ga_iv_blb_car_enemy);
         ga_iv_blb_progress = findViewById(R.id.ga_iv_blb_progress);
 
         // BRT views
+        ga_iv_brt_icon = findViewById(R.id.ga_iv_brt_icon);
         ga_iv_brt_name = findViewById(R.id.ga_iv_brt_name);
         ga_tv_brt_x2 = findViewById(R.id.ga_tv_brt_x2);
         ga_tv_brt_points = findViewById(R.id.ga_tv_brt_points);
@@ -924,13 +883,10 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_brt_slots_our = findViewById(R.id.ga_tv_brt_slots_our);
         ga_tv_brt_slots_empty = findViewById(R.id.ga_tv_brt_slots_empty);
         ga_tv_brt_slots_enemy = findViewById(R.id.ga_tv_brt_slots_enemy);
-        ga_iv_brt_car_black = findViewById(R.id.ga_iv_brt_car_black);
-        ga_iv_brt_car_our = findViewById(R.id.ga_iv_brt_car_our);
-        ga_iv_brt_car_empty = findViewById(R.id.ga_iv_brt_car_empty);
-        ga_iv_brt_car_enemy = findViewById(R.id.ga_iv_brt_car_enemy);
         ga_iv_brt_progress = findViewById(R.id.ga_iv_brt_progress);
 
         // BRC views
+        ga_iv_brc_icon = findViewById(R.id.ga_iv_brc_icon);
         ga_iv_brc_name = findViewById(R.id.ga_iv_brc_name);
         ga_tv_brc_x2 = findViewById(R.id.ga_tv_brc_x2);
         ga_tv_brc_points = findViewById(R.id.ga_tv_brc_points);
@@ -938,13 +894,10 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_brc_slots_our = findViewById(R.id.ga_tv_brc_slots_our);
         ga_tv_brc_slots_empty = findViewById(R.id.ga_tv_brc_slots_empty);
         ga_tv_brc_slots_enemy = findViewById(R.id.ga_tv_brc_slots_enemy);
-        ga_iv_brc_car_black = findViewById(R.id.ga_iv_brc_car_black);
-        ga_iv_brc_car_our = findViewById(R.id.ga_iv_brc_car_our);
-        ga_iv_brc_car_empty = findViewById(R.id.ga_iv_brc_car_empty);
-        ga_iv_brc_car_enemy = findViewById(R.id.ga_iv_brc_car_enemy);
         ga_iv_brc_progress = findViewById(R.id.ga_iv_brc_progress);
 
         // BRB views
+        ga_iv_brb_icon = findViewById(R.id.ga_iv_brb_icon);
         ga_iv_brb_name = findViewById(R.id.ga_iv_brb_name);
         ga_tv_brb_x2 = findViewById(R.id.ga_tv_brb_x2);
         ga_tv_brb_points = findViewById(R.id.ga_tv_brb_points);
@@ -952,10 +905,6 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_brb_slots_our = findViewById(R.id.ga_tv_brb_slots_our);
         ga_tv_brb_slots_empty = findViewById(R.id.ga_tv_brb_slots_empty);
         ga_tv_brb_slots_enemy = findViewById(R.id.ga_tv_brb_slots_enemy);
-        ga_iv_brb_car_black = findViewById(R.id.ga_iv_brb_car_black);
-        ga_iv_brb_car_our = findViewById(R.id.ga_iv_brb_car_our);
-        ga_iv_brb_car_empty = findViewById(R.id.ga_iv_brb_car_empty);
-        ga_iv_brb_car_enemy = findViewById(R.id.ga_iv_brb_car_enemy);
         ga_iv_brb_progress = findViewById(R.id.ga_iv_brb_progress);
 
         // Рекламный блок
@@ -974,36 +923,21 @@ public class GameActivity extends AppCompatActivity {
 
         ga_ib_car1 = findViewById(R.id.ga_ib_car1);
         ga_tv_car1_name = findViewById(R.id.ga_tv_car1_name);
-        ga_tv_car1_number = findViewById(R.id.ga_tv_car1_number);
-        ga_iv_car1_health = findViewById(R.id.ga_iv_car1_health);
-        ga_tv_car1_health = findViewById(R.id.ga_tv_car1_health);
-        ga_iv_car1_shield = findViewById(R.id.ga_iv_car1_shield);
-        ga_tv_car1_shield = findViewById(R.id.ga_tv_car1_shield);
         ga_tv_car1_repair = findViewById(R.id.ga_tv_car1_repair);
-        ga_iv_car1_building = findViewById(R.id.ga_iv_car1_building);
-        ga_iv_car1_task = findViewById(R.id.ga_iv_car1_task);
+        ga_iv_car1_building_icon = findViewById(R.id.ga_iv_car1_building_icon);
+        ga_iv_car1_task_icon = findViewById(R.id.ga_iv_car1_task_icon);
 
         ga_ib_car2 = findViewById(R.id.ga_ib_car2);
         ga_tv_car2_name = findViewById(R.id.ga_tv_car2_name);
-        ga_tv_car2_number = findViewById(R.id.ga_tv_car2_number);
-        ga_iv_car2_health = findViewById(R.id.ga_iv_car2_health);
-        ga_tv_car2_health = findViewById(R.id.ga_tv_car2_health);
-        ga_iv_car2_shield = findViewById(R.id.ga_iv_car2_shield);
-        ga_tv_car2_shield = findViewById(R.id.ga_tv_car2_shield);
         ga_tv_car2_repair = findViewById(R.id.ga_tv_car2_repair);
-        ga_iv_car2_building = findViewById(R.id.ga_iv_car2_building);
-        ga_iv_car2_task = findViewById(R.id.ga_iv_car2_task);
+        ga_iv_car2_building_icon = findViewById(R.id.ga_iv_car2_building_icon);
+        ga_iv_car2_task_icon = findViewById(R.id.ga_iv_car2_task_icon);
 
         ga_ib_car3 = findViewById(R.id.ga_ib_car3);
         ga_tv_car3_name = findViewById(R.id.ga_tv_car3_name);
-        ga_tv_car3_number = findViewById(R.id.ga_tv_car3_number);
-        ga_iv_car3_health = findViewById(R.id.ga_iv_car3_health);
-        ga_tv_car3_health = findViewById(R.id.ga_tv_car3_health);
-        ga_iv_car3_shield = findViewById(R.id.ga_iv_car3_shield);
-        ga_tv_car3_shield = findViewById(R.id.ga_tv_car3_shield);
         ga_tv_car3_repair = findViewById(R.id.ga_tv_car3_repair);
-        ga_iv_car3_building = findViewById(R.id.ga_iv_car3_building);
-        ga_iv_car3_task = findViewById(R.id.ga_iv_car3_task);
+        ga_iv_car3_building_icon = findViewById(R.id.ga_iv_car3_building_icon);
+        ga_iv_car3_task_icon = findViewById(R.id.ga_iv_car3_task_icon);
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
 
@@ -1017,16 +951,10 @@ public class GameActivity extends AppCompatActivity {
         Car car3 = listCars.get(2);
 
         ga_tv_car1_name.setText(car1.getName());
-        ga_tv_car1_health.setText(String.valueOf(car1.getHealth()));
-        ga_tv_car1_shield.setText(String.valueOf(car1.getShield()));
-        
+ 
         ga_tv_car2_name.setText(car2.getName());
-        ga_tv_car2_health.setText(String.valueOf(car2.getHealth()));
-        ga_tv_car2_shield.setText(String.valueOf(car2.getShield()));
 
         ga_tv_car3_name.setText(car3.getName());
-        ga_tv_car3_health.setText(String.valueOf(car3.getHealth()));
-        ga_tv_car3_shield.setText(String.valueOf(car3.getShield()));
 
         try {
             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
@@ -1048,70 +976,172 @@ public class GameActivity extends AppCompatActivity {
             }
 
             Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
-            Bitmap car1BuildingBitmap = car1.getBuildingPicture();
-            Bitmap car1TaskBitmap = car1.getTaskPicture();
             if (car1CarBitmap != null) ga_ib_car1.setImageBitmap(car1CarBitmap);
             ga_ib_car1.setImageBitmap(car1.getCarPicture());
-            if (car1.isFree()) ga_tv_car1_number.setTextColor(Color.BLUE);
-            if (car1.isRepairing() && !car1.isDefencing()) ga_tv_car1_number.setTextColor(Color.RED);
-            if (!car1.isRepairing() && car1.isDefencing()) ga_tv_car1_number.setTextColor(Color.GREEN);
-            if (car1.isRepairing() && car1.isDefencing()) ga_tv_car1_number.setTextColor(Color.YELLOW);
-            String car1textRepair = car1.isRepairing() ? "\uD83D\uDD27" + " " + car1.getTimeStringToEndRepairing() : "";
+            String car1textRepair = car1.isRepairing() ? "" + car1.getTimeStringToEndRepairing() : "";
             ga_tv_car1_repair.setText(car1textRepair);
-            if (car1.isDefencing()) {
-                ga_iv_car1_building.setVisibility(car1BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car1BuildingBitmap != null) ga_iv_car1_building.setImageBitmap(car1BuildingBitmap);
-            } else {
-                ga_iv_car1_building.setVisibility(View.INVISIBLE);
+            ga_iv_car1_building_icon.setVisibility(car1.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_car1_task_icon.setVisibility(car1.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            switch (car1.getBuilding()) {
+                case 0:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
-            if (car1.getBuildingTask() > 0) {
-                ga_iv_car1_task.setVisibility(car1TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car1TaskBitmap != null) ga_iv_car1_task.setImageBitmap(car1TaskBitmap);
+            switch (car1.getBuildingTask()) {
+                case 0:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
-
+            
 
             Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
-            Bitmap car2BuildingBitmap = car2.getBuildingPicture();
-            Bitmap car2TaskBitmap = car2.getTaskPicture();
             if (car2CarBitmap != null) ga_ib_car2.setImageBitmap(car2CarBitmap);
             ga_ib_car2.setImageBitmap(car2.getCarPicture());
-            if (car2.isFree()) ga_tv_car2_number.setTextColor(Color.BLUE);
-            if (car2.isRepairing() && !car2.isDefencing()) ga_tv_car2_number.setTextColor(Color.RED);
-            if (!car2.isRepairing() && car2.isDefencing()) ga_tv_car2_number.setTextColor(Color.GREEN);
-            if (car2.isRepairing() && car2.isDefencing()) ga_tv_car2_number.setTextColor(Color.YELLOW);
-            String car2textRepair = car2.isRepairing() ? "\uD83D\uDD27" + " " + car2.getTimeStringToEndRepairing() : "";
+            String car2textRepair = car2.isRepairing() ? "" + car2.getTimeStringToEndRepairing() : "";
             ga_tv_car2_repair.setText(car2textRepair);
-            if (car2.isDefencing()) {
-                ga_iv_car2_building.setVisibility(car2BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car2BuildingBitmap != null) ga_iv_car2_building.setImageBitmap(car2BuildingBitmap);
-            } else {
-                ga_iv_car2_building.setVisibility(View.INVISIBLE);
+            ga_iv_car2_building_icon.setVisibility(car2.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_car2_task_icon.setVisibility(car2.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            switch (car2.getBuilding()) {
+                case 0:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
-            if (car2.getBuildingTask() > 0) {
-                ga_iv_car2_task.setVisibility(car2TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car2TaskBitmap != null) ga_iv_car2_task.setImageBitmap(car2TaskBitmap);
+            switch (car2.getBuildingTask()) {
+                case 0:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
 
             Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
-            Bitmap car3BuildingBitmap = car3.getBuildingPicture();
-            Bitmap car3TaskBitmap = car3.getTaskPicture();
             if (car3CarBitmap != null) ga_ib_car3.setImageBitmap(car3CarBitmap);
             ga_ib_car3.setImageBitmap(car3.getCarPicture());
-            if (car3.isFree()) ga_tv_car3_number.setTextColor(Color.BLUE);
-            if (car3.isRepairing() && !car3.isDefencing()) ga_tv_car3_number.setTextColor(Color.RED);
-            if (!car3.isRepairing() && car3.isDefencing()) ga_tv_car3_number.setTextColor(Color.GREEN);
-            if (car3.isRepairing() && car3.isDefencing()) ga_tv_car3_number.setTextColor(Color.YELLOW);
-            String car3textRepair = car3.isRepairing() ? "\uD83D\uDD27" + " " + car3.getTimeStringToEndRepairing() : "";
+            String car3textRepair = car3.isRepairing() ? "" + car3.getTimeStringToEndRepairing() : "";
             ga_tv_car3_repair.setText(car3textRepair);
-            if (car3.isDefencing()) {
-                ga_iv_car3_building.setVisibility(car3BuildingBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car3BuildingBitmap != null) ga_iv_car3_building.setImageBitmap(car3BuildingBitmap);
-            } else {
-                ga_iv_car3_building.setVisibility(View.INVISIBLE);
+            ga_iv_car3_building_icon.setVisibility(car3.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            ga_iv_car3_task_icon.setVisibility(car3.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            switch (car3.getBuilding()) {
+                case 0:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
-            if (car3.getBuildingTask() > 0) {
-                ga_iv_car3_task.setVisibility(car3TaskBitmap != null ? View.VISIBLE : View.INVISIBLE);
-                if (car3TaskBitmap != null) ga_iv_car3_task.setImageBitmap(car3TaskBitmap);
+            switch (car3.getBuildingTask()) {
+                case 0:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    break;
+                case 1:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    break;
+                case 2:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    break;
+                case 3:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    break;
+                case 4:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    break;
+                case 5:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    break;
+                case 6:
+                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == 0 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    break;
+                default:
             }
 
         } catch (Exception ignored) {
@@ -1400,6 +1430,7 @@ public class GameActivity extends AppCompatActivity {
             menu_main_team_game_load.setVisible(isDebugMode);
             menu_main_user_cars_load.setVisible(isDebugMode);
 
+
             String userText = "";
             if (fbUser == null) { // юзер не залогинился
 
@@ -1413,6 +1444,8 @@ public class GameActivity extends AppCompatActivity {
                 menu_main_team_create.setVisible(false);
                 menu_main_team_leave.setVisible(false);
                 menu_main_team_find.setVisible(false);
+                menu_main_team_game_share.setVisible(false);
+                menu_main_user_cars_share.setVisible(false);
 
                 // обновляем инфо юзера
                 userText = "Login, please.";
@@ -1447,6 +1480,8 @@ public class GameActivity extends AppCompatActivity {
                     menu_main_team_create.setVisible(false);
                     menu_main_team_leave.setVisible(false);
                     menu_main_team_find.setVisible(false);
+                    menu_main_team_game_share.setVisible(false);
+                    menu_main_user_cars_share.setVisible(false);
 
                 } else { // почта подтверждена
 
@@ -1483,6 +1518,8 @@ public class GameActivity extends AppCompatActivity {
                                         menu_main_team_create.setVisible(true);
                                         menu_main_team_leave.setVisible(false);
                                         menu_main_team_find.setVisible(true);
+                                        menu_main_team_game_share.setVisible(false);
+                                        menu_main_user_cars_share.setVisible(false);
 
                                     } else { // юзер состоит в команде
 
@@ -2721,7 +2758,7 @@ public class GameActivity extends AppCompatActivity {
 
                     }
 
-                    if (isListenDataFolder) {
+                    if (isListenDataFolder && mainDbTeamUser != null) {
                         File tmpFileData = getLastFileInDataFolder(pathToDataDir);    // получаем последний файл из папки
                         if (tmpFileData != null) {  // если он не пустой
 
@@ -2735,11 +2772,11 @@ public class GameActivity extends AppCompatActivity {
                                         DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
 
                                         // тут файл можно уже удалить
-                                    try {
-                                        tmpFileData.delete();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
+//                                    try {
+//                                        tmpFileData.delete();
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
 
                                         if (loadedDbTeamGame != null) {
                                             if (mainCityCalc != null) { // если текущая игра есть
@@ -2815,7 +2852,7 @@ public class GameActivity extends AppCompatActivity {
                     }
 
 
-                    if (isListenWhatsappFolder) {
+                    if (isListenWhatsappFolder && mainDbTeamUser != null) {
                         File tmpFileWhatsapp = getLastFileInWhatsappFolder(pathToWhatsappDir);    // получаем последний файл из папки
                         if (tmpFileWhatsapp != null) {  // если он не пустой
 
@@ -2888,11 +2925,11 @@ public class GameActivity extends AppCompatActivity {
                                                 Car.saveList(listCars, userUID);
 
                                                 // тут файл можно уже удалить
-//                                            try {
-//                                                tmpFileData.delete();
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
+                                            try {
+                                                tmpFileWhatsapp.delete();
+                                            } catch (Exception e) {
+                                                e.printStackTrace();
+                                            }
 
                                             }
                                         }
@@ -2906,7 +2943,7 @@ public class GameActivity extends AppCompatActivity {
                     }
 
 
-                    if (isListenTelegramFolder) {
+                    if (isListenTelegramFolder && mainDbTeamUser != null) {
                         File tmpFileTelegram = getLastFileInTelegramFolder(pathToTelegramDir);    // получаем последний файл из папки
                         if (tmpFileTelegram != null) {  // если он не пустой
 
