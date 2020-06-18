@@ -25,46 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v63.aab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v63.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blb_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blb_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blb_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blb_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blc_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blc_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blc_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blc_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blt_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blt_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blt_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_blt_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brb_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brb_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brb_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brb_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brc_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brc_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brc_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brc_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brt_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brt_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brt_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_brt_red.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bxx_black.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bxx_blue.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bxx_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bxx_red.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v62.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v62.aab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v62.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v62.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -250,64 +214,73 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592482633362" />
-    <state width="2703" height="322" key="GridCell.Tab.0.bottom" timestamp="1592481538226">
+    <state width="2703" height="494" key="GridCell.Tab.0.bottom" timestamp="1592488294483">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592481538226" />
-    <state width="2703" height="322" key="GridCell.Tab.0.center" timestamp="1592481538225">
+    <state width="2703" height="494" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294483" />
+    <state width="2703" height="494" key="GridCell.Tab.0.center" timestamp="1592488294482">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592481538225" />
-    <state width="2703" height="322" key="GridCell.Tab.0.left" timestamp="1592481538225">
+    <state width="2703" height="494" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294482" />
+    <state width="2703" height="494" key="GridCell.Tab.0.left" timestamp="1592488294482">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592481538225" />
-    <state width="2703" height="322" key="GridCell.Tab.0.right" timestamp="1592481538225">
+    <state width="2703" height="494" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294482" />
+    <state width="2703" height="494" key="GridCell.Tab.0.right" timestamp="1592488294483">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="322" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592481538225" />
-    <state width="2703" height="494" key="GridCell.Tab.1.bottom" timestamp="1592469271711">
+    <state width="2703" height="494" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294483" />
+    <state width="2703" height="494" key="GridCell.Tab.1.bottom" timestamp="1592488294485">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="494" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592469271711" />
-    <state width="2703" height="494" key="GridCell.Tab.1.center" timestamp="1592469271711">
+    <state width="2703" height="494" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294485" />
+    <state width="2703" height="494" key="GridCell.Tab.1.center" timestamp="1592488294484">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="494" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592469271711" />
-    <state width="2703" height="494" key="GridCell.Tab.1.left" timestamp="1592469271711">
+    <state width="2703" height="494" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294484" />
+    <state width="2703" height="494" key="GridCell.Tab.1.left" timestamp="1592488294484">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="494" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592469271711" />
-    <state width="2703" height="494" key="GridCell.Tab.1.right" timestamp="1592469271711">
+    <state width="2703" height="494" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294484" />
+    <state width="2703" height="494" key="GridCell.Tab.1.right" timestamp="1592488294484">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2703" height="494" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592469271711" />
+    <state width="2703" height="494" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1592488294484" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1221" y="345" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1592079744336" />
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1592463520965">
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1592489784510">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1592463520965" />
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1592489784510" />
     <state width="498" height="448" key="SwitcherDM" timestamp="1591802160649">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state width="498" height="448" key="SwitcherDM/0.0.3440.1400@0.0.3440.1400" timestamp="1591802160649" />
-    <state width="1382" height="689" key="XDebugger.FullValuePopup" timestamp="1592409846351">
+    <state width="1382" height="689" key="XDebugger.FullValuePopup" timestamp="1592488209798">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="1382" height="689" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1592409846351" />
-    <state x="1376" y="330" key="run.anything.popup" timestamp="1592044808906">
+    <state width="1382" height="689" key="XDebugger.FullValuePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1592488209798" />
+    <state x="1376" y="330" key="run.anything.popup" timestamp="1592488408690">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1376" y="330" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1592044808906" />
+    <state x="1376" y="330" key="run.anything.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1592488408690" />
     <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1592044835055">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1592044835055" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="C.A.T.S._City_Calculator.app">
         <watch expression="((MatrixProgress)matrixArray[62]).blt_progress" custom="com.svoemestodev.catscitycalc.activities.StrategyActivity.MatrixProgress" />
