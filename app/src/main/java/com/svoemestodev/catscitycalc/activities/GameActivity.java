@@ -2892,6 +2892,8 @@ public class GameActivity extends AppCompatActivity {
                                                             // устанавливаем у скачанного файла правильный ластмодифай
                                                             LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
                                                             fileLastScreenshot = teamGameScreenshot;
+//                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+//                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
                                                             CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), context, loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
                                                             if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                                                                 fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке

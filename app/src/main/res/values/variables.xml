@@ -468,11 +468,11 @@
     <string name="def_rgb_bxx_doublepoints_thm" translatable="false">13</string>
     <string name="def_rgb_bxx_doublepoints_thp" translatable="false">13</string>
 
-    <string name="def_rgb_bxx_mayX2" translatable="false">ffafbed1</string>
+    <string name="def_rgb_bxx_mayX2" translatable="false">FFAFBFCF</string>
     <string name="def_rgb_bxx_mayX2_thm" translatable="false">13</string>
     <string name="def_rgb_bxx_mayX2_thp" translatable="false">13</string>
 
-    <string name="def_rgb_bxx_isX2" translatable="false">ffecad20</string>
+    <string name="def_rgb_bxx_isX2" translatable="false">FFEBAF2B</string>
     <string name="def_rgb_bxx_isX2_thm" translatable="false">13</string>
     <string name="def_rgb_bxx_isX2_thp" translatable="false">13</string>
 

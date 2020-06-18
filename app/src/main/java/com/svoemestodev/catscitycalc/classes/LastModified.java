@@ -20,6 +20,10 @@ public class LastModified implements Serializable {
         return setLastModified(fileFrom.getAbsolutePath(), fileTo.getAbsolutePath());
     }
 
+    public static boolean setLastModified(String pathFileTo, Date dateLastModified) {
+        return setLastModified(new File(pathFileTo), dateLastModified);
+    }
+
     public static boolean setLastModified(File fileTo, Date dateLastModified) {
         if (fileTo.exists()) {
             File fileML = new File(fileTo.getAbsolutePath() + ".lastModified");
