@@ -152,7 +152,7 @@ public class DbTeamGame implements Serializable {
             File dirToSave = new File(pathToFolder);
             if (dirToSave.exists()) {
                 if (dirToSave.isDirectory()) {
-                    fileName = pathToFolder + "/" + UUID.randomUUID().toString() + ".citycalcteamgame";
+                    fileName = pathToFolder + "/game_" + UUID.randomUUID().toString() + ".citycalcteamgame";
 //                    fileName = pathToFolder + "/game.citycalcteamgame";
                     try {
 
