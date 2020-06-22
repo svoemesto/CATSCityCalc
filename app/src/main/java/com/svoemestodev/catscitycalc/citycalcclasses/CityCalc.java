@@ -383,7 +383,7 @@ public class CityCalc { //extends Activity {
                 thm = GlobalApplication.getRgb_increase_our_thm();
                 thp = GlobalApplication.getRgb_increase_our_thp();
 
-                Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.90f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
+                Bitmap[] ourPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.50f, 0.01f, PictureProcessorDirection.FROM_LEFT_TO_RIGHT, false);
 
                 CityCalcArea ccaPointsOur = null;
                 CityCalcArea ccaIncreaseOur = null;
@@ -451,7 +451,7 @@ public class CityCalc { //extends Activity {
                 thm = GlobalApplication.getRgb_increase_enemy_thm();
                 thp = GlobalApplication.getRgb_increase_enemy_thp();
                 
-                Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.90f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT, false);
+                Bitmap[] enemyPointsAndIncreaseBitmapArray = PictureProcessor.splitBitmap(cca.getBmpSrc(), color_back1, thm, thp, 0.50f, 0.01f, PictureProcessorDirection.FROM_RIGHT_TO_LEFT, false);
 
                 CityCalcArea ccaPointsEnemy = null;
                 CityCalcArea ccaIncreaseEnemy = null;

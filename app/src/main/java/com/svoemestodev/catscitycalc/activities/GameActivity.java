@@ -2800,6 +2800,10 @@ public class GameActivity extends AppCompatActivity {
                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                             mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+
 //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
 //                                                            loadDataToViews(true);
                                                             return 2;
@@ -2897,6 +2901,10 @@ public class GameActivity extends AppCompatActivity {
                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                             mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+
 //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
 //                                                            loadDataToViews(true);
                                                             return 3;
@@ -2982,6 +2990,10 @@ public class GameActivity extends AppCompatActivity {
                                                             fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
                                                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                             mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+
 //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
 //                                                            loadDataToViews(true);
                                                             return 4;

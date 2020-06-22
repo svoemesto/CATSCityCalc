@@ -261,6 +261,8 @@ public class DbTeamGame implements Serializable {
 
         key = "pointsOurInScreenshot"; if (map.containsKey(key)) this.pointsOurInScreenshot = ((Long) map.get(key)).intValue();
         key = "pointsEnemyInScreenshot"; if (map.containsKey(key)) this.pointsEnemyInScreenshot = ((Long) map.get(key)).intValue();
+        key = "increaseOur"; if (map.containsKey(key)) this.increaseOur = ((Long) map.get(key)).intValue();
+        key = "increaseEnemy"; if (map.containsKey(key)) this.increaseEnemy = ((Long) map.get(key)).intValue();
 
         key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
         key = "isPresent_blc"; if (map.containsKey(key)) this.isPresent_blc = (boolean) map.get(key);
