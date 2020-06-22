@@ -1569,8 +1569,8 @@ public class GameActivity extends AppCompatActivity {
                                                                 break;
                                                             }
                                                             // выбодим пунткы меню "Банда" и "Покинуть банду", скрываем "Создать банду" и "Найти банду"
-                                                            menu_main_team_work.setVisible(userRole.equals(UserRole.LEADER));
-                                                            menu_main_team_manage.setVisible(true);
+                                                            menu_main_team_work.setVisible(true);
+                                                            menu_main_team_manage.setVisible(userRole.equals(UserRole.LEADER));
                                                             menu_main_team_create.setVisible(false);
                                                             menu_main_team_leave.setVisible(true);
                                                             menu_main_team_find.setVisible(false);
