@@ -192,6 +192,9 @@
     <string name="info_game_from_data_folder">Информация об игре из папки с данными</string>
     <string name="info_game_from_whatsapp_folder">Информация об игре из папки с данными Whatsapp</string>
     <string name="info_game_from_telegram_folder">Информация об игре из папки с данными Telegram</string>
+    <string name="info_from_screenshot">Информация из скриншота</string>
+    <string name="info_from_server">Информация с сервера</string>
+    <string name="info_from_data_file">Информация из файла данных</string>
 
 
 </resources>

@@ -77,7 +77,23 @@ public class CityCalc { //extends Activity {
         this.mapAreas = mapAreas;
     }
 
-//    public Context getContext() {
+    public String getUserUID() {
+        return userUID;
+    }
+
+    public void setUserUID(String userUID) {
+        this.userUID = userUID;
+    }
+
+    public String getTeamID() {
+        return teamID;
+    }
+
+    public void setTeamID(String teamID) {
+        this.teamID = teamID;
+    }
+
+    //    public Context getContext() {
 //        return context;
 //    }
 //

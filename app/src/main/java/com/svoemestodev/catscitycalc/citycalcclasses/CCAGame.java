@@ -22,6 +22,7 @@ public class CCAGame extends CityCalcArea {
     private Date dateEndGame;       // дата окончания игры по времени
     private Date dateFinal;         // дата реального окончания игры
     private int earlyWin;           // нужно очков до досрочной победы
+    private int source;             // 0 - скриншот, 1 - сервер, 2 - датафайл
 
     private String userNIC;
     private String userUID;
@@ -161,6 +162,7 @@ public class CCAGame extends CityCalcArea {
 
     public void updateFromDb(DbTeamGame dbTeamGame) {
 
+        this.source = 1;
         this.userNIC = dbTeamGame.getUserNIC();
         this.userUID = dbTeamGame.getUserUID();
         this.teamID = dbTeamGame.getTeamID();
@@ -1380,4 +1382,11 @@ public class CCAGame extends CityCalcArea {
         this.bytesScreenshot = bytesScreenshot;
     }
 
+    public int getSource() {
+        return source;
+    }
+
+    public void setSource(int source) {
+        this.source = source;
+    }
 }
