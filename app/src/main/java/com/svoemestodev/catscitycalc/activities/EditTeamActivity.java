@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -58,20 +57,20 @@ public class EditTeamActivity extends AppCompatActivity {
         te_sw_team_is_public.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TeamActivity.dbTeam.setTeamIsPublic(isChecked);
+                WorkTeamActivity.dbTeam.setTeamIsPublic(isChecked);
                 Map<String, Object> updateTeam = new HashMap<>();
                 updateTeam.put("teamIsPublic", isChecked);
-                GameActivity.fbDb.collection("teams").document(TeamActivity.dbTeam.getTeamID()).update(updateTeam);
+                GameActivity.fbDb.collection("teams").document(WorkTeamActivity.dbTeam.getTeamID()).update(updateTeam);
             }
         });
 
         te_sw_team_is_opened.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TeamActivity.dbTeam.setTeamIsOpened(isChecked);
+                WorkTeamActivity.dbTeam.setTeamIsOpened(isChecked);
                 Map<String, Object> updateTeam = new HashMap<>();
                 updateTeam.put("teamIsOpened", isChecked);
-                GameActivity.fbDb.collection("teams").document(TeamActivity.dbTeam.getTeamID()).update(updateTeam);
+                GameActivity.fbDb.collection("teams").document(WorkTeamActivity.dbTeam.getTeamID()).update(updateTeam);
             }
         });
 
@@ -96,9 +95,9 @@ public class EditTeamActivity extends AppCompatActivity {
 
     private void loadDataToViews() {
 
-        te_tv_teamname_value.setText(TeamActivity.dbTeam.getTeamName());
-        te_sw_team_is_public.setChecked(TeamActivity.dbTeam.isTeamIsPublic());
-        te_sw_team_is_opened.setChecked(TeamActivity.dbTeam.isTeamIsOpened());
+        te_tv_teamname_value.setText(WorkTeamActivity.dbTeam.getTeamName());
+        te_sw_team_is_public.setChecked(WorkTeamActivity.dbTeam.isTeamIsPublic());
+        te_sw_team_is_opened.setChecked(WorkTeamActivity.dbTeam.isTeamIsOpened());
 
     }
 
@@ -106,7 +105,7 @@ public class EditTeamActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(EditTeamActivity.this);
         builder.setTitle(R.string.team);
-        String defaultValue = TeamActivity.dbTeam.getTeamName();
+        String defaultValue = WorkTeamActivity.dbTeam.getTeamName();
         final EditText input = new EditText(EditTeamActivity.this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         input.setText(defaultValue);
@@ -116,10 +115,10 @@ public class EditTeamActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String newValue = input.getText().toString();
-                TeamActivity.dbTeam.setTeamName(newValue);
+                WorkTeamActivity.dbTeam.setTeamName(newValue);
                 Map<String, Object> updateTeam = new HashMap<>();
                 updateTeam.put("teamName", newValue);
-                GameActivity.fbDb.collection("teams").document(TeamActivity.dbTeam.getTeamID()).update(updateTeam);
+                GameActivity.fbDb.collection("teams").document(WorkTeamActivity.dbTeam.getTeamID()).update(updateTeam);
                 te_tv_teamname_value.setText(newValue);
             }
         });

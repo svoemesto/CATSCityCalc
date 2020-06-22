@@ -25,6 +25,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
@@ -190,7 +191,7 @@ public class StrategyActivity extends AppCompatActivity {
 
     public static CityCalc mainCityCalc;
     
-    public Context context;
+//    public Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,7 +204,7 @@ public class StrategyActivity extends AppCompatActivity {
         }
 
         initializeViews();
-        context = sa_tv_start_game_time.getContext();
+//        context = sa_tv_start_game_time.getContext();
         sa_sb_person_our.setEnabled(false);
         sa_sb_person_enemy.setEnabled(false);
 
@@ -225,7 +226,7 @@ public class StrategyActivity extends AppCompatActivity {
         sa_sb_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
         sa_sb_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
         
-        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, context, GameActivity.mainUserNIC, GameActivity.mainUserUID, GameActivity.mainTeamID), false);
+        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.mainUserNIC, GameActivity.mainUserUID, GameActivity.mainTeamID), false);
         CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
         if (ccaGame != null) {
@@ -572,6 +573,7 @@ public class StrategyActivity extends AppCompatActivity {
 
             }
 
+            Context context = GlobalApplication.getAppContext();
 
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
             int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));
@@ -1004,6 +1006,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener bltSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
@@ -1031,6 +1034,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener blcSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
@@ -1057,6 +1061,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener blbSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
@@ -1083,6 +1088,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener brtSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
@@ -1109,6 +1115,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener brcSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {
@@ -1135,6 +1142,7 @@ public class StrategyActivity extends AppCompatActivity {
     private SeekBar.OnSeekBarChangeListener brbSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            Context context = GlobalApplication.getAppContext();
             if (progress == 0) {
                 sa_sb_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
             } else if (progress == 1) {

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.classes.Car;
@@ -449,7 +450,7 @@ public class DbTeamGame implements Serializable {
 
         if (!ccaGame.isGameOver()) {
 
-            if (!GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GameActivity.pathToCATScalcFolder + "/last_screenshot.PNG") && !GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GameActivity.pathToCATScalcFolder + "/last_screenshot")) {
+            if (!GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GlobalApplication.pathToCATScalcFolder + "/last_screenshot.PNG") && !GameActivity.mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GlobalApplication.pathToCATScalcFolder + "/last_screenshot")) {
                 if (GameActivity.fbUser != null) { // есть юзер
                     if (GameActivity.fbUser.isEmailVerified()) { // емейл подтвержден
 //                        final String userUID = GameActivity.fbUser.getUid();

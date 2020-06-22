@@ -3,6 +3,7 @@ package com.svoemestodev.catscitycalc.citycalcclasses;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
@@ -30,14 +31,15 @@ public class CCACar extends CityCalcArea {
         Date screenshotDate = Calendar.getInstance().getTime();
 
         CityCalcArea areaCarInCityBox1 = this.getCityCalc().getMapAreas().get(Area.CAR_IN_CITY_BOX1);
+        Context context = GlobalApplication.getAppContext();
 
-        SharedPreferences sharedPreferences = this.getCityCalc().getContext().getSharedPreferences(this.getCityCalc().getContext().getResources().getString(R.string.pref_preferences_file), Context.MODE_PRIVATE);
-        int color_car_in_city_box1_main = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_main),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_main), (int)Long.parseLong(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_main), 16)));
-        int color_car_in_city_box1_thm = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thm),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thm), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thm))));
-        int color_car_in_city_box1_thp = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_car_in_city_box1_thp),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_car_in_city_box1_thp), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_car_in_city_box1_thp))));
-        int color_box_info_car_main = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_main),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_main), (int)Long.parseLong(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_main), 16)));
-        int color_box_info_car_thm = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_thm),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_thm), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_thm))));
-        int color_box_info_car_thp = sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_rgb_box_info_car_thp),sharedPreferences.getInt(this.getCityCalc().getContext().getString(R.string.pref_def_rgb_box_info_car_thp), Integer.parseInt(this.getCityCalc().getContext().getString(R.string.def_rgb_box_info_car_thp))));
+        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), Context.MODE_PRIVATE);
+        int color_car_in_city_box1_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_in_city_box1_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_in_city_box1_main), (int)Long.parseLong(context.getString(R.string.def_rgb_car_in_city_box1_main), 16)));
+        int color_car_in_city_box1_thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_in_city_box1_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_in_city_box1_thm), Integer.parseInt(context.getString(R.string.def_rgb_car_in_city_box1_thm))));
+        int color_car_in_city_box1_thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_car_in_city_box1_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_car_in_city_box1_thp), Integer.parseInt(context.getString(R.string.def_rgb_car_in_city_box1_thp))));
+        int color_box_info_car_main = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_car_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_car_main), (int)Long.parseLong(context.getString(R.string.def_rgb_box_info_car_main), 16)));
+        int color_box_info_car_thm = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_car_thm),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_car_thm), Integer.parseInt(context.getString(R.string.def_rgb_box_info_car_thm))));
+        int color_box_info_car_thp = sharedPreferences.getInt(context.getString(R.string.pref_rgb_box_info_car_thp),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_box_info_car_thp), Integer.parseInt(context.getString(R.string.def_rgb_box_info_car_thp))));
 
         boolean isCarInCity = PictureProcessor.frequencyPixelInBitmap(areaCarInCityBox1.getBmpSrc(), color_car_in_city_box1_main, color_car_in_city_box1_thm, color_car_in_city_box1_thp) > 0.50f;
 

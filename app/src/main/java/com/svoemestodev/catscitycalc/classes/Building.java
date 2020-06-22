@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
+import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,8 @@ public class Building {
 
     public static List<Building> loadList() {
         List<Building> list = new ArrayList<>();
+
+        list.add(new Building(-1, PictureProcessor.generateBitmapByOnePixel(0xFF000000,1,1)));
 
         try {
             if (((CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLT)).isPresent()) list.add(new Building(1, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLT)).getBmpSrc()));

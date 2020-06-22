@@ -77,8 +77,8 @@
 
     <string name="pref_bordersAreaName">Название области</string>
     <string name="pref_bordersAreaName_dialog_title">Выберите область</string>
-    <string name="pref_bordersAreaName_default_value">Город</string>
-    <string name="pref_bordersAreaName_summary">Город</string>
+    <string name="pref_bordersAreaName_default_value">City</string>
+    <string name="pref_bordersAreaName_summary">City</string>
 
     <string name="pref_colorsAreaName">Название области</string>
     <string name="pref_colorsAreaName_dialog_title">Выберите область</string>
@@ -167,7 +167,7 @@
     <string name="share">Поделиться</string>
     <string name="login">Login</string>
     <string name="re_login">Re-login</string>
-    <string name="manage_team">Банда</string>
+    <string name="manage_team">Пользователи банды</string>
     <string name="create_team">Создать банду</string>
     <string name="leave_team">Выйти из банды</string>
     <string name="find_team">Выступить в открытую банду</string>
@@ -188,6 +188,10 @@
     <string name="user_cars_load">Открыть файл с даными машин</string>
     <string name="team_game_share">Поделиться данными игры</string>
     <string name="user_cars_share">Поделиться данными машин</string>
+    <string name="work_in_team">Работа в банде</string>
+    <string name="info_game_from_data_folder">Информация об игре из папки с данными</string>
+    <string name="info_game_from_whatsapp_folder">Информация об игре из папки с данными Whatsapp</string>
+    <string name="info_game_from_telegram_folder">Информация об игре из папки с данными Telegram</string>
 
 
 </resources>

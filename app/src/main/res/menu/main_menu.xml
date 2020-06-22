@@ -37,43 +37,48 @@
         android:title="@string/re_login" />
 
     <item
-        android:id="@+id/menu_main_team_manage"
+        android:id="@+id/menu_main_team_work"
         android:orderInCategory="9"
+        android:title="@string/work_in_team" />
+
+    <item
+        android:id="@+id/menu_main_team_manage"
+        android:orderInCategory="10"
         android:title="@string/manage_team" />
 
     <item
         android:id="@+id/menu_main_team_create"
-        android:orderInCategory="10"
+        android:orderInCategory="11"
         android:title="@string/create_team" />
 
     <item
         android:id="@+id/menu_main_team_leave"
-        android:orderInCategory="11"
+        android:orderInCategory="12"
         android:title="@string/leave_team" />
 
     <item
         android:id="@+id/menu_main_team_find"
-        android:orderInCategory="12"
+        android:orderInCategory="13"
         android:title="@string/find_team" />
 
     <item
         android:id="@+id/menu_main_team_game_load"
-        android:orderInCategory="13"
+        android:orderInCategory="14"
         android:title="@string/team_game_load" />
 
     <item
         android:id="@+id/menu_main_team_game_share"
-        android:orderInCategory="14"
+        android:orderInCategory="15"
         android:title="@string/team_game_share" />
 
     <item
         android:id="@+id/menu_main_user_cars_load"
-        android:orderInCategory="15"
+        android:orderInCategory="16"
         android:title="@string/user_cars_load" />
 
     <item
         android:id="@+id/menu_main_user_cars_share"
-        android:orderInCategory="16"
+        android:orderInCategory="17"
         android:title="@string/user_cars_share" />
 
 </menu>

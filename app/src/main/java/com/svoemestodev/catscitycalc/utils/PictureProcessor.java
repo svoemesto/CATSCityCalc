@@ -14,6 +14,7 @@ import android.graphics.Matrix;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -200,8 +201,10 @@ public class PictureProcessor extends Activity {
     }
 
 
-    public static String doOCR(Bitmap sourceBitmap, Context context) {
+    public static String doOCR(Bitmap sourceBitmap) {
+
         String result = ""; // результат
+        Context context = GlobalApplication.getAppContext();
         if (sourceBitmap!= null) {
             TextRecognizer textRecognizer = new TextRecognizer.Builder(context).build(); // создаем текстрекогнайзер
             if (textRecognizer.isOperational()) {   // если текстрекогнайзер может что-то распознать
@@ -213,6 +216,7 @@ public class PictureProcessor extends Activity {
             }
         }
         return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
+
     }
 
 //    public static String doOCR(Bitmap sourceBitmap, Context context) {
@@ -257,6 +261,17 @@ public class PictureProcessor extends Activity {
         Matrix matrix = new Matrix();
         matrix.setScale(scaleX, scaleY);
         return Bitmap.createBitmap(sourceBitmap, 0, 0, width, height, matrix, true);
+    }
+
+    public static Bitmap generateBitmapByOnePixel(int color, int width, int height) {
+
+        int[] pixels = new int[width*height];
+        for (int pixel: pixels) {
+            pixel = color;
+        }
+        Bitmap bitmap = Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
+        return bitmap;
+
     }
 
     private static boolean isPixelTrue(int pixel, int color, int thm, int thp) {

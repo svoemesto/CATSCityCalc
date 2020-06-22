@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.svoemestodev.catscitycalc.BuildConfig;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.UtilPermissions;
@@ -210,7 +211,7 @@ public class SplashActivity extends AppCompatActivity {
 
         Car.pathToFile = getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.file_list_cars);
         Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
-        GameActivity.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
+        GlobalApplication.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
 
         File cars = new File(Car.pathToFile);
         if (!cars.exists()) {

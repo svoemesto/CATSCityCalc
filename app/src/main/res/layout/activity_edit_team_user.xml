@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.TeamUserActivity">
+
+    <com.google.android.gms.ads.AdView
+
+        android:id="@+id/tu_ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_tu_unit_id"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tu_ad_banner"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin = "10dp"
+            android:layout_gravity="center_horizontal|center_vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <ImageButton
+                    android:id="@+id/tu_ib_set_usernic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setUserNIC"
+                    />
+
+                <TextView
+                    android:id="@+id/tu_tv_usernic_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/usernic_colon"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/tu_tv_usernic_label"
+                    android:layout_alignBottom="@+id/tu_tv_usernic_label"
+                    android:layout_toStartOf="@+id/tu_tv_usernic_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/tu_tv_usernic_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/tu_ib_set_usernic"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/tu_tv_role_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/role_colon"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@id/tu_tv_role_label"
+                    android:layout_alignBottom="@id/tu_tv_role_label"
+                    android:layout_toStartOf="@id/tu_sp_role"
+                    android:background="#c0c0c0"/>
+
+                <Spinner
+                    android:id="@+id/tu_sp_role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

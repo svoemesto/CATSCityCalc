@@ -1,5 +1,6 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+
 import android.graphics.Bitmap;
 import android.util.Log;
 
@@ -145,10 +146,11 @@ public class CityCalcArea {
     }
 
     public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doScale, float scaleX, float scaleY) {
+
         if (this.needOcr && this.bmpSrc != null) {
             this.bmpPrc = this.needBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]) : this.bmpSrc;
             this.bmpPrc = doScale ? PictureProcessor.doScale(this.bmpPrc, scaleX, scaleY) : this.bmpPrc;
-            this.ocrText = PictureProcessor.doOCR(this.bmpPrc, this.cityCalc.getContext());
+            this.ocrText = PictureProcessor.doOCR(this.bmpPrc);
 
             if (area.equals(Area.TOTAL_TIME)) {
                 this.finText = Utils.parseTime(this.ocrText);
@@ -161,7 +163,7 @@ public class CityCalcArea {
         }
     }
 
-    private Bitmap cutSrc() {
+    private Bitmap  cutSrc() {
         if (this.cityCalc != null) {
             if (this.cityCalc.getBmpScreenshot() != null) {
                 if (!this.isGeneric) {

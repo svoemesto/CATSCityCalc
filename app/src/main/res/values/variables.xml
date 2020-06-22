@@ -334,7 +334,7 @@
     <string name="def_cut_points_and_increase_our_y2" translatable="false">-0.470</string>
 
     <string name="def_rgb_points_our_main" translatable="false">FFff437ad7</string>
-    <string name="def_rgb_points_our_back1" translatable="false">FFffffff</string>
+    <string name="def_rgb_points_our_back1" translatable="false">FF4577CC</string>
     <string name="def_rgb_points_our_back2" translatable="false">f1f1f1</string>
     <string name="def_rgb_points_our_thm" translatable="false">13</string>
     <string name="def_rgb_points_our_thp" translatable="false">13</string>
@@ -359,12 +359,12 @@
     <string name="def_rgb_points_enemy_thp" translatable="false">13</string>
 
     <string name="def_rgb_increase_enemy_main" translatable="false">FFfdd5d3</string>
-    <string name="def_rgb_increase_enemy_back1" translatable="false">FFeb4c48</string>
+    <string name="def_rgb_increase_enemy_back1" translatable="false">FFEA4F4A</string>
     <string name="def_rgb_increase_enemy_thm" translatable="false">13</string>
     <string name="def_rgb_increase_enemy_thp" translatable="false">13</string>
 
 
-    <!--  "Название номанды - нашей"  -->
+    <!--  "Название команды - нашей"  -->
     <string name="def_cut_team_name_our_x1" translatable="false">-0.565</string>
     <string name="def_cut_team_name_our_x2" translatable="false">-0.250</string>
     <string name="def_cut_team_name_our_y1" translatable="false">-0.760</string>

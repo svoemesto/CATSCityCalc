@@ -29,8 +29,12 @@ public class ListBuildingAdapter extends ArrayAdapter<Building> {
 
         ImageView select_item_bitmap = convertView.findViewById(R.id.select_item_bitmap);
         ImageView select_item_icon = convertView.findViewById(R.id.select_item_icon);
-        select_item_bitmap.setImageBitmap(item.getBitmap());
+        if (item.getBitmap() != null) select_item_bitmap.setImageBitmap(item.getBitmap());
+        select_item_bitmap.setVisibility(item.getSlot() != -1 ? View.VISIBLE : View.INVISIBLE);
         switch (item.getSlot()) {
+            case -1:
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bfx_black));
+                break;
             case 1:
                 select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_blt_black));
                 break;

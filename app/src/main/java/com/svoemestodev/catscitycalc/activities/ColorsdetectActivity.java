@@ -525,7 +525,7 @@ public class ColorsdetectActivity extends AppCompatActivity {
         tvRecognize = findViewById(R.id.tv_recognized);
         tvFinal = findViewById(R.id.tv_final);
 
-        mainCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.context, CityCalcType.COLORS);
+        mainCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.COLORS);
 
         initMap();
 

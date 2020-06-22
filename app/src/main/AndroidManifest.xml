@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.svoemestodev.catscitycalc">
+    package="com.svoemestodev.catscitycalc"
+    android:installLocation="auto">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="com.svoemestodev.catscitycalc.GlobalApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/ic_catscalcicon"
@@ -18,9 +20,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".activities.EditTeamActivity"
-            android:screenOrientation="portrait"
-            />
+
+        <activity android:name=".activities.WorkBuildingActivity"></activity>
+        <activity android:name=".activities.TeamUserActivity" />
+        <activity android:name=".activities.ManageTeamActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-2870168293382158~9528759362" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" /> <!-- version -->
+        <meta-data
+            android:name="com.google.android.gms.vision.DEPENDENCIES"
+            android:value="ocr" /> <!-- barcode,face,ocr -->
+        <activity
+            android:name=".activities.EditTeamActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -33,18 +49,18 @@
         </provider>
 
         <activity
-            android:name=".activities.TeamActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/team" />
+            android:name=".activities.WorkTeamActivity"
+            android:label="@string/team"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.UserActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/open_login" />
-        <activity android:name=".activities.CarActivity" />
+            android:name=".activities.EditUserActivity"
+            android:label="@string/open_login"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.EditCarActivity" />
         <activity
             android:name=".activities.SplashActivity"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|screenSize">
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,34 +69,29 @@
         </activity>
         <activity
             android:name=".activities.GameActivity"
-            android:screenOrientation="portrait"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ColorsdetectActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/sett_colors" />
+            android:label="@string/sett_colors"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.BordersActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/sett_borders" />
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2870168293382158~9528759362" />
-
+            android:label="@string/sett_borders"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.CalibrateActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/sett_calibrate_center_screen" />
+            android:label="@string/sett_calibrate_center_screen"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.SettingsActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/settings" />
+            android:label="@string/settings"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.StrategyActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/strategic_planning" />
+            android:label="@string/strategic_planning"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

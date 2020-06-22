@@ -1,5 +1,8 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import android.content.Context;
+
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
@@ -345,6 +348,7 @@ public class CCAGame extends CityCalcArea {
     public void calcWin() {
 
         String pattern = "dd MMM HH:mm";
+        Context context = GlobalApplication.getAppContext();
 
         this.dateCurrent = new Date((Calendar.getInstance().getTime().getTime() / 60_000) * 60_000); // текущая дата
         Date dateEarlyOutTeam = getDateEarlyWinOur(); // дата досрочной победы нашей команды
@@ -376,43 +380,43 @@ public class CCAGame extends CityCalcArea {
         if (this.isGameOver) { // игра закончена
             if (this.isGameOverEarly) { // игра закончена досрочно
                 if (this.isWinOur) { // досрочная наша победа
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_instance_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_instance_win)  + " " + differentPoints + " " + context.getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.isWinEnemy) { // досрочная победа противника
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_instance_lose)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_instance_lose)  + " " + differentPoints + " " + context.getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.isWinNobody) { // досрочная ничья
-                    this.status = this.getCityCalc().getContext().getString(R.string.instance_nowinner)  + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.instance_nowinner)  + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 }
             } else { // игра закончена по времени
                 if (this.isWinOur) { // наша победа
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_win)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_win)  + " " + differentPoints + " " + context.getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.isWinEnemy) { // победа противника
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_lost)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_lost)  + " " + differentPoints + " " + context.getString(R.string.points) + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.isWinNobody) { // ничья
-                    this.status = this.getCityCalc().getContext().getString(R.string.nowin)  + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.nowin)  + " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 }
             }
         } else { // игра еще идет
             int minutesToEndGame = Utils.getMinutesBetweenDates(this.dateCurrent, this.dateFinal);
             if (this.willEarlyWin) { // игра будет закончена досрочно
                 if (this.willOurWin) { // будет досрочная наша победа
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_will_instance_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_will_instance_win_with_diff_in)  + " " + differentPoints + " " + context.getString(R.string.points)  + " " + context.getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.willEnemyWin) { // будет досрочная победа противника
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_will_instance_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_will_instance_lose_with_diff_in)  + " " + differentPoints + " " + context.getString(R.string.points)  + " " + context.getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.willNobodyWin) { // будет досрочная ничья
-                    this.status = this.getCityCalc().getContext().getString(R.string.will_instance_nowin_after)  + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.will_instance_nowin_after)  + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 }
             } else { // игра будет закончена по времени
                 if (this.willOurWin) { // будет наша победа
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_will_win_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_will_win_with_diff_in)  + " " + differentPoints + " " + context.getString(R.string.points)  + " " + context.getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.willEnemyWin) { // будет победа противника
-                    this.status = this.getCityCalc().getContext().getString(R.string.we_will_lose_with_diff_in)  + " " + differentPoints + " " + this.getCityCalc().getContext().getString(R.string.points)  + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.we_will_lose_with_diff_in)  + " " + differentPoints + " " + context.getString(R.string.points)  + " " + context.getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 } else if (this.willNobodyWin) { // будет ничья
-                    this.status = this.getCityCalc().getContext().getString(R.string.will_nowin) + " " + this.getCityCalc().getContext().getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
+                    this.status = context.getString(R.string.will_nowin) + " " + context.getString(R.string.after) + " " + Utils.convertMinutesToHHMM(minutesToEndGame) +  " (" + Utils.convertDateToString(this.dateFinal, pattern) + ")";
                 }
             }
         } // игра закончена
 
-        if  (this.isErrorRecognize) this.status = getCityCalc().getContext().getString(R.string.error_recognizing) + "  " + this.status;
+        if  (this.isErrorRecognize) this.status = context.getString(R.string.error_recognizing) + "  " + this.status;
 
 
     }

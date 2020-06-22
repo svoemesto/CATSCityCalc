@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".activities.ManageTeamActivity">
+
+    <com.google.android.gms.ads.AdView
+
+        android:id="@+id/mt_ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_mt_unit_id"
+        />
+
+    <Button
+        android:id="@+id/mt_bt_invite_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/mt_ad_banner"
+        android:text="@string/invite_user"
+        android:onClick="inviteUser"
+        />
+
+
+    <ImageButton
+        android:id="@+id/mt_bt_edit_team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:layout_alignParentEnd="true"
+        android:onClick="editTeam"
+        />
+
+    <TextView
+        android:id="@+id/mt_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        />
+
+    <ListView
+        android:id="@+id/mt_lv_users"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/mt_bt_invite_user"
+        android:layout_below="@id/mt_bt_edit_team"
+        />
+
+
+</RelativeLayout>
