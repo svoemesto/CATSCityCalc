@@ -56,6 +56,11 @@ public class CCABuilding extends CityCalcArea {
             this.slots_our = (int)Math.round((float)this.slots * frqOurSlots);
             this.slots_enemy = (int)Math.round((float)this.slots * frqEnemySlots);
             this.slots_empty = (int)Math.round((float)this.slots * frqEmptySlots);
+
+            this.buildingIsOur = this.slots_our >= (this.slots/2 + 1);
+            this.buildingIsEnemy = this.slots_enemy >= (this.slots/2 + 1);
+            this.buildingIsEmpty = this.slots_empty >= (this.slots/2 + 1);
+            
             int[] counts = new int[]{this.slots_our, this.slots_enemy, this.slots_empty};
 
 //            float frqOurSlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[0],10, 10);
