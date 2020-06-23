@@ -360,6 +360,7 @@ public class GameActivity extends AppCompatActivity {
         File lastScrFile = new File (getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
         CityCalc tmpCityCalc = new CityCalc(lastScrFile, calibrateX, calibrateY, mainUserNIC, mainUserUID, mainTeamID);
         fileGameScreenshot = lastScrFile;   // текущий скриншот = последнему файлу в папке
+        fileLastScreenshot = lastScrFile;
         mainCityCalc = new CityCalc(tmpCityCalc, false);
         mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
         loadDataToViews(true);
