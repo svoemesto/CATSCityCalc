@@ -310,6 +310,8 @@ public class GameActivity extends AppCompatActivity {
 
     public static int OVERLAY_PERMISSION_REQ_CODE = 1;
 
+    public static boolean isNeedUpdateCars;
+
 //    @TargetApi(Build.VERSION_CODES.M)
 //    public void checkPermissionOverlay() {
 //        if (!Settings.canDrawOverlays(GlobalApplication.getAppContext())) {
@@ -981,7 +983,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    private void setDataToCarsViews() {
+    public void setDataToCarsViews() {
         List<Car> listCars = Car.loadList();
 
         Car car1 = listCars.get(0);
@@ -3097,6 +3099,11 @@ public class GameActivity extends AppCompatActivity {
                         loadDataToViews(true);
                         break;
                     default:
+                }
+
+                if (isNeedUpdateCars) {
+                    isNeedUpdateCars = false;
+                    setDataToCarsViews();
                 }
 
             }

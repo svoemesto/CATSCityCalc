@@ -234,6 +234,9 @@ public class CCACar extends CityCalcArea {
             }
 
             updatedCar.save();
+
+            GameActivity.isNeedUpdateCars = true;
+
         }
     }
 

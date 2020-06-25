@@ -292,6 +292,7 @@ public class EditCarActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         car.save();
+        GameActivity.isNeedUpdateCars = true;
         super.onBackPressed();
 
     }

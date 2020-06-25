@@ -203,6 +203,7 @@ public class Car implements Serializable {
             ois.close();
         } catch (ClassNotFoundException | IOException e) {
             Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
+            e.printStackTrace();
             list = getDefaultList();
             saveList(list);
         }
@@ -218,7 +219,8 @@ public class Car implements Serializable {
             list = (List<Car>) ois.readObject();
             ois.close();
         } catch (ClassNotFoundException | IOException e) {
-            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
+            Log.e("Car", "loadList userUID. Ошибка десериализации. Возвращаем список по-умолчанию.");
+            e.printStackTrace();
             list = getDefaultList();
             saveList(list, userUID);
         }
@@ -235,7 +237,8 @@ public class Car implements Serializable {
             ois.close();
             return list;
         } catch (ClassNotFoundException | IOException e) {
-            Log.e("Car", "loadListFromFile. Ошибка десериализации. Возвращаем список по-умолчанию.");
+            Log.e("Car", "loadListFromFile. Ошибка десериализации.");
+            e.printStackTrace();
         }
         return null;
     }
