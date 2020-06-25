@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,6 +25,8 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.svoemestodev.catscitycalc.CityCalcService;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
@@ -216,6 +222,17 @@ public class EditCarActivity extends AppCompatActivity {
                 if (newValue.equals("")) newValue = "0";
                 long seconds = Utils.conversTimeStringWithoutColonsToSeconds(newValue);
                 car.setRepairingStateTillNow(seconds);
+
+                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
+                intent.setAction("Repairing " + car.getName());
+                intent.putExtra("message", "Машинка " + car.getName() + " отремонтирована.");
+                intent.putExtra("car_number", car.getSlot());
+
+                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + seconds*1000, pendingIntent);
+
+
                 loadDataToViews();
             }
         });

@@ -1,8 +1,12 @@
 package com.svoemestodev.catscitycalc;
 
 import android.app.Application;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.os.IBinder;
 
 public class GlobalApplication extends Application {
 
@@ -441,11 +445,37 @@ public class GlobalApplication extends Application {
     private static float cut_car_in_city_statebox3_x2;
     private static float cut_car_in_city_statebox3_y1;
     private static float cut_car_in_city_statebox3_y2;
-    
-    
+
+    public static CityCalcService mService;
+    public static boolean mBound = false;
+
+    public static Intent serviceIntent;
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+
+            CityCalcService.LocalBinder binder = (CityCalcService.LocalBinder) service;
+            mService = binder.getService();
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            mBound = false;
+        }
+    };
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        serviceIntent = new Intent(this, CityCalcService.class);
+        bindService(serviceIntent, mConnection, Context.BIND_AUTO_CREATE);
+
+
+
         appContext = getApplicationContext();
         sharedPreferences = appContext.getSharedPreferences(appContext.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
         rgb_progress_our = sharedPreferences.getInt(appContext.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(appContext.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(appContext.getString(R.string.def_rgb_bxx_progress_our_main), 16)));

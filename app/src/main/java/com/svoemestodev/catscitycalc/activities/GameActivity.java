@@ -7,6 +7,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -22,6 +23,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -61,6 +63,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.OverlayShowingService;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.classes.LastModified;
@@ -243,9 +246,9 @@ public class GameActivity extends AppCompatActivity {
     public static File lastDataFile;                                // последний файл в папке
     public static File lastWhatsappFile;                                // последний файл в папке
     public static File lastTelegramFile;                                // последний файл в папке
-    private NotificationManager notificationManager;            // нотификатор
-    private static final int NOTIFY_ID = 1;                     // айди нотификатора
-    private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
+//    private NotificationManager notificationManager;            // нотификатор
+//    private static final int NOTIFY_ID = 1;                     // айди нотификатора
+//    private static final String CHANNEL_ID = "C.A.T.S. City Calculator Channel #1";   // канал нотификатора
     public static String pathToScreenshotDir = "";              // путь к папке скриншотов
     public static String pathToDataDir = "";              // путь к папке скриншотов
     public static String pathToWhatsappDir = "";              // путь к папке скриншотов
@@ -305,6 +308,16 @@ public class GameActivity extends AppCompatActivity {
 
     public static firstTask.TaskListenScreenshotFolder tlff;
 
+    public static int OVERLAY_PERMISSION_REQ_CODE = 1;
+
+//    @TargetApi(Build.VERSION_CODES.M)
+//    public void checkPermissionOverlay() {
+//        if (!Settings.canDrawOverlays(GlobalApplication.getAppContext())) {
+//            Toast.makeText(GlobalApplication.getAppContext(), "Нужны права на наложение поверх всех приложений", Toast.LENGTH_LONG).show();
+//            Intent intentSettings = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+//            startActivityForResult(intentSettings, OVERLAY_PERMISSION_REQ_CODE);
+//        }
+//    }
 
     @Override
     protected void onResume() {
@@ -319,6 +332,10 @@ public class GameActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         super.onCreate(savedInstanceState);
+
+//        checkPermissionOverlay();
+//        Intent svc = new Intent(this, OverlayShowingService.class);
+//        startService(svc);
 
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
@@ -352,7 +369,7 @@ public class GameActivity extends AppCompatActivity {
         ga_ad_banner.loadAd(adRequest);
 
         // нотификейшн менеджер
-        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+//        notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         readPreferences(); // считываем преференцы
         ga_sw_listen_new_file.setChecked(isListenToNewFileInFolder);
@@ -802,25 +819,32 @@ public class GameActivity extends AppCompatActivity {
 
         // нотификация
         if (withNotify) {
+
+
+
             Log.i(TAG, logMsgPref + "withNotify");
             if (ccaGame != null) {
                 Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.getStatus());
-                Intent intent = new Intent(this, GameActivity.class);
-                intent.setAction(Intent.ACTION_MAIN);
-                intent.addCategory(Intent.CATEGORY_LAUNCHER);
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+                GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, mainCityCalc.getBmpScreenshot());
+//                GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, ccaGame.getBmpSrc());
 
-                NotificationCompat.Builder notificationBuilder =
-                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                                .setAutoCancel(true)
-                                .setSmallIcon(R.drawable.ic_catscalciconsmall)
-                                .setWhen(System.currentTimeMillis())
-                                .setContentIntent(pendingIntent)
-                                .setContentText(ccaGame.getStatus())
-                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.getStatus()));
-                createChannelIfNeeded(notificationManager);
-                notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
+//                Intent intent = new Intent(this, GameActivity.class);
+//                intent.setAction(Intent.ACTION_MAIN);
+//                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//
+//                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+//
+//                NotificationCompat.Builder notificationBuilder =
+//                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+//                                .setAutoCancel(true)
+//                                .setSmallIcon(R.drawable.ic_catscalciconsmall)
+//                                .setWhen(System.currentTimeMillis())
+//                                .setContentIntent(pendingIntent)
+//                                .setContentText(ccaGame.getStatus())
+//                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.getStatus()));
+//                createChannelIfNeeded(notificationManager);
+//                notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
             }
         }
 
@@ -1375,12 +1399,12 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Создание канала нотификации
      */
-    public static void createChannelIfNeeded(NotificationManager manager) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
-            manager.createNotificationChannel(notificationChannel);
-        }
-    }
+//    public static void createChannelIfNeeded(NotificationManager manager) {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID, CHANNEL_ID, NotificationManager.IMPORTANCE_DEFAULT);
+//            manager.createNotificationChannel(notificationChannel);
+//        }
+//    }
 
     /**
      * Возврат в текущую активность из какой-то другой активности

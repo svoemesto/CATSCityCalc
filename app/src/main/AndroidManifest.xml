@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name="com.svoemestodev.catscitycalc.GlobalApplication"
@@ -19,9 +20,13 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="q">
+        tools:targetApi="q"
+        >
 
-        <activity android:name=".activities.WorkBuildingActivity"></activity>
+        <service android:enabled="true" android:name=".CityCalcService"/>
+        <service android:exported="false" android:name=".OverlayShowingService"/>
+
+        <activity android:name=".activities.WorkBuildingActivity" />
         <activity android:name=".activities.TeamUserActivity" />
         <activity android:name=".activities.ManageTeamActivity" />
 
