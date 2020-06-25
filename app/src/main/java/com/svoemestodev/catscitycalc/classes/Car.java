@@ -164,68 +164,174 @@ public class Car implements Serializable {
 
     }
 
-    public static List<Car> getDefaultList() {
+//    public static List<Car> getDefaultList() {
+//
+//        List<Car> list = new ArrayList<>();
+//        String userUID = null;
+//        if (GameActivity.fbUser != null) {
+//            userUID = GameActivity.fbUser.getUid();
+//        }
+//
+//        Bitmap picture1 = BitmapFactory.decodeFile( pathToCATScalcFolder + "/stub_car1.jpg");
+//        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+//        picture1.compress(Bitmap.CompressFormat.PNG, 100, stream1);
+//        byte[] imageByteArrayBuilding1 = stream1.toByteArray();
+//        list.add(new Car("Car #1", 1, 0, 0, imageByteArrayBuilding1, userUID));
+//
+//        Bitmap picture2 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car2.jpg");
+//        ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+//        picture2.compress(Bitmap.CompressFormat.PNG, 100, stream2);
+//        byte[] imageByteArrayBuilding2 = stream2.toByteArray();
+//        list.add(new Car("Car #2", 2, 0, 0,imageByteArrayBuilding2, userUID));
+//
+//        Bitmap picture3 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car3.jpg");
+//        ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
+//        picture3.compress(Bitmap.CompressFormat.PNG, 100, stream3);
+//        byte[] imageByteArrayBuilding3 = stream3.toByteArray();
+//        list.add(new Car("Car #3", 3, 0, 0, imageByteArrayBuilding3, userUID));
+//
+//        return list;
+//    }
 
-        List<Car> list = new ArrayList<>();
+    public static Car getDefaultCar(int slot) {
+
         String userUID = null;
         if (GameActivity.fbUser != null) {
             userUID = GameActivity.fbUser.getUid();
         }
 
-        Bitmap picture1 = BitmapFactory.decodeFile( pathToCATScalcFolder + "/stub_car1.jpg");
-        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
-        picture1.compress(Bitmap.CompressFormat.PNG, 100, stream1);
-        byte[] imageByteArrayBuilding1 = stream1.toByteArray();
-        list.add(new Car("Car #1", 1, 0, 0, imageByteArrayBuilding1, userUID));
+        Bitmap carPicture = BitmapFactory.decodeFile( pathToCATScalcFolder + "/stub_car" + slot + ".jpg");
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        carPicture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
+        byte[] imageByteArrayBuilding = stream.toByteArray();
+        return new Car("Car #" + slot, slot, 0, 0, imageByteArrayBuilding, userUID);
 
-        Bitmap picture2 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car2.jpg");
-        ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
-        picture2.compress(Bitmap.CompressFormat.PNG, 100, stream2);
-        byte[] imageByteArrayBuilding2 = stream2.toByteArray();
-        list.add(new Car("Car #2", 2, 0, 0,imageByteArrayBuilding2, userUID));
+    }
 
-        Bitmap picture3 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car3.jpg");
-        ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
-        picture3.compress(Bitmap.CompressFormat.PNG, 100, stream3);
-        byte[] imageByteArrayBuilding3 = stream3.toByteArray();
-        list.add(new Car("Car #3", 3, 0, 0, imageByteArrayBuilding3, userUID));
+    public boolean save() {
+        File file = new File(pathToFile + "_car" + this.slot);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+            oos.writeObject(this);
+            oos.close();
 
-        return list;
+            if (GameActivity.fbUser != null) {
+                if (GameActivity.fbUser.isEmailVerified()) {
+                    final String userUID = GameActivity.fbUser.getUid();
+                    CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
+                    String docRefCarName = "car" + this.slot;
+                    DocumentReference docRefCar = userCars.document(docRefCarName);
+                    docRefCar.set(getMap());
+                }
+            }
+
+            return true;
+        } catch (IOException e) {
+            Log.e("Car", "save car#" + this.slot + ". Ошибка сериализации");
+            return false;
+        }
+    }
+
+    public boolean save(String userUID) {
+        File file = new File(pathToFile + "_car" + slot + "_" + userUID);
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+            oos.writeObject(this);
+            oos.close();
+
+            return true;
+        } catch (IOException e) {
+            Log.e("Car", "save car#" + this.slot + " userUID=" + userUID + ". Ошибка сериализации");
+            return false;
+        }
+    }
+
+    public static Car loadCar(int slot) {
+        Car car;
+        File file = new File(pathToFile + "_car" + slot);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+            car = (Car) ois.readObject();
+            ois.close();
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e("Car", "loadCar #" + slot + ". Ошибка десериализации. Возвращаем car по-умолчанию.");
+            e.printStackTrace();
+            car = getDefaultCar(slot);
+            car.save();
+        }
+        return car;
+    }
+
+    public static Car loadCar(int slot, String userUID) {
+        Car car;
+        File file = new File(pathToFile + "_car" + slot + "_" + userUID);
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+            car = (Car) ois.readObject();
+            ois.close();
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e("Car", "loadCar #" + slot + ". Ошибка десериализации. Возвращаем car по-умолчанию.");
+            e.printStackTrace();
+            car = getDefaultCar(slot);
+            car.setUserUID(userUID);
+            car.save(userUID);
+        }
+        return car;
     }
 
     public static List<Car> loadList() {
-        List<Car> list;
-        File file = new File(pathToFile);
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-            list = (List<Car>) ois.readObject();
-            ois.close();
-        } catch (ClassNotFoundException | IOException e) {
-            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
-            e.printStackTrace();
-            list = getDefaultList();
-            saveList(list);
-        }
+
+        List<Car> list = new ArrayList<>();
+        list.add(loadCar(1));
+        list.add(loadCar(2));
+        list.add(loadCar(3));
         return list;
+
+//        File file = new File(pathToFile);
+//        try {
+//            FileInputStream fileInputStream = new FileInputStream(file);
+//            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+//            list = (List<Car>) ois.readObject();
+//            ois.close();
+//        } catch (ClassNotFoundException | IOException e) {
+//            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
+//            e.printStackTrace();
+//            list = getDefaultList();
+//            saveList(list);
+//        }
+//        return list;
     }
 
     public static List<Car> loadList(String userUID) {
-        List<Car> list;
-        File file = new File(pathToFile + "_" + userUID);
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-            list = (List<Car>) ois.readObject();
-            ois.close();
-        } catch (ClassNotFoundException | IOException e) {
-            Log.e("Car", "loadList userUID. Ошибка десериализации. Возвращаем список по-умолчанию.");
-            e.printStackTrace();
-            list = getDefaultList();
-            saveList(list, userUID);
-        }
+
+        List<Car> list = new ArrayList<>();
+        list.add(loadCar(1, userUID));
+        list.add(loadCar(2, userUID));
+        list.add(loadCar(3, userUID));
         return list;
+
     }
+
+//    public static List<Car> loadList(String userUID) {
+//        List<Car> list;
+//        File file = new File(pathToFile + "_" + userUID);
+//        try {
+//            FileInputStream fileInputStream = new FileInputStream(file);
+//            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+//            list = (List<Car>) ois.readObject();
+//            ois.close();
+//        } catch (ClassNotFoundException | IOException e) {
+//            Log.e("Car", "loadList userUID. Ошибка десериализации. Возвращаем список по-умолчанию.");
+//            e.printStackTrace();
+//            list = getDefaultList();
+//            saveList(list, userUID);
+//        }
+//        return list;
+//    }
 
     public static List<Car> loadListFromFile(String pathToFile) {
         List<Car> list;
@@ -243,80 +349,73 @@ public class Car implements Serializable {
         return null;
     }
 
-    public void save() {
-        List<Car> list = loadList();
-        List<Car> listNew = new ArrayList<>();
-        boolean isFind = false;
-        for (Car car : list) {
-            if (car.getSlot() == this.getSlot()) {
-                isFind = true;
-                listNew.add(this);
-            } else {
-                listNew.add(car);
-            }
-        }
-        if (!isFind) listNew.add(this);
-        saveList(listNew);
-
-        if (GameActivity.fbUser != null) {
-            if (GameActivity.fbUser.isEmailVerified()) {
-                final String userUID = GameActivity.fbUser.getUid();
-                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
-                String docRefCarName = "car" + this.slot;
-                DocumentReference docRefCar = userCars.document(docRefCarName);
-                docRefCar.set(getMap());
-//                String pathToFileOnServer = "users/" + userUID + "/" + docRefCarName;
-//                StorageReference storRefCarFree = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_free");
-//                StorageReference storRefCarDef = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_def");
-//                StorageReference storRefCarRep = GameActivity.fbStor.getReference().child(pathToFileOnServer + "_rep");
-//                if (this.imageByteArrayCar != null) storRefCarFree.putBytes(this.imageByteArrayCar);
-//                if (this.imageByteArrayCarDefencing != null) storRefCarDef.putBytes(this.imageByteArrayCarDefencing);
-//                if (this.imageByteArrayCarRepairing != null) storRefCarRep.putBytes(this.imageByteArrayCarRepairing);
-            }
-        }
-
-    }
-
-    public void save(String userUID) {
-        List<Car> list = loadList(userUID);
-        List<Car> listNew = new ArrayList<>();
-        boolean isFind = false;
-        for (Car car : list) {
-            if (car.getSlot() == this.getSlot()) {
-                isFind = true;
-                listNew.add(this);
-            } else {
-                listNew.add(car);
-            }
-        }
-        if (!isFind) listNew.add(this);
-        saveList(listNew, userUID);
-
+//    public void save() {
+//        List<Car> list = loadList();
+//        List<Car> listNew = new ArrayList<>();
+//        boolean isFind = false;
+//        for (Car car : list) {
+//            if (car.getSlot() == this.getSlot()) {
+//                isFind = true;
+//                listNew.add(this);
+//            } else {
+//                listNew.add(car);
+//            }
+//        }
+//        if (!isFind) listNew.add(this);
+//        saveList(listNew);
+//
 //        if (GameActivity.fbUser != null) {
 //            if (GameActivity.fbUser.isEmailVerified()) {
+//                final String userUID = GameActivity.fbUser.getUid();
 //                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
 //                String docRefCarName = "car" + this.slot;
 //                DocumentReference docRefCar = userCars.document(docRefCarName);
 //                docRefCar.set(getMap());
 //            }
 //        }
+//
+//    }
 
-    }
+//    public void save(String userUID) {
+//        List<Car> list = loadList(userUID);
+//        List<Car> listNew = new ArrayList<>();
+//        boolean isFind = false;
+//        for (Car car : list) {
+//            if (car.getSlot() == this.getSlot()) {
+//                isFind = true;
+//                listNew.add(this);
+//            } else {
+//                listNew.add(car);
+//            }
+//        }
+//        if (!isFind) listNew.add(this);
+//        saveList(listNew, userUID);
+//
+////        if (GameActivity.fbUser != null) {
+////            if (GameActivity.fbUser.isEmailVerified()) {
+////                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
+////                String docRefCarName = "car" + this.slot;
+////                DocumentReference docRefCar = userCars.document(docRefCarName);
+////                docRefCar.set(getMap());
+////            }
+////        }
+//
+//    }
 
-    public static boolean saveList(List<Car> list) {
-        File file = new File(pathToFile);
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
-            oos.writeObject(list);
-            oos.close();
-            return true;
-        } catch (IOException e) {
-            Log.e("Car", "saveList. Ошибка сериализации");
-            return false;
-        }
-    }
-
+//    public static boolean saveList(List<Car> list) {
+//        File file = new File(pathToFile);
+//        try {
+//            FileOutputStream fileOutputStream = new FileOutputStream(file);
+//            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
+//            oos.writeObject(list);
+//            oos.close();
+//            return true;
+//        } catch (IOException e) {
+//            Log.e("Car", "saveList. Ошибка сериализации");
+//            return false;
+//        }
+//    }
+//
     public static boolean saveList(List<Car> list, String userUID) {
         File file = new File(pathToFile + "_" + userUID);
         try {

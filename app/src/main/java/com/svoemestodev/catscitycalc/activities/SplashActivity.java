@@ -213,10 +213,10 @@ public class SplashActivity extends AppCompatActivity {
         Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
         GlobalApplication.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
 
-        File cars = new File(Car.pathToFile);
-        if (!cars.exists()) {
-            Car.saveList(Car.getDefaultList());
-        }
+//        File cars = new File(Car.pathToFile);
+//        if (!cars.exists()) {
+//            Car.saveList(Car.getDefaultList());
+//        }
 
     }
 
