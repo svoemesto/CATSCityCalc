@@ -1666,7 +1666,7 @@ public class GameActivity extends AppCompatActivity {
                                                                             List<Car> listCars = Car.loadList();                            // получаем локальный список машин
                                                                             Car car = listCars.get(0);                                      // берем из списка 1-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 1-ю машину из базы
-                                                                            if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
                                                                                 if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
                                                                                     car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
@@ -1717,7 +1717,7 @@ public class GameActivity extends AppCompatActivity {
                                                                             List<Car> listCars = Car.loadList();                            // получаем локальный список машин
                                                                             Car car = listCars.get(1);                                      // берем из списка 2-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 2-ю машину из базы
-                                                                            if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
                                                                                 if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
                                                                                     car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
@@ -1768,7 +1768,7 @@ public class GameActivity extends AppCompatActivity {
                                                                             List<Car> listCars = Car.loadList();                            // получаем локальный список машин
                                                                             Car car = listCars.get(2);                                      // берем из списка 3-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 3-ю машину из базы
-                                                                            if (car.getUuid().toString().equals(dbCar.getCarUID())) {       // если UIDы локальной машины и машины из базы совпадают
+                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
                                                                                 if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
                                                                                     car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины

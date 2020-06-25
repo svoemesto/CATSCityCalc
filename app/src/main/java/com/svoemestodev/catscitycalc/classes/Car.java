@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Car implements Serializable {
-    private UUID uuid = UUID.randomUUID();
+//    private UUID uuid = UUID.randomUUID();
     private String name = "";
 
     private String userUID;
@@ -245,7 +245,7 @@ public class Car implements Serializable {
         List<Car> listNew = new ArrayList<>();
         boolean isFind = false;
         for (Car car : list) {
-            if (car.getUuid().equals(this.getUuid())) {
+            if (car.getSlot() == this.getSlot()) {
                 isFind = true;
                 listNew.add(this);
             } else {
@@ -279,7 +279,7 @@ public class Car implements Serializable {
         List<Car> listNew = new ArrayList<>();
         boolean isFind = false;
         for (Car car : list) {
-            if (car.getUuid().equals(this.getUuid())) {
+            if (car.getSlot() == this.getSlot()) {
                 isFind = true;
                 listNew.add(this);
             } else {
@@ -332,7 +332,7 @@ public class Car implements Serializable {
         Map<String, Object> map = new HashMap<>();
 
         map.put("timestamp", FieldValue.serverTimestamp());
-        map.put("carUID", uuid.toString());
+//        map.put("carUID", uuid.toString());
         map.put("userUID", userUID);
         map.put("userNIC", userNIC);
         map.put("teamID", teamID);
@@ -451,13 +451,13 @@ public class Car implements Serializable {
         return getSecondsToEndRepairing() > 0;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
+//    public UUID getUuid() {
+//        return uuid;
+//    }
+//
+//    public void setUuid(UUID uuid) {
+//        this.uuid = uuid;
+//    }
 
     public String getName() {
         return name;

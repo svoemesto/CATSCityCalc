@@ -375,7 +375,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             Car car1 = listCars.get(0);
                             DbCar dbCar1 = new DbCar(documentSnapshot);
                             
-                            car1.setUuid(UUID.fromString(dbCar1.getCarUID()));
+//                            car1.setUuid(UUID.fromString(dbCar1.getCarUID()));
                             car1.setSlot(dbCar1.getCarSlot());
                             car1.setName(dbCar1.getCarName());
                             car1.setHealth(dbCar1.getCarHealth());
@@ -565,7 +565,7 @@ public class WorkTeamActivity extends AppCompatActivity {
 
                             Car car2 = listCars.get(1);
                             DbCar dbCar2 = new DbCar(documentSnapshot);
-                            car2.setUuid(UUID.fromString(dbCar2.getCarUID()));
+//                            car2.setUuid(UUID.fromString(dbCar2.getCarUID()));
                             car2.setSlot(dbCar2.getCarSlot());
                             car2.setName(dbCar2.getCarName());
                             car2.setHealth(dbCar2.getCarHealth());
@@ -750,7 +750,7 @@ public class WorkTeamActivity extends AppCompatActivity {
 
                             Car car3 = listCars.get(2);
                             DbCar dbCar3 = new DbCar(documentSnapshot);
-                            car3.setUuid(UUID.fromString(dbCar3.getCarUID()));
+//                            car3.setUuid(UUID.fromString(dbCar3.getCarUID()));
                             car3.setSlot(dbCar3.getCarSlot());
                             car3.setName(dbCar3.getCarName());
                             car3.setHealth(dbCar3.getCarHealth());

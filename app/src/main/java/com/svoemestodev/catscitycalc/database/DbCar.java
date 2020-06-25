@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class DbCar {
 
-    private String carUID;
+//    private String carUID;
     private String carName;
     private String userUID;
     private String userNIC;
@@ -26,7 +26,7 @@ public class DbCar {
     }
 
     public DbCar(Car car) {
-        this.carUID = car.getUuid().toString();
+//        this.carUID = car.getUuid().toString();
         this.carName = car.getName();
         this.carSlot = car.getSlot();
         this.carHealth = car.getHealth();
@@ -44,7 +44,7 @@ public class DbCar {
         String key;
         Map<String, Object> map = documentSnapshot.getData();
 
-        key = "carUID"; if (map.containsKey(key)) this.carUID = map.get(key).toString();
+//        key = "carUID"; if (map.containsKey(key)) this.carUID = map.get(key).toString();
         key = "carName"; if (map.containsKey(key)) this.carName = map.get(key).toString();
         key = "carRepair"; if (map.containsKey(key)) {
             if (documentSnapshot.getTimestamp(key) == null) {
@@ -93,7 +93,7 @@ public class DbCar {
         map.put("userUID", userUID);
         map.put("userNIC", userNIC);
         map.put("teamID", teamID);
-        map.put("carUID", carUID);
+//        map.put("carUID", carUID);
         map.put("carName", carName);
         map.put("carSlot", carSlot);
         map.put("carHealth", carHealth);
@@ -105,13 +105,13 @@ public class DbCar {
         return map;
     }
 
-    public String getCarUID() {
-        return carUID;
-    }
-
-    public void setCarUID(String carUID) {
-        this.carUID = carUID;
-    }
+//    public String getCarUID() {
+//        return carUID;
+//    }
+//
+//    public void setCarUID(String carUID) {
+//        this.carUID = carUID;
+//    }
 
     public String getCarName() {
         return carName;
