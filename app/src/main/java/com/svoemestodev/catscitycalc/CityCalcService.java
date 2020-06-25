@@ -82,7 +82,7 @@ public class CityCalcService extends Service {
         int notifyID = intent.getIntExtra("car_number", 0);
 
         Bitmap largeIcon = null;
-        largeIcon = Car.loadList().get(notifyID-1).getCarPicture();
+        largeIcon = Car.loadCar(notifyID).getCarPicture();
 
 //        Toast.makeText(GlobalApplication.getAppContext(),message, Toast.LENGTH_LONG).show();
         Toast toast = Toast.makeText(GlobalApplication.getAppContext(), message, Toast.LENGTH_LONG);

@@ -58,7 +58,7 @@ public class EditCarActivity extends AppCompatActivity {
         }
 
         if (slot == 0) slot = 1;
-        car = Car.loadList().get(slot-1);
+        car = Car.loadCar(slot);
 
         initializeViews();
         loadDataToViews();

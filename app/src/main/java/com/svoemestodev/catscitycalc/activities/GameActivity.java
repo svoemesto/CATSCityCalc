@@ -984,11 +984,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void setDataToCarsViews() {
-        List<Car> listCars = Car.loadList();
 
-        Car car1 = listCars.get(0);
-        Car car2 = listCars.get(1);
-        Car car3 = listCars.get(2);
+        Car car1 = Car.loadCar(1);
+        Car car2 = Car.loadCar(2);
+        Car car3 = Car.loadCar(3);
 
         ga_tv_car1_name.setText(car1.getName());
  
@@ -1665,33 +1664,30 @@ public class GameActivity extends AppCompatActivity {
                                                                         Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
 
                                                                         if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            List<Car> listCars = Car.loadList();                            // получаем локальный список машин
-                                                                            Car car = listCars.get(0);                                      // берем из списка 1-ю машину
+                                                                            Car car = Car.loadCar(1);                                      // берем из списка 1-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 1-ю машину из базы
-                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
                                                                                 if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
-                                                                                    car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                    // получаем правильную картинку здания для нового задания
-                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                    Bitmap taskBitmap = null;
-                                                                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                                    }
-                                                                                    car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                    car.save();                     // сохраняем локальную машину
-                                                                                    setDataToCarsViews();           // обновляем машины в активити
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                                                                                 }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
                                                                             }
                                                                         }
 
@@ -1716,33 +1712,30 @@ public class GameActivity extends AppCompatActivity {
                                                                         Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
 
                                                                         if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            List<Car> listCars = Car.loadList();                            // получаем локальный список машин
-                                                                            Car car = listCars.get(1);                                      // берем из списка 2-ю машину
+                                                                            Car car = Car.loadCar(2);                                      // берем из списка 2-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 2-ю машину из базы
-                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
-                                                                                if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
-                                                                                    car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                    // получаем правильную картинку здания для нового задания
-                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                    Bitmap taskBitmap = null;
-                                                                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                                    }
-                                                                                    car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                    car.save();                     // сохраняем локальную машину
-                                                                                    setDataToCarsViews();           // обновляем машины в активити
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                                                                                 }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
                                                                             }
                                                                         }
 
@@ -1767,33 +1760,30 @@ public class GameActivity extends AppCompatActivity {
                                                                         Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
 
                                                                         if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            List<Car> listCars = Car.loadList();                            // получаем локальный список машин
-                                                                            Car car = listCars.get(2);                                      // берем из списка 3-ю машину
+                                                                            Car car = Car.loadCar(3);                                      // берем из списка 3-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 3-ю машину из базы
-                                                                            if (car.getSlot() == dbCar.getCarSlot()) {       // если UIDы локальной машины и машины из базы совпадают
-                                                                                if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
-                                                                                    car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                    // получаем правильную картинку здания для нового задания
-                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                    Bitmap taskBitmap = null;
-                                                                                    if (dbCar.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                    } else if (dbCar.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                                    }
-                                                                                    car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                    car.save();                     // сохраняем локальную машину
-                                                                                    setDataToCarsViews();           // обновляем машины в активити
+                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                // получаем правильную картинку здания для нового задания
+                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                Bitmap taskBitmap = null;
+                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                                                                                 }
+                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                car.save();                     // сохраняем локальную машину
+                                                                                setDataToCarsViews();           // обновляем машины в активити
                                                                             }
                                                                         }
 
@@ -3118,381 +3108,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-
-    class firstTask1 extends TimerTask {
-
-        @Override
-        public void run() {
-
-            String logMsgPref = "firstTask: ";
-
-            GameActivity.this.runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-
-                    String logMsgPref = "firstTask: ";
-
-//                    setDataToCarsViews();
-
-                    if (isListenToNewFileInFolder) {    // если установлен флажок "Следить за файлами в папке"
-
-                        File tmpFileScreenshot = getLastFileInScreenshotFolder(pathToScreenshotDir);    // получаем последний файл из папки
-                        if (tmpFileScreenshot != null) {  // если он не пустой
-                            if ((!tmpFileScreenshot.equals(fileGameScreenshot) && !tmpFileScreenshot.equals(fileCarScreenshot)) || isResumed) {  // если он не равен текущем скриншоту
-
-                                boolean needProceedFile = false;
-                                // надо проверить, не является ли текущая игра взятая из скрина на свервере
-                                if (mainCityCalc != null) { // если игра есть
-                                    // если в игре - скрин с сервера
-                                    if (mainCityCalc.getFileScreenshot().getAbsolutePath().equals(GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot")) {
-                                        // если последний скрин из папки - более поздний, чем в игре
-                                        if (LastModified.getLastModified(tmpFileScreenshot).getTime() > LastModified.getLastModified(mainCityCalc.getFileScreenshot()).getTime()) {
-                                            needProceedFile = true;
-                                        }
-                                    } else {
-                                        needProceedFile = true;
-                                    }
-                                } else {
-                                    needProceedFile = true;
-                                }
-
-                                if (needProceedFile) {
-
-                                    CityCalc tmpCityCalc = new CityCalc(tmpFileScreenshot, calibrateX, calibrateY, mainUserNIC, mainUserUID, mainTeamID);
-                                    if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                        fileGameScreenshot = tmpFileScreenshot;   // текущий скриншот = последнему файлу в папке
-
-                                        boolean isRealtimeScreenshot = false;
-                                        if (!fileGameScreenshot.getAbsolutePath().equals(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name))) {
-                                            isRealtimeScreenshot = true;
-                                            Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-                                        }
-
-                                        mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
-                                        mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                        loadDataToViews(true);
-                                    } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                        if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
-                                            CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
-                                            fileCarScreenshot = tmpFileScreenshot;
-                                        }
-                                    }
-                                    if (isResumed) isResumed = false;
-
-                                }
-
-                            }
-                        }
-
-
-                        
-                    } else {
-                        if (fileGameScreenshot == null) {
-                            File lastScreenshot = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name)); // последний скри
-                            fileLastScreenshot = lastScreenshot;
-                            if (lastScreenshot.exists()) {
-                                fileGameScreenshot = lastScreenshot;
-                                CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, mainUserNIC, mainUserUID, mainTeamID);
-                                if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                    mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                    loadDataToViews(true);
-                                } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
-                                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
-                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
-                                }
-                            }
-                        }
-
-                    }
-
-                    if (isListenDataFolder && mainDbTeamUser != null) {
-                        File tmpFileData = getLastFileInDataFolder(pathToDataDir);    // получаем последний файл из папки
-                        if (tmpFileData != null) {  // если он не пустой
-
-                            if (lastDataFile == null || !lastDataFile.equals(tmpFileData)) {
-                                lastDataFile = tmpFileData;
-
-                                if (tmpFileData.getAbsolutePath().endsWith(".citycalcteamgame")) {
-
-                                    if (mainDbTeamUser != null) {
-
-                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileData, mainDbTeamUser.getTeamID());
-
-                                        // тут файл можно уже удалить
-//                                    try {
-//                                        tmpFileData.delete();
-//                                    } catch (Exception e) {
-//                                        e.printStackTrace();
-//                                    }
-
-                                        if (loadedDbTeamGame != null) {
-                                            if (mainCityCalc != null) { // если текущая игра есть
-                                                if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
-
-                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
-
-                                                        try {
-                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                            OutputStream fOut = null;
-                                                            File file = new File(fileNameScreenshot);
-                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                            fOut = new FileOutputStream(file);
-                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                            fOut.flush();
-                                                            fOut.close();
-                                                            File teamGameScreenshot = new File(fileNameScreenshot);
-                                                            // устанавливаем у скачанного файла правильный ластмодифай
-                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                            fileLastScreenshot = teamGameScreenshot;
-                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-                                                                loadDataToViews(true);
-                                                            }
-                                                        } catch (IOException e) {
-                                                            e.printStackTrace();
-                                                        }
-                                                    }
-
-                                                }
-                                            }
-
-                                        }
-
-
-                                    }
-
-
-                                } else if (tmpFileData.getAbsolutePath().endsWith(".citycalccars")) {
-
-                                    if (mainDbTeamUser != null) {
-                                        String fileName = tmpFileData.getAbsolutePath();
-                                        List<Car> listCars = Car.loadListFromFile(fileName);
-                                        if (listCars != null) {
-                                            if (listCars.size() > 0) {
-                                                String userUID = listCars.get(0).getUserUID();
-                                                Car.saveList(listCars, userUID);
-
-                                                // тут файл можно уже удалить
-//                                            try {
-//                                                tmpFileData.delete();
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
-
-                                            }
-                                        }
-                                    }
-
-                                }
-
-
-                            }
-
-
-                        }
-
-                    }
-
-
-                    if (isListenWhatsappFolder && mainDbTeamUser != null) {
-                        File tmpFileWhatsapp = getLastFileInWhatsappFolder(pathToWhatsappDir);    // получаем последний файл из папки
-                        if (tmpFileWhatsapp != null) {  // если он не пустой
-
-                            if (lastWhatsappFile == null || !lastWhatsappFile.equals(tmpFileWhatsapp)) {
-                                lastWhatsappFile = tmpFileWhatsapp;
-
-                                if (tmpFileWhatsapp.getAbsolutePath().endsWith(".citycalcteamgame")) {
-
-                                    if (mainDbTeamUser != null) {
-
-                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileWhatsapp, mainDbTeamUser.getTeamID());
-
-                                        // тут файл можно уже удалить
-                                    try {
-                                        tmpFileWhatsapp.delete();
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
-
-                                        if (loadedDbTeamGame != null) {
-                                            if (mainCityCalc != null) { // если текущая игра есть
-                                                if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
-
-                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
-
-                                                        try {
-                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                            OutputStream fOut = null;
-                                                            File file = new File(fileNameScreenshot);
-                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                            fOut = new FileOutputStream(file);
-                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                            fOut.flush();
-                                                            fOut.close();
-                                                            File teamGameScreenshot = new File(fileNameScreenshot);
-                                                            // устанавливаем у скачанного файла правильный ластмодифай
-                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                            fileLastScreenshot = teamGameScreenshot;
-//                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-//                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
-                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-                                                                loadDataToViews(true);
-                                                            }
-                                                        } catch (IOException e) {
-                                                            e.printStackTrace();
-                                                        }
-                                                    }
-
-                                                }
-                                            }
-
-                                        }
-
-
-                                    }
-
-
-                                } else if (tmpFileWhatsapp.getAbsolutePath().endsWith(".citycalccars")) {
-
-                                    if (mainDbTeamUser != null) {
-                                        String fileName = tmpFileWhatsapp.getAbsolutePath();
-                                        List<Car> listCars = Car.loadListFromFile(fileName);
-                                        if (listCars != null) {
-                                            if (listCars.size() > 0) {
-                                                String userUID = listCars.get(0).getUserUID();
-                                                Car.saveList(listCars, userUID);
-
-                                                // тут файл можно уже удалить
-                                            try {
-                                                tmpFileWhatsapp.delete();
-                                            } catch (Exception e) {
-                                                e.printStackTrace();
-                                            }
-
-                                            }
-                                        }
-                                    }
-
-                                }
-                                
-                            }
-                            
-                        }
-                    }
-
-
-                    if (isListenTelegramFolder && mainDbTeamUser != null) {
-                        File tmpFileTelegram = getLastFileInTelegramFolder(pathToTelegramDir);    // получаем последний файл из папки
-                        if (tmpFileTelegram != null) {  // если он не пустой
-
-                            if (lastTelegramFile == null || !lastTelegramFile.equals(tmpFileTelegram)) {
-                                lastTelegramFile = tmpFileTelegram;
-
-                                if (tmpFileTelegram.getAbsolutePath().endsWith(".citycalcteamgame")) {
-
-                                    if (mainDbTeamUser != null) {
-
-                                        DbTeamGame loadedDbTeamGame = DbTeamGame.load(tmpFileTelegram, mainDbTeamUser.getTeamID());
-
-                                        // тут файл можно уже удалить
-//                                    try {
-//                                        tmpFileData.delete();
-//                                    } catch (Exception e) {
-//                                        e.printStackTrace();
-//                                    }
-
-                                        if (loadedDbTeamGame != null) {
-                                            if (mainCityCalc != null) { // если текущая игра есть
-                                                if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
-
-                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
-
-                                                        try {
-                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                            OutputStream fOut = null;
-                                                            File file = new File(fileNameScreenshot);
-                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                            fOut = new FileOutputStream(file);
-                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                            fOut.flush();
-                                                            fOut.close();
-                                                            File teamGameScreenshot = new File(fileNameScreenshot);
-                                                            // устанавливаем у скачанного файла правильный ластмодифай
-                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                            fileLastScreenshot = teamGameScreenshot;
-                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
-                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-                                                                loadDataToViews(true);
-                                                            }
-                                                        } catch (IOException e) {
-                                                            e.printStackTrace();
-                                                        }
-                                                    }
-
-                                                }
-                                            }
-
-                                        }
-
-
-                                    }
-
-
-                                } else if (tmpFileTelegram.getAbsolutePath().endsWith(".citycalccars")) {
-
-                                    if (mainDbTeamUser != null) {
-                                        String fileName = tmpFileTelegram.getAbsolutePath();
-                                        List<Car> listCars = Car.loadListFromFile(fileName);
-                                        if (listCars != null) {
-                                            if (listCars.size() > 0) {
-                                                String userUID = listCars.get(0).getUserUID();
-                                                Car.saveList(listCars, userUID);
-
-                                                // тут файл можно уже удалить
-//                                            try {
-//                                                tmpFileData.delete();
-//                                            } catch (Exception e) {
-//                                                e.printStackTrace();
-//                                            }
-
-                                            }
-                                        }
-                                    }
-
-                                }
-
-                            }
-
-                        }
-                    }
-
-
-
-
-
-                }
-            });
-        }
-    };
 
 
     class secondTask extends TimerTask {

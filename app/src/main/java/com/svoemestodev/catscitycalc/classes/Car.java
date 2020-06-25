@@ -283,38 +283,38 @@ public class Car implements Serializable {
         return car;
     }
 
-    public static List<Car> loadList() {
-
-        List<Car> list = new ArrayList<>();
-        list.add(loadCar(1));
-        list.add(loadCar(2));
-        list.add(loadCar(3));
-        return list;
-
-//        File file = new File(pathToFile);
-//        try {
-//            FileInputStream fileInputStream = new FileInputStream(file);
-//            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-//            list = (List<Car>) ois.readObject();
-//            ois.close();
-//        } catch (ClassNotFoundException | IOException e) {
-//            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
-//            e.printStackTrace();
-//            list = getDefaultList();
-//            saveList(list);
-//        }
+//    public static List<Car> loadList() {
+//
+//        List<Car> list = new ArrayList<>();
+//        list.add(loadCar(1));
+//        list.add(loadCar(2));
+//        list.add(loadCar(3));
 //        return list;
-    }
-
-    public static List<Car> loadList(String userUID) {
-
-        List<Car> list = new ArrayList<>();
-        list.add(loadCar(1, userUID));
-        list.add(loadCar(2, userUID));
-        list.add(loadCar(3, userUID));
-        return list;
-
-    }
+//
+////        File file = new File(pathToFile);
+////        try {
+////            FileInputStream fileInputStream = new FileInputStream(file);
+////            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+////            list = (List<Car>) ois.readObject();
+////            ois.close();
+////        } catch (ClassNotFoundException | IOException e) {
+////            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
+////            e.printStackTrace();
+////            list = getDefaultList();
+////            saveList(list);
+////        }
+////        return list;
+//    }
+//
+//    public static List<Car> loadList(String userUID) {
+//
+//        List<Car> list = new ArrayList<>();
+//        list.add(loadCar(1, userUID));
+//        list.add(loadCar(2, userUID));
+//        list.add(loadCar(3, userUID));
+//        return list;
+//
+//    }
 
 //    public static List<Car> loadList(String userUID) {
 //        List<Car> list;

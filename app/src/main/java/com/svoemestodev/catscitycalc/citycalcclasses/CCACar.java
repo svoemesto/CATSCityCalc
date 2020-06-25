@@ -204,8 +204,7 @@ public class CCACar extends CityCalcArea {
 
 
         if (car.getSlot() != 0) {
-            List<Car> listCars = Car.loadList();
-            Car updatedCar = listCars.get(car.getSlot()-1);
+            Car updatedCar = Car.loadCar(car.getSlot());
             updatedCar.setHealth(car.getHealth());
             updatedCar.setShield(car.getShield());
             if (!isCarInCity) {

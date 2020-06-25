@@ -365,14 +365,13 @@ public class WorkTeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars;
+                            Car car1;
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
-                                listCars = Car.loadList();
+                                car1 = Car.loadCar(1);
                             } else {
-                                listCars = Car.loadList(userUID);
+                                car1 = Car.loadCar(1, userUID);
                             }
 
-                            Car car1 = listCars.get(0);
                             DbCar dbCar1 = new DbCar(documentSnapshot);
                             
 //                            car1.setUuid(UUID.fromString(dbCar1.getCarUID()));
@@ -390,33 +389,33 @@ public class WorkTeamActivity extends AppCompatActivity {
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
                             
                             Bitmap taskBitmap = null;
-                            if (dbCar1.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                            if (car1.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar1.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car1.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar1.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car1.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar1.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car1.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar1.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car1.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar1.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car1.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car1.setTaskPicture(taskBitmap);
                             
                             Bitmap bldBitmap = null;
-                            if (dbCar1.getCarBuilding() == 1 && ccaGame.isPresent_blt()) {
+                            if (car1.getBuilding() == 1 && ccaGame.isPresent_blt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar1.getCarBuilding() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car1.getBuilding() == 2 && ccaGame.isPresent_blc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar1.getCarBuilding() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car1.getBuilding() == 3 && ccaGame.isPresent_blb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar1.getCarBuilding() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car1.getBuilding() == 4 && ccaGame.isPresent_brt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar1.getCarBuilding() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car1.getBuilding() == 5 && ccaGame.isPresent_brc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar1.getCarBuilding() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car1.getBuilding() == 6 && ccaGame.isPresent_brb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car1.setBuildingPicture(bldBitmap);
@@ -556,15 +555,15 @@ public class WorkTeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars;
+                            Car car2;
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
-                                listCars = Car.loadList();
+                                car2 = Car.loadCar(2);
                             } else {
-                                listCars = Car.loadList(userUID);
+                                car2 = Car.loadCar(2, userUID);
                             }
 
-                            Car car2 = listCars.get(1);
                             DbCar dbCar2 = new DbCar(documentSnapshot);
+
 //                            car2.setUuid(UUID.fromString(dbCar2.getCarUID()));
                             car2.setSlot(dbCar2.getCarSlot());
                             car2.setName(dbCar2.getCarName());
@@ -580,33 +579,33 @@ public class WorkTeamActivity extends AppCompatActivity {
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
                             Bitmap taskBitmap = null;
-                            if (dbCar2.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                            if (car2.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar2.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car2.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar2.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car2.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar2.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car2.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar2.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car2.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar2.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car2.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car2.setTaskPicture(taskBitmap);
 
                             Bitmap bldBitmap = null;
-                            if (dbCar2.getCarBuilding() == 1 && ccaGame.isPresent_blt()) {
+                            if (car2.getBuilding() == 1 && ccaGame.isPresent_blt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar2.getCarBuilding() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car2.getBuilding() == 2 && ccaGame.isPresent_blc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar2.getCarBuilding() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car2.getBuilding() == 3 && ccaGame.isPresent_blb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar2.getCarBuilding() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car2.getBuilding() == 4 && ccaGame.isPresent_brt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar2.getCarBuilding() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car2.getBuilding() == 5 && ccaGame.isPresent_brc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar2.getCarBuilding() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car2.getBuilding() == 6 && ccaGame.isPresent_brb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car2.setBuildingPicture(bldBitmap);
@@ -616,6 +615,8 @@ public class WorkTeamActivity extends AppCompatActivity {
                             } else {
                                 car2.save(userUID);
                             }
+
+
 
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car2.isFree()) {
@@ -720,6 +721,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             });
 
 
+
                         }
 
                     } else {
@@ -741,15 +743,15 @@ public class WorkTeamActivity extends AppCompatActivity {
                         Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
 
                         if (GameActivity.mainCityCalc != null) {
-                            List<Car> listCars;
+                            Car car3;
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
-                                listCars = Car.loadList();
+                                car3 = Car.loadCar(3);
                             } else {
-                                listCars = Car.loadList(userUID);
+                                car3 = Car.loadCar(3, userUID);
                             }
 
-                            Car car3 = listCars.get(2);
                             DbCar dbCar3 = new DbCar(documentSnapshot);
+
 //                            car3.setUuid(UUID.fromString(dbCar3.getCarUID()));
                             car3.setSlot(dbCar3.getCarSlot());
                             car3.setName(dbCar3.getCarName());
@@ -765,33 +767,33 @@ public class WorkTeamActivity extends AppCompatActivity {
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
                             Bitmap taskBitmap = null;
-                            if (dbCar3.getCarBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                            if (car3.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar3.getCarBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car3.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar3.getCarBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car3.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar3.getCarBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car3.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar3.getCarBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car3.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar3.getCarBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car3.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
                                 taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car3.setTaskPicture(taskBitmap);
 
                             Bitmap bldBitmap = null;
-                            if (dbCar3.getCarBuilding() == 1 && ccaGame.isPresent_blt()) {
+                            if (car3.getBuilding() == 1 && ccaGame.isPresent_blt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (dbCar3.getCarBuilding() == 2 && ccaGame.isPresent_blc()) {
+                            } else if (car3.getBuilding() == 2 && ccaGame.isPresent_blc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (dbCar3.getCarBuilding() == 3 && ccaGame.isPresent_blb()) {
+                            } else if (car3.getBuilding() == 3 && ccaGame.isPresent_blb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (dbCar3.getCarBuilding() == 4 && ccaGame.isPresent_brt()) {
+                            } else if (car3.getBuilding() == 4 && ccaGame.isPresent_brt()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (dbCar3.getCarBuilding() == 5 && ccaGame.isPresent_brc()) {
+                            } else if (car3.getBuilding() == 5 && ccaGame.isPresent_brc()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (dbCar3.getCarBuilding() == 6 && ccaGame.isPresent_brb()) {
+                            } else if (car3.getBuilding() == 6 && ccaGame.isPresent_brb()) {
                                 bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
                             }
                             car3.setBuildingPicture(bldBitmap);
@@ -801,7 +803,9 @@ public class WorkTeamActivity extends AppCompatActivity {
                             } else {
                                 car3.save(userUID);
                             }
-                            
+
+
+
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
                                 if (!car3.isFree()) {
                                     car3.setStateFree();
@@ -903,7 +907,9 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     builder.show();
                                 }
                             });
-                            
+
+
+
                         }
 
                     } else {
