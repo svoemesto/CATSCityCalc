@@ -333,21 +333,7 @@ public class Car implements Serializable {
 //        return list;
 //    }
 
-    public static List<Car> loadListFromFile(String pathToFile) {
-        List<Car> list;
-        File file = new File(pathToFile);
-        try {
-            FileInputStream fileInputStream = new FileInputStream(file);
-            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-            list = (List<Car>) ois.readObject();
-            ois.close();
-            return list;
-        } catch (ClassNotFoundException | IOException e) {
-            Log.e("Car", "loadListFromFile. Ошибка десериализации.");
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 //    public void save() {
 //        List<Car> list = loadList();
@@ -416,19 +402,6 @@ public class Car implements Serializable {
 //        }
 //    }
 //
-    public static boolean saveList(List<Car> list, String userUID) {
-        File file = new File(pathToFile + "_" + userUID);
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
-            oos.writeObject(list);
-            oos.close();
-            return true;
-        } catch (IOException e) {
-            Log.e("Car", "saveList. Ошибка сериализации");
-            return false;
-        }
-    }
 
     public Map<String, Object> getMap() {
         Map<String, Object> map = new HashMap<>();

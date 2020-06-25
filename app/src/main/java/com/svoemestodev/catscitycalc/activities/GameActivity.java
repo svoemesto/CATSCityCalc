@@ -66,6 +66,7 @@ import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.OverlayShowingService;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.classes.CarList;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeam;
@@ -2035,11 +2036,17 @@ public class GameActivity extends AppCompatActivity {
 
                         if (mainDbTeamUser != null) {
 
-                            List<Car> listCars = Car.loadListFromFile(fileName);
+                            List<Car> listCars = CarList.loadListFromFile(fileName);
                             if (listCars != null) {
-                                if (listCars.size() > 0) {
+                                if (listCars.size() == 3) {
                                     String userUID = listCars.get(0).getUserUID();
-                                    Car.saveList(listCars, userUID);
+                                    Car car1 = listCars.get(0);
+                                    car1.save(userUID);
+                                    Car car2 = listCars.get(1);
+                                    car2.save(userUID);
+                                    Car car3 = listCars.get(2);
+                                    car3.save(userUID);
+//                                    Car.saveList(listCars, userUID);
                                 }
                             }
                         }
@@ -2092,32 +2099,44 @@ public class GameActivity extends AppCompatActivity {
         if (mainCityCalc != null) { // если текущая игра есть
             if (mainCCAGame != null) {
 
-                String fileNameCars = Car.pathToFile;
+//                String fileNameCars = Car.pathToFile;
                 String fileName = GlobalApplication.pathToCATScalcFolder + "/cars_" + UUID.randomUUID().toString() + ".citycalccars";
+                List<Car> list = new ArrayList<>();
+                Car car1 = Car.loadCar(1);
+                car1.setUserUID(fbUser.getUid());
+                list.add(car1);
+
+                Car car2 = Car.loadCar(2);
+                car2.setUserUID(fbUser.getUid());
+                list.add(car2);
+
+                Car car3 = Car.loadCar(3);
+                car3.setUserUID(fbUser.getUid());
+                list.add(car3);
+
+                CarList.saveList(list, fbUser.getUid(), fileName);
+
 //                String fileName = pathToCATScalcFolder + "/cars.citycalccars";
-                Utils.copyFile(fileNameCars, fileName);
+//                Utils.copyFile(fileNameCars, fileName);
 
-                if (fileName != null) {
+                Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+                File sharedFile = new File(fileName);
 
-                    Intent intentShareFile = new Intent(Intent.ACTION_SEND);
-                    File sharedFile = new File(fileName);
+                if(sharedFile.exists()) {
+                    intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
 
-                    if(sharedFile.exists()) {
-                        intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                        Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
+                    intentShareFile.setType("*/*");
+                    intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
 
-                        intentShareFile.setType("*/*");
-                        intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
+                    String text = ga_tv_status.getText().toString();
 
-                        String text = ga_tv_status.getText().toString();
+                    intentShareFile.putExtra(Intent.EXTRA_SUBJECT, text);
+                    intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
 
-                        intentShareFile.putExtra(Intent.EXTRA_SUBJECT, text);
-                        intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
-
-                        startActivity(Intent.createChooser(intentShareFile, text));
-                    }
-
+                    startActivity(Intent.createChooser(intentShareFile, text));
                 }
+
             }
         }
 
@@ -2854,11 +2873,18 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (mainDbTeamUser != null) {
                                     String fileName = tmpFileData.getAbsolutePath();
-                                    List<Car> listCars = Car.loadListFromFile(fileName);
+                                    List<Car> listCars = CarList.loadListFromFile(fileName);
                                     if (listCars != null) {
-                                        if (listCars.size() > 0) {
+                                        if (listCars.size() == 3) {
                                             String userUID = listCars.get(0).getUserUID();
-                                            Car.saveList(listCars, userUID);
+                                            Car car1 = listCars.get(0);
+                                            car1.save(userUID);
+                                            Car car2 = listCars.get(1);
+                                            car2.save(userUID);
+                                            Car car3 = listCars.get(2);
+                                            car3.save(userUID);
+
+//                                            Car.saveList(listCars, userUID);
 
                                             // тут файл можно уже удалить
 //                                            try {
@@ -2955,11 +2981,17 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (mainDbTeamUser != null) {
                                     String fileName = tmpFileWhatsapp.getAbsolutePath();
-                                    List<Car> listCars = Car.loadListFromFile(fileName);
+                                    List<Car> listCars = CarList.loadListFromFile(fileName);
                                     if (listCars != null) {
-                                        if (listCars.size() > 0) {
+                                        if (listCars.size() == 3) {
                                             String userUID = listCars.get(0).getUserUID();
-                                            Car.saveList(listCars, userUID);
+                                            Car car1 = listCars.get(0);
+                                            car1.save(userUID);
+                                            Car car2 = listCars.get(1);
+                                            car2.save(userUID);
+                                            Car car3 = listCars.get(2);
+                                            car3.save(userUID);
+//                                            Car.saveList(listCars, userUID);
 
                                             // тут файл можно уже удалить
                                             try {
@@ -3044,11 +3076,17 @@ public class GameActivity extends AppCompatActivity {
 
                                 if (mainDbTeamUser != null) {
                                     String fileName = tmpFileTelegram.getAbsolutePath();
-                                    List<Car> listCars = Car.loadListFromFile(fileName);
+                                    List<Car> listCars = CarList.loadListFromFile(fileName);
                                     if (listCars != null) {
-                                        if (listCars.size() > 0) {
+                                        if (listCars.size() == 3) {
                                             String userUID = listCars.get(0).getUserUID();
-                                            Car.saveList(listCars, userUID);
+                                            Car car1 = listCars.get(0);
+                                            car1.save(userUID);
+                                            Car car2 = listCars.get(1);
+                                            car2.save(userUID);
+                                            Car car3 = listCars.get(2);
+                                            car3.save(userUID);
+//                                            Car.saveList(listCars, userUID);
                                         }
                                     }
                                 }
