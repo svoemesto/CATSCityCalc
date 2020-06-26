@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -62,6 +63,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
+import com.svoemestodev.catscitycalc.CityCalcService;
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.OverlayShowingService;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
@@ -1667,7 +1669,7 @@ public class GameActivity extends AppCompatActivity {
                                                                         if (mainCityCalc != null) {                                         // если текущая игра есть
                                                                             Car car = Car.loadCar(1);                                      // берем из списка 1-ю машину
                                                                             DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 1-ю машину из базы
-                                                                                if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
                                                                                 car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
                                                                                 // получаем правильную картинку здания для нового задания
@@ -1689,6 +1691,16 @@ public class GameActivity extends AppCompatActivity {
                                                                                 car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
                                                                                 car.save();                     // сохраняем локальную машину
                                                                                 setDataToCarsViews();           // обновляем машины в активити
+
+                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
+                                                                                intent.setAction("New task " + car.getName());
+                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
+                                                                                intent.putExtra("car_number", car.getSlot());
+
+                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
+
                                                                             }
                                                                         }
 
@@ -1737,6 +1749,16 @@ public class GameActivity extends AppCompatActivity {
                                                                                 car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
                                                                                 car.save();                     // сохраняем локальную машину
                                                                                 setDataToCarsViews();           // обновляем машины в активити
+
+                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
+                                                                                intent.setAction("New task " + car.getName());
+                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
+                                                                                intent.putExtra("car_number", car.getSlot());
+
+                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
+
                                                                             }
                                                                         }
 
@@ -1785,6 +1807,16 @@ public class GameActivity extends AppCompatActivity {
                                                                                 car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
                                                                                 car.save();                     // сохраняем локальную машину
                                                                                 setDataToCarsViews();           // обновляем машины в активити
+
+                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
+                                                                                intent.setAction("New task " + car.getName());
+                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
+                                                                                intent.putExtra("car_number", car.getSlot());
+
+                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
+
                                                                             }
                                                                         }
 
@@ -3166,13 +3198,14 @@ public class GameActivity extends AppCompatActivity {
                         if (tlff == null) {
                             mainCCAGame.calcWin();
                             loadDataToViews(false);
+                            setDataToCarsViews();
                         } else {
                             if (!tlff.getStatus().equals(AsyncTask.Status.RUNNING)) {
                                 mainCCAGame.calcWin();
                                 loadDataToViews(false);
+                                setDataToCarsViews();
                             }
                         }
-
 
                     }
 
