@@ -195,6 +195,9 @@
     <string name="info_from_screenshot">Информация из скриншота</string>
     <string name="info_from_server">Информация с сервера</string>
     <string name="info_from_data_file">Информация из файла данных</string>
+    <string name="hours_letter">ч</string>
+    <string name="minutes_letter">м</string>
+    <string name="seconds_letter">с</string>
 
 
 </resources>

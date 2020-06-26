@@ -499,7 +499,8 @@ public class Car implements Serializable {
     }
 
     public String getTimeStringToEndRepairing() {
-        return Utils.convertSecondsToHHMMSS(getSecondsToEndRepairing());
+//        return Utils.convertSecondsToHHMMSS(getSecondsToEndRepairing());
+        return Utils.convertMinutesToHHMM((int)(getSecondsToEndRepairing()/60));
     }
 
     public String getTimeStringToEndRepairingWithoutColon() {

@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.utils;
 
+import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 
 import java.io.File;
@@ -117,7 +119,17 @@ public class Utils {
      * Пример: 92 -> "1:32"
      */
     public static String convertMinutesToHHMM(int minutes) {
-        return String.format(Locale.getDefault(), "%02d:%02d", Math.abs(minutes) / 60, Math.abs(minutes) % 60);
+
+        if (minutes > 0) {
+            String hoursLetter = GlobalApplication.getAppContext().getString(R.string.hours_letter);
+            String minutesLetter = GlobalApplication.getAppContext().getString(R.string.minutes_letter);
+            String format = "%02d" + hoursLetter + "%02d" + minutesLetter;
+
+            return String.format(Locale.getDefault(), format, Math.abs(minutes) / 60, Math.abs(minutes) % 60);
+        } else {
+            return "";
+        }
+
     }
 
     public static String convertSecondsToHHMMSS(long secundes) {
@@ -125,7 +137,13 @@ public class Utils {
             int hours = (int)secundes / 3600;
             int minutes = (int)(secundes - hours*3600) / 60;
             int seconds = (int)secundes - hours*3600 - minutes*60;
-            return String.format(Locale.getDefault(), "%01d:%02d:%02d", hours, minutes, seconds);
+
+            String hoursLetter = GlobalApplication.getAppContext().getString(R.string.hours_letter);
+            String minutesLetter = GlobalApplication.getAppContext().getString(R.string.minutes_letter);
+            String secondsLetter = GlobalApplication.getAppContext().getString(R.string.seconds_letter);
+            String format = "%02d" + hoursLetter + "%02d" + minutesLetter + "%02d" + secondsLetter;
+
+            return String.format(Locale.getDefault(), format, hours, minutes, seconds);
         } else {
             return "";
         }
