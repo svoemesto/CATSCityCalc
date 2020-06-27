@@ -215,19 +215,22 @@ public class GameActivity extends AppCompatActivity {
     ImageView ga_iv_car1_task_icon;             
     TextView ga_tv_car1_name;           // название 1-й машинки
     TextView ga_tv_car1_repair;         // время ремонта 1-й машинки
+    TextView ga_tv_car1_health_shield;
 
     ImageButton ga_ib_car2;             // кнопка-картинка 2-й машинки
     ImageView ga_iv_car2_building_icon;
     ImageView ga_iv_car2_task_icon;
     TextView ga_tv_car2_name;           // название 2-й машинки
     TextView ga_tv_car2_repair;         // время ремонта 2-й машинки
+    TextView ga_tv_car2_health_shield;
 
     ImageButton ga_ib_car3;             // кнопка-картинка 3-й машинки
     ImageView ga_iv_car3_building_icon;
     ImageView ga_iv_car3_task_icon;
     TextView ga_tv_car3_name;           // название 3-й машинки
     TextView ga_tv_car3_repair;         // время ремонта 3-й машинки
-    
+    TextView ga_tv_car3_health_shield;
+
     Button ga_bt_strategy;              // кнопка "Стратегичское планирование"
     
     private static final int SIGN_IN_REQUEST_CODE = 1;
@@ -969,18 +972,21 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_car1_repair = findViewById(R.id.ga_tv_car1_repair);
         ga_iv_car1_building_icon = findViewById(R.id.ga_iv_car1_building_icon);
         ga_iv_car1_task_icon = findViewById(R.id.ga_iv_car1_task_icon);
+        ga_tv_car1_health_shield = findViewById(R.id.ga_tv_car1_health_shield);
 
         ga_ib_car2 = findViewById(R.id.ga_ib_car2);
         ga_tv_car2_name = findViewById(R.id.ga_tv_car2_name);
         ga_tv_car2_repair = findViewById(R.id.ga_tv_car2_repair);
         ga_iv_car2_building_icon = findViewById(R.id.ga_iv_car2_building_icon);
         ga_iv_car2_task_icon = findViewById(R.id.ga_iv_car2_task_icon);
+        ga_tv_car2_health_shield = findViewById(R.id.ga_tv_car2_health_shield);
 
         ga_ib_car3 = findViewById(R.id.ga_ib_car3);
         ga_tv_car3_name = findViewById(R.id.ga_tv_car3_name);
         ga_tv_car3_repair = findViewById(R.id.ga_tv_car3_repair);
         ga_iv_car3_building_icon = findViewById(R.id.ga_iv_car3_building_icon);
         ga_iv_car3_task_icon = findViewById(R.id.ga_iv_car3_task_icon);
+        ga_tv_car3_health_shield = findViewById(R.id.ga_tv_car3_health_shield);
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
 
@@ -993,10 +999,13 @@ public class GameActivity extends AppCompatActivity {
         Car car3 = Car.loadCar(3);
 
         ga_tv_car1_name.setText(car1.getName());
- 
+        ga_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
+
         ga_tv_car2_name.setText(car2.getName());
+        ga_tv_car2_health_shield.setText(car2.getHealth() + "/" + car2.getShield());
 
         ga_tv_car3_name.setText(car3.getName());
+        ga_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
 
         try {
             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
@@ -1021,6 +1030,7 @@ public class GameActivity extends AppCompatActivity {
             if (car1CarBitmap != null) ga_ib_car1.setImageBitmap(car1CarBitmap);
             ga_ib_car1.setImageBitmap(car1.getCarPicture());
             String car1textRepair = car1.isRepairing() ? "" + car1.getTimeStringToEndRepairing() : "";
+            ga_tv_car1_repair.setVisibility(car1textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
             ga_tv_car1_repair.setText(car1textRepair);
             ga_iv_car1_building_icon.setVisibility(car1.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
             ga_iv_car1_task_icon.setVisibility(car1.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
@@ -1078,6 +1088,7 @@ public class GameActivity extends AppCompatActivity {
             if (car2CarBitmap != null) ga_ib_car2.setImageBitmap(car2CarBitmap);
             ga_ib_car2.setImageBitmap(car2.getCarPicture());
             String car2textRepair = car2.isRepairing() ? "" + car2.getTimeStringToEndRepairing() : "";
+            ga_tv_car2_repair.setVisibility(car2textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
             ga_tv_car2_repair.setText(car2textRepair);
             ga_iv_car2_building_icon.setVisibility(car2.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
             ga_iv_car2_task_icon.setVisibility(car2.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
@@ -1134,6 +1145,7 @@ public class GameActivity extends AppCompatActivity {
             if (car3CarBitmap != null) ga_ib_car3.setImageBitmap(car3CarBitmap);
             ga_ib_car3.setImageBitmap(car3.getCarPicture());
             String car3textRepair = car3.isRepairing() ? "" + car3.getTimeStringToEndRepairing() : "";
+            ga_tv_car3_repair.setVisibility(car3textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
             ga_tv_car3_repair.setText(car3textRepair);
             ga_iv_car3_building_icon.setVisibility(car3.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
             ga_iv_car3_task_icon.setVisibility(car3.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);

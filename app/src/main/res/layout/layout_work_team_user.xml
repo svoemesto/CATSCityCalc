@@ -60,16 +60,73 @@
                         android:layout_alignBottom="@id/ltu_ib_car1"
                         android:scaleType="fitCenter"/>
 
-                    <TextView
-                        android:id="@+id/ltu_tv_car1_repair"
+                    <LinearLayout
+                        android:id="@+id/ltu_ll_car1_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/ltu_ib_car1"
+                        android:layout_toEndOf="@id/ltu_iv_car1_task_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car1_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="Car #1"
+                            android:background="@drawable/rounded_corner_gray"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:textColor="#FF0000"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal|center_vertical"/>
+                        android:layout_toEndOf="@id/ltu_iv_car1_building_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
 
+                        <TextView
+                            android:id="@+id/ltu_tv_car1_repair"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="01ч59м"
+                            android:background="@drawable/rounded_corner_red"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/ltu_ll_car1_name"
+                        android:layout_toEndOf="@id/ltu_iv_car1_task_icon"
+                        android:gravity="end"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car1_health_shield"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textSize="8sp"
+                            android:background="@drawable/rounded_corner_yellow"
+                            android:gravity="center_horizontal|center_vertical"
+                            tools:text="12536/56987"
+                            />
+
+                    </LinearLayout>
+                    
                 </RelativeLayout>
 
 
@@ -112,16 +169,73 @@
                         android:layout_alignBottom="@id/ltu_ib_car2"
                         android:scaleType="fitCenter"/>
 
-                    <TextView
-                        android:id="@+id/ltu_tv_car2_repair"
+                    <LinearLayout
+                        android:id="@+id/ltu_ll_car2_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/ltu_ib_car2"
+                        android:layout_toEndOf="@id/ltu_iv_car2_task_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car2_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="Car #1"
+                            android:background="@drawable/rounded_corner_gray"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:textColor="#FF0000"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal|center_vertical"/>
+                        android:layout_toEndOf="@id/ltu_iv_car2_building_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
 
+                        <TextView
+                            android:id="@+id/ltu_tv_car2_repair"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="01ч59м"
+                            android:background="@drawable/rounded_corner_red"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/ltu_ll_car2_name"
+                        android:layout_toEndOf="@id/ltu_iv_car2_task_icon"
+                        android:gravity="end"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car2_health_shield"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textSize="8sp"
+                            android:background="@drawable/rounded_corner_yellow"
+                            android:gravity="center_horizontal|center_vertical"
+                            tools:text="12536/56987"
+                            />
+
+                    </LinearLayout>
+                    
                 </RelativeLayout>
 
 
@@ -163,16 +277,73 @@
                         android:layout_alignBottom="@id/ltu_ib_car3"
                         android:scaleType="fitCenter"/>
 
-                    <TextView
-                        android:id="@+id/ltu_tv_car3_repair"
+                    <LinearLayout
+                        android:id="@+id/ltu_ll_car3_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/ltu_ib_car3"
+                        android:layout_toEndOf="@id/ltu_iv_car3_task_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car3_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="Car #1"
+                            android:background="@drawable/rounded_corner_gray"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:textColor="#FF0000"
-                        android:textStyle="bold"
-                        android:gravity="center_horizontal|center_vertical"/>
+                        android:layout_toEndOf="@id/ltu_iv_car3_building_icon"
+                        android:gravity="center_horizontal|center_vertical"
+                        >
 
+                        <TextView
+                            android:id="@+id/ltu_tv_car3_repair"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold"
+                            android:textSize="12sp"
+                            tools:text="01ч59м"
+                            android:background="@drawable/rounded_corner_red"
+                            android:gravity="center_horizontal|center_vertical" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/ltu_ll_car3_name"
+                        android:layout_toEndOf="@id/ltu_iv_car3_task_icon"
+                        android:gravity="end"
+                        >
+
+                        <TextView
+                            android:id="@+id/ltu_tv_car3_health_shield"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:textColor="#000000"
+                            android:textSize="8sp"
+                            android:background="@drawable/rounded_corner_yellow"
+                            android:gravity="center_horizontal|center_vertical"
+                            tools:text="12536/56987"
+                            />
+
+                    </LinearLayout>
+                    
                 </RelativeLayout>
 
 

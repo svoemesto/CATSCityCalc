@@ -328,16 +328,22 @@ public class WorkTeamActivity extends AppCompatActivity {
             TextView ltu_tv_car1_repair = convertView.findViewById(R.id.ltu_tv_car1_repair);
             ImageView ltu_iv_car1_building_icon = convertView.findViewById(R.id.ltu_iv_car1_building_icon);
             ImageView ltu_iv_car1_task_icon = convertView.findViewById(R.id.ltu_iv_car1_task_icon);
+            TextView ltu_tv_car1_name = convertView.findViewById(R.id.ltu_tv_car1_name);
+            TextView ltu_tv_car1_health_shield = convertView.findViewById(R.id.ltu_tv_car1_health_shield);
 
             ImageButton ltu_ib_car2 = convertView.findViewById(R.id.ltu_ib_car2);
             TextView ltu_tv_car2_repair = convertView.findViewById(R.id.ltu_tv_car2_repair);
             ImageView ltu_iv_car2_building_icon = convertView.findViewById(R.id.ltu_iv_car2_building_icon);
             ImageView ltu_iv_car2_task_icon = convertView.findViewById(R.id.ltu_iv_car2_task_icon);
+            TextView ltu_tv_car2_name = convertView.findViewById(R.id.ltu_tv_car2_name);
+            TextView ltu_tv_car2_health_shield = convertView.findViewById(R.id.ltu_tv_car2_health_shield);
 
             ImageButton ltu_ib_car3 = convertView.findViewById(R.id.ltu_ib_car3);
             TextView ltu_tv_car3_repair = convertView.findViewById(R.id.ltu_tv_car3_repair);
             ImageView ltu_iv_car3_building_icon = convertView.findViewById(R.id.ltu_iv_car3_building_icon);
             ImageView ltu_iv_car3_task_icon = convertView.findViewById(R.id.ltu_iv_car3_task_icon);
+            TextView ltu_tv_car3_name = convertView.findViewById(R.id.ltu_tv_car3_name);
+            TextView ltu_tv_car3_health_shield = convertView.findViewById(R.id.ltu_tv_car3_health_shield);
 
 
             ltu_ib_car1.setEnabled(!GameActivity.userRole.equals(UserRole.MEAT));
@@ -385,7 +391,10 @@ public class WorkTeamActivity extends AppCompatActivity {
                             car1.setTeamID(dbCar1.getTeamID());
                             car1.setUserUID(dbCar1.getUserUID());
                             car1.setUserNIC(dbCar1.getUserNIC());
-                            
+
+                            ltu_tv_car1_name.setText(car1.getName());
+                            ltu_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
+
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
                             
                             Bitmap taskBitmap = null;
@@ -443,6 +452,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             if (car1CarBitmap != null) ltu_ib_car1.setImageBitmap(car1CarBitmap);
                             ltu_ib_car1.setImageBitmap(car1.getCarPicture());
                             String car1textRepair = car1.isRepairing() ? "" + car1.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car1_repair.setVisibility(car1textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
                             ltu_tv_car1_repair.setText(car1textRepair);
                             ltu_iv_car1_building_icon.setVisibility(car1.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
                             ltu_iv_car1_task_icon.setVisibility(car1.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
@@ -576,6 +586,9 @@ public class WorkTeamActivity extends AppCompatActivity {
                             car2.setUserUID(dbCar2.getUserUID());
                             car2.setUserNIC(dbCar2.getUserNIC());
 
+                            ltu_tv_car2_name.setText(car2.getName());
+                            ltu_tv_car2_health_shield.setText(car2.getHealth() + "/" + car2.getShield());
+
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
                             Bitmap taskBitmap = null;
@@ -633,6 +646,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             if (car2CarBitmap != null) ltu_ib_car2.setImageBitmap(car2CarBitmap);
                             ltu_ib_car2.setImageBitmap(car2.getCarPicture());
                             String car2textRepair = car2.isRepairing() ? "" + car2.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car2_repair.setVisibility(car2textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
                             ltu_tv_car2_repair.setText(car2textRepair);
                             ltu_iv_car2_building_icon.setVisibility(car2.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
                             ltu_iv_car2_task_icon.setVisibility(car2.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
@@ -764,6 +778,9 @@ public class WorkTeamActivity extends AppCompatActivity {
                             car3.setUserUID(dbCar3.getUserUID());
                             car3.setUserNIC(dbCar3.getUserNIC());
 
+                            ltu_tv_car3_name.setText(car3.getName());
+                            ltu_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
+
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
                             Bitmap taskBitmap = null;
@@ -821,6 +838,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             if (car3CarBitmap != null) ltu_ib_car3.setImageBitmap(car3CarBitmap);
                             ltu_ib_car3.setImageBitmap(car3.getCarPicture());
                             String car3textRepair = car3.isRepairing() ? "" + car3.getTimeStringToEndRepairing() : "";
+                            ltu_tv_car3_repair.setVisibility(car3textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
                             ltu_tv_car3_repair.setText(car3textRepair);
                             ltu_iv_car3_building_icon.setVisibility(car3.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
                             ltu_iv_car3_task_icon.setVisibility(car3.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
