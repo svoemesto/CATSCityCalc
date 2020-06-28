@@ -1,5 +1,8 @@
 package com.svoemestodev.catscitycalc.classes;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -9,8 +12,11 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.storage.StorageReference;
+import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
+import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
+import com.svoemestodev.catscitycalc.adapters.ListCarsAdapter;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
@@ -49,10 +55,23 @@ public class Car implements Serializable {
     private byte[] imageByteArrayBuilding = null; // катинка здания
     private byte[] imageByteArrayTask = null; // катинка здания
 
+    private transient boolean isChecked = false;
     public transient static String pathToFile;
     public transient static String pathToCATScalcFolder;
 
+
     public Car() {
+    }
+
+    public static boolean carIsPresentInList(List<Car> list, Car car) {
+        boolean isPresent = false;
+        for (Car item: list) {
+            if (item.getSlot() == car.getSlot() && item.getUserUID().equals(car.getUserUID())) {
+                isPresent = true;
+                break;
+            }
+        }
+        return  isPresent;
     }
 
     public Bitmap getCarPicture() {
@@ -283,126 +302,6 @@ public class Car implements Serializable {
         return car;
     }
 
-//    public static List<Car> loadList() {
-//
-//        List<Car> list = new ArrayList<>();
-//        list.add(loadCar(1));
-//        list.add(loadCar(2));
-//        list.add(loadCar(3));
-//        return list;
-//
-////        File file = new File(pathToFile);
-////        try {
-////            FileInputStream fileInputStream = new FileInputStream(file);
-////            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-////            list = (List<Car>) ois.readObject();
-////            ois.close();
-////        } catch (ClassNotFoundException | IOException e) {
-////            Log.e("Car", "loadList. Ошибка десериализации. Возвращаем список по-умолчанию.");
-////            e.printStackTrace();
-////            list = getDefaultList();
-////            saveList(list);
-////        }
-////        return list;
-//    }
-//
-//    public static List<Car> loadList(String userUID) {
-//
-//        List<Car> list = new ArrayList<>();
-//        list.add(loadCar(1, userUID));
-//        list.add(loadCar(2, userUID));
-//        list.add(loadCar(3, userUID));
-//        return list;
-//
-//    }
-
-//    public static List<Car> loadList(String userUID) {
-//        List<Car> list;
-//        File file = new File(pathToFile + "_" + userUID);
-//        try {
-//            FileInputStream fileInputStream = new FileInputStream(file);
-//            ObjectInputStream ois = new ObjectInputStream(fileInputStream);
-//            list = (List<Car>) ois.readObject();
-//            ois.close();
-//        } catch (ClassNotFoundException | IOException e) {
-//            Log.e("Car", "loadList userUID. Ошибка десериализации. Возвращаем список по-умолчанию.");
-//            e.printStackTrace();
-//            list = getDefaultList();
-//            saveList(list, userUID);
-//        }
-//        return list;
-//    }
-
-
-
-//    public void save() {
-//        List<Car> list = loadList();
-//        List<Car> listNew = new ArrayList<>();
-//        boolean isFind = false;
-//        for (Car car : list) {
-//            if (car.getSlot() == this.getSlot()) {
-//                isFind = true;
-//                listNew.add(this);
-//            } else {
-//                listNew.add(car);
-//            }
-//        }
-//        if (!isFind) listNew.add(this);
-//        saveList(listNew);
-//
-//        if (GameActivity.fbUser != null) {
-//            if (GameActivity.fbUser.isEmailVerified()) {
-//                final String userUID = GameActivity.fbUser.getUid();
-//                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
-//                String docRefCarName = "car" + this.slot;
-//                DocumentReference docRefCar = userCars.document(docRefCarName);
-//                docRefCar.set(getMap());
-//            }
-//        }
-//
-//    }
-
-//    public void save(String userUID) {
-//        List<Car> list = loadList(userUID);
-//        List<Car> listNew = new ArrayList<>();
-//        boolean isFind = false;
-//        for (Car car : list) {
-//            if (car.getSlot() == this.getSlot()) {
-//                isFind = true;
-//                listNew.add(this);
-//            } else {
-//                listNew.add(car);
-//            }
-//        }
-//        if (!isFind) listNew.add(this);
-//        saveList(listNew, userUID);
-//
-////        if (GameActivity.fbUser != null) {
-////            if (GameActivity.fbUser.isEmailVerified()) {
-////                CollectionReference userCars = GameActivity.fbDb.collection("users").document(userUID).collection("userCars");
-////                String docRefCarName = "car" + this.slot;
-////                DocumentReference docRefCar = userCars.document(docRefCarName);
-////                docRefCar.set(getMap());
-////            }
-////        }
-//
-//    }
-
-//    public static boolean saveList(List<Car> list) {
-//        File file = new File(pathToFile);
-//        try {
-//            FileOutputStream fileOutputStream = new FileOutputStream(file);
-//            ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
-//            oos.writeObject(list);
-//            oos.close();
-//            return true;
-//        } catch (IOException e) {
-//            Log.e("Car", "saveList. Ошибка сериализации");
-//            return false;
-//        }
-//    }
-//
-
     public Map<String, Object> getMap() {
         Map<String, Object> map = new HashMap<>();
 
@@ -597,5 +496,13 @@ public class Car implements Serializable {
 
     public void setTeamID(String teamID) {
         this.teamID = teamID;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 }

@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     tools:context=".activities.WorkBuildingActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/wb_ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_wb_unit_id"
+        />
+
+    <LinearLayout
+        android:id="@+id/wb_ll_bxx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        >
+
+        <ImageView
+            android:id="@+id/wb_iv_bxx_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitCenter"
+            android:gravity="center_horizontal|center_vertical"
+            tools:src="@drawable/ic_blt_black"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
+
+                <ImageView
+                    android:id="@+id/wb_iv_bxx_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/wb_tv_bxx_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/wb_iv_bxx_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:scaleType="fitXY"
+        android:layout_below="@id/wb_ll_bxx"
+        />
+
+    <TextView
+        android:id="@+id/wb_tv_cars_in_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wb_iv_bxx_progress"
+        android:text="Машины в здании:"/>
+
+    <ListView
+        android:id="@+id/wb_lv_cars_in_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wb_tv_cars_in_building"/>
+
+    <TextView
+        android:id="@+id/wb_tv_cars_task_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wb_lv_cars_in_building"
+        android:text="Машины, получившие задание на это здание:"/>
+
+    <ListView
+        android:id="@+id/wb_lv_cars_task_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wb_tv_cars_task_building"/>
+
+    <Button
+        android:id="@+id/wb_bt_get_cars"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/wb_lv_cars_task_building"
+        android:onClick="getCars"
+        android:text="get cars"/>
+
+</RelativeLayout>

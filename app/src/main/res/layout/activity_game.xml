@@ -76,6 +76,7 @@
                             android:layout_gravity="center_horizontal"
                             android:onClick="openCar1"
                             android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_car1_blue"
                             />
 
                         <ImageView
@@ -83,16 +84,20 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_alignParentStart="true"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
+
 
                         <ImageView
                             android:id="@+id/ga_iv_car1_task_icon"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:layout_alignParentStart="true"
                             android:layout_alignBottom="@id/ga_ib_car1"
-                            android:scaleType="fitCenter"/>
-
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="0dp"
+                            android:layout_marginBottom="1dp"
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
 
                         <LinearLayout
                             android:id="@+id/ga_ll_car1_name"
@@ -186,6 +191,7 @@
                             android:layout_gravity="center_horizontal"
                             android:onClick="openCar2"
                             android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_car2_blue"
                             />
 
                         <ImageView
@@ -193,7 +199,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_alignParentStart="true"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
 
                         <ImageView
                             android:id="@+id/ga_iv_car2_task_icon"
@@ -201,7 +208,8 @@
                             android:layout_height="30dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignBottom="@id/ga_ib_car2"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
 
 
                         <LinearLayout
@@ -295,6 +303,7 @@
                             android:layout_gravity="center_horizontal"
                             android:onClick="openCar3"
                             android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_car3_blue"
                             />
 
                         <ImageView
@@ -302,7 +311,8 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_alignParentStart="true"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
 
                         <ImageView
                             android:id="@+id/ga_iv_car3_task_icon"
@@ -310,7 +320,8 @@
                             android:layout_height="30dp"
                             android:layout_alignParentStart="true"
                             android:layout_alignBottom="@id/ga_ib_car3"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            tools:src="@drawable/ic_bfx_blue"/>
 
 
                         <LinearLayout
@@ -706,6 +717,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_blt_black"
+                        android:onClick="onClick_blt"
                         />
                     
                     <LinearLayout
@@ -807,6 +820,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_brt_black"
+                        android:onClick="onClick_brt"
                         />
 
                     <LinearLayout
@@ -963,6 +978,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_blc_black"
+                        android:onClick="onClick_blc"
                         />
 
                     <LinearLayout
@@ -1064,6 +1081,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_brc_black"
+                        android:onClick="onClick_brc"
                         />
 
                     <LinearLayout
@@ -1220,6 +1239,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_blb_black"
+                        android:onClick="onClick_blb"
                         />
 
                     <LinearLayout
@@ -1321,6 +1342,8 @@
                         android:layout_height="40dp"
                         android:scaleType="fitCenter"
                         android:gravity="center_horizontal|center_vertical"
+                        tools:src="@drawable/ic_brb_black"
+                        android:onClick="onClick_brb"
                         />
 
                     <LinearLayout

@@ -2760,6 +2760,42 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    public void onClick_blt(View view) {
+        WorkBuildingActivity.mainSlot = 1;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void onClick_blc(View view) {
+        WorkBuildingActivity.mainSlot = 2;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void onClick_blb(View view) {
+        WorkBuildingActivity.mainSlot = 3;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void onClick_brt(View view) {
+        WorkBuildingActivity.mainSlot = 4;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void onClick_brc(View view) {
+        WorkBuildingActivity.mainSlot = 5;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void onClick_brb(View view) {
+        WorkBuildingActivity.mainSlot = 6;
+        Intent intent = new Intent(this, WorkBuildingActivity.class);
+        startActivityForResult(intent, 0);
+    }
+
     class firstTask extends TimerTask {
 
         @Override
