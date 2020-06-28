@@ -91,6 +91,9 @@ public class WorkBuildingActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);  // показываем кнопку "<-"
         }
 
+        TaskGetUsersCars tguc = new TaskGetUsersCars();
+        tguc.execute();
+
         initializeViews();
 
         displayRecords();
@@ -333,8 +336,57 @@ public class WorkBuildingActivity extends AppCompatActivity {
 
     public void getCars(View view) {
 
-        TaskGetUsersCars tguc = new TaskGetUsersCars();
-        tguc.execute();
+        List<Car> resultedList = new ArrayList<>();
+        List<Car> listCarsToAdapter = returnedListCars;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(WorkBuildingActivity.this);
+        builder.setCancelable(true);
+        builder.setTitle("Cars");
+
+        final ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, listCarsToAdapter, true);
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                for (int i = 0; i < listCarsToAdapter.size(); i++) {
+                    Car item = arrayAdapter.getItem(i);
+                    if (item.isChecked()) {
+                        resultedList.add(item);
+                    }
+                }
+
+                Map<String, Object> map = new HashMap<>();
+                map.put("carBuildingTask", mainSlot);
+
+                if (resultedList.size() >0) {
+                    for (Car car: resultedList) {
+                        DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(car.getUserUID()).collection("userCars").document("car"+car.getSlot());
+                        docRefCar.update(map);
+                        Log.i("WBA", car.toString());
+                    }
+                }
+
+                TaskGetUsersCars tguc = new TaskGetUsersCars();
+                tguc.execute();
+
+                displayRecords();
+
+            }
+        });
+
+        builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        builder.show();
+
 
     }
 
@@ -350,53 +402,53 @@ public class WorkBuildingActivity extends AppCompatActivity {
         protected void onPostExecute(List<Car> cars) {
             super.onPostExecute(cars);
 
-            List<Car> resultedList = new ArrayList<>();
-            List<Car> listCarsToAdapter = returnedListCars;
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(WorkBuildingActivity.this);
-            builder.setCancelable(true);
-            builder.setTitle("Cars");
-
-            final ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, listCarsToAdapter, true);
-            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            });
-
-            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-
-                    for (int i = 0; i < listCarsToAdapter.size(); i++) {
-                        Car item = arrayAdapter.getItem(i);
-                        if (item.isChecked()) {
-                            resultedList.add(item);
-                        }
-                    }
-
-                    Map<String, Object> map = new HashMap<>();
-                    map.put("carBuildingTask", mainSlot);
-
-                    if (resultedList.size() >0) {
-                        for (Car car: resultedList) {
-                            DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(car.getUserUID()).collection("userCars").document("car"+car.getSlot());
-                            docRefCar.update(map);
-                            Log.i("WBA", car.toString());
-                        }
-                    }
-
-                    displayRecords();
-
-                }
-            });
-
-            builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                }
-            });
-            builder.show();
+//            List<Car> resultedList = new ArrayList<>();
+//            List<Car> listCarsToAdapter = returnedListCars;
+//
+//            AlertDialog.Builder builder = new AlertDialog.Builder(WorkBuildingActivity.this);
+//            builder.setCancelable(true);
+//            builder.setTitle("Cars");
+//
+//            final ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, listCarsToAdapter, true);
+//            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                }
+//            });
+//
+//            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//
+//                    for (int i = 0; i < listCarsToAdapter.size(); i++) {
+//                        Car item = arrayAdapter.getItem(i);
+//                        if (item.isChecked()) {
+//                            resultedList.add(item);
+//                        }
+//                    }
+//
+//                    Map<String, Object> map = new HashMap<>();
+//                    map.put("carBuildingTask", mainSlot);
+//
+//                    if (resultedList.size() >0) {
+//                        for (Car car: resultedList) {
+//                            DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(car.getUserUID()).collection("userCars").document("car"+car.getSlot());
+//                            docRefCar.update(map);
+//                            Log.i("WBA", car.toString());
+//                        }
+//                    }
+//
+//                    displayRecords();
+//
+//                }
+//            });
+//
+//            builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                }
+//            });
+//            builder.show();
 
         }
 
@@ -446,9 +498,8 @@ public class WorkBuildingActivity extends AppCompatActivity {
                                                 car.setUserNIC(dbTU.getUserNIC());
 
                                                 if (car.getBuilding() == -1) {
-                                                    if (!Car.carIsPresentInList(returnedListCars, car)) {
-                                                        returnedListCars.add(car);
-                                                    }
+                                                    Log.i("ADD CAR TO LIST", car.toString());
+                                                    returnedListCars.add(car);
                                                 }
 
                                             }
@@ -488,9 +539,8 @@ public class WorkBuildingActivity extends AppCompatActivity {
                                                 car.setUserNIC(dbTU.getUserNIC());
 
                                                 if (car.getBuilding() == -1) {
-                                                    if (!Car.carIsPresentInList(returnedListCars, car)) {
-                                                        returnedListCars.add(car);
-                                                    }
+                                                    Log.i("ADD CAR TO LIST", car.toString());
+                                                    returnedListCars.add(car);
                                                 }
 
                                             }
@@ -530,9 +580,8 @@ public class WorkBuildingActivity extends AppCompatActivity {
                                                 car.setUserNIC(dbTU.getUserNIC());
 
                                                 if (car.getBuilding() == -1) {
-                                                    if (!Car.carIsPresentInList(returnedListCars, car)) {
-                                                        returnedListCars.add(car);
-                                                    }
+                                                    Log.i("ADD CAR TO LIST", car.toString());
+                                                    returnedListCars.add(car);
                                                 }
 
                                             }
