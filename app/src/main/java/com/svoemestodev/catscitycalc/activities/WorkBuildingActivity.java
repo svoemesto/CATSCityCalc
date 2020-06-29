@@ -43,6 +43,7 @@ import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.classes.Car;
+import com.svoemestodev.catscitycalc.classes.CarUtils;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import com.svoemestodev.catscitycalc.database.UserRole;
@@ -402,54 +403,6 @@ public class WorkBuildingActivity extends AppCompatActivity {
         protected void onPostExecute(List<Car> cars) {
             super.onPostExecute(cars);
 
-//            List<Car> resultedList = new ArrayList<>();
-//            List<Car> listCarsToAdapter = returnedListCars;
-//
-//            AlertDialog.Builder builder = new AlertDialog.Builder(WorkBuildingActivity.this);
-//            builder.setCancelable(true);
-//            builder.setTitle("Cars");
-//
-//            final ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, listCarsToAdapter, true);
-//            builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                }
-//            });
-//
-//            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//
-//                    for (int i = 0; i < listCarsToAdapter.size(); i++) {
-//                        Car item = arrayAdapter.getItem(i);
-//                        if (item.isChecked()) {
-//                            resultedList.add(item);
-//                        }
-//                    }
-//
-//                    Map<String, Object> map = new HashMap<>();
-//                    map.put("carBuildingTask", mainSlot);
-//
-//                    if (resultedList.size() >0) {
-//                        for (Car car: resultedList) {
-//                            DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(car.getUserUID()).collection("userCars").document("car"+car.getSlot());
-//                            docRefCar.update(map);
-//                            Log.i("WBA", car.toString());
-//                        }
-//                    }
-//
-//                    displayRecords();
-//
-//                }
-//            });
-//
-//            builder.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialog, int which) {
-//                }
-//            });
-//            builder.show();
-
         }
 
         @Override
@@ -467,129 +420,50 @@ public class WorkBuildingActivity extends AppCompatActivity {
                             for (DbTeamUser dbTeamUser: listDbTeamUsers) {
 
                                 final DbTeamUser dbTU = dbTeamUser;
-                                DocumentReference docRefCar1 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car1");
-                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(1);
-                                                } else {
-                                                    car = Car.loadCar(1, dbTU.getUserID());
-                                                }
+                                for (int slot = 1; slot <= 3; slot++) {
+                                    DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car"+slot);
+                                    int finalSlot = slot;
+                                    docRefCar.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                            if (e != null) {
+                                                return;
+                                            }
+                                            if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                                DbCar dbCar = new DbCar(documentSnapshot);
+                                                if (GameActivity.mainCityCalc != null) {
+                                                    Car car;
+                                                    if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
+                                                        car = Car.loadCar(finalSlot);
+                                                    } else {
+                                                        car = Car.loadCar(finalSlot, dbTU.getUserID());
+                                                    }
 
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
+                                                    DbCar dbCar = new DbCar(documentSnapshot);
 
-                                                if (car.getBuilding() == -1) {
-                                                    Log.i("ADD CAR TO LIST", car.toString());
-                                                    returnedListCars.add(car);
+                                                    car.setSlot(dbCar.getCarSlot());
+                                                    car.setName(dbCar.getCarName());
+                                                    car.setHealth(dbCar.getCarHealth());
+                                                    car.setShield(dbCar.getCarShield());
+                                                    car.setBuilding(dbCar.getCarBuilding());
+                                                    car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                    car.setRepair(dbCar.getCarRepair());
+                                                    car.setTeamID(dbCar.getTeamID());
+                                                    car.setUserUID(dbCar.getUserUID());
+                                                    car.setUserNIC(dbTU.getUserNIC());
+
+                                                    if (car.getBuilding() == -1) {
+                                                        Log.i("ADD CAR TO LIST", car.toString());
+                                                        returnedListCars.add(car);
+                                                    }
+
                                                 }
 
                                             }
-
                                         }
-                                    }
-                                });
-
-                                DocumentReference docRefCar2 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car2");
-                                docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(2);
-                                                } else {
-                                                    car = Car.loadCar(2, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuilding() == -1) {
-                                                    Log.i("ADD CAR TO LIST", car.toString());
-                                                    returnedListCars.add(car);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
-
-                                DocumentReference docRefCar3 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car3");
-                                docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(3);
-                                                } else {
-                                                    car = Car.loadCar(3, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuilding() == -1) {
-                                                    Log.i("ADD CAR TO LIST", car.toString());
-                                                    returnedListCars.add(car);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
-
+                                    });
+                                }
 
                             }
 
@@ -633,138 +507,60 @@ public class WorkBuildingActivity extends AppCompatActivity {
                             for (DbTeamUser dbTeamUser: listDbTeamUsers) {
 
                                 final DbTeamUser dbTU = dbTeamUser;
-                                DocumentReference docRefCar1 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car1");
-                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(1);
-                                                } else {
-                                                    car = Car.loadCar(1, dbTU.getUserID());
-                                                }
+                                for (int slot = 1; slot <= 3; slot++) {
 
-                                                DbCar dbCar = new DbCar(documentSnapshot);
+                                    DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car"+slot);
+                                    int finalSlot = slot;
+                                    docRefCar.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                            if (e != null) {
+                                                return;
+                                            }
+                                            if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuilding() == mainSlot) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsInBuilding, car)) {
-                                                        returnedListCarsInBuilding.add(car);
+                                                if (GameActivity.mainCityCalc != null) {
+                                                    Car car;
+                                                    if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
+                                                        car = Car.loadCar(finalSlot);
+                                                    } else {
+                                                        car = Car.loadCar(finalSlot, dbTU.getUserID());
                                                     }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
-                                                    wb_lv_cars_in_building.setAdapter(arrayAdapter);
+
+                                                    DbCar dbCar = new DbCar(documentSnapshot);
+
+                                                    car.setSlot(dbCar.getCarSlot());
+                                                    car.setName(dbCar.getCarName());
+                                                    car.setHealth(dbCar.getCarHealth());
+                                                    car.setShield(dbCar.getCarShield());
+                                                    car.setBuilding(dbCar.getCarBuilding());
+                                                    car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                    car.setRepair(dbCar.getCarRepair());
+                                                    car.setTeamID(dbCar.getTeamID());
+                                                    car.setUserUID(dbCar.getUserUID());
+                                                    car.setUserNIC(dbTU.getUserNIC());
+
+                                                    if (car.getBuilding() == mainSlot) {
+                                                        if (!CarUtils.carIsPresentInList(returnedListCarsInBuilding, car)) {
+                                                            returnedListCarsInBuilding.add(car);
+                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
+                                                            wb_lv_cars_in_building.setAdapter(arrayAdapter);
+                                                        }
+                                                        if (CarUtils.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
+                                                            returnedListCarsTaskBuilding = CarUtils.removeCarFromList(returnedListCarsTaskBuilding, car);
+                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
+                                                            wb_lv_cars_task_building.setAdapter(arrayAdapter);
+                                                        }
+                                                    }
+
                                                 }
 
                                             }
-
                                         }
-                                    }
-                                });
+                                    });
 
-                                DocumentReference docRefCar2 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car2");
-                                docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(2);
-                                                } else {
-                                                    car = Car.loadCar(2, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuilding() == mainSlot) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsInBuilding, car)) {
-                                                        returnedListCarsInBuilding.add(car);
-                                                    }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
-                                                    wb_lv_cars_in_building.setAdapter(arrayAdapter);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
-
-                                DocumentReference docRefCar3 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car3");
-                                docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(3);
-                                                } else {
-                                                    car = Car.loadCar(3, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuilding() == mainSlot) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsInBuilding, car)) {
-                                                        returnedListCarsInBuilding.add(car);
-                                                    }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
-                                                    wb_lv_cars_in_building.setAdapter(arrayAdapter);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
-
+                                }
 
                             }
 
@@ -810,137 +606,55 @@ public class WorkBuildingActivity extends AppCompatActivity {
                             for (DbTeamUser dbTeamUser: listDbTeamUsers) {
 
                                 final DbTeamUser dbTU = dbTeamUser;
-                                DocumentReference docRefCar1 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car1");
-                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(1);
-                                                } else {
-                                                    car = Car.loadCar(1, dbTU.getUserID());
-                                                }
+                                for (int slot = 1; slot <= 3; slot++) {
+                                    DocumentReference docRefCar = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car"+slot);
+                                    int finalSlot = slot;
+                                    docRefCar.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                            if (e != null) {
+                                                return;
+                                            }
+                                            if (documentSnapshot != null && documentSnapshot.exists()) {
 
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuildingTask() == mainSlot && car.getBuildingTask() != car.getBuilding()) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
-                                                        returnedListCarsTaskBuilding.add(car);
+                                                if (GameActivity.mainCityCalc != null) {
+                                                    Car car;
+                                                    if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
+                                                        car = Car.loadCar(finalSlot);
+                                                    } else {
+                                                        car = Car.loadCar(finalSlot, dbTU.getUserID());
                                                     }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
-                                                    wb_lv_cars_task_building.setAdapter(arrayAdapter);
+
+                                                    DbCar dbCar = new DbCar(documentSnapshot);
+
+                                                    car.setSlot(dbCar.getCarSlot());
+                                                    car.setName(dbCar.getCarName());
+                                                    car.setHealth(dbCar.getCarHealth());
+                                                    car.setShield(dbCar.getCarShield());
+                                                    car.setBuilding(dbCar.getCarBuilding());
+                                                    car.setBuildingTask(dbCar.getCarBuildingTask());
+                                                    car.setRepair(dbCar.getCarRepair());
+                                                    car.setTeamID(dbCar.getTeamID());
+                                                    car.setUserUID(dbCar.getUserUID());
+                                                    car.setUserNIC(dbTU.getUserNIC());
+
+                                                    if (car.getBuildingTask() == mainSlot && car.getBuildingTask() != car.getBuilding()) {
+                                                        if (!CarUtils.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
+                                                            returnedListCarsTaskBuilding.add(car);
+                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
+                                                            wb_lv_cars_task_building.setAdapter(arrayAdapter);
+                                                        }
+
+                                                    }
+
                                                 }
 
                                             }
-
                                         }
-                                    }
-                                });
+                                    });
 
-                                DocumentReference docRefCar2 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car2");
-                                docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(2);
-                                                } else {
-                                                    car = Car.loadCar(2, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuildingTask() == mainSlot && car.getBuildingTask() != car.getBuilding()) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
-                                                        returnedListCarsTaskBuilding.add(car);
-                                                    }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
-                                                    wb_lv_cars_task_building.setAdapter(arrayAdapter);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
-
-                                DocumentReference docRefCar3 = GameActivity.fbDb.collection("users").document(dbTU.getUserID()).collection("userCars").document("car3");
-                                docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                        if (e != null) {
-                                            return;
-                                        }
-                                        if (documentSnapshot != null && documentSnapshot.exists()) {
-
-                                            if (GameActivity.mainCityCalc != null) {
-                                                Car car;
-                                                if (dbTU.getUserID().equals(GameActivity.fbUser.getUid())) {
-                                                    car = Car.loadCar(3);
-                                                } else {
-                                                    car = Car.loadCar(3, dbTU.getUserID());
-                                                }
-
-                                                DbCar dbCar = new DbCar(documentSnapshot);
-
-                                                car.setSlot(dbCar.getCarSlot());
-                                                car.setName(dbCar.getCarName());
-                                                car.setHealth(dbCar.getCarHealth());
-                                                car.setShield(dbCar.getCarShield());
-                                                car.setBuilding(dbCar.getCarBuilding());
-                                                car.setBuildingTask(dbCar.getCarBuildingTask());
-                                                car.setRepair(dbCar.getCarRepair());
-                                                car.setTeamID(dbCar.getTeamID());
-                                                car.setUserUID(dbCar.getUserUID());
-                                                car.setUserNIC(dbTU.getUserNIC());
-
-                                                if (car.getBuildingTask() == mainSlot && car.getBuildingTask() != car.getBuilding()) {
-                                                    if (!Car.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
-                                                        returnedListCarsTaskBuilding.add(car);
-                                                    }
-                                                    ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
-                                                    wb_lv_cars_task_building.setAdapter(arrayAdapter);
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                });
+                                }
 
 
                             }

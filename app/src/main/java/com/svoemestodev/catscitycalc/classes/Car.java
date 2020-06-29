@@ -63,16 +63,7 @@ public class Car implements Serializable {
     public Car() {
     }
 
-    public static boolean carIsPresentInList(List<Car> list, Car car) {
-        boolean isPresent = false;
-        for (Car item: list) {
-            if (item.getSlot() == car.getSlot() && item.getUserUID().equals(car.getUserUID())) {
-                isPresent = true;
-                break;
-            }
-        }
-        return  isPresent;
-    }
+
 
     public Bitmap getCarPicture() {
 
@@ -81,11 +72,11 @@ public class Car implements Serializable {
         } else if (imageByteArrayCarDefencing != null) {
             setCarPicture(getCarPictureDefencing());
             save();
-            return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
+            return BitmapFactory.decodeByteArray(imageByteArrayCarDefencing, 0, imageByteArrayCarDefencing.length);
         } else if (imageByteArrayCarRepairing != null) {
             setCarPicture(getCarPictureRepairing());
             save();
-            return BitmapFactory.decodeByteArray(imageByteArrayCar, 0, imageByteArrayCar.length);
+            return BitmapFactory.decodeByteArray(imageByteArrayCarRepairing, 0, imageByteArrayCarRepairing.length);
         } else {
             return null;
         }
@@ -95,7 +86,7 @@ public class Car implements Serializable {
     public void setCarPicture(Bitmap picture) {
         if (picture != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             imageByteArrayCar = stream.toByteArray();
         }
 
@@ -106,7 +97,7 @@ public class Car implements Serializable {
         if (imageByteArrayCarDefencing != null) {
             return BitmapFactory.decodeByteArray(imageByteArrayCarDefencing, 0, imageByteArrayCarDefencing.length);
         } else {
-            return null;
+            return getCarPicture();
         }
 
     }
@@ -114,7 +105,7 @@ public class Car implements Serializable {
     public void setCarPictureDefencing(Bitmap picture) {
         if (picture != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             imageByteArrayCarDefencing = stream.toByteArray();
         }
 
@@ -125,7 +116,7 @@ public class Car implements Serializable {
         if (imageByteArrayCarRepairing != null) {
             return BitmapFactory.decodeByteArray(imageByteArrayCarRepairing, 0, imageByteArrayCarRepairing.length);
         } else {
-            return null;
+            return getCarPicture();
         }
 
     }
@@ -133,7 +124,7 @@ public class Car implements Serializable {
     public void setCarPictureRepairing(Bitmap picture) {
         if (picture != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             imageByteArrayCarRepairing = stream.toByteArray();
         }
 
@@ -150,7 +141,7 @@ public class Car implements Serializable {
     public void setBuildingPicture(Bitmap picture) {
         if (picture != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             imageByteArrayBuilding = stream.toByteArray();
         }
 
@@ -167,7 +158,7 @@ public class Car implements Serializable {
     public void setTaskPicture(Bitmap picture) {
         if (picture != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            picture.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            picture.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             imageByteArrayTask = stream.toByteArray();
         }
 
@@ -182,35 +173,6 @@ public class Car implements Serializable {
         this.userUID = userUID;
 
     }
-
-//    public static List<Car> getDefaultList() {
-//
-//        List<Car> list = new ArrayList<>();
-//        String userUID = null;
-//        if (GameActivity.fbUser != null) {
-//            userUID = GameActivity.fbUser.getUid();
-//        }
-//
-//        Bitmap picture1 = BitmapFactory.decodeFile( pathToCATScalcFolder + "/stub_car1.jpg");
-//        ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
-//        picture1.compress(Bitmap.CompressFormat.PNG, 100, stream1);
-//        byte[] imageByteArrayBuilding1 = stream1.toByteArray();
-//        list.add(new Car("Car #1", 1, 0, 0, imageByteArrayBuilding1, userUID));
-//
-//        Bitmap picture2 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car2.jpg");
-//        ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
-//        picture2.compress(Bitmap.CompressFormat.PNG, 100, stream2);
-//        byte[] imageByteArrayBuilding2 = stream2.toByteArray();
-//        list.add(new Car("Car #2", 2, 0, 0,imageByteArrayBuilding2, userUID));
-//
-//        Bitmap picture3 = BitmapFactory.decodeFile(pathToCATScalcFolder + "/stub_car3.jpg");
-//        ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
-//        picture3.compress(Bitmap.CompressFormat.PNG, 100, stream3);
-//        byte[] imageByteArrayBuilding3 = stream3.toByteArray();
-//        list.add(new Car("Car #3", 3, 0, 0, imageByteArrayBuilding3, userUID));
-//
-//        return list;
-//    }
 
     public static Car getDefaultCar(int slot) {
 
@@ -306,7 +268,6 @@ public class Car implements Serializable {
         Map<String, Object> map = new HashMap<>();
 
         map.put("timestamp", FieldValue.serverTimestamp());
-//        map.put("carUID", uuid.toString());
         map.put("userUID", userUID);
         map.put("userNIC", userNIC);
         map.put("teamID", teamID);
@@ -426,13 +387,6 @@ public class Car implements Serializable {
         return getSecondsToEndRepairing() > 0;
     }
 
-//    public UUID getUuid() {
-//        return uuid;
-//    }
-//
-//    public void setUuid(UUID uuid) {
-//        this.uuid = uuid;
-//    }
 
     public String getName() {
         return name;
