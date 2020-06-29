@@ -132,6 +132,9 @@
         android:id="@+id/wb_tv_cars_in_building"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_yellow"
+        android:paddingHorizontal="10dp"
+        android:textColor="#000000"
         android:layout_below="@id/wb_iv_bxx_progress"
         android:text="Машины в здании:"/>
 
@@ -139,12 +142,16 @@
         android:id="@+id/wb_lv_cars_in_building"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:layout_height="200dp"
         android:layout_below="@id/wb_tv_cars_in_building"/>
 
     <TextView
         android:id="@+id/wb_tv_cars_task_building"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_yellow"
+        android:paddingHorizontal="10dp"
+        android:textColor="#000000"
         android:layout_below="@id/wb_lv_cars_in_building"
         android:text="Машины, получившие задание на это здание:"/>
 
@@ -152,6 +159,7 @@
         android:id="@+id/wb_lv_cars_task_building"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        tools:layout_height="200dp"
         android:layout_below="@id/wb_tv_cars_task_building"/>
 
     <Button
