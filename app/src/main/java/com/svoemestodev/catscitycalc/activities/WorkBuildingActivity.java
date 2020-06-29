@@ -544,13 +544,14 @@ public class WorkBuildingActivity extends AppCompatActivity {
                                                     if (car.getBuilding() == mainSlot) {
                                                         if (!CarUtils.carIsPresentInList(returnedListCarsInBuilding, car)) {
                                                             returnedListCarsInBuilding.add(car);
-                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
-                                                            wb_lv_cars_in_building.setAdapter(arrayAdapter);
                                                         }
+                                                        ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsInBuilding, false);
+                                                        wb_lv_cars_in_building.setAdapter(arrayAdapter);
+
                                                         if (CarUtils.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
                                                             returnedListCarsTaskBuilding = CarUtils.removeCarFromList(returnedListCarsTaskBuilding, car);
-                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
-                                                            wb_lv_cars_task_building.setAdapter(arrayAdapter);
+                                                            ListCarsAdapter arrayAdapter2 = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
+                                                            wb_lv_cars_task_building.setAdapter(arrayAdapter2);
                                                         }
                                                     }
 
@@ -642,9 +643,9 @@ public class WorkBuildingActivity extends AppCompatActivity {
                                                     if (car.getBuildingTask() == mainSlot && car.getBuildingTask() != car.getBuilding()) {
                                                         if (!CarUtils.carIsPresentInList(returnedListCarsTaskBuilding, car)) {
                                                             returnedListCarsTaskBuilding.add(car);
-                                                            ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
-                                                            wb_lv_cars_task_building.setAdapter(arrayAdapter);
                                                         }
+                                                        ListCarsAdapter arrayAdapter = new ListCarsAdapter(WorkBuildingActivity.this, returnedListCarsTaskBuilding, false);
+                                                        wb_lv_cars_task_building.setAdapter(arrayAdapter);
 
                                                     }
 

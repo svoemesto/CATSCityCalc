@@ -28,12 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/CarUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/WorkBuildingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/WorkBuildingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/classes/Car.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/select_car.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/select_car.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,15 +301,6 @@
     <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1593113627791" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/adapters/ListCarsAdapter.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="com.svoemestodev.catscitycalc.citycalcclasses.CCAGame" fieldName="pointsEnemyInScreenshot" />
