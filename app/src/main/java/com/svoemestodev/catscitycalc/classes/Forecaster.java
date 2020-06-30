@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc.classes;
 
 import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
+import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -231,96 +232,102 @@ public class Forecaster {
         
         String txt = "";
         int building = 0;
-        txt = txt + "С момента получения предыдущих данных прошло " + timeDiff/60000 + " минут.\n\n";
+        txt = txt + "Между получением текущий и предыдущих данных прошло " + timeDiff/60000 + " минут" + Utils.getPluralSuffixIm((int)(timeDiff/60000)) + ".\n\n";
 
         building = 1;
         if (isPresent_blt) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_blt_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blt_our) + " наших машин.\n";
-            if (diffSlots_blt_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blt_our) + " машин.\n";
-            if (diffSlots_blt_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blt_enemy) + " машин противника.\n";
-            if (diffSlots_blt_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blt_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_blt) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_blt_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blt_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blt_our)) + " нашей команды.\n";
+            if (diffSlots_blt_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blt_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blt_our)) + ".\n";
+            if (diffSlots_blt_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blt_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blt_enemy)) + " противника.\n";
+            if (diffSlots_blt_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blt_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blt_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_blt) + ".\n";
-            if (needAddCarsToBuildingOur_blt > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blt + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blt) + ".\n";
-            if (needAddCarsToBuildingEnemy_blt > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blt + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blt) + ".\n\n";
+            if (needAddCarsToBuildingOur_blt > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blt + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_blt) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blt) + ".\n";
+            if (needAddCarsToBuildingEnemy_blt > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blt + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_blt) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blt) + ".\n\n";
+            txt = txt + "\n";
         }
 
         building = 2;
         if (isPresent_blc) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_blc_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blc_our) + " наших машин.\n";
-            if (diffSlots_blc_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blc_our) + " машин.\n";
-            if (diffSlots_blc_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blc_enemy) + " машин противника.\n";
-            if (diffSlots_blc_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blc_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_blc) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_blc_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blc_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blc_our)) + " нашей команды.\n";
+            if (diffSlots_blc_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blc_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blc_our)) + ".\n";
+            if (diffSlots_blc_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blc_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blc_enemy)) + " противника.\n";
+            if (diffSlots_blc_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blc_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blc_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_blc) + ".\n";
-            if (needAddCarsToBuildingOur_blc > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blc + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blc) + ".\n";
-            if (needAddCarsToBuildingEnemy_blc > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blc + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blc) + ".\n\n";
+            if (needAddCarsToBuildingOur_blc > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blc + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_blc) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blc) + ".\n";
+            if (needAddCarsToBuildingEnemy_blc > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blc + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_blc) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blc) + ".\n\n";
+            txt = txt + "\n";
         }
 
         building = 3;
         if (isPresent_blb) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_blb_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blb_our) + " наших машин.\n";
-            if (diffSlots_blb_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blb_our) + " машин.\n";
-            if (diffSlots_blb_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blb_enemy) + " машин противника.\n";
-            if (diffSlots_blb_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blb_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_blb) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_blb_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_blb_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blb_our)) + " нашей команды.\n";
+            if (diffSlots_blb_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_blb_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blb_our)) + ".\n";
+            if (diffSlots_blb_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_blb_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blb_enemy)) + " противника.\n";
+            if (diffSlots_blb_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_blb_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_blb_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_blb) + ".\n";
-            if (needAddCarsToBuildingOur_blb > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blb + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blb) + ".\n";
-            if (needAddCarsToBuildingEnemy_blb > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blb + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blb) + ".\n\n";
+            if (needAddCarsToBuildingOur_blb > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_blb + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_blb) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_blb) + ".\n";
+            if (needAddCarsToBuildingEnemy_blb > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_blb + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_blb) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_blb) + ".\n\n";
+            txt = txt + "\n";
         }
 
         building = 4;
         if (isPresent_brt) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_brt_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brt_our) + " наших машин.\n";
-            if (diffSlots_brt_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brt_our) + " машин.\n";
-            if (diffSlots_brt_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brt_enemy) + " машин противника.\n";
-            if (diffSlots_brt_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brt_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_brt) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_brt_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brt_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brt_our)) + " нашей команды.\n";
+            if (diffSlots_brt_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brt_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brt_our)) + ".\n";
+            if (diffSlots_brt_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brt_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brt_enemy)) + " противника.\n";
+            if (diffSlots_brt_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brt_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brt_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_brt) + ".\n";
-            if (needAddCarsToBuildingOur_brt > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brt + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brt) + ".\n";
-            if (needAddCarsToBuildingEnemy_brt > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brt + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brt) + ".\n\n";
+            if (needAddCarsToBuildingOur_brt > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brt + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_brt) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brt) + ".\n";
+            if (needAddCarsToBuildingEnemy_brt > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brt + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_brt) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brt) + ".\n\n";
+            txt = txt + "\n";
         }
 
         building = 5;
         if (isPresent_brc) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_brc_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brc_our) + " наших машин.\n";
-            if (diffSlots_brc_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brc_our) + " машин.\n";
-            if (diffSlots_brc_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brc_enemy) + " машин противника.\n";
-            if (diffSlots_brc_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brc_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_brc) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_brc_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brc_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brc_our)) + " нашей команды.\n";
+            if (diffSlots_brc_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brc_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brc_our)) + ".\n";
+            if (diffSlots_brc_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brc_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brc_enemy)) + " противника.\n";
+            if (diffSlots_brc_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brc_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brc_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_brc) + ".\n";
-            if (needAddCarsToBuildingOur_brc > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brc + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brc) + ".\n";
-            if (needAddCarsToBuildingEnemy_brc > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brc + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brc) + ".\n\n";
+            if (needAddCarsToBuildingOur_brc > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brc + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_brc) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brc) + ".\n";
+            if (needAddCarsToBuildingEnemy_brc > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brc + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_brc) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brc) + ".\n\n";
+            txt = txt + "\n";
         }
 
         building = 6;
         if (isPresent_brb) {
-            txt = txt + "Здание №" + building + ":\n";
-            txt = txt + "-----------\n";
-            if (diffSlots_brb_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brb_our) + " наших машин.\n";
-            if (diffSlots_brb_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brb_our) + " машин.\n";
-            if (diffSlots_brb_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brb_enemy) + " машин противника.\n";
-            if (diffSlots_brb_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brb_enemy) + " машин.\n";
+            txt = txt + "Здание №" + building + " " + mapFCS.get(state_brb) + ":\n";
+            txt = txt + "----------------------------------------\n";
+            if (diffSlots_brb_our < 0) txt = txt + "За это время из этого здания противник выбил " + Math.abs(diffSlots_brb_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brb_our)) + " нашей команды.\n";
+            if (diffSlots_brb_our > 0) txt = txt + "За это время в это здание наша команда установила еще " + Math.abs(diffSlots_brb_our) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brb_our)) + ".\n";
+            if (diffSlots_brb_enemy < 0) txt = txt + "За это время из этого здания наша команда выбила " + Math.abs(diffSlots_brb_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brb_enemy)) + " противника.\n";
+            if (diffSlots_brb_enemy > 0) txt = txt + "За это время в это здание команда противника установила еще " + Math.abs(diffSlots_brb_enemy) + " машин" + Utils.getPluralSuffixDat(Math.abs(diffSlots_brb_enemy)) + ".\n";
             txt = txt + "Это здание наша команда " + mapFCS.get(diffBuildingIsOur_brb) + ".\n";
-            if (needAddCarsToBuildingOur_brb > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brb + " машин.\n";
-            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brb) + ".\n";
-            if (needAddCarsToBuildingEnemy_brb > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brb + " машин.\n";
-            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brb) + ".\n\n";
+            if (needAddCarsToBuildingOur_brb > 0) txt = txt + "Для захвата этого здания нашей команде нужно установить в него еще " + needAddCarsToBuildingOur_brb + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingOur_brb) + ".\n";
+//            txt = txt + "Это здание команда противника " + mapFCS.get(diffBuildingIsEnemy_brb) + ".\n";
+            if (needAddCarsToBuildingEnemy_brb > 0) txt = txt + "Для захвата этого здания команде противника нужно установить в него еще " + needAddCarsToBuildingEnemy_brb + " машин" + Utils.getPluralSuffixDat(needAddCarsToBuildingEnemy_brb) + ".\n";
+//            txt = txt + "Это здание на данный момент " + mapFCS.get(state_brb) + ".\n\n";
+            txt = txt + "\n";
         }
         
         return txt;

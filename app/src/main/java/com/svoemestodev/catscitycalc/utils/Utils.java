@@ -316,4 +316,33 @@ public class Utils {
         int hours = Integer.parseInt(str.substring(0, str.length()-4));
         return hours*3600 + minutes*60 + seconds;
     }
+
+    public static String getPluralSuffixDat(int num) {
+        String suffix = "";
+        int first = num % 10;
+        int second = (num / 10) % 10;
+        if (second != 1) {
+            if (first == 1) {
+                suffix = "у";
+            } else if (first >= 2 && first <= 4){
+                suffix = "ы";
+            }
+        }
+        return suffix;
+    }
+
+    public static String getPluralSuffixIm(int num) {
+        String suffix = "";
+        int first = num % 10;
+        int second = (num / 10) % 10;
+        if (second != 1) {
+            if (first == 1) {
+                suffix = "а";
+            } else if (first >= 2 && first <= 4){
+                suffix = "ы";
+            }
+        }
+        return suffix;
+    }
+
 }
