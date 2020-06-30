@@ -232,7 +232,7 @@ public class Forecaster {
         
         String txt = "";
         int building = 0;
-        txt = txt + "Между получением текущий и предыдущих данных прошло " + timeDiff/60000 + " минут" + Utils.getPluralSuffixIm((int)(timeDiff/60000)) + ".\n\n";
+        txt = txt + "Между получением текущих и предыдущих данных прошло " + timeDiff/60000 + " минут" + Utils.getPluralSuffixIm((int)(timeDiff/60000)) + ".\n\n";
 
         building = 1;
         if (isPresent_blt) {
