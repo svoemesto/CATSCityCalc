@@ -28,7 +28,60 @@ public class CityCalc { //extends Activity {
     private Map<Area, CityCalcArea> mapAreas = new HashMap<>(); // мап областей
     private static final String TAG = "CityCalc";
     private CityCalc thisCityCalc = null;
-    
+
+    public CityCalc() {
+    }
+
+    public CityCalc getClone() {
+        CityCalc clone = new CityCalc();
+
+        clone.fileScreenshot = this.fileScreenshot;
+        clone.bmpScreenshot = this.bmpScreenshot;
+        clone.calibrateX = this.calibrateX;
+        clone.calibrateY = this.calibrateY;
+        clone.cityCalcType = this.cityCalcType;
+        clone.userNIC = this.userNIC;
+        clone.userUID = this.userUID;
+        clone.teamID = this.teamID;
+        clone.mapAreas = new HashMap<>(); // мап областей
+        for (Map.Entry<Area, CityCalcArea> pair: this.mapAreas.entrySet()) {
+            Area area = pair.getKey();
+            CityCalcArea cityCalcArea = pair.getValue();
+            switch (area) {
+                case CITY:
+                    CCAGame ccaGame = ((CCAGame)cityCalcArea).getClone(clone);
+                    clone.mapAreas.put(ccaGame.getArea(), ccaGame);
+                    break;
+                case TEAM_NAME_OUR:
+                case TEAM_NAME_ENEMY:
+                    CCATeam ccaTeam = ((CCATeam)cityCalcArea).getClone(clone);
+                    clone.mapAreas.put(ccaTeam.getArea(), ccaTeam);
+                    break;
+                case BLT:
+                case BLC:
+                case BLB:
+                case BRT:
+                case BRC:
+                case BRB:
+                    CCABuilding ccaBuilding = ((CCABuilding)cityCalcArea).getClone(clone);
+                    clone.mapAreas.put(ccaBuilding.getArea(), ccaBuilding);
+                    break;
+                case CAR_IN_CITY_INFO:
+                case CAR_IN_CITY_BUILDING:
+                    CCACar ccaCar = ((CCACar)cityCalcArea).getClone(clone);
+                    clone.mapAreas.put(ccaCar.getArea(), ccaCar);
+                    break;
+                default:
+                    CityCalcArea cca = cityCalcArea.getClone(clone);
+                    clone.mapAreas.put(cca.getArea(), cca);
+            }
+        }
+
+
+        return clone;
+    }
+
+
     public File getFileScreenshot() {
         return fileScreenshot;
     }

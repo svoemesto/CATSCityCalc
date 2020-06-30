@@ -100,7 +100,36 @@ public class CityCalcArea {
                 
         }
     }
-    
+
+    public CityCalcArea() {
+    }
+
+    public CityCalcArea getClone(CityCalc parent) {
+
+        CityCalcArea clone = new CityCalcArea();
+
+        clone.cityCalc = parent;
+        clone.area = this.area;
+        clone.bmpSrc = this.bmpSrc;
+        clone.cropPosition = this.cropPosition;
+        clone.x1 = this.x1;
+        clone.x2 = this.x2;
+        clone.y1 = this.y1;
+        clone.y2 = this.y2;
+        clone.colors = this.colors;
+        clone.ths = this.ths;
+        clone.needOcr = this.needOcr;
+        clone.needBW = this.needBW;
+        clone.isGeneric = this.isGeneric;
+        clone.bmpPrc = this.bmpPrc;
+        clone.ocrText = this.ocrText;
+        clone.finText = this.finText;
+
+        return clone;
+
+    }
+
+
     // конструктор "обычных" картинок
     public CityCalcArea(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int [] ths, boolean needOcr, boolean needBW) {
 

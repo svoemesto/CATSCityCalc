@@ -141,6 +141,17 @@ public class DbTeamGame implements Serializable {
     private int slots_brb_empty;
     private int slots_brb_enemy;
 
+    private int countOurX2;
+    private int countEnemyX2;
+    private int countX2;
+    private int personsOur;
+    private int personsEnemy;
+    private int personsTotal;
+    private int slotsTotal;
+    private int slotsOur;
+    private int slotsEnemy;
+
+
     private byte[] bytesScreenshot = null;
 
     private static final transient String TAG = "DbTeamGame";
@@ -352,6 +363,17 @@ public class DbTeamGame implements Serializable {
         key = "slots_brb_empty"; if (map.containsKey(key)) this.slots_brb_empty = ((Long) map.get(key)).intValue();
         key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = ((Long) map.get(key)).intValue();
 
+        key = "countOurX2"; if (map.containsKey(key)) this.countOurX2 = ((Long) map.get(key)).intValue();
+        key = "countEnemyX2"; if (map.containsKey(key)) this.countEnemyX2 = ((Long) map.get(key)).intValue();
+        key = "countX2"; if (map.containsKey(key)) this.countX2 = ((Long) map.get(key)).intValue();
+        key = "personsOur"; if (map.containsKey(key)) this.personsOur = ((Long) map.get(key)).intValue();
+        key = "personsEnemy"; if (map.containsKey(key)) this.personsEnemy = ((Long) map.get(key)).intValue();
+        key = "personsTotal"; if (map.containsKey(key)) this.personsTotal = ((Long) map.get(key)).intValue();
+        key = "slotsTotal"; if (map.containsKey(key)) this.slotsTotal = ((Long) map.get(key)).intValue();
+        key = "slotsOur"; if (map.containsKey(key)) this.slotsOur = ((Long) map.get(key)).intValue();
+        key = "slotsEnemy"; if (map.containsKey(key)) this.slotsEnemy = ((Long) map.get(key)).intValue();
+
+
     }
     
     public DbTeamGame(CCAGame ccaGame) {
@@ -449,6 +471,17 @@ public class DbTeamGame implements Serializable {
         this.slots_brb_our = ccaGame.getSlots_brb_our();
         this.slots_brb_empty = ccaGame.getSlots_brb_empty();
         this.slots_brb_enemy = ccaGame.getSlots_brb_enemy();
+
+        this.countOurX2 = ccaGame.getCountOurX2();
+        this.countEnemyX2 = ccaGame.getCountEnemyX2();
+        this.countX2 = ccaGame.getCountX2();
+        this.personsOur = ccaGame.getPersonsOur();
+        this.personsEnemy = ccaGame.getPersonsEnemy();
+        this.personsTotal = ccaGame.getPersonsTotal();
+        this.slotsTotal = ccaGame.getSlotsTotal();
+        this.slotsOur = ccaGame.getSlotsOur();
+        this.slotsEnemy = ccaGame.getSlotsEnemy();
+
 
         if (!ccaGame.isGameOver()) {
 
@@ -614,6 +647,16 @@ public class DbTeamGame implements Serializable {
         map.put("slots_brb_our", slots_brb_our);
         map.put("slots_brb_empty", slots_brb_empty);
         map.put("slots_brb_enemy", slots_brb_enemy);
+
+        map.put("countOurX2", countOurX2);
+        map.put("countEnemyX2", countEnemyX2);
+        map.put("countX2", countX2);
+        map.put("personsOur", personsOur);
+        map.put("personsEnemy", personsEnemy);
+        map.put("personsTotal", personsTotal);
+        map.put("slotsTotal", slotsTotal);
+        map.put("slotsOur", slotsOur);
+        map.put("slotsEnemy", slotsEnemy);
 
         return map;
     }
@@ -1314,4 +1357,75 @@ public class DbTeamGame implements Serializable {
         this.bytesScreenshot = bytesScreenshot;
     }
 
+    public int getCountOurX2() {
+        return countOurX2;
+    }
+
+    public void setCountOurX2(int countOurX2) {
+        this.countOurX2 = countOurX2;
+    }
+
+    public int getCountEnemyX2() {
+        return countEnemyX2;
+    }
+
+    public void setCountEnemyX2(int countEnemyX2) {
+        this.countEnemyX2 = countEnemyX2;
+    }
+
+    public int getCountX2() {
+        return countX2;
+    }
+
+    public void setCountX2(int countX2) {
+        this.countX2 = countX2;
+    }
+
+    public int getPersonsOur() {
+        return personsOur;
+    }
+
+    public void setPersonsOur(int personsOur) {
+        this.personsOur = personsOur;
+    }
+
+    public int getPersonsEnemy() {
+        return personsEnemy;
+    }
+
+    public void setPersonsEnemy(int personsEnemy) {
+        this.personsEnemy = personsEnemy;
+    }
+
+    public int getPersonsTotal() {
+        return personsTotal;
+    }
+
+    public void setPersonsTotal(int personsTotal) {
+        this.personsTotal = personsTotal;
+    }
+
+    public int getSlotsTotal() {
+        return slotsTotal;
+    }
+
+    public void setSlotsTotal(int slotsTotal) {
+        this.slotsTotal = slotsTotal;
+    }
+
+    public int getSlotsOur() {
+        return slotsOur;
+    }
+
+    public void setSlotsOur(int slotsOur) {
+        this.slotsOur = slotsOur;
+    }
+
+    public int getSlotsEnemy() {
+        return slotsEnemy;
+    }
+
+    public void setSlotsEnemy(int slotsEnemy) {
+        this.slotsEnemy = slotsEnemy;
+    }
 }

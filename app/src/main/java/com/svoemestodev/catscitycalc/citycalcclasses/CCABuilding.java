@@ -18,6 +18,10 @@ public class CCABuilding extends CityCalcArea {
     private boolean isX2;
     private boolean isPresent;
 
+    public CCABuilding() {
+    }
+
+
     public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
         this.isPresent = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), 0xFFFFFFFF, 10, 10) > 0.2f;
@@ -38,6 +42,43 @@ public class CCABuilding extends CityCalcArea {
             }
             this.setFinText(this.getOcrText().trim());
         }
+    }
+
+    public CCABuilding getClone(CityCalc parent) {
+
+        CCABuilding clone = new CCABuilding();
+
+        clone.setCityCalc(parent);
+        clone.setArea(this.getArea());
+        clone.setBmpSrc(this.getBmpSrc());
+        clone.setCropPosition(this.getCropPosition());
+        clone.setX1(this.getX1());
+        clone.setX2(this.getX2());
+        clone.setY1(this.getY1());
+        clone.setY2(this.getY2());
+        clone.setColors(this.getColors());
+        clone.setThs(this.getThs());
+        clone.setNeedOcr(this.isNeedOcr());
+        clone.setNeedBW(this.isNeedBW());
+        clone.setGeneric(this.isGeneric());
+        clone.setBmpPrc(this.getBmpPrc());
+        clone.setOcrText(this.getOcrText());
+        clone.setFinText(this.getFinText());
+
+        clone.slots = this.slots;
+        clone.slots_our = this.slots_our;
+        clone.slots_enemy = this.slots_enemy;
+        clone.slots_empty = this.slots_empty;
+        clone.our_points = this.our_points;
+        clone.enemy_points = this.enemy_points;
+        clone.buildingIsOur = this.buildingIsOur;
+        clone.buildingIsEnemy = this.buildingIsEnemy;
+        clone.buildingIsEmpty = this.buildingIsEmpty;
+        clone.mayX2 = this.mayX2;
+        clone.isX2 = this.isX2;
+        clone.isPresent = this.isPresent;
+
+        return clone;
     }
 
     public void calc(CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {

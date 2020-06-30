@@ -1,12 +1,14 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
+import com.svoemestodev.catscitycalc.utils.CropPosition;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.File;
@@ -33,6 +35,8 @@ public class CCAGame extends CityCalcArea {
     private int pointsEnemyInScreenshot;
     private int increaseOur;
     private int increaseEnemy;
+
+//    private CCABuilding[] buildings = new CCABuilding[6];
 
     private boolean isPresent_blt;
     private boolean isPresent_blc;
@@ -136,6 +140,16 @@ public class CCAGame extends CityCalcArea {
 
     private int differentPoints;
 
+    private int countOurX2;
+    private int countEnemyX2;
+    private int countX2;
+    private int personsOur;
+    private int personsEnemy;
+    private int personsTotal;
+    private int slotsTotal;
+    private int slotsOur;
+    private int slotsEnemy;
+
     private String status;
 
     private byte[] bytesScreenshot = null;
@@ -160,6 +174,151 @@ public class CCAGame extends CityCalcArea {
         }
     }
 
+    public CCAGame() {
+    }
+
+    public CCAGame getClone(CityCalc parent) {
+
+        CCAGame clone = new CCAGame();
+
+        clone.setCityCalc(parent);
+        clone.setArea(this.getArea());
+        clone.setBmpSrc(this.getBmpSrc());
+        clone.setCropPosition(this.getCropPosition());
+        clone.setX1(this.getX1());
+        clone.setX2(this.getX2());
+        clone.setY1(this.getY1());
+        clone.setY2(this.getY2());
+        clone.setColors(this.getColors());
+        clone.setThs(this.getThs());
+        clone.setNeedOcr(this.isNeedOcr());
+        clone.setNeedBW(this.isNeedBW());
+        clone.setGeneric(this.isGeneric());
+        clone.setBmpPrc(this.getBmpPrc());
+        clone.setOcrText(this.getOcrText());
+        clone.setFinText(this.getFinText());
+
+        clone.dateStartGame = this.dateStartGame;
+        clone.dateScreenshot = this.dateScreenshot;
+        clone.dateCurrent = this.dateCurrent;
+        clone.dateEarlyWin = this.dateEarlyWin;
+        clone.dateEndGame = this.dateEndGame;
+        clone.dateFinal = this.dateFinal;
+        clone.earlyWin = this.earlyWin;
+        clone.source = this.source;
+        clone.userNIC = this.userNIC;
+        clone.userUID = this.userUID;
+        clone.teamID = this.teamID;
+        clone.screenshotFile = this.screenshotFile;
+        clone.pointsOurInScreenshot = this.pointsOurInScreenshot;
+        clone.pointsEnemyInScreenshot = this.pointsEnemyInScreenshot;
+        clone.increaseOur = this.increaseOur;
+        clone.increaseEnemy = this.increaseEnemy;
+        clone.isPresent_blt = this.isPresent_blt;
+        clone.isPresent_blc = this.isPresent_blc;
+        clone.isPresent_blb = this.isPresent_blb;
+        clone.isPresent_brt = this.isPresent_brt;
+        clone.isPresent_brc = this.isPresent_brc;
+        clone.isPresent_brb = this.isPresent_brb;
+        clone.name_blt = this.name_blt;
+        clone.name_blc = this.name_blc;
+        clone.name_blb = this.name_blb;
+        clone.name_brt = this.name_brt;
+        clone.name_brc = this.name_brc;
+        clone.name_brb = this.name_brb;
+        clone.isX2_blt = this.isX2_blt;
+        clone.isX2_blc = this.isX2_blc;
+        clone.isX2_blb = this.isX2_blb;
+        clone.isX2_brt = this.isX2_brt;
+        clone.isX2_brc = this.isX2_brc;
+        clone.isX2_brb = this.isX2_brb;
+        clone.mayX2_blt = this.mayX2_blt;
+        clone.mayX2_blc = this.mayX2_blc;
+        clone.mayX2_blb = this.mayX2_blb;
+        clone.mayX2_brt = this.mayX2_brt;
+        clone.mayX2_brc = this.mayX2_brc;
+        clone.mayX2_brb = this.mayX2_brb;
+        clone.buildingIsOur_blt = this.buildingIsOur_blt;
+        clone.buildingIsOur_blc = this.buildingIsOur_blc;
+        clone.buildingIsOur_blb = this.buildingIsOur_blb;
+        clone.buildingIsOur_brt = this.buildingIsOur_brt;
+        clone.buildingIsOur_brc = this.buildingIsOur_brc;
+        clone.buildingIsOur_brb = this.buildingIsOur_brb;
+        clone.buildingIsEmpty_blt = this.buildingIsEmpty_blt;
+        clone.buildingIsEmpty_blc = this.buildingIsEmpty_blc;
+        clone.buildingIsEmpty_blb = this.buildingIsEmpty_blb;
+        clone.buildingIsEmpty_brt = this.buildingIsEmpty_brt;
+        clone.buildingIsEmpty_brc = this.buildingIsEmpty_brc;
+        clone.buildingIsEmpty_brb = this.buildingIsEmpty_brb;
+        clone.buildingIsEnemy_blt = this.buildingIsEnemy_blt;
+        clone.buildingIsEnemy_blc = this.buildingIsEnemy_blc;
+        clone.buildingIsEnemy_blb = this.buildingIsEnemy_blb;
+        clone.buildingIsEnemy_brt = this.buildingIsEnemy_brt;
+        clone.buildingIsEnemy_brc = this.buildingIsEnemy_brc;
+        clone.buildingIsEnemy_brb = this.buildingIsEnemy_brb;
+        clone.our_points_blt = this.our_points_blt;
+        clone.our_points_blc = this.our_points_blc;
+        clone.our_points_blb = this.our_points_blb;
+        clone.our_points_brt = this.our_points_brt;
+        clone.our_points_brc = this.our_points_brc;
+        clone.our_points_brb = this.our_points_brb;
+        clone.enemy_points_blt = this.enemy_points_blt;
+        clone.enemy_points_blc = this.enemy_points_blc;
+        clone.enemy_points_blb = this.enemy_points_blb;
+        clone.enemy_points_brt = this.enemy_points_brt;
+        clone.enemy_points_brc = this.enemy_points_brc;
+        clone.enemy_points_brb = this.enemy_points_brb;
+        clone.slots_blt = this.slots_blt;
+        clone.slots_blt_our = this.slots_blt_our;
+        clone.slots_blt_empty = this.slots_blt_empty;
+        clone.slots_blt_enemy = this.slots_blt_enemy;
+        clone.slots_blc = this.slots_blc;
+        clone.slots_blc_our = this.slots_blc_our;
+        clone.slots_blc_empty = this.slots_blc_empty;
+        clone.slots_blc_enemy = this.slots_blc_enemy;
+        clone.slots_blb = this.slots_blb;
+        clone.slots_blb_our = this.slots_blb_our;
+        clone.slots_blb_empty = this.slots_blb_empty;
+        clone.slots_blb_enemy = this.slots_blb_enemy;
+        clone.slots_brt = this.slots_brt;
+        clone.slots_brt_our = this.slots_brt_our;
+        clone.slots_brt_empty = this.slots_brt_empty;
+        clone.slots_brt_enemy = this.slots_brt_enemy;
+        clone.slots_brc = this.slots_brc;
+        clone.slots_brc_our = this.slots_brc_our;
+        clone.slots_brc_empty = this.slots_brc_empty;
+        clone.slots_brc_enemy = this.slots_brc_enemy;
+        clone.slots_brb = this.slots_brb;
+        clone.slots_brb_our = this.slots_brb_our;
+        clone.slots_brb_empty = this.slots_brb_empty;
+        clone.slots_brb_enemy = this.slots_brb_enemy;
+        clone.isGameOver = this.isGameOver;
+        clone.isGameOverEarly = this.isGameOverEarly;
+        clone.isWinOur = this.isWinOur;
+        clone.isWinEnemy = this.isWinEnemy;
+        clone.isWinNobody = this.isWinNobody;
+        clone.isErrorRecognize = this.isErrorRecognize;
+        clone.willEarlyWin = this.willEarlyWin;
+        clone.willOurWin = this.willOurWin;
+        clone.willEnemyWin = this.willEnemyWin;
+        clone.willNobodyWin = this.willNobodyWin;
+        clone.differentPoints = this.differentPoints;
+        clone.countOurX2 = this.countOurX2;
+        clone.countEnemyX2 = this.countEnemyX2;
+        clone.countX2 = this.countX2;
+        clone.personsOur = this.personsOur;
+        clone.personsEnemy = this.personsEnemy;
+        clone.personsTotal = this.personsTotal;
+        clone.slotsTotal = this.slotsTotal;
+        clone.slotsOur = this.slotsOur;
+        clone.slotsEnemy = this.slotsEnemy;
+        clone.status = this.status;
+        clone.bytesScreenshot = this.bytesScreenshot;
+        
+        return clone;
+    }
+    
+    
     public void updateFromDb(DbTeamGame dbTeamGame) {
 
         this.source = 1;
@@ -257,6 +416,16 @@ public class CCAGame extends CityCalcArea {
         this.slots_brb_empty = dbTeamGame.getSlots_brb_empty();
         this.slots_brb_enemy = dbTeamGame.getSlots_brb_enemy();
 
+        this.countOurX2 = dbTeamGame.getCountOurX2();
+        this.countEnemyX2 = dbTeamGame.getCountEnemyX2();
+        this.countX2 = dbTeamGame.getCountX2();
+        this.personsOur = dbTeamGame.getPersonsOur();
+        this.personsEnemy = dbTeamGame.getPersonsEnemy();
+        this.personsTotal = dbTeamGame.getPersonsTotal();
+        this.slotsTotal = dbTeamGame.getSlotsTotal();
+        this.slotsOur = dbTeamGame.getSlotsOur();
+        this.slotsEnemy = dbTeamGame.getSlotsEnemy();
+
         this.bytesScreenshot = dbTeamGame.getBytesScreenshot();
 
         calcWin();
@@ -280,6 +449,53 @@ public class CCAGame extends CityCalcArea {
             this.dateStartGame = Utils.addMinutesToDate(this.dateScreenshot, -minFromStartToScreenshot); // дата начала игры
             this.dateEndGame = Utils.addMinutesToDate(this.dateStartGame, 24*60); // дата конца игры по времени
             this.earlyWin = Integer.parseInt(ccaEarlyWin.getFinText()); // очки до досрочной победы
+
+            this.countOurX2 = ((this.isPresent_blt() && this.isMayX2_blt() && this.isBuildingIsOur_blt()) ? 1 : 0) +
+                    ((this.isPresent_blc() && this.isMayX2_blc() && this.isBuildingIsOur_blc()) ? 1 : 0) +
+                    ((this.isPresent_blb() && this.isMayX2_blb() && this.isBuildingIsOur_blb()) ? 1 : 0) +
+                    ((this.isPresent_brt() && this.isMayX2_brt() && this.isBuildingIsOur_brt()) ? 1 : 0) +
+                    ((this.isPresent_brc() && this.isMayX2_brc() && this.isBuildingIsOur_brc()) ? 1 : 0) +
+                    ((this.isPresent_brb() && this.isMayX2_brb() && this.isBuildingIsOur_brb()) ? 1 : 0);
+
+            this.countEnemyX2 = ((this.isPresent_blt() && this.isMayX2_blt() && this.isBuildingIsEnemy_blt()) ? 1 : 0) +
+                    ((this.isPresent_blc() && this.isMayX2_blc() && this.isBuildingIsEnemy_blc()) ? 1 : 0) +
+                    ((this.isPresent_blb() && this.isMayX2_blb() && this.isBuildingIsEnemy_blb()) ? 1 : 0) +
+                    ((this.isPresent_brt() && this.isMayX2_brt() && this.isBuildingIsEnemy_brt()) ? 1 : 0) +
+                    ((this.isPresent_brc() && this.isMayX2_brc() && this.isBuildingIsEnemy_brc()) ? 1 : 0) +
+                    ((this.isPresent_brb() && this.isMayX2_brb() && this.isBuildingIsEnemy_brb()) ? 1 : 0);
+            
+            this.countX2 = ((this.isPresent_blt() && this.isMayX2_blt()) ? 1 : 0) +
+                    ((this.isPresent_blc() && this.isMayX2_blc()) ? 1 : 0) +
+                    ((this.isPresent_blb() && this.isMayX2_blb()) ? 1 : 0) +
+                    ((this.isPresent_brt() && this.isMayX2_brt()) ? 1 : 0) +
+                    ((this.isPresent_brc() && this.isMayX2_brc()) ? 1 : 0) +
+                    ((this.isPresent_brb() && this.isMayX2_brb()) ? 1 : 0);
+
+            this.slotsTotal = (this.isPresent_blt() ? this.getSlots_blt() : 0) +
+                    (this.isPresent_blc() ? this.getSlots_blc() : 0) +
+                    (this.isPresent_blb() ? this.getSlots_blb() : 0) +
+                    (this.isPresent_brt() ? this.getSlots_brt() : 0) +
+                    (this.isPresent_brc() ? this.getSlots_brc() : 0) +
+                    (this.isPresent_brb() ? this.getSlots_brb() : 0);
+
+            this.slotsOur = (this.isPresent_blt() ? this.getSlots_blt_our() : 0) +
+                    (this.isPresent_blc() ? this.getSlots_blc_our() : 0) +
+                    (this.isPresent_blb() ? this.getSlots_blb_our() : 0) +
+                    (this.isPresent_brt() ? this.getSlots_brt_our() : 0) +
+                    (this.isPresent_brc() ? this.getSlots_brc_our() : 0) +
+                    (this.isPresent_brb() ? this.getSlots_brb_our() : 0);
+
+            this.slotsEnemy = (this.isPresent_blt() ? this.getSlots_blt_enemy() : 0) +
+                    (this.isPresent_blc() ? this.getSlots_blc_enemy() : 0) +
+                    (this.isPresent_blb() ? this.getSlots_blb_enemy() : 0) +
+                    (this.isPresent_brt() ? this.getSlots_brt_enemy() : 0) +
+                    (this.isPresent_brc() ? this.getSlots_brc_enemy() : 0) +
+                    (this.isPresent_brb() ? this.getSlots_brb_enemy() : 0);
+
+            this.personsOur = (int)Math.ceil (this.slotsOur / 3.0d);
+            this.personsEnemy = (int)Math.ceil (this.slotsEnemy / 3.0d);
+            this.personsTotal = (int)Math.ceil (this.slotsTotal / 3.0d);
+            
         }
         if (isRealtimeScreenshot) new DbTeamGame(this);
 
@@ -1389,4 +1605,93 @@ public class CCAGame extends CityCalcArea {
     public void setSource(int source) {
         this.source = source;
     }
+
+    public int getCountOurX2() {
+        return countOurX2;
+    }
+
+    public void setCountOurX2(int countOurX2) {
+        this.countOurX2 = countOurX2;
+    }
+
+    public int getPersonsOur() {
+        return personsOur;
+    }
+
+    public void setPersonsOur(int personsOur) {
+        this.personsOur = personsOur;
+    }
+
+    public int getCountEnemyX2() {
+        return countEnemyX2;
+    }
+
+    public void setCountEnemyX2(int countEnemyX2) {
+        this.countEnemyX2 = countEnemyX2;
+    }
+
+    public int getCountX2() {
+        return countX2;
+    }
+
+    public void setCountX2(int countX2) {
+        this.countX2 = countX2;
+    }
+
+    public int getPersonsEnemy() {
+        return personsEnemy;
+    }
+
+    public void setPersonsEnemy(int personsEnemy) {
+        this.personsEnemy = personsEnemy;
+    }
+
+    public int getSlotsTotal() {
+        return slotsTotal;
+    }
+
+    public void setSlotsTotal(int slotsTotal) {
+        this.slotsTotal = slotsTotal;
+    }
+
+    public int getSlotsOur() {
+        return slotsOur;
+    }
+
+    public void setSlotsOur(int slotsOur) {
+        this.slotsOur = slotsOur;
+    }
+
+    public int getSlotsEnemy() {
+        return slotsEnemy;
+    }
+
+    public void setSlotsEnemy(int slotsEnemy) {
+        this.slotsEnemy = slotsEnemy;
+    }
+
+    public int getPersonsTotal() {
+        return personsTotal;
+    }
+
+    public void setPersonsTotal(int personsTotal) {
+        this.personsTotal = personsTotal;
+    }
+
+    //    public CCABuilding[] getBuildings() {
+//        return buildings;
+//    }
+//
+//    public void setBuildings(CCABuilding[] buildings) {
+//        this.buildings = buildings;
+//    }
+//
+//    public CCABuilding getBuilding(int buildingIndex) {
+//        return buildings[buildingIndex];
+//    }
+//
+//    public void setBuilding(CCABuilding building, int buildingIndex) {
+//        this.buildings[buildingIndex] = building;
+//    }
+
 }

@@ -22,6 +22,35 @@ public class CCACar extends CityCalcArea {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
     }
 
+    public CCACar() {
+    }
+
+    public CCACar getClone(CityCalc parent) {
+
+        CCACar clone = new CCACar();
+
+        clone.setCityCalc(parent);
+        clone.setArea(this.getArea());
+        clone.setBmpSrc(this.getBmpSrc());
+        clone.setCropPosition(this.getCropPosition());
+        clone.setX1(this.getX1());
+        clone.setX2(this.getX2());
+        clone.setY1(this.getY1());
+        clone.setY2(this.getY2());
+        clone.setColors(this.getColors());
+        clone.setThs(this.getThs());
+        clone.setNeedOcr(this.isNeedOcr());
+        clone.setNeedBW(this.isNeedBW());
+        clone.setGeneric(this.isGeneric());
+        clone.setBmpPrc(this.getBmpPrc());
+        clone.setOcrText(this.getOcrText());
+        clone.setFinText(this.getFinText());
+
+        clone.car = this.car;
+
+        return clone;
+
+    }
 
     public void parseCar() {
 

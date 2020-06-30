@@ -497,10 +497,10 @@ public class StrategyActivity extends AppCompatActivity {
             
             if (ccaGame != null) {
                 ccaGame.setDateScreenshot(Calendar.getInstance().getTime());
-                ccaGame.calcWin();
+//                ccaGame.calcWin();
                 ccaGame.setIncreaseOur(increaseOur);
                 ccaGame.setIncreaseEnemy(increaseEnemy);
-
+                ccaGame.calcWin();
             }
 
         }
