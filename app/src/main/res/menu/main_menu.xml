@@ -81,4 +81,9 @@
         android:orderInCategory="17"
         android:title="@string/user_cars_share" />
 
+    <item
+        android:id="@+id/menu_main_state_share"
+        android:orderInCategory="17"
+        android:title="@string/state_share" />
+
 </menu>

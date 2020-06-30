@@ -345,6 +345,11 @@ public class PictureProcessor extends Activity {
 
     public static Bitmap getProgressBitmap(int width, int height, int[] colors, int[] counts) {
 
+        int colorBorder = 0xFFAAAAAA;
+        int colorSeparator = 0xFF000000;
+        int cb1 = 0;
+        int cb2 = 0;
+
         int countBoxes = 0;
         for (int cnt: counts) {
             countBoxes += cnt;
@@ -353,16 +358,59 @@ public class PictureProcessor extends Activity {
             int boxWidth = width / countBoxes;
             int[] pixels = new int[width*height];
             int x = 0, l = 0;
-            for (int i = 0; i < colors.length; i++) {
-                l = boxWidth * counts[i];
-                if (l > 0) {
+            int globalSegment = 0;
+            for (int colorSegment = 0; colorSegment < colors.length; colorSegment++) {
+                int segments = counts[colorSegment];
+                for (int segment = 0; segment < segments; segment++) {
+                    globalSegment++;
+                    if (globalSegment == countBoxes / 2 + 1) {
+                        cb1 = colorSeparator;
+                        cb2 = colorSeparator;
+                    } else if (globalSegment == (countBoxes / 2 + 1)-1) {
+                        cb1 = colorBorder;
+                        cb2 = colorSeparator;
+                    } else if (globalSegment == (countBoxes / 2 + 1)+1) {
+                        cb1 = colorSeparator;
+                        cb2 = colorBorder;
+                    } else {
+                        cb1 = colorBorder;
+                        cb2 = colorBorder;
+                    }
+
+                    l=1;
                     for (int j = 0; j < height; j++) {
                         int xFrom = width*j + x;
                         int xTo = xFrom + l;
-                        Arrays.fill(pixels, xFrom, xTo, colors[i]);
+                        Arrays.fill(pixels, xFrom, xTo, cb1);
                     }
                     x += l;
+
+                    l=boxWidth-2;
+                    for (int j = 0; j < height; j++) {
+                        int xFrom = width*j + x;
+                        int xTo = xFrom + l;
+                        Arrays.fill(pixels, xFrom, xTo, colors[colorSegment]);
+                    }
+                    x += l;
+
+                    l=1;
+                    for (int j = 0; j < height; j++) {
+                        int xFrom = width*j + x;
+                        int xTo = xFrom + l;
+                        Arrays.fill(pixels, xFrom, xTo, cb2);
+                    }
+                    x += l;
+
                 }
+//                l = boxWidth * counts[colorSegment];
+//                if (l > 0) {
+//                    for (int j = 0; j < height; j++) {
+//                        int xFrom = width*j + x;
+//                        int xTo = xFrom + l;
+//                        Arrays.fill(pixels, xFrom, xTo, colors[colorSegment]);
+//                    }
+//                    x += l;
+//                }
             }
             Bitmap bitmap = Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888);
             return bitmap;

@@ -19,7 +19,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -35,6 +37,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -109,6 +113,8 @@ public class GameActivity extends AppCompatActivity {
 
     // Game views
 
+    RelativeLayout ga_rl_game;
+    ScrollView ga_sv_game;
     TextView ga_tv_user;                // имя пользователя, банда, роль
     TextView ga_tv_screenshot_time;     // информация о времени последнего скриншота
     Switch ga_sw_listen_new_file;       // переключатель "следить за файлами в папке"
@@ -313,6 +319,7 @@ public class GameActivity extends AppCompatActivity {
     public static MenuItem menu_main_team_game_share;           // пункт меню "Team Game Share"
     public static MenuItem menu_main_user_cars_load;            // пункт меню "User Cars Load"
     public static MenuItem menu_main_user_cars_share;           // пункт меню "User Cars Share"
+    public static MenuItem menu_main_state_share;               // пункт меню "State Share"
 
     public static String mainUserNIC = "";
     public static String mainUserUID = "";
@@ -1002,6 +1009,8 @@ public class GameActivity extends AppCompatActivity {
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
         ga_tv_forecast = findViewById(R.id.ga_tv_forecast);
+        ga_sv_game = findViewById(R.id.ga_sv_game);
+        ga_rl_game = findViewById(R.id.ga_rl_game);
 
     }
 
@@ -1515,6 +1524,7 @@ public class GameActivity extends AppCompatActivity {
                 menu_main_team_find.setVisible(false);
                 menu_main_team_game_share.setVisible(false);
                 menu_main_user_cars_share.setVisible(false);
+                menu_main_state_share.setVisible(false);
 
                 // обновляем инфо юзера
                 userText = "Login, please.";
@@ -1552,6 +1562,7 @@ public class GameActivity extends AppCompatActivity {
                     menu_main_team_find.setVisible(false);
                     menu_main_team_game_share.setVisible(false);
                     menu_main_user_cars_share.setVisible(false);
+                    menu_main_state_share.setVisible(false);
 
                 } else { // почта подтверждена
 
@@ -1591,6 +1602,7 @@ public class GameActivity extends AppCompatActivity {
                                         menu_main_team_find.setVisible(true);
                                         menu_main_team_game_share.setVisible(false);
                                         menu_main_user_cars_share.setVisible(false);
+                                        menu_main_state_share.setVisible(false);
 
                                     } else { // юзер состоит в команде
 
@@ -1643,6 +1655,7 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_find.setVisible(false);
                                                             menu_main_team_game_share.setVisible(true);
                                                             menu_main_user_cars_share.setVisible(true);
+                                                            menu_main_state_share.setVisible(true);
 
                                                             // "слушаем" запись о текущей игре
                                                             final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
@@ -1760,6 +1773,7 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_find.setVisible(true);
                                                             menu_main_team_game_share.setVisible(false);
                                                             menu_main_user_cars_share.setVisible(false);
+                                                            menu_main_state_share.setVisible(false);
                                                         } // кесли запрос обработался удачно
                                                     } // onComplete
                                                 }); // query.get().addOnCompleteListener
@@ -1794,6 +1808,7 @@ public class GameActivity extends AppCompatActivity {
                                             menu_main_team_find.setVisible(true);
                                             menu_main_team_game_share.setVisible(false);
                                             menu_main_user_cars_share.setVisible(false);
+                                            menu_main_state_share.setVisible(false);
                                         }
                                     });
 
@@ -1837,6 +1852,7 @@ public class GameActivity extends AppCompatActivity {
         menu_main_team_game_share = mainMenu.findItem(R.id.menu_main_team_game_share);
         menu_main_user_cars_load = mainMenu.findItem(R.id.menu_main_user_cars_load);
         menu_main_user_cars_share = mainMenu.findItem(R.id.menu_main_user_cars_share);
+        menu_main_state_share = mainMenu.findItem(R.id.menu_main_state_share);
 
         checkMenuVisibility();
 
@@ -1900,6 +1916,9 @@ public class GameActivity extends AppCompatActivity {
                 return true;
             case R.id.menu_main_user_cars_share :
                 doMenuUserCarsShare();
+                return true;
+            case R.id.menu_main_state_share :
+                doMenuStateShare();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -2589,6 +2608,62 @@ public class GameActivity extends AppCompatActivity {
 
             startActivity(Intent.createChooser(intentShareFile, text));
         }
+
+    }
+
+    private void doMenuStateShare() {
+
+//        ga_rl_game.setDrawingCacheEnabled(true);
+//        ga_rl_game.buildDrawingCache();
+//        Bitmap bm = ga_rl_game.getDrawingCache();
+
+        Bitmap bitmap = Bitmap.createBitmap(ga_sv_game.getMeasuredWidth(),
+                ga_sv_game.getMeasuredHeight(),
+                Bitmap.Config.ARGB_8888);
+        //Create a canvas with the specified bitmap to draw into
+        Canvas c = new Canvas(bitmap);
+
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.FILL);
+        c.drawPaint(paint);
+
+        //Render this view (and all of its children) to the given Canvas
+        ga_sv_game.draw(c);
+
+
+        try (FileOutputStream out = new FileOutputStream(getApplicationContext().getFilesDir().getAbsolutePath() + "/state.jpg")) {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, out);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        File sharedFile = new File(getApplicationContext().getFilesDir().getAbsolutePath() + "/state.jpg");
+
+        if(sharedFile.exists()) {
+
+            Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+            intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            Uri fileURI = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID, sharedFile);
+
+            intentShareFile.setType("image/png");
+            intentShareFile.putExtra(Intent.EXTRA_STREAM, fileURI);
+
+            String text = ga_tv_status.getText().toString();
+
+            intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
+
+            startActivity(Intent.createChooser(intentShareFile, text));
+        }
+
+//        Intent intentShareFile = new Intent(Intent.ACTION_SEND);
+//        intentShareFile.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        intentShareFile.setType("text/plain");
+//
+//        String text = mainCCAGame.getStatus() + "\n\n" + mainCCAGame.getForecastText();
+//        intentShareFile.putExtra(Intent.EXTRA_TEXT, text);
+//
+//        startActivity(Intent.createChooser(intentShareFile, text));
 
     }
 

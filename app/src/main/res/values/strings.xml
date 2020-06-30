@@ -536,6 +536,7 @@
     <string name="hours_letter">h</string>
     <string name="minutes_letter">m</string>
     <string name="seconds_letter">s</string>
+    <string name="state_share">State share</string>
 
     <string-array name="pref_colors_entries">
         <item>Car In City Box1</item>
