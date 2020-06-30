@@ -28,15 +28,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v66.aab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v66.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v67.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v67.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_work_building.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_work_building.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,6 @@
     <option name="KEY_STORE_PATH" value="D:\Dropbox\keystores\android.jks" />
     <option name="KEY_ALIAS" value="smandroidkey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
-    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,11 +77,9 @@
     <property name="ApkExportedModule" value="C.A.T.S._City_Calculator.app" />
     <property name="BundleExportedModule" value="C.A.T.S._City_Calculator.app" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.124.104:5555" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-28T15:24:08.299Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-06-29T12:01:10.356Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
-    <property name="ExportApk.SignV1" value="true" />
-    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-viewC:/Users/svoem/AppData/Local/Android/Sdk/sources/android-29/android/widget/AbsListView.java_SELECTED" value="AbsListView" />
@@ -236,10 +231,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1450" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1592044697997" />
-    <state x="788" y="176" width="1583" height="767" key="AVDManager" timestamp="1593429827740">
+    <state x="788" y="176" width="1583" height="767" key="AVDManager" timestamp="1593432751973">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="788" y="176" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1593429827740" />
+    <state x="788" y="176" width="1583" height="767" key="AVDManager/0.0.3440.1400@0.0.3440.1400" timestamp="1593432751973" />
     <state x="1564" y="490" key="AndroidCreateXmlResourceDialog" timestamp="1593164097574">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

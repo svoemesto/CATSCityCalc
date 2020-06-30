@@ -1664,179 +1664,73 @@ public class GameActivity extends AppCompatActivity {
                                                                 }
                                                             });
 
-                                                            // "слушаем" запись о 1-й машине
-                                                            final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car1");
-                                                            docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                                @Override
-                                                                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                                    if (e != null) {
-                                                                        // произошла ошибка "слушателя"
-                                                                        Log.w(TAG, "Listen car1 failed.", e);
-                                                                        return;
-                                                                    }
-                                                                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                        // "слушатель" отработал и вернул документ
-                                                                        Log.d(TAG, "Current car1 data: " + documentSnapshot.getData());
+                                                            for (int carSlot = 1; carSlot <= 3; carSlot++) {
 
-                                                                        if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            Car car = Car.loadCar(1);                                      // берем из списка 1-ю машину
-                                                                            DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 1-ю машину из базы
-                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
-
-                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                // получаем правильную картинку здания для нового задания
-                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                Bitmap taskBitmap = null;
-                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                                }
-                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                car.save();                     // сохраняем локальную машину
-                                                                                setDataToCarsViews();           // обновляем машины в активити
-
-                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
-                                                                                intent.setAction("New task " + car.getName());
-                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
-                                                                                intent.putExtra("car_number", car.getSlot());
-
-                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
-
-                                                                            }
+                                                                // "слушаем" запись о carSlot-й машине
+                                                                final DocumentReference docRefCar1 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car"+carSlot);
+                                                                int finalCarSlot = carSlot;
+                                                                docRefCar1.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                                                    @Override
+                                                                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                                                        if (e != null) {
+                                                                            // произошла ошибка "слушателя"
+                                                                            Log.w(TAG, "Listen car" + finalCarSlot + " failed.", e);
+                                                                            return;
                                                                         }
+                                                                        if (documentSnapshot != null && documentSnapshot.exists()) {
+                                                                            // "слушатель" отработал и вернул документ
+                                                                            Log.d(TAG, "Current car" + finalCarSlot + " data: " + documentSnapshot.getData());
 
-                                                                    } else {
-                                                                        Log.d(TAG, "Current car1 data: null");
-                                                                    }
-                                                                }
-                                                            });
+                                                                            if (mainCityCalc != null) {                                         // если текущая игра есть
+                                                                                Car car = Car.loadCar(finalCarSlot);                                      // берем из списка finalCarSlot-ю машину
+                                                                                DbCar dbCar = new DbCar(documentSnapshot);                      // считываем finalCarSlot-ю машину из базы
+                                                                                if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
 
-                                                            // "слушаем" запись о 2-й машине
-                                                            final DocumentReference docRefCar2 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car2");
-                                                            docRefCar2.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                                @Override
-                                                                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                                    if (e != null) {
-                                                                        // произошла ошибка "слушателя"
-                                                                        Log.w(TAG, "Listen car2 failed.", e);
-                                                                        return;
-                                                                    }
-                                                                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                        // "слушатель" отработал и вернул документ
-                                                                        Log.d(TAG, "Current car2 data: " + documentSnapshot.getData());
+                                                                                    car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
+                                                                                    // получаем правильную картинку здания для нового задания
+                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                    Bitmap taskBitmap = null;
+                                                                                    if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                    } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                    } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                    } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                    } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                    } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                    }
+                                                                                    car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
+                                                                                    car.save();                     // сохраняем локальную машину
+                                                                                    setDataToCarsViews();           // обновляем машины в активити
 
-                                                                        if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            Car car = Car.loadCar(2);                                      // берем из списка 2-ю машину
-                                                                            DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 2-ю машину из базы
-                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+                                                                                    if (car.getBuildingTask() > 0) {
+                                                                                        Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
+                                                                                        intent.setAction("New task " + car.getName());
+                                                                                        intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
+                                                                                        intent.putExtra("car_number", car.getSlot());
 
-                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                // получаем правильную картинку здания для нового задания
-                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                Bitmap taskBitmap = null;
-                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                        PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                                                                                        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                                                                        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
+                                                                                    }
+
                                                                                 }
-                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                car.save();                     // сохраняем локальную машину
-                                                                                setDataToCarsViews();           // обновляем машины в активити
-
-                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
-                                                                                intent.setAction("New task " + car.getName());
-                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
-                                                                                intent.putExtra("car_number", car.getSlot());
-
-                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
-
                                                                             }
+
+                                                                        } else {
+                                                                            Log.d(TAG, "Current car" + finalCarSlot + " data: null");
                                                                         }
-
-                                                                    } else {
-                                                                        Log.d(TAG, "Current car2 data: null");
                                                                     }
-                                                                }
-                                                            });
+                                                                });
 
-                                                            // "слушаем" запись о 3-й машине
-                                                            final DocumentReference docRefCar3 = fbDb.collection("users").document(fbUser.getUid()).collection("userCars").document("car3");
-                                                            docRefCar3.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                                                @Override
-                                                                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                                                    if (e != null) {
-                                                                        // произошла ошибка "слушателя"
-                                                                        Log.w(TAG, "Listen car3 failed.", e);
-                                                                        return;
-                                                                    }
-                                                                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                                                                        // "слушатель" отработал и вернул документ
-                                                                        Log.d(TAG, "Current car3 data: " + documentSnapshot.getData());
 
-                                                                        if (mainCityCalc != null) {                                         // если текущая игра есть
-                                                                            Car car = Car.loadCar(3);                                      // берем из списка 3-ю машину
-                                                                            DbCar dbCar = new DbCar(documentSnapshot);                      // считываем 3-ю машину из базы
-                                                                            if (car.getBuildingTask() != dbCar.getCarBuildingTask()) {  // если в базе изменилась задача для машины
+                                                            }
 
-                                                                                car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
-                                                                                // получаем правильную картинку здания для нового задания
-                                                                                CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
-                                                                                Bitmap taskBitmap = null;
-                                                                                if (car.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                                                                                } else if (car.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                                                                    taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                                                                                }
-                                                                                car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
-                                                                                car.save();                     // сохраняем локальную машину
-                                                                                setDataToCarsViews();           // обновляем машины в активити
 
-                                                                                Intent intent = new Intent(GlobalApplication.getAppContext(), CityCalcService.class);
-                                                                                intent.setAction("New task " + car.getName());
-                                                                                intent.putExtra("message", "Машинка " + car.getName() + " получила новое задание: занять здание №" + car.getBuildingTask());
-                                                                                intent.putExtra("car_number", car.getSlot());
-
-                                                                                PendingIntent pendingIntent = PendingIntent.getService(GlobalApplication.getAppContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-                                                                                AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                                                                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 1000, pendingIntent);
-
-                                                                            }
-                                                                        }
-
-                                                                    } else {
-                                                                        Log.d(TAG, "Current car3 data: null");
-                                                                    }
-                                                                }
-                                                            });
 
                                                         } else {
                                                             // запрос обработался неудачно
