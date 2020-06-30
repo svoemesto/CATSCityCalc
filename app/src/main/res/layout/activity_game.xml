@@ -1482,12 +1482,6 @@
 
             </LinearLayout>
 
-
-
-            
-
-
-
             <Button
                 android:id="@+id/ga_bt_strategy"
                 android:layout_width="match_parent"
@@ -1496,6 +1490,16 @@
                 android:visibility="invisible"
                 tools:visibility="visible"
                 android:onClick="openStrategyActivity"/>
+
+
+            <TextView
+                android:id="@+id/ga_tv_forecast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:fontFamily="@font/jet_brains_mono_regular"
+                android:textColor="#000000"
+                tools:text="Forecast"/>
 
 
         </LinearLayout>

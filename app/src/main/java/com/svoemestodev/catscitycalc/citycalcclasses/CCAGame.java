@@ -152,6 +152,8 @@ public class CCAGame extends CityCalcArea {
 
     private String status;
 
+    private String forecastText = "";
+
     private byte[] bytesScreenshot = null;
 
     public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
@@ -1676,6 +1678,14 @@ public class CCAGame extends CityCalcArea {
 
     public void setPersonsTotal(int personsTotal) {
         this.personsTotal = personsTotal;
+    }
+
+    public String getForecastText() {
+        return forecastText;
+    }
+
+    public void setForecastText(String forecastText) {
+        this.forecastText = forecastText;
     }
 
     //    public CCABuilding[] getBuildings() {

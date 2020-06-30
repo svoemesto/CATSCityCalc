@@ -69,6 +69,7 @@ import com.svoemestodev.catscitycalc.OverlayShowingService;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.classes.CarList;
+import com.svoemestodev.catscitycalc.classes.Forecaster;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeam;
@@ -232,7 +233,8 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_car3_health_shield;
 
     Button ga_bt_strategy;              // кнопка "Стратегичское планирование"
-    
+    TextView ga_tv_forecast;
+
     private static final int SIGN_IN_REQUEST_CODE = 1;
 
 //    public transient static String pathToCATScalcFolder;        // путь к папке программы
@@ -433,12 +435,14 @@ public class GameActivity extends AppCompatActivity {
             ga_tv_screenshot_time.setTextColor(minutesFromTakingScreenshot >= 10 ? Color.RED :  Color.BLACK);
 
             ga_bt_strategy.setVisibility(!ccaGame.isGameOver() ? View.VISIBLE : View.INVISIBLE);
+            ga_tv_forecast.setVisibility(!ccaGame.isGameOver() ? View.VISIBLE : View.INVISIBLE);
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getDateStartGame(), pattern);    // дата/время начала игры
 
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
             ga_tv_status.setText(ccaGame.getStatus());   // статус
+            ga_tv_forecast.setText(ccaGame.getForecastText());   // прогноз
             ga_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             ga_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
 
@@ -997,6 +1001,7 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_car3_health_shield = findViewById(R.id.ga_tv_car3_health_shield);
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
+        ga_tv_forecast = findViewById(R.id.ga_tv_forecast);
 
     }
 
@@ -1660,6 +1665,7 @@ public class GameActivity extends AppCompatActivity {
 
                                                                                     prevCCAGame = mainCCAGame.getClone(prevCityCalc);
                                                                                     mainCCAGame.updateFromDb(dbTeamGame);                                                       // обновляем локальную игру инфой из базы
+                                                                                    Forecaster forecaster = new Forecaster(prevCCAGame, mainCCAGame);
                                                                                     // выводим тост и обновляем контролы в активити
                                                                                     Toast.makeText(GameActivity.this, getString(R.string.info_game_from_server), Toast.LENGTH_LONG).show();
                                                                                     loadDataToViews(true);
@@ -1948,6 +1954,9 @@ public class GameActivity extends AppCompatActivity {
 
                                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
                                                     mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+                                                    Forecaster forecaster = new Forecaster(prevCCAGame, mainCCAGame);
+
                                                     Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
                                                     loadDataToViews(true);
                                                 }
@@ -3125,6 +3134,9 @@ public class GameActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Integer aInteger) {
                 super.onPostExecute(aInteger);
+
+                Forecaster forecaster = new Forecaster(prevCCAGame, mainCCAGame);
+
 
                 switch (aInteger) {
                     case 0:
