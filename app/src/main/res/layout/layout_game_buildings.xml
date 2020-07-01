@@ -106,6 +106,41 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_blt_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blt_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blt_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blt_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
 
             </LinearLayout>
 
@@ -218,7 +253,42 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brt_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brt_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brt_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brt_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
+                
             </LinearLayout>
 
             <ImageView
@@ -343,6 +413,41 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_blc_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blc_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blc_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blc_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
 
             </LinearLayout>
 
@@ -456,7 +561,42 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brc_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brc_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brc_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brc_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
+                
             </LinearLayout>
 
             <ImageView
@@ -576,7 +716,42 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_blb_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
 
+                <ImageView
+                    android:id="@+id/lgb_iv_blb_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blb_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blb_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
+                
             </LinearLayout>
 
             <ImageView
@@ -688,7 +863,42 @@
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="#ff6565" />
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brb_can_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_with_x2_true"/>
 
+                <ImageView
+                    android:id="@+id/lgb_iv_brb_can_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_win_without_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brb_can_early_win_with_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brb_can_early_win_without_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:visibility="visible"
+                    tools:visibility="visible"
+                    tools:src="@drawable/ic_can_early_win_without_x2_true"/>
+                
             </LinearLayout>
 
             <ImageView

@@ -114,6 +114,12 @@ public class GameActivity extends AppCompatActivity {
 
     // Game views
 
+
+    ImageView ga_iv_can_win_with_x2;
+    ImageView ga_iv_can_win_without_x2;
+    ImageView ga_iv_can_early_win_with_x2;
+    ImageView ga_iv_can_early_win_without_x2;
+
     LinearLayout ga_in_buildings;
     RelativeLayout ga_rl_game;
     ScrollView ga_sv_game;
@@ -151,7 +157,13 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_blt_slots_empty;     // blt - слоты противника
     TextView lgb_tv_blt_slots_enemy;     // blt - пустые слоты
     ImageView lgb_iv_blt_progress;       // blt - прогресс
-
+    ImageView lgb_iv_blt_can_win_with_x2;
+    ImageView lgb_iv_blt_can_win_without_x2;
+    ImageView lgb_iv_blt_can_early_win_with_x2;
+    ImageView lgb_iv_blt_can_early_win_without_x2;
+    
+    
+    
     // BLC views
     ImageView lgb_iv_blc_icon;           // blc - иконка здания (картинка)
     ImageView lgb_iv_blc_name;           // blc - название здания (картинка)
@@ -162,7 +174,11 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_blc_slots_empty;     // blc - слоты противника
     TextView lgb_tv_blc_slots_enemy;     // blc - пустые слоты
     ImageView lgb_iv_blc_progress;       // blc - прогресс
-
+    ImageView lgb_iv_blc_can_win_with_x2;
+    ImageView lgb_iv_blc_can_win_without_x2;
+    ImageView lgb_iv_blc_can_early_win_with_x2;
+    ImageView lgb_iv_blc_can_early_win_without_x2;
+    
     // BLB views
     ImageView lgb_iv_blb_icon;           // blb - иконка здания (картинка)
     ImageView lgb_iv_blb_name;           // blb - название здания (картинка)
@@ -173,7 +189,11 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_blb_slots_empty;     // blb - слоты противника
     TextView lgb_tv_blb_slots_enemy;     // blb - пустые слоты
     ImageView lgb_iv_blb_progress;       // blb - прогресс
-
+    ImageView lgb_iv_blb_can_win_with_x2;
+    ImageView lgb_iv_blb_can_win_without_x2;
+    ImageView lgb_iv_blb_can_early_win_with_x2;
+    ImageView lgb_iv_blb_can_early_win_without_x2;
+    
     // BRT views
     ImageView lgb_iv_brt_icon;           // brt - иконка здания (картинка)
     ImageView lgb_iv_brt_name;           // brt - название здания (картинка)
@@ -184,7 +204,11 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_brt_slots_empty;     // brt - слоты противника
     TextView lgb_tv_brt_slots_enemy;     // brt - пустые слоты
     ImageView lgb_iv_brt_progress;       // brt - прогресс
-
+    ImageView lgb_iv_brt_can_win_with_x2;
+    ImageView lgb_iv_brt_can_win_without_x2;
+    ImageView lgb_iv_brt_can_early_win_with_x2;
+    ImageView lgb_iv_brt_can_early_win_without_x2;
+    
     // BRC views
     ImageView lgb_iv_brc_icon;           // brc - иконка здания (картинка)
     ImageView lgb_iv_brc_name;           // brc - название здания (картинка)
@@ -195,7 +219,11 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_brc_slots_empty;     // brc - слоты противника
     TextView lgb_tv_brc_slots_enemy;     // brc - пустые слоты
     ImageView lgb_iv_brc_progress;       // brc - прогресс
-
+    ImageView lgb_iv_brc_can_win_with_x2;
+    ImageView lgb_iv_brc_can_win_without_x2;
+    ImageView lgb_iv_brc_can_early_win_with_x2;
+    ImageView lgb_iv_brc_can_early_win_without_x2;
+    
     // BRB views
     ImageView lgb_iv_brb_icon;           // brb - иконка здания (картинка)
     ImageView lgb_iv_brb_name;           // brb - название здания (картинка)
@@ -206,7 +234,11 @@ public class GameActivity extends AppCompatActivity {
     TextView lgb_tv_brb_slots_empty;     // brb - слоты противника
     TextView lgb_tv_brb_slots_enemy;     // brb - пустые слоты
     ImageView lgb_iv_brb_progress;       // blt - прогресс
-
+    ImageView lgb_iv_brb_can_win_with_x2;
+    ImageView lgb_iv_brb_can_win_without_x2;
+    ImageView lgb_iv_brb_can_early_win_with_x2;
+    ImageView lgb_iv_brb_can_early_win_without_x2;
+    
     // Рекламный блок
     AdView ga_ad_banner;                // баннер
 
@@ -436,6 +468,11 @@ public class GameActivity extends AppCompatActivity {
 
             ccaGame.calcWin(true);
 
+            ga_iv_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isCanWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+            ga_iv_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isCanWinWithoutX2() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+            ga_iv_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isCanEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+            ga_iv_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isCanEarlyWinWithoutX2() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+
             Date dateScreenshot = ccaGame.getDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
             String screenshotTimeText = getString(R.string.screenshot_will_create) + " " + minutesFromTakingScreenshot + " " + getString(R.string.minutes_ago) + ((mainCCAGame.getUserNIC() != null && !mainCCAGame.getUserNIC().equals("")) ? " " + getString(R.string.by_user) + " " + mainCCAGame.getUserNIC() + "." : ".") +
@@ -516,6 +553,11 @@ public class GameActivity extends AppCompatActivity {
             
             if (ccaGame.isPresent_blt()) {
 
+                lgb_iv_blt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_blt_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_blt() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_blt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_blt_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_blt() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBLT != null) lgb_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
 
                 lgb_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
@@ -571,6 +613,11 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_blc()) {
 
+                lgb_iv_blc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_blc_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_blc() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_blc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_blc_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_blc() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBLC != null) lgb_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
                 lgb_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
@@ -626,6 +673,11 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_blb()) {
 
+                lgb_iv_blb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_blb_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_blb() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_blb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_blb_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_blb() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBLB != null) lgb_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
 
                 lgb_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
@@ -682,6 +734,11 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brt()) {
 
+                lgb_iv_brt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_brt_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_brt() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_brt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_brt_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_brt() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBRT != null) lgb_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
 
                 lgb_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
@@ -737,6 +794,11 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brc()) {
 
+                lgb_iv_brc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_brc_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_brc() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_brc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_brc_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_brc() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBRC != null) lgb_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
 
                 lgb_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
@@ -793,6 +855,11 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brb()) {
 
+                lgb_iv_brb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                lgb_iv_brb_can_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWinWithoutX2_brb() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+                lgb_iv_brb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                lgb_iv_brb_can_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWinWithoutX2_brb() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+                
                 if (ccaBRB != null) lgb_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
 
                 lgb_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
@@ -918,7 +985,12 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_blt_slots_empty = findViewById(R.id.lgb_tv_blt_slots_empty);
         lgb_tv_blt_slots_enemy = findViewById(R.id.lgb_tv_blt_slots_enemy);
         lgb_iv_blt_progress = findViewById(R.id.lgb_iv_blt_progress);
+        lgb_iv_blt_can_win_with_x2 = findViewById(R.id.lgb_iv_blt_can_win_with_x2);
+        lgb_iv_blt_can_win_without_x2 = findViewById(R.id.lgb_iv_blt_can_win_without_x2);
+        lgb_iv_blt_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blt_can_early_win_with_x2);
+        lgb_iv_blt_can_early_win_without_x2 = findViewById(R.id.lgb_iv_blt_can_early_win_without_x2);
 
+        
         // BLC views
         lgb_iv_blc_icon = findViewById(R.id.lgb_iv_blc_icon);
         lgb_iv_blc_name = findViewById(R.id.lgb_iv_blc_name);
@@ -929,6 +1001,10 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_blc_slots_empty = findViewById(R.id.lgb_tv_blc_slots_empty);
         lgb_tv_blc_slots_enemy = findViewById(R.id.lgb_tv_blc_slots_enemy);
         lgb_iv_blc_progress = findViewById(R.id.lgb_iv_blc_progress);
+        lgb_iv_blc_can_win_with_x2 = findViewById(R.id.lgb_iv_blc_can_win_with_x2);
+        lgb_iv_blc_can_win_without_x2 = findViewById(R.id.lgb_iv_blc_can_win_without_x2);
+        lgb_iv_blc_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blc_can_early_win_with_x2);
+        lgb_iv_blc_can_early_win_without_x2 = findViewById(R.id.lgb_iv_blc_can_early_win_without_x2);
 
         // BLB views
         lgb_iv_blb_icon = findViewById(R.id.lgb_iv_blb_icon);
@@ -940,7 +1016,11 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_blb_slots_empty = findViewById(R.id.lgb_tv_blb_slots_empty);
         lgb_tv_blb_slots_enemy = findViewById(R.id.lgb_tv_blb_slots_enemy);
         lgb_iv_blb_progress = findViewById(R.id.lgb_iv_blb_progress);
-
+        lgb_iv_blb_can_win_with_x2 = findViewById(R.id.lgb_iv_blb_can_win_with_x2);
+        lgb_iv_blb_can_win_without_x2 = findViewById(R.id.lgb_iv_blb_can_win_without_x2);
+        lgb_iv_blb_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blb_can_early_win_with_x2);
+        lgb_iv_blb_can_early_win_without_x2 = findViewById(R.id.lgb_iv_blb_can_early_win_without_x2);
+        
         // BRT views
         lgb_iv_brt_icon = findViewById(R.id.lgb_iv_brt_icon);
         lgb_iv_brt_name = findViewById(R.id.lgb_iv_brt_name);
@@ -951,6 +1031,10 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_brt_slots_empty = findViewById(R.id.lgb_tv_brt_slots_empty);
         lgb_tv_brt_slots_enemy = findViewById(R.id.lgb_tv_brt_slots_enemy);
         lgb_iv_brt_progress = findViewById(R.id.lgb_iv_brt_progress);
+        lgb_iv_brt_can_win_with_x2 = findViewById(R.id.lgb_iv_brt_can_win_with_x2);
+        lgb_iv_brt_can_win_without_x2 = findViewById(R.id.lgb_iv_brt_can_win_without_x2);
+        lgb_iv_brt_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brt_can_early_win_with_x2);
+        lgb_iv_brt_can_early_win_without_x2 = findViewById(R.id.lgb_iv_brt_can_early_win_without_x2);
 
         // BRC views
         lgb_iv_brc_icon = findViewById(R.id.lgb_iv_brc_icon);
@@ -962,6 +1046,10 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_brc_slots_empty = findViewById(R.id.lgb_tv_brc_slots_empty);
         lgb_tv_brc_slots_enemy = findViewById(R.id.lgb_tv_brc_slots_enemy);
         lgb_iv_brc_progress = findViewById(R.id.lgb_iv_brc_progress);
+        lgb_iv_brc_can_win_with_x2 = findViewById(R.id.lgb_iv_brc_can_win_with_x2);
+        lgb_iv_brc_can_win_without_x2 = findViewById(R.id.lgb_iv_brc_can_win_without_x2);
+        lgb_iv_brc_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brc_can_early_win_with_x2);
+        lgb_iv_brc_can_early_win_without_x2 = findViewById(R.id.lgb_iv_brc_can_early_win_without_x2);
 
         // BRB views
         lgb_iv_brb_icon = findViewById(R.id.lgb_iv_brb_icon);
@@ -973,6 +1061,10 @@ public class GameActivity extends AppCompatActivity {
         lgb_tv_brb_slots_empty = findViewById(R.id.lgb_tv_brb_slots_empty);
         lgb_tv_brb_slots_enemy = findViewById(R.id.lgb_tv_brb_slots_enemy);
         lgb_iv_brb_progress = findViewById(R.id.lgb_iv_brb_progress);
+        lgb_iv_brb_can_win_with_x2 = findViewById(R.id.lgb_iv_brb_can_win_with_x2);
+        lgb_iv_brb_can_win_without_x2 = findViewById(R.id.lgb_iv_brb_can_win_without_x2);
+        lgb_iv_brb_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brb_can_early_win_with_x2);
+        lgb_iv_brb_can_early_win_without_x2 = findViewById(R.id.lgb_iv_brb_can_early_win_without_x2);
 
         // Рекламный блок
         ga_ad_banner = findViewById(R.id.ga_ad_banner);
@@ -1014,6 +1106,11 @@ public class GameActivity extends AppCompatActivity {
         ga_sv_game = findViewById(R.id.ga_sv_game);
         ga_rl_game = findViewById(R.id.ga_rl_game);
         ga_in_buildings = findViewById(R.id.ga_in_buildings);
+
+        ga_iv_can_win_with_x2 = findViewById(R.id.ga_iv_can_win_with_x2);
+        ga_iv_can_win_without_x2 = findViewById(R.id.ga_iv_can_win_without_x2);
+        ga_iv_can_early_win_with_x2 = findViewById(R.id.ga_iv_can_early_win_with_x2);
+        ga_iv_can_early_win_without_x2 = findViewById(R.id.ga_iv_can_early_win_without_x2);
 
     }
 
