@@ -28,14 +28,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/white.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_buildings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_core_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_1_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_monitor_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_test_runner_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/main_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-ru-rRU/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +104,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android-custom-viewC:/Users/svoem/AppData/Local/Android/Sdk/sources/android-29/android/widget/AbsListView.java_SELECTED" value="AbsListView" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="multi-representation-previewC:/Users/svoem/AppData/Local/Android/Sdk/sources/android-29/android/widget/AbsListView.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -102,15 +122,15 @@
     <key name="android.template.1750248227">
       <recent name="com.svoemestodev.catscitycalc.activities" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\layout" />
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
+      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\layout" />
     </key>
     <key name="android.template.723963178">
       <recent name="com.svoemestodev.catscitycalc.activities" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -248,46 +268,46 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1592662404181" />
-    <state width="2568" height="299" key="GridCell.Tab.0.bottom" timestamp="1593550441644">
+    <state width="3397" height="306" key="GridCell.Tab.0.bottom" timestamp="1593612663793">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="299" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593550441644" />
-    <state width="2568" height="299" key="GridCell.Tab.0.center" timestamp="1593550441644">
+    <state width="3397" height="306" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593612663793" />
+    <state width="3397" height="306" key="GridCell.Tab.0.center" timestamp="1593612663792">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="299" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593550441644" />
-    <state width="2568" height="299" key="GridCell.Tab.0.left" timestamp="1593550441644">
+    <state width="3397" height="306" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593612663792" />
+    <state width="3397" height="306" key="GridCell.Tab.0.left" timestamp="1593612663790">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="299" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593550441644" />
-    <state width="2568" height="299" key="GridCell.Tab.0.right" timestamp="1593550441644">
+    <state width="3397" height="306" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593612663790" />
+    <state width="3397" height="306" key="GridCell.Tab.0.right" timestamp="1593612663793">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="299" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593550441644" />
-    <state width="2568" height="321" key="GridCell.Tab.1.bottom" timestamp="1593429322590">
+    <state width="3397" height="306" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593612663793" />
+    <state width="2568" height="321" key="GridCell.Tab.1.bottom" timestamp="1593585823579">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="321" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593429322590" />
-    <state width="2568" height="321" key="GridCell.Tab.1.center" timestamp="1593429322590">
+    <state width="2568" height="321" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593585823579" />
+    <state width="2568" height="321" key="GridCell.Tab.1.center" timestamp="1593585823579">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="321" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593429322590" />
-    <state width="2568" height="321" key="GridCell.Tab.1.left" timestamp="1593429322590">
+    <state width="2568" height="321" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593585823579" />
+    <state width="2568" height="321" key="GridCell.Tab.1.left" timestamp="1593585823579">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="321" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593429322590" />
-    <state width="2568" height="321" key="GridCell.Tab.1.right" timestamp="1593429322590">
+    <state width="2568" height="321" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593585823579" />
+    <state width="2568" height="321" key="GridCell.Tab.1.right" timestamp="1593585823579">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="2568" height="321" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593429322590" />
+    <state width="2568" height="321" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593585823579" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1221" y="345" key="SettingsEditor/0.0.3440.1400@0.0.3440.1400" timestamp="1592079744336" />
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1593113237563">
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup" timestamp="1593613000147">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1593113237563" />
+    <state x="1441" y="440" width="570" height="524" key="StructurePopup/0.0.3440.1400@0.0.3440.1400" timestamp="1593613000147" />
     <state width="498" height="477" key="SwitcherDM" timestamp="1593526429848">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>

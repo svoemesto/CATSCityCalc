@@ -37,6 +37,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Switch;
@@ -113,6 +114,7 @@ public class GameActivity extends AppCompatActivity {
 
     // Game views
 
+    LinearLayout ga_in_buildings;
     RelativeLayout ga_rl_game;
     ScrollView ga_sv_game;
     TextView ga_tv_user;                // имя пользователя, банда, роль
@@ -140,70 +142,70 @@ public class GameActivity extends AppCompatActivity {
     TextView ga_tv_enemy_end_time;      // время до конца игры для команды противника
     
     // BLT views
-    ImageView ga_iv_blt_icon;           // blt - иконка здания (картинка)
-    ImageView ga_iv_blt_name;           // blt - название здания (картинка)
-    TextView ga_tv_blt_x2;              // blt - х2
-    TextView ga_tv_blt_points;          // blt - очки
-    TextView ga_tv_blt_slots;           // blt - слоты 
-    TextView ga_tv_blt_slots_our;       // blt - наши слоты
-    TextView ga_tv_blt_slots_empty;     // blt - слоты противника
-    TextView ga_tv_blt_slots_enemy;     // blt - пустые слоты
-    ImageView ga_iv_blt_progress;       // blt - прогресс
+    ImageView lgb_iv_blt_icon;           // blt - иконка здания (картинка)
+    ImageView lgb_iv_blt_name;           // blt - название здания (картинка)
+    TextView lgb_tv_blt_x2;              // blt - х2
+    TextView lgb_tv_blt_points;          // blt - очки
+    TextView lgb_tv_blt_slots;           // blt - слоты 
+    TextView lgb_tv_blt_slots_our;       // blt - наши слоты
+    TextView lgb_tv_blt_slots_empty;     // blt - слоты противника
+    TextView lgb_tv_blt_slots_enemy;     // blt - пустые слоты
+    ImageView lgb_iv_blt_progress;       // blt - прогресс
 
     // BLC views
-    ImageView ga_iv_blc_icon;           // blc - иконка здания (картинка)
-    ImageView ga_iv_blc_name;           // blc - название здания (картинка)
-    TextView ga_tv_blc_x2;              // blc - х2
-    TextView ga_tv_blc_points;          // blc - очки
-    TextView ga_tv_blc_slots;           // blc - слоты 
-    TextView ga_tv_blc_slots_our;       // blc - наши слоты
-    TextView ga_tv_blc_slots_empty;     // blc - слоты противника
-    TextView ga_tv_blc_slots_enemy;     // blc - пустые слоты
-    ImageView ga_iv_blc_progress;       // blc - прогресс
+    ImageView lgb_iv_blc_icon;           // blc - иконка здания (картинка)
+    ImageView lgb_iv_blc_name;           // blc - название здания (картинка)
+    TextView lgb_tv_blc_x2;              // blc - х2
+    TextView lgb_tv_blc_points;          // blc - очки
+    TextView lgb_tv_blc_slots;           // blc - слоты 
+    TextView lgb_tv_blc_slots_our;       // blc - наши слоты
+    TextView lgb_tv_blc_slots_empty;     // blc - слоты противника
+    TextView lgb_tv_blc_slots_enemy;     // blc - пустые слоты
+    ImageView lgb_iv_blc_progress;       // blc - прогресс
 
     // BLB views
-    ImageView ga_iv_blb_icon;           // blb - иконка здания (картинка)
-    ImageView ga_iv_blb_name;           // blb - название здания (картинка)
-    TextView ga_tv_blb_x2;              // blb - х2
-    TextView ga_tv_blb_points;          // blb - очки
-    TextView ga_tv_blb_slots;           // blb - слоты 
-    TextView ga_tv_blb_slots_our;       // blb - наши слоты
-    TextView ga_tv_blb_slots_empty;     // blb - слоты противника
-    TextView ga_tv_blb_slots_enemy;     // blb - пустые слоты
-    ImageView ga_iv_blb_progress;       // blb - прогресс
+    ImageView lgb_iv_blb_icon;           // blb - иконка здания (картинка)
+    ImageView lgb_iv_blb_name;           // blb - название здания (картинка)
+    TextView lgb_tv_blb_x2;              // blb - х2
+    TextView lgb_tv_blb_points;          // blb - очки
+    TextView lgb_tv_blb_slots;           // blb - слоты 
+    TextView lgb_tv_blb_slots_our;       // blb - наши слоты
+    TextView lgb_tv_blb_slots_empty;     // blb - слоты противника
+    TextView lgb_tv_blb_slots_enemy;     // blb - пустые слоты
+    ImageView lgb_iv_blb_progress;       // blb - прогресс
 
     // BRT views
-    ImageView ga_iv_brt_icon;           // brt - иконка здания (картинка)
-    ImageView ga_iv_brt_name;           // brt - название здания (картинка)
-    TextView ga_tv_brt_x2;              // brt - х2
-    TextView ga_tv_brt_points;          // brt - очки
-    TextView ga_tv_brt_slots;           // brt - слоты 
-    TextView ga_tv_brt_slots_our;       // brt - наши слоты
-    TextView ga_tv_brt_slots_empty;     // brt - слоты противника
-    TextView ga_tv_brt_slots_enemy;     // brt - пустые слоты
-    ImageView ga_iv_brt_progress;       // brt - прогресс
+    ImageView lgb_iv_brt_icon;           // brt - иконка здания (картинка)
+    ImageView lgb_iv_brt_name;           // brt - название здания (картинка)
+    TextView lgb_tv_brt_x2;              // brt - х2
+    TextView lgb_tv_brt_points;          // brt - очки
+    TextView lgb_tv_brt_slots;           // brt - слоты 
+    TextView lgb_tv_brt_slots_our;       // brt - наши слоты
+    TextView lgb_tv_brt_slots_empty;     // brt - слоты противника
+    TextView lgb_tv_brt_slots_enemy;     // brt - пустые слоты
+    ImageView lgb_iv_brt_progress;       // brt - прогресс
 
     // BRC views
-    ImageView ga_iv_brc_icon;           // brc - иконка здания (картинка)
-    ImageView ga_iv_brc_name;           // brc - название здания (картинка)
-    TextView ga_tv_brc_x2;              // brc - х2
-    TextView ga_tv_brc_points;          // brc - очки
-    TextView ga_tv_brc_slots;           // brc - слоты 
-    TextView ga_tv_brc_slots_our;       // brc - наши слоты
-    TextView ga_tv_brc_slots_empty;     // brc - слоты противника
-    TextView ga_tv_brc_slots_enemy;     // brc - пустые слоты
-    ImageView ga_iv_brc_progress;       // brc - прогресс
+    ImageView lgb_iv_brc_icon;           // brc - иконка здания (картинка)
+    ImageView lgb_iv_brc_name;           // brc - название здания (картинка)
+    TextView lgb_tv_brc_x2;              // brc - х2
+    TextView lgb_tv_brc_points;          // brc - очки
+    TextView lgb_tv_brc_slots;           // brc - слоты 
+    TextView lgb_tv_brc_slots_our;       // brc - наши слоты
+    TextView lgb_tv_brc_slots_empty;     // brc - слоты противника
+    TextView lgb_tv_brc_slots_enemy;     // brc - пустые слоты
+    ImageView lgb_iv_brc_progress;       // brc - прогресс
 
     // BRB views
-    ImageView ga_iv_brb_icon;           // brb - иконка здания (картинка)
-    ImageView ga_iv_brb_name;           // brb - название здания (картинка)
-    TextView ga_tv_brb_x2;              // brb - х2
-    TextView ga_tv_brb_points;          // brb - очки
-    TextView ga_tv_brb_slots;           // brb - слоты 
-    TextView ga_tv_brb_slots_our;       // brb - наши слоты
-    TextView ga_tv_brb_slots_empty;     // brb - слоты противника
-    TextView ga_tv_brb_slots_enemy;     // brb - пустые слоты
-    ImageView ga_iv_brb_progress;       // blt - прогресс
+    ImageView lgb_iv_brb_icon;           // brb - иконка здания (картинка)
+    ImageView lgb_iv_brb_name;           // brb - название здания (картинка)
+    TextView lgb_tv_brb_x2;              // brb - х2
+    TextView lgb_tv_brb_points;          // brb - очки
+    TextView lgb_tv_brb_slots;           // brb - слоты 
+    TextView lgb_tv_brb_slots_our;       // brb - наши слоты
+    TextView lgb_tv_brb_slots_empty;     // brb - слоты противника
+    TextView lgb_tv_brb_slots_enemy;     // brb - пустые слоты
+    ImageView lgb_iv_brb_progress;       // blt - прогресс
 
     // Рекламный блок
     AdView ga_ad_banner;                // баннер
@@ -496,15 +498,15 @@ public class GameActivity extends AppCompatActivity {
 
             int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
 
-            ga_iv_blt_icon.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_name.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_x2.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_points.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_slots.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_slots_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_slots_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blt_slots_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blt_icon.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blt_name.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_x2.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_points.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_slots.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_slots_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_slots_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blt_slots_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
 
             int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
             int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
@@ -514,16 +516,16 @@ public class GameActivity extends AppCompatActivity {
             
             if (ccaGame.isPresent_blt()) {
 
-                if (ccaBLT != null) ga_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
+                if (ccaBLT != null) lgb_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
 
-                ga_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
+                lgb_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy}, 
                         new int[]{ccaGame.getSlots_blt_our(), ccaGame.getSlots_blt_empty(), ccaGame.getSlots_blt_enemy()}));
 
-                ga_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
-                ga_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our_toView()));
-                ga_tv_blt_slots_empty.setText(String.valueOf(ccaGame.getSlots_blt_empty()));
-                ga_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy_toView()));
+                lgb_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
+                lgb_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our_toView()));
+                lgb_tv_blt_slots_empty.setText(String.valueOf(ccaGame.getSlots_blt_empty()));
+                lgb_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy_toView()));
 
                 slots += ccaGame.getSlots_blt();
                 slots_our += ccaGame.getSlots_blt_our();
@@ -531,53 +533,53 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blt_enemy();
 
                 if (ccaGame.isBuildingIsOur_blt()) {
-                    ga_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
-                    ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
+                    lgb_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
+                    lgb_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blt()) {
-                    ga_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
-                    ga_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
+                    lgb_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
+                    lgb_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
                 } else if (ccaGame.isBuildingIsEmpty_blt()) {
-                    ga_tv_blt_points.setText("");
-                    ga_tv_blt_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
+                    lgb_tv_blt_points.setText("");
+                    lgb_tv_blt_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
                 }
                 if (ccaGame.isX2_blt()) {
-                    ga_tv_blt_x2.setText("X2");
-                    ga_tv_blt_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blt_x2.setText("X2");
+                    lgb_tv_blt_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blt()) {
-                        ga_tv_blt_x2.setText("X2");
-                        ga_tv_blt_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blt_x2.setText("X2");
+                        lgb_tv_blt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_blt_x2.setText("");
-                        ga_tv_blt_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blt_x2.setText("");
+                        lgb_tv_blt_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
 
-            ga_iv_blc_icon.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_name.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_x2.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_points.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_slots.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_slots_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_slots_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blc_slots_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blc_icon.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blc_name.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_x2.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_points.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_slots.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_slots_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_slots_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blc_slots_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blc()) {
 
-                if (ccaBLC != null) ga_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
-                ga_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                if (ccaBLC != null) lgb_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
+                lgb_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
 
-                ga_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
-                ga_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our_toView()));
-                ga_tv_blc_slots_empty.setText(String.valueOf(ccaGame.getSlots_blc_empty()));
-                ga_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy_toView()));
+                lgb_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
+                lgb_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our_toView()));
+                lgb_tv_blc_slots_empty.setText(String.valueOf(ccaGame.getSlots_blc_empty()));
+                lgb_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy_toView()));
 
                 slots += ccaGame.getSlots_blc();
                 slots_our += ccaGame.getSlots_blc_our();
@@ -585,55 +587,55 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blc_enemy();
 
                 if (ccaGame.isBuildingIsOur_blc()) {
-                    ga_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
-                    ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
+                    lgb_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
+                    lgb_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blc()) {
-                    ga_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
-                    ga_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
+                    lgb_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
+                    lgb_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
                 } else if (ccaGame.isBuildingIsEmpty_blc()) {
-                    ga_tv_blc_points.setText("");
-                    ga_tv_blc_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
+                    lgb_tv_blc_points.setText("");
+                    lgb_tv_blc_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
                 }
                 if (ccaGame.isX2_blc()) {
-                    ga_tv_blc_x2.setText("X2");
-                    ga_tv_blc_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blc_x2.setText("X2");
+                    lgb_tv_blc_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blc()) {
-                        ga_tv_blc_x2.setText("X2");
-                        ga_tv_blc_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blc_x2.setText("X2");
+                        lgb_tv_blc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_blc_x2.setText("");
-                        ga_tv_blc_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blc_x2.setText("");
+                        lgb_tv_blc_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
 
 
-            ga_iv_blb_icon.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_name.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_x2.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_points.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_slots.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_slots_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_slots_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_blb_slots_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blb_icon.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blb_name.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_x2.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_points.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_slots.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_slots_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_slots_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_blb_slots_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_blb()) {
 
-                if (ccaBLB != null) ga_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
+                if (ccaBLB != null) lgb_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
 
-                ga_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                lgb_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_blb_our(), ccaGame.getSlots_blb_empty(), ccaGame.getSlots_blb_enemy()}));
 
-                ga_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
-                ga_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our_toView()));
-                ga_tv_blb_slots_empty.setText(String.valueOf(ccaGame.getSlots_blb_empty()));
-                ga_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy_toView()));
+                lgb_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
+                lgb_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our_toView()));
+                lgb_tv_blb_slots_empty.setText(String.valueOf(ccaGame.getSlots_blb_empty()));
+                lgb_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy_toView()));
 
                 slots += ccaGame.getSlots_blb();
                 slots_our += ccaGame.getSlots_blb_our();
@@ -641,55 +643,55 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_blb_enemy();
 
                 if (ccaGame.isBuildingIsOur_blb()) {
-                    ga_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
-                    ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
+                    lgb_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
+                    lgb_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blb()) {
-                    ga_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
-                    ga_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
+                    lgb_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
+                    lgb_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
                 } else if (ccaGame.isBuildingIsEmpty_blb()) {
-                    ga_tv_blb_points.setText("");
-                    ga_tv_blb_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
+                    lgb_tv_blb_points.setText("");
+                    lgb_tv_blb_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
                 }
                 if (ccaGame.isX2_blb()) {
-                    ga_tv_blb_x2.setText("X2");
-                    ga_tv_blb_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blb_x2.setText("X2");
+                    lgb_tv_blb_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_blb()) {
-                        ga_tv_blb_x2.setText("X2");
-                        ga_tv_blb_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blb_x2.setText("X2");
+                        lgb_tv_blb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_blb_x2.setText("");
-                        ga_tv_blb_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blb_x2.setText("");
+                        lgb_tv_blb_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
 
 
-            ga_iv_brt_icon.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_name.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_x2.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_points.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_slots.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_slots_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_slots_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brt_slots_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brt_icon.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brt_name.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_x2.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_points.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_slots.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_slots_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_slots_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brt_slots_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brt()) {
 
-                if (ccaBRT != null) ga_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
+                if (ccaBRT != null) lgb_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
 
-                ga_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                lgb_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brt_our(), ccaGame.getSlots_brt_empty(), ccaGame.getSlots_brt_enemy()}));
 
-                ga_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
-                ga_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our_toView()));
-                ga_tv_brt_slots_empty.setText(String.valueOf(ccaGame.getSlots_brt_empty()));
-                ga_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy_toView()));
+                lgb_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
+                lgb_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our_toView()));
+                lgb_tv_brt_slots_empty.setText(String.valueOf(ccaGame.getSlots_brt_empty()));
+                lgb_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy_toView()));
 
                 slots += ccaGame.getSlots_brt();
                 slots_our += ccaGame.getSlots_brt_our();
@@ -697,54 +699,54 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brt_enemy();
 
                 if (ccaGame.isBuildingIsOur_brt()) {
-                    ga_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
-                    ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
+                    lgb_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
+                    lgb_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brt()) {
-                    ga_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
-                    ga_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
+                    lgb_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
+                    lgb_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
                 } else if (ccaGame.isBuildingIsEmpty_brt()) {
-                    ga_tv_brt_points.setText("");
-                    ga_tv_brt_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
+                    lgb_tv_brt_points.setText("");
+                    lgb_tv_brt_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
                 }
                 if (ccaGame.isX2_brt()) {
-                    ga_tv_brt_x2.setText("X2");
-                    ga_tv_brt_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brt_x2.setText("X2");
+                    lgb_tv_brt_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brt()) {
-                        ga_tv_brt_x2.setText("X2");
-                        ga_tv_brt_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brt_x2.setText("X2");
+                        lgb_tv_brt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_brt_x2.setText("");
-                        ga_tv_brt_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brt_x2.setText("");
+                        lgb_tv_brt_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
 
-            ga_iv_brc_icon.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_name.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_x2.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_points.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_slots.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_slots_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_slots_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brc_slots_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brc_icon.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brc_name.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_x2.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_points.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_slots.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_slots_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_slots_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brc_slots_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brc()) {
 
-                if (ccaBRC != null) ga_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
+                if (ccaBRC != null) lgb_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
 
-                ga_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                lgb_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brc_our(), ccaGame.getSlots_brc_empty(), ccaGame.getSlots_brc_enemy()}));
 
-                ga_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
-                ga_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our_toView()));
-                ga_tv_brc_slots_empty.setText(String.valueOf(ccaGame.getSlots_brc_empty()));
-                ga_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy_toView()));
+                lgb_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
+                lgb_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our_toView()));
+                lgb_tv_brc_slots_empty.setText(String.valueOf(ccaGame.getSlots_brc_empty()));
+                lgb_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy_toView()));
 
                 slots += ccaGame.getSlots_brc();
                 slots_our += ccaGame.getSlots_brc_our();
@@ -752,55 +754,55 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brc_enemy();
 
                 if (ccaGame.isBuildingIsOur_brc()) {
-                    ga_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
-                    ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
+                    lgb_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
+                    lgb_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brc()) {
-                    ga_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
-                    ga_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
+                    lgb_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
+                    lgb_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
                 } else if (ccaGame.isBuildingIsEmpty_brc()) {
-                    ga_tv_brc_points.setText("");
-                    ga_tv_brc_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
+                    lgb_tv_brc_points.setText("");
+                    lgb_tv_brc_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
                 }
                 if (ccaGame.isX2_brc()) {
-                    ga_tv_brc_x2.setText("X2");
-                    ga_tv_brc_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brc_x2.setText("X2");
+                    lgb_tv_brc_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brc()) {
-                        ga_tv_brc_x2.setText("X2");
-                        ga_tv_brc_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brc_x2.setText("X2");
+                        lgb_tv_brc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_brc_x2.setText("");
-                        ga_tv_brc_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brc_x2.setText("");
+                        lgb_tv_brc_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
 
 
-            ga_iv_brb_icon.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_name.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_x2.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_points.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_slots.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_slots_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_slots_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_tv_brb_slots_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brb_icon.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brb_name.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_x2.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_points.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_slots.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_slots_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_slots_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_tv_brb_slots_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
+            lgb_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
 
             if (ccaGame.isPresent_brb()) {
 
-                if (ccaBRB != null) ga_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
+                if (ccaBRB != null) lgb_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
 
-                ga_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                lgb_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_brb_our(), ccaGame.getSlots_brb_empty(), ccaGame.getSlots_brb_enemy()}));
 
-                ga_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
-                ga_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our_toView()));
-                ga_tv_brb_slots_empty.setText(String.valueOf(ccaGame.getSlots_brb_empty()));
-                ga_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy_toView()));
+                lgb_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
+                lgb_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our_toView()));
+                lgb_tv_brb_slots_empty.setText(String.valueOf(ccaGame.getSlots_brb_empty()));
+                lgb_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy_toView()));
 
                 slots += ccaGame.getSlots_brb();
                 slots_our += ccaGame.getSlots_brb_our();
@@ -808,28 +810,28 @@ public class GameActivity extends AppCompatActivity {
                 slots_enemy += ccaGame.getSlots_brb_enemy();
 
                 if (ccaGame.isBuildingIsOur_brb()) {
-                    ga_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
-                    ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
-                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
+                    lgb_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
+                    lgb_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brb()) {
-                    ga_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
-                    ga_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
-                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
+                    lgb_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
+                    lgb_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
                 } else if (ccaGame.isBuildingIsEmpty_brb()) {
-                    ga_tv_brb_points.setText("");
-                    ga_tv_brb_points.setBackgroundColor(0xFFFFFFFF);
-                    ga_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
+                    lgb_tv_brb_points.setText("");
+                    lgb_tv_brb_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
                 }
                 if (ccaGame.isX2_brb()) {
-                    ga_tv_brb_x2.setText("X2");
-                    ga_tv_brb_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brb_x2.setText("X2");
+                    lgb_tv_brb_x2.setBackgroundColor(color_bxx_isX2);
                 } else {
                     if (ccaGame.isMayX2_brb()) {
-                        ga_tv_brb_x2.setText("X2");
-                        ga_tv_brb_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brb_x2.setText("X2");
+                        lgb_tv_brb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
-                        ga_tv_brb_x2.setText("");
-                        ga_tv_brb_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brb_x2.setText("");
+                        lgb_tv_brb_x2.setBackgroundColor(0xFFFFFFFF);
                     }
                 }
             }
@@ -907,70 +909,70 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_enemy_end_time = findViewById(R.id.ga_tv_enemy_end_time);
 
         // BLT views
-        ga_iv_blt_icon = findViewById(R.id.ga_iv_blt_icon);
-        ga_iv_blt_name = findViewById(R.id.ga_iv_blt_name);
-        ga_tv_blt_x2 = findViewById(R.id.ga_tv_blt_x2);
-        ga_tv_blt_points = findViewById(R.id.ga_tv_blt_points);
-        ga_tv_blt_slots = findViewById(R.id.ga_tv_blt_slots);
-        ga_tv_blt_slots_our = findViewById(R.id.ga_tv_blt_slots_our);
-        ga_tv_blt_slots_empty = findViewById(R.id.ga_tv_blt_slots_empty);
-        ga_tv_blt_slots_enemy = findViewById(R.id.ga_tv_blt_slots_enemy);
-        ga_iv_blt_progress = findViewById(R.id.ga_iv_blt_progress);
+        lgb_iv_blt_icon = findViewById(R.id.lgb_iv_blt_icon);
+        lgb_iv_blt_name = findViewById(R.id.lgb_iv_blt_name);
+        lgb_tv_blt_x2 = findViewById(R.id.lgb_tv_blt_x2);
+        lgb_tv_blt_points = findViewById(R.id.lgb_tv_blt_points);
+        lgb_tv_blt_slots = findViewById(R.id.lgb_tv_blt_slots);
+        lgb_tv_blt_slots_our = findViewById(R.id.lgb_tv_blt_slots_our);
+        lgb_tv_blt_slots_empty = findViewById(R.id.lgb_tv_blt_slots_empty);
+        lgb_tv_blt_slots_enemy = findViewById(R.id.lgb_tv_blt_slots_enemy);
+        lgb_iv_blt_progress = findViewById(R.id.lgb_iv_blt_progress);
 
         // BLC views
-        ga_iv_blc_icon = findViewById(R.id.ga_iv_blc_icon);
-        ga_iv_blc_name = findViewById(R.id.ga_iv_blc_name);
-        ga_tv_blc_x2 = findViewById(R.id.ga_tv_blc_x2);
-        ga_tv_blc_points = findViewById(R.id.ga_tv_blc_points);
-        ga_tv_blc_slots = findViewById(R.id.ga_tv_blc_slots);
-        ga_tv_blc_slots_our = findViewById(R.id.ga_tv_blc_slots_our);
-        ga_tv_blc_slots_empty = findViewById(R.id.ga_tv_blc_slots_empty);
-        ga_tv_blc_slots_enemy = findViewById(R.id.ga_tv_blc_slots_enemy);
-        ga_iv_blc_progress = findViewById(R.id.ga_iv_blc_progress);
+        lgb_iv_blc_icon = findViewById(R.id.lgb_iv_blc_icon);
+        lgb_iv_blc_name = findViewById(R.id.lgb_iv_blc_name);
+        lgb_tv_blc_x2 = findViewById(R.id.lgb_tv_blc_x2);
+        lgb_tv_blc_points = findViewById(R.id.lgb_tv_blc_points);
+        lgb_tv_blc_slots = findViewById(R.id.lgb_tv_blc_slots);
+        lgb_tv_blc_slots_our = findViewById(R.id.lgb_tv_blc_slots_our);
+        lgb_tv_blc_slots_empty = findViewById(R.id.lgb_tv_blc_slots_empty);
+        lgb_tv_blc_slots_enemy = findViewById(R.id.lgb_tv_blc_slots_enemy);
+        lgb_iv_blc_progress = findViewById(R.id.lgb_iv_blc_progress);
 
         // BLB views
-        ga_iv_blb_icon = findViewById(R.id.ga_iv_blb_icon);
-        ga_iv_blb_name = findViewById(R.id.ga_iv_blb_name);
-        ga_tv_blb_x2 = findViewById(R.id.ga_tv_blb_x2);
-        ga_tv_blb_points = findViewById(R.id.ga_tv_blb_points);
-        ga_tv_blb_slots = findViewById(R.id.ga_tv_blb_slots);
-        ga_tv_blb_slots_our = findViewById(R.id.ga_tv_blb_slots_our);
-        ga_tv_blb_slots_empty = findViewById(R.id.ga_tv_blb_slots_empty);
-        ga_tv_blb_slots_enemy = findViewById(R.id.ga_tv_blb_slots_enemy);
-        ga_iv_blb_progress = findViewById(R.id.ga_iv_blb_progress);
+        lgb_iv_blb_icon = findViewById(R.id.lgb_iv_blb_icon);
+        lgb_iv_blb_name = findViewById(R.id.lgb_iv_blb_name);
+        lgb_tv_blb_x2 = findViewById(R.id.lgb_tv_blb_x2);
+        lgb_tv_blb_points = findViewById(R.id.lgb_tv_blb_points);
+        lgb_tv_blb_slots = findViewById(R.id.lgb_tv_blb_slots);
+        lgb_tv_blb_slots_our = findViewById(R.id.lgb_tv_blb_slots_our);
+        lgb_tv_blb_slots_empty = findViewById(R.id.lgb_tv_blb_slots_empty);
+        lgb_tv_blb_slots_enemy = findViewById(R.id.lgb_tv_blb_slots_enemy);
+        lgb_iv_blb_progress = findViewById(R.id.lgb_iv_blb_progress);
 
         // BRT views
-        ga_iv_brt_icon = findViewById(R.id.ga_iv_brt_icon);
-        ga_iv_brt_name = findViewById(R.id.ga_iv_brt_name);
-        ga_tv_brt_x2 = findViewById(R.id.ga_tv_brt_x2);
-        ga_tv_brt_points = findViewById(R.id.ga_tv_brt_points);
-        ga_tv_brt_slots = findViewById(R.id.ga_tv_brt_slots);
-        ga_tv_brt_slots_our = findViewById(R.id.ga_tv_brt_slots_our);
-        ga_tv_brt_slots_empty = findViewById(R.id.ga_tv_brt_slots_empty);
-        ga_tv_brt_slots_enemy = findViewById(R.id.ga_tv_brt_slots_enemy);
-        ga_iv_brt_progress = findViewById(R.id.ga_iv_brt_progress);
+        lgb_iv_brt_icon = findViewById(R.id.lgb_iv_brt_icon);
+        lgb_iv_brt_name = findViewById(R.id.lgb_iv_brt_name);
+        lgb_tv_brt_x2 = findViewById(R.id.lgb_tv_brt_x2);
+        lgb_tv_brt_points = findViewById(R.id.lgb_tv_brt_points);
+        lgb_tv_brt_slots = findViewById(R.id.lgb_tv_brt_slots);
+        lgb_tv_brt_slots_our = findViewById(R.id.lgb_tv_brt_slots_our);
+        lgb_tv_brt_slots_empty = findViewById(R.id.lgb_tv_brt_slots_empty);
+        lgb_tv_brt_slots_enemy = findViewById(R.id.lgb_tv_brt_slots_enemy);
+        lgb_iv_brt_progress = findViewById(R.id.lgb_iv_brt_progress);
 
         // BRC views
-        ga_iv_brc_icon = findViewById(R.id.ga_iv_brc_icon);
-        ga_iv_brc_name = findViewById(R.id.ga_iv_brc_name);
-        ga_tv_brc_x2 = findViewById(R.id.ga_tv_brc_x2);
-        ga_tv_brc_points = findViewById(R.id.ga_tv_brc_points);
-        ga_tv_brc_slots = findViewById(R.id.ga_tv_brc_slots);
-        ga_tv_brc_slots_our = findViewById(R.id.ga_tv_brc_slots_our);
-        ga_tv_brc_slots_empty = findViewById(R.id.ga_tv_brc_slots_empty);
-        ga_tv_brc_slots_enemy = findViewById(R.id.ga_tv_brc_slots_enemy);
-        ga_iv_brc_progress = findViewById(R.id.ga_iv_brc_progress);
+        lgb_iv_brc_icon = findViewById(R.id.lgb_iv_brc_icon);
+        lgb_iv_brc_name = findViewById(R.id.lgb_iv_brc_name);
+        lgb_tv_brc_x2 = findViewById(R.id.lgb_tv_brc_x2);
+        lgb_tv_brc_points = findViewById(R.id.lgb_tv_brc_points);
+        lgb_tv_brc_slots = findViewById(R.id.lgb_tv_brc_slots);
+        lgb_tv_brc_slots_our = findViewById(R.id.lgb_tv_brc_slots_our);
+        lgb_tv_brc_slots_empty = findViewById(R.id.lgb_tv_brc_slots_empty);
+        lgb_tv_brc_slots_enemy = findViewById(R.id.lgb_tv_brc_slots_enemy);
+        lgb_iv_brc_progress = findViewById(R.id.lgb_iv_brc_progress);
 
         // BRB views
-        ga_iv_brb_icon = findViewById(R.id.ga_iv_brb_icon);
-        ga_iv_brb_name = findViewById(R.id.ga_iv_brb_name);
-        ga_tv_brb_x2 = findViewById(R.id.ga_tv_brb_x2);
-        ga_tv_brb_points = findViewById(R.id.ga_tv_brb_points);
-        ga_tv_brb_slots = findViewById(R.id.ga_tv_brb_slots);
-        ga_tv_brb_slots_our = findViewById(R.id.ga_tv_brb_slots_our);
-        ga_tv_brb_slots_empty = findViewById(R.id.ga_tv_brb_slots_empty);
-        ga_tv_brb_slots_enemy = findViewById(R.id.ga_tv_brb_slots_enemy);
-        ga_iv_brb_progress = findViewById(R.id.ga_iv_brb_progress);
+        lgb_iv_brb_icon = findViewById(R.id.lgb_iv_brb_icon);
+        lgb_iv_brb_name = findViewById(R.id.lgb_iv_brb_name);
+        lgb_tv_brb_x2 = findViewById(R.id.lgb_tv_brb_x2);
+        lgb_tv_brb_points = findViewById(R.id.lgb_tv_brb_points);
+        lgb_tv_brb_slots = findViewById(R.id.lgb_tv_brb_slots);
+        lgb_tv_brb_slots_our = findViewById(R.id.lgb_tv_brb_slots_our);
+        lgb_tv_brb_slots_empty = findViewById(R.id.lgb_tv_brb_slots_empty);
+        lgb_tv_brb_slots_enemy = findViewById(R.id.lgb_tv_brb_slots_enemy);
+        lgb_iv_brb_progress = findViewById(R.id.lgb_iv_brb_progress);
 
         // Рекламный блок
         ga_ad_banner = findViewById(R.id.ga_ad_banner);
@@ -1011,6 +1013,7 @@ public class GameActivity extends AppCompatActivity {
         ga_tv_forecast = findViewById(R.id.ga_tv_forecast);
         ga_sv_game = findViewById(R.id.ga_sv_game);
         ga_rl_game = findViewById(R.id.ga_rl_game);
+        ga_in_buildings = findViewById(R.id.ga_in_buildings);
 
     }
 
@@ -2617,19 +2620,19 @@ public class GameActivity extends AppCompatActivity {
 //        ga_rl_game.buildDrawingCache();
 //        Bitmap bm = ga_rl_game.getDrawingCache();
 
-        Bitmap bitmap = Bitmap.createBitmap(ga_sv_game.getMeasuredWidth(),
-                ga_sv_game.getMeasuredHeight(),
+        Bitmap bitmap = Bitmap.createBitmap(ga_in_buildings.getMeasuredWidth(),
+                ga_in_buildings.getMeasuredHeight(),
                 Bitmap.Config.ARGB_8888);
         //Create a canvas with the specified bitmap to draw into
         Canvas c = new Canvas(bitmap);
 
-        Paint paint = new Paint();
-        paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
-        c.drawPaint(paint);
+//        Paint paint = new Paint();
+//        paint.setColor(Color.WHITE);
+//        paint.setStyle(Paint.Style.FILL);
+//        c.drawPaint(paint);
 
         //Render this view (and all of its children) to the given Canvas
-        ga_sv_game.draw(c);
+        ga_in_buildings.draw(c);
 
 
         try (FileOutputStream out = new FileOutputStream(getApplicationContext().getFilesDir().getAbsolutePath() + "/state.jpg")) {

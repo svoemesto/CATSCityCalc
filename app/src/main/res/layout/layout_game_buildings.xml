@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lgb_gl_grid"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_blt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_blt_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blt_black"
+                android:onClick="onClick_blt"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_blt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_blt_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_blt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_blt"
+                android:layout_toEndOf="@id/lgb_iv_blt_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_blt_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_blt_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_blt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_blt"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_brt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_brt_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brt_black"
+                android:onClick="onClick_brt"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_brt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_brt_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_brt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_brt"
+                android:layout_toEndOf="@id/lgb_iv_brt_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brt_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_brt_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_brt_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_brt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_brt"
+                />
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_blc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_blc_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blc_black"
+                android:onClick="onClick_blc"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_blc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_blc_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_blc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_blc"
+                android:layout_toEndOf="@id/lgb_iv_blc_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_blc_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_blc_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_blc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_blc"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_brc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_brc_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brc_black"
+                android:onClick="onClick_brc"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_brc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_brc_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brc_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_brc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_brc"
+                android:layout_toEndOf="@id/lgb_iv_brc_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brc_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_brc_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_brc_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_brc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_brc"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_blb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_blb_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blb_black"
+                android:onClick="onClick_blb"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_blb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_blb_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_blb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_blb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_blb"
+                android:layout_toEndOf="@id/lgb_iv_blb_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_blb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_blb_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_blb_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_blb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_blb"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lgb_rl_brb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/lgb_iv_brb_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brb_black"
+                android:onClick="onClick_brb"
+                />
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_first_brb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_toEndOf="@id/lgb_iv_brb_icon">
+
+                <ImageView
+                    android:id="@+id/lgb_iv_brb_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="left|center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_x2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_points"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:layout_weight="2"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lgb_ll_second_brb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lgb_ll_first_brb"
+                android:layout_toEndOf="@id/lgb_iv_brb_icon">
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_slots"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_slots_our"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#4179d8" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_slots_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#5e6a84" />
+
+                <TextView
+                    android:id="@+id/lgb_tv_brb_slots_enemy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="#ff6565" />
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/lgb_iv_brb_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:scaleType="fitXY"
+                android:layout_below="@id/lgb_iv_brb_icon"
+                />
+
+            <Button
+                android:id="@+id/lgb_bt_brb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alpha="0.0"
+                android:onClick="onClick_brb"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
