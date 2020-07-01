@@ -151,6 +151,35 @@ public class DbTeamGame implements Serializable {
     private int slotsOur;
     private int slotsEnemy;
 
+    private boolean canWin;
+    private boolean canWinWithoutX2;
+    private boolean canEarlyWin;
+    private boolean canEarlyWinWithoutX2;
+    private boolean needToWin_blt;
+    private boolean needToWinWithoutX2_blt;
+    private boolean needToEarlyWin_blt;
+    private boolean needToEarlyWinWithoutX2_blt;
+    private boolean needToWin_blc;
+    private boolean needToWinWithoutX2_blc;
+    private boolean needToEarlyWin_blc;
+    private boolean needToEarlyWinWithoutX2_blc;
+    private boolean needToWin_blb;
+    private boolean needToWinWithoutX2_blb;
+    private boolean needToEarlyWin_blb;
+    private boolean needToEarlyWinWithoutX2_blb;
+    private boolean needToWin_brt;
+    private boolean needToWinWithoutX2_brt;
+    private boolean needToEarlyWin_brt;
+    private boolean needToEarlyWinWithoutX2_brt;
+    private boolean needToWin_brc;
+    private boolean needToWinWithoutX2_brc;
+    private boolean needToEarlyWin_brc;
+    private boolean needToEarlyWinWithoutX2_brc;
+    private boolean needToWin_brb;
+    private boolean needToWinWithoutX2_brb;
+    private boolean needToEarlyWin_brb;
+    private boolean needToEarlyWinWithoutX2_brb;
+    
 
     private byte[] bytesScreenshot = null;
 
@@ -373,7 +402,35 @@ public class DbTeamGame implements Serializable {
         key = "slotsOur"; if (map.containsKey(key)) this.slotsOur = ((Long) map.get(key)).intValue();
         key = "slotsEnemy"; if (map.containsKey(key)) this.slotsEnemy = ((Long) map.get(key)).intValue();
 
-
+        key = "canWin"; if (map.containsKey(key)) this.canWin = (boolean) map.get(key);
+        key = "canWinWithoutX2"; if (map.containsKey(key)) this.canWinWithoutX2 = (boolean) map.get(key);
+        key = "canEarlyWin"; if (map.containsKey(key)) this.canEarlyWin = (boolean) map.get(key);
+        key = "canEarlyWinWithoutX2"; if (map.containsKey(key)) this.canEarlyWinWithoutX2 = (boolean) map.get(key);
+        key = "needToWin_blt"; if (map.containsKey(key)) this.needToWin_blt = (boolean) map.get(key);
+        key = "needToWinWithoutX2_blt"; if (map.containsKey(key)) this.needToWinWithoutX2_blt = (boolean) map.get(key);
+        key = "needToEarlyWin_blt"; if (map.containsKey(key)) this.needToEarlyWin_blt = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_blt"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blt = (boolean) map.get(key);
+        key = "needToWin_blc"; if (map.containsKey(key)) this.needToWin_blc = (boolean) map.get(key);
+        key = "needToWinWithoutX2_blc"; if (map.containsKey(key)) this.needToWinWithoutX2_blc = (boolean) map.get(key);
+        key = "needToEarlyWin_blc"; if (map.containsKey(key)) this.needToEarlyWin_blc = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_blc"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blc = (boolean) map.get(key);
+        key = "needToWin_blb"; if (map.containsKey(key)) this.needToWin_blb = (boolean) map.get(key);
+        key = "needToWinWithoutX2_blb"; if (map.containsKey(key)) this.needToWinWithoutX2_blb = (boolean) map.get(key);
+        key = "needToEarlyWin_blb"; if (map.containsKey(key)) this.needToEarlyWin_blb = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_blb"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blb = (boolean) map.get(key);
+        key = "needToWin_brt"; if (map.containsKey(key)) this.needToWin_brt = (boolean) map.get(key);
+        key = "needToWinWithoutX2_brt"; if (map.containsKey(key)) this.needToWinWithoutX2_brt = (boolean) map.get(key);
+        key = "needToEarlyWin_brt"; if (map.containsKey(key)) this.needToEarlyWin_brt = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_brt"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brt = (boolean) map.get(key);
+        key = "needToWin_brc"; if (map.containsKey(key)) this.needToWin_brc = (boolean) map.get(key);
+        key = "needToWinWithoutX2_brc"; if (map.containsKey(key)) this.needToWinWithoutX2_brc = (boolean) map.get(key);
+        key = "needToEarlyWin_brc"; if (map.containsKey(key)) this.needToEarlyWin_brc = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_brc"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brc = (boolean) map.get(key);
+        key = "needToWin_brb"; if (map.containsKey(key)) this.needToWin_brb = (boolean) map.get(key);
+        key = "needToWinWithoutX2_brb"; if (map.containsKey(key)) this.needToWinWithoutX2_brb = (boolean) map.get(key);
+        key = "needToEarlyWin_brb"; if (map.containsKey(key)) this.needToEarlyWin_brb = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_brb"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brb = (boolean) map.get(key);
+        
     }
     
     public DbTeamGame(CCAGame ccaGame) {
@@ -482,6 +539,35 @@ public class DbTeamGame implements Serializable {
         this.slotsOur = ccaGame.getSlotsOur();
         this.slotsEnemy = ccaGame.getSlotsEnemy();
 
+        this.canWin = ccaGame.isCanWin();
+        this.canWinWithoutX2 = ccaGame.isCanWinWithoutX2();
+        this.canEarlyWin = ccaGame.isCanEarlyWin();
+        this.canEarlyWinWithoutX2 = ccaGame.isCanEarlyWinWithoutX2();
+
+        this.needToWin_blt = ccaGame.isNeedToWin_blt();
+        this.needToWinWithoutX2_blt = ccaGame.isNeedToWinWithoutX2_blt();
+        this.needToEarlyWin_blt = ccaGame.isNeedToEarlyWin_blt();
+        this.needToEarlyWinWithoutX2_blt = ccaGame.isNeedToEarlyWinWithoutX2_blt();
+        this.needToWin_blc = ccaGame.isNeedToWin_blc();
+        this.needToWinWithoutX2_blc = ccaGame.isNeedToWinWithoutX2_blc();
+        this.needToEarlyWin_blc = ccaGame.isNeedToEarlyWin_blc();
+        this.needToEarlyWinWithoutX2_blc = ccaGame.isNeedToEarlyWinWithoutX2_blc();
+        this.needToWin_blb = ccaGame.isNeedToWin_blb();
+        this.needToWinWithoutX2_blb = ccaGame.isNeedToWinWithoutX2_blb();
+        this.needToEarlyWin_blb = ccaGame.isNeedToEarlyWin_blb();
+        this.needToEarlyWinWithoutX2_blb = ccaGame.isNeedToEarlyWinWithoutX2_blb();
+        this.needToWin_brt = ccaGame.isNeedToWin_brt();
+        this.needToWinWithoutX2_brt = ccaGame.isNeedToWinWithoutX2_brt();
+        this.needToEarlyWin_brt = ccaGame.isNeedToEarlyWin_brt();
+        this.needToEarlyWinWithoutX2_brt = ccaGame.isNeedToEarlyWinWithoutX2_brt();
+        this.needToWin_brc = ccaGame.isNeedToWin_brc();
+        this.needToWinWithoutX2_brc = ccaGame.isNeedToWinWithoutX2_brc();
+        this.needToEarlyWin_brc = ccaGame.isNeedToEarlyWin_brc();
+        this.needToEarlyWinWithoutX2_brc = ccaGame.isNeedToEarlyWinWithoutX2_brc();
+        this.needToWin_brb = ccaGame.isNeedToWin_brb();
+        this.needToWinWithoutX2_brb = ccaGame.isNeedToWinWithoutX2_brb();
+        this.needToEarlyWin_brb = ccaGame.isNeedToEarlyWin_brb();
+        this.needToEarlyWinWithoutX2_brb = ccaGame.isNeedToEarlyWinWithoutX2_brb();
 
         if (!ccaGame.isGameOver()) {
 
@@ -658,6 +744,35 @@ public class DbTeamGame implements Serializable {
         map.put("slotsOur", slotsOur);
         map.put("slotsEnemy", slotsEnemy);
 
+        map.put("canWin", canWin);
+        map.put("canWinWithoutX2", canWinWithoutX2);
+        map.put("canEarlyWin", canEarlyWin);
+        map.put("canEarlyWinWithoutX2", canEarlyWinWithoutX2);
+        map.put("needToWin_blt", needToWin_blt);
+        map.put("needToWinWithoutX2_blt", needToWinWithoutX2_blt);
+        map.put("needToEarlyWin_blt", needToEarlyWin_blt);
+        map.put("needToEarlyWinWithoutX2_blt", needToEarlyWinWithoutX2_blt);
+        map.put("needToWin_blc", needToWin_blc);
+        map.put("needToWinWithoutX2_blc", needToWinWithoutX2_blc);
+        map.put("needToEarlyWin_blc", needToEarlyWin_blc);
+        map.put("needToEarlyWinWithoutX2_blc", needToEarlyWinWithoutX2_blc);
+        map.put("needToWin_blb", needToWin_blb);
+        map.put("needToWinWithoutX2_blb", needToWinWithoutX2_blb);
+        map.put("needToEarlyWin_blb", needToEarlyWin_blb);
+        map.put("needToEarlyWinWithoutX2_blb", needToEarlyWinWithoutX2_blb);
+        map.put("needToWin_brt", needToWin_brt);
+        map.put("needToWinWithoutX2_brt", needToWinWithoutX2_brt);
+        map.put("needToEarlyWin_brt", needToEarlyWin_brt);
+        map.put("needToEarlyWinWithoutX2_brt", needToEarlyWinWithoutX2_brt);
+        map.put("needToWin_brc", needToWin_brc);
+        map.put("needToWinWithoutX2_brc", needToWinWithoutX2_brc);
+        map.put("needToEarlyWin_brc", needToEarlyWin_brc);
+        map.put("needToEarlyWinWithoutX2_brc", needToEarlyWinWithoutX2_brc);
+        map.put("needToWin_brb", needToWin_brb);
+        map.put("needToWinWithoutX2_brb", needToWinWithoutX2_brb);
+        map.put("needToEarlyWin_brb", needToEarlyWin_brb);
+        map.put("needToEarlyWinWithoutX2_brb", needToEarlyWinWithoutX2_brb);
+        
         return map;
     }
 
@@ -1427,5 +1542,229 @@ public class DbTeamGame implements Serializable {
 
     public void setSlotsEnemy(int slotsEnemy) {
         this.slotsEnemy = slotsEnemy;
+    }
+
+    public boolean isCanWin() {
+        return canWin;
+    }
+
+    public void setCanWin(boolean canWin) {
+        this.canWin = canWin;
+    }
+
+    public boolean isCanWinWithoutX2() {
+        return canWinWithoutX2;
+    }
+
+    public void setCanWinWithoutX2(boolean canWinWithoutX2) {
+        this.canWinWithoutX2 = canWinWithoutX2;
+    }
+
+    public boolean isCanEarlyWin() {
+        return canEarlyWin;
+    }
+
+    public void setCanEarlyWin(boolean canEarlyWin) {
+        this.canEarlyWin = canEarlyWin;
+    }
+
+    public boolean isCanEarlyWinWithoutX2() {
+        return canEarlyWinWithoutX2;
+    }
+
+    public void setCanEarlyWinWithoutX2(boolean canEarlyWinWithoutX2) {
+        this.canEarlyWinWithoutX2 = canEarlyWinWithoutX2;
+    }
+
+    public boolean isNeedToWin_blt() {
+        return needToWin_blt;
+    }
+
+    public void setNeedToWin_blt(boolean needToWin_blt) {
+        this.needToWin_blt = needToWin_blt;
+    }
+
+    public boolean isNeedToWinWithoutX2_blt() {
+        return needToWinWithoutX2_blt;
+    }
+
+    public void setNeedToWinWithoutX2_blt(boolean needToWinWithoutX2_blt) {
+        this.needToWinWithoutX2_blt = needToWinWithoutX2_blt;
+    }
+
+    public boolean isNeedToEarlyWin_blt() {
+        return needToEarlyWin_blt;
+    }
+
+    public void setNeedToEarlyWin_blt(boolean needToEarlyWin_blt) {
+        this.needToEarlyWin_blt = needToEarlyWin_blt;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blt() {
+        return needToEarlyWinWithoutX2_blt;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blt(boolean needToEarlyWinWithoutX2_blt) {
+        this.needToEarlyWinWithoutX2_blt = needToEarlyWinWithoutX2_blt;
+    }
+
+    public boolean isNeedToWin_blc() {
+        return needToWin_blc;
+    }
+
+    public void setNeedToWin_blc(boolean needToWin_blc) {
+        this.needToWin_blc = needToWin_blc;
+    }
+
+    public boolean isNeedToWinWithoutX2_blc() {
+        return needToWinWithoutX2_blc;
+    }
+
+    public void setNeedToWinWithoutX2_blc(boolean needToWinWithoutX2_blc) {
+        this.needToWinWithoutX2_blc = needToWinWithoutX2_blc;
+    }
+
+    public boolean isNeedToEarlyWin_blc() {
+        return needToEarlyWin_blc;
+    }
+
+    public void setNeedToEarlyWin_blc(boolean needToEarlyWin_blc) {
+        this.needToEarlyWin_blc = needToEarlyWin_blc;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blc() {
+        return needToEarlyWinWithoutX2_blc;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blc(boolean needToEarlyWinWithoutX2_blc) {
+        this.needToEarlyWinWithoutX2_blc = needToEarlyWinWithoutX2_blc;
+    }
+
+    public boolean isNeedToWin_blb() {
+        return needToWin_blb;
+    }
+
+    public void setNeedToWin_blb(boolean needToWin_blb) {
+        this.needToWin_blb = needToWin_blb;
+    }
+
+    public boolean isNeedToWinWithoutX2_blb() {
+        return needToWinWithoutX2_blb;
+    }
+
+    public void setNeedToWinWithoutX2_blb(boolean needToWinWithoutX2_blb) {
+        this.needToWinWithoutX2_blb = needToWinWithoutX2_blb;
+    }
+
+    public boolean isNeedToEarlyWin_blb() {
+        return needToEarlyWin_blb;
+    }
+
+    public void setNeedToEarlyWin_blb(boolean needToEarlyWin_blb) {
+        this.needToEarlyWin_blb = needToEarlyWin_blb;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blb() {
+        return needToEarlyWinWithoutX2_blb;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blb(boolean needToEarlyWinWithoutX2_blb) {
+        this.needToEarlyWinWithoutX2_blb = needToEarlyWinWithoutX2_blb;
+    }
+
+    public boolean isNeedToWin_brt() {
+        return needToWin_brt;
+    }
+
+    public void setNeedToWin_brt(boolean needToWin_brt) {
+        this.needToWin_brt = needToWin_brt;
+    }
+
+    public boolean isNeedToWinWithoutX2_brt() {
+        return needToWinWithoutX2_brt;
+    }
+
+    public void setNeedToWinWithoutX2_brt(boolean needToWinWithoutX2_brt) {
+        this.needToWinWithoutX2_brt = needToWinWithoutX2_brt;
+    }
+
+    public boolean isNeedToEarlyWin_brt() {
+        return needToEarlyWin_brt;
+    }
+
+    public void setNeedToEarlyWin_brt(boolean needToEarlyWin_brt) {
+        this.needToEarlyWin_brt = needToEarlyWin_brt;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brt() {
+        return needToEarlyWinWithoutX2_brt;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brt(boolean needToEarlyWinWithoutX2_brt) {
+        this.needToEarlyWinWithoutX2_brt = needToEarlyWinWithoutX2_brt;
+    }
+
+    public boolean isNeedToWin_brc() {
+        return needToWin_brc;
+    }
+
+    public void setNeedToWin_brc(boolean needToWin_brc) {
+        this.needToWin_brc = needToWin_brc;
+    }
+
+    public boolean isNeedToWinWithoutX2_brc() {
+        return needToWinWithoutX2_brc;
+    }
+
+    public void setNeedToWinWithoutX2_brc(boolean needToWinWithoutX2_brc) {
+        this.needToWinWithoutX2_brc = needToWinWithoutX2_brc;
+    }
+
+    public boolean isNeedToEarlyWin_brc() {
+        return needToEarlyWin_brc;
+    }
+
+    public void setNeedToEarlyWin_brc(boolean needToEarlyWin_brc) {
+        this.needToEarlyWin_brc = needToEarlyWin_brc;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brc() {
+        return needToEarlyWinWithoutX2_brc;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brc(boolean needToEarlyWinWithoutX2_brc) {
+        this.needToEarlyWinWithoutX2_brc = needToEarlyWinWithoutX2_brc;
+    }
+
+    public boolean isNeedToWin_brb() {
+        return needToWin_brb;
+    }
+
+    public void setNeedToWin_brb(boolean needToWin_brb) {
+        this.needToWin_brb = needToWin_brb;
+    }
+
+    public boolean isNeedToWinWithoutX2_brb() {
+        return needToWinWithoutX2_brb;
+    }
+
+    public void setNeedToWinWithoutX2_brb(boolean needToWinWithoutX2_brb) {
+        this.needToWinWithoutX2_brb = needToWinWithoutX2_brb;
+    }
+
+    public boolean isNeedToEarlyWin_brb() {
+        return needToEarlyWin_brb;
+    }
+
+    public void setNeedToEarlyWin_brb(boolean needToEarlyWin_brb) {
+        this.needToEarlyWin_brb = needToEarlyWin_brb;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brb() {
+        return needToEarlyWinWithoutX2_brb;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brb(boolean needToEarlyWinWithoutX2_brb) {
+        this.needToEarlyWinWithoutX2_brb = needToEarlyWinWithoutX2_brb;
     }
 }

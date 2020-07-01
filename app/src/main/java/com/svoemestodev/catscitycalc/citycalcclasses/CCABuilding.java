@@ -17,6 +17,10 @@ public class CCABuilding extends CityCalcArea {
     private boolean mayX2;
     private boolean isX2;
     private boolean isPresent;
+    private boolean needToWin;
+    private boolean needToWinWithoutX2;
+    private boolean needToEarlyWin;
+    private boolean needToEarlyWinWithoutX2;
 
     public CCABuilding() {
     }
@@ -77,6 +81,10 @@ public class CCABuilding extends CityCalcArea {
         clone.mayX2 = this.mayX2;
         clone.isX2 = this.isX2;
         clone.isPresent = this.isPresent;
+        clone.needToWin = this.needToWin;
+        clone.needToWinWithoutX2 = this.needToWinWithoutX2;
+        clone.needToEarlyWin = this.needToEarlyWin;
+        clone.needToEarlyWinWithoutX2 = this.needToEarlyWinWithoutX2;
 
         return clone;
     }
@@ -209,5 +217,37 @@ public class CCABuilding extends CityCalcArea {
 
     public void setPresent(boolean present) {
         isPresent = present;
+    }
+
+    public boolean isNeedToWin() {
+        return needToWin;
+    }
+
+    public void setNeedToWin(boolean needToWin) {
+        this.needToWin = needToWin;
+    }
+
+    public boolean isNeedToWinWithoutX2() {
+        return needToWinWithoutX2;
+    }
+
+    public void setNeedToWinWithoutX2(boolean needToWinWithoutX2) {
+        this.needToWinWithoutX2 = needToWinWithoutX2;
+    }
+
+    public boolean isNeedToEarlyWin() {
+        return needToEarlyWin;
+    }
+
+    public void setNeedToEarlyWin(boolean needToEarlyWin) {
+        this.needToEarlyWin = needToEarlyWin;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2() {
+        return needToEarlyWinWithoutX2;
+    }
+
+    public void setNeedToEarlyWinWithoutX2(boolean needToEarlyWinWithoutX2) {
+        this.needToEarlyWinWithoutX2 = needToEarlyWinWithoutX2;
     }
 }

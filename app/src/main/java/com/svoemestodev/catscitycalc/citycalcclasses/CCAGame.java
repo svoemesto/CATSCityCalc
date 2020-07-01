@@ -2,18 +2,28 @@ package com.svoemestodev.catscitycalc.citycalcclasses;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
+import com.svoemestodev.catscitycalc.activities.StrategyActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.utils.CropPosition;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class CCAGame extends CityCalcArea {
 
@@ -126,6 +136,31 @@ public class CCAGame extends CityCalcArea {
     private int slots_brb_empty;
     private int slots_brb_enemy;
 
+    private boolean needToWin_blt;
+    private boolean needToWinWithoutX2_blt;
+    private boolean needToEarlyWin_blt;
+    private boolean needToEarlyWinWithoutX2_blt;
+    private boolean needToWin_blc;
+    private boolean needToWinWithoutX2_blc;
+    private boolean needToEarlyWin_blc;
+    private boolean needToEarlyWinWithoutX2_blc;
+    private boolean needToWin_blb;
+    private boolean needToWinWithoutX2_blb;
+    private boolean needToEarlyWin_blb;
+    private boolean needToEarlyWinWithoutX2_blb;
+    private boolean needToWin_brt;
+    private boolean needToWinWithoutX2_brt;
+    private boolean needToEarlyWin_brt;
+    private boolean needToEarlyWinWithoutX2_brt;
+    private boolean needToWin_brc;
+    private boolean needToWinWithoutX2_brc;
+    private boolean needToEarlyWin_brc;
+    private boolean needToEarlyWinWithoutX2_brc;
+    private boolean needToWin_brb;
+    private boolean needToWinWithoutX2_brb;
+    private boolean needToEarlyWin_brb;
+    private boolean needToEarlyWinWithoutX2_brb;
+    
     private boolean isGameOver;         // игра окончена
     private boolean isGameOverEarly;    // игра окончена досрочно
     private boolean isWinOur;           // победили мы
@@ -150,6 +185,11 @@ public class CCAGame extends CityCalcArea {
     private int slotsOur;
     private int slotsEnemy;
 
+    private boolean canWin;
+    private boolean canWinWithoutX2;
+    private boolean canEarlyWin;
+    private boolean canEarlyWinWithoutX2;
+    
     private String status;
 
     private String forecastText = "";
@@ -316,6 +356,36 @@ public class CCAGame extends CityCalcArea {
         clone.slotsEnemy = this.slotsEnemy;
         clone.status = this.status;
         clone.bytesScreenshot = this.bytesScreenshot;
+        clone.canWin = this.canWin;
+        clone.canWinWithoutX2 = this.canWinWithoutX2;
+        clone.canEarlyWin = this.canEarlyWin;
+        clone.canEarlyWinWithoutX2 = this.canEarlyWinWithoutX2;
+
+        clone.needToWin_blt = this.needToWin_blt;
+        clone.needToWinWithoutX2_blt = this.needToWinWithoutX2_blt;
+        clone.needToEarlyWin_blt = this.needToEarlyWin_blt;
+        clone.needToEarlyWinWithoutX2_blt = this.needToEarlyWinWithoutX2_blt;
+        clone.needToWin_blc = this.needToWin_blc;
+        clone.needToWinWithoutX2_blc = this.needToWinWithoutX2_blc;
+        clone.needToEarlyWin_blc = this.needToEarlyWin_blc;
+        clone.needToEarlyWinWithoutX2_blc = this.needToEarlyWinWithoutX2_blc;
+        clone.needToWin_blb = this.needToWin_blb;
+        clone.needToWinWithoutX2_blb = this.needToWinWithoutX2_blb;
+        clone.needToEarlyWin_blb = this.needToEarlyWin_blb;
+        clone.needToEarlyWinWithoutX2_blb = this.needToEarlyWinWithoutX2_blb;
+        clone.needToWin_brt = this.needToWin_brt;
+        clone.needToWinWithoutX2_brt = this.needToWinWithoutX2_brt;
+        clone.needToEarlyWin_brt = this.needToEarlyWin_brt;
+        clone.needToEarlyWinWithoutX2_brt = this.needToEarlyWinWithoutX2_brt;
+        clone.needToWin_brc = this.needToWin_brc;
+        clone.needToWinWithoutX2_brc = this.needToWinWithoutX2_brc;
+        clone.needToEarlyWin_brc = this.needToEarlyWin_brc;
+        clone.needToEarlyWinWithoutX2_brc = this.needToEarlyWinWithoutX2_brc;
+        clone.needToWin_brb = this.needToWin_brb;
+        clone.needToWinWithoutX2_brb = this.needToWinWithoutX2_brb;
+        clone.needToEarlyWin_brb = this.needToEarlyWin_brb;
+        clone.needToEarlyWinWithoutX2_brb = this.needToEarlyWinWithoutX2_brb;
+        
         
         return clone;
     }
@@ -428,11 +498,336 @@ public class CCAGame extends CityCalcArea {
         this.slotsOur = dbTeamGame.getSlotsOur();
         this.slotsEnemy = dbTeamGame.getSlotsEnemy();
 
+        this.canWin = dbTeamGame.isCanWin();
+        this.canWinWithoutX2 = dbTeamGame.isCanWinWithoutX2();
+        this.canEarlyWin = dbTeamGame.isCanEarlyWin();
+        this.canEarlyWinWithoutX2 = dbTeamGame.isCanEarlyWinWithoutX2();
+
+        this.needToWin_blt = dbTeamGame.isNeedToWin_blt();
+        this.needToWinWithoutX2_blt = dbTeamGame.isNeedToWinWithoutX2_blt();
+        this.needToEarlyWin_blt = dbTeamGame.isNeedToEarlyWin_blt();
+        this.needToEarlyWinWithoutX2_blt = dbTeamGame.isNeedToEarlyWinWithoutX2_blt();
+        this.needToWin_blc = dbTeamGame.isNeedToWin_blc();
+        this.needToWinWithoutX2_blc = dbTeamGame.isNeedToWinWithoutX2_blc();
+        this.needToEarlyWin_blc = dbTeamGame.isNeedToEarlyWin_blc();
+        this.needToEarlyWinWithoutX2_blc = dbTeamGame.isNeedToEarlyWinWithoutX2_blc();
+        this.needToWin_blb = dbTeamGame.isNeedToWin_blb();
+        this.needToWinWithoutX2_blb = dbTeamGame.isNeedToWinWithoutX2_blb();
+        this.needToEarlyWin_blb = dbTeamGame.isNeedToEarlyWin_blb();
+        this.needToEarlyWinWithoutX2_blb = dbTeamGame.isNeedToEarlyWinWithoutX2_blb();
+        this.needToWin_brt = dbTeamGame.isNeedToWin_brt();
+        this.needToWinWithoutX2_brt = dbTeamGame.isNeedToWinWithoutX2_brt();
+        this.needToEarlyWin_brt = dbTeamGame.isNeedToEarlyWin_brt();
+        this.needToEarlyWinWithoutX2_brt = dbTeamGame.isNeedToEarlyWinWithoutX2_brt();
+        this.needToWin_brc = dbTeamGame.isNeedToWin_brc();
+        this.needToWinWithoutX2_brc = dbTeamGame.isNeedToWinWithoutX2_brc();
+        this.needToEarlyWin_brc = dbTeamGame.isNeedToEarlyWin_brc();
+        this.needToEarlyWinWithoutX2_brc = dbTeamGame.isNeedToEarlyWinWithoutX2_brc();
+        this.needToWin_brb = dbTeamGame.isNeedToWin_brb();
+        this.needToWinWithoutX2_brb = dbTeamGame.isNeedToWinWithoutX2_brb();
+        this.needToEarlyWin_brb = dbTeamGame.isNeedToEarlyWin_brb();
+        this.needToEarlyWinWithoutX2_brb = dbTeamGame.isNeedToEarlyWinWithoutX2_brb();
+        
+        
         this.bytesScreenshot = dbTeamGame.getBytesScreenshot();
 
-        calcWin();
+        calcWin(true);
 
     }
+
+    public void doForecast() {
+
+        List<ForecastMatrix> list = new ArrayList<>();
+
+        for (int x1 = 0; x1 <= 1; x1++) {
+            for (int x2 = 0; x2 <= 1; x2++) {
+                for (int x3 = 0; x3 <= 1; x3++) {
+                    for (int x4 = 0; x4 <= 1; x4++) {
+                        for (int x5 = 0; x5 <= 1; x5++) {
+                            for (int x6 = 0; x6 <= 1; x6++) {
+                                list.add(new ForecastMatrix(this.getClone(this.getCityCalc()), x1==1,x2==1,x3==1,x4==1,x5==1,x6==1));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        Object[] forecastMatrixArray = list.toArray();
+        Arrays.sort(forecastMatrixArray);
+        ForecastMatrix matrix = null;
+        boolean isFound = false;
+        for (int i = 0; i < forecastMatrixArray.length; i++) {
+            matrix = (ForecastMatrix) forecastMatrixArray[i];
+            if (matrix.ccaGame.willOurWin && !matrix.ccaGame.willEarlyWin) {
+                isFound = true;
+                break;
+            }
+        }
+
+        this.canWin = isFound;
+        this.needToWin_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
+        this.needToWin_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
+        this.needToWin_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
+        this.needToWin_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
+        this.needToWin_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
+        this.needToWin_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
+
+        isFound = false;
+        for (int i = 0; i < forecastMatrixArray.length; i++) {
+            matrix = (ForecastMatrix) forecastMatrixArray[i];
+            if (matrix.ccaGame.willOurWin && !matrix.ccaGame.willEarlyWin && matrix.ccaGame.countOurX2 == 0) {
+                isFound = true;
+                break;
+            }
+        }
+
+        this.canWinWithoutX2 = isFound;
+        this.needToWinWithoutX2_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
+        this.needToWinWithoutX2_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
+        this.needToWinWithoutX2_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
+        this.needToWinWithoutX2_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
+        this.needToWinWithoutX2_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
+        this.needToWinWithoutX2_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
+
+        isFound = false;
+        for (int i = 0; i < forecastMatrixArray.length; i++) {
+            matrix = (ForecastMatrix) forecastMatrixArray[i];
+            if (matrix.ccaGame.willOurWin && matrix.ccaGame.willEarlyWin) {
+                isFound = true;
+                break;
+            }
+        }
+
+        this.canEarlyWin = isFound;
+        this.needToEarlyWin_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
+        this.needToEarlyWin_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
+        this.needToEarlyWin_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
+        this.needToEarlyWin_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
+        this.needToEarlyWin_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
+        this.needToEarlyWin_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
+
+        isFound = false;
+        for (int i = 0; i < forecastMatrixArray.length; i++) {
+            matrix = (ForecastMatrix) forecastMatrixArray[i];
+            if (matrix.ccaGame.willOurWin && matrix.ccaGame.willEarlyWin && matrix.ccaGame.countOurX2 == 0) {
+                isFound = true;
+                break;
+            }
+        }
+
+        this.canEarlyWinWithoutX2 = isFound;
+        this.needToEarlyWin_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
+        this.needToEarlyWin_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
+        this.needToEarlyWin_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
+        this.needToEarlyWin_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
+        this.needToEarlyWin_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
+        this.needToEarlyWin_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
+
+    }
+
+    class ForecastMatrix implements Comparable<ForecastMatrix>{
+        boolean isOur_blt;
+        boolean isOur_blc;
+        boolean isOur_blb;
+        boolean isOur_brt;
+        boolean isOur_brc;
+        boolean isOur_brb;
+        CCAGame ccaGame;
+
+        public ForecastMatrix(CCAGame ccaGame, boolean isOur_blt, boolean isOur_blc, boolean isOur_blb, boolean isOur_brt, boolean isOur_brc, boolean isOur_brb) {
+            this.isOur_blt = isOur_blt;
+            this.isOur_blc = isOur_blc;
+            this.isOur_blb = isOur_blb;
+            this.isOur_brt = isOur_brt;
+            this.isOur_brc = isOur_brc;
+            this.isOur_brb = isOur_brb;
+            this.ccaGame = ccaGame;
+
+            int countCars_our = 0;
+            int countCars_enemy = 0;
+            int countCars_total = 0;
+            int countCarsInBuilding = 0;
+
+            int countX2_our = 0;
+            int countX2_enemy = 0;
+            int countX2_total = 0;
+            int increaseOur = 0;
+            int increaseEnemy = 0;
+            
+            
+            if (ccaGame.isPresent_blt) {
+                countCars_total += ccaGame.slots_blt;
+                countCarsInBuilding = (ccaGame.slots_blt / 2 + 1);
+                ccaGame.buildingIsOur_blt = isOur_blt;
+                ccaGame.buildingIsEnemy_blt = !isOur_blt;
+                ccaGame.buildingIsEmpty_blt = false;
+                ccaGame.slots_blt_our = countCarsInBuilding * (isOur_blt ? 1 : 0);
+                ccaGame.slots_blt_enemy = countCarsInBuilding * (!isOur_blt ? 1 : 0);
+                ccaGame.slots_blt_empty = 0;
+                countCars_our += isOur_blt ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_blt ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_blt ? 1 : 0;
+                countX2_our += ccaGame.mayX2_blt && isOur_blt ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_blt && !isOur_blt ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_blc) {
+                countCars_total += ccaGame.slots_blc;
+                countCarsInBuilding = (ccaGame.slots_blc / 2 + 1);
+                ccaGame.buildingIsOur_blc = isOur_blc;
+                ccaGame.buildingIsEnemy_blc = !isOur_blc;
+                ccaGame.buildingIsEmpty_blc = false;
+                ccaGame.slots_blc_our = countCarsInBuilding * (isOur_blc ? 1 : 0);
+                ccaGame.slots_blc_enemy = countCarsInBuilding * (!isOur_blc ? 1 : 0);
+                ccaGame.slots_blc_empty = 0;
+                countCars_our += isOur_blc ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_blc ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_blc ? 1 : 0;
+                countX2_our += ccaGame.mayX2_blc && isOur_blc ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_blc && !isOur_blc ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_blb) {
+                countCars_total += ccaGame.slots_blb;
+                countCarsInBuilding = (ccaGame.slots_blb / 2 + 1);
+                ccaGame.buildingIsOur_blb = isOur_blb;
+                ccaGame.buildingIsEnemy_blb = !isOur_blb;
+                ccaGame.buildingIsEmpty_blb = false;
+                ccaGame.slots_blb_our = countCarsInBuilding * (isOur_blb ? 1 : 0);
+                ccaGame.slots_blb_enemy = countCarsInBuilding * (!isOur_blb ? 1 : 0);
+                ccaGame.slots_blb_empty = 0;
+                countCars_our += isOur_blb ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_blb ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_blb ? 1 : 0;
+                countX2_our += ccaGame.mayX2_blb && isOur_blb ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_blb && !isOur_blb ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brt) {
+                countCars_total += ccaGame.slots_brt;
+                countCarsInBuilding = (ccaGame.slots_brt / 2 + 1);
+                ccaGame.buildingIsOur_brt = isOur_brt;
+                ccaGame.buildingIsEnemy_brt = !isOur_brt;
+                ccaGame.buildingIsEmpty_brt = false;
+                ccaGame.slots_brt_our = countCarsInBuilding * (isOur_brt ? 1 : 0);
+                ccaGame.slots_brt_enemy = countCarsInBuilding * (!isOur_brt ? 1 : 0);
+                ccaGame.slots_brt_empty = 0;
+                countCars_our += isOur_brt ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_brt ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_brt ? 1 : 0;
+                countX2_our += ccaGame.mayX2_brt && isOur_brt ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_brt && !isOur_brt ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brc) {
+                countCars_total += ccaGame.slots_brc;
+                countCarsInBuilding = (ccaGame.slots_brc / 2 + 1);
+                ccaGame.buildingIsOur_brc = isOur_brc;
+                ccaGame.buildingIsEnemy_brc = !isOur_brc;
+                ccaGame.buildingIsEmpty_brc = false;
+                ccaGame.slots_brc_our = countCarsInBuilding * (isOur_brc ? 1 : 0);
+                ccaGame.slots_brc_enemy = countCarsInBuilding * (!isOur_brc ? 1 : 0);
+                ccaGame.slots_brc_empty = 0;
+                countCars_our += isOur_brc ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_brc ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_brc ? 1 : 0;
+                countX2_our += ccaGame.mayX2_brc && isOur_brc ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_brc && !isOur_brc ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_brb) {
+                countCars_total += ccaGame.slots_brb;
+                countCarsInBuilding = (ccaGame.slots_brb / 2 + 1);
+                ccaGame.buildingIsOur_brb = isOur_brb;
+                ccaGame.buildingIsEnemy_brb = !isOur_brb;
+                ccaGame.buildingIsEmpty_brb = false;
+                ccaGame.slots_brb_our = countCarsInBuilding * (isOur_brb ? 1 : 0);
+                ccaGame.slots_brb_enemy = countCarsInBuilding * (!isOur_brb ? 1 : 0);
+                ccaGame.slots_brb_empty = 0;
+                countCars_our += isOur_brb ? countCarsInBuilding : 0;
+                countCars_enemy += !isOur_brb ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.mayX2_brb ? 1 : 0;
+                countX2_our += ccaGame.mayX2_brb && isOur_brb ? 1 : 0;
+                countX2_enemy += ccaGame.mayX2_brb && !isOur_brb ? 1 : 0;
+            }
+
+            if (ccaGame.isPresent_blt) {
+                ccaGame.isX2_blt = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_blt = isOur_blt ? ccaGame.slots_blt * (ccaGame.isX2_blt ? 2 : 1) : 0;
+                ccaGame.enemy_points_blt = !isOur_blt ? ccaGame.slots_blt * (ccaGame.isX2_blt ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_blt;
+                increaseEnemy += ccaGame.enemy_points_blt;
+            }
+
+            if (ccaGame.isPresent_blc) {
+                ccaGame.isX2_blc = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_blc = isOur_blc ? ccaGame.slots_blc * (ccaGame.isX2_blc ? 2 : 1) : 0;
+                ccaGame.enemy_points_blc = !isOur_blc ? ccaGame.slots_blc * (ccaGame.isX2_blc ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_blc;
+                increaseEnemy += ccaGame.enemy_points_blc;
+            }
+
+            if (ccaGame.isPresent_blb) {
+                ccaGame.isX2_blb = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_blb = isOur_blb ? ccaGame.slots_blb * (ccaGame.isX2_blb ? 2 : 1) : 0;
+                ccaGame.enemy_points_blb = !isOur_blb ? ccaGame.slots_blb * (ccaGame.isX2_blb ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_blb;
+                increaseEnemy += ccaGame.enemy_points_blb;
+            }
+
+            if (ccaGame.isPresent_brt) {
+                ccaGame.isX2_brt = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_brt = isOur_brt ? ccaGame.slots_brt * (ccaGame.isX2_brt ? 2 : 1) : 0;
+                ccaGame.enemy_points_brt = !isOur_brt ? ccaGame.slots_brt * (ccaGame.isX2_brt ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_brt;
+                increaseEnemy += ccaGame.enemy_points_brt;
+            }
+
+            if (ccaGame.isPresent_brc) {
+                ccaGame.isX2_brc = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_brc = isOur_brc ? ccaGame.slots_brc * (ccaGame.isX2_brc ? 2 : 1) : 0;
+                ccaGame.enemy_points_brc = !isOur_brc ? ccaGame.slots_brc * (ccaGame.isX2_brc ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_brc;
+                increaseEnemy += ccaGame.enemy_points_brc;
+            }
+
+            if (ccaGame.isPresent_brb) {
+                ccaGame.isX2_brb = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.our_points_brb = isOur_brb ? ccaGame.slots_brb * (ccaGame.isX2_brb ? 2 : 1) : 0;
+                ccaGame.enemy_points_brb = !isOur_brb ? ccaGame.slots_brb * (ccaGame.isX2_brb ? 2 : 1) : 0;
+                increaseOur += ccaGame.our_points_brb;
+                increaseEnemy += ccaGame.enemy_points_brb;
+            }
+
+            ccaGame.increaseOur = increaseOur;
+            ccaGame.increaseEnemy = increaseEnemy;
+            ccaGame.slotsOur = countCars_our;
+            ccaGame.slotsEnemy = countCars_enemy;
+            ccaGame.slotsTotal = countCars_total;
+            ccaGame.personsOur = (int)Math.ceil (ccaGame.slotsOur / 3.0d);
+            ccaGame.personsEnemy = (int)Math.ceil (ccaGame.slotsEnemy / 3.0d);
+
+            ccaGame.calc(false);
+            ccaGame.calcWin(false);
+
+        }
+
+        @Override
+        public int compareTo(ForecastMatrix o) {
+            Integer a, b, compare;
+            a = this.ccaGame.personsOur;
+            b = o.ccaGame.personsOur;
+            compare = a.compareTo(b);
+            if (compare == 0) {
+                a = this.ccaGame.differentPoints;
+                b = o.ccaGame.differentPoints;
+                compare = a.compareTo(b);
+            }
+            return compare;
+        }
+    }
+
 
     public void calc(boolean isRealtimeScreenshot) {
 
@@ -565,7 +960,7 @@ public class CCAGame extends CityCalcArea {
         }
     }
 
-    public void calcWin() {
+    public void calcWin(boolean doForecast) {
 
         String pattern = "dd MMM HH:mm";
         Context context = GlobalApplication.getAppContext();
@@ -638,6 +1033,7 @@ public class CCAGame extends CityCalcArea {
 
         if  (this.isErrorRecognize) this.status = context.getString(R.string.error_recognizing) + "  " + this.status;
 
+        if (doForecast) this.doForecast();
 
     }
 
@@ -1686,6 +2082,230 @@ public class CCAGame extends CityCalcArea {
 
     public void setForecastText(String forecastText) {
         this.forecastText = forecastText;
+    }
+
+    public boolean isNeedToWin_blt() {
+        return needToWin_blt;
+    }
+
+    public void setNeedToWin_blt(boolean needToWin_blt) {
+        this.needToWin_blt = needToWin_blt;
+    }
+
+    public boolean isNeedToWinWithoutX2_blt() {
+        return needToWinWithoutX2_blt;
+    }
+
+    public void setNeedToWinWithoutX2_blt(boolean needToWinWithoutX2_blt) {
+        this.needToWinWithoutX2_blt = needToWinWithoutX2_blt;
+    }
+
+    public boolean isNeedToEarlyWin_blt() {
+        return needToEarlyWin_blt;
+    }
+
+    public void setNeedToEarlyWin_blt(boolean needToEarlyWin_blt) {
+        this.needToEarlyWin_blt = needToEarlyWin_blt;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blt() {
+        return needToEarlyWinWithoutX2_blt;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blt(boolean needToEarlyWinWithoutX2_blt) {
+        this.needToEarlyWinWithoutX2_blt = needToEarlyWinWithoutX2_blt;
+    }
+
+    public boolean isNeedToWin_blc() {
+        return needToWin_blc;
+    }
+
+    public void setNeedToWin_blc(boolean needToWin_blc) {
+        this.needToWin_blc = needToWin_blc;
+    }
+
+    public boolean isNeedToWinWithoutX2_blc() {
+        return needToWinWithoutX2_blc;
+    }
+
+    public void setNeedToWinWithoutX2_blc(boolean needToWinWithoutX2_blc) {
+        this.needToWinWithoutX2_blc = needToWinWithoutX2_blc;
+    }
+
+    public boolean isNeedToEarlyWin_blc() {
+        return needToEarlyWin_blc;
+    }
+
+    public void setNeedToEarlyWin_blc(boolean needToEarlyWin_blc) {
+        this.needToEarlyWin_blc = needToEarlyWin_blc;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blc() {
+        return needToEarlyWinWithoutX2_blc;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blc(boolean needToEarlyWinWithoutX2_blc) {
+        this.needToEarlyWinWithoutX2_blc = needToEarlyWinWithoutX2_blc;
+    }
+
+    public boolean isNeedToWin_blb() {
+        return needToWin_blb;
+    }
+
+    public void setNeedToWin_blb(boolean needToWin_blb) {
+        this.needToWin_blb = needToWin_blb;
+    }
+
+    public boolean isNeedToWinWithoutX2_blb() {
+        return needToWinWithoutX2_blb;
+    }
+
+    public void setNeedToWinWithoutX2_blb(boolean needToWinWithoutX2_blb) {
+        this.needToWinWithoutX2_blb = needToWinWithoutX2_blb;
+    }
+
+    public boolean isNeedToEarlyWin_blb() {
+        return needToEarlyWin_blb;
+    }
+
+    public void setNeedToEarlyWin_blb(boolean needToEarlyWin_blb) {
+        this.needToEarlyWin_blb = needToEarlyWin_blb;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_blb() {
+        return needToEarlyWinWithoutX2_blb;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_blb(boolean needToEarlyWinWithoutX2_blb) {
+        this.needToEarlyWinWithoutX2_blb = needToEarlyWinWithoutX2_blb;
+    }
+
+    public boolean isNeedToWin_brt() {
+        return needToWin_brt;
+    }
+
+    public void setNeedToWin_brt(boolean needToWin_brt) {
+        this.needToWin_brt = needToWin_brt;
+    }
+
+    public boolean isNeedToWinWithoutX2_brt() {
+        return needToWinWithoutX2_brt;
+    }
+
+    public void setNeedToWinWithoutX2_brt(boolean needToWinWithoutX2_brt) {
+        this.needToWinWithoutX2_brt = needToWinWithoutX2_brt;
+    }
+
+    public boolean isNeedToEarlyWin_brt() {
+        return needToEarlyWin_brt;
+    }
+
+    public void setNeedToEarlyWin_brt(boolean needToEarlyWin_brt) {
+        this.needToEarlyWin_brt = needToEarlyWin_brt;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brt() {
+        return needToEarlyWinWithoutX2_brt;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brt(boolean needToEarlyWinWithoutX2_brt) {
+        this.needToEarlyWinWithoutX2_brt = needToEarlyWinWithoutX2_brt;
+    }
+
+    public boolean isNeedToWin_brc() {
+        return needToWin_brc;
+    }
+
+    public void setNeedToWin_brc(boolean needToWin_brc) {
+        this.needToWin_brc = needToWin_brc;
+    }
+
+    public boolean isNeedToWinWithoutX2_brc() {
+        return needToWinWithoutX2_brc;
+    }
+
+    public void setNeedToWinWithoutX2_brc(boolean needToWinWithoutX2_brc) {
+        this.needToWinWithoutX2_brc = needToWinWithoutX2_brc;
+    }
+
+    public boolean isNeedToEarlyWin_brc() {
+        return needToEarlyWin_brc;
+    }
+
+    public void setNeedToEarlyWin_brc(boolean needToEarlyWin_brc) {
+        this.needToEarlyWin_brc = needToEarlyWin_brc;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brc() {
+        return needToEarlyWinWithoutX2_brc;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brc(boolean needToEarlyWinWithoutX2_brc) {
+        this.needToEarlyWinWithoutX2_brc = needToEarlyWinWithoutX2_brc;
+    }
+
+    public boolean isNeedToWin_brb() {
+        return needToWin_brb;
+    }
+
+    public void setNeedToWin_brb(boolean needToWin_brb) {
+        this.needToWin_brb = needToWin_brb;
+    }
+
+    public boolean isNeedToWinWithoutX2_brb() {
+        return needToWinWithoutX2_brb;
+    }
+
+    public void setNeedToWinWithoutX2_brb(boolean needToWinWithoutX2_brb) {
+        this.needToWinWithoutX2_brb = needToWinWithoutX2_brb;
+    }
+
+    public boolean isNeedToEarlyWin_brb() {
+        return needToEarlyWin_brb;
+    }
+
+    public void setNeedToEarlyWin_brb(boolean needToEarlyWin_brb) {
+        this.needToEarlyWin_brb = needToEarlyWin_brb;
+    }
+
+    public boolean isNeedToEarlyWinWithoutX2_brb() {
+        return needToEarlyWinWithoutX2_brb;
+    }
+
+    public void setNeedToEarlyWinWithoutX2_brb(boolean needToEarlyWinWithoutX2_brb) {
+        this.needToEarlyWinWithoutX2_brb = needToEarlyWinWithoutX2_brb;
+    }
+
+    public boolean isCanWin() {
+        return canWin;
+    }
+
+    public void setCanWin(boolean canWin) {
+        this.canWin = canWin;
+    }
+
+    public boolean isCanWinWithoutX2() {
+        return canWinWithoutX2;
+    }
+
+    public void setCanWinWithoutX2(boolean canWinWithoutX2) {
+        this.canWinWithoutX2 = canWinWithoutX2;
+    }
+
+    public boolean isCanEarlyWin() {
+        return canEarlyWin;
+    }
+
+    public void setCanEarlyWin(boolean canEarlyWin) {
+        this.canEarlyWin = canEarlyWin;
+    }
+
+    public boolean isCanEarlyWinWithoutX2() {
+        return canEarlyWinWithoutX2;
+    }
+
+    public void setCanEarlyWinWithoutX2(boolean canEarlyWinWithoutX2) {
+        this.canEarlyWinWithoutX2 = canEarlyWinWithoutX2;
     }
 
     //    public CCABuilding[] getBuildings() {

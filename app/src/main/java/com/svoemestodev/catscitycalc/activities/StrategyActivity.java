@@ -342,7 +342,7 @@ public class StrategyActivity extends AppCompatActivity {
                 ccaGame.setPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
                 ccaGame.setDateScreenshot(dateScreenshotMain);
 
-                ccaGame.calcWin();
+                ccaGame.calcWin(true);
 
                 ccaGame.setPointsOurInScreenshot(ccaGame.getPointsOur());
                 ccaGame.setPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
@@ -500,7 +500,7 @@ public class StrategyActivity extends AppCompatActivity {
 //                ccaGame.calcWin();
                 ccaGame.setIncreaseOur(increaseOur);
                 ccaGame.setIncreaseEnemy(increaseEnemy);
-                ccaGame.calcWin();
+                ccaGame.calcWin(true);
             }
 
         }
@@ -530,7 +530,7 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame != null) {
 
-            ccaGame.calcWin();
+            ccaGame.calcWin(true);
 
             textStartGameTime = getString(R.string.start_game_at) + ": " + Utils.convertDateToString(ccaGame.getDateStartGame(), pattern);    // дата/время начала игры
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры

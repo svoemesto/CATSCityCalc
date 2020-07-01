@@ -434,7 +434,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (ccaGame != null && ccaGame.getDateStartGame() != null) {
 
-            ccaGame.calcWin();
+            ccaGame.calcWin(true);
 
             Date dateScreenshot = ccaGame.getDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
@@ -3273,12 +3273,12 @@ public class GameActivity extends AppCompatActivity {
                     if (mainCCAGame != null) {
 
                         if (tlff == null) {
-                            mainCCAGame.calcWin();
+                            mainCCAGame.calcWin(true);
                             loadDataToViews(false);
                             setDataToCarsViews();
                         } else {
                             if (!tlff.getStatus().equals(AsyncTask.Status.RUNNING)) {
-                                mainCCAGame.calcWin();
+                                mainCCAGame.calcWin(true);
                                 loadDataToViews(false);
                                 setDataToCarsViews();
                             }
