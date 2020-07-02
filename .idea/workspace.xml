@@ -30,14 +30,16 @@
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/StrategyActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_strategy.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[192.168.124.104:5555]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[cf47d9ac]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -72,8 +74,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ApkExportedModule" value="C.A.T.S._City_Calculator.app" />
     <property name="BundleExportedModule" value="C.A.T.S._City_Calculator.app" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.124.104:5555" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-02T07:11:39.288Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="cf47d9ac" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-02T09:26:39.768Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -243,38 +245,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1593638415896" />
-    <state width="3397" height="328" key="GridCell.Tab.0.bottom" timestamp="1593673838026">
+    <state width="3397" height="305" key="GridCell.Tab.0.bottom" timestamp="1593682011461">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.0.center" timestamp="1593673838026">
+    <state width="3397" height="305" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593682011461" />
+    <state width="3397" height="305" key="GridCell.Tab.0.center" timestamp="1593682011461">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.0.left" timestamp="1593673838026">
+    <state width="3397" height="305" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593682011461" />
+    <state width="3397" height="305" key="GridCell.Tab.0.left" timestamp="1593682011461">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.0.right" timestamp="1593673838026">
+    <state width="3397" height="305" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593682011461" />
+    <state width="3397" height="305" key="GridCell.Tab.0.right" timestamp="1593682011461">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.1.bottom" timestamp="1593673838026">
+    <state width="3397" height="305" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593682011461" />
+    <state width="3397" height="328" key="GridCell.Tab.1.bottom" timestamp="1593678561243">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.1.center" timestamp="1593673838026">
+    <state width="3397" height="328" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561243" />
+    <state width="3397" height="328" key="GridCell.Tab.1.center" timestamp="1593678561242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.1.left" timestamp="1593673838026">
+    <state width="3397" height="328" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561242" />
+    <state width="3397" height="328" key="GridCell.Tab.1.left" timestamp="1593678561242">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
-    <state width="3397" height="328" key="GridCell.Tab.1.right" timestamp="1593673838026">
+    <state width="3397" height="328" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561242" />
+    <state width="3397" height="328" key="GridCell.Tab.1.right" timestamp="1593678561243">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593673838026" />
+    <state width="3397" height="328" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561243" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -322,11 +324,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
           <line>620</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
-          <line>660</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -657,7 +657,9 @@ public class CCAGame extends CityCalcArea {
             int increaseOur = 0;
             int increaseEnemy = 0;
             
-            
+            int pointsOur = ccaGame.getPointsOur();
+            int pointsEnemy = ccaGame.getPointsEnemy();
+
             if (ccaGame.isPresent_blt) {
                 countCars_total += ccaGame.slots_blt;
                 countCarsInBuilding = (ccaGame.slots_blt / 2 + 1);
@@ -807,10 +809,19 @@ public class CCAGame extends CityCalcArea {
             ccaGame.slotsOur = countCars_our;
             ccaGame.slotsEnemy = countCars_enemy;
             ccaGame.slotsTotal = countCars_total;
+
+            ccaGame.countX2 = countX2_total;
+            ccaGame.countOurX2 = countX2_our;
+            ccaGame.countEnemyX2 = countX2_enemy;
+
             ccaGame.personsOur = (int)Math.ceil (ccaGame.slotsOur / 3.0d);
             ccaGame.personsEnemy = (int)Math.ceil (ccaGame.slotsEnemy / 3.0d);
 
-            ccaGame.calc(false);
+            ccaGame.pointsOurInScreenshot = pointsOur;
+            ccaGame.pointsEnemyInScreenshot = pointsEnemy;
+            ccaGame.dateScreenshot = Calendar.getInstance().getTime();
+
+//            ccaGame.calc(false);
             ccaGame.calcWin(false);
 
         }

@@ -161,8 +161,11 @@ public class StrategyActivity extends AppCompatActivity {
     ImageView sa_iv_car_enemy;
     TextView sa_tv_car_enemy;
 
-    Button sa_bt_calc_timed_win;
-    Button sa_bt_calc_early_win;
+    ImageView sa_iv_calc_timed_win;
+    ImageView sa_iv_calc_timed_win_without_x2;
+    ImageView sa_iv_calc_early_win;
+    ImageView sa_iv_calc_early_win_without_x2;
+
 
     int maxPersons;
     int personsOur;
@@ -205,6 +208,15 @@ public class StrategyActivity extends AppCompatActivity {
 
         initializeViews();
 //        context = sa_tv_start_game_time.getContext();
+
+        mainCityCalc = GameActivity.mainCityCalc.getClone();
+        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+        sa_iv_calc_timed_win.setImageDrawable(getDrawable(ccaGame.isCanWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+        sa_iv_calc_timed_win_without_x2.setImageDrawable(getDrawable(ccaGame.isCanWinWithoutX2() ? R.drawable.ic_can_win_without_x2_true : R.drawable.ic_can_win_without_x2_false));
+        sa_iv_calc_early_win.setImageDrawable(getDrawable(ccaGame.isCanEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+        sa_iv_calc_early_win_without_x2.setImageDrawable(getDrawable(ccaGame.isCanEarlyWinWithoutX2() ? R.drawable.ic_can_early_win_without_x2_true : R.drawable.ic_can_early_win_without_x2_false));
+
         sa_sb_person_our.setEnabled(false);
         sa_sb_person_enemy.setEnabled(false);
 
@@ -225,9 +237,10 @@ public class StrategyActivity extends AppCompatActivity {
         sa_sb_brb.setOnSeekBarChangeListener(brbSeekBarChangeListener);
         sa_sb_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
         sa_sb_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
+
         
-        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.mainUserNIC, GameActivity.mainUserUID, GameActivity.mainTeamID), false);
-        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+//        mainCityCalc = new CityCalc(new CityCalc(GameActivity.fileGameScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, GameActivity.mainUserNIC, GameActivity.mainUserUID, GameActivity.mainTeamID), false);
+
 
         if (ccaGame != null) {
             dateScreenshotMain = ccaGame.getDateScreenshot();
@@ -313,7 +326,8 @@ public class StrategyActivity extends AppCompatActivity {
         sa_tv_car_enemy.setText(String.valueOf(personsEnemy*3));
 
         needUpdateSlots = true;
-        
+
+
         setCarsInBuildings();
 
 
@@ -325,182 +339,354 @@ public class StrategyActivity extends AppCompatActivity {
 
             CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
 
-            slotsOur = 0;
-            slotsEnemy = 0;
-            slotsEmpty = 0;
-            increaseOur = 0;
-            increaseEnemy = 0;
-            countMayX2 = 0;
-            countMayX2our = 0;
-            countMayX2enemy = 0;
-            countMayX2empty = 0;
+//            slotsOur = 0;
+//            slotsEnemy = 0;
+//            slotsEmpty = 0;
+//            increaseOur = 0;
+//            increaseEnemy = 0;
+//            countMayX2 = 0;
+//            countMayX2our = 0;
+//            countMayX2enemy = 0;
+//            countMayX2empty = 0;
 
-            if (ccaGame != null) {
-                ccaGame.setIncreaseOur(increaseOurMain);
-                ccaGame.setPointsOurInScreenshot(pointsInScreenshotOurMain);
-                ccaGame.setIncreaseEnemy(increaseEnemyMain);
-                ccaGame.setPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
-                ccaGame.setDateScreenshot(dateScreenshotMain);
+            int countCars_our = 0;
+            int countCars_enemy = 0;
+            int countCars_total = 0;
+            int countCarsInBuilding = 0;
 
-                ccaGame.calcWin(true);
+            int countX2_our = 0;
+            int countX2_enemy = 0;
+            int countX2_total = 0;
+            int increaseOur = 0;
+            int increaseEnemy = 0;
 
-                ccaGame.setPointsOurInScreenshot(ccaGame.getPointsOur());
-                ccaGame.setPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
 
-            }
+
+//            if (ccaGame != null) {
+//                ccaGame.setIncreaseOur(increaseOurMain);
+//                ccaGame.setPointsOurInScreenshot(pointsInScreenshotOurMain);
+//                ccaGame.setIncreaseEnemy(increaseEnemyMain);
+//                ccaGame.setPointsEnemyInScreenshot(pointsInScreenshotEnemyMain);
+//                ccaGame.setDateScreenshot(dateScreenshotMain);
+//
+//                ccaGame.calcWin(true);
+//
+//                ccaGame.setPointsOurInScreenshot(ccaGame.getPointsOur());
+//                ccaGame.setPointsEnemyInScreenshot(ccaGame.getPointsEnemy());
+//
+//            }
+
+            int pointsOur = ccaGame.getPointsOur();
+            int pointsEnemy = ccaGame.getPointsEnemy();
 
             if (ccaGame.isPresent_blt()) {
+//                ccaGame.setBuildingIsOur_blt(sa_sb_blt.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_blt(sa_sb_blt.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_blt(sa_sb_blt.getProgress() == 2);
+//                ccaGame.setSlots_blt_our(ccaGame.isBuildingIsOur_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+//                ccaGame.setSlots_blt_empty(ccaGame.isBuildingIsEmpty_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+//                ccaGame.setSlots_blt_enemy(ccaGame.isBuildingIsEnemy_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_blt_our();
+//                slotsEmpty += ccaGame.getSlots_blt_empty();
+//                slotsEnemy += ccaGame.getSlots_blt_enemy();
+//                countMayX2 += ccaGame.isMayX2_blt() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEmpty_blt() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEnemy_blt() ? 1 : 0;
+
+                countCars_total += ccaGame.getSlots_blt();
+                countCarsInBuilding = (ccaGame.getSlots_blt() / 2 + 1);
                 ccaGame.setBuildingIsOur_blt(sa_sb_blt.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_blt(sa_sb_blt.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_blt(sa_sb_blt.getProgress() == 2);
-                ccaGame.setSlots_blt_our(ccaGame.isBuildingIsOur_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
-                ccaGame.setSlots_blt_empty(ccaGame.isBuildingIsEmpty_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
-                ccaGame.setSlots_blt_enemy(ccaGame.isBuildingIsEnemy_blt() ? (int)Math.ceil(ccaGame.getSlots_blt() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_blt_our();
-                slotsEmpty += ccaGame.getSlots_blt_empty();
-                slotsEnemy += ccaGame.getSlots_blt_enemy();
-                countMayX2 += ccaGame.isMayX2_blt() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEmpty_blt() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEnemy_blt() ? 1 : 0;
+                ccaGame.setSlots_blt_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blt() ? 1 : 0));
+                ccaGame.setSlots_blt_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blt() ? 1 : 0));
+                ccaGame.setSlots_blt_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blt() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_blt() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_blt() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_blt() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEnemy_blt() ? 1 : 0;
+                
+                
             }
 
             if (ccaGame.isPresent_blc()) {
+//                ccaGame.setBuildingIsOur_blc(sa_sb_blc.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_blc(sa_sb_blc.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_blc(sa_sb_blc.getProgress() == 2);
+//                ccaGame.setSlots_blc_our(ccaGame.isBuildingIsOur_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+//                ccaGame.setSlots_blc_empty(ccaGame.isBuildingIsEmpty_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+//                ccaGame.setSlots_blc_enemy(ccaGame.isBuildingIsEnemy_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_blc_our();
+//                slotsEmpty += ccaGame.getSlots_blc_empty();
+//                slotsEnemy += ccaGame.getSlots_blc_enemy();
+//                countMayX2 += ccaGame.isMayX2_blc() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEmpty_blc() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEnemy_blc() ? 1 : 0;
+
+                countCars_total += ccaGame.getSlots_blc();
+                countCarsInBuilding = (ccaGame.getSlots_blc() / 2 + 1);
                 ccaGame.setBuildingIsOur_blc(sa_sb_blc.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_blc(sa_sb_blc.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_blc(sa_sb_blc.getProgress() == 2);
-                ccaGame.setSlots_blc_our(ccaGame.isBuildingIsOur_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
-                ccaGame.setSlots_blc_empty(ccaGame.isBuildingIsEmpty_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
-                ccaGame.setSlots_blc_enemy(ccaGame.isBuildingIsEnemy_blc() ? (int)Math.ceil(ccaGame.getSlots_blc() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_blc_our();
-                slotsEmpty += ccaGame.getSlots_blc_empty();
-                slotsEnemy += ccaGame.getSlots_blc_enemy();
-                countMayX2 += ccaGame.isMayX2_blc() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEmpty_blc() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEnemy_blc() ? 1 : 0;
+                ccaGame.setSlots_blc_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blc() ? 1 : 0));
+                ccaGame.setSlots_blc_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blc() ? 1 : 0));
+                ccaGame.setSlots_blc_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blc() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_blc() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_blc() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_blc() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEnemy_blc() ? 1 : 0;
+                
             }
 
             if (ccaGame.isPresent_blb()) {
+//                ccaGame.setBuildingIsOur_blb(sa_sb_blb.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_blb(sa_sb_blb.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_blb(sa_sb_blb.getProgress() == 2);
+//                ccaGame.setSlots_blb_our(ccaGame.isBuildingIsOur_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+//                ccaGame.setSlots_blb_empty(ccaGame.isBuildingIsEmpty_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+//                ccaGame.setSlots_blb_enemy(ccaGame.isBuildingIsEnemy_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_blb_our();
+//                slotsEmpty += ccaGame.getSlots_blb_empty();
+//                slotsEnemy += ccaGame.getSlots_blb_enemy();
+//                countMayX2 += ccaGame.isMayX2_blb() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEmpty_blb() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEnemy_blb() ? 1 : 0;
+
+                countCars_total += ccaGame.getSlots_blb();
+                countCarsInBuilding = (ccaGame.getSlots_blb() / 2 + 1);
                 ccaGame.setBuildingIsOur_blb(sa_sb_blb.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_blb(sa_sb_blb.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_blb(sa_sb_blb.getProgress() == 2);
-                ccaGame.setSlots_blb_our(ccaGame.isBuildingIsOur_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
-                ccaGame.setSlots_blb_empty(ccaGame.isBuildingIsEmpty_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
-                ccaGame.setSlots_blb_enemy(ccaGame.isBuildingIsEnemy_blb() ? (int)Math.ceil(ccaGame.getSlots_blb() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_blb_our();
-                slotsEmpty += ccaGame.getSlots_blb_empty();
-                slotsEnemy += ccaGame.getSlots_blb_enemy();
-                countMayX2 += ccaGame.isMayX2_blb() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEmpty_blb() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEnemy_blb() ? 1 : 0;
+                ccaGame.setSlots_blb_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blb() ? 1 : 0));
+                ccaGame.setSlots_blb_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blb() ? 1 : 0));
+                ccaGame.setSlots_blb_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blb() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_blb() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_blb() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_blb() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEnemy_blb() ? 1 : 0;
+                
             }
 
             if (ccaGame.isPresent_brt()) {
+//                ccaGame.setBuildingIsOur_brt(sa_sb_brt.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_brt(sa_sb_brt.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_brt(sa_sb_brt.getProgress() == 2);
+//                ccaGame.setSlots_brt_our(ccaGame.isBuildingIsOur_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+//                ccaGame.setSlots_brt_empty(ccaGame.isBuildingIsEmpty_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+//                ccaGame.setSlots_brt_enemy(ccaGame.isBuildingIsEnemy_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_brt_our();
+//                slotsEmpty += ccaGame.getSlots_brt_empty();
+//                slotsEnemy += ccaGame.getSlots_brt_enemy();
+//                countMayX2 += ccaGame.isMayX2_brt() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEmpty_brt() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEnemy_brt() ? 1 : 0;
+//
+                countCars_total += ccaGame.getSlots_brt();
+                countCarsInBuilding = (ccaGame.getSlots_brt() / 2 + 1);
                 ccaGame.setBuildingIsOur_brt(sa_sb_brt.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_brt(sa_sb_brt.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_brt(sa_sb_brt.getProgress() == 2);
-                ccaGame.setSlots_brt_our(ccaGame.isBuildingIsOur_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
-                ccaGame.setSlots_brt_empty(ccaGame.isBuildingIsEmpty_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
-                ccaGame.setSlots_brt_enemy(ccaGame.isBuildingIsEnemy_brt() ? (int)Math.ceil(ccaGame.getSlots_brt() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_brt_our();
-                slotsEmpty += ccaGame.getSlots_brt_empty();
-                slotsEnemy += ccaGame.getSlots_brt_enemy();
-                countMayX2 += ccaGame.isMayX2_brt() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEmpty_brt() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEnemy_brt() ? 1 : 0;
+                ccaGame.setSlots_brt_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brt() ? 1 : 0));
+                ccaGame.setSlots_brt_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brt() ? 1 : 0));
+                ccaGame.setSlots_brt_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brt() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_brt() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_brt() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_brt() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEnemy_brt() ? 1 : 0;
+                
             }
 
             if (ccaGame.isPresent_brc()) {
+//                ccaGame.setBuildingIsOur_brc(sa_sb_brc.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_brc(sa_sb_brc.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_brc(sa_sb_brc.getProgress() == 2);
+//                ccaGame.setSlots_brc_our(ccaGame.isBuildingIsOur_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+//                ccaGame.setSlots_brc_empty(ccaGame.isBuildingIsEmpty_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+//                ccaGame.setSlots_brc_enemy(ccaGame.isBuildingIsEnemy_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_brc_our();
+//                slotsEmpty += ccaGame.getSlots_brc_empty();
+//                slotsEnemy += ccaGame.getSlots_brc_enemy();
+//                countMayX2 += ccaGame.isMayX2_brc() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEmpty_brc() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEnemy_brc() ? 1 : 0;
+
+                countCars_total += ccaGame.getSlots_brc();
+                countCarsInBuilding = (ccaGame.getSlots_brc() / 2 + 1);
                 ccaGame.setBuildingIsOur_brc(sa_sb_brc.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_brc(sa_sb_brc.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_brc(sa_sb_brc.getProgress() == 2);
-                ccaGame.setSlots_brc_our(ccaGame.isBuildingIsOur_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
-                ccaGame.setSlots_brc_empty(ccaGame.isBuildingIsEmpty_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
-                ccaGame.setSlots_brc_enemy(ccaGame.isBuildingIsEnemy_brc() ? (int)Math.ceil(ccaGame.getSlots_brc() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_brc_our();
-                slotsEmpty += ccaGame.getSlots_brc_empty();
-                slotsEnemy += ccaGame.getSlots_brc_enemy();
-                countMayX2 += ccaGame.isMayX2_brc() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEmpty_brc() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEnemy_brc() ? 1 : 0;
+                ccaGame.setSlots_brc_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brc() ? 1 : 0));
+                ccaGame.setSlots_brc_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brc() ? 1 : 0));
+                ccaGame.setSlots_brc_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brc() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_brc() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_brc() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_brc() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEnemy_brc() ? 1 : 0;
+                
             }
 
             if (ccaGame.isPresent_brb()) {
+//                ccaGame.setBuildingIsOur_brb(sa_sb_brb.getProgress() == 0);
+//                ccaGame.setBuildingIsEmpty_brb(sa_sb_brb.getProgress() == 1);
+//                ccaGame.setBuildingIsEnemy_brb(sa_sb_brb.getProgress() == 2);
+//                ccaGame.setSlots_brb_our(ccaGame.isBuildingIsOur_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+//                ccaGame.setSlots_brb_empty(ccaGame.isBuildingIsEmpty_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+//                ccaGame.setSlots_brb_enemy(ccaGame.isBuildingIsEnemy_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
+//                slotsOur += ccaGame.getSlots_brb_our();
+//                slotsEmpty += ccaGame.getSlots_brb_empty();
+//                slotsEnemy += ccaGame.getSlots_brb_enemy();
+//                countMayX2 += ccaGame.isMayX2_brb() ? 1 : 0;
+//                countMayX2our += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb() ? 1 : 0;
+//                countMayX2empty += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEmpty_brb() ? 1 : 0;
+//                countMayX2enemy += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEnemy_brb() ? 1 : 0;
+
+                countCars_total += ccaGame.getSlots_brb();
+                countCarsInBuilding = (ccaGame.getSlots_brb() / 2 + 1);
                 ccaGame.setBuildingIsOur_brb(sa_sb_brb.getProgress() == 0);
                 ccaGame.setBuildingIsEmpty_brb(sa_sb_brb.getProgress() == 1);
                 ccaGame.setBuildingIsEnemy_brb(sa_sb_brb.getProgress() == 2);
-                ccaGame.setSlots_brb_our(ccaGame.isBuildingIsOur_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
-                ccaGame.setSlots_brb_empty(ccaGame.isBuildingIsEmpty_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
-                ccaGame.setSlots_brb_enemy(ccaGame.isBuildingIsEnemy_brb() ? (int)Math.ceil(ccaGame.getSlots_brb() / 2.0d) : 0);
-                slotsOur += ccaGame.getSlots_brb_our();
-                slotsEmpty += ccaGame.getSlots_brb_empty();
-                slotsEnemy += ccaGame.getSlots_brb_enemy();
-                countMayX2 += ccaGame.isMayX2_brb() ? 1 : 0;
-                countMayX2our += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb() ? 1 : 0;
-                countMayX2empty += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEmpty_brb() ? 1 : 0;
-                countMayX2enemy += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEnemy_brb() ? 1 : 0;
+                ccaGame.setSlots_brb_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brb() ? 1 : 0));
+                ccaGame.setSlots_brb_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brb() ? 1 : 0));
+                ccaGame.setSlots_brb_empty(countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brb() ? 1 : 0));
+                countCars_our += ccaGame.isBuildingIsOur_brb() ? countCarsInBuilding : 0;
+                countCars_enemy += ccaGame.isBuildingIsEnemy_brb() ? countCarsInBuilding : 0;
+                countX2_total += ccaGame.isMayX2_brb() ? 1 : 0;
+                countX2_our += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb() ? 1 : 0;
+                countX2_enemy += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEnemy_brb() ? 1 : 0;
+                
             }
             
 
             if (ccaGame.isPresent_blt()) {
-                ccaGame.setOur_points_blt(!ccaGame.isBuildingIsOur_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_blt(!ccaGame.isBuildingIsEnemy_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_blt(!ccaGame.isBuildingIsOur_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_blt(!ccaGame.isBuildingIsEnemy_blt() ? 0 : ccaGame.getSlots_blt() * (!ccaGame.isMayX2_blt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_blt();
+//                increaseEnemy += ccaGame.getEnemy_points_blt();
+//                ccaGame.setX2_blt(ccaGame.isMayX2_blt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_blt(ccaGame.isMayX2_blt() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_blt(ccaGame.isBuildingIsOur_blt() ? ccaGame.getSlots_blt() * (ccaGame.isX2_blt() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_blt(ccaGame.isBuildingIsEnemy_blt() ? ccaGame.getSlots_blt() * (ccaGame.isX2_blt() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_blt();
                 increaseEnemy += ccaGame.getEnemy_points_blt();
-                ccaGame.setX2_blt(ccaGame.isMayX2_blt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
 
 
             if (ccaGame.isPresent_blc()) {
-                ccaGame.setOur_points_blc(!ccaGame.isBuildingIsOur_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_blc(!ccaGame.isBuildingIsEnemy_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_blc(!ccaGame.isBuildingIsOur_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_blc(!ccaGame.isBuildingIsEnemy_blc() ? 0 : ccaGame.getSlots_blc() * (!ccaGame.isMayX2_blc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_blc();
+//                increaseEnemy += ccaGame.getEnemy_points_blc();
+//                ccaGame.setX2_blc(ccaGame.isMayX2_blc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_blc(ccaGame.isMayX2_blc() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_blc(ccaGame.isBuildingIsOur_blc() ? ccaGame.getSlots_blc() * (ccaGame.isX2_blc() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_blc(ccaGame.isBuildingIsEnemy_blc() ? ccaGame.getSlots_blc() * (ccaGame.isX2_blc() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_blc();
                 increaseEnemy += ccaGame.getEnemy_points_blc();
-                ccaGame.setX2_blc(ccaGame.isMayX2_blc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
 
             if (ccaGame.isPresent_blb()) {
-                ccaGame.setOur_points_blb(!ccaGame.isBuildingIsOur_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_blb(!ccaGame.isBuildingIsEnemy_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_blb(!ccaGame.isBuildingIsOur_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_blb(!ccaGame.isBuildingIsEnemy_blb() ? 0 : ccaGame.getSlots_blb() * (!ccaGame.isMayX2_blb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_blb();
+//                increaseEnemy += ccaGame.getEnemy_points_blb();
+//                ccaGame.setX2_blb(ccaGame.isMayX2_blb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_blb(ccaGame.isMayX2_blb() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_blb(ccaGame.isBuildingIsOur_blb() ? ccaGame.getSlots_blb() * (ccaGame.isX2_blb() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_blb(ccaGame.isBuildingIsEnemy_blb() ? ccaGame.getSlots_blb() * (ccaGame.isX2_blb() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_blb();
                 increaseEnemy += ccaGame.getEnemy_points_blb();
-                ccaGame.setX2_blb(ccaGame.isMayX2_blb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
 
             if (ccaGame.isPresent_brt()) {
-                ccaGame.setOur_points_brt(!ccaGame.isBuildingIsOur_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_brt(!ccaGame.isBuildingIsEnemy_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_brt(!ccaGame.isBuildingIsOur_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_brt(!ccaGame.isBuildingIsEnemy_brt() ? 0 : ccaGame.getSlots_brt() * (!ccaGame.isMayX2_brt() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_brt();
+//                increaseEnemy += ccaGame.getEnemy_points_brt();
+//                ccaGame.setX2_brt(ccaGame.isMayX2_brt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_brt(ccaGame.isMayX2_brt() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_brt(ccaGame.isBuildingIsOur_brt() ? ccaGame.getSlots_brt() * (ccaGame.isX2_brt() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_brt(ccaGame.isBuildingIsEnemy_brt() ? ccaGame.getSlots_brt() * (ccaGame.isX2_brt() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_brt();
                 increaseEnemy += ccaGame.getEnemy_points_brt();
-                ccaGame.setX2_brt(ccaGame.isMayX2_brt() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
 
             if (ccaGame.isPresent_brc()) {
-                ccaGame.setOur_points_brc(!ccaGame.isBuildingIsOur_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_brc(!ccaGame.isBuildingIsEnemy_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_brc(!ccaGame.isBuildingIsOur_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_brc(!ccaGame.isBuildingIsEnemy_brc() ? 0 : ccaGame.getSlots_brc() * (!ccaGame.isMayX2_brc() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_brc();
+//                increaseEnemy += ccaGame.getEnemy_points_brc();
+//                ccaGame.setX2_brc(ccaGame.isMayX2_brc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_brc(ccaGame.isMayX2_brc() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_brc(ccaGame.isBuildingIsOur_brc() ? ccaGame.getSlots_brc() * (ccaGame.isX2_brc() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_brc(ccaGame.isBuildingIsEnemy_brc() ? ccaGame.getSlots_brc() * (ccaGame.isX2_brc() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_brc();
                 increaseEnemy += ccaGame.getEnemy_points_brc();
-                ccaGame.setX2_brc(ccaGame.isMayX2_brc() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
 
             if (ccaGame.isPresent_brb()) {
-                ccaGame.setOur_points_brb(!ccaGame.isBuildingIsOur_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
-                ccaGame.setEnemy_points_brb(!ccaGame.isBuildingIsEnemy_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                ccaGame.setOur_points_brb(!ccaGame.isBuildingIsOur_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2our ? 2 : 1));
+//                ccaGame.setEnemy_points_brb(!ccaGame.isBuildingIsEnemy_brb() ? 0 : ccaGame.getSlots_brb() * (!ccaGame.isMayX2_brb() ? 1 : countMayX2 == countMayX2enemy ? 2 : 1));
+//                increaseOur += ccaGame.getOur_points_brb();
+//                increaseEnemy += ccaGame.getEnemy_points_brb();
+//                ccaGame.setX2_brb(ccaGame.isMayX2_brb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+
+                ccaGame.setX2_brb(ccaGame.isMayX2_brb() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                ccaGame.setOur_points_brb(ccaGame.isBuildingIsOur_brb() ? ccaGame.getSlots_brb() * (ccaGame.isX2_brb() ? 2 : 1) : 0);
+                ccaGame.setEnemy_points_brb(ccaGame.isBuildingIsEnemy_brb() ? ccaGame.getSlots_brb() * (ccaGame.isX2_brb() ? 2 : 1) : 0);
                 increaseOur += ccaGame.getOur_points_brb();
                 increaseEnemy += ccaGame.getEnemy_points_brb();
-                ccaGame.setX2_brb(ccaGame.isMayX2_brb() && (countMayX2 == countMayX2our || countMayX2 == countMayX2enemy));
+                
             }
             
             if (ccaGame != null) {
-                ccaGame.setDateScreenshot(Calendar.getInstance().getTime());
-//                ccaGame.calcWin();
+//                ccaGame.setDateScreenshot(Calendar.getInstance().getTime());
+////                ccaGame.calcWin();
+//                ccaGame.setIncreaseOur(increaseOur);
+//                ccaGame.setIncreaseEnemy(increaseEnemy);
+//                ccaGame.calcWin(true);
+
+
                 ccaGame.setIncreaseOur(increaseOur);
                 ccaGame.setIncreaseEnemy(increaseEnemy);
-                ccaGame.calcWin(true);
+                ccaGame.setSlotsOur(countCars_our);
+                ccaGame.setSlotsEnemy(countCars_enemy);
+                ccaGame.setSlotsTotal(countCars_total);
+
+                ccaGame.setCountX2(countX2_total);
+                ccaGame.setCountOurX2(countX2_our);
+                ccaGame.setCountEnemyX2(countX2_enemy);
+
+                ccaGame.setPersonsOur((int)Math.ceil (ccaGame.getSlotsOur() / 3.0d));
+                ccaGame.setPersonsEnemy((int)Math.ceil (ccaGame.getSlotsEnemy() / 3.0d));
+
+                ccaGame.setPointsOurInScreenshot(pointsOur);
+                ccaGame.setPointsEnemyInScreenshot(pointsEnemy);
+
+                ccaGame.setDateScreenshot(Calendar.getInstance().getTime());
+
+                ccaGame.calcWin(false);
+
+
             }
 
         }
@@ -996,8 +1182,11 @@ public class StrategyActivity extends AppCompatActivity {
         sa_iv_car_enemy = findViewById(R.id.sa_iv_car_enemy);
         sa_tv_car_enemy = findViewById(R.id.sa_tv_car_enemy);
 
-        sa_bt_calc_timed_win = findViewById(R.id.sa_bt_calc_timed_win);
-        sa_bt_calc_early_win = findViewById(R.id.sa_bt_calc_early_win);
+        sa_iv_calc_timed_win = findViewById(R.id.sa_iv_calc_timed_win);
+        sa_iv_calc_timed_win_without_x2 = findViewById(R.id.sa_iv_calc_timed_win_without_x2);
+        sa_iv_calc_early_win = findViewById(R.id.sa_iv_calc_early_win);
+        sa_iv_calc_early_win_without_x2 = findViewById(R.id.sa_iv_calc_early_win_without_x2);
+
 
         // Рекламный блок
         sa_ad_banner = findViewById(R.id.sa_ad_banner);
@@ -1222,118 +1411,221 @@ public class StrategyActivity extends AppCompatActivity {
 
     public void calcTimedWin(View view) {
 
-        Object[] matrixArray = getMaxtrixProgressArray();
-        Arrays.sort(matrixArray);
-        MatrixProgress matrix = null;
-        boolean isFound = false;
-        int index=0;
-        for (int i = 0; i < matrixArray.length; i++) {
-            matrix = (MatrixProgress) matrixArray[i];
-            if (matrix.willOurWin && !matrix.willEarlyWin) {
-                index = i;
-                isFound = true;
-                break;
-            }
+//        Object[] matrixArray = getMaxtrixProgressArray();
+//        Arrays.sort(matrixArray);
+//        MatrixProgress matrix = null;
+//        boolean isFound = false;
+//        int index=0;
+//        for (int i = 0; i < matrixArray.length; i++) {
+//            matrix = (MatrixProgress) matrixArray[i];
+//            if (matrix.willOurWin && !matrix.willEarlyWin) {
+//                index = i;
+//                isFound = true;
+//                break;
+//            }
+//        }
+//        if (isFound) {
+//            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+//        } else {
+//            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+//            View viewToast = toast.getView();
+//            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+//            TextView textView = viewToast.findViewById(android.R.id.message);
+//            textView.setTypeface(null, Typeface.BOLD);
+//            textView.setTextColor(Color.WHITE);
+//            toast.show();
+//        }
+
+        CCAGame ccaGame = GameActivity.mainCCAGame;
+
+        if (ccaGame.isCanWin()) {
+
+            int blt_progress = ccaGame.isNeedToWin_blt() ? 0 : 2;
+            int blc_progress = ccaGame.isNeedToWin_blc() ? 0 : 2;
+            int blb_progress = ccaGame.isNeedToWin_blb() ? 0 : 2;
+            int brt_progress = ccaGame.isNeedToWin_brt() ? 0 : 2;
+            int brc_progress = ccaGame.isNeedToWin_brc() ? 0 : 2;
+            int brb_progress = ccaGame.isNeedToWin_brb() ? 0 : 2;
+
+            needUpdateSlots = false;
+            sa_sb_blt.setProgress(blt_progress);
+            sa_sb_blc.setProgress(blc_progress);
+            sa_sb_blb.setProgress(blb_progress);
+            sa_sb_brt.setProgress(brt_progress);
+            sa_sb_brc.setProgress(brc_progress);
+            sa_sb_brb.setProgress(brb_progress);
+            needUpdateSlots = true;
+
+            setCarsInBuildings();
+
         }
-        if (isFound) {
-            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
-        } else {
-            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
-            View viewToast = toast.getView();
-            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-            TextView textView = viewToast.findViewById(android.R.id.message);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setTextColor(Color.WHITE);
-            toast.show();
-        }
+
+
     }
 
     public void calcTimedWinWithoutx2(View view) {
 
-        Object[] matrixArray = getMaxtrixProgressArray();
-        Arrays.sort(matrixArray);
-        MatrixProgress matrix = null;
-        boolean isFound = false;
-        int index=0;
-        for (int i = 0; i < matrixArray.length; i++) {
-            matrix = (MatrixProgress) matrixArray[i];
-//            if (matrix.blt_progress == 2 && matrix.blc_progress == 0 && matrix.blb_progress == 0 && matrix.brt_progress == 0 && matrix.brc_progress == 0 && matrix.brb_progress == 2) {
+//        Object[] matrixArray = getMaxtrixProgressArray();
+//        Arrays.sort(matrixArray);
+//        MatrixProgress matrix = null;
+//        boolean isFound = false;
+//        int index=0;
+//        for (int i = 0; i < matrixArray.length; i++) {
+//            matrix = (MatrixProgress) matrixArray[i];
+////            if (matrix.blt_progress == 2 && matrix.blc_progress == 0 && matrix.blb_progress == 0 && matrix.brt_progress == 0 && matrix.brc_progress == 0 && matrix.brb_progress == 2) {
+////                index = i;
+////                isFound = true;
+////            }
+//            if (matrix.willOurWin && !matrix.willEarlyWin && matrix.countOurX2 == 0) {
 //                index = i;
 //                isFound = true;
+//                break;
 //            }
-            if (matrix.willOurWin && !matrix.willEarlyWin && matrix.countOurX2 == 0) {
-                index = i;
-                isFound = true;
-                break;
-            }
+//        }
+//        if (isFound) {
+//            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+//        } else {
+//            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+//            View viewToast = toast.getView();
+//            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+//            TextView textView = viewToast.findViewById(android.R.id.message);
+//            textView.setTypeface(null, Typeface.BOLD);
+//            textView.setTextColor(Color.WHITE);
+//            toast.show();
+//        }
+
+
+        CCAGame ccaGame = GameActivity.mainCCAGame;
+
+        if (ccaGame.isCanWinWithoutX2()) {
+
+            int blt_progress = ccaGame.isNeedToWinWithoutX2_blt() ? 0 : 2;
+            int blc_progress = ccaGame.isNeedToWinWithoutX2_blc() ? 0 : 2;
+            int blb_progress = ccaGame.isNeedToWinWithoutX2_blb() ? 0 : 2;
+            int brt_progress = ccaGame.isNeedToWinWithoutX2_brt() ? 0 : 2;
+            int brc_progress = ccaGame.isNeedToWinWithoutX2_brc() ? 0 : 2;
+            int brb_progress = ccaGame.isNeedToWinWithoutX2_brb() ? 0 : 2;
+
+            needUpdateSlots = false;
+            sa_sb_blt.setProgress(blt_progress);
+            sa_sb_blc.setProgress(blc_progress);
+            sa_sb_blb.setProgress(blb_progress);
+            sa_sb_brt.setProgress(brt_progress);
+            sa_sb_brc.setProgress(brc_progress);
+            sa_sb_brb.setProgress(brb_progress);
+            needUpdateSlots = true;
+
+            setCarsInBuildings();
+
         }
-        if (isFound) {
-            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
-        } else {
-            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
-            View viewToast = toast.getView();
-            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-            TextView textView = viewToast.findViewById(android.R.id.message);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setTextColor(Color.WHITE);
-            toast.show();
-        }
+
+
     }
 
     public void calcEarlyWin(View view) {
 
-        Object[] matrixArray = getMaxtrixProgressArray();
-        Arrays.sort(matrixArray);
-        MatrixProgress matrix = null;
-        boolean isFound = false;
-        int index=0;
-        for (int i = 0; i < matrixArray.length; i++) {
-            matrix = (MatrixProgress) matrixArray[i];
-            if (matrix.willOurWin && matrix.willEarlyWin) {
-                index = i;
-                isFound = true;
-                break;
-            }
+//        Object[] matrixArray = getMaxtrixProgressArray();
+//        Arrays.sort(matrixArray);
+//        MatrixProgress matrix = null;
+//        boolean isFound = false;
+//        int index=0;
+//        for (int i = 0; i < matrixArray.length; i++) {
+//            matrix = (MatrixProgress) matrixArray[i];
+//            if (matrix.willOurWin && matrix.willEarlyWin) {
+//                index = i;
+//                isFound = true;
+//                break;
+//            }
+//        }
+//        if (isFound) {
+//            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+//        } else {
+//            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+//            View viewToast = toast.getView();
+//            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+//            TextView textView = viewToast.findViewById(android.R.id.message);
+//            textView.setTypeface(null, Typeface.BOLD);
+//            textView.setTextColor(Color.WHITE);
+//            toast.show();
+//        }
+
+        CCAGame ccaGame = GameActivity.mainCCAGame;
+
+        if (ccaGame.isCanEarlyWin()) {
+
+            int blt_progress = ccaGame.isNeedToEarlyWin_blt() ? 0 : 2;
+            int blc_progress = ccaGame.isNeedToEarlyWin_blc() ? 0 : 2;
+            int blb_progress = ccaGame.isNeedToEarlyWin_blb() ? 0 : 2;
+            int brt_progress = ccaGame.isNeedToEarlyWin_brt() ? 0 : 2;
+            int brc_progress = ccaGame.isNeedToEarlyWin_brc() ? 0 : 2;
+            int brb_progress = ccaGame.isNeedToEarlyWin_brb() ? 0 : 2;
+
+            needUpdateSlots = false;
+            sa_sb_blt.setProgress(blt_progress);
+            sa_sb_blc.setProgress(blc_progress);
+            sa_sb_blb.setProgress(blb_progress);
+            sa_sb_brt.setProgress(brt_progress);
+            sa_sb_brc.setProgress(brc_progress);
+            sa_sb_brb.setProgress(brb_progress);
+            needUpdateSlots = true;
+
+            setCarsInBuildings();
+
         }
-        if (isFound) {
-            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
-        } else {
-            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
-            View viewToast = toast.getView();
-            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-            TextView textView = viewToast.findViewById(android.R.id.message);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setTextColor(Color.WHITE);
-            toast.show();
-        }
+
     }
 
     public void calcEarlyWinWithoutx2(View view) {
 
-        Object[] matrixArray = getMaxtrixProgressArray();
-        Arrays.sort(matrixArray);
-        MatrixProgress matrix = null;
-        boolean isFound = false;
-        int index=0;
-        for (int i = 0; i < matrixArray.length; i++) {
-            matrix = (MatrixProgress) matrixArray[i];
-            if (matrix.willOurWin && matrix.willEarlyWin && matrix.countOurX2 == 0) {
-                index = i;
-                isFound = true;
-                break;
-            }
+//        Object[] matrixArray = getMaxtrixProgressArray();
+//        Arrays.sort(matrixArray);
+//        MatrixProgress matrix = null;
+//        boolean isFound = false;
+//        int index=0;
+//        for (int i = 0; i < matrixArray.length; i++) {
+//            matrix = (MatrixProgress) matrixArray[i];
+//            if (matrix.willOurWin && matrix.willEarlyWin && matrix.countOurX2 == 0) {
+//                index = i;
+//                isFound = true;
+//                break;
+//            }
+//        }
+//        if (isFound) {
+//            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
+//        } else {
+//            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
+//            View viewToast = toast.getView();
+//            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+//            TextView textView = viewToast.findViewById(android.R.id.message);
+//            textView.setTypeface(null, Typeface.BOLD);
+//            textView.setTextColor(Color.WHITE);
+//            toast.show();
+//        }
+
+        CCAGame ccaGame = GameActivity.mainCCAGame;
+
+        if (ccaGame.isCanEarlyWinWithoutX2()) {
+
+            int blt_progress = ccaGame.isNeedToEarlyWinWithoutX2_blt() ? 0 : 2;
+            int blc_progress = ccaGame.isNeedToEarlyWinWithoutX2_blc() ? 0 : 2;
+            int blb_progress = ccaGame.isNeedToEarlyWinWithoutX2_blb() ? 0 : 2;
+            int brt_progress = ccaGame.isNeedToEarlyWinWithoutX2_brt() ? 0 : 2;
+            int brc_progress = ccaGame.isNeedToEarlyWinWithoutX2_brc() ? 0 : 2;
+            int brb_progress = ccaGame.isNeedToEarlyWinWithoutX2_brb() ? 0 : 2;
+
+            needUpdateSlots = false;
+            sa_sb_blt.setProgress(blt_progress);
+            sa_sb_blc.setProgress(blc_progress);
+            sa_sb_blb.setProgress(blb_progress);
+            sa_sb_brt.setProgress(brt_progress);
+            sa_sb_brc.setProgress(brc_progress);
+            sa_sb_brb.setProgress(brb_progress);
+            needUpdateSlots = true;
+
+            setCarsInBuildings();
+
         }
-        if (isFound) {
-            new MatrixProgress(matrix.blt_progress, matrix.blc_progress, matrix.blb_progress, matrix.brt_progress, matrix.brc_progress, matrix.brb_progress);
-        } else {
-            Toast toast = Toast.makeText(this, R.string.there_no_options, Toast.LENGTH_LONG);
-            View viewToast = toast.getView();
-            viewToast.getBackground().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-            TextView textView = viewToast.findViewById(android.R.id.message);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setTextColor(Color.WHITE);
-            toast.show();
-        }
+
     }
 
     private Object[] getMaxtrixProgressArray() {
@@ -1389,7 +1681,7 @@ public class StrategyActivity extends AppCompatActivity {
             sa_sb_blt.setProgress(blt_progress);
             sa_sb_blc.setProgress(blc_progress);
             sa_sb_blb.setProgress(blb_progress);
-            sa_sb_brt.setProgress(blt_progress);
+            sa_sb_brt.setProgress(brt_progress);
             sa_sb_brc.setProgress(brc_progress);
             sa_sb_brb.setProgress(brb_progress);
             needUpdateSlots = true;
