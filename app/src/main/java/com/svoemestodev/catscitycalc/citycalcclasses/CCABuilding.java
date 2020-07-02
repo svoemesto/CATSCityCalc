@@ -1,7 +1,5 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
-import android.graphics.Bitmap;
-
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 public class CCABuilding extends CityCalcArea {
@@ -21,6 +19,7 @@ public class CCABuilding extends CityCalcArea {
     private boolean needToWinWithoutX2;
     private boolean needToEarlyWin;
     private boolean needToEarlyWinWithoutX2;
+    private boolean useInForecast = false;
 
     public CCABuilding() {
     }
@@ -85,6 +84,7 @@ public class CCABuilding extends CityCalcArea {
         clone.needToWinWithoutX2 = this.needToWinWithoutX2;
         clone.needToEarlyWin = this.needToEarlyWin;
         clone.needToEarlyWinWithoutX2 = this.needToEarlyWinWithoutX2;
+        clone.useInForecast = this.useInForecast;
 
         return clone;
     }
@@ -249,5 +249,13 @@ public class CCABuilding extends CityCalcArea {
 
     public void setNeedToEarlyWinWithoutX2(boolean needToEarlyWinWithoutX2) {
         this.needToEarlyWinWithoutX2 = needToEarlyWinWithoutX2;
+    }
+
+    public boolean isUseInForecast() {
+        return useInForecast;
+    }
+
+    public void setUseInForecast(boolean useInForecast) {
+        this.useInForecast = useInForecast;
     }
 }

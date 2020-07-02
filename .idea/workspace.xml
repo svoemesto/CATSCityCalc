@@ -28,13 +28,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_gray.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_light_gray.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_white.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_early_win_with_x2_false.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_early_win_with_x2_false.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_early_win_with_x2_true.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_early_win_with_x2_true.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_win_with_x2_false.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_win_with_x2_false.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_win_with_x2_true.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_can_win_with_x2_true.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_buildings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_buildings.xml" afterDir="false" />
     </list>
@@ -225,10 +228,10 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1174" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1400@0.0.3440.1400" timestamp="1591861938003" />
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1593619305291">
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser" timestamp="1593704259680">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1593619305291" />
+    <state x="1525" y="384" key="#com.intellij.ide.util.MemberChooser/0.0.3440.1400@0.0.3440.1400" timestamp="1593704259680" />
     <state x="1450" y="447" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1592044697997">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -249,22 +252,22 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1593691570974" />
-    <state width="3397" height="305" key="GridCell.Tab.0.bottom" timestamp="1593692472208">
+    <state width="3397" height="305" key="GridCell.Tab.0.bottom" timestamp="1593692641680">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593692472208" />
-    <state width="3397" height="305" key="GridCell.Tab.0.center" timestamp="1593692472208">
+    <state width="3397" height="305" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641680" />
+    <state width="3397" height="305" key="GridCell.Tab.0.center" timestamp="1593692641677">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593692472208" />
-    <state width="3397" height="305" key="GridCell.Tab.0.left" timestamp="1593692472207">
+    <state width="3397" height="305" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641677" />
+    <state width="3397" height="305" key="GridCell.Tab.0.left" timestamp="1593692641676">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593692472207" />
-    <state width="3397" height="305" key="GridCell.Tab.0.right" timestamp="1593692472208">
+    <state width="3397" height="305" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641676" />
+    <state width="3397" height="305" key="GridCell.Tab.0.right" timestamp="1593692641679">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593692472208" />
+    <state width="3397" height="305" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641679" />
     <state width="3397" height="328" key="GridCell.Tab.1.bottom" timestamp="1593678561243">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
@@ -307,30 +310,6 @@
     <state x="1383" y="315" width="672" height="678" key="search.everywhere.popup/0.0.3440.1400@0.0.3440.1400" timestamp="1593521449794" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
-          <line>569</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
-          <line>586</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
-          <line>603</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java</url>
-          <line>620</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo typeName="com.svoemestodev.catscitycalc.citycalcclasses.CCAGame" fieldName="status" />

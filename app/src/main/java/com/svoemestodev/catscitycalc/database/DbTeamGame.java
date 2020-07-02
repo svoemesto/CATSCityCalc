@@ -179,7 +179,13 @@ public class DbTeamGame implements Serializable {
     private boolean needToWinWithoutX2_brb;
     private boolean needToEarlyWin_brb;
     private boolean needToEarlyWinWithoutX2_brb;
-    
+
+    private boolean useInForecast_blt = true;
+    private boolean useInForecast_blc = true;
+    private boolean useInForecast_blb = true;
+    private boolean useInForecast_brt = true;
+    private boolean useInForecast_brc = true;
+    private boolean useInForecast_brb = true;
 
     private byte[] bytesScreenshot = null;
 
@@ -430,7 +436,14 @@ public class DbTeamGame implements Serializable {
         key = "needToWinWithoutX2_brb"; if (map.containsKey(key)) this.needToWinWithoutX2_brb = (boolean) map.get(key);
         key = "needToEarlyWin_brb"; if (map.containsKey(key)) this.needToEarlyWin_brb = (boolean) map.get(key);
         key = "needToEarlyWinWithoutX2_brb"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brb = (boolean) map.get(key);
-        
+
+        key = "useInForecast_blt"; if (map.containsKey(key)) this.useInForecast_blt = (boolean) map.get(key);
+        key = "useInForecast_blc"; if (map.containsKey(key)) this.useInForecast_blc = (boolean) map.get(key);
+        key = "useInForecast_blb"; if (map.containsKey(key)) this.useInForecast_blb = (boolean) map.get(key);
+        key = "useInForecast_brt"; if (map.containsKey(key)) this.useInForecast_brt = (boolean) map.get(key);
+        key = "useInForecast_brc"; if (map.containsKey(key)) this.useInForecast_brc = (boolean) map.get(key);
+        key = "useInForecast_brb"; if (map.containsKey(key)) this.useInForecast_brb = (boolean) map.get(key);
+
     }
     
     public DbTeamGame(CCAGame ccaGame) {
@@ -568,6 +581,13 @@ public class DbTeamGame implements Serializable {
         this.needToWinWithoutX2_brb = ccaGame.isNeedToWinWithoutX2_brb();
         this.needToEarlyWin_brb = ccaGame.isNeedToEarlyWin_brb();
         this.needToEarlyWinWithoutX2_brb = ccaGame.isNeedToEarlyWinWithoutX2_brb();
+
+        this.useInForecast_blt = ccaGame.isUseInForecast_blt();
+        this.useInForecast_blc = ccaGame.isUseInForecast_blc();
+        this.useInForecast_blb = ccaGame.isUseInForecast_blb();
+        this.useInForecast_brt = ccaGame.isUseInForecast_brt();
+        this.useInForecast_brc = ccaGame.isUseInForecast_brc();
+        this.useInForecast_brb = ccaGame.isUseInForecast_brb();
 
         if (!ccaGame.isGameOver()) {
 
@@ -772,7 +792,14 @@ public class DbTeamGame implements Serializable {
         map.put("needToWinWithoutX2_brb", needToWinWithoutX2_brb);
         map.put("needToEarlyWin_brb", needToEarlyWin_brb);
         map.put("needToEarlyWinWithoutX2_brb", needToEarlyWinWithoutX2_brb);
-        
+
+        map.put("useInForecast_blt", useInForecast_blt);
+        map.put("useInForecast_blc", useInForecast_blc);
+        map.put("useInForecast_blb", useInForecast_blb);
+        map.put("useInForecast_brt", useInForecast_brt);
+        map.put("useInForecast_brc", useInForecast_brc);
+        map.put("useInForecast_brb", useInForecast_brb);
+
         return map;
     }
 
@@ -1766,5 +1793,53 @@ public class DbTeamGame implements Serializable {
 
     public void setNeedToEarlyWinWithoutX2_brb(boolean needToEarlyWinWithoutX2_brb) {
         this.needToEarlyWinWithoutX2_brb = needToEarlyWinWithoutX2_brb;
+    }
+
+    public boolean isUseInForecast_blt() {
+        return useInForecast_blt;
+    }
+
+    public void setUseInForecast_blt(boolean useInForecast_blt) {
+        this.useInForecast_blt = useInForecast_blt;
+    }
+
+    public boolean isUseInForecast_blc() {
+        return useInForecast_blc;
+    }
+
+    public void setUseInForecast_blc(boolean useInForecast_blc) {
+        this.useInForecast_blc = useInForecast_blc;
+    }
+
+    public boolean isUseInForecast_blb() {
+        return useInForecast_blb;
+    }
+
+    public void setUseInForecast_blb(boolean useInForecast_blb) {
+        this.useInForecast_blb = useInForecast_blb;
+    }
+
+    public boolean isUseInForecast_brt() {
+        return useInForecast_brt;
+    }
+
+    public void setUseInForecast_brt(boolean useInForecast_brt) {
+        this.useInForecast_brt = useInForecast_brt;
+    }
+
+    public boolean isUseInForecast_brc() {
+        return useInForecast_brc;
+    }
+
+    public void setUseInForecast_brc(boolean useInForecast_brc) {
+        this.useInForecast_brc = useInForecast_brc;
+    }
+
+    public boolean isUseInForecast_brb() {
+        return useInForecast_brb;
+    }
+
+    public void setUseInForecast_brb(boolean useInForecast_brb) {
+        this.useInForecast_brb = useInForecast_brb;
     }
 }

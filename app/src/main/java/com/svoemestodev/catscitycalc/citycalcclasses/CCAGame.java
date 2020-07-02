@@ -1,21 +1,12 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
-import com.svoemestodev.catscitycalc.activities.StrategyActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
-import com.svoemestodev.catscitycalc.utils.CropPosition;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.File;
@@ -189,7 +180,14 @@ public class CCAGame extends CityCalcArea {
     private boolean canWinWithoutX2;
     private boolean canEarlyWin;
     private boolean canEarlyWinWithoutX2;
-    
+
+    private boolean useInForecast_blt = true;
+    private boolean useInForecast_blc = true;
+    private boolean useInForecast_blb = true;
+    private boolean useInForecast_brt = true;
+    private boolean useInForecast_brc = true;
+    private boolean useInForecast_brb = true;
+
     private String status;
 
     private String forecastText = "";
@@ -385,7 +383,14 @@ public class CCAGame extends CityCalcArea {
         clone.needToWinWithoutX2_brb = this.needToWinWithoutX2_brb;
         clone.needToEarlyWin_brb = this.needToEarlyWin_brb;
         clone.needToEarlyWinWithoutX2_brb = this.needToEarlyWinWithoutX2_brb;
-        
+
+        clone.useInForecast_blt = this.useInForecast_blt;
+        clone.useInForecast_blc = this.useInForecast_blc;
+        clone.useInForecast_blb = this.useInForecast_blb;
+        clone.useInForecast_brt = this.useInForecast_brt;
+        clone.useInForecast_brc = this.useInForecast_brc;
+        clone.useInForecast_brb = this.useInForecast_brb;
+
         
         return clone;
     }
@@ -527,7 +532,14 @@ public class CCAGame extends CityCalcArea {
         this.needToWinWithoutX2_brb = dbTeamGame.isNeedToWinWithoutX2_brb();
         this.needToEarlyWin_brb = dbTeamGame.isNeedToEarlyWin_brb();
         this.needToEarlyWinWithoutX2_brb = dbTeamGame.isNeedToEarlyWinWithoutX2_brb();
-        
+
+        this.useInForecast_blt = dbTeamGame.isUseInForecast_blt();
+        this.useInForecast_blc = dbTeamGame.isUseInForecast_blc();
+        this.useInForecast_blb = dbTeamGame.isUseInForecast_blb();
+        this.useInForecast_brt = dbTeamGame.isUseInForecast_brt();
+        this.useInForecast_brc = dbTeamGame.isUseInForecast_brc();
+        this.useInForecast_brb = dbTeamGame.isUseInForecast_brb();
+
         
         this.bytesScreenshot = dbTeamGame.getBytesScreenshot();
 
@@ -547,7 +559,14 @@ public class CCAGame extends CityCalcArea {
                     for (int x4 = 0; x4 <= 1; x4++) {
                         for (int x5 = 0; x5 <= 1; x5++) {
                             for (int x6 = 0; x6 <= 1; x6++) {
-                                list.add(new ForecastMatrix(this.getClone(cityCalcClone), x1==1,x2==1,x3==1,x4==1,x5==1,x6==1));
+                                CCAGame ccaGame = this.getClone(cityCalcClone);
+                                list.add(new ForecastMatrix(ccaGame,
+                                        x1==1 && ccaGame.isUseInForecast_blt(),
+                                        x2==1 && ccaGame.isUseInForecast_blc(),
+                                        x3==1 && ccaGame.isUseInForecast_blb(),
+                                        x4==1 && ccaGame.isUseInForecast_brt(),
+                                        x5==1 && ccaGame.isUseInForecast_brc(),
+                                        x6==1 && ccaGame.isUseInForecast_brb()));
                             }
                         }
                     }
@@ -2321,20 +2340,51 @@ public class CCAGame extends CityCalcArea {
         this.canEarlyWinWithoutX2 = canEarlyWinWithoutX2;
     }
 
-    //    public CCABuilding[] getBuildings() {
-//        return buildings;
-//    }
-//
-//    public void setBuildings(CCABuilding[] buildings) {
-//        this.buildings = buildings;
-//    }
-//
-//    public CCABuilding getBuilding(int buildingIndex) {
-//        return buildings[buildingIndex];
-//    }
-//
-//    public void setBuilding(CCABuilding building, int buildingIndex) {
-//        this.buildings[buildingIndex] = building;
-//    }
+    public boolean isUseInForecast_blt() {
+        return useInForecast_blt;
+    }
 
+    public void setUseInForecast_blt(boolean useInForecast_blt) {
+        this.useInForecast_blt = useInForecast_blt;
+    }
+
+    public boolean isUseInForecast_blc() {
+        return useInForecast_blc;
+    }
+
+    public void setUseInForecast_blc(boolean useInForecast_blc) {
+        this.useInForecast_blc = useInForecast_blc;
+    }
+
+    public boolean isUseInForecast_blb() {
+        return useInForecast_blb;
+    }
+
+    public void setUseInForecast_blb(boolean useInForecast_blb) {
+        this.useInForecast_blb = useInForecast_blb;
+    }
+
+    public boolean isUseInForecast_brt() {
+        return useInForecast_brt;
+    }
+
+    public void setUseInForecast_brt(boolean useInForecast_brt) {
+        this.useInForecast_brt = useInForecast_brt;
+    }
+
+    public boolean isUseInForecast_brc() {
+        return useInForecast_brc;
+    }
+
+    public void setUseInForecast_brc(boolean useInForecast_brc) {
+        this.useInForecast_brc = useInForecast_brc;
+    }
+
+    public boolean isUseInForecast_brb() {
+        return useInForecast_brb;
+    }
+
+    public void setUseInForecast_brb(boolean useInForecast_brb) {
+        this.useInForecast_brb = useInForecast_brb;
+    }
 }

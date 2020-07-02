@@ -691,28 +691,7 @@
                     tools:text="123"
                     />
 
-                <ImageView
-                    android:id="@+id/ga_iv_can_win_with_x2"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
-                    tools:visibility="visible"
-                    tools:src="@drawable/ic_can_win_with_x2_true"/>
-
-                <ImageView
-                    android:id="@+id/ga_iv_can_early_win_with_x2"
-                    android:layout_width="match_parent"
-                    android:layout_height="24dp"
-                    android:layout_weight="1"
-                    android:visibility="visible"
-                    tools:visibility="visible"
-                    tools:src="@drawable/ic_can_early_win_with_x2_true"/>
-
             </LinearLayout>
-
-
-
 
             <TextView
                 android:id="@+id/ga_tv_status"

@@ -115,12 +115,24 @@ public class GameActivity extends AppCompatActivity {
     // Game views
 
 
-    ImageView ga_iv_can_win_with_x2;
-    ImageView ga_iv_can_early_win_with_x2;
-
     LinearLayout ga_in_buildings;
     RelativeLayout ga_rl_game;
     ScrollView ga_sv_game;
+
+    RelativeLayout lgb_rl_blt;
+    RelativeLayout lgb_rl_blc;
+    RelativeLayout lgb_rl_blb;
+    RelativeLayout lgb_rl_brt;
+    RelativeLayout lgb_rl_brc;
+    RelativeLayout lgb_rl_brb;
+
+    Button lgb_bt_blt;
+    Button lgb_bt_blc;
+    Button lgb_bt_blb;
+    Button lgb_bt_brt;
+    Button lgb_bt_brc;
+    Button lgb_bt_brb;
+
     TextView ga_tv_user;                // имя пользователя, банда, роль
     TextView ga_tv_screenshot_time;     // информация о времени последнего скриншота
     Switch ga_sw_listen_new_file;       // переключатель "следить за файлами в папке"
@@ -454,8 +466,6 @@ public class GameActivity extends AppCompatActivity {
 
             ccaGame.calcWin(true);
 
-            ga_iv_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isCanWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-            ga_iv_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isCanEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
             Date dateScreenshot = ccaGame.getDateScreenshot();
             int minutesFromTakingScreenshot = (int)((Calendar.getInstance().getTime().getTime() - dateScreenshot.getTime()) / 60000);
@@ -537,10 +547,12 @@ public class GameActivity extends AppCompatActivity {
             
             if (ccaGame.isPresent_blt()) {
 
+                lgb_rl_blt.setBackground(getDrawable(ccaGame.isUseInForecast_blt() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_blt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_blt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBLT != null) lgb_iv_blt_name.setImageBitmap(ccaBLT.getBmpSrc());
+                if (ccaBLT != null) lgb_iv_blt_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLT.getBmpSrc(),0xFFFFFF));
 
                 lgb_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight, 
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy}, 
@@ -566,7 +578,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
                 } else if (ccaGame.isBuildingIsEmpty_blt()) {
                     lgb_tv_blt_points.setText("");
-                    lgb_tv_blt_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_blt_points.setBackgroundColor(0x00000000);
                     lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
                 }
                 if (ccaGame.isX2_blt()) {
@@ -578,7 +590,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_blt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_blt_x2.setText("");
-                        lgb_tv_blt_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blt_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -595,10 +607,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_blc()) {
 
+                lgb_rl_blc.setBackground(getDrawable(ccaGame.isUseInForecast_blc() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_blc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_blc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBLC != null) lgb_iv_blc_name.setImageBitmap(ccaBLC.getBmpSrc());
+                if (ccaBLC != null) lgb_iv_blc_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLC.getBmpSrc(),0xFFFFFF));
                 lgb_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
                         new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
@@ -623,7 +637,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
                 } else if (ccaGame.isBuildingIsEmpty_blc()) {
                     lgb_tv_blc_points.setText("");
-                    lgb_tv_blc_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_blc_points.setBackgroundColor(0x00000000);
                     lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
                 }
                 if (ccaGame.isX2_blc()) {
@@ -635,7 +649,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_blc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_blc_x2.setText("");
-                        lgb_tv_blc_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blc_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -653,10 +667,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_blb()) {
 
+                lgb_rl_blb.setBackground(getDrawable(ccaGame.isUseInForecast_blb() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_blb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_blb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBLB != null) lgb_iv_blb_name.setImageBitmap(ccaBLB.getBmpSrc());
+                if (ccaBLB != null) lgb_iv_blb_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLB.getBmpSrc(),0xFFFFFF));
 
                 lgb_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
@@ -682,7 +698,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
                 } else if (ccaGame.isBuildingIsEmpty_blb()) {
                     lgb_tv_blb_points.setText("");
-                    lgb_tv_blb_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_blb_points.setBackgroundColor(0x00000000);
                     lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
                 }
                 if (ccaGame.isX2_blb()) {
@@ -694,7 +710,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_blb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_blb_x2.setText("");
-                        lgb_tv_blb_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_blb_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -712,10 +728,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brt()) {
 
+                lgb_rl_brt.setBackground(getDrawable(ccaGame.isUseInForecast_brt() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_brt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_brt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBRT != null) lgb_iv_brt_name.setImageBitmap(ccaBRT.getBmpSrc());
+                if (ccaBRT != null) lgb_iv_brt_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRT.getBmpSrc(),0xFFFFFF));
 
                 lgb_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
@@ -741,7 +759,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
                 } else if (ccaGame.isBuildingIsEmpty_brt()) {
                     lgb_tv_brt_points.setText("");
-                    lgb_tv_brt_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_brt_points.setBackgroundColor(0x00000000);
                     lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
                 }
                 if (ccaGame.isX2_brt()) {
@@ -753,7 +771,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_brt_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_brt_x2.setText("");
-                        lgb_tv_brt_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brt_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -770,10 +788,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brc()) {
 
+                lgb_rl_brc.setBackground(getDrawable(ccaGame.isUseInForecast_brc() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_brc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_brc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBRC != null) lgb_iv_brc_name.setImageBitmap(ccaBRC.getBmpSrc());
+                if (ccaBRC != null) lgb_iv_brc_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRC.getBmpSrc(),0xFFFFFF));
 
                 lgb_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
@@ -799,7 +819,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
                 } else if (ccaGame.isBuildingIsEmpty_brc()) {
                     lgb_tv_brc_points.setText("");
-                    lgb_tv_brc_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_brc_points.setBackgroundColor(0x00000000);
                     lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
                 }
                 if (ccaGame.isX2_brc()) {
@@ -811,7 +831,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_brc_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_brc_x2.setText("");
-                        lgb_tv_brc_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brc_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -829,10 +849,12 @@ public class GameActivity extends AppCompatActivity {
 
             if (ccaGame.isPresent_brb()) {
 
+                lgb_rl_brb.setBackground(getDrawable(ccaGame.isUseInForecast_brb() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+
                 lgb_iv_brb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                 lgb_iv_brb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBRB != null) lgb_iv_brb_name.setImageBitmap(ccaBRB.getBmpSrc());
+                if (ccaBRB != null) lgb_iv_brb_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRB.getBmpSrc(),0xFFFFFF));
 
                 lgb_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                         new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
@@ -858,7 +880,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
                 } else if (ccaGame.isBuildingIsEmpty_brb()) {
                     lgb_tv_brb_points.setText("");
-                    lgb_tv_brb_points.setBackgroundColor(0xFFFFFFFF);
+                    lgb_tv_brb_points.setBackgroundColor(0x00000000);
                     lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
                 }
                 if (ccaGame.isX2_brb()) {
@@ -870,7 +892,7 @@ public class GameActivity extends AppCompatActivity {
                         lgb_tv_brb_x2.setBackgroundColor(color_bxx_mayX2);
                     } else {
                         lgb_tv_brb_x2.setText("");
-                        lgb_tv_brb_x2.setBackgroundColor(0xFFFFFFFF);
+                        lgb_tv_brb_x2.setBackgroundColor(0x00000000);
                     }
                 }
             }
@@ -1067,9 +1089,110 @@ public class GameActivity extends AppCompatActivity {
         ga_rl_game = findViewById(R.id.ga_rl_game);
         ga_in_buildings = findViewById(R.id.ga_in_buildings);
 
-        ga_iv_can_win_with_x2 = findViewById(R.id.ga_iv_can_win_with_x2);
-        ga_iv_can_early_win_with_x2 = findViewById(R.id.ga_iv_can_early_win_with_x2);
+        lgb_rl_blt = findViewById(R.id.lgb_rl_blt);
+        lgb_rl_blc = findViewById(R.id.lgb_rl_blc);
+        lgb_rl_blb = findViewById(R.id.lgb_rl_blb);
+        lgb_rl_brt = findViewById(R.id.lgb_rl_brt);
+        lgb_rl_brc = findViewById(R.id.lgb_rl_brc);
+        lgb_rl_brb = findViewById(R.id.lgb_rl_brb);
 
+        lgb_bt_blt = findViewById(R.id.lgb_bt_blt);
+        lgb_bt_blc = findViewById(R.id.lgb_bt_blc);
+        lgb_bt_blb = findViewById(R.id.lgb_bt_blb);
+        lgb_bt_brt = findViewById(R.id.lgb_bt_brt);
+        lgb_bt_brc = findViewById(R.id.lgb_bt_brc);
+        lgb_bt_brb = findViewById(R.id.lgb_bt_brb);
+
+        lgb_bt_blt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(1);
+            }
+        });
+
+        lgb_bt_blt.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(1);
+                return true;
+            }
+        });
+
+        lgb_bt_blc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(2);
+            }
+        });
+
+        lgb_bt_blc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(2);
+                return true;
+            }
+        });
+
+        lgb_bt_blb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(3);
+            }
+        });
+
+        lgb_bt_blb.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(3);
+                return true;
+            }
+        });
+
+        lgb_bt_brt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(4);
+            }
+        });
+
+        lgb_bt_brt.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(4);
+                return true;
+            }
+        });
+
+        lgb_bt_brc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(5);
+            }
+        });
+
+        lgb_bt_brc.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(5);
+                return true;
+            }
+        });
+
+        lgb_bt_brb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doOnClickBuilding(6);
+            }
+        });
+
+        lgb_bt_brb.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                doOnLongClickBuilding(6);
+                return true;
+            }
+        });
+        
     }
 
     public void setDataToCarsViews() {
@@ -2814,52 +2937,41 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void onClick_blt(View view) {
+    public void doOnClickBuilding(int slot) {
         if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 1;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
+            if (!mainDbTeamUser.getUserRole().equals("meat")) {
+                WorkBuildingActivity.mainSlot = slot;
+                Intent intent = new Intent(this, WorkBuildingActivity.class);
+                startActivityForResult(intent, 0);
+            }
         }
     }
 
-    public void onClick_blc(View view) {
-        if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 2;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
+    public void doOnLongClickBuilding(int slot) {
+        switch (slot) {
+            case 1:
+                mainCCAGame.setUseInForecast_blt(!mainCCAGame.isUseInForecast_blt());
+                break;
+            case 2:
+                mainCCAGame.setUseInForecast_blc(!mainCCAGame.isUseInForecast_blc());
+                break;
+            case 3:
+                mainCCAGame.setUseInForecast_blb(!mainCCAGame.isUseInForecast_blb());
+                break;
+            case 4:
+                mainCCAGame.setUseInForecast_brt(!mainCCAGame.isUseInForecast_brt());
+                break;
+            case 5:
+                mainCCAGame.setUseInForecast_brc(!mainCCAGame.isUseInForecast_brc());
+                break;
+            case 6:
+                mainCCAGame.setUseInForecast_brb(!mainCCAGame.isUseInForecast_brb());
+                break;
+            default:
         }
-    }
+        mainCCAGame.doForecast();
+        loadDataToViews(false);
 
-    public void onClick_blb(View view) {
-        if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 3;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
-        }
-    }
-
-    public void onClick_brt(View view) {
-        if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 4;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
-        }
-    }
-
-    public void onClick_brc(View view) {
-        if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 5;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
-        }
-    }
-
-    public void onClick_brb(View view) {
-        if (mainDbTeamUser != null) {
-            WorkBuildingActivity.mainSlot = 6;
-            Intent intent = new Intent(this, WorkBuildingActivity.class);
-            startActivityForResult(intent, 0);
-        }
     }
 
     class firstTask extends TimerTask {
