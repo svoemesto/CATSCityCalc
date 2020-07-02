@@ -539,13 +539,15 @@ public class CCAGame extends CityCalcArea {
 
         List<ForecastMatrix> list = new ArrayList<>();
 
+        CityCalc cityCalcClone = this.getCityCalc().getClone();
+
         for (int x1 = 0; x1 <= 1; x1++) {
             for (int x2 = 0; x2 <= 1; x2++) {
                 for (int x3 = 0; x3 <= 1; x3++) {
                     for (int x4 = 0; x4 <= 1; x4++) {
                         for (int x5 = 0; x5 <= 1; x5++) {
                             for (int x6 = 0; x6 <= 1; x6++) {
-                                list.add(new ForecastMatrix(this.getClone(this.getCityCalc()), x1==1,x2==1,x3==1,x4==1,x5==1,x6==1));
+                                list.add(new ForecastMatrix(this.getClone(cityCalcClone), x1==1,x2==1,x3==1,x4==1,x5==1,x6==1));
                             }
                         }
                     }
@@ -617,12 +619,12 @@ public class CCAGame extends CityCalcArea {
         }
 
         this.canEarlyWinWithoutX2 = isFound;
-        this.needToEarlyWin_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
-        this.needToEarlyWin_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
-        this.needToEarlyWin_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
-        this.needToEarlyWin_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
-        this.needToEarlyWin_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
-        this.needToEarlyWin_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
+        this.needToEarlyWinWithoutX2_blt = isFound && matrix.ccaGame.isBuildingIsOur_blt();
+        this.needToEarlyWinWithoutX2_blc = isFound && matrix.ccaGame.isBuildingIsOur_blc();
+        this.needToEarlyWinWithoutX2_blb = isFound && matrix.ccaGame.isBuildingIsOur_blb();
+        this.needToEarlyWinWithoutX2_brt = isFound && matrix.ccaGame.isBuildingIsOur_brt();
+        this.needToEarlyWinWithoutX2_brc = isFound && matrix.ccaGame.isBuildingIsOur_brc();
+        this.needToEarlyWinWithoutX2_brb = isFound && matrix.ccaGame.isBuildingIsOur_brb();
 
     }
 
@@ -753,7 +755,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_blt) {
-                ccaGame.isX2_blt = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_blt = ccaGame.mayX2_blt && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_blt = isOur_blt ? ccaGame.slots_blt * (ccaGame.isX2_blt ? 2 : 1) : 0;
                 ccaGame.enemy_points_blt = !isOur_blt ? ccaGame.slots_blt * (ccaGame.isX2_blt ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_blt;
@@ -761,7 +763,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_blc) {
-                ccaGame.isX2_blc = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_blc = ccaGame.mayX2_blc && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_blc = isOur_blc ? ccaGame.slots_blc * (ccaGame.isX2_blc ? 2 : 1) : 0;
                 ccaGame.enemy_points_blc = !isOur_blc ? ccaGame.slots_blc * (ccaGame.isX2_blc ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_blc;
@@ -769,7 +771,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_blb) {
-                ccaGame.isX2_blb = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_blb = ccaGame.mayX2_blb && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_blb = isOur_blb ? ccaGame.slots_blb * (ccaGame.isX2_blb ? 2 : 1) : 0;
                 ccaGame.enemy_points_blb = !isOur_blb ? ccaGame.slots_blb * (ccaGame.isX2_blb ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_blb;
@@ -777,7 +779,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_brt) {
-                ccaGame.isX2_brt = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_brt = ccaGame.mayX2_brt && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_brt = isOur_brt ? ccaGame.slots_brt * (ccaGame.isX2_brt ? 2 : 1) : 0;
                 ccaGame.enemy_points_brt = !isOur_brt ? ccaGame.slots_brt * (ccaGame.isX2_brt ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_brt;
@@ -785,7 +787,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_brc) {
-                ccaGame.isX2_brc = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_brc = ccaGame.mayX2_brc && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_brc = isOur_brc ? ccaGame.slots_brc * (ccaGame.isX2_brc ? 2 : 1) : 0;
                 ccaGame.enemy_points_brc = !isOur_brc ? ccaGame.slots_brc * (ccaGame.isX2_brc ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_brc;
@@ -793,7 +795,7 @@ public class CCAGame extends CityCalcArea {
             }
 
             if (ccaGame.isPresent_brb) {
-                ccaGame.isX2_brb = (countX2_our == countX2_total) || (countX2_enemy == countX2_total);
+                ccaGame.isX2_brb = ccaGame.mayX2_brb && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total));
                 ccaGame.our_points_brb = isOur_brb ? ccaGame.slots_brb * (ccaGame.isX2_brb ? 2 : 1) : 0;
                 ccaGame.enemy_points_brb = !isOur_brb ? ccaGame.slots_brb * (ccaGame.isX2_brb ? 2 : 1) : 0;
                 increaseOur += ccaGame.our_points_brb;
