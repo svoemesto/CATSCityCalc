@@ -38,6 +38,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Switch;
@@ -115,6 +116,7 @@ public class GameActivity extends AppCompatActivity {
     // Game views
 
 
+    ProgressBar ga_pb_progress;
     LinearLayout ga_in_game_group;
     RelativeLayout ga_rl_game;
     ScrollView ga_sv_game;
@@ -449,6 +451,8 @@ public class GameActivity extends AppCompatActivity {
 
         String logMsgPref = "loadDataToViews: ";
 
+        ga_pb_progress.setVisibility(View.VISIBLE);
+
         String textStartGameTime;
         String textEndGameTime;
 //        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
@@ -482,7 +486,13 @@ public class GameActivity extends AppCompatActivity {
 
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
-            ga_tv_status.setBackground(getDrawable(ccaGame.isWillOurWin() || ccaGame.isWinOur() ? R.drawable.rounded_small_corner_color_our_dark : R.drawable.rounded_small_corner_color_enemy_dark));
+            if (ccaGame.isWillOurWin() || ccaGame.isWinOur()) {
+                ga_tv_status.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
+            } else {
+                ga_tv_status.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
+            }
+
+//            ga_tv_status.setBackground(getDrawable((ccaGame.isWillOurWin() || ccaGame.isWinOur()) ? R.drawable.rounded_small_corner_color_our_dark : R.drawable.rounded_small_corner_color_enemy_dark));
             ga_tv_status.setText(ccaGame.getStatus());   // статус
             ga_tv_forecast.setText(ccaGame.getForecastText());   // прогноз
             lgi_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
@@ -912,33 +922,16 @@ public class GameActivity extends AppCompatActivity {
         // нотификация
         if (withNotify) {
 
-
-
             Log.i(TAG, logMsgPref + "withNotify");
             if (ccaGame != null) {
                 Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.getStatus());
 
                 GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, mainCityCalc.getBmpScreenshot());
-//                GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, ccaGame.getBmpSrc());
 
-//                Intent intent = new Intent(this, GameActivity.class);
-//                intent.setAction(Intent.ACTION_MAIN);
-//                intent.addCategory(Intent.CATEGORY_LAUNCHER);
-//
-//                PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-//
-//                NotificationCompat.Builder notificationBuilder =
-//                        new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-//                                .setAutoCancel(true)
-//                                .setSmallIcon(R.drawable.ic_catscalciconsmall)
-//                                .setWhen(System.currentTimeMillis())
-//                                .setContentIntent(pendingIntent)
-//                                .setContentText(ccaGame.getStatus())
-//                                .setStyle(new NotificationCompat.BigTextStyle().bigText(ccaGame.getStatus()));
-//                createChannelIfNeeded(notificationManager);
-//                notificationManager.notify(NOTIFY_ID, notificationBuilder.build());
             }
         }
+
+        ga_pb_progress.setVisibility(View.INVISIBLE);
 
     }
 
@@ -1105,6 +1098,10 @@ public class GameActivity extends AppCompatActivity {
         lgb_bt_brt = findViewById(R.id.lgb_bt_brt);
         lgb_bt_brc = findViewById(R.id.lgb_bt_brc);
         lgb_bt_brb = findViewById(R.id.lgb_bt_brb);
+
+        ga_pb_progress = findViewById(R.id.ga_pb_progress);
+
+
 
         lgb_bt_blt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1691,6 +1688,8 @@ public class GameActivity extends AppCompatActivity {
             menu_main_team_game_load.setVisible(isDebugMode);
             menu_main_user_cars_load.setVisible(isDebugMode);
 
+            ga_pb_progress.setVisibility(View.VISIBLE);
+
 
             String userText = "";
             if (fbUser == null) { // юзер не залогинился
@@ -1713,6 +1712,8 @@ public class GameActivity extends AppCompatActivity {
                 // обновляем инфо юзера
                 userText = "Login, please.";
                 ga_tv_user.setText(userText);
+
+                ga_pb_progress.setVisibility(View.INVISIBLE);
 
             } else { // юзер залогинился
 
@@ -1747,6 +1748,8 @@ public class GameActivity extends AppCompatActivity {
                     menu_main_team_game_share.setVisible(false);
                     menu_main_user_cars_share.setVisible(false);
                     menu_main_state_share.setVisible(false);
+
+                    ga_pb_progress.setVisibility(View.INVISIBLE);
 
                 } else { // почта подтверждена
 
@@ -1787,6 +1790,8 @@ public class GameActivity extends AppCompatActivity {
                                         menu_main_team_game_share.setVisible(false);
                                         menu_main_user_cars_share.setVisible(false);
                                         menu_main_state_share.setVisible(false);
+
+                                        ga_pb_progress.setVisibility(View.INVISIBLE);
 
                                     } else { // юзер состоит в команде
 
@@ -1840,6 +1845,8 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_game_share.setVisible(true);
                                                             menu_main_user_cars_share.setVisible(true);
                                                             menu_main_state_share.setVisible(true);
+
+                                                            ga_pb_progress.setVisibility(View.INVISIBLE);
 
                                                             // "слушаем" запись о текущей игре
                                                             final DocumentReference docRefTeamGame = fbDb.collection("teams").document(mainDbTeam.getTeamID()).collection("teamGames").document("teamGame");
@@ -1958,6 +1965,9 @@ public class GameActivity extends AppCompatActivity {
                                                             menu_main_team_game_share.setVisible(false);
                                                             menu_main_user_cars_share.setVisible(false);
                                                             menu_main_state_share.setVisible(false);
+
+                                                            ga_pb_progress.setVisibility(View.INVISIBLE);
+
                                                         } // кесли запрос обработался удачно
                                                     } // onComplete
                                                 }); // query.get().addOnCompleteListener
@@ -1993,8 +2003,11 @@ public class GameActivity extends AppCompatActivity {
                                             menu_main_team_game_share.setVisible(false);
                                             menu_main_user_cars_share.setVisible(false);
                                             menu_main_state_share.setVisible(false);
+
                                         }
                                     });
+
+                                    ga_pb_progress.setVisibility(View.INVISIBLE);
 
                                 }
 

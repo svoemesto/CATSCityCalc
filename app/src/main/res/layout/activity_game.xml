@@ -103,4 +103,15 @@
 
     </ScrollView>
 
+    <ProgressBar
+        android:id="@+id/ga_pb_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        tools:visibility="visible"
+
+        />
+
 </RelativeLayout>

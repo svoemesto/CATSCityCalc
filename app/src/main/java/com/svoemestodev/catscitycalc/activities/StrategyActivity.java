@@ -625,7 +625,7 @@ public class StrategyActivity extends AppCompatActivity {
 
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
-            ga_tv_status.setBackground(getDrawable(ccaGame.isWillOurWin() || ccaGame.isWinOur() ? R.drawable.rounded_small_corner_color_our_dark : R.drawable.rounded_small_corner_color_enemy_dark));
+            ga_tv_status.setBackground(getDrawable((ccaGame.isWillOurWin() || ccaGame.isWinOur()) ? R.drawable.rounded_small_corner_color_our_dark : R.drawable.rounded_small_corner_color_enemy_dark));
             ga_tv_status.setText(ccaGame.getStatus());   // статус
             lgi_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
             lgi_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
