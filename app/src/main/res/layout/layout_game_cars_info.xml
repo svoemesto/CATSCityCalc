@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/rounded_small_corner_light_gray"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginTop="2dp"
+
+    >
+
+    <ImageView
+        android:id="@+id/lgci_iv_game_car_black"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:src="@drawable/ic_car_black_36dp"/>
+
+    <TextView
+        android:id="@+id/lgci_tv_game_slots"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        tools:text="123"
+        />
+
+    <ImageView
+        android:id="@+id/lgci_iv_game_car_our"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:src="@drawable/ic_car_our_36dp"/>
+
+    <TextView
+        android:id="@+id/lgci_tv_game_slots_our"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="#4179d8"
+        tools:text="123"
+        />
+
+    <ImageView
+        android:id="@+id/lgci_iv_game_car_empty"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:src="@drawable/ic_car_empty_36dp"/>
+
+    <TextView
+        android:id="@+id/lgci_tv_game_slots_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="#5e6a84"
+        tools:text="123"
+        />
+
+    <ImageView
+        android:id="@+id/lgci_iv_game_car_enemy"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        tools:visibility="visible"
+        android:src="@drawable/ic_car_enemy_36dp"/>
+
+    <TextView
+        android:id="@+id/lgci_tv_game_slots_enemy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:textSize="16sp"
+        android:textColor="#ff6565"
+        tools:text="123"
+        />
+
+</LinearLayout>

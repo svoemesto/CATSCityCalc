@@ -115,7 +115,7 @@ public class GameActivity extends AppCompatActivity {
     // Game views
 
 
-    LinearLayout ga_in_buildings;
+    LinearLayout ga_in_game_group;
     RelativeLayout ga_rl_game;
     ScrollView ga_sv_game;
 
@@ -132,30 +132,31 @@ public class GameActivity extends AppCompatActivity {
     Button lgb_bt_brt;
     Button lgb_bt_brc;
     Button lgb_bt_brb;
-
+    
+    TextView ga_tv_status;              // текущий статус игры
     TextView ga_tv_user;                // имя пользователя, банда, роль
     TextView ga_tv_screenshot_time;     // информация о времени последнего скриншота
     Switch ga_sw_listen_new_file;       // переключатель "следить за файлами в папке"
-    TextView ga_tv_start_game_time;     // время начала игры
-    TextView ga_tv_end_game_time;       // время конца игры
-    TextView ga_tv_status;              // текущий статус игры
-    TextView ga_tv_vs;                  // "против"
+    TextView lgi_tv_start_game_time;     // время начала игры
+    TextView lgi_tv_end_game_time;       // время конца игры
+    
+    TextView lgi_tv_vs;                  // "против"
     
     // Time views
-    TextView ga_tv_total_time;          // время до конца игры
-    TextView ga_tv_early_win;           // очки до досрочной победы
+    TextView lgi_tv_total_time;          // время до конца игры
+    TextView lgi_tv_early_win;           // очки до досрочной победы
     
     // Our team views
-    ImageView ga_iv_our_team_name;      // название нашей команды (картинка)
-    TextView ga_tv_our_increase;        // прибавка нашей команды
-    TextView ga_tv_our_points;          // очки нашей команды
-    TextView ga_tv_our_end_time;        // время до конца игры для нашей команды
+    ImageView lgi_iv_our_team_name;      // название нашей команды (картинка)
+    TextView lgi_tv_our_increase;        // прибавка нашей команды
+    TextView lgi_tv_our_points;          // очки нашей команды
+    TextView lgi_tv_our_end_time;        // время до конца игры для нашей команды
     
     // Enemy team views
-    ImageView ga_iv_enemy_team_name;    // название команды противника (картинка)
-    TextView ga_tv_enemy_increase;      // прибавка команды противника
-    TextView ga_tv_enemy_points;        // очки команды противника
-    TextView ga_tv_enemy_end_time;      // время до конца игры для команды противника
+    ImageView lgi_iv_enemy_team_name;    // название команды противника (картинка)
+    TextView lgi_tv_enemy_increase;      // прибавка команды противника
+    TextView lgi_tv_enemy_points;        // очки команды противника
+    TextView lgi_tv_enemy_end_time;      // время до конца игры для команды противника
     
     // BLT views
     ImageView lgb_iv_blt_icon;           // blt - иконка здания (картинка)
@@ -240,35 +241,35 @@ public class GameActivity extends AppCompatActivity {
     // Рекламный блок
     AdView ga_ad_banner;                // баннер
 
-    ImageView ga_iv_game_car_black;     // машинка черная большая (картинка)
-    ImageView ga_iv_game_car_our;       // машинка синяя большая (картинка)
-    ImageView ga_iv_game_car_empty;     // машинка серая большая (картинка)
-    ImageView ga_iv_game_car_enemy;     // машинка красная большая (картинка)
-    TextView ga_tv_game_slots;          // слотов в игре всего
-    TextView ga_tv_game_slots_our;      // слотов в игре наших
-    TextView ga_tv_game_slots_empty;    // слотов в игре пустых
-    TextView ga_tv_game_slots_enemy;    // слотов в игре противника
+    ImageView lgci_iv_game_car_black;     // машинка черная большая (картинка)
+    ImageView lgci_iv_game_car_our;       // машинка синяя большая (картинка)
+    ImageView lgci_iv_game_car_empty;     // машинка серая большая (картинка)
+    ImageView lgci_iv_game_car_enemy;     // машинка красная большая (картинка)
+    TextView lgci_tv_game_slots;          // слотов в игре всего
+    TextView lgci_tv_game_slots_our;      // слотов в игре наших
+    TextView lgci_tv_game_slots_empty;    // слотов в игре пустых
+    TextView lgci_tv_game_slots_enemy;    // слотов в игре противника
 
-    ImageButton ga_ib_car1;             // кнопка-картинка 1-й машинки
-    ImageView ga_iv_car1_building_icon;
-    ImageView ga_iv_car1_task_icon;             
-    TextView ga_tv_car1_name;           // название 1-й машинки
-    TextView ga_tv_car1_repair;         // время ремонта 1-й машинки
-    TextView ga_tv_car1_health_shield;
+    ImageButton lgcb_ib_car1;             // кнопка-картинка 1-й машинки
+    ImageView lgcb_iv_car1_building_icon;
+    ImageView lgcb_iv_car1_task_icon;             
+    TextView lgcb_tv_car1_name;           // название 1-й машинки
+    TextView lgcb_tv_car1_repair;         // время ремонта 1-й машинки
+    TextView lgcb_tv_car1_health_shield;
 
-    ImageButton ga_ib_car2;             // кнопка-картинка 2-й машинки
-    ImageView ga_iv_car2_building_icon;
-    ImageView ga_iv_car2_task_icon;
-    TextView ga_tv_car2_name;           // название 2-й машинки
-    TextView ga_tv_car2_repair;         // время ремонта 2-й машинки
-    TextView ga_tv_car2_health_shield;
+    ImageButton lgcb_ib_car2;             // кнопка-картинка 2-й машинки
+    ImageView lgcb_iv_car2_building_icon;
+    ImageView lgcb_iv_car2_task_icon;
+    TextView lgcb_tv_car2_name;           // название 2-й машинки
+    TextView lgcb_tv_car2_repair;         // время ремонта 2-й машинки
+    TextView lgcb_tv_car2_health_shield;
 
-    ImageButton ga_ib_car3;             // кнопка-картинка 3-й машинки
-    ImageView ga_iv_car3_building_icon;
-    ImageView ga_iv_car3_task_icon;
-    TextView ga_tv_car3_name;           // название 3-й машинки
-    TextView ga_tv_car3_repair;         // время ремонта 3-й машинки
-    TextView ga_tv_car3_health_shield;
+    ImageButton lgcb_ib_car3;             // кнопка-картинка 3-й машинки
+    ImageView lgcb_iv_car3_building_icon;
+    ImageView lgcb_iv_car3_task_icon;
+    TextView lgcb_tv_car3_name;           // название 3-й машинки
+    TextView lgcb_tv_car3_repair;         // время ремонта 3-й машинки
+    TextView lgcb_tv_car3_health_shield;
 
     Button ga_bt_strategy;              // кнопка "Стратегичское планирование"
     TextView ga_tv_forecast;
@@ -481,42 +482,43 @@ public class GameActivity extends AppCompatActivity {
 
             textEndGameTime = getString(R.string.end_game_at) + ": "  + Utils.convertDateToString(ccaGame.getDateEndGame(), pattern);          // дата/время окончания игры
 
+            ga_tv_status.setBackground(getDrawable(ccaGame.isWillOurWin() || ccaGame.isWinOur() ? R.drawable.rounded_small_corner_color_our_dark : R.drawable.rounded_small_corner_color_enemy_dark));
             ga_tv_status.setText(ccaGame.getStatus());   // статус
             ga_tv_forecast.setText(ccaGame.getForecastText());   // прогноз
-            ga_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
-            ga_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
+            lgi_tv_start_game_time.setText(textStartGameTime);   // дата/время начала игры
+            lgi_tv_end_game_time.setText(textEndGameTime);       // дата/время окончания игры
 
             if (ccaGame.isGameOver()) {   // если игра закончена
-                ga_tv_total_time.setText("");   // время игры - пустое
+                lgi_tv_total_time.setText("");   // время игры - пустое
             } else { // если игра не закончена
-                ga_tv_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
+                lgi_tv_total_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToEndGame())); // время игры
             }
 
-            ga_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
+            lgi_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
 
-            if (ccaOurTeam != null) ga_iv_our_team_name.setImageBitmap(ccaOurTeam.getBmpSrc());  // имя нашей команды
-            if (ccaEnemyTeam != null) ga_iv_enemy_team_name.setImageBitmap(ccaEnemyTeam.getBmpSrc());  // имя команды противника
+            if (ccaOurTeam != null) lgi_iv_our_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaOurTeam.getBmpSrc(),0xFFFFFF));  // имя нашей команды
+            if (ccaEnemyTeam != null) lgi_iv_enemy_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaEnemyTeam.getBmpSrc(),0xFFFFFF));  // имя команды противника
 
 
-            ga_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
-            ga_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
+            lgi_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
+            lgi_tv_our_points.setText(String.valueOf(ccaGame.getPointsOur()));  // очки нашей команды
 
-            ga_tv_enemy_increase.setText(ccaGame.getIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getIncreaseEnemy() + " "); // прирост команды противника
-            ga_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
+            lgi_tv_enemy_increase.setText(ccaGame.getIncreaseEnemy() == 0 ? "" : " +" + ccaGame.getIncreaseEnemy() + " "); // прирост команды противника
+            lgi_tv_enemy_points.setText(String.valueOf(ccaGame.getPointsEnemy()));    // очки команды противника
 
             if (ccaGame.isGameOver()) {   // если игра закончена
-                ga_tv_our_end_time.setText(""); // наше время пустое
-                ga_tv_enemy_end_time.setText(""); // время противника пустое
+                lgi_tv_our_end_time.setText(""); // наше время пустое
+                lgi_tv_enemy_end_time.setText(""); // время противника пустое
             } else { // если игра незакончена
                 if (ccaGame.isWillOurWin()) {
-                    ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                    ga_tv_enemy_end_time.setText("");   // время противника пустое
+                    lgi_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    lgi_tv_enemy_end_time.setText("");   // время противника пустое
                 } else if (ccaGame.isWillEnemyWin()) {
-                    ga_tv_our_end_time.setText(""); // наше время пустое
-                    ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                    lgi_tv_our_end_time.setText(""); // наше время пустое
+                    lgi_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                 } else if (ccaGame.isWillNobodyWin()) {
-                    ga_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
-                    ga_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
+                    lgi_tv_our_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame())); // время до нашей победы
+                    lgi_tv_enemy_end_time.setText(Utils.convertMinutesToHHMM(ccaGame.getMinutesToFinalGame()));   // время до победы противника
                 }
 
             }
@@ -570,11 +572,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_blt()) {
                     lgb_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
-                    lgb_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_blt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blt()) {
                     lgb_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
-                    lgb_tv_blt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_blt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
                 } else if (ccaGame.isBuildingIsEmpty_blt()) {
                     lgb_tv_blt_points.setText("");
@@ -583,11 +585,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_blt()) {
                     lgb_tv_blt_x2.setText("X2");
-                    lgb_tv_blt_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_blt()) {
                         lgb_tv_blt_x2.setText("X2");
-                        lgb_tv_blt_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_blt_x2.setText("");
                         lgb_tv_blt_x2.setBackgroundColor(0x00000000);
@@ -629,11 +631,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_blc()) {
                     lgb_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
-                    lgb_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_blc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blc()) {
                     lgb_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
-                    lgb_tv_blc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_blc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
                 } else if (ccaGame.isBuildingIsEmpty_blc()) {
                     lgb_tv_blc_points.setText("");
@@ -642,11 +644,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_blc()) {
                     lgb_tv_blc_x2.setText("X2");
-                    lgb_tv_blc_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_blc()) {
                         lgb_tv_blc_x2.setText("X2");
-                        lgb_tv_blc_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_blc_x2.setText("");
                         lgb_tv_blc_x2.setBackgroundColor(0x00000000);
@@ -690,11 +692,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_blb()) {
                     lgb_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
-                    lgb_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_blb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_blb()) {
                     lgb_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
-                    lgb_tv_blb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_blb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
                 } else if (ccaGame.isBuildingIsEmpty_blb()) {
                     lgb_tv_blb_points.setText("");
@@ -703,11 +705,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_blb()) {
                     lgb_tv_blb_x2.setText("X2");
-                    lgb_tv_blb_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_blb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_blb()) {
                         lgb_tv_blb_x2.setText("X2");
-                        lgb_tv_blb_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_blb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_blb_x2.setText("");
                         lgb_tv_blb_x2.setBackgroundColor(0x00000000);
@@ -751,11 +753,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_brt()) {
                     lgb_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
-                    lgb_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_brt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brt()) {
                     lgb_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
-                    lgb_tv_brt_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_brt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
                 } else if (ccaGame.isBuildingIsEmpty_brt()) {
                     lgb_tv_brt_points.setText("");
@@ -764,11 +766,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_brt()) {
                     lgb_tv_brt_x2.setText("X2");
-                    lgb_tv_brt_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_brt()) {
                         lgb_tv_brt_x2.setText("X2");
-                        lgb_tv_brt_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_brt_x2.setText("");
                         lgb_tv_brt_x2.setBackgroundColor(0x00000000);
@@ -811,11 +813,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_brc()) {
                     lgb_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
-                    lgb_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_brc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brc()) {
                     lgb_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
-                    lgb_tv_brc_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_brc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
                 } else if (ccaGame.isBuildingIsEmpty_brc()) {
                     lgb_tv_brc_points.setText("");
@@ -824,11 +826,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_brc()) {
                     lgb_tv_brc_x2.setText("X2");
-                    lgb_tv_brc_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_brc()) {
                         lgb_tv_brc_x2.setText("X2");
-                        lgb_tv_brc_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_brc_x2.setText("");
                         lgb_tv_brc_x2.setBackgroundColor(0x00000000);
@@ -872,11 +874,11 @@ public class GameActivity extends AppCompatActivity {
 
                 if (ccaGame.isBuildingIsOur_brb()) {
                     lgb_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
-                    lgb_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+                    lgb_tv_brb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                     lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
                 } else if (ccaGame.isBuildingIsEnemy_brb()) {
                     lgb_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
-                    lgb_tv_brb_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+                    lgb_tv_brb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                     lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
                 } else if (ccaGame.isBuildingIsEmpty_brb()) {
                     lgb_tv_brb_points.setText("");
@@ -885,11 +887,11 @@ public class GameActivity extends AppCompatActivity {
                 }
                 if (ccaGame.isX2_brb()) {
                     lgb_tv_brb_x2.setText("X2");
-                    lgb_tv_brb_x2.setBackgroundColor(color_bxx_isX2);
+                    lgb_tv_brb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                 } else {
                     if (ccaGame.isMayX2_brb()) {
                         lgb_tv_brb_x2.setText("X2");
-                        lgb_tv_brb_x2.setBackgroundColor(color_bxx_mayX2);
+                        lgb_tv_brb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
                     } else {
                         lgb_tv_brb_x2.setText("");
                         lgb_tv_brb_x2.setBackgroundColor(0x00000000);
@@ -898,10 +900,10 @@ public class GameActivity extends AppCompatActivity {
             }
 
             
-            ga_tv_game_slots.setText(String.valueOf(slots));
-            ga_tv_game_slots_our.setText(String.valueOf(slots_our));
-            ga_tv_game_slots_empty.setText(String.valueOf(slots_empty));
-            ga_tv_game_slots_enemy.setText(String.valueOf(slots_enemy));
+            lgci_tv_game_slots.setText(String.valueOf(slots));
+            lgci_tv_game_slots_our.setText(String.valueOf(slots_our));
+            lgci_tv_game_slots_empty.setText(String.valueOf(slots_empty));
+            lgci_tv_game_slots_enemy.setText(String.valueOf(slots_enemy));
 
         }
 
@@ -946,28 +948,29 @@ public class GameActivity extends AppCompatActivity {
         Log.i(TAG, logMsgPref + "start");
 
         // Game views
+        ga_tv_status = findViewById(R.id.ga_tv_status);
         ga_sw_listen_new_file = findViewById(R.id.ga_sw_listen_new_file);
         ga_tv_screenshot_time = findViewById(R.id.ga_tv_screenshot_time);
-        ga_tv_start_game_time = findViewById(R.id.ga_tv_start_game_time);
-        ga_tv_end_game_time = findViewById(R.id.ga_tv_end_game_time);
-        ga_tv_status = findViewById(R.id.ga_tv_status);
-        ga_tv_vs = findViewById(R.id.ga_tv_vs);
+        lgi_tv_start_game_time = findViewById(R.id.lgi_tv_start_game_time);
+        lgi_tv_end_game_time = findViewById(R.id.lgi_tv_end_game_time);
+        
+        lgi_tv_vs = findViewById(R.id.lgi_tv_vs);
 
         // Time views
-        ga_tv_total_time = findViewById(R.id.ga_tv_total_time);
-        ga_tv_early_win = findViewById(R.id.ga_tv_early_win);
+        lgi_tv_total_time = findViewById(R.id.lgi_tv_total_time);
+        lgi_tv_early_win = findViewById(R.id.lgi_tv_early_win);
 
         // Our team views
-        ga_iv_our_team_name = findViewById(R.id.ga_iv_our_team_name);
-        ga_tv_our_increase = findViewById(R.id.ga_tv_our_increase);
-        ga_tv_our_points = findViewById(R.id.ga_tv_our_points);
-        ga_tv_our_end_time = findViewById(R.id.ga_tv_our_end_time);
+        lgi_iv_our_team_name = findViewById(R.id.lgi_iv_our_team_name);
+        lgi_tv_our_increase = findViewById(R.id.lgi_tv_our_increase);
+        lgi_tv_our_points = findViewById(R.id.lgi_tv_our_points);
+        lgi_tv_our_end_time = findViewById(R.id.lgi_tv_our_end_time);
 
         // Enemy team views
-        ga_iv_enemy_team_name = findViewById(R.id.ga_iv_enemy_team_name);
-        ga_tv_enemy_increase = findViewById(R.id.ga_tv_enemy_increase);
-        ga_tv_enemy_points = findViewById(R.id.ga_tv_enemy_points);
-        ga_tv_enemy_end_time = findViewById(R.id.ga_tv_enemy_end_time);
+        lgi_iv_enemy_team_name = findViewById(R.id.lgi_iv_enemy_team_name);
+        lgi_tv_enemy_increase = findViewById(R.id.lgi_tv_enemy_increase);
+        lgi_tv_enemy_points = findViewById(R.id.lgi_tv_enemy_points);
+        lgi_tv_enemy_end_time = findViewById(R.id.lgi_tv_enemy_end_time);
 
         // BLT views
         lgb_iv_blt_icon = findViewById(R.id.lgb_iv_blt_icon);
@@ -1051,43 +1054,43 @@ public class GameActivity extends AppCompatActivity {
         // Рекламный блок
         ga_ad_banner = findViewById(R.id.ga_ad_banner);
 
-        ga_iv_game_car_black = findViewById(R.id.ga_iv_game_car_black);
-        ga_iv_game_car_our = findViewById(R.id.ga_iv_game_car_our);
-        ga_iv_game_car_empty = findViewById(R.id.ga_iv_game_car_empty);
-        ga_iv_game_car_enemy = findViewById(R.id.ga_iv_game_car_enemy);
-        ga_tv_game_slots = findViewById(R.id.ga_tv_game_slots);
-        ga_tv_game_slots_our = findViewById(R.id.ga_tv_game_slots_our);
-        ga_tv_game_slots_empty = findViewById(R.id.ga_tv_game_slots_empty);
-        ga_tv_game_slots_enemy = findViewById(R.id.ga_tv_game_slots_enemy);
+        lgci_iv_game_car_black = findViewById(R.id.lgci_iv_game_car_black);
+        lgci_iv_game_car_our = findViewById(R.id.lgci_iv_game_car_our);
+        lgci_iv_game_car_empty = findViewById(R.id.lgci_iv_game_car_empty);
+        lgci_iv_game_car_enemy = findViewById(R.id.lgci_iv_game_car_enemy);
+        lgci_tv_game_slots = findViewById(R.id.lgci_tv_game_slots);
+        lgci_tv_game_slots_our = findViewById(R.id.lgci_tv_game_slots_our);
+        lgci_tv_game_slots_empty = findViewById(R.id.lgci_tv_game_slots_empty);
+        lgci_tv_game_slots_enemy = findViewById(R.id.lgci_tv_game_slots_enemy);
 
         ga_bt_strategy = findViewById(R.id.ga_bt_strategy);
 
-        ga_ib_car1 = findViewById(R.id.ga_ib_car1);
-        ga_tv_car1_name = findViewById(R.id.ga_tv_car1_name);
-        ga_tv_car1_repair = findViewById(R.id.ga_tv_car1_repair);
-        ga_iv_car1_building_icon = findViewById(R.id.ga_iv_car1_building_icon);
-        ga_iv_car1_task_icon = findViewById(R.id.ga_iv_car1_task_icon);
-        ga_tv_car1_health_shield = findViewById(R.id.ga_tv_car1_health_shield);
+        lgcb_ib_car1 = findViewById(R.id.lgcb_ib_car1);
+        lgcb_tv_car1_name = findViewById(R.id.lgcb_tv_car1_name);
+        lgcb_tv_car1_repair = findViewById(R.id.lgcb_tv_car1_repair);
+        lgcb_iv_car1_building_icon = findViewById(R.id.lgcb_iv_car1_building_icon);
+        lgcb_iv_car1_task_icon = findViewById(R.id.lgcb_iv_car1_task_icon);
+        lgcb_tv_car1_health_shield = findViewById(R.id.lgcb_tv_car1_health_shield);
 
-        ga_ib_car2 = findViewById(R.id.ga_ib_car2);
-        ga_tv_car2_name = findViewById(R.id.ga_tv_car2_name);
-        ga_tv_car2_repair = findViewById(R.id.ga_tv_car2_repair);
-        ga_iv_car2_building_icon = findViewById(R.id.ga_iv_car2_building_icon);
-        ga_iv_car2_task_icon = findViewById(R.id.ga_iv_car2_task_icon);
-        ga_tv_car2_health_shield = findViewById(R.id.ga_tv_car2_health_shield);
+        lgcb_ib_car2 = findViewById(R.id.lgcb_ib_car2);
+        lgcb_tv_car2_name = findViewById(R.id.lgcb_tv_car2_name);
+        lgcb_tv_car2_repair = findViewById(R.id.lgcb_tv_car2_repair);
+        lgcb_iv_car2_building_icon = findViewById(R.id.lgcb_iv_car2_building_icon);
+        lgcb_iv_car2_task_icon = findViewById(R.id.lgcb_iv_car2_task_icon);
+        lgcb_tv_car2_health_shield = findViewById(R.id.lgcb_tv_car2_health_shield);
 
-        ga_ib_car3 = findViewById(R.id.ga_ib_car3);
-        ga_tv_car3_name = findViewById(R.id.ga_tv_car3_name);
-        ga_tv_car3_repair = findViewById(R.id.ga_tv_car3_repair);
-        ga_iv_car3_building_icon = findViewById(R.id.ga_iv_car3_building_icon);
-        ga_iv_car3_task_icon = findViewById(R.id.ga_iv_car3_task_icon);
-        ga_tv_car3_health_shield = findViewById(R.id.ga_tv_car3_health_shield);
+        lgcb_ib_car3 = findViewById(R.id.lgcb_ib_car3);
+        lgcb_tv_car3_name = findViewById(R.id.lgcb_tv_car3_name);
+        lgcb_tv_car3_repair = findViewById(R.id.lgcb_tv_car3_repair);
+        lgcb_iv_car3_building_icon = findViewById(R.id.lgcb_iv_car3_building_icon);
+        lgcb_iv_car3_task_icon = findViewById(R.id.lgcb_iv_car3_task_icon);
+        lgcb_tv_car3_health_shield = findViewById(R.id.lgcb_tv_car3_health_shield);
 
         ga_tv_user = findViewById(R.id.ga_tv_user);
         ga_tv_forecast = findViewById(R.id.ga_tv_forecast);
         ga_sv_game = findViewById(R.id.ga_sv_game);
         ga_rl_game = findViewById(R.id.ga_rl_game);
-        ga_in_buildings = findViewById(R.id.ga_in_buildings);
+        ga_in_game_group = findViewById(R.id.ga_in_game_group);
 
         lgb_rl_blt = findViewById(R.id.lgb_rl_blt);
         lgb_rl_blc = findViewById(R.id.lgb_rl_blc);
@@ -1201,14 +1204,14 @@ public class GameActivity extends AppCompatActivity {
         Car car2 = Car.loadCar(2);
         Car car3 = Car.loadCar(3);
 
-        ga_tv_car1_name.setText(car1.getName());
-        ga_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
+        lgcb_tv_car1_name.setText(car1.getName());
+        lgcb_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
 
-        ga_tv_car2_name.setText(car2.getName());
-        ga_tv_car2_health_shield.setText(car2.getHealth() + "/" + car2.getShield());
+        lgcb_tv_car2_name.setText(car2.getName());
+        lgcb_tv_car2_health_shield.setText(car2.getHealth() + "/" + car2.getShield());
 
-        ga_tv_car3_name.setText(car3.getName());
-        ga_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
+        lgcb_tv_car3_name.setText(car3.getName());
+        lgcb_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
 
         try {
             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
@@ -1230,173 +1233,173 @@ public class GameActivity extends AppCompatActivity {
             }
 
             Bitmap car1CarBitmap = car1.isFree() ? car1.getCarPicture() : car1.isRepairing() ? car1.getCarPictureRepairing() : car1.isDefencing() ? car1.getCarPictureDefencing() : car1.getCarPicture() ;
-            if (car1CarBitmap != null) ga_ib_car1.setImageBitmap(car1CarBitmap);
-            ga_ib_car1.setImageBitmap(car1.getCarPicture());
+            if (car1CarBitmap != null) lgcb_ib_car1.setImageBitmap(car1CarBitmap);
+            lgcb_ib_car1.setImageBitmap(car1.getCarPicture());
             String car1textRepair = car1.isRepairing() ? "" + car1.getTimeStringToEndRepairing() : "";
-            ga_tv_car1_repair.setVisibility(car1textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
-            ga_tv_car1_repair.setText(car1textRepair);
-            ga_iv_car1_building_icon.setVisibility(car1.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_car1_task_icon.setVisibility(car1.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_tv_car1_repair.setVisibility(car1textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
+            lgcb_tv_car1_repair.setText(car1textRepair);
+            lgcb_iv_car1_building_icon.setVisibility(car1.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_iv_car1_task_icon.setVisibility(car1.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
             switch (car1.getBuilding()) {
                 case 0:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
             switch (car1.getBuildingTask()) {
                 case 0:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
             
 
             Bitmap car2CarBitmap = car2.isFree() ? car2.getCarPicture() : car2.isRepairing() ? car2.getCarPictureRepairing() : car2.isDefencing() ? car2.getCarPictureDefencing() : car2.getCarPicture() ;
-            if (car2CarBitmap != null) ga_ib_car2.setImageBitmap(car2CarBitmap);
-            ga_ib_car2.setImageBitmap(car2.getCarPicture());
+            if (car2CarBitmap != null) lgcb_ib_car2.setImageBitmap(car2CarBitmap);
+            lgcb_ib_car2.setImageBitmap(car2.getCarPicture());
             String car2textRepair = car2.isRepairing() ? "" + car2.getTimeStringToEndRepairing() : "";
-            ga_tv_car2_repair.setVisibility(car2textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
-            ga_tv_car2_repair.setText(car2textRepair);
-            ga_iv_car2_building_icon.setVisibility(car2.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_car2_task_icon.setVisibility(car2.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_tv_car2_repair.setVisibility(car2textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
+            lgcb_tv_car2_repair.setText(car2textRepair);
+            lgcb_iv_car2_building_icon.setVisibility(car2.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_iv_car2_task_icon.setVisibility(car2.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
             switch (car2.getBuilding()) {
                 case 0:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
             switch (car2.getBuildingTask()) {
                 case 0:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
 
             Bitmap car3CarBitmap = car3.isFree() ? car3.getCarPicture() : car3.isRepairing() ? car3.getCarPictureRepairing() : car3.isDefencing() ? car3.getCarPictureDefencing() : car3.getCarPicture() ;
-            if (car3CarBitmap != null) ga_ib_car3.setImageBitmap(car3CarBitmap);
-            ga_ib_car3.setImageBitmap(car3.getCarPicture());
+            if (car3CarBitmap != null) lgcb_ib_car3.setImageBitmap(car3CarBitmap);
+            lgcb_ib_car3.setImageBitmap(car3.getCarPicture());
             String car3textRepair = car3.isRepairing() ? "" + car3.getTimeStringToEndRepairing() : "";
-            ga_tv_car3_repair.setVisibility(car3textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
-            ga_tv_car3_repair.setText(car3textRepair);
-            ga_iv_car3_building_icon.setVisibility(car3.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
-            ga_iv_car3_task_icon.setVisibility(car3.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_tv_car3_repair.setVisibility(car3textRepair.equals("") ? View.INVISIBLE : View.VISIBLE);
+            lgcb_tv_car3_repair.setText(car3textRepair);
+            lgcb_iv_car3_building_icon.setVisibility(car3.getBuilding() >= 0 ? View.VISIBLE : View.INVISIBLE);
+            lgcb_iv_car3_task_icon.setVisibility(car3.getBuildingTask() > 0 ? View.VISIBLE : View.INVISIBLE);
             switch (car3.getBuilding()) {
                 case 0:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
             switch (car3.getBuildingTask()) {
                 case 0:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                     break;
                 case 1:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
                     break;
                 case 2:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
                     break;
                 case 3:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
                     break;
                 case 4:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
                     break;
                 case 5:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
                     break;
                 case 6:
-                    ga_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                    lgcb_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
                     break;
                 default:
             }
@@ -2798,8 +2801,8 @@ public class GameActivity extends AppCompatActivity {
 //        ga_rl_game.buildDrawingCache();
 //        Bitmap bm = ga_rl_game.getDrawingCache();
 
-        Bitmap bitmap = Bitmap.createBitmap(ga_in_buildings.getMeasuredWidth(),
-                ga_in_buildings.getMeasuredHeight(),
+        Bitmap bitmap = Bitmap.createBitmap(ga_in_game_group.getMeasuredWidth(),
+                ga_in_game_group.getMeasuredHeight(),
                 Bitmap.Config.ARGB_8888);
         //Create a canvas with the specified bitmap to draw into
         Canvas c = new Canvas(bitmap);
@@ -2810,7 +2813,7 @@ public class GameActivity extends AppCompatActivity {
 //        c.drawPaint(paint);
 
         //Render this view (and all of its children) to the given Canvas
-        ga_in_buildings.draw(c);
+        ga_in_game_group.draw(c);
 
 
         try (FileOutputStream out = new FileOutputStream(getApplicationContext().getFilesDir().getAbsolutePath() + "/state.jpg")) {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <include
+        android:id="@+id/ga_in_game_info"
+        layout="@layout/layout_game_info"/>
+
+    <include
+        android:id="@+id/ga_in_cars_info"
+        layout="@layout/layout_game_cars_info"/>
+
+    <TextView
+        android:id="@+id/ga_tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:layout_marginBottom="2dp"
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        tools:background="@drawable/rounded_small_corner_color_our_dark"
+        tools:text="Status game"
+        />
+
+    <include
+        android:id="@+id/ga_in_buildings"
+        layout="@layout/layout_game_buildings"/>
+
+</LinearLayout>

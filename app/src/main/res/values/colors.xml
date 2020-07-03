@@ -4,4 +4,14 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorLightgray">#D3D3D3</color>
+    <color name="colorOurLight">#FF90b3eb</color>
+    <color name="colorOurDark">#FF4179d8</color>
+    <color name="colorEnemyLight">#FFff8e98</color>
+    <color name="colorEnemyDark">#FFeb4c48</color>
+    <color name="colorEmptyLight">#FF91a7bf</color>
+    <color name="colorEmptyDark">#FF4e6881</color>
+    <color name="colorMayX2Light">#FFAFBFCF</color>
+    <color name="colorMayX2Dark">#FFAFBFCF</color>
+    <color name="colorIsX2Light">#FFEBAF2B</color>
+    <color name="colorIsX2Dark">#FFEBAF2B</color>
 </resources>

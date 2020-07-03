@@ -28,18 +28,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_light_gray.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_white.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v68.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/C.A.T.S.CityCalculator_v68.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/wigets/AutoResizeTextView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_empty_dark.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_empty_light.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_enemy_dark.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_enemy_light.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_isx2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_our_dark.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_color_our_light.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_small_corner_light_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_cars_buttons.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_cars_info.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_group.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/release/output-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/activities/GameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCAGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/database/DbTeamGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/utils/PictureProcessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_game.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_buildings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_game_buildings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,6 +77,7 @@
     <option name="KEY_STORE_PATH" value="D:\Dropbox\keystores\android.jks" />
     <option name="KEY_ALIAS" value="smandroidkey" />
     <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,14 +94,18 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ApkExportedModule" value="C.A.T.S._City_Calculator.app" />
     <property name="BundleExportedModule" value="C.A.T.S._City_Calculator.app" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="cf47d9ac" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-02T09:26:39.768Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="192.168.124.104:5555" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-03T08:26:25.441Z" />
     <property name="ExportApk.ApkPath" value="C:\GitHubProjects\CATSCityCalc\app" />
     <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android-custom-viewC:/GitHubProjects/CATSCityCalc/app/src/main/java/com/svoemestodev/catscitycalc/wigets/AutoResizeTextView.java_SELECTED" value="AutoResizeTextView" />
     <property name="android-custom-viewC:/Users/svoem/AppData/Local/Android/Sdk/sources/android-29/android/widget/AbsListView.java_SELECTED" value="AbsListView" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="multi-representation-previewC:/GitHubProjects/CATSCityCalc/app/src/main/java/com/svoemestodev/catscitycalc/wigets/AutoResizeTextView.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/svoem/AppData/Local/Android/Sdk/sources/android-29/android/widget/AbsListView.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="SDK Location" />
     <property name="project.structure.proportion" value="0.17" />
@@ -106,15 +123,15 @@
     <key name="android.template.1750248227">
       <recent name="com.svoemestodev.catscitycalc.activities" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
-      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\layout" />
     </key>
     <key name="android.template.723963178">
       <recent name="com.svoemestodev.catscitycalc.activities" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\drawable" />
+      <recent name="C:\GitHubProjects\CATSCityCalc\app\src\main\res\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -252,38 +269,38 @@
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
     <state x="1500" y="455" key="FileChooserDialogImpl/0.0.3440.1400@0.0.3440.1400" timestamp="1593691570974" />
-    <state width="3397" height="305" key="GridCell.Tab.0.bottom" timestamp="1593692641680">
+    <state width="2568" height="305" key="GridCell.Tab.0.bottom" timestamp="1593764925367">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641680" />
-    <state width="3397" height="305" key="GridCell.Tab.0.center" timestamp="1593692641677">
+    <state width="2568" height="305" key="GridCell.Tab.0.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593764925367" />
+    <state width="2568" height="305" key="GridCell.Tab.0.center" timestamp="1593764925366">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641677" />
-    <state width="3397" height="305" key="GridCell.Tab.0.left" timestamp="1593692641676">
+    <state width="2568" height="305" key="GridCell.Tab.0.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593764925366" />
+    <state width="2568" height="305" key="GridCell.Tab.0.left" timestamp="1593764925366">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641676" />
-    <state width="3397" height="305" key="GridCell.Tab.0.right" timestamp="1593692641679">
+    <state width="2568" height="305" key="GridCell.Tab.0.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593764925366" />
+    <state width="2568" height="305" key="GridCell.Tab.0.right" timestamp="1593764925367">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="305" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593692641679" />
-    <state width="3397" height="328" key="GridCell.Tab.1.bottom" timestamp="1593678561243">
+    <state width="2568" height="305" key="GridCell.Tab.0.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593764925367" />
+    <state width="3397" height="328" key="GridCell.Tab.1.bottom" timestamp="1593761299085">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561243" />
-    <state width="3397" height="328" key="GridCell.Tab.1.center" timestamp="1593678561242">
+    <state width="3397" height="328" key="GridCell.Tab.1.bottom/0.0.3440.1400@0.0.3440.1400" timestamp="1593761299085" />
+    <state width="3397" height="328" key="GridCell.Tab.1.center" timestamp="1593761299085">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561242" />
-    <state width="3397" height="328" key="GridCell.Tab.1.left" timestamp="1593678561242">
+    <state width="3397" height="328" key="GridCell.Tab.1.center/0.0.3440.1400@0.0.3440.1400" timestamp="1593761299085" />
+    <state width="3397" height="328" key="GridCell.Tab.1.left" timestamp="1593761299085">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561242" />
-    <state width="3397" height="328" key="GridCell.Tab.1.right" timestamp="1593678561243">
+    <state width="3397" height="328" key="GridCell.Tab.1.left/0.0.3440.1400@0.0.3440.1400" timestamp="1593761299085" />
+    <state width="3397" height="328" key="GridCell.Tab.1.right" timestamp="1593761299085">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
-    <state width="3397" height="328" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593678561243" />
+    <state width="3397" height="328" key="GridCell.Tab.1.right/0.0.3440.1400@0.0.3440.1400" timestamp="1593761299085" />
     <state x="1221" y="345" key="SettingsEditor" timestamp="1592079744336">
       <screen x="0" y="0" width="3440" height="1400" />
     </state>
