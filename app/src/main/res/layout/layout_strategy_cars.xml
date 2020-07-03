@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lsc_gl_grid"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_blt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+
+            <ImageView
+                android:id="@+id/lsc_iv_blt_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blt_black"
+                />
+
+            <SeekBar
+                android:id="@+id/lsc_sb_blt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_blt_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+            
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_brt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+
+            <ImageView
+                android:id="@+id/lsc_iv_brt_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brt_black"
+                />
+
+            <SeekBar
+                android:id="@+id/lsc_sb_brt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_brt_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+            
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_blc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+            
+            <ImageView
+                android:id="@+id/lsc_iv_blc_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blc_black"
+                />
+
+            <SeekBar
+                android:id="@+id/lsc_sb_blc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_blc_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_brc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+
+            <ImageView
+                android:id="@+id/lsc_iv_brc_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brc_black"
+                />
+            
+            <SeekBar
+                android:id="@+id/lsc_sb_brc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_brc_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_blb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+
+            <ImageView
+                android:id="@+id/lsc_iv_blb_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_blb_black"
+                />
+
+            <SeekBar
+                android:id="@+id/lsc_sb_blb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_blb_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/lsc_rl_brb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_margin="1dp"
+            android:background="@drawable/rounded_small_corner_light_gray"
+            >
+
+            <ImageView
+                android:id="@+id/lsc_iv_brb_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:scaleType="fitCenter"
+                android:gravity="center_horizontal|center_vertical"
+                tools:src="@drawable/ic_brb_black"
+                />
+
+            <SeekBar
+                android:id="@+id/lsc_sb_brb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lsc_iv_brb_icon"
+                android:layout_alignParentEnd="true"
+                android:min="0"
+                android:max="2"
+                android:progress="1"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                android:thumb="@drawable/ic_car_empty_36dp"
+                android:layout_weight="1" />
+            
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

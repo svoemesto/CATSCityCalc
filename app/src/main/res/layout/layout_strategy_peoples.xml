@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lsc_gl_grid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:paddingEnd="10dp"
+        >
+
+        <SeekBar
+            android:id="@+id/lsp_sb_person_our"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:min="0"
+            android:max="2"
+            android:progress="1"
+            android:thumb="@drawable/ic_person_our_36dp"
+            android:layout_weight="1" />
+
+        <SeekBar
+            android:id="@+id/lsp_sb_person_enemy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:min="0"
+            android:max="2"
+            android:progress="1"
+            android:thumb="@drawable/ic_person_enemy_36dp"
+            android:layout_weight="1" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:paddingEnd="10dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingEnd="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/lsp_iv_person_our"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_person_our_24dp"/>
+
+            <TextView
+                android:id="@+id/lsp_tv_person_our"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#4179d8"
+                android:text="0"/>
+
+            <ImageView
+                android:id="@+id/lsp_iv_car_our"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_car_our_24dp"/>
+
+            <TextView
+                android:id="@+id/lsp_tv_car_our"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#4179d8"
+                android:text="0"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/lsp_iv_person_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_person_enemy_24dp"/>
+
+            <TextView
+                android:id="@+id/lsp_tv_person_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#ff6565"
+                android:text="0"/>
+
+            <ImageView
+                android:id="@+id/lsp_iv_car_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_car_enemy_24dp"/>
+
+            <TextView
+                android:id="@+id/lsp_tv_car_enemy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textColor="#ff6565"
+                android:text="0"/>
+
+
+        </LinearLayout>
+        
+    </LinearLayout>
+
+
+</LinearLayout>
