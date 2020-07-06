@@ -59,7 +59,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import static com.svoemestodev.catscitycalc.activities.GameActivity.mainDbTeam;
 
@@ -396,37 +395,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                             ltu_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
 
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
-                            
+
+                            Area[] areasBuildings = new Area[6];
+                            areasBuildings[0] = Area.BLT;
+                            areasBuildings[1] = Area.BLC;
+                            areasBuildings[2] = Area.BLB;
+                            areasBuildings[3] = Area.BRT;
+                            areasBuildings[4] = Area.BRC;
+                            areasBuildings[5] = Area.BRB;
+
                             Bitmap taskBitmap = null;
-                            if (car1.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car1.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car1.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car1.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car1.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car1.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                            Bitmap bldBitmap = null;
+                            if (car1.getBuildingTask() > 0 && ccaGame.getBuildings()[car1.getBuildingTask()-1].isPresent()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car1.getBuildingTask()-1]).getBmpSrc();
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car1.getBuildingTask()-1]).getBmpSrc();
                             }
                             car1.setTaskPicture(taskBitmap);
-                            
-                            Bitmap bldBitmap = null;
-                            if (car1.getBuilding() == 1 && ccaGame.isPresent_blt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car1.getBuilding() == 2 && ccaGame.isPresent_blc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car1.getBuilding() == 3 && ccaGame.isPresent_blb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car1.getBuilding() == 4 && ccaGame.isPresent_brt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car1.getBuilding() == 5 && ccaGame.isPresent_brc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car1.getBuilding() == 6 && ccaGame.isPresent_brb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                            }
                             car1.setBuildingPicture(bldBitmap);
 
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
@@ -434,7 +418,6 @@ public class WorkTeamActivity extends AppCompatActivity {
                             } else {
                                 car1.save(userUID);
                             }
-
 
                             
                             if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
@@ -461,22 +444,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car1_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car1_building_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }
@@ -485,22 +468,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car1_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car1_task_icon.setImageDrawable(getDrawable(car1.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car1.getBuilding() == car1.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }
@@ -591,36 +574,21 @@ public class WorkTeamActivity extends AppCompatActivity {
 
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
+                            Area[] areasBuildings = new Area[6];
+                            areasBuildings[0] = Area.BLT;
+                            areasBuildings[1] = Area.BLC;
+                            areasBuildings[2] = Area.BLB;
+                            areasBuildings[3] = Area.BRT;
+                            areasBuildings[4] = Area.BRC;
+                            areasBuildings[5] = Area.BRB;
+
                             Bitmap taskBitmap = null;
-                            if (car2.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car2.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car2.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car2.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car2.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car2.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                            Bitmap bldBitmap = null;
+                            if (car2.getBuildingTask() > 0 && ccaGame.getBuildings()[car2.getBuildingTask()-1].isPresent()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car2.getBuildingTask()-1]).getBmpSrc();
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car2.getBuildingTask()-1]).getBmpSrc();
                             }
                             car2.setTaskPicture(taskBitmap);
-
-                            Bitmap bldBitmap = null;
-                            if (car2.getBuilding() == 1 && ccaGame.isPresent_blt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car2.getBuilding() == 2 && ccaGame.isPresent_blc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car2.getBuilding() == 3 && ccaGame.isPresent_blb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car2.getBuilding() == 4 && ccaGame.isPresent_brt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car2.getBuilding() == 5 && ccaGame.isPresent_brc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car2.getBuilding() == 6 && ccaGame.isPresent_brb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                            }
                             car2.setBuildingPicture(bldBitmap);
 
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
@@ -655,22 +623,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car2_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car2_building_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }
@@ -679,22 +647,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car2_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car2_task_icon.setImageDrawable(getDrawable(car2.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car2.getBuilding() == car2.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }
@@ -783,36 +751,21 @@ public class WorkTeamActivity extends AppCompatActivity {
 
                             CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
 
+                            Area[] areasBuildings = new Area[6];
+                            areasBuildings[0] = Area.BLT;
+                            areasBuildings[1] = Area.BLC;
+                            areasBuildings[2] = Area.BLB;
+                            areasBuildings[3] = Area.BRT;
+                            areasBuildings[4] = Area.BRC;
+                            areasBuildings[5] = Area.BRB;
+
                             Bitmap taskBitmap = null;
-                            if (car3.getBuildingTask() == 1 && ccaGame.isPresent_blt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car3.getBuildingTask() == 2 && ccaGame.isPresent_blc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car3.getBuildingTask() == 3 && ccaGame.isPresent_blb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car3.getBuildingTask() == 4 && ccaGame.isPresent_brt()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car3.getBuildingTask() == 5 && ccaGame.isPresent_brc()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car3.getBuildingTask() == 6 && ccaGame.isPresent_brb()) {
-                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                            Bitmap bldBitmap = null;
+                            if (car3.getBuildingTask() > 0 && ccaGame.getBuildings()[car3.getBuildingTask()-1].isPresent()) {
+                                taskBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car3.getBuildingTask()-1]).getBmpSrc();
+                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[car3.getBuildingTask()-1]).getBmpSrc();
                             }
                             car3.setTaskPicture(taskBitmap);
-
-                            Bitmap bldBitmap = null;
-                            if (car3.getBuilding() == 1 && ccaGame.isPresent_blt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
-                            } else if (car3.getBuilding() == 2 && ccaGame.isPresent_blc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
-                            } else if (car3.getBuilding() == 3 && ccaGame.isPresent_blb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
-                            } else if (car3.getBuilding() == 4 && ccaGame.isPresent_brt()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
-                            } else if (car3.getBuilding() == 5 && ccaGame.isPresent_brc()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
-                            } else if (car3.getBuilding() == 6 && ccaGame.isPresent_brb()) {
-                                bldBitmap = GameActivity.mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
-                            }
                             car3.setBuildingPicture(bldBitmap);
 
                             if (userUID.equals(GameActivity.fbUser.getUid())) {
@@ -847,22 +800,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car3_building_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car3_building_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }
@@ -871,22 +824,22 @@ public class WorkTeamActivity extends AppCompatActivity {
                                     ltu_iv_car3_task_icon.setImageDrawable(getDrawable(R.drawable.ic_bxx_black));
                                     break;
                                 case 1:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                                     break;
                                 case 2:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                                     break;
                                 case 3:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                                     break;
                                 case 4:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                                     break;
                                 case 5:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                                     break;
                                 case 6:
-                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                                    ltu_iv_car3_task_icon.setImageDrawable(getDrawable(car3.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : car3.getBuilding() == car3.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                                     break;
                                 default:
                             }

@@ -36,22 +36,22 @@ public class ListBuildingAdapter extends ArrayAdapter<Building> {
                 select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bfx_black));
                 break;
             case 1:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_blt_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld1_black));
                 break;
             case 2:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_blc_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld2_black));
                 break;
             case 3:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_blb_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld3_black));
                 break;
             case 4:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_brt_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld4_black));
                 break;
             case 5:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_brc_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld5_black));
                 break;
             case 6:
-                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_brb_black));
+                select_item_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bld6_black));
                 break;
             default:
         }

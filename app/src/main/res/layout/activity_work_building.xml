@@ -34,7 +34,7 @@
             android:layout_height="40dp"
             android:scaleType="fitCenter"
             android:gravity="center_horizontal|center_vertical"
-            tools:src="@drawable/ic_blt_black"
+            tools:src="@drawable/ic_bld1_black"
             />
 
         <LinearLayout

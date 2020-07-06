@@ -461,86 +461,125 @@ public class DbTeamGame implements Serializable {
         this.increaseOur = ccaGame.getIncreaseOur();
         this.increaseEnemy = ccaGame.getIncreaseEnemy();
 
-        this.isPresent_blt = ccaGame.isPresent_blt();
-        this.isPresent_blc = ccaGame.isPresent_blc();
-        this.isPresent_blb = ccaGame.isPresent_blb();
-        this.isPresent_brt = ccaGame.isPresent_brt();
-        this.isPresent_brc = ccaGame.isPresent_brc();
-        this.isPresent_brb = ccaGame.isPresent_brb();
+        this.isPresent_blt = ccaGame.getBuildings()[0].isPresent();
+        this.isPresent_blc = ccaGame.getBuildings()[1].isPresent();
+        this.isPresent_blb = ccaGame.getBuildings()[2].isPresent();
+        this.isPresent_brt = ccaGame.getBuildings()[3].isPresent();
+        this.isPresent_brc = ccaGame.getBuildings()[4].isPresent();
+        this.isPresent_brb = ccaGame.getBuildings()[5].isPresent();
 
-        this.isX2_blt = ccaGame.isX2_blt();
-        this.isX2_blc = ccaGame.isX2_blc();
-        this.isX2_blb = ccaGame.isX2_blb();
-        this.isX2_brt = ccaGame.isX2_brt();
-        this.isX2_brc = ccaGame.isX2_brc();
-        this.isX2_brb = ccaGame.isX2_brb();
+        this.isX2_blt = ccaGame.getBuildings()[0].isX2();
+        this.isX2_blc = ccaGame.getBuildings()[1].isX2();
+        this.isX2_blb = ccaGame.getBuildings()[2].isX2();
+        this.isX2_brt = ccaGame.getBuildings()[3].isX2();
+        this.isX2_brc = ccaGame.getBuildings()[4].isX2();
+        this.isX2_brb = ccaGame.getBuildings()[5].isX2();
 
-        this.mayX2_blt = ccaGame.isMayX2_blt();
-        this.mayX2_blc = ccaGame.isMayX2_blc();
-        this.mayX2_blb = ccaGame.isMayX2_blb();
-        this.mayX2_brt = ccaGame.isMayX2_brt();
-        this.mayX2_brc = ccaGame.isMayX2_brc();
-        this.mayX2_brb = ccaGame.isMayX2_brb();
+        this.mayX2_blt = ccaGame.getBuildings()[0].isMayX2();
+        this.mayX2_blc = ccaGame.getBuildings()[1].isMayX2();
+        this.mayX2_blb = ccaGame.getBuildings()[2].isMayX2();
+        this.mayX2_brt = ccaGame.getBuildings()[3].isMayX2();
+        this.mayX2_brc = ccaGame.getBuildings()[4].isMayX2();
+        this.mayX2_brb = ccaGame.getBuildings()[5].isMayX2();
 
-        this.buildingIsOur_blt = ccaGame.isBuildingIsOur_blt();
-        this.buildingIsOur_blc = ccaGame.isBuildingIsOur_blc();
-        this.buildingIsOur_blb = ccaGame.isBuildingIsOur_blb();
-        this.buildingIsOur_brt = ccaGame.isBuildingIsOur_brt();
-        this.buildingIsOur_brc = ccaGame.isBuildingIsOur_brc();
-        this.buildingIsOur_brb = ccaGame.isBuildingIsOur_brb();
+        this.buildingIsOur_blt = ccaGame.getBuildings()[0].isBuildingIsOur();
+        this.buildingIsOur_blc = ccaGame.getBuildings()[1].isBuildingIsOur();
+        this.buildingIsOur_blb = ccaGame.getBuildings()[2].isBuildingIsOur();
+        this.buildingIsOur_brt = ccaGame.getBuildings()[3].isBuildingIsOur();
+        this.buildingIsOur_brc = ccaGame.getBuildings()[4].isBuildingIsOur();
+        this.buildingIsOur_brb = ccaGame.getBuildings()[5].isBuildingIsOur();
 
-        this.buildingIsEmpty_blt = ccaGame.isBuildingIsEmpty_blt();
-        this.buildingIsEmpty_blc = ccaGame.isBuildingIsEmpty_blc();
-        this.buildingIsEmpty_blb = ccaGame.isBuildingIsEmpty_blb();
-        this.buildingIsEmpty_brt = ccaGame.isBuildingIsEmpty_brt();
-        this.buildingIsEmpty_brc = ccaGame.isBuildingIsEmpty_brc();
-        this.buildingIsEmpty_brb = ccaGame.isBuildingIsEmpty_brb();
+        this.buildingIsEmpty_blt = ccaGame.getBuildings()[0].isBuildingIsEmpty();
+        this.buildingIsEmpty_blc = ccaGame.getBuildings()[1].isBuildingIsEmpty();
+        this.buildingIsEmpty_blb = ccaGame.getBuildings()[2].isBuildingIsEmpty();
+        this.buildingIsEmpty_brt = ccaGame.getBuildings()[3].isBuildingIsEmpty();
+        this.buildingIsEmpty_brc = ccaGame.getBuildings()[4].isBuildingIsEmpty();
+        this.buildingIsEmpty_brb = ccaGame.getBuildings()[5].isBuildingIsEmpty();
 
-        this.buildingIsEnemy_blt = ccaGame.isBuildingIsEnemy_blt();
-        this.buildingIsEnemy_blc = ccaGame.isBuildingIsEnemy_blc();
-        this.buildingIsEnemy_blb = ccaGame.isBuildingIsEnemy_blb();
-        this.buildingIsEnemy_brt = ccaGame.isBuildingIsEnemy_brt();
-        this.buildingIsEnemy_brc = ccaGame.isBuildingIsEnemy_brc();
-        this.buildingIsEnemy_brb = ccaGame.isBuildingIsEnemy_brb();
+        this.buildingIsEnemy_blt = ccaGame.getBuildings()[0].isBuildingIsEnemy();
+        this.buildingIsEnemy_blc = ccaGame.getBuildings()[1].isBuildingIsEnemy();
+        this.buildingIsEnemy_blb = ccaGame.getBuildings()[2].isBuildingIsEnemy();
+        this.buildingIsEnemy_brt = ccaGame.getBuildings()[3].isBuildingIsEnemy();
+        this.buildingIsEnemy_brc = ccaGame.getBuildings()[4].isBuildingIsEnemy();
+        this.buildingIsEnemy_brb = ccaGame.getBuildings()[5].isBuildingIsEnemy();
 
-        this.our_points_blt = ccaGame.getOur_points_blt();
-        this.our_points_blc = ccaGame.getOur_points_blc();
-        this.our_points_blb = ccaGame.getOur_points_blb();
-        this.our_points_brt = ccaGame.getOur_points_brt();
-        this.our_points_brc = ccaGame.getOur_points_brc();
-        this.our_points_brb = ccaGame.getOur_points_brb();
+        this.our_points_blt = ccaGame.getBuildings()[0].getOur_points();
+        this.our_points_blc = ccaGame.getBuildings()[1].getOur_points();
+        this.our_points_blb = ccaGame.getBuildings()[2].getOur_points();
+        this.our_points_brt = ccaGame.getBuildings()[3].getOur_points();
+        this.our_points_brc = ccaGame.getBuildings()[4].getOur_points();
+        this.our_points_brb = ccaGame.getBuildings()[5].getOur_points();
 
-        this.enemy_points_blt = ccaGame.getEnemy_points_blt();
-        this.enemy_points_blc = ccaGame.getEnemy_points_blc();
-        this.enemy_points_blb = ccaGame.getEnemy_points_blb();
-        this.enemy_points_brt = ccaGame.getEnemy_points_brt();
-        this.enemy_points_brc = ccaGame.getEnemy_points_brc();
-        this.enemy_points_brb = ccaGame.getEnemy_points_brb();
+        this.enemy_points_blt = ccaGame.getBuildings()[0].getEnemy_points();
+        this.enemy_points_blc = ccaGame.getBuildings()[1].getEnemy_points();
+        this.enemy_points_blb = ccaGame.getBuildings()[2].getEnemy_points();
+        this.enemy_points_brt = ccaGame.getBuildings()[3].getEnemy_points();
+        this.enemy_points_brc = ccaGame.getBuildings()[4].getEnemy_points();
+        this.enemy_points_brb = ccaGame.getBuildings()[5].getEnemy_points();
 
-        this.slots_blt = ccaGame.getSlots_blt();
-        this.slots_blt_our = ccaGame.getSlots_blt_our();
-        this.slots_blt_empty = ccaGame.getSlots_blt_empty();
-        this.slots_blt_enemy = ccaGame.getSlots_blt_enemy();
-        this.slots_blc = ccaGame.getSlots_blc();
-        this.slots_blc_our = ccaGame.getSlots_blc_our();
-        this.slots_blc_empty = ccaGame.getSlots_blc_empty();
-        this.slots_blc_enemy = ccaGame.getSlots_blc_enemy();
-        this.slots_blb = ccaGame.getSlots_blb();
-        this.slots_blb_our = ccaGame.getSlots_blb_our();
-        this.slots_blb_empty = ccaGame.getSlots_blb_empty();
-        this.slots_blb_enemy = ccaGame.getSlots_blb_enemy();
-        this.slots_brt = ccaGame.getSlots_brt();
-        this.slots_brt_our = ccaGame.getSlots_brt_our();
-        this.slots_brt_empty = ccaGame.getSlots_brt_empty();
-        this.slots_brt_enemy = ccaGame.getSlots_brt_enemy();
-        this.slots_brc = ccaGame.getSlots_brc();
-        this.slots_brc_our = ccaGame.getSlots_brc_our();
-        this.slots_brc_empty = ccaGame.getSlots_brc_empty();
-        this.slots_brc_enemy = ccaGame.getSlots_brc_enemy();
-        this.slots_brb = ccaGame.getSlots_brb();
-        this.slots_brb_our = ccaGame.getSlots_brb_our();
-        this.slots_brb_empty = ccaGame.getSlots_brb_empty();
-        this.slots_brb_enemy = ccaGame.getSlots_brb_enemy();
+        this.slots_blt = ccaGame.getBuildings()[0].getSlots();
+        this.slots_blc = ccaGame.getBuildings()[1].getSlots();
+        this.slots_blb = ccaGame.getBuildings()[2].getSlots();
+        this.slots_brt = ccaGame.getBuildings()[3].getSlots();
+        this.slots_brc = ccaGame.getBuildings()[4].getSlots();
+        this.slots_brb = ccaGame.getBuildings()[5].getSlots();
+
+        this.slots_blt_our = ccaGame.getBuildings()[0].getSlots_our();
+        this.slots_blc_our = ccaGame.getBuildings()[1].getSlots_our();
+        this.slots_blb_our = ccaGame.getBuildings()[2].getSlots_our();
+        this.slots_brt_our = ccaGame.getBuildings()[3].getSlots_our();
+        this.slots_brc_our = ccaGame.getBuildings()[4].getSlots_our();
+        this.slots_brb_our = ccaGame.getBuildings()[5].getSlots_our();
+
+        this.slots_blt_empty = ccaGame.getBuildings()[0].getSlots_empty();
+        this.slots_blc_empty = ccaGame.getBuildings()[1].getSlots_empty();
+        this.slots_blb_empty = ccaGame.getBuildings()[2].getSlots_empty();
+        this.slots_brt_empty = ccaGame.getBuildings()[3].getSlots_empty();
+        this.slots_brc_empty = ccaGame.getBuildings()[4].getSlots_empty();
+        this.slots_brb_empty = ccaGame.getBuildings()[5].getSlots_empty();
+
+        this.slots_blt_enemy = ccaGame.getBuildings()[0].getSlots_enemy();
+        this.slots_blc_enemy = ccaGame.getBuildings()[1].getSlots_enemy();
+        this.slots_blb_enemy = ccaGame.getBuildings()[2].getSlots_enemy();
+        this.slots_brt_enemy = ccaGame.getBuildings()[3].getSlots_enemy();
+        this.slots_brc_enemy = ccaGame.getBuildings()[4].getSlots_enemy();
+        this.slots_brb_enemy = ccaGame.getBuildings()[5].getSlots_enemy();
+
+
+        this.needToWin_blt = ccaGame.getBuildings()[0].isNeedToWin();
+        this.needToWin_blc = ccaGame.getBuildings()[1].isNeedToWin();
+        this.needToWin_blb = ccaGame.getBuildings()[2].isNeedToWin();
+        this.needToWin_brt = ccaGame.getBuildings()[3].isNeedToWin();
+        this.needToWin_brc = ccaGame.getBuildings()[4].isNeedToWin();
+        this.needToWin_brb = ccaGame.getBuildings()[5].isNeedToWin();
+
+        this.needToWinWithoutX2_blt = ccaGame.getBuildings()[0].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_blc = ccaGame.getBuildings()[1].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_blb = ccaGame.getBuildings()[2].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_brt = ccaGame.getBuildings()[3].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_brc = ccaGame.getBuildings()[4].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_brb = ccaGame.getBuildings()[5].isNeedToWinWithoutX2();
+
+        this.needToEarlyWin_blt = ccaGame.getBuildings()[0].isNeedToEarlyWin();
+        this.needToEarlyWin_blc = ccaGame.getBuildings()[1].isNeedToEarlyWin();
+        this.needToEarlyWin_blb = ccaGame.getBuildings()[2].isNeedToEarlyWin();
+        this.needToEarlyWin_brt = ccaGame.getBuildings()[3].isNeedToEarlyWin();
+        this.needToEarlyWin_brc = ccaGame.getBuildings()[4].isNeedToEarlyWin();
+        this.needToEarlyWin_brb = ccaGame.getBuildings()[5].isNeedToEarlyWin();
+
+        this.needToEarlyWinWithoutX2_blt = ccaGame.getBuildings()[0].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_blc = ccaGame.getBuildings()[1].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_blb = ccaGame.getBuildings()[2].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_brt = ccaGame.getBuildings()[3].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_brc = ccaGame.getBuildings()[4].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_brb = ccaGame.getBuildings()[5].isNeedToEarlyWinWithoutX2();
+
+        this.useInForecast_blt = ccaGame.getBuildings()[0].isUseInForecast();
+        this.useInForecast_blc = ccaGame.getBuildings()[1].isUseInForecast();
+        this.useInForecast_blb = ccaGame.getBuildings()[2].isUseInForecast();
+        this.useInForecast_brt = ccaGame.getBuildings()[3].isUseInForecast();
+        this.useInForecast_brc = ccaGame.getBuildings()[4].isUseInForecast();
+        this.useInForecast_brb = ccaGame.getBuildings()[5].isUseInForecast();
 
         this.countOurX2 = ccaGame.getCountOurX2();
         this.countEnemyX2 = ccaGame.getCountEnemyX2();
@@ -556,38 +595,6 @@ public class DbTeamGame implements Serializable {
         this.canWinWithoutX2 = ccaGame.isCanWinWithoutX2();
         this.canEarlyWin = ccaGame.isCanEarlyWin();
         this.canEarlyWinWithoutX2 = ccaGame.isCanEarlyWinWithoutX2();
-
-        this.needToWin_blt = ccaGame.isNeedToWin_blt();
-        this.needToWinWithoutX2_blt = ccaGame.isNeedToWinWithoutX2_blt();
-        this.needToEarlyWin_blt = ccaGame.isNeedToEarlyWin_blt();
-        this.needToEarlyWinWithoutX2_blt = ccaGame.isNeedToEarlyWinWithoutX2_blt();
-        this.needToWin_blc = ccaGame.isNeedToWin_blc();
-        this.needToWinWithoutX2_blc = ccaGame.isNeedToWinWithoutX2_blc();
-        this.needToEarlyWin_blc = ccaGame.isNeedToEarlyWin_blc();
-        this.needToEarlyWinWithoutX2_blc = ccaGame.isNeedToEarlyWinWithoutX2_blc();
-        this.needToWin_blb = ccaGame.isNeedToWin_blb();
-        this.needToWinWithoutX2_blb = ccaGame.isNeedToWinWithoutX2_blb();
-        this.needToEarlyWin_blb = ccaGame.isNeedToEarlyWin_blb();
-        this.needToEarlyWinWithoutX2_blb = ccaGame.isNeedToEarlyWinWithoutX2_blb();
-        this.needToWin_brt = ccaGame.isNeedToWin_brt();
-        this.needToWinWithoutX2_brt = ccaGame.isNeedToWinWithoutX2_brt();
-        this.needToEarlyWin_brt = ccaGame.isNeedToEarlyWin_brt();
-        this.needToEarlyWinWithoutX2_brt = ccaGame.isNeedToEarlyWinWithoutX2_brt();
-        this.needToWin_brc = ccaGame.isNeedToWin_brc();
-        this.needToWinWithoutX2_brc = ccaGame.isNeedToWinWithoutX2_brc();
-        this.needToEarlyWin_brc = ccaGame.isNeedToEarlyWin_brc();
-        this.needToEarlyWinWithoutX2_brc = ccaGame.isNeedToEarlyWinWithoutX2_brc();
-        this.needToWin_brb = ccaGame.isNeedToWin_brb();
-        this.needToWinWithoutX2_brb = ccaGame.isNeedToWinWithoutX2_brb();
-        this.needToEarlyWin_brb = ccaGame.isNeedToEarlyWin_brb();
-        this.needToEarlyWinWithoutX2_brb = ccaGame.isNeedToEarlyWinWithoutX2_brb();
-
-        this.useInForecast_blt = ccaGame.isUseInForecast_blt();
-        this.useInForecast_blc = ccaGame.isUseInForecast_blc();
-        this.useInForecast_blb = ccaGame.isUseInForecast_blb();
-        this.useInForecast_brt = ccaGame.isUseInForecast_brt();
-        this.useInForecast_brc = ccaGame.isUseInForecast_brc();
-        this.useInForecast_brb = ccaGame.isUseInForecast_brb();
 
         if (!ccaGame.isGameOver()) {
 

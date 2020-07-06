@@ -7,19 +7,13 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -36,34 +30,14 @@ import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 public class StrategyActivity extends AppCompatActivity {
 
-    RelativeLayout lgb_rl_blt;
-    RelativeLayout lgb_rl_blc;
-    RelativeLayout lgb_rl_blb;
-    RelativeLayout lgb_rl_brt;
-    RelativeLayout lgb_rl_brc;
-    RelativeLayout lgb_rl_brb;
-
-    ImageView lsc_iv_blt_icon;
-    ImageView lsc_iv_blc_icon;
-    ImageView lsc_iv_blb_icon;
-    ImageView lsc_iv_brt_icon;
-    ImageView lsc_iv_brc_icon;
-    ImageView lsc_iv_brb_icon;
-    
-    SeekBar lsc_sb_blt;
-    SeekBar lsc_sb_blc;
-    SeekBar lsc_sb_blb;
-    SeekBar lsc_sb_brt;
-    SeekBar lsc_sb_brc;
-    SeekBar lsc_sb_brb;
+    RelativeLayout[] lgb_rl_bld = new RelativeLayout[6];
+    ImageView[] lsc_iv_bld_icon = new ImageView[6];
+    SeekBar[] lsc_sb_bld = new SeekBar[6];
     
     SeekBar lsp_sb_person_our;
     ImageView lsp_iv_person_our;
@@ -98,85 +72,17 @@ public class StrategyActivity extends AppCompatActivity {
     TextView lgi_tv_enemy_points;        // очки команды противника
     TextView lgi_tv_enemy_end_time;      // время до конца игры для команды противника
 
-    // BLT views
-    ImageView lgb_iv_blt_icon;           // blt - иконка здания (картинка)
-    ImageView lgb_iv_blt_name;           // blt - название здания (картинка)
-    TextView lgb_tv_blt_x2;              // blt - х2
-    TextView lgb_tv_blt_points;          // blt - очки
-    TextView lgb_tv_blt_slots;           // blt - слоты 
-    TextView lgb_tv_blt_slots_our;       // blt - наши слоты
-    TextView lgb_tv_blt_slots_empty;     // blt - слоты противника
-    TextView lgb_tv_blt_slots_enemy;     // blt - пустые слоты
-    ImageView lgb_iv_blt_progress;       // blt - прогресс
-    ImageView lgb_iv_blt_can_win_with_x2;
-    ImageView lgb_iv_blt_can_early_win_with_x2;
-
-
-
-    // BLC views
-    ImageView lgb_iv_blc_icon;           // blc - иконка здания (картинка)
-    ImageView lgb_iv_blc_name;           // blc - название здания (картинка)
-    TextView lgb_tv_blc_x2;              // blc - х2
-    TextView lgb_tv_blc_points;          // blc - очки
-    TextView lgb_tv_blc_slots;           // blc - слоты 
-    TextView lgb_tv_blc_slots_our;       // blc - наши слоты
-    TextView lgb_tv_blc_slots_empty;     // blc - слоты противника
-    TextView lgb_tv_blc_slots_enemy;     // blc - пустые слоты
-    ImageView lgb_iv_blc_progress;       // blc - прогресс
-    ImageView lgb_iv_blc_can_win_with_x2;
-    ImageView lgb_iv_blc_can_early_win_with_x2;
-
-    // BLB views
-    ImageView lgb_iv_blb_icon;           // blb - иконка здания (картинка)
-    ImageView lgb_iv_blb_name;           // blb - название здания (картинка)
-    TextView lgb_tv_blb_x2;              // blb - х2
-    TextView lgb_tv_blb_points;          // blb - очки
-    TextView lgb_tv_blb_slots;           // blb - слоты 
-    TextView lgb_tv_blb_slots_our;       // blb - наши слоты
-    TextView lgb_tv_blb_slots_empty;     // blb - слоты противника
-    TextView lgb_tv_blb_slots_enemy;     // blb - пустые слоты
-    ImageView lgb_iv_blb_progress;       // blb - прогресс
-    ImageView lgb_iv_blb_can_win_with_x2;
-    ImageView lgb_iv_blb_can_early_win_with_x2;
-
-    // BRT views
-    ImageView lgb_iv_brt_icon;           // brt - иконка здания (картинка)
-    ImageView lgb_iv_brt_name;           // brt - название здания (картинка)
-    TextView lgb_tv_brt_x2;              // brt - х2
-    TextView lgb_tv_brt_points;          // brt - очки
-    TextView lgb_tv_brt_slots;           // brt - слоты 
-    TextView lgb_tv_brt_slots_our;       // brt - наши слоты
-    TextView lgb_tv_brt_slots_empty;     // brt - слоты противника
-    TextView lgb_tv_brt_slots_enemy;     // brt - пустые слоты
-    ImageView lgb_iv_brt_progress;       // brt - прогресс
-    ImageView lgb_iv_brt_can_win_with_x2;
-    ImageView lgb_iv_brt_can_early_win_with_x2;
-
-    // BRC views
-    ImageView lgb_iv_brc_icon;           // brc - иконка здания (картинка)
-    ImageView lgb_iv_brc_name;           // brc - название здания (картинка)
-    TextView lgb_tv_brc_x2;              // brc - х2
-    TextView lgb_tv_brc_points;          // brc - очки
-    TextView lgb_tv_brc_slots;           // brc - слоты 
-    TextView lgb_tv_brc_slots_our;       // brc - наши слоты
-    TextView lgb_tv_brc_slots_empty;     // brc - слоты противника
-    TextView lgb_tv_brc_slots_enemy;     // brc - пустые слоты
-    ImageView lgb_iv_brc_progress;       // brc - прогресс
-    ImageView lgb_iv_brc_can_win_with_x2;
-    ImageView lgb_iv_brc_can_early_win_with_x2;
-
-    // BRB views
-    ImageView lgb_iv_brb_icon;           // brb - иконка здания (картинка)
-    ImageView lgb_iv_brb_name;           // brb - название здания (картинка)
-    TextView lgb_tv_brb_x2;              // brb - х2
-    TextView lgb_tv_brb_points;          // brb - очки
-    TextView lgb_tv_brb_slots;           // brb - слоты 
-    TextView lgb_tv_brb_slots_our;       // brb - наши слоты
-    TextView lgb_tv_brb_slots_empty;     // brb - слоты противника
-    TextView lgb_tv_brb_slots_enemy;     // brb - пустые слоты
-    ImageView lgb_iv_brb_progress;       // blt - прогресс
-    ImageView lgb_iv_brb_can_win_with_x2;
-    ImageView lgb_iv_brb_can_early_win_with_x2;
+    ImageView[] lgb_iv_bld_icon = new ImageView[6];
+    ImageView[] lgb_iv_bld_name = new ImageView[6];
+    TextView[] lgb_tv_bld_x2 = new TextView[6];
+    TextView[] lgb_tv_bld_points = new TextView[6];
+    TextView[] lgb_tv_bld_slots = new TextView[6];
+    TextView[] lgb_tv_bld_slots_our = new TextView[6];
+    TextView[] lgb_tv_bld_slots_empty = new TextView[6];
+    TextView[] lgb_tv_bld_slots_enemy = new TextView[6];
+    ImageView[] lgb_iv_bld_progress = new ImageView[6];
+    ImageView[] lgb_iv_bld_can_win_with_x2 = new ImageView[6];
+    ImageView[] lgb_iv_bld_can_early_win_with_x2 = new ImageView[6];
 
     ImageView lgci_iv_game_car_black;     // машинка черная большая (картинка)
     ImageView lgci_iv_game_car_our;       // машинка синяя большая (картинка)
@@ -258,12 +164,38 @@ public class StrategyActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         sa_ad_banner.loadAd(adRequest);
 
-        lsc_sb_blt.setOnSeekBarChangeListener(bltSeekBarChangeListener);
-        lsc_sb_blc.setOnSeekBarChangeListener(blcSeekBarChangeListener);
-        lsc_sb_blb.setOnSeekBarChangeListener(blbSeekBarChangeListener);
-        lsc_sb_brt.setOnSeekBarChangeListener(brtSeekBarChangeListener);
-        lsc_sb_brc.setOnSeekBarChangeListener(brcSeekBarChangeListener);
-        lsc_sb_brb.setOnSeekBarChangeListener(brbSeekBarChangeListener);
+        for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+            int finalBuildingIndex = buildingIndex;
+            lsc_sb_bld[buildingIndex].setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    Context context = GlobalApplication.getAppContext();
+                    if (progress == 0) {
+                        lsc_sb_bld[finalBuildingIndex].setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
+                    } else if (progress == 1) {
+                        lsc_sb_bld[finalBuildingIndex].setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
+                    } else {
+                        lsc_sb_bld[finalBuildingIndex].setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
+                    }
+                    if (needUpdateSlots) {
+                        setCarsInBuildings();
+                    }
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+        }
+        
+        
+        
         lsp_sb_person_our.setOnSeekBarChangeListener(personOurSeekBarChangeListener);
         lsp_sb_person_enemy.setOnSeekBarChangeListener(personEnemySeekBarChangeListener);
 
@@ -280,58 +212,15 @@ public class StrategyActivity extends AppCompatActivity {
 
         needUpdateSlots = false;
 
-        if (ccaGame.isPresent_blt()) {
-            if (ccaGame.isBuildingIsOur_blt()) lsc_sb_blt.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_blt()) lsc_sb_blt.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_blt()) lsc_sb_blt.setProgress(2);
-            slotsTotal += ccaGame.getSlots_blt();
-            slotsOur += ccaGame.getSlots_blt_our();
-            slotsEnemy += ccaGame.getSlots_blt_enemy();
-        }
-
-        if (ccaGame.isPresent_blc()) {
-            if (ccaGame.isBuildingIsOur_blc()) lsc_sb_blc.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_blc()) lsc_sb_blc.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_blc()) lsc_sb_blc.setProgress(2);
-            slotsTotal += ccaGame.getSlots_blc();
-            slotsOur += ccaGame.getSlots_blc_our();
-            slotsEnemy += ccaGame.getSlots_blc_enemy();
-        }
-
-        if (ccaGame.isPresent_blb()) {
-            if (ccaGame.isBuildingIsOur_blb()) lsc_sb_blb.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_blb()) lsc_sb_blb.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_blb()) lsc_sb_blb.setProgress(2);
-            slotsTotal += ccaGame.getSlots_blb();
-            slotsOur += ccaGame.getSlots_blb_our();
-            slotsEnemy += ccaGame.getSlots_blb_enemy();
-        }
-
-        if (ccaGame.isPresent_brt()) {
-            if (ccaGame.isBuildingIsOur_brt()) lsc_sb_brt.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_brt()) lsc_sb_brt.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_brt()) lsc_sb_brt.setProgress(2);
-            slotsTotal += ccaGame.getSlots_brt();
-            slotsOur += ccaGame.getSlots_brt_our();
-            slotsEnemy += ccaGame.getSlots_brt_enemy();
-        }
-
-        if (ccaGame.isPresent_brc()) {
-            if (ccaGame.isBuildingIsOur_brc()) lsc_sb_brc.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_brc()) lsc_sb_brc.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_brc()) lsc_sb_brc.setProgress(2);
-            slotsTotal += ccaGame.getSlots_brc();
-            slotsOur += ccaGame.getSlots_brc_our();
-            slotsEnemy += ccaGame.getSlots_brc_enemy();
-        }
-
-        if (ccaGame.isPresent_brb()) {
-            if (ccaGame.isBuildingIsOur_brb()) lsc_sb_brb.setProgress(0);
-            if (ccaGame.isBuildingIsEmpty_brb()) lsc_sb_brb.setProgress(1);
-            if (ccaGame.isBuildingIsEnemy_brb()) lsc_sb_brb.setProgress(2);
-            slotsTotal += ccaGame.getSlots_brb();
-            slotsOur += ccaGame.getSlots_brb_our();
-            slotsEnemy += ccaGame.getSlots_brb_enemy();
+        for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+            if (ccaGame.getBuildings()[buildingIndex].isPresent()) {
+                if (ccaGame.getBuildings()[buildingIndex].isBuildingIsOur()) lsc_sb_bld[buildingIndex].setProgress(0);
+                if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEmpty()) lsc_sb_bld[buildingIndex].setProgress(1);
+                if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy()) lsc_sb_bld[buildingIndex].setProgress(2);
+                slotsTotal += ccaGame.getBuildings()[buildingIndex].getSlots();
+                slotsOur += ccaGame.getBuildings()[buildingIndex].getSlots_our();
+                slotsEnemy += ccaGame.getBuildings()[buildingIndex].getSlots_enemy();
+            }
         }
 
         maxPersons = (int)Math.ceil (slotsTotal / 3.0d);
@@ -380,188 +269,37 @@ public class StrategyActivity extends AppCompatActivity {
             slotsOur = 0;
             slotsEnemy = 0;
 
-            if (ccaGame.isPresent_blt()) {
-
-                countCars_total += ccaGame.getSlots_blt();
-                countCarsInBuilding = (ccaGame.getSlots_blt() / 2 + 1);
-                ccaGame.setBuildingIsOur_blt(lsc_sb_blt.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_blt(lsc_sb_blt.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_blt(lsc_sb_blt.getProgress() == 2);
-                ccaGame.setSlots_blt_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blt() ? 1 : 0));
-                ccaGame.setSlots_blt_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blt() ? 1 : 0));
-                ccaGame.setSlots_blt_empty(ccaGame.getSlots_blt() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blt() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_blt() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_blt() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_blt() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsOur_blt() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_blt() && ccaGame.isBuildingIsEnemy_blt() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_blt();
-                slotsOur += ccaGame.getSlots_blt_our();
-                slotsEnemy += ccaGame.getSlots_blt_enemy();
+            for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+                if (ccaGame.getBuildings()[buildingIndex].isPresent()) {
+                    countCars_total += ccaGame.getBuildings()[buildingIndex].getSlots();
+                    countCarsInBuilding = (ccaGame.getBuildings()[buildingIndex].getSlots() / 2 + 1);
+                    ccaGame.getBuildings()[buildingIndex].setBuildingIsOur(lsc_sb_bld[buildingIndex].getProgress() == 0);
+                    ccaGame.getBuildings()[buildingIndex].setBuildingIsEmpty(lsc_sb_bld[buildingIndex].getProgress() == 1);
+                    ccaGame.getBuildings()[buildingIndex].setBuildingIsEnemy(lsc_sb_bld[buildingIndex].getProgress() == 2);
+                    ccaGame.getBuildings()[buildingIndex].setSlots_our(countCarsInBuilding * (ccaGame.getBuildings()[buildingIndex].isBuildingIsOur() ? 1 : 0));
+                    ccaGame.getBuildings()[buildingIndex].setSlots_enemy(countCarsInBuilding * (ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy() ? 1 : 0));
+                    ccaGame.getBuildings()[buildingIndex].setSlots_empty(ccaGame.getBuildings()[buildingIndex].getSlots() - countCarsInBuilding * (ccaGame.getBuildings()[buildingIndex].isBuildingIsEmpty() ? 0 : 1));
+                    countCars_our += ccaGame.getBuildings()[buildingIndex].isBuildingIsOur() ? countCarsInBuilding : 0;
+                    countCars_enemy += ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy() ? countCarsInBuilding : 0;
+                    countX2_total += ccaGame.getBuildings()[buildingIndex].isMayX2() ? 1 : 0;
+                    countX2_our += ccaGame.getBuildings()[buildingIndex].isMayX2() && ccaGame.getBuildings()[buildingIndex].isBuildingIsOur() ? 1 : 0;
+                    countX2_enemy += ccaGame.getBuildings()[buildingIndex].isMayX2() && ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy() ? 1 : 0;
+                    slotsTotal += ccaGame.getBuildings()[buildingIndex].getSlots();
+                    slotsOur += ccaGame.getBuildings()[buildingIndex].getSlots_our();
+                    slotsEnemy += ccaGame.getBuildings()[buildingIndex].getSlots_enemy();
+                }
             }
 
-            if (ccaGame.isPresent_blc()) {
-
-                countCars_total += ccaGame.getSlots_blc();
-                countCarsInBuilding = (ccaGame.getSlots_blc() / 2 + 1);
-                ccaGame.setBuildingIsOur_blc(lsc_sb_blc.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_blc(lsc_sb_blc.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_blc(lsc_sb_blc.getProgress() == 2);
-                ccaGame.setSlots_blc_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blc() ? 1 : 0));
-                ccaGame.setSlots_blc_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blc() ? 1 : 0));
-                ccaGame.setSlots_blc_empty(ccaGame.getSlots_blc() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blc() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_blc() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_blc() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_blc() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsOur_blc() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_blc() && ccaGame.isBuildingIsEnemy_blc() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_blc();
-                slotsOur += ccaGame.getSlots_blc_our();
-                slotsEnemy += ccaGame.getSlots_blc_enemy();
+            for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+                if (ccaGame.getBuildings()[buildingIndex].isPresent()) {
+                    ccaGame.getBuildings()[buildingIndex].setX2(ccaGame.getBuildings()[buildingIndex].isMayX2() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
+                    ccaGame.getBuildings()[buildingIndex].setOur_points(ccaGame.getBuildings()[buildingIndex].isBuildingIsOur() ? ccaGame.getBuildings()[buildingIndex].getSlots() * (ccaGame.getBuildings()[buildingIndex].isX2() ? 2 : 1) : 0);
+                    ccaGame.getBuildings()[buildingIndex].setEnemy_points(ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy() ? ccaGame.getBuildings()[buildingIndex].getSlots() * (ccaGame.getBuildings()[buildingIndex].isX2() ? 2 : 1) : 0);
+                    increaseOur += ccaGame.getBuildings()[buildingIndex].getOur_points();
+                    increaseEnemy += ccaGame.getBuildings()[buildingIndex].getEnemy_points();
+                }
             }
 
-            if (ccaGame.isPresent_blb()) {
-
-                countCars_total += ccaGame.getSlots_blb();
-                countCarsInBuilding = (ccaGame.getSlots_blb() / 2 + 1);
-                ccaGame.setBuildingIsOur_blb(lsc_sb_blb.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_blb(lsc_sb_blb.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_blb(lsc_sb_blb.getProgress() == 2);
-                ccaGame.setSlots_blb_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_blb() ? 1 : 0));
-                ccaGame.setSlots_blb_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_blb() ? 1 : 0));
-                ccaGame.setSlots_blb_empty(ccaGame.getSlots_blb() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_blb() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_blb() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_blb() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_blb() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsOur_blb() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_blb() && ccaGame.isBuildingIsEnemy_blb() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_blb();
-                slotsOur += ccaGame.getSlots_blb_our();
-                slotsEnemy += ccaGame.getSlots_blb_enemy();
-            }
-
-            if (ccaGame.isPresent_brt()) {
-
-                countCars_total += ccaGame.getSlots_brt();
-                countCarsInBuilding = (ccaGame.getSlots_brt() / 2 + 1);
-                ccaGame.setBuildingIsOur_brt(lsc_sb_brt.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_brt(lsc_sb_brt.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_brt(lsc_sb_brt.getProgress() == 2);
-                ccaGame.setSlots_brt_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brt() ? 1 : 0));
-                ccaGame.setSlots_brt_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brt() ? 1 : 0));
-                ccaGame.setSlots_brt_empty(ccaGame.getSlots_brt() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brt() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_brt() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_brt() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_brt() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsOur_brt() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_brt() && ccaGame.isBuildingIsEnemy_brt() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_brt();
-                slotsOur += ccaGame.getSlots_brt_our();
-                slotsEnemy += ccaGame.getSlots_brt_enemy();
-            }
-
-            if (ccaGame.isPresent_brc()) {
-
-                countCars_total += ccaGame.getSlots_brc();
-                countCarsInBuilding = (ccaGame.getSlots_brc() / 2 + 1);
-                ccaGame.setBuildingIsOur_brc(lsc_sb_brc.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_brc(lsc_sb_brc.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_brc(lsc_sb_brc.getProgress() == 2);
-                ccaGame.setSlots_brc_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brc() ? 1 : 0));
-                ccaGame.setSlots_brc_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brc() ? 1 : 0));
-                ccaGame.setSlots_brc_empty(ccaGame.getSlots_brc() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brc() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_brc() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_brc() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_brc() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsOur_brc() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_brc() && ccaGame.isBuildingIsEnemy_brc() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_brc();
-                slotsOur += ccaGame.getSlots_brc_our();
-                slotsEnemy += ccaGame.getSlots_brc_enemy();
-            }
-
-            if (ccaGame.isPresent_brb()) {
-
-                countCars_total += ccaGame.getSlots_brb();
-                countCarsInBuilding = (ccaGame.getSlots_brb() / 2 + 1);
-                ccaGame.setBuildingIsOur_brb(lsc_sb_brb.getProgress() == 0);
-                ccaGame.setBuildingIsEmpty_brb(lsc_sb_brb.getProgress() == 1);
-                ccaGame.setBuildingIsEnemy_brb(lsc_sb_brb.getProgress() == 2);
-                ccaGame.setSlots_brb_our(countCarsInBuilding * (ccaGame.isBuildingIsOur_brb() ? 1 : 0));
-                ccaGame.setSlots_brb_enemy(countCarsInBuilding * (ccaGame.isBuildingIsEnemy_brb() ? 1 : 0));
-                ccaGame.setSlots_brb_empty(ccaGame.getSlots_brb() - countCarsInBuilding * (ccaGame.isBuildingIsEmpty_brb() ? 0 : 1));
-                countCars_our += ccaGame.isBuildingIsOur_brb() ? countCarsInBuilding : 0;
-                countCars_enemy += ccaGame.isBuildingIsEnemy_brb() ? countCarsInBuilding : 0;
-                countX2_total += ccaGame.isMayX2_brb() ? 1 : 0;
-                countX2_our += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsOur_brb() ? 1 : 0;
-                countX2_enemy += ccaGame.isMayX2_brb() && ccaGame.isBuildingIsEnemy_brb() ? 1 : 0;
-                slotsTotal += ccaGame.getSlots_brb();
-                slotsOur += ccaGame.getSlots_brb_our();
-                slotsEnemy += ccaGame.getSlots_brb_enemy();
-            }
-            
-
-            if (ccaGame.isPresent_blt()) {
-
-                ccaGame.setX2_blt(ccaGame.isMayX2_blt() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_blt(ccaGame.isBuildingIsOur_blt() ? ccaGame.getSlots_blt() * (ccaGame.isX2_blt() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_blt(ccaGame.isBuildingIsEnemy_blt() ? ccaGame.getSlots_blt() * (ccaGame.isX2_blt() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_blt();
-                increaseEnemy += ccaGame.getEnemy_points_blt();
-                
-            }
-
-
-            if (ccaGame.isPresent_blc()) {
-
-                ccaGame.setX2_blc(ccaGame.isMayX2_blc() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_blc(ccaGame.isBuildingIsOur_blc() ? ccaGame.getSlots_blc() * (ccaGame.isX2_blc() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_blc(ccaGame.isBuildingIsEnemy_blc() ? ccaGame.getSlots_blc() * (ccaGame.isX2_blc() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_blc();
-                increaseEnemy += ccaGame.getEnemy_points_blc();
-                
-            }
-
-            if (ccaGame.isPresent_blb()) {
-
-                ccaGame.setX2_blb(ccaGame.isMayX2_blb() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_blb(ccaGame.isBuildingIsOur_blb() ? ccaGame.getSlots_blb() * (ccaGame.isX2_blb() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_blb(ccaGame.isBuildingIsEnemy_blb() ? ccaGame.getSlots_blb() * (ccaGame.isX2_blb() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_blb();
-                increaseEnemy += ccaGame.getEnemy_points_blb();
-                
-            }
-
-            if (ccaGame.isPresent_brt()) {
-
-                ccaGame.setX2_brt(ccaGame.isMayX2_brt() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_brt(ccaGame.isBuildingIsOur_brt() ? ccaGame.getSlots_brt() * (ccaGame.isX2_brt() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_brt(ccaGame.isBuildingIsEnemy_brt() ? ccaGame.getSlots_brt() * (ccaGame.isX2_brt() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_brt();
-                increaseEnemy += ccaGame.getEnemy_points_brt();
-                
-            }
-
-            if (ccaGame.isPresent_brc()) {
-
-                ccaGame.setX2_brc(ccaGame.isMayX2_brc() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_brc(ccaGame.isBuildingIsOur_brc() ? ccaGame.getSlots_brc() * (ccaGame.isX2_brc() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_brc(ccaGame.isBuildingIsEnemy_brc() ? ccaGame.getSlots_brc() * (ccaGame.isX2_brc() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_brc();
-                increaseEnemy += ccaGame.getEnemy_points_brc();
-                
-            }
-
-            if (ccaGame.isPresent_brb()) {
-
-                ccaGame.setX2_brb(ccaGame.isMayX2_brb() && ((countX2_our == countX2_total) || (countX2_enemy == countX2_total)));
-                ccaGame.setOur_points_brb(ccaGame.isBuildingIsOur_brb() ? ccaGame.getSlots_brb() * (ccaGame.isX2_brb() ? 2 : 1) : 0);
-                ccaGame.setEnemy_points_brb(ccaGame.isBuildingIsEnemy_brb() ? ccaGame.getSlots_brb() * (ccaGame.isX2_brb() ? 2 : 1) : 0);
-                increaseOur += ccaGame.getOur_points_brb();
-                increaseEnemy += ccaGame.getEnemy_points_brb();
-                
-            }
-            
             if (ccaGame != null) {
 
 
@@ -605,12 +343,13 @@ public class StrategyActivity extends AppCompatActivity {
         CCAGame ccaGame = mainCCAGame;
         CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
         CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
-        CCABuilding ccaBLT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
-        CCABuilding ccaBLC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
-        CCABuilding ccaBLB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
-        CCABuilding ccaBRT = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
-        CCABuilding ccaBRC = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
-        CCABuilding ccaBRB = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
+        CCABuilding[] ccabld = new CCABuilding[6];
+        ccabld[0] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
+        ccabld[1] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
+        ccabld[2] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
+        ccabld[3] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
+        ccabld[4] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
+        ccabld[5] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
         String pattern = "dd MMM HH:mm";
 
         if (ccaGame != null && ccaGame.getDateStartGame() != null) {
@@ -673,411 +412,93 @@ public class StrategyActivity extends AppCompatActivity {
 
             int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
 
-            lgb_iv_blt_icon.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blt_name.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_x2.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_points.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_slots.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_slots_our.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_slots_empty.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blt_slots_enemy.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blt_progress.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_blt_icon.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_blt.setVisibility(ccaGame.isPresent_blt() ? View.VISIBLE : View.INVISIBLE);
+            int[] bldIconsBlue = new int[6];
+            int[] bldIconsRed = new int[6];
+            int[] bldIconsGray = new int[6];
 
+            bldIconsBlue[0] = R.drawable.ic_bld1_blue; bldIconsRed[0] = R.drawable.ic_bld1_red; bldIconsGray[0] = R.drawable.ic_bld1_gray;
+            bldIconsBlue[1] = R.drawable.ic_bld2_blue; bldIconsRed[1] = R.drawable.ic_bld2_red; bldIconsGray[1] = R.drawable.ic_bld2_gray;
+            bldIconsBlue[2] = R.drawable.ic_bld3_blue; bldIconsRed[2] = R.drawable.ic_bld3_red; bldIconsGray[2] = R.drawable.ic_bld3_gray;
+            bldIconsBlue[3] = R.drawable.ic_bld4_blue; bldIconsRed[3] = R.drawable.ic_bld4_red; bldIconsGray[3] = R.drawable.ic_bld4_gray;
+            bldIconsBlue[4] = R.drawable.ic_bld5_blue; bldIconsRed[4] = R.drawable.ic_bld5_red; bldIconsGray[4] = R.drawable.ic_bld5_gray;
+            bldIconsBlue[5] = R.drawable.ic_bld6_blue; bldIconsRed[5] = R.drawable.ic_bld6_red; bldIconsGray[5] = R.drawable.ic_bld6_gray;
+
+            
             int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
             int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
             int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
             int progressBitmapWidth = 300;
             int progressBitmapHeight = 20;
 
-            if (ccaGame.isPresent_blt()) {
+            for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+                lgb_iv_bld_icon[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_iv_bld_name[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_x2[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_points[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_slots[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_slots_our[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_slots_empty[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_tv_bld_slots_enemy[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_iv_bld_progress[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lsc_iv_bld_icon[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lsc_sb_bld[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                
+                if (ccaGame.getBuildings()[buildingIndex].isPresent()) {
 
-                lgb_rl_blt.setBackground(getDrawable(ccaGame.isUseInForecast_blt() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
+                    lgb_rl_bld[buildingIndex].setBackground(getDrawable(ccaGame.getBuildings()[buildingIndex].isUseInForecast() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
 
-                lgb_iv_blt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_blt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
+                    lgb_iv_bld_can_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
+                    lgb_iv_bld_can_early_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                if (ccaBLT != null) lgb_iv_blt_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLT.getBmpSrc(),0xFFFFFF));
+                    if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.makeTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF));
 
-                lgb_iv_blt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_blt_our(), ccaGame.getSlots_blt_empty(), ccaGame.getSlots_blt_enemy()}));
+                    lgb_iv_bld_progress[buildingIndex].setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
+                            new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
+                            new int[]{ccaGame.getBuildings()[buildingIndex].getSlots_our(), ccaGame.getBuildings()[buildingIndex].getSlots_empty(), ccaGame.getBuildings()[buildingIndex].getSlots_enemy()}));
 
-                lgb_tv_blt_slots.setText(String.valueOf(ccaGame.getSlots_blt()));
-                lgb_tv_blt_slots_our.setText(String.valueOf(ccaGame.getSlots_blt_our_toView()));
-                lgb_tv_blt_slots_empty.setText(String.valueOf(ccaGame.getSlots_blt_empty()));
-                lgb_tv_blt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blt_enemy_toView()));
+                    lgb_tv_bld_slots[buildingIndex].setText(String.valueOf(ccaGame.getBuildings()[buildingIndex].getSlots()));
+                    lgb_tv_bld_slots_our[buildingIndex].setText(String.valueOf(ccaGame.getSlots_our_toView(buildingIndex)));
+                    lgb_tv_bld_slots_empty[buildingIndex].setText(String.valueOf(ccaGame.getBuildings()[buildingIndex].getSlots_empty()));
+                    lgb_tv_bld_slots_enemy[buildingIndex].setText(String.valueOf(ccaGame.getSlots_enemy_toView(buildingIndex)));
 
-                slots += ccaGame.getSlots_blt();
-                slots_our += ccaGame.getSlots_blt_our();
-                slots_empty += ccaGame.getSlots_blt_empty();
-                slots_enemy += ccaGame.getSlots_blt_enemy();
+                    slots += ccaGame.getBuildings()[buildingIndex].getSlots();
+                    slots_our += ccaGame.getBuildings()[buildingIndex].getSlots_our();
+                    slots_empty += ccaGame.getBuildings()[buildingIndex].getSlots_empty();
+                    slots_enemy += ccaGame.getBuildings()[buildingIndex].getSlots_enemy();
 
-                if (ccaGame.isBuildingIsOur_blt()) {
-                    lgb_tv_blt_points.setText("+" + ccaGame.getOur_points_blt());
-                    lgb_tv_blt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
-                    lsc_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_blue));
-                } else if (ccaGame.isBuildingIsEnemy_blt()) {
-                    lgb_tv_blt_points.setText("+" + ccaGame.getEnemy_points_blt());
-                    lgb_tv_blt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
-                    lsc_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_red));
-                } else if (ccaGame.isBuildingIsEmpty_blt()) {
-                    lgb_tv_blt_points.setText("");
-                    lgb_tv_blt_points.setBackgroundColor(0x00000000);
-                    lgb_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
-                    lsc_iv_blt_icon.setImageDrawable(getDrawable(R.drawable.ic_blt_gray));
-                }
-                if (ccaGame.isX2_blt()) {
-                    lgb_tv_blt_x2.setText("X2");
-                    lgb_tv_blt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_blt()) {
-                        lgb_tv_blt_x2.setText("X2");
-                        lgb_tv_blt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
+                    if (ccaGame.getBuildings()[buildingIndex].isBuildingIsOur()) {
+                        lgb_tv_bld_points[buildingIndex].setText("+" + ccaGame.getBuildings()[buildingIndex].getOur_points());
+                        lgb_tv_bld_points[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
+                        lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsBlue[buildingIndex]));
+                    } else if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy()) {
+                        lgb_tv_bld_points[buildingIndex].setText("+" + ccaGame.getBuildings()[buildingIndex].getEnemy_points());
+                        lgb_tv_bld_points[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
+                        lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsRed[buildingIndex]));
+                    } else if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEmpty()) {
+                        lgb_tv_bld_points[buildingIndex].setText("");
+                        lgb_tv_bld_points[buildingIndex].setBackgroundColor(0x00000000);
+                        lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsGray[buildingIndex]));
+                    }
+                    if (ccaGame.getBuildings()[buildingIndex].isX2()) {
+                        lgb_tv_bld_x2[buildingIndex].setText("X2");
+                        lgb_tv_bld_x2[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
                     } else {
-                        lgb_tv_blt_x2.setText("");
-                        lgb_tv_blt_x2.setBackgroundColor(0x00000000);
+                        if (ccaGame.getBuildings()[buildingIndex].isMayX2()) {
+                            lgb_tv_bld_x2[buildingIndex].setText("X2");
+                            lgb_tv_bld_x2[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
+                        } else {
+                            lgb_tv_bld_x2[buildingIndex].setText("");
+                            lgb_tv_bld_x2[buildingIndex].setBackgroundColor(0x00000000);
+                        }
                     }
                 }
             }
-
-            lgb_iv_blc_icon.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blc_name.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_x2.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_points.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_slots.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_slots_our.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_slots_empty.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blc_slots_enemy.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blc_progress.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_blc_icon.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_blc.setVisibility(ccaGame.isPresent_blc() ? View.VISIBLE : View.INVISIBLE);
             
-            if (ccaGame.isPresent_blc()) {
-
-                lgb_rl_blc.setBackground(getDrawable(ccaGame.isUseInForecast_blc() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
-
-                lgb_iv_blc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_blc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
-
-                if (ccaBLC != null) lgb_iv_blc_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLC.getBmpSrc(),0xFFFFFF));
-                lgb_iv_blc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_blc_our(), ccaGame.getSlots_blc_empty(), ccaGame.getSlots_blc_enemy()}));
-
-                lgb_tv_blc_slots.setText(String.valueOf(ccaGame.getSlots_blc()));
-                lgb_tv_blc_slots_our.setText(String.valueOf(ccaGame.getSlots_blc_our_toView()));
-                lgb_tv_blc_slots_empty.setText(String.valueOf(ccaGame.getSlots_blc_empty()));
-                lgb_tv_blc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blc_enemy_toView()));
-
-                slots += ccaGame.getSlots_blc();
-                slots_our += ccaGame.getSlots_blc_our();
-                slots_empty += ccaGame.getSlots_blc_empty();
-                slots_enemy += ccaGame.getSlots_blc_enemy();
-
-                if (ccaGame.isBuildingIsOur_blc()) {
-                    lgb_tv_blc_points.setText("+" + ccaGame.getOur_points_blc());
-                    lgb_tv_blc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
-                    lsc_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_blue));
-                } else if (ccaGame.isBuildingIsEnemy_blc()) {
-                    lgb_tv_blc_points.setText("+" + ccaGame.getEnemy_points_blc());
-                    lgb_tv_blc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
-                    lsc_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_red));
-                } else if (ccaGame.isBuildingIsEmpty_blc()) {
-                    lgb_tv_blc_points.setText("");
-                    lgb_tv_blc_points.setBackgroundColor(0x00000000);
-                    lgb_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
-                    lsc_iv_blc_icon.setImageDrawable(getDrawable(R.drawable.ic_blc_gray));
-                }
-                if (ccaGame.isX2_blc()) {
-                    lgb_tv_blc_x2.setText("X2");
-                    lgb_tv_blc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_blc()) {
-                        lgb_tv_blc_x2.setText("X2");
-                        lgb_tv_blc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
-                    } else {
-                        lgb_tv_blc_x2.setText("");
-                        lgb_tv_blc_x2.setBackgroundColor(0x00000000);
-                    }
-                }
-            }
-
-
-            lgb_iv_blb_icon.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blb_name.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_x2.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_points.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_slots.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_slots_our.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_slots_empty.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_blb_slots_enemy.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_blb_progress.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_blb_icon.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_blb.setVisibility(ccaGame.isPresent_blb() ? View.VISIBLE : View.INVISIBLE);
-            
-            if (ccaGame.isPresent_blb()) {
-
-                lgb_rl_blb.setBackground(getDrawable(ccaGame.isUseInForecast_blb() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
-
-                lgb_iv_blb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_blb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_blb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_blb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
-
-                if (ccaBLB != null) lgb_iv_blb_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBLB.getBmpSrc(),0xFFFFFF));
-
-                lgb_iv_blb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_blb_our(), ccaGame.getSlots_blb_empty(), ccaGame.getSlots_blb_enemy()}));
-
-                lgb_tv_blb_slots.setText(String.valueOf(ccaGame.getSlots_blb()));
-                lgb_tv_blb_slots_our.setText(String.valueOf(ccaGame.getSlots_blb_our_toView()));
-                lgb_tv_blb_slots_empty.setText(String.valueOf(ccaGame.getSlots_blb_empty()));
-                lgb_tv_blb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_blb_enemy_toView()));
-
-                slots += ccaGame.getSlots_blb();
-                slots_our += ccaGame.getSlots_blb_our();
-                slots_empty += ccaGame.getSlots_blb_empty();
-                slots_enemy += ccaGame.getSlots_blb_enemy();
-
-                if (ccaGame.isBuildingIsOur_blb()) {
-                    lgb_tv_blb_points.setText("+" + ccaGame.getOur_points_blb());
-                    lgb_tv_blb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
-                    lsc_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_blue));
-                } else if (ccaGame.isBuildingIsEnemy_blb()) {
-                    lgb_tv_blb_points.setText("+" + ccaGame.getEnemy_points_blb());
-                    lgb_tv_blb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
-                    lsc_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_red));
-                } else if (ccaGame.isBuildingIsEmpty_blb()) {
-                    lgb_tv_blb_points.setText("");
-                    lgb_tv_blb_points.setBackgroundColor(0x00000000);
-                    lgb_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
-                    lsc_iv_blb_icon.setImageDrawable(getDrawable(R.drawable.ic_blb_gray));
-                }
-                if (ccaGame.isX2_blb()) {
-                    lgb_tv_blb_x2.setText("X2");
-                    lgb_tv_blb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_blb()) {
-                        lgb_tv_blb_x2.setText("X2");
-                        lgb_tv_blb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
-                    } else {
-                        lgb_tv_blb_x2.setText("");
-                        lgb_tv_blb_x2.setBackgroundColor(0x00000000);
-                    }
-                }
-            }
-
-
-            lgb_iv_brt_icon.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brt_name.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_x2.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_points.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_slots.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_slots_our.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_slots_empty.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brt_slots_enemy.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brt_progress.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_brt_icon.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_brt.setVisibility(ccaGame.isPresent_brt() ? View.VISIBLE : View.INVISIBLE);
-            
-            if (ccaGame.isPresent_brt()) {
-
-                lgb_rl_brt.setBackground(getDrawable(ccaGame.isUseInForecast_brt() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
-
-                lgb_iv_brt_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brt() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_brt_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brt() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
-
-                if (ccaBRT != null) lgb_iv_brt_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRT.getBmpSrc(),0xFFFFFF));
-
-                lgb_iv_brt_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_brt_our(), ccaGame.getSlots_brt_empty(), ccaGame.getSlots_brt_enemy()}));
-
-                lgb_tv_brt_slots.setText(String.valueOf(ccaGame.getSlots_brt()));
-                lgb_tv_brt_slots_our.setText(String.valueOf(ccaGame.getSlots_brt_our_toView()));
-                lgb_tv_brt_slots_empty.setText(String.valueOf(ccaGame.getSlots_brt_empty()));
-                lgb_tv_brt_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brt_enemy_toView()));
-
-                slots += ccaGame.getSlots_brt();
-                slots_our += ccaGame.getSlots_brt_our();
-                slots_empty += ccaGame.getSlots_brt_empty();
-                slots_enemy += ccaGame.getSlots_brt_enemy();
-
-                if (ccaGame.isBuildingIsOur_brt()) {
-                    lgb_tv_brt_points.setText("+" + ccaGame.getOur_points_brt());
-                    lgb_tv_brt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
-                    lsc_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_blue));
-                } else if (ccaGame.isBuildingIsEnemy_brt()) {
-                    lgb_tv_brt_points.setText("+" + ccaGame.getEnemy_points_brt());
-                    lgb_tv_brt_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
-                    lsc_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_red));
-                } else if (ccaGame.isBuildingIsEmpty_brt()) {
-                    lgb_tv_brt_points.setText("");
-                    lgb_tv_brt_points.setBackgroundColor(0x00000000);
-                    lgb_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
-                    lsc_iv_brt_icon.setImageDrawable(getDrawable(R.drawable.ic_brt_gray));
-                }
-                if (ccaGame.isX2_brt()) {
-                    lgb_tv_brt_x2.setText("X2");
-                    lgb_tv_brt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_brt()) {
-                        lgb_tv_brt_x2.setText("X2");
-                        lgb_tv_brt_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
-                    } else {
-                        lgb_tv_brt_x2.setText("");
-                        lgb_tv_brt_x2.setBackgroundColor(0x00000000);
-                    }
-                }
-            }
-
-            lgb_iv_brc_icon.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brc_name.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_x2.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_points.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_slots.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_slots_our.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_slots_empty.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brc_slots_enemy.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brc_progress.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_brc_icon.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_brc.setVisibility(ccaGame.isPresent_brc() ? View.VISIBLE : View.INVISIBLE);
-            
-            if (ccaGame.isPresent_brc()) {
-
-                lgb_rl_brc.setBackground(getDrawable(ccaGame.isUseInForecast_brc() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
-
-                lgb_iv_brc_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brc() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_brc_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brc() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
-
-                if (ccaBRC != null) lgb_iv_brc_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRC.getBmpSrc(),0xFFFFFF));
-
-                lgb_iv_brc_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_brc_our(), ccaGame.getSlots_brc_empty(), ccaGame.getSlots_brc_enemy()}));
-
-                lgb_tv_brc_slots.setText(String.valueOf(ccaGame.getSlots_brc()));
-                lgb_tv_brc_slots_our.setText(String.valueOf(ccaGame.getSlots_brc_our_toView()));
-                lgb_tv_brc_slots_empty.setText(String.valueOf(ccaGame.getSlots_brc_empty()));
-                lgb_tv_brc_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brc_enemy_toView()));
-
-                slots += ccaGame.getSlots_brc();
-                slots_our += ccaGame.getSlots_brc_our();
-                slots_empty += ccaGame.getSlots_brc_empty();
-                slots_enemy += ccaGame.getSlots_brc_enemy();
-
-                if (ccaGame.isBuildingIsOur_brc()) {
-                    lgb_tv_brc_points.setText("+" + ccaGame.getOur_points_brc());
-                    lgb_tv_brc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
-                    lsc_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_blue));
-                } else if (ccaGame.isBuildingIsEnemy_brc()) {
-                    lgb_tv_brc_points.setText("+" + ccaGame.getEnemy_points_brc());
-                    lgb_tv_brc_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
-                    lsc_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_red));
-                } else if (ccaGame.isBuildingIsEmpty_brc()) {
-                    lgb_tv_brc_points.setText("");
-                    lgb_tv_brc_points.setBackgroundColor(0x00000000);
-                    lgb_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
-                    lsc_iv_brc_icon.setImageDrawable(getDrawable(R.drawable.ic_brc_gray));
-                }
-                if (ccaGame.isX2_brc()) {
-                    lgb_tv_brc_x2.setText("X2");
-                    lgb_tv_brc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_brc()) {
-                        lgb_tv_brc_x2.setText("X2");
-                        lgb_tv_brc_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
-                    } else {
-                        lgb_tv_brc_x2.setText("");
-                        lgb_tv_brc_x2.setBackgroundColor(0x00000000);
-                    }
-                }
-            }
-
-
-            lgb_iv_brb_icon.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brb_name.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_x2.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_points.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_slots.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_slots_our.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_slots_empty.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_tv_brb_slots_enemy.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lgb_iv_brb_progress.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lsc_iv_brb_icon.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            lsc_sb_brb.setVisibility(ccaGame.isPresent_brb() ? View.VISIBLE : View.INVISIBLE);
-            
-            if (ccaGame.isPresent_brb()) {
-
-                lgb_rl_brb.setBackground(getDrawable(ccaGame.isUseInForecast_brb() ? R.drawable.rounded_small_corner_light_gray : R.drawable.rounded_small_corner_gray));
-
-                lgb_iv_brb_can_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToWin_brb() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
-                lgb_iv_brb_can_early_win_with_x2.setImageDrawable(getDrawable(ccaGame.isNeedToEarlyWin_brb() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
-
-                if (ccaBRB != null) lgb_iv_brb_name.setImageBitmap(PictureProcessor.makeTransparent(ccaBRB.getBmpSrc(),0xFFFFFF));
-
-                lgb_iv_brb_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                        new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                        new int[]{ccaGame.getSlots_brb_our(), ccaGame.getSlots_brb_empty(), ccaGame.getSlots_brb_enemy()}));
-
-                lgb_tv_brb_slots.setText(String.valueOf(ccaGame.getSlots_brb()));
-                lgb_tv_brb_slots_our.setText(String.valueOf(ccaGame.getSlots_brb_our_toView()));
-                lgb_tv_brb_slots_empty.setText(String.valueOf(ccaGame.getSlots_brb_empty()));
-                lgb_tv_brb_slots_enemy.setText(String.valueOf(ccaGame.getSlots_brb_enemy_toView()));
-
-                slots += ccaGame.getSlots_brb();
-                slots_our += ccaGame.getSlots_brb_our();
-                slots_empty += ccaGame.getSlots_brb_empty();
-                slots_enemy += ccaGame.getSlots_brb_enemy();
-
-                if (ccaGame.isBuildingIsOur_brb()) {
-                    lgb_tv_brb_points.setText("+" + ccaGame.getOur_points_brb());
-                    lgb_tv_brb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
-                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
-                    lsc_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_blue));
-                } else if (ccaGame.isBuildingIsEnemy_brb()) {
-                    lgb_tv_brb_points.setText("+" + ccaGame.getEnemy_points_brb());
-                    lgb_tv_brb_points.setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
-                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
-                    lsc_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_red));
-                } else if (ccaGame.isBuildingIsEmpty_brb()) {
-                    lgb_tv_brb_points.setText("");
-                    lgb_tv_brb_points.setBackgroundColor(0x00000000);
-                    lgb_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
-                    lsc_iv_brb_icon.setImageDrawable(getDrawable(R.drawable.ic_brb_gray));
-                }
-                if (ccaGame.isX2_brb()) {
-                    lgb_tv_brb_x2.setText("X2");
-                    lgb_tv_brb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
-                } else {
-                    if (ccaGame.isMayX2_brb()) {
-                        lgb_tv_brb_x2.setText("X2");
-                        lgb_tv_brb_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
-                    } else {
-                        lgb_tv_brb_x2.setText("");
-                        lgb_tv_brb_x2.setBackgroundColor(0x00000000);
-                    }
-                }
-            }
-
-
             lgci_tv_game_slots.setText(String.valueOf(slots));
             lgci_tv_game_slots_our.setText(String.valueOf(slots_our));
             lgci_tv_game_slots_empty.setText(String.valueOf(slots_empty));
             lgci_tv_game_slots_enemy.setText(String.valueOf(slots_enemy));
-
-
+            
             personsOur = (int)Math.ceil (slotsOur / 3.0d);
             personsEnemy = (int)Math.ceil (slotsEnemy / 3.0d);
 
@@ -1088,7 +509,6 @@ public class StrategyActivity extends AppCompatActivity {
             lsp_tv_person_enemy.setText(String.valueOf(personsEnemy));
             lsp_tv_car_our.setText(String.valueOf(personsOur*3));
             lsp_tv_car_enemy.setText(String.valueOf(personsEnemy*3));
-
             
         }
 
@@ -1100,19 +520,19 @@ public class StrategyActivity extends AppCompatActivity {
 
         sa_ad_banner = findViewById(R.id.sa_ad_banner);
 
-        lsc_iv_blt_icon = findViewById(R.id.lsc_iv_blt_icon);
-        lsc_iv_blc_icon = findViewById(R.id.lsc_iv_blc_icon);
-        lsc_iv_blb_icon = findViewById(R.id.lsc_iv_blb_icon);
-        lsc_iv_brt_icon = findViewById(R.id.lsc_iv_brt_icon);
-        lsc_iv_brc_icon = findViewById(R.id.lsc_iv_brc_icon);
-        lsc_iv_brb_icon = findViewById(R.id.lsc_iv_brb_icon);
+        lsc_iv_bld_icon[0] = findViewById(R.id.lsc_iv_bld1_icon);
+        lsc_iv_bld_icon[1] = findViewById(R.id.lsc_iv_bld2_icon);
+        lsc_iv_bld_icon[2] = findViewById(R.id.lsc_iv_bld3_icon);
+        lsc_iv_bld_icon[3] = findViewById(R.id.lsc_iv_bld4_icon);
+        lsc_iv_bld_icon[4] = findViewById(R.id.lsc_iv_bld5_icon);
+        lsc_iv_bld_icon[5] = findViewById(R.id.lsc_iv_bld6_icon);
 
-        lsc_sb_blt = findViewById(R.id.lsc_sb_blt);
-        lsc_sb_blc = findViewById(R.id.lsc_sb_blc);
-        lsc_sb_blb = findViewById(R.id.lsc_sb_blb);
-        lsc_sb_brt = findViewById(R.id.lsc_sb_brt);
-        lsc_sb_brc = findViewById(R.id.lsc_sb_brc);
-        lsc_sb_brb = findViewById(R.id.lsc_sb_brb);
+        lsc_sb_bld[0] = findViewById(R.id.lsc_sb_bld1);
+        lsc_sb_bld[1] = findViewById(R.id.lsc_sb_bld2);
+        lsc_sb_bld[2] = findViewById(R.id.lsc_sb_bld3);
+        lsc_sb_bld[3] = findViewById(R.id.lsc_sb_bld4);
+        lsc_sb_bld[4] = findViewById(R.id.lsc_sb_bld5);
+        lsc_sb_bld[5] = findViewById(R.id.lsc_sb_bld6);
 
         lsp_sb_person_our = findViewById(R.id.lsp_sb_person_our);
         lsp_iv_person_our = findViewById(R.id.lsp_iv_person_our);
@@ -1147,85 +567,84 @@ public class StrategyActivity extends AppCompatActivity {
         lgi_tv_enemy_points = findViewById(R.id.lgi_tv_enemy_points);        // очки команды противника
         lgi_tv_enemy_end_time = findViewById(R.id.lgi_tv_enemy_end_time);      // время до конца игры для команды противника
 
-        // BLT views
-        lgb_iv_blt_icon = findViewById(R.id.lgb_iv_blt_icon);           // blt - иконка здания (картинка)
-        lgb_iv_blt_name = findViewById(R.id.lgb_iv_blt_name);           // blt - название здания (картинка)
-        lgb_tv_blt_x2 = findViewById(R.id.lgb_tv_blt_x2);              // blt - х2
-        lgb_tv_blt_points = findViewById(R.id.lgb_tv_blt_points);          // blt - очки
-        lgb_tv_blt_slots = findViewById(R.id.lgb_tv_blt_slots);           // blt - слоты
-        lgb_tv_blt_slots_our = findViewById(R.id.lgb_tv_blt_slots_our);       // blt - наши слоты
-        lgb_tv_blt_slots_empty = findViewById(R.id.lgb_tv_blt_slots_empty);     // blt - слоты противника
-        lgb_tv_blt_slots_enemy = findViewById(R.id.lgb_tv_blt_slots_enemy);     // blt - пустые слоты
-        lgb_iv_blt_progress = findViewById(R.id.lgb_iv_blt_progress);       // blt - прогресс
-        lgb_iv_blt_can_win_with_x2 = findViewById(R.id.lgb_iv_blt_can_win_with_x2);
-        lgb_iv_blt_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blt_can_early_win_with_x2);
+        // bld1 views
+        lgb_iv_bld_icon[0] = findViewById(R.id.lgb_iv_bld1_icon);
+        lgb_iv_bld_name[0] = findViewById(R.id.lgb_iv_bld1_name);
+        lgb_tv_bld_x2[0] = findViewById(R.id.lgb_tv_bld1_x2);
+        lgb_tv_bld_points[0] = findViewById(R.id.lgb_tv_bld1_points);
+        lgb_tv_bld_slots[0] = findViewById(R.id.lgb_tv_bld1_slots);
+        lgb_tv_bld_slots_our[0] = findViewById(R.id.lgb_tv_bld1_slots_our);
+        lgb_tv_bld_slots_empty[0] = findViewById(R.id.lgb_tv_bld1_slots_empty);
+        lgb_tv_bld_slots_enemy[0] = findViewById(R.id.lgb_tv_bld1_slots_enemy);
+        lgb_iv_bld_progress[0] = findViewById(R.id.lgb_iv_bld1_progress);
+        lgb_iv_bld_can_win_with_x2[0] = findViewById(R.id.lgb_iv_bld1_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[0] = findViewById(R.id.lgb_iv_bld1_can_early_win_with_x2);
 
 
+        // bld2 views
+        lgb_iv_bld_icon[1] = findViewById(R.id.lgb_iv_bld2_icon);
+        lgb_iv_bld_name[1] = findViewById(R.id.lgb_iv_bld2_name);
+        lgb_tv_bld_x2[1] = findViewById(R.id.lgb_tv_bld2_x2);
+        lgb_tv_bld_points[1] = findViewById(R.id.lgb_tv_bld2_points);
+        lgb_tv_bld_slots[1] = findViewById(R.id.lgb_tv_bld2_slots);
+        lgb_tv_bld_slots_our[1] = findViewById(R.id.lgb_tv_bld2_slots_our);
+        lgb_tv_bld_slots_empty[1] = findViewById(R.id.lgb_tv_bld2_slots_empty);
+        lgb_tv_bld_slots_enemy[1] = findViewById(R.id.lgb_tv_bld2_slots_enemy);
+        lgb_iv_bld_progress[1] = findViewById(R.id.lgb_iv_bld2_progress);
+        lgb_iv_bld_can_win_with_x2[1] = findViewById(R.id.lgb_iv_bld2_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[1] = findViewById(R.id.lgb_iv_bld2_can_early_win_with_x2);
 
-        // BLC views
-        lgb_iv_blc_icon = findViewById(R.id.lgb_iv_blc_icon);           // blc - иконка здания (картинка)
-        lgb_iv_blc_name = findViewById(R.id.lgb_iv_blc_name);           // blc - название здания (картинка)
-        lgb_tv_blc_x2 = findViewById(R.id.lgb_tv_blc_x2);              // blc - х2
-        lgb_tv_blc_points = findViewById(R.id.lgb_tv_blc_points);          // blc - очки
-        lgb_tv_blc_slots = findViewById(R.id.lgb_tv_blc_slots);           // blc - слоты
-        lgb_tv_blc_slots_our = findViewById(R.id.lgb_tv_blc_slots_our);       // blc - наши слоты
-        lgb_tv_blc_slots_empty = findViewById(R.id.lgb_tv_blc_slots_empty);     // blc - слоты противника
-        lgb_tv_blc_slots_enemy = findViewById(R.id.lgb_tv_blc_slots_enemy);     // blc - пустые слоты
-        lgb_iv_blc_progress = findViewById(R.id.lgb_iv_blc_progress);       // blc - прогресс
-        lgb_iv_blc_can_win_with_x2 = findViewById(R.id.lgb_iv_blc_can_win_with_x2);
-        lgb_iv_blc_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blc_can_early_win_with_x2);
+        // bld3 views
+        lgb_iv_bld_icon[2] = findViewById(R.id.lgb_iv_bld3_icon);
+        lgb_iv_bld_name[2] = findViewById(R.id.lgb_iv_bld3_name);
+        lgb_tv_bld_x2[2] = findViewById(R.id.lgb_tv_bld3_x2);
+        lgb_tv_bld_points[2] = findViewById(R.id.lgb_tv_bld3_points);
+        lgb_tv_bld_slots[2] = findViewById(R.id.lgb_tv_bld3_slots);
+        lgb_tv_bld_slots_our[2] = findViewById(R.id.lgb_tv_bld3_slots_our);
+        lgb_tv_bld_slots_empty[2] = findViewById(R.id.lgb_tv_bld3_slots_empty);
+        lgb_tv_bld_slots_enemy[2] = findViewById(R.id.lgb_tv_bld3_slots_enemy);
+        lgb_iv_bld_progress[2] = findViewById(R.id.lgb_iv_bld3_progress);
+        lgb_iv_bld_can_win_with_x2[2] = findViewById(R.id.lgb_iv_bld3_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[2] = findViewById(R.id.lgb_iv_bld3_can_early_win_with_x2);
 
-        // BLB views
-        lgb_iv_blb_icon = findViewById(R.id.lgb_iv_blb_icon);           // blb - иконка здания (картинка)
-        lgb_iv_blb_name = findViewById(R.id.lgb_iv_blb_name);           // blb - название здания (картинка)
-        lgb_tv_blb_x2 = findViewById(R.id.lgb_tv_blb_x2);              // blb - х2
-        lgb_tv_blb_points = findViewById(R.id.lgb_tv_blb_points);          // blb - очки
-        lgb_tv_blb_slots = findViewById(R.id.lgb_tv_blb_slots);           // blb - слоты
-        lgb_tv_blb_slots_our = findViewById(R.id.lgb_tv_blb_slots_our);       // blb - наши слоты
-        lgb_tv_blb_slots_empty = findViewById(R.id.lgb_tv_blb_slots_empty);     // blb - слоты противника
-        lgb_tv_blb_slots_enemy = findViewById(R.id.lgb_tv_blb_slots_enemy);     // blb - пустые слоты
-        lgb_iv_blb_progress = findViewById(R.id.lgb_iv_blb_progress);       // blb - прогресс
-        lgb_iv_blb_can_win_with_x2 = findViewById(R.id.lgb_iv_blb_can_win_with_x2);
-        lgb_iv_blb_can_early_win_with_x2 = findViewById(R.id.lgb_iv_blb_can_early_win_with_x2);
+        // bld4 views
+        lgb_iv_bld_icon[3] = findViewById(R.id.lgb_iv_bld4_icon);
+        lgb_iv_bld_name[3] = findViewById(R.id.lgb_iv_bld4_name);
+        lgb_tv_bld_x2[3] = findViewById(R.id.lgb_tv_bld4_x2);
+        lgb_tv_bld_points[3] = findViewById(R.id.lgb_tv_bld4_points);
+        lgb_tv_bld_slots[3] = findViewById(R.id.lgb_tv_bld4_slots);
+        lgb_tv_bld_slots_our[3] = findViewById(R.id.lgb_tv_bld4_slots_our);
+        lgb_tv_bld_slots_empty[3] = findViewById(R.id.lgb_tv_bld4_slots_empty);
+        lgb_tv_bld_slots_enemy[3] = findViewById(R.id.lgb_tv_bld4_slots_enemy);
+        lgb_iv_bld_progress[3] = findViewById(R.id.lgb_iv_bld4_progress);
+        lgb_iv_bld_can_win_with_x2[3] = findViewById(R.id.lgb_iv_bld4_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[3] = findViewById(R.id.lgb_iv_bld4_can_early_win_with_x2);
 
-        // BRT views
-        lgb_iv_brt_icon = findViewById(R.id.lgb_iv_brt_icon);           // brt - иконка здания (картинка)
-        lgb_iv_brt_name = findViewById(R.id.lgb_iv_brt_name);           // brt - название здания (картинка)
-        lgb_tv_brt_x2 = findViewById(R.id.lgb_tv_brt_x2);              // brt - х2
-        lgb_tv_brt_points = findViewById(R.id.lgb_tv_brt_points);          // brt - очки
-        lgb_tv_brt_slots = findViewById(R.id.lgb_tv_brt_slots);           // brt - слоты
-        lgb_tv_brt_slots_our = findViewById(R.id.lgb_tv_brt_slots_our);       // brt - наши слоты
-        lgb_tv_brt_slots_empty = findViewById(R.id.lgb_tv_brt_slots_empty);     // brt - слоты противника
-        lgb_tv_brt_slots_enemy = findViewById(R.id.lgb_tv_brt_slots_enemy);     // brt - пустые слоты
-        lgb_iv_brt_progress = findViewById(R.id.lgb_iv_brt_progress);       // brt - прогресс
-        lgb_iv_brt_can_win_with_x2 = findViewById(R.id.lgb_iv_brt_can_win_with_x2);
-        lgb_iv_brt_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brt_can_early_win_with_x2);
+        // bld5 views
+        lgb_iv_bld_icon[4] = findViewById(R.id.lgb_iv_bld5_icon);
+        lgb_iv_bld_name[4] = findViewById(R.id.lgb_iv_bld5_name);
+        lgb_tv_bld_x2[4] = findViewById(R.id.lgb_tv_bld5_x2);
+        lgb_tv_bld_points[4] = findViewById(R.id.lgb_tv_bld5_points);
+        lgb_tv_bld_slots[4] = findViewById(R.id.lgb_tv_bld5_slots);
+        lgb_tv_bld_slots_our[4] = findViewById(R.id.lgb_tv_bld5_slots_our);
+        lgb_tv_bld_slots_empty[4] = findViewById(R.id.lgb_tv_bld5_slots_empty);
+        lgb_tv_bld_slots_enemy[4] = findViewById(R.id.lgb_tv_bld5_slots_enemy);
+        lgb_iv_bld_progress[4] = findViewById(R.id.lgb_iv_bld5_progress);
+        lgb_iv_bld_can_win_with_x2[4] = findViewById(R.id.lgb_iv_bld5_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[4] = findViewById(R.id.lgb_iv_bld5_can_early_win_with_x2);
 
-        // BRC views
-        lgb_iv_brc_icon = findViewById(R.id.lgb_iv_brc_icon);           // brc - иконка здания (картинка)
-        lgb_iv_brc_name = findViewById(R.id.lgb_iv_brc_name);           // brc - название здания (картинка)
-        lgb_tv_brc_x2 = findViewById(R.id.lgb_tv_brc_x2);              // brc - х2
-        lgb_tv_brc_points = findViewById(R.id.lgb_tv_brc_points);          // brc - очки
-        lgb_tv_brc_slots = findViewById(R.id.lgb_tv_brc_slots);           // brc - слоты
-        lgb_tv_brc_slots_our = findViewById(R.id.lgb_tv_brc_slots_our);       // brc - наши слоты
-        lgb_tv_brc_slots_empty = findViewById(R.id.lgb_tv_brc_slots_empty);     // brc - слоты противника
-        lgb_tv_brc_slots_enemy = findViewById(R.id.lgb_tv_brc_slots_enemy);     // brc - пустые слоты
-        lgb_iv_brc_progress = findViewById(R.id.lgb_iv_brc_progress);       // brc - прогресс
-        lgb_iv_brc_can_win_with_x2 = findViewById(R.id.lgb_iv_brc_can_win_with_x2);
-        lgb_iv_brc_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brc_can_early_win_with_x2);
-
-        // BRB views
-        lgb_iv_brb_icon = findViewById(R.id.lgb_iv_brb_icon);           // brb - иконка здания (картинка)
-        lgb_iv_brb_name = findViewById(R.id.lgb_iv_brb_name);           // brb - название здания (картинка)
-        lgb_tv_brb_x2 = findViewById(R.id.lgb_tv_brb_x2);              // brb - х2
-        lgb_tv_brb_points = findViewById(R.id.lgb_tv_brb_points);          // brb - очки
-        lgb_tv_brb_slots = findViewById(R.id.lgb_tv_brb_slots);           // brb - слоты
-        lgb_tv_brb_slots_our = findViewById(R.id.lgb_tv_brb_slots_our);       // brb - наши слоты
-        lgb_tv_brb_slots_empty = findViewById(R.id.lgb_tv_brb_slots_empty);     // brb - слоты противника
-        lgb_tv_brb_slots_enemy = findViewById(R.id.lgb_tv_brb_slots_enemy);     // brb - пустые слоты
-        lgb_iv_brb_progress = findViewById(R.id.lgb_iv_brb_progress);       // blt - прогресс
-        lgb_iv_brb_can_win_with_x2 = findViewById(R.id.lgb_iv_brb_can_win_with_x2);
-        lgb_iv_brb_can_early_win_with_x2 = findViewById(R.id.lgb_iv_brb_can_early_win_with_x2);
+        // bld6 views
+        lgb_iv_bld_icon[5] = findViewById(R.id.lgb_iv_bld6_icon);
+        lgb_iv_bld_name[5] = findViewById(R.id.lgb_iv_bld6_name);
+        lgb_tv_bld_x2[5] = findViewById(R.id.lgb_tv_bld6_x2);
+        lgb_tv_bld_points[5] = findViewById(R.id.lgb_tv_bld6_points);
+        lgb_tv_bld_slots[5] = findViewById(R.id.lgb_tv_bld6_slots);
+        lgb_tv_bld_slots_our[5] = findViewById(R.id.lgb_tv_bld6_slots_our);
+        lgb_tv_bld_slots_empty[5] = findViewById(R.id.lgb_tv_bld6_slots_empty);
+        lgb_tv_bld_slots_enemy[5] = findViewById(R.id.lgb_tv_bld6_slots_enemy);
+        lgb_iv_bld_progress[5] = findViewById(R.id.lgb_iv_bld6_progress);
+        lgb_iv_bld_can_win_with_x2[5] = findViewById(R.id.lgb_iv_bld6_can_win_with_x2);
+        lgb_iv_bld_can_early_win_with_x2[5] = findViewById(R.id.lgb_iv_bld6_can_early_win_with_x2);
 
         lgci_iv_game_car_black = findViewById(R.id.lgci_iv_game_car_black);     // машинка черная большая (картинка)
         lgci_iv_game_car_our = findViewById(R.id.lgci_iv_game_car_our);       // машинка синяя большая (картинка)
@@ -1236,12 +655,12 @@ public class StrategyActivity extends AppCompatActivity {
         lgci_tv_game_slots_empty = findViewById(R.id.lgci_tv_game_slots_empty);    // слотов в игре пустых
         lgci_tv_game_slots_enemy = findViewById(R.id.lgci_tv_game_slots_enemy);    // слотов в игре противника
 
-        lgb_rl_blt = findViewById(R.id.lgb_rl_blt);    // слотов в игре противника
-        lgb_rl_blc = findViewById(R.id.lgb_rl_blc);    // слотов в игре противника
-        lgb_rl_blb = findViewById(R.id.lgb_rl_blb);    // слотов в игре противника
-        lgb_rl_brt = findViewById(R.id.lgb_rl_brt);    // слотов в игре противника
-        lgb_rl_brc = findViewById(R.id.lgb_rl_brc);    // слотов в игре противника
-        lgb_rl_brb = findViewById(R.id.lgb_rl_brb);    // слотов в игре противника
+        lgb_rl_bld[0] = findViewById(R.id.lgb_rl_bld1);
+        lgb_rl_bld[1] = findViewById(R.id.lgb_rl_bld2);
+        lgb_rl_bld[2] = findViewById(R.id.lgb_rl_bld3);
+        lgb_rl_bld[3] = findViewById(R.id.lgb_rl_bld4);
+        lgb_rl_bld[4] = findViewById(R.id.lgb_rl_bld5);
+        lgb_rl_bld[5] = findViewById(R.id.lgb_rl_bld6);
 
         sa_iv_calc_timed_win = findViewById(R.id.sa_iv_calc_timed_win);
         sa_iv_calc_timed_win_without_x2 = findViewById(R.id.sa_iv_calc_timed_win_without_x2);
@@ -1251,168 +670,6 @@ public class StrategyActivity extends AppCompatActivity {
 
     }
 
-    private SeekBar.OnSeekBarChangeListener bltSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_blt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-            
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
-
-    private SeekBar.OnSeekBarChangeListener blcSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_blc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
-
-    private SeekBar.OnSeekBarChangeListener blbSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_blb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
-
-    private SeekBar.OnSeekBarChangeListener brtSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_brt.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
-
-    private SeekBar.OnSeekBarChangeListener brcSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_brc.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
-
-    private SeekBar.OnSeekBarChangeListener brbSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            Context context = GlobalApplication.getAppContext();
-            if (progress == 0) {
-                lsc_sb_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_our_36dp));
-            } else if (progress == 1) {
-                lsc_sb_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_empty_36dp));
-            } else {
-                lsc_sb_brb.setThumb(ContextCompat.getDrawable(context, R.drawable.ic_car_enemy_36dp));
-            }
-            if (needUpdateSlots) {
-                setCarsInBuildings();
-            }
-        }
-
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
-
-        }
-
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
 
     private SeekBar.OnSeekBarChangeListener personOurSeekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
@@ -1474,20 +731,20 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanWin()) {
 
-            int blt_progress = ccaGame.isNeedToWin_blt() ? 0 : 2;
-            int blc_progress = ccaGame.isNeedToWin_blc() ? 0 : 2;
-            int blb_progress = ccaGame.isNeedToWin_blb() ? 0 : 2;
-            int brt_progress = ccaGame.isNeedToWin_brt() ? 0 : 2;
-            int brc_progress = ccaGame.isNeedToWin_brc() ? 0 : 2;
-            int brb_progress = ccaGame.isNeedToWin_brb() ? 0 : 2;
+            int bld1_progress = ccaGame.getBuildings()[0].isNeedToWin() ? 0 : 2;
+            int bld2_progress = ccaGame.getBuildings()[1].isNeedToWin() ? 0 : 2;
+            int bld3_progress = ccaGame.getBuildings()[2].isNeedToWin() ? 0 : 2;
+            int bld4_progress = ccaGame.getBuildings()[3].isNeedToWin() ? 0 : 2;
+            int bld5_progress = ccaGame.getBuildings()[4].isNeedToWin() ? 0 : 2;
+            int bld6_progress = ccaGame.getBuildings()[5].isNeedToWin() ? 0 : 2;
 
             needUpdateSlots = false;
-            lsc_sb_blt.setProgress(blt_progress);
-            lsc_sb_blc.setProgress(blc_progress);
-            lsc_sb_blb.setProgress(blb_progress);
-            lsc_sb_brt.setProgress(brt_progress);
-            lsc_sb_brc.setProgress(brc_progress);
-            lsc_sb_brb.setProgress(brb_progress);
+            lsc_sb_bld[0].setProgress(bld1_progress);
+            lsc_sb_bld[1].setProgress(bld2_progress);
+            lsc_sb_bld[2].setProgress(bld3_progress);
+            lsc_sb_bld[3].setProgress(bld4_progress);
+            lsc_sb_bld[4].setProgress(bld5_progress);
+            lsc_sb_bld[0].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -1504,20 +761,20 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanWinWithoutX2()) {
 
-            int blt_progress = ccaGame.isNeedToWinWithoutX2_blt() ? 0 : 2;
-            int blc_progress = ccaGame.isNeedToWinWithoutX2_blc() ? 0 : 2;
-            int blb_progress = ccaGame.isNeedToWinWithoutX2_blb() ? 0 : 2;
-            int brt_progress = ccaGame.isNeedToWinWithoutX2_brt() ? 0 : 2;
-            int brc_progress = ccaGame.isNeedToWinWithoutX2_brc() ? 0 : 2;
-            int brb_progress = ccaGame.isNeedToWinWithoutX2_brb() ? 0 : 2;
+            int bld1_progress = ccaGame.getBuildings()[0].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld2_progress = ccaGame.getBuildings()[1].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld3_progress = ccaGame.getBuildings()[2].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld4_progress = ccaGame.getBuildings()[3].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld5_progress = ccaGame.getBuildings()[4].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld6_progress = ccaGame.getBuildings()[5].isNeedToWinWithoutX2() ? 0 : 2;
 
             needUpdateSlots = false;
-            lsc_sb_blt.setProgress(blt_progress);
-            lsc_sb_blc.setProgress(blc_progress);
-            lsc_sb_blb.setProgress(blb_progress);
-            lsc_sb_brt.setProgress(brt_progress);
-            lsc_sb_brc.setProgress(brc_progress);
-            lsc_sb_brb.setProgress(brb_progress);
+            lsc_sb_bld[0].setProgress(bld1_progress);
+            lsc_sb_bld[1].setProgress(bld2_progress);
+            lsc_sb_bld[2].setProgress(bld3_progress);
+            lsc_sb_bld[3].setProgress(bld4_progress);
+            lsc_sb_bld[4].setProgress(bld5_progress);
+            lsc_sb_bld[0].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -1533,20 +790,20 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanEarlyWin()) {
 
-            int blt_progress = ccaGame.isNeedToEarlyWin_blt() ? 0 : 2;
-            int blc_progress = ccaGame.isNeedToEarlyWin_blc() ? 0 : 2;
-            int blb_progress = ccaGame.isNeedToEarlyWin_blb() ? 0 : 2;
-            int brt_progress = ccaGame.isNeedToEarlyWin_brt() ? 0 : 2;
-            int brc_progress = ccaGame.isNeedToEarlyWin_brc() ? 0 : 2;
-            int brb_progress = ccaGame.isNeedToEarlyWin_brb() ? 0 : 2;
+            int bld1_progress = ccaGame.getBuildings()[0].isNeedToEarlyWin() ? 0 : 2;
+            int bld2_progress = ccaGame.getBuildings()[1].isNeedToEarlyWin() ? 0 : 2;
+            int bld3_progress = ccaGame.getBuildings()[2].isNeedToEarlyWin() ? 0 : 2;
+            int bld4_progress = ccaGame.getBuildings()[3].isNeedToEarlyWin() ? 0 : 2;
+            int bld5_progress = ccaGame.getBuildings()[4].isNeedToEarlyWin() ? 0 : 2;
+            int bld6_progress = ccaGame.getBuildings()[5].isNeedToEarlyWin() ? 0 : 2;
 
             needUpdateSlots = false;
-            lsc_sb_blt.setProgress(blt_progress);
-            lsc_sb_blc.setProgress(blc_progress);
-            lsc_sb_blb.setProgress(blb_progress);
-            lsc_sb_brt.setProgress(brt_progress);
-            lsc_sb_brc.setProgress(brc_progress);
-            lsc_sb_brb.setProgress(brb_progress);
+            lsc_sb_bld[0].setProgress(bld1_progress);
+            lsc_sb_bld[1].setProgress(bld2_progress);
+            lsc_sb_bld[2].setProgress(bld3_progress);
+            lsc_sb_bld[3].setProgress(bld4_progress);
+            lsc_sb_bld[4].setProgress(bld5_progress);
+            lsc_sb_bld[0].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -1561,20 +818,20 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanEarlyWinWithoutX2()) {
 
-            int blt_progress = ccaGame.isNeedToEarlyWinWithoutX2_blt() ? 0 : 2;
-            int blc_progress = ccaGame.isNeedToEarlyWinWithoutX2_blc() ? 0 : 2;
-            int blb_progress = ccaGame.isNeedToEarlyWinWithoutX2_blb() ? 0 : 2;
-            int brt_progress = ccaGame.isNeedToEarlyWinWithoutX2_brt() ? 0 : 2;
-            int brc_progress = ccaGame.isNeedToEarlyWinWithoutX2_brc() ? 0 : 2;
-            int brb_progress = ccaGame.isNeedToEarlyWinWithoutX2_brb() ? 0 : 2;
+            int bld1_progress = ccaGame.getBuildings()[0].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld2_progress = ccaGame.getBuildings()[1].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld3_progress = ccaGame.getBuildings()[2].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld4_progress = ccaGame.getBuildings()[3].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld5_progress = ccaGame.getBuildings()[4].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld6_progress = ccaGame.getBuildings()[5].isNeedToEarlyWinWithoutX2() ? 0 : 2;
 
             needUpdateSlots = false;
-            lsc_sb_blt.setProgress(blt_progress);
-            lsc_sb_blc.setProgress(blc_progress);
-            lsc_sb_blb.setProgress(blb_progress);
-            lsc_sb_brt.setProgress(brt_progress);
-            lsc_sb_brc.setProgress(brc_progress);
-            lsc_sb_brb.setProgress(brb_progress);
+            lsc_sb_bld[0].setProgress(bld1_progress);
+            lsc_sb_bld[1].setProgress(bld2_progress);
+            lsc_sb_bld[2].setProgress(bld3_progress);
+            lsc_sb_bld[3].setProgress(bld4_progress);
+            lsc_sb_bld[4].setProgress(bld5_progress);
+            lsc_sb_bld[0].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -1582,8 +839,6 @@ public class StrategyActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 
 }

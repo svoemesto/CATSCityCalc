@@ -65,22 +65,22 @@ public class ListCarsAdapter extends ArrayAdapter<Car> {
                 sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bxx_black));
                 break;
             case 1:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                 break;
             case 2:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                 break;
             case 3:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                 break;
             case 4:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                 break;
             case 5:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                 break;
             case 6:
-                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                sc_iv_car_building_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                 break;
             default:
         }
@@ -89,22 +89,22 @@ public class ListCarsAdapter extends ArrayAdapter<Car> {
                 sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(R.drawable.ic_bxx_black));
                 break;
             case 1:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blt_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blt_blue : R.drawable.ic_blt_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld1_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld1_blue : R.drawable.ic_bld1_red));
                 break;
             case 2:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blc_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blc_blue : R.drawable.ic_blc_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld2_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld2_blue : R.drawable.ic_bld2_red));
                 break;
             case 3:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_blb_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_blb_blue : R.drawable.ic_blb_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld3_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld3_blue : R.drawable.ic_bld3_red));
                 break;
             case 4:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brt_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brt_blue : R.drawable.ic_brt_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld4_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld4_blue : R.drawable.ic_bld4_red));
                 break;
             case 5:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brc_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brc_blue : R.drawable.ic_brc_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld5_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld5_blue : R.drawable.ic_bld5_red));
                 break;
             case 6:
-                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_brb_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_brb_blue : R.drawable.ic_brb_red));
+                sc_iv_car_task_icon.setImageDrawable(getContext().getDrawable(item.getBuildingTask() == -1 ? R.drawable.ic_bld6_gray : item.getBuilding() == item.getBuildingTask() ? R.drawable.ic_bld6_blue : R.drawable.ic_bld6_red));
                 break;
             default:
         }

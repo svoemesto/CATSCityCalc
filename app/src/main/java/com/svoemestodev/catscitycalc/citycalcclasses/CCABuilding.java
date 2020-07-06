@@ -3,6 +3,8 @@ package com.svoemestodev.catscitycalc.citycalcclasses;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 public class CCABuilding extends CityCalcArea {
+
+    private String name;
     private int slots;
     private int slots_our;
     private int slots_enemy;
@@ -257,5 +259,13 @@ public class CCABuilding extends CityCalcArea {
 
     public void setUseInForecast(boolean useInForecast) {
         this.useInForecast = useInForecast;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

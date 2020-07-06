@@ -1424,97 +1424,30 @@ public class CityCalc { //extends Activity {
                         ((CCAGame)mapAreas.get(Area.CITY)).setPointsOurInScreenshot(((CCATeam)mapAreas.get(Area.TEAM_NAME_OUR)).getCcatPointsInScreenshot());
                         ((CCAGame)mapAreas.get(Area.CITY)).setPointsEnemyInScreenshot(((CCATeam)mapAreas.get(Area.TEAM_NAME_ENEMY)).getCcatPointsInScreenshot());
 
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_blt(((CCABuilding)mapAreas.get(Area.BLT)).isPresent());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_blc(((CCABuilding)mapAreas.get(Area.BLC)).isPresent());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_blb(((CCABuilding)mapAreas.get(Area.BLB)).isPresent());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_brt(((CCABuilding)mapAreas.get(Area.BRT)).isPresent());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_brc(((CCABuilding)mapAreas.get(Area.BRC)).isPresent());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setPresent_brb(((CCABuilding)mapAreas.get(Area.BRB)).isPresent());
+                        Area[] areasBuildings = new Area[6];
+                        areasBuildings[0] = Area.BLT;
+                        areasBuildings[1] = Area.BLC;
+                        areasBuildings[2] = Area.BLB;
+                        areasBuildings[3] = Area.BRT;
+                        areasBuildings[4] = Area.BRC;
+                        areasBuildings[5] = Area.BRB;
 
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getSlots() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getSlots() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getSlots() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getSlots() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getSlots() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getSlots() : 0);
+                        for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setPresent(((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).isPresent());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setSlots(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getSlots() : 0);
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setSlots_our(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getSlots_our() : 0);
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setSlots_empty(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getSlots_empty() : 0);
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setSlots_enemy(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getSlots_enemy() : 0);
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setX2(((CCAGame) mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() && ((CCABuilding) mapAreas.get(areasBuildings[buildingIndex])).isX2());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setMayX2(((CCAGame) mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() && ((CCABuilding) mapAreas.get(areasBuildings[buildingIndex])).isMayX2());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setName(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getFinText() : "");
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setBuildingIsOur(((CCAGame) mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() && ((CCABuilding) mapAreas.get(areasBuildings[buildingIndex])).isBuildingIsOur());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setBuildingIsEmpty(((CCAGame) mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() && ((CCABuilding) mapAreas.get(areasBuildings[buildingIndex])).isBuildingIsEmpty());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setBuildingIsEnemy(((CCAGame) mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() && ((CCABuilding) mapAreas.get(areasBuildings[buildingIndex])).isBuildingIsEnemy());
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setOur_points(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getOur_points() : 0);
+                            ((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].setEnemy_points(((CCAGame)mapAreas.get(Area.CITY)).getBuildings()[buildingIndex].isPresent() ? ((CCABuilding)mapAreas.get(areasBuildings[buildingIndex])).getEnemy_points() : 0);
+                        }
 
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blt_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getSlots_our() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blc_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getSlots_our() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blb_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getSlots_our() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brt_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getSlots_our() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brc_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getSlots_our() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brb_our(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getSlots_our() : 0);
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blt_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getSlots_empty() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blc_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getSlots_empty() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blb_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getSlots_empty() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brt_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getSlots_empty() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brc_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getSlots_empty() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brb_empty(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getSlots_empty() : 0);
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blt_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getSlots_enemy() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blc_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getSlots_enemy() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_blb_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getSlots_enemy() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brt_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getSlots_enemy() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brc_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getSlots_enemy() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setSlots_brb_enemy(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getSlots_enemy() : 0);
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_blt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blt() && ((CCABuilding) mapAreas.get(Area.BLT)).isX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_blc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blc() && ((CCABuilding) mapAreas.get(Area.BLC)).isX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_blb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blb() && ((CCABuilding) mapAreas.get(Area.BLB)).isX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_brt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brt() && ((CCABuilding) mapAreas.get(Area.BRT)).isX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_brc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brc() && ((CCABuilding) mapAreas.get(Area.BRC)).isX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setX2_brb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brb() && ((CCABuilding) mapAreas.get(Area.BRB)).isX2());
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_blt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blt() && ((CCABuilding) mapAreas.get(Area.BLT)).isMayX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_blc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blc() && ((CCABuilding) mapAreas.get(Area.BLC)).isMayX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_blb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blb() && ((CCABuilding) mapAreas.get(Area.BLB)).isMayX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_brt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brt() && ((CCABuilding) mapAreas.get(Area.BRT)).isMayX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_brc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brc() && ((CCABuilding) mapAreas.get(Area.BRC)).isMayX2());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setMayX2_brb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brb() && ((CCABuilding) mapAreas.get(Area.BRB)).isMayX2());
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_blt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getFinText() : "");
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_blc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getFinText() : "");
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_blb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getFinText() : "");
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_brt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getFinText() : "");
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_brc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getFinText() : "");
-                        ((CCAGame)mapAreas.get(Area.CITY)).setName_brb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getFinText() : "");
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_blt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blt() && ((CCABuilding) mapAreas.get(Area.BLT)).isBuildingIsOur());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_blc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blc() && ((CCABuilding) mapAreas.get(Area.BLC)).isBuildingIsOur());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_blb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blb() && ((CCABuilding) mapAreas.get(Area.BLB)).isBuildingIsOur());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_brt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brt() && ((CCABuilding) mapAreas.get(Area.BRT)).isBuildingIsOur());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_brc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brc() && ((CCABuilding) mapAreas.get(Area.BRC)).isBuildingIsOur());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsOur_brb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brb() && ((CCABuilding) mapAreas.get(Area.BRB)).isBuildingIsOur());
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_blt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blt() && ((CCABuilding) mapAreas.get(Area.BLT)).isBuildingIsEmpty());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_blc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blc() && ((CCABuilding) mapAreas.get(Area.BLC)).isBuildingIsEmpty());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_blb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blb() && ((CCABuilding) mapAreas.get(Area.BLB)).isBuildingIsEmpty());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_brt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brt() && ((CCABuilding) mapAreas.get(Area.BRT)).isBuildingIsEmpty());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_brc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brc() && ((CCABuilding) mapAreas.get(Area.BRC)).isBuildingIsEmpty());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEmpty_brb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brb() && ((CCABuilding) mapAreas.get(Area.BRB)).isBuildingIsEmpty());
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_blt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blt() && ((CCABuilding) mapAreas.get(Area.BLT)).isBuildingIsEnemy());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_blc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blc() && ((CCABuilding) mapAreas.get(Area.BLC)).isBuildingIsEnemy());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_blb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_blb() && ((CCABuilding) mapAreas.get(Area.BLB)).isBuildingIsEnemy());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_brt(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brt() && ((CCABuilding) mapAreas.get(Area.BRT)).isBuildingIsEnemy());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_brc(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brc() && ((CCABuilding) mapAreas.get(Area.BRC)).isBuildingIsEnemy());
-                        ((CCAGame)mapAreas.get(Area.CITY)).setBuildingIsEnemy_brb(((CCAGame) mapAreas.get(Area.CITY)).isPresent_brb() && ((CCABuilding) mapAreas.get(Area.BRB)).isBuildingIsEnemy());
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_blt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getOur_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_blc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getOur_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_blb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getOur_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_brt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getOur_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_brc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getOur_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setOur_points_brb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getOur_points() : 0);
-
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_blt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blt() ? ((CCABuilding)mapAreas.get(Area.BLT)).getEnemy_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_blc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blc() ? ((CCABuilding)mapAreas.get(Area.BLC)).getEnemy_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_blb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_blb() ? ((CCABuilding)mapAreas.get(Area.BLB)).getEnemy_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_brt(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brt() ? ((CCABuilding)mapAreas.get(Area.BRT)).getEnemy_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_brc(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brc() ? ((CCABuilding)mapAreas.get(Area.BRC)).getEnemy_points() : 0);
-                        ((CCAGame)mapAreas.get(Area.CITY)).setEnemy_points_brb(((CCAGame)mapAreas.get(Area.CITY)).isPresent_brb() ? ((CCABuilding)mapAreas.get(Area.BRB)).getEnemy_points() : 0);
-                        
                         ((CCAGame)mapAreas.get(Area.CITY)).setIncreaseOur(
                                 (((CCABuilding)mapAreas.get(Area.BLT)).isPresent() ? ((CCABuilding)mapAreas.get(Area.BLT)).getOur_points() : 0) +
                                         (((CCABuilding)mapAreas.get(Area.BLC)).isPresent() ? ((CCABuilding)mapAreas.get(Area.BLC)).getOur_points() : 0) +

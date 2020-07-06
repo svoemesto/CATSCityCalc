@@ -18,7 +18,7 @@
         >
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_blt"
+            android:id="@+id/lgb_rl_bld1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -28,7 +28,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_blt_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld1_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -37,34 +37,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_blt_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld1_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_blt_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld1_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
             
             <ImageView
-                android:id="@+id/lgb_iv_blt_icon"
+                android:id="@+id/lgb_iv_bld1_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_blt_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld1_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_blt_black"
+                tools:src="@drawable/ic_bld1_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_blt"
+                android:id="@+id/lgb_ll_first_bld1"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_blt_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld1_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_blt_name"
+                    android:id="@+id/lgb_iv_bld1_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -74,7 +74,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_x2"
+                    android:id="@+id/lgb_tv_bld1_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -89,7 +89,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_points"
+                    android:id="@+id/lgb_tv_bld1_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -106,15 +106,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_blt"
+                android:id="@+id/lgb_ll_second_bld1"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_blt"
-                android:layout_toEndOf="@id/lgb_iv_blt_icon">
+                android:layout_below="@id/lgb_ll_first_bld1"
+                android:layout_toEndOf="@id/lgb_iv_bld1_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_slots"
+                    android:id="@+id/lgb_tv_bld1_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -128,7 +128,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_slots_our"
+                    android:id="@+id/lgb_tv_bld1_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -142,7 +142,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_slots_empty"
+                    android:id="@+id/lgb_tv_bld1_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -156,7 +156,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blt_slots_enemy"
+                    android:id="@+id/lgb_tv_bld1_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -174,18 +174,18 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_blt_progress"
+                android:id="@+id/lgb_iv_bld1_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_blt_icon"
+                android:layout_below="@id/lgb_iv_bld1_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_blt"
+                android:id="@+id/lgb_bt_bld1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
@@ -194,7 +194,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_brt"
+            android:id="@+id/lgb_rl_bld4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -204,7 +204,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_brt_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld4_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -213,34 +213,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brt_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld4_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_brt_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld4_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brt_icon"
+                android:id="@+id/lgb_iv_bld4_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_brt_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld4_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_brt_black"
+                tools:src="@drawable/ic_bld4_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_brt"
+                android:id="@+id/lgb_ll_first_bld4"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_brt_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld4_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_brt_name"
+                    android:id="@+id/lgb_iv_bld4_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -250,7 +250,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_x2"
+                    android:id="@+id/lgb_tv_bld4_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -265,7 +265,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_points"
+                    android:id="@+id/lgb_tv_bld4_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -282,15 +282,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_brt"
+                android:id="@+id/lgb_ll_second_bld4"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_brt"
-                android:layout_toEndOf="@id/lgb_iv_brt_icon">
+                android:layout_below="@id/lgb_ll_first_bld4"
+                android:layout_toEndOf="@id/lgb_iv_bld4_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_slots"
+                    android:id="@+id/lgb_tv_bld4_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -304,7 +304,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_slots_our"
+                    android:id="@+id/lgb_tv_bld4_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -318,7 +318,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_slots_empty"
+                    android:id="@+id/lgb_tv_bld4_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -332,7 +332,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brt_slots_enemy"
+                    android:id="@+id/lgb_tv_bld4_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -348,18 +348,18 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_brt_progress"
+                android:id="@+id/lgb_iv_bld4_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_brt_icon"
+                android:layout_below="@id/lgb_iv_bld4_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_brt"
+                android:id="@+id/lgb_bt_bld4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
@@ -380,7 +380,7 @@
         >
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_blc"
+            android:id="@+id/lgb_rl_bld2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -391,7 +391,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_blc_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld2_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -400,34 +400,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_blc_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld2_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_blc_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld2_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_blc_icon"
+                android:id="@+id/lgb_iv_bld2_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_blc_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld2_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_blc_black"
+                tools:src="@drawable/ic_bld2_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_blc"
+                android:id="@+id/lgb_ll_first_bld2"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_blc_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld2_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_blc_name"
+                    android:id="@+id/lgb_iv_bld2_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -437,7 +437,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_x2"
+                    android:id="@+id/lgb_tv_bld2_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -452,7 +452,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_points"
+                    android:id="@+id/lgb_tv_bld2_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -469,15 +469,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_blc"
+                android:id="@+id/lgb_ll_second_bld2"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_blc"
-                android:layout_toEndOf="@id/lgb_iv_blc_icon">
+                android:layout_below="@id/lgb_ll_first_bld2"
+                android:layout_toEndOf="@id/lgb_iv_bld2_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_slots"
+                    android:id="@+id/lgb_tv_bld2_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -491,7 +491,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_slots_our"
+                    android:id="@+id/lgb_tv_bld2_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -505,7 +505,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_slots_empty"
+                    android:id="@+id/lgb_tv_bld2_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -519,7 +519,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blc_slots_enemy"
+                    android:id="@+id/lgb_tv_bld2_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -536,18 +536,18 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_blc_progress"
+                android:id="@+id/lgb_iv_bld2_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_blc_icon"
+                android:layout_below="@id/lgb_iv_bld2_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_blc"
+                android:id="@+id/lgb_bt_bld2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
@@ -556,7 +556,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_brc"
+            android:id="@+id/lgb_rl_bld5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -566,7 +566,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_brc_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld5_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -575,34 +575,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brc_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld5_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_brc_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld5_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brc_icon"
+                android:id="@+id/lgb_iv_bld5_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_brc_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld5_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_brc_black"
+                tools:src="@drawable/ic_bld5_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_brc"
+                android:id="@+id/lgb_ll_first_bld5"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_brc_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld5_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_brc_name"
+                    android:id="@+id/lgb_iv_bld5_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -612,7 +612,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_x2"
+                    android:id="@+id/lgb_tv_bld5_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -627,7 +627,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_points"
+                    android:id="@+id/lgb_tv_bld5_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -644,15 +644,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_brc"
+                android:id="@+id/lgb_ll_second_bld5"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_brc"
-                android:layout_toEndOf="@id/lgb_iv_brc_icon">
+                android:layout_below="@id/lgb_ll_first_bld5"
+                android:layout_toEndOf="@id/lgb_iv_bld5_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_slots"
+                    android:id="@+id/lgb_tv_bld5_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -666,7 +666,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_slots_our"
+                    android:id="@+id/lgb_tv_bld5_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -680,7 +680,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_slots_empty"
+                    android:id="@+id/lgb_tv_bld5_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -694,7 +694,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brc_slots_enemy"
+                    android:id="@+id/lgb_tv_bld5_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -710,18 +710,18 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_brc_progress"
+                android:id="@+id/lgb_iv_bld5_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_brc_icon"
+                android:layout_below="@id/lgb_iv_bld5_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_brc"
+                android:id="@+id/lgb_bt_bld5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
@@ -738,7 +738,7 @@
         >
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_blb"
+            android:id="@+id/lgb_rl_bld3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -748,7 +748,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_blb_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld3_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -757,34 +757,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_blb_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld3_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_blb_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld3_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_blb_icon"
+                android:id="@+id/lgb_iv_bld3_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_blb_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld3_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_blb_black"
+                tools:src="@drawable/ic_bld3_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_blb"
+                android:id="@+id/lgb_ll_first_bld3"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_blb_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld3_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_blb_name"
+                    android:id="@+id/lgb_iv_bld3_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -794,7 +794,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_x2"
+                    android:id="@+id/lgb_tv_bld3_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -809,7 +809,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_points"
+                    android:id="@+id/lgb_tv_bld3_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -826,15 +826,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_blb"
+                android:id="@+id/lgb_ll_second_bld3"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_blb"
-                android:layout_toEndOf="@id/lgb_iv_blb_icon">
+                android:layout_below="@id/lgb_ll_first_bld3"
+                android:layout_toEndOf="@id/lgb_iv_bld3_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_slots"
+                    android:id="@+id/lgb_tv_bld3_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -848,7 +848,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_slots_our"
+                    android:id="@+id/lgb_tv_bld3_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -862,7 +862,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_slots_empty"
+                    android:id="@+id/lgb_tv_bld3_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -876,7 +876,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_blb_slots_enemy"
+                    android:id="@+id/lgb_tv_bld3_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -892,18 +892,18 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_blb_progress"
+                android:id="@+id/lgb_iv_bld3_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_blb_icon"
+                android:layout_below="@id/lgb_iv_bld3_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_blb"
+                android:id="@+id/lgb_bt_bld3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
@@ -912,7 +912,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/lgb_rl_brb"
+            android:id="@+id/lgb_rl_bld6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -922,7 +922,7 @@
             >
 
             <ImageView
-                android:id="@+id/lgb_iv_brb_can_win_with_x2"
+                android:id="@+id/lgb_iv_bld6_can_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
@@ -931,34 +931,34 @@
                 tools:src="@drawable/ic_can_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brb_can_early_win_with_x2"
+                android:id="@+id/lgb_iv_bld6_can_early_win_with_x2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:visibility="visible"
                 tools:visibility="visible"
                 android:layout_margin="1dp"
-                android:layout_below="@id/lgb_iv_brb_can_win_with_x2"
+                android:layout_below="@id/lgb_iv_bld6_can_win_with_x2"
                 tools:src="@drawable/ic_can_early_win_with_x2_true"/>
 
             <ImageView
-                android:id="@+id/lgb_iv_brb_icon"
+                android:id="@+id/lgb_iv_bld6_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:scaleType="fitCenter"
-                android:layout_toEndOf="@id/lgb_iv_brb_can_win_with_x2"
+                android:layout_toEndOf="@id/lgb_iv_bld6_can_win_with_x2"
                 android:gravity="center_horizontal|center_vertical"
-                tools:src="@drawable/ic_brb_black"
+                tools:src="@drawable/ic_bld6_black"
                 />
 
             <LinearLayout
-                android:id="@+id/lgb_ll_first_brb"
+                android:id="@+id/lgb_ll_first_bld6"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_toEndOf="@id/lgb_iv_brb_icon">
+                android:layout_toEndOf="@id/lgb_iv_bld6_icon">
 
                 <ImageView
-                    android:id="@+id/lgb_iv_brb_name"
+                    android:id="@+id/lgb_iv_bld6_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -968,7 +968,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_x2"
+                    android:id="@+id/lgb_tv_bld6_x2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -983,7 +983,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_points"
+                    android:id="@+id/lgb_tv_bld6_points"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal|center_vertical"
@@ -1000,15 +1000,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lgb_ll_second_brb"
+                android:id="@+id/lgb_ll_second_bld6"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/lgb_ll_first_brb"
-                android:layout_toEndOf="@id/lgb_iv_brb_icon">
+                android:layout_below="@id/lgb_ll_first_bld6"
+                android:layout_toEndOf="@id/lgb_iv_bld6_icon">
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_slots"
+                    android:id="@+id/lgb_tv_bld6_slots"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -1022,7 +1022,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_slots_our"
+                    android:id="@+id/lgb_tv_bld6_slots_our"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -1036,7 +1036,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_slots_empty"
+                    android:id="@+id/lgb_tv_bld6_slots_empty"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -1050,7 +1050,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/lgb_tv_brb_slots_enemy"
+                    android:id="@+id/lgb_tv_bld6_slots_enemy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -1066,22 +1066,22 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/lgb_iv_brb_progress"
+                android:id="@+id/lgb_iv_bld6_progress"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:minHeight="20dp"
                 android:scaleType="fitXY"
-                android:layout_below="@id/lgb_iv_brb_icon"
+                android:layout_below="@id/lgb_iv_bld6_icon"
                 android:layout_marginTop="2dp"
                 tools:background="@drawable/rounded_small_corner_color_empty_light"
                 />
 
             <Button
-                android:id="@+id/lgb_bt_brb"
+                android:id="@+id/lgb_bt_bld6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:alpha="0.0"
-                android:onClick="onClick_brb"
+                android:onClick="onClick_bld6"
                 />
 
         </RelativeLayout>
