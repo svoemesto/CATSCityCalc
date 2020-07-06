@@ -21,7 +21,7 @@ public class CCABuilding extends CityCalcArea {
     private boolean needToWinWithoutX2;
     private boolean needToEarlyWin;
     private boolean needToEarlyWinWithoutX2;
-    private boolean useInForecast = false;
+    private boolean useInForecast = true;
 
     public CCABuilding() {
     }
