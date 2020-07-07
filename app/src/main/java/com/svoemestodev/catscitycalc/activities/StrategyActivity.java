@@ -424,11 +424,17 @@ public class StrategyActivity extends AppCompatActivity {
             bldIconsBlue[5] = R.drawable.ic_bld6_blue; bldIconsRed[5] = R.drawable.ic_bld6_red; bldIconsGray[5] = R.drawable.ic_bld6_gray;
 
             
-            int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
-            int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
-            int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
+//            int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
+//            int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
+//            int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
             int progressBitmapWidth = 300;
             int progressBitmapHeight = 20;
+
+            int color_progress_our = getColor(R.color.colorOurLight);
+            int color_progress_our_dark = getColor(R.color.colorOurDark);
+            int color_progress_enemy = getColor(R.color.colorEnemyLight);
+            int color_progress_enemy_dark = getColor(R.color.colorEnemyDark);
+            int color_progress_empty = getColor(R.color.colorEmptyDark);
 
             for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
                 lgb_iv_bld_icon[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
@@ -452,9 +458,16 @@ public class StrategyActivity extends AppCompatActivity {
 
                     if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.makeTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF));
 
+                    int newSlotsOur = (ccaGame.getBuildings()[buildingIndex].getSlots_our() > GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_our()) ? ccaGame.getBuildings()[buildingIndex].getSlots_our() - GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_our() : 0;
+                    int newSlotsEnemy = (ccaGame.getBuildings()[buildingIndex].getSlots_enemy() > GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_enemy()) ? ccaGame.getBuildings()[buildingIndex].getSlots_enemy() - GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_enemy() : 0;
+
                     lgb_iv_bld_progress[buildingIndex].setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
-                            new int[]{color_progress_our, color_progress_empty, color_progress_enemy},
-                            new int[]{ccaGame.getBuildings()[buildingIndex].getSlots_our(), ccaGame.getBuildings()[buildingIndex].getSlots_empty(), ccaGame.getBuildings()[buildingIndex].getSlots_enemy()}));
+                    new int[]{color_progress_our, color_progress_our_dark, color_progress_empty, color_progress_enemy_dark, color_progress_enemy},
+                    new int[]{ccaGame.getBuildings()[buildingIndex].getSlots_our() - newSlotsOur,
+                            newSlotsOur,
+                            ccaGame.getBuildings()[buildingIndex].getSlots_empty(),
+                            newSlotsEnemy,
+                            ccaGame.getBuildings()[buildingIndex].getSlots_enemy()-newSlotsEnemy}));
 
                     lgb_tv_bld_slots[buildingIndex].setText(String.valueOf(ccaGame.getBuildings()[buildingIndex].getSlots()));
                     lgb_tv_bld_slots_our[buildingIndex].setText(String.valueOf(ccaGame.getSlots_our_toView(buildingIndex)));
