@@ -470,14 +470,17 @@ public class StrategyActivity extends AppCompatActivity {
                         lgb_tv_bld_points[buildingIndex].setText("+" + ccaGame.getBuildings()[buildingIndex].getOur_points());
                         lgb_tv_bld_points[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_our_dark));
                         lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsBlue[buildingIndex]));
+                        lsc_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsBlue[buildingIndex]));
                     } else if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEnemy()) {
                         lgb_tv_bld_points[buildingIndex].setText("+" + ccaGame.getBuildings()[buildingIndex].getEnemy_points());
                         lgb_tv_bld_points[buildingIndex].setBackground(getDrawable(R.drawable.rounded_small_corner_color_enemy_dark));
                         lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsRed[buildingIndex]));
+                        lsc_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsRed[buildingIndex]));
                     } else if (ccaGame.getBuildings()[buildingIndex].isBuildingIsEmpty()) {
                         lgb_tv_bld_points[buildingIndex].setText("");
                         lgb_tv_bld_points[buildingIndex].setBackgroundColor(0x00000000);
                         lgb_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsGray[buildingIndex]));
+                        lsc_iv_bld_icon[buildingIndex].setImageDrawable(getDrawable(bldIconsGray[buildingIndex]));
                     }
                     if (ccaGame.getBuildings()[buildingIndex].isX2()) {
                         lgb_tv_bld_x2[buildingIndex].setText("X2");
