@@ -2633,42 +2633,43 @@ public class GameActivity extends AppCompatActivity {
                                     if (loadedDbTeamGame != null) {
                                         if (mainCityCalc != null) { // если текущая игра есть
                                             if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
-                                                if (loadedDbTeamGame.getBytesScreenshot() != null) {
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
 
-                                                    try {
-                                                        String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                        OutputStream fOut = null;
-                                                        File file = new File(fileNameScreenshot);
-                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                        fOut = new FileOutputStream(file);
-                                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                        fOut.flush();
-                                                        fOut.close();
-                                                        File teamGameScreenshot = new File(fileNameScreenshot);
-                                                        // устанавливаем у скачанного файла правильный ластмодифай
-                                                        LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                        fileLastScreenshot = teamGameScreenshot;
-                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                        try {
+                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
-                                                            prevCityCalc = mainCityCalc.getClone();
-                                                            prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCityCalc = mainCityCalc.getClone();
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
 
-                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                            mainCCAGame.setSource(1);
-                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame.setSource(1);
+                                                                Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                                LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
 
-//                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-//                                                            loadDataToViews(true);
-                                                            return 2;
+                                                                //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                //                                                            loadDataToViews(true);
+                                                                return 2;
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
                                                     }
                                                 }
 
@@ -2743,44 +2744,45 @@ public class GameActivity extends AppCompatActivity {
                                     if (loadedDbTeamGame != null) {
                                         if (mainCityCalc != null) { // если текущая игра есть
                                             if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
-                                                if (loadedDbTeamGame.getBytesScreenshot() != null) {
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
 
-                                                    try {
-                                                        String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                        OutputStream fOut = null;
-                                                        File file = new File(fileNameScreenshot);
-                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                        fOut = new FileOutputStream(file);
-                                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                        fOut.flush();
-                                                        fOut.close();
-                                                        File teamGameScreenshot = new File(fileNameScreenshot);
-                                                        // устанавливаем у скачанного файла правильный ластмодифай
-                                                        LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                        fileLastScreenshot = teamGameScreenshot;
-//                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-//                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
-                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                        try {
+                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            //                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                            //                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
-                                                            prevCityCalc = mainCityCalc.getClone();
-                                                            prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCityCalc = mainCityCalc.getClone();
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
 
-                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                            mainCCAGame.setSource(1);
-                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame.setSource(1);
+                                                                Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                                LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
 
-//                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-//                                                            loadDataToViews(true);
-                                                            return 3;
+                                                                //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                //                                                            loadDataToViews(true);
+                                                                return 3;
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
                                                     }
                                                 }
 
@@ -2844,42 +2846,43 @@ public class GameActivity extends AppCompatActivity {
                                     if (loadedDbTeamGame != null) {
                                         if (mainCityCalc != null) { // если текущая игра есть
                                             if (mainCCAGame != null) {
-//                                    if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
+                                                if (loadedDbTeamGame.getDateScreenshot().getTime() > mainCCAGame.getDateScreenshot().getTime()) { // если в базе более свежий скриншот, чем в локальной игре
 
-                                                if (loadedDbTeamGame.getBytesScreenshot() != null) {
+                                                    if (loadedDbTeamGame.getBytesScreenshot() != null) {
 
-                                                    try {
-                                                        String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
-                                                        OutputStream fOut = null;
-                                                        File file = new File(fileNameScreenshot);
-                                                        Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
-                                                        fOut = new FileOutputStream(file);
-                                                        bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
-                                                        fOut.flush();
-                                                        fOut.close();
-                                                        File teamGameScreenshot = new File(fileNameScreenshot);
-                                                        // устанавливаем у скачанного файла правильный ластмодифай
-                                                        LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
-                                                        fileLastScreenshot = teamGameScreenshot;
-                                                        CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
-                                                        if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
-                                                            fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
+                                                        try {
+                                                            String fileNameScreenshot = GlobalApplication.pathToCATScalcFolder + "/teamGameScreenshot";
+                                                            OutputStream fOut = null;
+                                                            File file = new File(fileNameScreenshot);
+                                                            Bitmap bitmap = BitmapFactory.decodeByteArray(loadedDbTeamGame.getBytesScreenshot(), 0, loadedDbTeamGame.getBytesScreenshot().length);
+                                                            fOut = new FileOutputStream(file);
+                                                            bitmap.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+                                                            fOut.flush();
+                                                            fOut.close();
+                                                            File teamGameScreenshot = new File(fileNameScreenshot);
+                                                            // устанавливаем у скачанного файла правильный ластмодифай
+                                                            LastModified.setLastModified(teamGameScreenshot, loadedDbTeamGame.getDateScreenshot());
+                                                            fileLastScreenshot = teamGameScreenshot;
+                                                            CityCalc tmpCityCalc = new CityCalc(teamGameScreenshot, loadedDbTeamGame.getCalibrateX(), loadedDbTeamGame.getCalibrateY(), loadedDbTeamGame.getUserNIC(), mainUserUID, mainTeamID);
+                                                            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                                                                fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
-                                                            prevCityCalc = mainCityCalc.getClone();
-                                                            prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCityCalc = mainCityCalc.getClone();
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
 
-                                                            mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                            mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
-                                                            mainCCAGame.setSource(1);
-                                                            Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
-                                                            LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
+                                                                mainCityCalc = new CityCalc(tmpCityCalc, false);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame.setSource(1);
+                                                                Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+                                                                LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
 
-//                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
-//                                                            loadDataToViews(true);
-                                                            return 4;
+                                                                //                                                            Toast.makeText(GameActivity.this, getString(R.string.info_game_from_file), Toast.LENGTH_LONG).show();
+                                                                //                                                            loadDataToViews(true);
+                                                                return 4;
+                                                            }
+                                                        } catch (IOException e) {
+                                                            e.printStackTrace();
                                                         }
-                                                    } catch (IOException e) {
-                                                        e.printStackTrace();
                                                     }
                                                 }
 

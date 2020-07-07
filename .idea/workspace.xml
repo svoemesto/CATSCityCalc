@@ -27,9 +27,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/svoemestodev/catscitycalc/citycalcclasses/CCABuilding.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="ec78e324-a939-4d73-99f7-225dd62368c7" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -311,5 +315,13 @@
         <PinnedItemInfo typeName="com.svoemestodev.catscitycalc.citycalcclasses.CCAGame" fieldName="isWinOur" />
       </pinned-members>
     </pin-to-top-manager>
+<<<<<<< Updated upstream
+=======
+    <watches-manager>
+      <configuration name="C.A.T.S._City_Calculator.app">
+        <watch expression="((MatrixProgress)matrixArray[62]).blt_progress" custom="com.svoemestodev.catscitycalc.activities.StrategyActivity.MatrixProgress" />
+      </configuration>
+    </watches-manager>
+>>>>>>> Stashed changes
   </component>
 </project>
