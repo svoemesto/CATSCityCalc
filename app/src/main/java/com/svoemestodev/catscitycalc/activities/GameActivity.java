@@ -6,20 +6,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import android.app.ActivityManager;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
@@ -64,6 +70,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.CityCalcService;
 import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.OverScreenService;
 import com.svoemestodev.catscitycalc.adapters.ListTeamsAdapter;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.classes.CarList;
@@ -270,6 +277,7 @@ public class GameActivity extends AppCompatActivity {
     public static MenuItem menu_main_user_cars_load;            // пункт меню "User Cars Load"
     public static MenuItem menu_main_user_cars_share;           // пункт меню "User Cars Share"
     public static MenuItem menu_main_state_share;               // пункт меню "State Share"
+    public static MenuItem menu_main_take_screenshot;               // пункт меню "State Share"
 
     public static String mainUserNIC = "";
     public static String mainUserUID = "";
@@ -277,24 +285,51 @@ public class GameActivity extends AppCompatActivity {
 
     public static firstTask.TaskListenScreenshotFolder tlff;
 
-    public static int OVERLAY_PERMISSION_REQ_CODE = 1;
+    public static GameActivity mainGameActivity;
+
+//    public static int OVERLAY_PERMISSION_REQ_CODE = 1;
+
+    OverScreenService overScreenService;    // сервис
+    boolean boundOverScreenService;         // флаг биндинга сервиса
+    Intent intentOSS;                          // интент текущей активности
+
+    private static final int REQUEST_OVERLAY_PERMISSION = 23658;
+    private static final int REQUEST_SCREENSHOT=59706;
+    public static MediaProjectionManager mediaProjectionManager;
 
     public static boolean isNeedUpdateCars;
 
-//    @TargetApi(Build.VERSION_CODES.M)
-//    public void checkPermissionOverlay() {
-//        if (!Settings.canDrawOverlays(GlobalApplication.getAppContext())) {
-//            Toast.makeText(GlobalApplication.getAppContext(), "Нужны права на наложение поверх всех приложений", Toast.LENGTH_LONG).show();
-//            Intent intentSettings = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-//            startActivityForResult(intentSettings, OVERLAY_PERMISSION_REQ_CODE);
-//        }
-//    }
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+
+            OverScreenService.LocalBinder binder = (OverScreenService.LocalBinder) service;
+            overScreenService = binder.getService();
+            boundOverScreenService = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            boundOverScreenService = false;
+        }
+    };
 
     @Override
     protected void onResume() {
         super.onResume();
         isResumed = true;
         checkMenuVisibility();
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -304,9 +339,7 @@ public class GameActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-//        checkPermissionOverlay();
-//        Intent svc = new Intent(this, OverlayShowingService.class);
-//        startService(svc);
+        mainGameActivity = this;
 
         fbAuth = FirebaseAuth.getInstance();
         fbUser = fbAuth.getCurrentUser();
@@ -359,6 +392,14 @@ public class GameActivity extends AppCompatActivity {
         setDataToCarsViews();
 
         startTimer();   // стартуем таймер
+
+        mediaProjectionManager = (MediaProjectionManager)getSystemService(MEDIA_PROJECTION_SERVICE);
+        startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), REQUEST_SCREENSHOT);
+
+        if(!Settings.canDrawOverlays(this)){
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+        }
 
     }
 
@@ -1191,6 +1232,21 @@ public class GameActivity extends AppCompatActivity {
         String logMsgPref = "onActivityResult: ";
 
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode==REQUEST_SCREENSHOT) {
+            if (resultCode==RESULT_OK) {
+                intentOSS = new Intent(this, OverScreenService.class)
+                        .putExtra(OverScreenService.EXTRA_RESULT_CODE, resultCode)
+                        .putExtra(OverScreenService.EXTRA_RESULT_INTENT, data);
+                bindService(intentOSS, serviceConnection, Context.BIND_AUTO_CREATE);
+            }
+        }
+
+        if(!Settings.canDrawOverlays(this)){
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION);
+        }
+
         // если произошел возврат со страницы настрок - обновляем контролы в текущей активности
         if (requestCode == REQUEST_CODE_SECOND_ACTIVITY) {
             readPreferences();
@@ -1607,6 +1663,7 @@ public class GameActivity extends AppCompatActivity {
         menu_main_user_cars_load = mainMenu.findItem(R.id.menu_main_user_cars_load);
         menu_main_user_cars_share = mainMenu.findItem(R.id.menu_main_user_cars_share);
         menu_main_state_share = mainMenu.findItem(R.id.menu_main_state_share);
+        menu_main_take_screenshot = mainMenu.findItem(R.id.menu_main_take_screenshot);
 
         checkMenuVisibility();
 
@@ -1674,6 +1731,9 @@ public class GameActivity extends AppCompatActivity {
             case R.id.menu_main_state_share :
                 doMenuStateShare();
                 return true;
+            case R.id.menu_main_take_screenshot :
+                doMenuTakeScreenshot();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -1681,7 +1741,13 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-
+    private void doMenuTakeScreenshot() {
+        if (overScreenService.overlayLayout.getVisibility() == View.VISIBLE) {
+            overScreenService.hideOverlayLayout();
+        } else {
+            overScreenService.showOverlayLayout();
+        }
+    }
 
     private void doMenuTeamGameLoad() {
 
@@ -2525,6 +2591,79 @@ public class GameActivity extends AppCompatActivity {
         mainCCAGame.doForecast();
         loadDataToViews(false);
     }
+
+    public void doRealtimeScreenshot() {
+        TakeRealtimeScreenshot takeRealtimeScreenshot = new TakeRealtimeScreenshot();
+        takeRealtimeScreenshot.execute();
+    }
+
+    class TakeRealtimeScreenshot extends AsyncTask<Void, Void, Integer> {
+        @Override
+        protected void onPostExecute(Integer aInteger) {
+            super.onPostExecute(aInteger);
+
+            Forecaster forecaster = new Forecaster(prevCCAGame, mainCCAGame);
+
+            switch (aInteger) {
+                case 0:
+                    break;
+                case 1:
+                    Toast.makeText(GameActivity.this, getString(R.string.realtime_screenshot_is_game), Toast.LENGTH_LONG).show();
+                    loadDataToViews(true);
+                    break;
+                case 2:
+                    Toast.makeText(GameActivity.this, getString(R.string.realtime_screenshot_is_car), Toast.LENGTH_LONG).show();
+                    break;
+                case 3:
+                    Toast.makeText(GameActivity.this, getString(R.string.realtime_screenshot_is_error), Toast.LENGTH_LONG).show();
+                    break;
+                default:
+            }
+
+            if (isNeedUpdateCars) {
+                isNeedUpdateCars = false;
+                setDataToCarsViews();
+            }
+        }
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            File tmpFileScreenshot = new File(getExternalFilesDir(null), "RealtimeScreenshot.png");
+            CityCalc tmpCityCalc = new CityCalc(tmpFileScreenshot, calibrateX, calibrateY, mainUserNIC, mainUserUID, mainTeamID);
+            if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
+                fileGameScreenshot = tmpFileScreenshot;   // текущий скриншот = последнему файлу в папке
+
+                Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
+
+                prevCityCalc = mainCityCalc.getClone();
+                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
+
+                mainCityCalc = new CityCalc(tmpCityCalc, true);
+                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+
+                if (isResumed) isResumed = false;
+                return 1;
+
+            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+                if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
+                    CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
+                    ((CCACar) carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+                    fileCarScreenshot = tmpFileScreenshot;
+                    if (isResumed) isResumed = false;
+                    return 2;
+                }
+            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.ERROR)) {
+                if (isResumed) isResumed = false;
+                return 3;
+            }
+
+            if (isResumed) isResumed = false;
+
+            return 0;
+
+        }
+    }
+
 
     class firstTask extends TimerTask {
 

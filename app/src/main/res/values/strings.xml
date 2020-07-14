@@ -537,6 +537,10 @@
     <string name="minutes_letter">m</string>
     <string name="seconds_letter">s</string>
     <string name="state_share">State share</string>
+    <string name="realtime_screenshot_is_game">Game screenshot was recognized</string>
+    <string name="realtime_screenshot_is_car">Car screenshot was recognized</string>
+    <string name="realtime_screenshot_is_error">Screenshot was not recognized</string>
+
 
     <string-array name="pref_colors_entries">
         <item>Car In City Box1</item>

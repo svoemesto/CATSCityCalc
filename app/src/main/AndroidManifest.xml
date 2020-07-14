@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:name="com.svoemestodev.catscitycalc.GlobalApplication"
@@ -23,8 +24,13 @@
         tools:targetApi="q"
         >
 
+        <service android:name=".OverScreenService"
+            android:exported="true"
+            android:enabled="true"
+            android:foregroundServiceType="mediaProjection"/>
+
         <service android:enabled="true" android:name=".CityCalcService"/>
-        <service android:exported="false" android:name=".OverlayShowingService"/>
+
 
         <activity android:name=".activities.WorkBuildingActivity" />
         <activity android:name=".activities.TeamUserActivity" />
