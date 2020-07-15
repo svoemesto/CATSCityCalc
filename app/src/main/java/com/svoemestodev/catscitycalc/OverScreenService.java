@@ -68,6 +68,9 @@ public class OverScreenService extends Service implements View.OnTouchListener {
     private Intent resultData;
     private boolean waitingScreenshot;
 
+    private boolean isLongPressed;
+
+
     private Timer timer;
 
     WindowManager getWindowManager() {
@@ -177,7 +180,7 @@ public class OverScreenService extends Service implements View.OnTouchListener {
             offsetX = originalXPos - x;
             offsetY = originalYPos - y;
 
-        } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+        } else if (event.getAction() == MotionEvent.ACTION_MOVE && isLongPressed) {
             int[] topLeftLocationOnScreen = new int[2];
             topLeftView.getLocationOnScreen(topLeftLocationOnScreen);
 
@@ -199,6 +202,7 @@ public class OverScreenService extends Service implements View.OnTouchListener {
             windowManager.updateViewLayout(overlayLayout, params);
             moving = true;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            isLongPressed = false;
             if (moving) {
                 return true;
             }
@@ -321,6 +325,14 @@ public class OverScreenService extends Service implements View.OnTouchListener {
 
                 startCapture();
 
+            }
+        });
+
+        ivTakeScreenshot.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                isLongPressed = true;
+                return false;
             }
         });
 
