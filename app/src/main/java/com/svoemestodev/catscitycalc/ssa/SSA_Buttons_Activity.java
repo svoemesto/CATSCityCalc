@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.ssa;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -28,9 +31,25 @@ public class SSA_Buttons_Activity extends AppCompatActivity {
     ImageView assab_iv_screenshot;
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();  // индекс нажакой кнопки
+        if (id == android.R.id.home) { //если в шапке нажата кнопка "Назад"
+            onBackPressed();    // вызываем метод "Назад"
+            return true;        // возвращаем Истину
+        }
+        return super.onOptionsItemSelected(item);   // возвращаем супер-метод
+    }
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ssa_buttons);
+        ActionBar actionBar = getSupportActionBar();    // экшен-бар
+        if (actionBar != null) {                        // если экшен-бар есть
+            actionBar.setDisplayHomeAsUpEnabled(true);  // показываем кнопку "<-"
+        }
+        
         ssaScreenshot = new SSA_Screenshot(GameActivity.fileGameScreenshot.getAbsolutePath(), GameActivity.calibrateX, GameActivity.calibrateY);
         initializeViews();
         loadDataToViews();

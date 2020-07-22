@@ -61,6 +61,9 @@ public class SSA_Area_Activity extends AppCompatActivity {
     SeekBar assaae_sb_y2;
     ImageView assaae_iv_image_rbt;
     TextView assaae_tv_ocr;
+    ImageView lssacrc_iv_image;
+    ImageView lssarbt_iv_image;
+
 
     LinearLayout lssacrc_ll_layout;
     LinearLayout lssarbt_ll_layout;
@@ -249,6 +252,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                     }
                     assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                     assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                    if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                    if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                     assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
                 }
             }
@@ -277,6 +282,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                     }
                     assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                     assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                    if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                    if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                     assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
                 }
             }
@@ -305,6 +312,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                     }
                     assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                     assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                    if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                    if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                     assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
                 }
             }
@@ -333,6 +342,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                     }
                     assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                     assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                    if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                    if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                     assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
                 }
             }
@@ -361,6 +372,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x1.setProgress((int)Math.abs((ssaArea.getrX1()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -378,6 +391,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x1.setProgress((int)Math.abs((ssaArea.getrX1()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -391,6 +406,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x1.setProgress((int)Math.abs((ssaArea.getrX1()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -414,6 +431,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -436,6 +455,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -456,6 +477,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x2.setProgress((int)Math.abs((ssaArea.getrX2()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -473,6 +496,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x2.setProgress((int)Math.abs((ssaArea.getrX2()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -486,6 +511,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_x2.setProgress((int)Math.abs((ssaArea.getrX2()-minX)/((maxX-minX)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -509,6 +536,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -531,6 +560,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -550,6 +581,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y1.setProgress((int)Math.abs((ssaArea.getrY1()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -567,6 +600,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y1.setProgress((int)Math.abs((ssaArea.getrY1()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -580,6 +615,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y1.setProgress((int)Math.abs((ssaArea.getrY1()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -603,6 +640,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -625,6 +664,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -645,6 +686,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y2.setProgress((int)Math.abs((ssaArea.getrY2()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -662,6 +705,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y2.setProgress((int)Math.abs((ssaArea.getrY2()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -675,6 +720,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 assaae_sb_y2.setProgress((int)Math.abs((ssaArea.getrY2()-minY)/((maxY-minY)/100)));
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -698,6 +745,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -720,6 +769,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
                 }
                 assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
                 assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+                if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
+                if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
                 assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
             }
         });
@@ -1705,6 +1756,8 @@ public class SSA_Area_Activity extends AppCompatActivity {
         assaae_sb_y2 = findViewById(R.id.assaae_sb_y2);
         assaae_iv_image_rbt = findViewById(R.id.assaae_iv_image_rbt);
         assaae_tv_ocr = findViewById(R.id.assaae_tv_ocr);
+        lssacrc_iv_image = findViewById(R.id.lssacrc_iv_image);
+        lssarbt_iv_image = findViewById(R.id.lssarbt_iv_image);
 
         assaae_ib_x1_minus10 = findViewById(R.id.assaae_ib_x1_minus10);
         assaae_ib_x1_minus1 = findViewById(R.id.assaae_ib_x1_minus1);
@@ -1822,8 +1875,6 @@ public class SSA_Area_Activity extends AppCompatActivity {
         lssacch_bt_delete.setEnabled(cropConditionIndex != 0);
         lssacch_tv_index.setText("" + cropConditionIndex + "/" + countConditions);
 
-
-
         lssacrc_sw_use.setEnabled(cropConditionIndex != 0);
         lssacrc_cb_return_first_fragment.setEnabled(cropConditionIndex != 0);
         lssacrc_cb_only_first.setEnabled(cropConditionIndex != 0);
@@ -1864,6 +1915,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
             lssacrc_tv_max_freq_end_value.setText(Utils.convertFloatToStringFormatter3digit(item.getMaxFrequencyEnd()));
             lssacrc_sb_max_freq_end.setProgress((int)(item.getMaxFrequencyEnd()*100));
             manualChange = true;
+            lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,item));
         }
 
 
@@ -1904,6 +1956,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
             lssarbt_tv_scale_y_value.setText(Utils.convertFloatToStringFormatter1digit(item.getScaleY()));
             lssarbt_sb_scale_y.setProgress((int)(item.getScaleY()*10));
             manualChange = true;
+            lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,item));
         }
 
 
@@ -1927,6 +1980,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
         }
         
         assaae_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot));
+        if (cropConditionIndex != 0 && !ssaArea.getListCropConditions().get(cropConditionIndex-1).isSkip()) lssacrc_iv_image.setImageBitmap(ssaArea.getAreaBitmap(ssaScreenshot,ssaArea.getListCropConditions().get(cropConditionIndex-1)));
         applyRbtConditions(null);
 
         showCropConditions();
@@ -1951,6 +2005,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
         }
         
         assaae_iv_image_rbt.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot));
+        if (rbtConditionIndex != 0 && !ssaArea.getListRBTConditions().get(rbtConditionIndex-1).isSkip()) lssarbt_iv_image.setImageBitmap(ssaArea.getAreaBitmapRBT(ssaScreenshot,ssaArea.getListRBTConditions().get(rbtConditionIndex-1)));
         assaae_tv_ocr.setText(ssaArea.getOCR(ssaScreenshot));
 
         showRbtConditions();

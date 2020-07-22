@@ -60,6 +60,10 @@ public class SSA_Area implements Serializable, Comparable<SSA_Area> {
     }
 
     public Bitmap getAreaBitmap(SSA_Screenshot ssaScreenshot) {
+        return getAreaBitmap(ssaScreenshot, null);
+    }
+
+    public Bitmap getAreaBitmap(SSA_Screenshot ssaScreenshot, SSA_Crop_Condition ssaCropCondition) {
         Bitmap areaBitmap = null;
 
         Stack<SSA_Area> ssaAreaStack = new Stack<>();
@@ -76,34 +80,45 @@ public class SSA_Area implements Serializable, Comparable<SSA_Area> {
             tmpScreenshot = new SSA_Screenshot(areaBitmap);
         }
 
-//        if (tmpScreenshot.isGood()) {
-            SSA_AbsoluteCoordinates ssaAC = new SSA_AbsoluteCoordinates(tmpScreenshot, this);
-            int width = ssaAC.getAbsoluteX2() - ssaAC.getAbsoluteX1();
-            int height = ssaAC.getAbsoluteY2() - ssaAC.getAbsoluteY1();
-            if (width > 0 && height > 0 && (ssaAC.getAbsoluteX1() + width) <= tmpScreenshot.getBitmap().getWidth() && (ssaAC.getAbsoluteY1() + height) <= tmpScreenshot.getBitmap().getHeight()) {
-                areaBitmap = Bitmap.createBitmap(tmpScreenshot.getBitmap(), ssaAC.getAbsoluteX1(), ssaAC.getAbsoluteY1(), width, height);
-                areaBitmap = applyCropConditions(areaBitmap);
-            }
-//        }
+        SSA_AbsoluteCoordinates ssaAC = new SSA_AbsoluteCoordinates(tmpScreenshot, this);
+        int width = ssaAC.getAbsoluteX2() - ssaAC.getAbsoluteX1();
+        int height = ssaAC.getAbsoluteY2() - ssaAC.getAbsoluteY1();
+        if (width > 0 && height > 0 && (ssaAC.getAbsoluteX1() + width) <= tmpScreenshot.getBitmap().getWidth() && (ssaAC.getAbsoluteY1() + height) <= tmpScreenshot.getBitmap().getHeight()) {
+            areaBitmap = Bitmap.createBitmap(tmpScreenshot.getBitmap(), ssaAC.getAbsoluteX1(), ssaAC.getAbsoluteY1(), width, height);
+            areaBitmap = applyCropConditions(areaBitmap, ssaCropCondition);
+        }
+
 
         return areaBitmap;
     }
 
     public Bitmap getAreaBitmapRBT(SSA_Screenshot ssaScreenshot) {
+        return getAreaBitmapRBT(ssaScreenshot, null);
+    }
+
+    public Bitmap getAreaBitmapRBT(SSA_Screenshot ssaScreenshot, SSA_RBT_Condition ssaRbtCondition) {
         Bitmap result = getAreaBitmap(ssaScreenshot);
         if (listRBTConditions != null) {
-            for (SSA_RBT_Condition ssaRbtCondition: listRBTConditions) {
-                result = PictureProcessor.applyRbtCondition(result, ssaRbtCondition);
+            for (SSA_RBT_Condition ssaRC: listRBTConditions) {
+                Bitmap tmp = PictureProcessor.applyRbtCondition(result, ssaRC);
+                result = tmp == null ? result : tmp;
+                if (ssaRbtCondition != null && ssaRbtCondition.getKey().equals(ssaRC.getKey())) break;
             }
         }
         return result;
     }
 
     private Bitmap applyCropConditions(Bitmap sourceBitmap) {
+        return applyCropConditions(sourceBitmap, null);
+    }
+
+    private Bitmap applyCropConditions(Bitmap sourceBitmap, SSA_Crop_Condition ssaCropCondition) {
         Bitmap result = sourceBitmap;
         if (listCropConditions != null) {
-            for (SSA_Crop_Condition ssaCropCondition: listCropConditions) {
-                result = PictureProcessor.applyCropCondition(result, ssaCropCondition);
+            for (SSA_Crop_Condition ssaCC: listCropConditions) {
+                Bitmap tmp = PictureProcessor.applyCropCondition(result, ssaCC);
+                result = tmp == null ? result : tmp;
+                if (ssaCropCondition != null && ssaCropCondition.getKey().equals(ssaCC.getKey())) break;
             }
         }
         return result;
