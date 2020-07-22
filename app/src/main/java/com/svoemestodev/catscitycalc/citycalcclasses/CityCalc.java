@@ -6,6 +6,10 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.ssa.SSA_Area;
+import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
+import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
+import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.PictureProcessorDirection;
 import com.svoemestodev.catscitycalc.utils.Utils;
@@ -162,6 +166,99 @@ public class CityCalc { //extends Activity {
         this.userNIC = userNIC;
     }
     
+    public SSA_Screenshot getSsaScreenshot() {
+        return new SSA_Screenshot(this.bmpScreenshot, this.calibrateX, this.calibrateY);
+    }
+
+    public boolean isAreaPresent(String areaKey) {
+        return isAreaPresent(SSA_Areas.getArea(areaKey));
+    }
+
+    public boolean isAreaPresent(SSA_Area ssaArea) {
+        boolean result = false;
+
+        String colorKey;
+        int threshold;
+        float minFrequency, maxFrequency;
+
+        String areaKey = ssaArea.getKey();
+        SSA_Screenshot ssaScreenshot = getSsaScreenshot();
+        Bitmap areaBitmap = ssaArea.getAreaBitmap(ssaScreenshot);
+        if (areaBitmap != null) {
+            switch (areaKey) {
+                case "CITY_TIME":
+                case "CITY_BOX_GRAY":
+                    return  PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("GRAY_CITY_EARLY_WIN"),10,0.990f, 1.000f);
+                case "CAR_BOX_IN_CITY":
+                    return  PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("CAR_BLUE_BOX_IN_CITY"),10,0.990f, 1.000f);
+                case "CITY_TEAM_NAME_OUR":
+                case "CITY_TEAM_NAME_ENEMY":
+                case "CITY_EARLY_WIN":
+                case "CITY_POINTS_AND_INCREASE_OUR":
+                case "CITY_POINTS_OUR":
+                case "CITY_POINTS_AND_INCREASE_ENEMY":
+                case "CITY_POINTS_ENEMY":
+                case "CITY_BLD1":
+                case "CITY_BLD1_NAME":
+                case "CITY_BLD1_SLOTS":
+                case "CITY_BLD1_PROGRESS":
+                case "CITY_BLD2":
+                case "CITY_BLD2_NAME":
+                case "CITY_BLD2_SLOTS":
+                case "CITY_BLD2_PROGRESS":
+                case "CITY_BLD3":
+                case "CITY_BLD3_NAME":
+                case "CITY_BLD3_SLOTS":
+                case "CITY_BLD3_PROGRESS":
+                case "CITY_BLD4":
+                case "CITY_BLD4_NAME":
+                case "CITY_BLD4_SLOTS":
+                case "CITY_BLD4_PROGRESS":
+                case "CITY_BLD5":
+                case "CITY_BLD5_NAME":
+                case "CITY_BLD5_SLOTS":
+                case "CITY_BLD5_PROGRESS":
+                case "CITY_BLD6":
+                case "CITY_BLD6_NAME":
+                case "CITY_BLD6_SLOTS":
+                case "CITY_BLD6_PROGRESS":
+                case "CITY_BOX_INFO":
+                    return  PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("HEALBOX_RED"),10,0.600f, 1.000f) &&
+                            PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("WHITE"),10,0.001f, 1.000f);
+                case "GAME_BOX_BACK":
+                    return  PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("HEALBOX_RED"),10,0.700f, 1.000f) &&
+                            PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("HEALBOX_YELLOW"),10,0.001f, 1.000f);
+                case "GARAGE_HEALTH_SHIELD_ENERGY":
+                    return  PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("GARAGE_INFO_BACKGROUND"),10,0.1f, 1.000f) &&
+                            PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("HEALTH_RED_DARK"),10,0.0001f, 1.000f) &&
+                            PictureProcessor.isConditionTrue(areaBitmap, SSA_Colors.getColor("SHIELD_BLUE"),10,0.0001f, 1.000f);
+                case "GARAGE_HEALTH":
+                case "GARAGE_SHIELD":
+                case "GARAGE_ENERGY":
+                case "GARAGE_SLOT1":
+                case "GARAGE_SLOT2":
+                case "GARAGE_SLOT3":
+                case "GARAGE_CAR":
+                case "ATTACK_DEFENCE_BUILDING_NAME":
+                case "ATTACK_DEFENCE_BOX":
+                case "CAR_IN_CITY_ATTACK_DEFENCE":
+                case "CAR_SLOT1":
+                case "CAR_SLOT2":
+                case "CAR_SLOT3":
+                case "CAR_HEALTH":
+                case "CAR_SHIELD":
+                case "CAR_PICTURE":
+                case "CAR_HEALBOX":
+                case "CAR_BOX_DEFENCE_BREAK":
+                case "CAR_TIMELINE":
+                case "CAR_REPAIRING_IN_DEFENCE":
+                default:
+            }
+        }
+
+
+        return result;
+    }
 
     // конструктор для калибровки центра экрана
     public CityCalc(File file, int calibrateX, int calibrateY, CityCalcType cityCalcType) {
@@ -194,6 +291,7 @@ public class CityCalc { //extends Activity {
     }
 
 
+
     // конструктор для проверки боксов
     public CityCalc(File file, int calibrateX, int calibrateY, String userNIC, String userUID, String teamID) {
         String logMsgPref = "конструктор для для проверки боксов: ";
@@ -215,60 +313,82 @@ public class CityCalc { //extends Activity {
             if (fileScreenshot.exists()) {    // если файл физически существует
                 bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
                 if (this.bmpScreenshot != null) {
-                    if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) { //если пропорции экрана правильные - скирн может быть из игры
+                    if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) { //если пропорции экрана правильные - скрин может быть из игры
 
-                        setAreaToMap(Area.BOX_BACK);
-                        CityCalcArea ccaBoxBack = mapAreas.get(Area.BOX_BACK);
-                        boolean isGameScreenshot = PictureProcessor.frequencyPixelInBitmap(ccaBoxBack.getBmpSrc(), GlobalApplication.getRgb_box_back_main() , GlobalApplication.getRgb_box_back_thm(), GlobalApplication.getRgb_box_back_thp()) > 0.50f &&
-                                PictureProcessor.frequencyPixelInBitmap(ccaBoxBack.getBmpSrc(), GlobalApplication.getRgb_box_back_back() ,GlobalApplication.getRgb_box_back_thm(), GlobalApplication.getRgb_box_back_thp()) > 0.01f;
-
-                        if (isGameScreenshot) { // если найден квадрат "назад" - скрин из игры
-
-                            setAreaToMap(Area.BOX_INFO_CITY); // красный квадрат с i
-                            setAreaToMap(Area.BOX_INFO_CAR);  // серый квадрат времени игры
-                            CityCalcArea ccaBox1Info = mapAreas.get(Area.BOX_INFO_CITY);
-                            CityCalcArea ccaBox2Info = mapAreas.get(Area.BOX_INFO_CAR);
-                            boolean isGame1 = PictureProcessor.frequencyPixelInBitmap(ccaBox1Info.getBmpSrc(), GlobalApplication.getRgb_box_info_city_main(),GlobalApplication.getRgb_box_info_city_thm(), GlobalApplication.getRgb_box_info_city_thp()) > 0.50f;
-                            boolean isGame2 = PictureProcessor.frequencyPixelInBitmap(ccaBox2Info.getBmpSrc(), GlobalApplication.getRgb_box_info_car_main(),GlobalApplication.getRgb_box_info_car_thm(), GlobalApplication.getRgb_box_info_car_thp()) > 0.50f;
-
-                            if (isGame1 && isGame2) { // если нашлись красный квадрат с i и серый квадра рядом со времени - скрин из города
-                                setAreaToMap(Area.CAR_IN_CITY_BOX1);
-                                CityCalcArea ccaCarBox1 = mapAreas.get(Area.CAR_IN_CITY_BOX1); // если на скрине машинка - этот квадрат голубой
-                                boolean isCar1 = PictureProcessor.frequencyPixelInBitmap(ccaCarBox1.getBmpSrc(), GlobalApplication.getRgb_car_in_city_box1_main(), GlobalApplication.getRgb_car_in_city_box1_thm(), GlobalApplication.getRgb_car_in_city_box1_thp()) > 0.50f;
-                                if (isCar1) { // квадрат голубой - это скрин машинки в городе
+                        if (isAreaPresent("GAME_BOX_BACK")) { // если найден квадрат "назад" - скрин из игры
+                            if (isAreaPresent("CITY_BOX_INFO") && isAreaPresent("CITY_BOX_GRAY")) { // если нашлись красный квадрат с i и серый квадра рядом со времени - скрин из города
+                                if (isAreaPresent("CAR_BOX_IN_CITY")) { // квадрат голубой - это скрин машинки в городе
                                     this.cityCalcType = CityCalcType.CAR;
                                 } else { // квадрат не голубой - значит это скрин города
                                     this.cityCalcType = CityCalcType.GAME;
                                 }
-
-                            } else { // если не нашлись красный квадрат с i и серый квадра рядом со времени - скрин не из города
-
-                                setAreaToMap(Area.CAR_IN_CITY_BOX1);
-                                CityCalcArea ccaCarBox1 = mapAreas.get(Area.CAR_IN_CITY_BOX1); // если на скрине машинка - этот квадрат голубой
-                                boolean isCar1 = PictureProcessor.frequencyPixelInBitmap(ccaCarBox1.getBmpSrc(), GlobalApplication.getRgb_car_in_city_box1_main(), GlobalApplication.getRgb_car_in_city_box1_thm(), GlobalApplication.getRgb_car_in_city_box1_thp()) > 0.50f;
-                                if (isCar1) { // квадрат голубой - это скрин машинки в городе
+                            } else { // если не нашлись красный квадрат с i и серый квадрат рядом со времени - скрин не из города
+                                if (isAreaPresent("CAR_BOX_IN_CITY")) { // квадрат голубой - это скрин машинки в городе
                                     this.cityCalcType = CityCalcType.CAR;
                                 } else { // квадрат не голубой - то это или гараж, или ошибка
-                                    setAreaToMap(Area.BOX_INFO_GARAGE);
-                                    CityCalcArea ccaGarage = mapAreas.get(Area.BOX_INFO_GARAGE);
-                                    boolean isGarage = PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_main(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.20f &&
-                                            PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_back1(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.001f &&
-                                            PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_back2(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.001f;
-                                    if (isGarage) { // гараж
+                                    if (isAreaPresent("GARAGE_HEALTH_SHIELD_ENERGY")) { // гараж
                                         this.cityCalcType = CityCalcType.CAR;
                                     } else { // ошибка
                                         this.cityCalcType = CityCalcType.ERROR;
                                     }
                                 }
-
                             }
-
-
                         } else { // если не найден квадрат "назад" - скрин не из игры
                             this.cityCalcType = CityCalcType.ERROR;
                         }
 
-                    } else { //если пропорции экрана неправильные - скирн не из игры
+//                        setAreaToMap(Area.BOX_BACK);
+//                        CityCalcArea ccaBoxBack = mapAreas.get(Area.BOX_BACK);
+//                        boolean isGameScreenshot = PictureProcessor.frequencyPixelInBitmap(ccaBoxBack.getBmpSrc(), GlobalApplication.getRgb_box_back_main() , GlobalApplication.getRgb_box_back_thm(), GlobalApplication.getRgb_box_back_thp()) > 0.50f &&
+//                                PictureProcessor.frequencyPixelInBitmap(ccaBoxBack.getBmpSrc(), GlobalApplication.getRgb_box_back_back() ,GlobalApplication.getRgb_box_back_thm(), GlobalApplication.getRgb_box_back_thp()) > 0.01f;
+//
+//                        if (isGameScreenshot) { // если найден квадрат "назад" - скрин из игры
+//
+//                            setAreaToMap(Area.BOX_INFO_CITY); // красный квадрат с i
+//                            setAreaToMap(Area.BOX_INFO_CAR);  // серый квадрат времени игры
+//                            CityCalcArea ccaBox1Info = mapAreas.get(Area.BOX_INFO_CITY);
+//                            CityCalcArea ccaBox2Info = mapAreas.get(Area.BOX_INFO_CAR);
+//                            boolean isGame1 = PictureProcessor.frequencyPixelInBitmap(ccaBox1Info.getBmpSrc(), GlobalApplication.getRgb_box_info_city_main(),GlobalApplication.getRgb_box_info_city_thm(), GlobalApplication.getRgb_box_info_city_thp()) > 0.50f;
+//                            boolean isGame2 = PictureProcessor.frequencyPixelInBitmap(ccaBox2Info.getBmpSrc(), GlobalApplication.getRgb_box_info_car_main(),GlobalApplication.getRgb_box_info_car_thm(), GlobalApplication.getRgb_box_info_car_thp()) > 0.50f;
+//
+//                            if (isGame1 && isGame2) { // если нашлись красный квадрат с i и серый квадра рядом со времени - скрин из города
+//                                setAreaToMap(Area.CAR_IN_CITY_BOX1);
+//                                CityCalcArea ccaCarBox1 = mapAreas.get(Area.CAR_IN_CITY_BOX1); // если на скрине машинка - этот квадрат голубой
+//                                boolean isCar1 = PictureProcessor.frequencyPixelInBitmap(ccaCarBox1.getBmpSrc(), GlobalApplication.getRgb_car_in_city_box1_main(), GlobalApplication.getRgb_car_in_city_box1_thm(), GlobalApplication.getRgb_car_in_city_box1_thp()) > 0.50f;
+//                                if (isCar1) { // квадрат голубой - это скрин машинки в городе
+//                                    this.cityCalcType = CityCalcType.CAR;
+//                                } else { // квадрат не голубой - значит это скрин города
+//                                    this.cityCalcType = CityCalcType.GAME;
+//                                }
+//
+//                            } else { // если не нашлись красный квадрат с i и серый квадра рядом со времени - скрин не из города
+//
+//                                setAreaToMap(Area.CAR_IN_CITY_BOX1);
+//                                CityCalcArea ccaCarBox1 = mapAreas.get(Area.CAR_IN_CITY_BOX1); // если на скрине машинка - этот квадрат голубой
+//                                boolean isCar1 = PictureProcessor.frequencyPixelInBitmap(ccaCarBox1.getBmpSrc(), GlobalApplication.getRgb_car_in_city_box1_main(), GlobalApplication.getRgb_car_in_city_box1_thm(), GlobalApplication.getRgb_car_in_city_box1_thp()) > 0.50f;
+//                                if (isCar1) { // квадрат голубой - это скрин машинки в городе
+//                                    this.cityCalcType = CityCalcType.CAR;
+//                                } else { // квадрат не голубой - то это или гараж, или ошибка
+//                                    setAreaToMap(Area.BOX_INFO_GARAGE);
+//                                    CityCalcArea ccaGarage = mapAreas.get(Area.BOX_INFO_GARAGE);
+//                                    boolean isGarage = PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_main(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.20f &&
+//                                            PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_back1(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.001f &&
+//                                            PictureProcessor.frequencyPixelInBitmap(ccaGarage.getBmpSrc(), GlobalApplication.getRgb_box_info_garage_back2(), GlobalApplication.getRgb_box_info_garage_thm(), GlobalApplication.getRgb_box_info_garage_thp()) > 0.001f;
+//                                    if (isGarage) { // гараж
+//                                        this.cityCalcType = CityCalcType.CAR;
+//                                    } else { // ошибка
+//                                        this.cityCalcType = CityCalcType.ERROR;
+//                                    }
+//                                }
+//
+//                            }
+//
+//
+//                        } else { // если не найден квадрат "назад" - скрин не из игры
+//                            this.cityCalcType = CityCalcType.ERROR;
+//                        }
+
+                    } else { //если пропорции экрана неправильные - скрин не из игры
                         this.cityCalcType = CityCalcType.ERROR;
                     }
 

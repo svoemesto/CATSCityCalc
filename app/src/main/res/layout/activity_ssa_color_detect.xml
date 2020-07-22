@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".ssa.SSA_ColorDetect_Activity">
+
+    <Button
+        android:id="@+id/assacd_btn_get_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Area"
+        android:onClick="doGetArea"
+        />
+
+    <TextView
+        android:id="@+id/assacd_tv_area_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:gravity="center_horizontal"
+        tools:text="AREA_KEY"
+        />
+
+    <TextView
+        android:id="@+id/assacd_tv_area_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        tools:text="Area Name"
+        />
+
+    <ImageView
+        android:id="@+id/assacd_iv_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:src="@drawable/rounded_small_corner_color_our_light"
+        tools:layout_height="100dp"
+        />
+
+    <ListView
+        android:id="@+id/assacd_lv_colors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

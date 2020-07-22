@@ -177,7 +177,7 @@ public class CityCalcArea {
     public void doOCR(int colorIndex, int thmIndex, int thpIndex, boolean doScale, float scaleX, float scaleY) {
 
         if (this.needOcr && this.bmpSrc != null) {
-            this.bmpPrc = this.needBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex]) : this.bmpSrc;
+            this.bmpPrc = this.needBW ? PictureProcessor.doBW(this.bmpSrc, this.colors[colorIndex], this.ths[thmIndex], this.ths[thpIndex], false) : this.bmpSrc;
             this.bmpPrc = doScale ? PictureProcessor.doScale(this.bmpPrc, scaleX, scaleY) : this.bmpPrc;
             this.ocrText = PictureProcessor.doOCR(this.bmpPrc);
 

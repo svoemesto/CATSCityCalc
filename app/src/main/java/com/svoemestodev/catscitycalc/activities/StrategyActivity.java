@@ -377,8 +377,8 @@ public class StrategyActivity extends AppCompatActivity {
 
             lgi_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
 
-            if (ccaOurTeam != null) lgi_iv_our_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaOurTeam.getBmpSrc(),0xFFFFFF));  // имя нашей команды
-            if (ccaEnemyTeam != null) lgi_iv_enemy_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaEnemyTeam.getBmpSrc(),0xFFFFFF));  // имя команды противника
+            if (ccaOurTeam != null) lgi_iv_our_team_name.setImageBitmap(PictureProcessor.doTransparent(ccaOurTeam.getBmpSrc(),0xFFFFFF,20));  // имя нашей команды
+            if (ccaEnemyTeam != null) lgi_iv_enemy_team_name.setImageBitmap(PictureProcessor.doTransparent(ccaEnemyTeam.getBmpSrc(),0xFFFFFF,20));  // имя команды противника
 
 
             lgi_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
@@ -456,7 +456,7 @@ public class StrategyActivity extends AppCompatActivity {
                     lgb_iv_bld_can_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                     lgb_iv_bld_can_early_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                    if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.makeTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF));
+                    if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.doTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF, 20));
 
                     int newSlotsOur = (ccaGame.getBuildings()[buildingIndex].getSlots_our() > GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_our()) ? ccaGame.getBuildings()[buildingIndex].getSlots_our() - GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_our() : 0;
                     int newSlotsEnemy = (ccaGame.getBuildings()[buildingIndex].getSlots_enemy() > GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_enemy()) ? ccaGame.getBuildings()[buildingIndex].getSlots_enemy() - GameActivity.mainCCAGame.getBuildings()[buildingIndex].getSlots_enemy() : 0;

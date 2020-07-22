@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ssa.SSA_Colors_Activity">
+
+    <Button
+        android:id="@+id/assacls_bt_add_new_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new Color"
+        android:layout_alignParentBottom="true"
+        android:onClick="addNewColor"
+        />
+
+    <Button
+        android:id="@+id/assacls_bt_add_new_color_from_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add new Color from Area"
+        android:layout_above="@id/assacls_bt_add_new_color"
+        android:onClick="addNewColorFromArea"
+        />
+
+    <ListView
+        android:id="@+id/assacls_lv_colors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/assacls_bt_add_new_color_from_area"/>
+
+</RelativeLayout>

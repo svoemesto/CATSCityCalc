@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.svoemestodev.catscitycalc.BuildConfig;
+import com.svoemestodev.catscitycalc.ssa.SSA_Buttons_Activity;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
 
@@ -50,6 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
     Button st_btn_open_calibrate;
     Button st_btn_open_borders_settings;
     Button st_btn_open_colors_settings;
+    Button st_btn_open_ssa_buttons;
 
     public Context context;
 
@@ -100,6 +102,7 @@ public class SettingsActivity extends AppCompatActivity {
         st_btn_open_calibrate = findViewById(R.id.st_btn_open_calibrate);
         st_btn_open_borders_settings = findViewById(R.id.st_btn_open_borders_settings);
         st_btn_open_colors_settings = findViewById(R.id.st_btn_open_colors_settings);
+        st_btn_open_ssa_buttons = findViewById(R.id.st_btn_open_ssa_buttons);
 
         context = st_tv_screenshot_folder.getContext();
 
@@ -118,6 +121,7 @@ public class SettingsActivity extends AppCompatActivity {
         st_btn_open_calibrate.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
         st_btn_open_borders_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
         st_btn_open_colors_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
+        st_btn_open_ssa_buttons.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
 
         st_btn_select_data_folder.setEnabled(GameActivity.isListenDataFolder);
         st_btn_whatsapp_data_folder.setEnabled(GameActivity.isListenWhatsappFolder);
@@ -208,6 +212,7 @@ public class SettingsActivity extends AppCompatActivity {
                 st_btn_open_calibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                 st_btn_open_borders_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                 st_btn_open_colors_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                st_btn_open_ssa_buttons.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
             }
         });
 
@@ -320,4 +325,8 @@ public class SettingsActivity extends AppCompatActivity {
         fileDialog.show();
     }
 
+    public void openSSAbuttons(View view) {
+        Intent intent = new Intent(this, SSA_Buttons_Activity.class);
+        startActivityForResult(intent, 0);
+    }
 }

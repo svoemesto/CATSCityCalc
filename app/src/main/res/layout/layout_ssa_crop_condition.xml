@@ -1,0 +1,614 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lssacrc_ll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_small_corner_light_gray"
+        >
+
+        <Switch
+            android:id="@+id/lssacrc_sw_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            />
+
+        <RadioGroup
+            android:id="@+id/lssacrc_rg_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            
+            <RadioButton
+                android:id="@+id/lssacrc_rb_LR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L->R"/>
+
+            <RadioButton
+                android:id="@+id/lssacrc_rb_RL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R->L"/>
+
+            <RadioButton
+                android:id="@+id/lssacrc_rb_TB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T->B"/>
+
+            <RadioButton
+                android:id="@+id/lssacrc_rb_BT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B->T"/>
+            
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/lssacrc_cb_return_first_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/lssacrc_rg_direction"
+            android:text="ret.1st"
+            />
+
+        <CheckBox
+            android:id="@+id/lssacrc_cb_only_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/lssacrc_cb_return_first_fragment"
+            android:text="toEnd"
+            />
+
+        <LinearLayout
+            android:id="@+id/lssacrc_ll_colors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/lssacrc_rg_direction"
+            >
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textSize="30sp"
+                    android:text="██"
+                    />
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_start_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssacrc_tv_color_start"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/black"
+                    tools:text="START_COLOR_KEY"
+                    />
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_start_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssacrc_tv_color_start"
+                    android:layout_below="@id/lssacrc_tv_color_start_key_value"
+                    android:layout_marginStart="10dp"
+                    android:textSize="12sp"
+                    tools:text="Color name"
+                    />
+                
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textSize="30sp"
+                    android:text="██"
+                    />
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_end_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssacrc_tv_color_end"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/black"
+                    tools:text="END_COLOR_KEY"
+                    />
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_color_end_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssacrc_tv_color_end"
+                    android:layout_below="@id/lssacrc_tv_color_end_key_value"
+                    android:layout_marginStart="10dp"
+                    android:textSize="12sp"
+                    tools:text="Color name"
+                    />
+
+            </RelativeLayout>
+            
+        </LinearLayout>
+        
+        
+
+        <LinearLayout
+            android:id="@+id/lssacrc_ll_start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/lssacrc_ll_colors"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_threshold_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Start: Threshold"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_threshold_start_minus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_threshold_start_plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_threshold_start_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="13"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_threshold_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="255"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_min_freq_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Min frequency"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_start_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_start_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_start_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_start_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_min_freq_start_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.000"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_min_freq_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_max_freq_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Max frequency"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_start_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_start_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_start_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_start_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_max_freq_start_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.000"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_max_freq_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lssacrc_ll_end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/lssacrc_ll_start"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_threshold_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="End: Threshold"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_threshold_end_minus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_threshold_end_plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_threshold_end_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="13"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_threshold_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="255"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_min_freq_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Min frequency"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_end_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_end_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_end_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_min_freq_end_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_min_freq_end_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.000"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_min_freq_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssacrc_tv_max_freq_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Max frequency"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_end_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_end_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_end_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssacrc_bt_max_freq_end_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssacrc_tv_max_freq_end_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.000"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssacrc_sb_max_freq_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

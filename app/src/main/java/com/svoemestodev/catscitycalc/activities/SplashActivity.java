@@ -18,6 +18,9 @@ import com.svoemestodev.catscitycalc.BuildConfig;
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
+import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
+import com.svoemestodev.catscitycalc.ssa.SSA_Conditions;
 import com.svoemestodev.catscitycalc.utils.UtilPermissions;
 
 import java.io.File;
@@ -212,6 +215,15 @@ public class SplashActivity extends AppCompatActivity {
         Car.pathToFile = getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.file_list_cars);
         Car.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
         GlobalApplication.pathToCATScalcFolder = getApplicationContext().getFilesDir().getAbsolutePath();
+
+        SSA_Colors.pathToFile = getExternalFilesDir(null) + "/SSA_Colors.lst";
+        SSA_Colors.load();
+
+        SSA_Areas.pathToFile = getExternalFilesDir(null) + "/SSA_Areas.lst";
+        SSA_Areas.load();
+
+        SSA_Conditions.pathToFile = getExternalFilesDir(null) + "/SSA_Conditions.lst";
+        SSA_Conditions.load();
 
 //        File cars = new File(Car.pathToFile);
 //        if (!cars.exists()) {

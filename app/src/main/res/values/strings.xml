@@ -175,7 +175,7 @@
     <string name="reset_y1_to_default">Reset Y1 to default</string>
     <string name="reset_y2_to_default">Reset X2 to default</string>
     <string name="border_x1">Offset X left</string>
-    <string name="border_x2">Offset X rigth</string>
+    <string name="border_x2">Offset X right</string>
     <string name="border_y1">Offset Y top</string>
     <string name="border_y2">Offset Y bottom</string>
     <string name="sett_colors">Colors detect settings</string>

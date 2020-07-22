@@ -128,4 +128,12 @@
         android:onClick="openColorsdetectSettings"
         />
 
+    <Button
+        android:id="@+id/st_btn_open_ssa_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Screenshot Analizer"
+        android:onClick="openSSAbuttons"
+        />
+
 </LinearLayout>

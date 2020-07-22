@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/lssacls_bt_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_baseline_delete_forever_24"/>
+
+            <TextView
+                android:id="@+id/lssacls_tv_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/lssacls_bt_delete"
+                android:textSize="30sp"
+                android:text="██"
+                />
+
+            <ImageButton
+                android:id="@+id/lssacls_bt_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/ic_baseline_edit_24"/>
+
+            <TextView
+                android:id="@+id/lssacls_tv_key_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lssacls_bt_edit"
+                android:layout_toStartOf="@id/lssacls_tv_color"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black"
+                tools:text="COLOR_KEY"
+                />
+
+            <TextView
+                android:id="@+id/lssacls_tv_name_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/lssacls_bt_edit"
+                android:layout_toStartOf="@id/lssacls_tv_color"
+                android:layout_below="@id/lssacls_tv_key_value"
+                android:layout_marginStart="10dp"
+                android:textSize="12sp"
+                tools:text="Color name"
+                />
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

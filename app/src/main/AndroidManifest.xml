@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="com.svoemestodev.catscitycalc.GlobalApplication"
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_catscalcicon"
@@ -21,16 +21,22 @@
         android:roundIcon="@drawable/ic_catscalcicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="q"
-        >
+        tools:targetApi="q">
+        <activity android:name=".ssa.SSA_ColorDetect_Activity"></activity>
+        <activity android:name=".ssa.SSA_Color_Activity" />
+        <activity android:name=".ssa.SSA_Colors_Activity" />
+        <activity android:name=".ssa.SSA_Area_Activity" />
+        <activity android:name=".ssa.SSA_Areas_Activity" />
+        <activity android:name=".ssa.SSA_Buttons_Activity" />
 
-        <service android:name=".OverScreenService"
-            android:exported="true"
+        <service
+            android:name=".OverScreenService"
             android:enabled="true"
-            android:foregroundServiceType="mediaProjection"/>
-
-        <service android:enabled="true" android:name=".CityCalcService"/>
-
+            android:exported="true"
+            android:foregroundServiceType="mediaProjection" />
+        <service
+            android:name=".CityCalcService"
+            android:enabled="true" />
 
         <activity android:name=".activities.WorkBuildingActivity" />
         <activity android:name=".activities.TeamUserActivity" />

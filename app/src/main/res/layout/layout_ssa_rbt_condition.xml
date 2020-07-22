@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lssarbt_ll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Switch
+            android:id="@+id/lssarbt_sw_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            />
+
+        <RadioGroup
+            android:id="@+id/lssarbt_rg_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            
+            <RadioButton
+                android:id="@+id/lssarbt_rb_resize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="resize"/>
+
+            <RadioButton
+                android:id="@+id/lssarbt_rb_BW"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="B/W"/>
+
+            <RadioButton
+                android:id="@+id/lssarbt_rb_WB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="W/B"/>
+
+            <RadioButton
+                android:id="@+id/lssarbt_rb_transparent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="transparent"/>
+            
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/lssarbt_ll_colors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/lssarbt_rg_type"
+            >
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textSize="30sp"
+                    android:text="██"
+                    />
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_color_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssarbt_tv_color"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/black"
+                    tools:text="COLOR_KEY"
+                    />
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_color_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/lssarbt_tv_color"
+                    android:layout_below="@id/lssarbt_tv_color_key_value"
+                    android:layout_marginStart="10dp"
+                    android:textSize="12sp"
+                    tools:text="Color name"
+                    />
+                
+            </RelativeLayout>
+            
+        </LinearLayout>
+        
+        
+
+        <LinearLayout
+            android:id="@+id/lssarbt_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/lssarbt_ll_colors"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_threshold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Threshold"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_threshold_minus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_threshold_plus"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssarbt_tv_threshold_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="13"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssarbt_sb_threshold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="255"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_scale_x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Scale X"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_x_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_x_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_x_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_x_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssarbt_tv_scale_x_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.0"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssarbt_sb_scale_x"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/lssarbt_tv_scale_y"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Scale Y"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_y_minus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_y_minus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_y_plus1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                        <Button
+                            android:id="@+id/lssarbt_bt_scale_y_plus10"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/lssarbt_tv_scale_y_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="36sp"
+                        android:layout_marginTop="2dp"
+                        android:textSize="28sp"
+                        android:textColor="#000000"
+                        android:fontFamily="@font/jet_brains_mono_regular"
+                        android:gravity="center_horizontal"
+                        tools:text="0.0"
+                        />
+                </RelativeLayout>
+
+                <SeekBar
+                    android:id="@+id/lssarbt_sb_scale_y"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:min="0"
+                    android:max="100"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

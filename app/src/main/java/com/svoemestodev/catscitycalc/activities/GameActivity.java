@@ -463,8 +463,8 @@ public class GameActivity extends AppCompatActivity {
 
             lgi_tv_early_win.setText(String.valueOf(ccaGame.getEarlyWin())); // очки до досрочной победы
 
-            if (ccaOurTeam != null) lgi_iv_our_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaOurTeam.getBmpSrc(),0xFFFFFF));  // имя нашей команды
-            if (ccaEnemyTeam != null) lgi_iv_enemy_team_name.setImageBitmap(PictureProcessor.makeTransparent(ccaEnemyTeam.getBmpSrc(),0xFFFFFF));  // имя команды противника
+            if (ccaOurTeam != null) lgi_iv_our_team_name.setImageBitmap(PictureProcessor.doTransparent(ccaOurTeam.getBmpSrc(),0xFFFFFF,20));  // имя нашей команды
+            if (ccaEnemyTeam != null) lgi_iv_enemy_team_name.setImageBitmap(PictureProcessor.doTransparent(ccaEnemyTeam.getBmpSrc(),0xFFFFFF,20));  // имя команды противника
 
 
             lgi_tv_our_increase.setText(ccaGame.getIncreaseOur() == 0 ? "" : " +" + ccaGame.getIncreaseOur() + " ");   // прирост нашей команды
@@ -537,7 +537,7 @@ public class GameActivity extends AppCompatActivity {
                     lgb_iv_bld_can_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
                     lgb_iv_bld_can_early_win_with_x2[buildingIndex].setImageDrawable(getDrawable(ccaGame.getBuildings()[buildingIndex].isNeedToEarlyWin() ? R.drawable.ic_can_early_win_with_x2_true : R.drawable.ic_can_early_win_with_x2_false));
 
-                    if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.makeTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF));
+                    if (ccabld[buildingIndex] != null) lgb_iv_bld_name[buildingIndex].setImageBitmap(PictureProcessor.doTransparent(ccabld[buildingIndex].getBmpSrc(),0xFFFFFF,20));
 
                     lgb_iv_bld_progress[buildingIndex].setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
                             new int[]{color_progress_our, color_progress_empty, color_progress_enemy},

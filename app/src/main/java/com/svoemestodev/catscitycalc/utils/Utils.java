@@ -71,6 +71,11 @@ public class Utils {
 
     }
 
+    public static String convertFloatToStringFormatter1digit(float number) {
+        String pattern = "###,##0.0";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
     public static String convertFloatToStringFormatter2digit(float number) {
         String pattern = "###,##0.00";
         DecimalFormat myFormatter = new DecimalFormat(pattern);
@@ -91,6 +96,18 @@ public class Utils {
 
     public static String convertFloatToStringFormatter5digit(float number) {
         String pattern = "###,##0.00000";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertDoubleToStringFormatter5digit(double number) {
+        String pattern = "###,##0.00000";
+        DecimalFormat myFormatter = new DecimalFormat(pattern);
+        return myFormatter.format(number);
+    }
+
+    public static String convertDoubleToStringFormatter3digit(double number) {
+        String pattern = "###,##0.000";
         DecimalFormat myFormatter = new DecimalFormat(pattern);
         return myFormatter.format(number);
     }

@@ -15,6 +15,9 @@ import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.ssa.SSA_Color;
+import com.svoemestodev.catscitycalc.ssa.SSA_Crop_Condition;
+import com.svoemestodev.catscitycalc.ssa.SSA_RBT_Condition;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +27,223 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class PictureProcessor extends Activity {
+
+    public static boolean isConditionTrue(Bitmap bitmap, SSA_Color ssaColor, int threshold, float minFrequency, float maxFrequency) {
+        boolean result = false;
+        if (bitmap != null) {
+            float frequency = frequencyPixelInBitmap(bitmap, ssaColor.getColor(), threshold, threshold);
+            result = frequency >= minFrequency && frequency <= maxFrequency;
+        }
+        return result;
+    }
+
+    public static Bitmap applyRbtCondition(Bitmap sourceBitmap, SSA_RBT_Condition ssaRbtCondition) {
+
+        Bitmap result = sourceBitmap;
+        int type = ssaRbtCondition.getType();
+        int color = ssaRbtCondition.getSsaColor().getColor();
+        int threshold = ssaRbtCondition.getThreshold();
+        float scaleX = ssaRbtCondition.getScaleX();
+        float scaleY = ssaRbtCondition.getScaleY();
+        boolean skip = ssaRbtCondition.isSkip();
+
+        if (!skip) {
+            switch (type) {
+                case 0: // resize
+                    return doScale(sourceBitmap, scaleX, scaleY);
+                case 1: // black & white
+                    return doBW(sourceBitmap, color, threshold, threshold, false);
+                case 2: // transparent
+                    return doBW(sourceBitmap, color, threshold, threshold, true);
+                case 3: // transparent
+                    return doTransparent(sourceBitmap, color, threshold);
+                default:
+            }
+        }
+
+        return result;
+    }
+
+    public static Bitmap applyCropCondition(Bitmap sourceBitmap, SSA_Crop_Condition ssaCropCondition) {
+
+        Bitmap result = null;
+        int colorStart = ssaCropCondition.getSsaColorStart().getColor();
+        int thresholdStart = ssaCropCondition.getThresholdStart();
+        float minFrequencyStart = ssaCropCondition.getMinFrequencyStart();
+        float maxFrequencyStart = ssaCropCondition.getMaxFrequencyStart();
+        int colorEnd = ssaCropCondition.getSsaColorEnd().getColor();
+        int thresholdEnd = ssaCropCondition.getThresholdEnd();
+        float minFrequencyEnd = ssaCropCondition.getMinFrequencyEnd();
+        float maxFrequencyEnd = ssaCropCondition.getMaxFrequencyEnd();
+        PictureProcessorDirection direction = ssaCropCondition.getDirection();
+        boolean returnFirstFragment = ssaCropCondition.isReturnFirstFragment();
+        boolean isOnlyFirst = ssaCropCondition.isOnlyFirst();
+        boolean skip = ssaCropCondition.isSkip();
+
+        Bitmap firstBitmap, secondBitmap;
+        if (sourceBitmap != null && !skip) {
+
+            int sourceWidth = sourceBitmap.getWidth();      // ширина исходной картинки
+            int sourceHeight = sourceBitmap.getHeight();    // высота исходной картинки
+
+            boolean horizontalMove = direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT);  // движемся по горизонтали или по вертикали?
+
+            int firstDirectionStart, firstDirectionEnd, firstDirectionIncrement;
+            int secondDirectionStart, secondDirectionEnd, secondDirectionIncrement;
+
+            if (horizontalMove) {
+                firstDirectionStart = 0;
+                firstDirectionEnd = sourceWidth;
+                firstDirectionIncrement = 1;
+                secondDirectionStart = 0;
+                secondDirectionEnd = sourceHeight;
+                secondDirectionIncrement = 1;
+            } else {
+                firstDirectionStart = 0;
+                firstDirectionEnd = sourceHeight;
+                firstDirectionIncrement = 1;
+                secondDirectionStart = 0;
+                secondDirectionEnd = sourceWidth;
+                secondDirectionIncrement = 1;
+            }
+
+            boolean findStartSplit = false, findEndSplit = false;
+            int startSplit = 0, endSplit = 0;
+            int pixel = 0, x, y;
+
+            for (int i = firstDirectionStart; i < firstDirectionEnd; i += firstDirectionIncrement) {
+                int countTruePixelsInLineStart = 0;
+                int countTruePixelsInLineEnd = 0;
+                for (int j = secondDirectionStart; j < secondDirectionEnd ; j += secondDirectionIncrement) {
+                    x = horizontalMove ? i : j;
+                    y = horizontalMove ? j : i;
+
+                    if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                        pixel = sourceBitmap.getPixel(x, y);
+                    } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
+                        pixel = sourceBitmap.getPixel(firstDirectionEnd - x - 1, y);
+                    } else {
+                        pixel = sourceBitmap.getPixel(x, firstDirectionEnd - y - 1);
+                    }
+
+                    countTruePixelsInLineStart += isPixelTrue(pixel, colorStart, thresholdStart, thresholdStart) ? 1 : 0;
+                    countTruePixelsInLineEnd += isPixelTrue(pixel, colorEnd, thresholdEnd, thresholdEnd) ? 1 : 0;
+                }
+                float fillingStart = (float)countTruePixelsInLineStart / secondDirectionEnd;
+                float fillingEnd = (float)countTruePixelsInLineEnd / secondDirectionEnd;
+
+                if (!findStartSplit) { // если начало кропа еще не найдено
+                    if (fillingStart >= minFrequencyStart && fillingStart <= maxFrequencyStart) { // если текущая линия подходит
+                        if (isOnlyFirst) {
+                            findStartSplit = true;
+                            startSplit = firstDirectionStart;
+                            findEndSplit = true;
+                            endSplit = i - firstDirectionIncrement;
+                        }else {
+                            findStartSplit = true;
+                            startSplit = i;
+                        }
+
+                    }
+                } else if (!findEndSplit){ // если начало кропа уже найдено, а конец еще нет
+                    if (fillingEnd >= minFrequencyEnd && fillingEnd <= maxFrequencyEnd) { // если текущая линия подходит
+                        findEndSplit = true;
+                        endSplit = i;
+                    }
+                }
+
+                if (findStartSplit && findEndSplit) break; // если найдены начало и конец - выходим из цикла
+            }
+
+            if (findStartSplit && findEndSplit) { // если найдены начало и конец
+
+                int firstPicStart = startSplit;
+                int firstPicEnd = endSplit;// - firstDirectionIncrement;
+
+                if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                    firstPicEnd += firstDirectionIncrement;
+                } else {
+                    firstPicEnd -= firstDirectionIncrement;
+                }
+
+                int secondPicStart = endSplit;
+                int secondPicEnd = firstDirectionEnd;
+                if (firstDirectionIncrement < 0) {
+                    int tmp = firstPicStart;
+                    firstPicStart = firstPicEnd;
+                    firstPicEnd = tmp;
+                    tmp = secondPicStart;
+                    secondPicStart = secondPicEnd;
+                    secondPicEnd = tmp;
+                }
+
+                int firstPicWidth = horizontalMove ? firstPicEnd - firstPicStart : sourceWidth;
+                int firstPicHeight = horizontalMove ? sourceHeight : firstPicEnd - firstPicStart;
+                int secondPicWidth = horizontalMove ? secondPicEnd - secondPicStart : sourceWidth;
+                int secondPicHeight = horizontalMove ? sourceHeight : secondPicEnd - secondPicStart;
+
+                if (firstPicWidth > 0 && firstPicHeight > 0 && secondPicWidth > 0 && secondPicHeight > 0) {
+
+                    firstBitmap = Bitmap.createBitmap(firstPicWidth, firstPicHeight, sourceBitmap.getConfig());
+                    secondBitmap = Bitmap.createBitmap(secondPicWidth, secondPicHeight, sourceBitmap.getConfig());
+
+                    for (x = 0; x < firstPicWidth; x++) {
+                        for (y = 0; y < firstPicHeight; y++) {
+
+                            if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                                pixel = horizontalMove ? sourceBitmap.getPixel(x + firstPicStart, y) : sourceBitmap.getPixel(x, y + firstPicStart);
+                                firstBitmap.setPixel(x, y, pixel);
+                            } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
+                                pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + firstPicStart), y);
+                                firstBitmap.setPixel(firstPicWidth - x - 1, y, pixel);
+                            } else {
+                                pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + firstPicStart));
+                                firstBitmap.setPixel(x, firstPicHeight - y - 1, pixel);
+                            }
+
+                        }
+                    }
+
+                    for (x = 0; x < secondPicWidth; x++) {
+                        for (y = 0; y < secondPicHeight; y++) {
+
+                            if (direction.equals(PictureProcessorDirection.FROM_LEFT_TO_RIGHT) || direction.equals(PictureProcessorDirection.FROM_TOP_TO_BOTTOM)) {
+                                pixel = horizontalMove ? sourceBitmap.getPixel(x + secondPicStart, y) : sourceBitmap.getPixel(x, y + secondPicStart);
+                                secondBitmap.setPixel(x, y, pixel);
+                            } else if (direction.equals(PictureProcessorDirection.FROM_RIGHT_TO_LEFT)) {
+                                pixel = sourceBitmap.getPixel((firstDirectionEnd - 1) - (x + secondPicStart), y);
+                                secondBitmap.setPixel(secondPicWidth - x - 1, y, pixel);
+                            } else {
+                                pixel = sourceBitmap.getPixel(x, (firstDirectionEnd - 1) - (y + secondPicStart));
+                                secondBitmap.setPixel(x, secondPicHeight - y - 1, pixel);
+                            }
+                        }
+                    }
+
+                } else {
+                    firstBitmap = null;
+                    secondBitmap = null;
+                }
+
+
+            } else {
+                firstBitmap = Bitmap.createBitmap(sourceWidth, sourceHeight, sourceBitmap.getConfig());
+                for (x = 0; x < sourceWidth; x++) {
+                    for (y = 0; y < sourceHeight; y++) {
+                        firstBitmap.setPixel(x, y, 0xFFFFFFFF);
+                    }
+                }
+                secondBitmap = sourceBitmap;
+            }
+
+            result = returnFirstFragment ? firstBitmap : secondBitmap;
+
+        }
+
+        return result;
+    }
+    
+    
     /**
      * Разрезает изображение на 2, анализируя цвета
      *
@@ -233,7 +453,7 @@ public class PictureProcessor extends Activity {
 //        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
 //    }
 
-    public static Bitmap doBW(Bitmap sourceBitmap, int color, int thm, int thp) {
+    public static Bitmap doBW(Bitmap sourceBitmap, int color, int thm, int thp, boolean colorIsBackground) {
 
         if (sourceBitmap != null) {
             int width = sourceBitmap.getWidth();
@@ -244,7 +464,7 @@ public class PictureProcessor extends Activity {
             for(int x = 0; x < width; ++x) {
                 for(int y = 0; y < height; ++y) {
                     pixel = sourceBitmap.getPixel(x, y);
-                    int bw = isPixelTrue(pixel, color, thm, thp) ? 0xFF000000 : 0xFFFFFFFF;
+                    int bw = isPixelTrue(pixel, color, thm, thp) ? (colorIsBackground ? 0xFFFFFFFF : 0xFF000000) : (colorIsBackground ? 0xFF000000 : 0xFFFFFFFF);
                     tmpBitmap.setPixel(x, y, bw);
                 }
             }
@@ -477,7 +697,7 @@ public class PictureProcessor extends Activity {
 
             for (int x = 0; x < width; x++) {
                 for (int y = 0; y < height; y++) {
-                    int pixel = bitmap.getPixel(x , y);
+                    int pixel = bitmap.getPixel(x, y);
                     if (mapPixels.containsKey(pixel)) {
                         mapPixels.put(pixel, mapPixels.get(pixel)+1);
                     } else {
@@ -512,7 +732,7 @@ public class PictureProcessor extends Activity {
         return  colorFrequencyList;
     }
 
-    public static Bitmap makeTransparent(Bitmap bit, int transparentColor) {
+    public static Bitmap doTransparent(Bitmap bit, int transparentColor, int threshold) {
         int width =  bit.getWidth();
         int height = bit.getHeight();
 
@@ -523,7 +743,7 @@ public class PictureProcessor extends Activity {
 
         for(int i =0; i<myBitmap.getHeight()*myBitmap.getWidth();i++){
 
-            if(isPixelTrue(allpixels[i],transparentColor, 20, 20))
+            if(isPixelTrue(allpixels[i],transparentColor, threshold, threshold))
                 allpixels[i] = Color.alpha(Color.TRANSPARENT);
         }
 
