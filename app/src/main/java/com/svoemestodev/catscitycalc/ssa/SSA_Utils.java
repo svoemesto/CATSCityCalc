@@ -1012,10 +1012,10 @@ public class SSA_Utils {
         ssaArea.setName("Бокс защиты/ремонта машины");
         ssaArea.setParentArea(parentArea);
         ssaArea.setSnap(0);
-        ssaArea.setrX1(+0.100);
-        ssaArea.setrX2(+0.250);
-        ssaArea.setrY1(-0.720);
-        ssaArea.setrY2(-0.410);
+        ssaArea.setrX1(+0.140);
+        ssaArea.setrX2(+0.270);
+        ssaArea.setrY1(-0.130);
+        ssaArea.setrY2(+0.160);
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area("CAR_TIMELINE");
