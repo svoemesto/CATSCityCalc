@@ -49,7 +49,7 @@ public class SSA_Buttons_Activity extends AppCompatActivity {
         if (actionBar != null) {                        // если экшен-бар есть
             actionBar.setDisplayHomeAsUpEnabled(true);  // показываем кнопку "<-"
         }
-        
+
         ssaScreenshot = new SSA_Screenshot(GameActivity.fileGameScreenshot.getAbsolutePath(), GameActivity.calibrateX, GameActivity.calibrateY);
         initializeViews();
         loadDataToViews();
