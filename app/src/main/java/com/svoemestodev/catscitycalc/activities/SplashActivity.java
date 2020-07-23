@@ -21,6 +21,8 @@ import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
 import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
 import com.svoemestodev.catscitycalc.ssa.SSA_Conditions;
+import com.svoemestodev.catscitycalc.ssa.SSA_Rules;
+import com.svoemestodev.catscitycalc.ssa.SSA_Rules_Area_Condition;
 import com.svoemestodev.catscitycalc.utils.UtilPermissions;
 
 import java.io.File;
@@ -224,6 +226,12 @@ public class SplashActivity extends AppCompatActivity {
 
         SSA_Conditions.pathToFile = getExternalFilesDir(null) + "/SSA_Conditions.lst";
         SSA_Conditions.load();
+
+        SSA_Rules_Area_Condition.pathToFile = getExternalFilesDir(null) + "/SSA_RulesAreaCondition.lst";
+        SSA_Rules_Area_Condition.load();
+
+        SSA_Rules.pathToFile = getExternalFilesDir(null) + "/SSA_Rules.lst";
+        SSA_Rules.load();
 
 //        File cars = new File(Car.pathToFile);
 //        if (!cars.exists()) {

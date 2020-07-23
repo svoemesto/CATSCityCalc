@@ -1280,8 +1280,38 @@ public class SSA_Utils {
         ssaCondition.setMinFrequency(0.001f);
         ssaCondition.setMaxFrequency(1.000f);
         map.put(ssaCondition.getKey(), ssaCondition);
-        
+
         ssaConditions.setMap(map);
         return ssaConditions;
+    }
+
+    public static SSA_Rules_Area_Condition getDefaultRulesAreasConditions() {
+        SSA_Rules_Area_Condition ssaRulesAreaCondition = new SSA_Rules_Area_Condition();
+        Map<String, SSA_Rule_Area_Condition> map = new HashMap<>();
+        SSA_Rule_Area_Condition ssaRuleAreaCondition;
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition("BLD1_IS_X2", "Здание №1 с золотой скрепкой", SSA_Areas.getArea("CITY_BLD1"), SSA_Conditions.getCondition("IS_X2_PRESENT"));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRulesAreaCondition.setMap(map);
+        return ssaRulesAreaCondition;
+    }
+
+    public static SSA_Rules getDefaultRules() {
+        SSA_Rules ssaRules = new SSA_Rules();
+        SSA_Rule ssaRule;
+        Map<String, SSA_Rule> map = new HashMap<>();
+        List<SSA_Rule_Area_Condition> listTrue;
+        List<SSA_Rule_Area_Condition> listFalse;
+        List<SSA_Rule_Area_Condition> listOneTrue;
+        List<SSA_Rule_Area_Condition> listAnyTrue;
+
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule("RULE_KEY", "RULE_NAME");
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+
+        ssaRules.setMap(map);
+        return ssaRules;
     }
 }

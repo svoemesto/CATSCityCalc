@@ -24,6 +24,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.utils.Utils;
 
 public class SSA_Conditions_Activity extends AppCompatActivity {
 
@@ -134,12 +135,18 @@ public class SSA_Conditions_Activity extends AppCompatActivity {
             ImageButton lssac_bt_edit = convertView.findViewById(R.id.lssac_bt_edit);
             TextView lssac_tv_key_value = convertView.findViewById(R.id.lssac_tv_key_value);
             TextView lssac_tv_name_value = convertView.findViewById(R.id.lssac_tv_name_value);
+            TextView lssac_tv_color = convertView.findViewById(R.id.lssac_tv_color);
+            TextView lssac_tv_threshold = convertView.findViewById(R.id.lssac_tv_threshold);
+            TextView lssac_tv_frequency = convertView.findViewById(R.id.lssac_tv_frequency);
 
             String conditionKey = ssaCondition.getKey() == null ? "N/A" : ssaCondition.getKey();
             String conditionName = ssaCondition.getName() == null ? "N/A" : ssaCondition.getName();
 
             lssac_tv_key_value.setText(conditionKey);
             lssac_tv_name_value.setText(conditionName);
+            lssac_tv_color.setTextColor(ssaCondition.getSsaColor().getColor());
+            lssac_tv_threshold.setText(ssaCondition.getSsaColor().getKey());
+            lssac_tv_frequency.setText("th" + ssaCondition.getThreshold() + ": " + Utils.convertFloatToStringFormatter3digit(ssaCondition.getMinFrequency()) + "-" + Utils.convertFloatToStringFormatter3digit(ssaCondition.getMaxFrequency()));
 
             lssac_bt_delete.setOnClickListener(new View.OnClickListener() {
                 @Override

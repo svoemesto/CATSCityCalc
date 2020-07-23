@@ -22,14 +22,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".ssa.SSA_Condition_Activity" />
-        <activity android:name=".ssa.SSA_Conditions_Activity" />
-        <activity android:name=".ssa.SSA_ColorDetect_Activity" />
-        <activity android:name=".ssa.SSA_Color_Activity" />
-        <activity android:name=".ssa.SSA_Colors_Activity" />
-        <activity android:name=".ssa.SSA_Area_Activity" />
-        <activity android:name=".ssa.SSA_Areas_Activity" />
-        <activity android:name=".ssa.SSA_Buttons_Activity" />
+        <activity android:name=".ssa.SSA_Condition_Activity"
+                  android:label="Condition"/>
+        <activity android:name=".ssa.SSA_Conditions_Activity"
+            android:label="Conditions"/>
+        <activity android:name=".ssa.SSA_ColorDetect_Activity"
+            android:label="Color Detect"/>
+        <activity android:name=".ssa.SSA_Color_Activity"
+            android:label="Color"/>
+        <activity android:name=".ssa.SSA_Colors_Activity"
+            android:label="Colors"/>
+        <activity android:name=".ssa.SSA_Area_Activity"
+            android:label="Area"/>
+        <activity android:name=".ssa.SSA_Areas_Activity"
+            android:label="Areas"/>
+        <activity android:name=".ssa.SSA_Buttons_Activity"
+            android:label="Screenshot Analizer"/>
 
         <service
             android:name=".OverScreenService"

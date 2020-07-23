@@ -2,6 +2,7 @@ package com.svoemestodev.catscitycalc.ssa;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +10,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -24,6 +27,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -175,8 +179,9 @@ public class SSA_Area_Activity extends AppCompatActivity {
     Button lssarbt_bt_scale_y_plus10;
     SeekBar lssarbt_sb_scale_y;
 
-
-
+    Button assaae_bt_show_areas;
+    ProgressBar assaae_pb_progress;
+    TextView assaae_tv_conditions;
 
 
     public static SSA_Area ssaArea;
@@ -1865,7 +1870,10 @@ public class SSA_Area_Activity extends AppCompatActivity {
         lssarbt_bt_scale_y_plus1 = findViewById(R.id.lssarbt_bt_scale_y_plus1);
         lssarbt_bt_scale_y_plus10 = findViewById(R.id.lssarbt_bt_scale_y_plus10);
         lssarbt_sb_scale_y = findViewById(R.id.lssarbt_sb_scale_y);
-        
+        assaae_bt_show_areas = findViewById(R.id.assaae_bt_show_areas);
+        assaae_pb_progress = findViewById(R.id.assaae_pb_progress);
+        assaae_tv_conditions = findViewById(R.id.assaae_tv_conditions);
+
     }
 
     private void showCropConditions() {
@@ -2154,5 +2162,57 @@ public class SSA_Area_Activity extends AppCompatActivity {
     }
 
 
+    public void showSatisfiedConditions(View view) {
+
+        GetListSatisfiedConditions thread = new GetListSatisfiedConditions();
+        thread.execute();
+
+    }
+
+    class GetListSatisfiedConditions extends AsyncTask<Void, Integer, Void> {
+
+        List<SSA_Condition> sourceList = new ArrayList<>();
+        List<SSA_Condition> resultList = new ArrayList<>();
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            assaae_bt_show_areas.setEnabled(false);
+            sourceList = SSA_Conditions.getConditionsList();
+            assaae_pb_progress.setMin(0);
+            assaae_pb_progress.setMax(sourceList.size());
+            assaae_pb_progress.setProgress(0);
+            assaae_pb_progress.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            assaae_bt_show_areas.setEnabled(true);
+            assaae_pb_progress.setVisibility(View.INVISIBLE);
+            String text = "";
+            for (SSA_Condition ssaCondition: resultList) {
+                text = text + ssaCondition.getKey() + " (" + ssaCondition.getName() + ")\n";
+            }
+            assaae_tv_conditions.setText(text);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+            assaae_pb_progress.setProgress(values[0]);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            for (int i = 0; i < sourceList.size(); i++) {
+                publishProgress(i);
+                SSA_Condition ssaCondition = sourceList.get(i);
+                if (ssaArea.isSatisfiesCondition(ssaScreenshot, ssaCondition)) resultList.add(ssaCondition);
+            }
+            return null;
+        }
+    }
 
 }
