@@ -226,7 +226,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -263,13 +263,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
         map.put(ssaArea.getKey(), ssaArea);
@@ -307,7 +307,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -344,14 +344,15 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
+
         ssaArea.setListCropConditions(listCropConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -388,7 +389,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -425,14 +426,15 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
+
         ssaArea.setListCropConditions(listCropConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -469,7 +471,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -506,14 +508,15 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
+
         ssaArea.setListCropConditions(listCropConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -550,7 +553,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -588,14 +591,15 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
+
         ssaArea.setListCropConditions(listCropConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -632,7 +636,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),0,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
@@ -670,17 +674,17 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("SLOTS"),0,0.001f,1.000f,
+                SSA_Colors.getColor("SLOTS"),1,0.001f,1.000f,
                 SSA_Colors.getColor("SLOTS"),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor("WHITE"),1,0.075f,1.000f,
-                SSA_Colors.getColor("WHITE"),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor("WHITE"),1,0.750f,1.000f,
+                SSA_Colors.getColor("WHITE"),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
-        map.put(ssaArea.getKey(), ssaArea);
 
+        map.put(ssaArea.getKey(), ssaArea);
         ssaArea = new SSA_Area("CITY_BLD6_PROGRESS");
         ssaArea.setName("Здание №6 (BLT): прогресс");
         parentArea = null;
