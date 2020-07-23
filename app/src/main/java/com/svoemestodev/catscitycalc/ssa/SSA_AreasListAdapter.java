@@ -12,10 +12,12 @@ import androidx.annotation.Nullable;
 
 import com.svoemestodev.catscitycalc.R;
 
+import java.util.List;
+
 public class SSA_AreasListAdapter extends ArrayAdapter<SSA_Area> {
 
-    public SSA_AreasListAdapter(@NonNull Context context) {
-        super(context, R.layout.layout_ssa_areas_list_adapter, SSA_Areas.getAreasList());
+    public SSA_AreasListAdapter(@NonNull Context context, List<SSA_Area> listAreas) {
+        super(context, R.layout.layout_ssa_areas_list_adapter, listAreas);
     }
 
     @NonNull

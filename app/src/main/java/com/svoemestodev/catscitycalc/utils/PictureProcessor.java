@@ -16,6 +16,7 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 import com.svoemestodev.catscitycalc.GlobalApplication;
 import com.svoemestodev.catscitycalc.ssa.SSA_Color;
+import com.svoemestodev.catscitycalc.ssa.SSA_Condition;
 import com.svoemestodev.catscitycalc.ssa.SSA_Crop_Condition;
 import com.svoemestodev.catscitycalc.ssa.SSA_RBT_Condition;
 
@@ -27,6 +28,14 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class PictureProcessor extends Activity {
+
+    public static boolean isConditionTrue(Bitmap bitmap, SSA_Condition ssaCondition) {
+        boolean result = false;
+        if (bitmap != null && ssaCondition != null) {
+            result = isConditionTrue(bitmap, ssaCondition.getSsaColor(), ssaCondition.getThreshold(), ssaCondition.getMinFrequency(), ssaCondition.getMaxFrequency());
+        }
+        return result;
+    }
 
     public static boolean isConditionTrue(Bitmap bitmap, SSA_Color ssaColor, int threshold, float minFrequency, float maxFrequency) {
         boolean result = false;

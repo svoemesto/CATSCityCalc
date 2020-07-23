@@ -89,4 +89,9 @@ public class SSA_Buttons_Activity extends AppCompatActivity {
         Intent intent = new Intent(this, SSA_Colors_Activity.class);
         startActivityForResult(intent, 0);
     }
+
+    public void openConditions(View view) {
+        Intent intent = new Intent(this, SSA_Conditions_Activity.class);
+        startActivityForResult(intent, 0);
+    }
 }

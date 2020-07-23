@@ -1,6 +1,8 @@
 package com.svoemestodev.catscitycalc.ssa;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SSA_Condition implements Serializable, Comparable<SSA_Condition> {
 
@@ -8,18 +10,31 @@ public class SSA_Condition implements Serializable, Comparable<SSA_Condition> {
 
     private String key;
     private String name;
-    private SSA_Color ssaColor;
-    private int threshold;
-    private double minFrequency;
-    private double maxFrequency;
+    private SSA_Color ssaColor = SSA_Colors.getColor("WHITE");
+    private int threshold = 10;
+    private float minFrequency = 0.001f;
+    private float maxFrequency = 1.000f;
 
     public SSA_Condition() {
+        if (SSA_Conditions.ssaConditions != null) {
+            this.key = "NEW_CONDITION_" + (SSA_Conditions.getConditionsList().size()+1);
+        }
     }
 
     public SSA_Condition(String key) {
         this.key = key;
     }
 
+    public SSA_Condition getClone() {
+        SSA_Condition clone = new SSA_Condition();
+        clone.setKey(this.getKey());
+        clone.setName(this.getName());
+        clone.setSsaColor(this.getSsaColor().getClone());
+        clone.setThreshold(this.getThreshold());
+        clone.setMinFrequency(this.getMinFrequency());
+        clone.setMaxFrequency(this.getMaxFrequency());
+        return clone;
+    }
 
     @Override
     public int compareTo(SSA_Condition o) {
@@ -71,19 +86,19 @@ public class SSA_Condition implements Serializable, Comparable<SSA_Condition> {
         this.threshold = threshold;
     }
 
-    public double getMinFrequency() {
+    public float getMinFrequency() {
         return minFrequency;
     }
 
-    public void setMinFrequency(double minFrequency) {
+    public void setMinFrequency(float minFrequency) {
         this.minFrequency = minFrequency;
     }
 
-    public double getMaxFrequency() {
+    public float getMaxFrequency() {
         return maxFrequency;
     }
 
-    public void setMaxFrequency(double maxFrequency) {
+    public void setMaxFrequency(float maxFrequency) {
         this.maxFrequency = maxFrequency;
     }
 

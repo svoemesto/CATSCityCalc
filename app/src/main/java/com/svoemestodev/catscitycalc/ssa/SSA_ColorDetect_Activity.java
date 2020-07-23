@@ -94,7 +94,7 @@ public class SSA_ColorDetect_Activity extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setTitle("Areas");
 
-        final SSA_AreasListAdapter arrayAdapter = new SSA_AreasListAdapter(this);
+        final SSA_AreasListAdapter arrayAdapter = new SSA_AreasListAdapter(this, SSA_Areas.getAreasList());
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

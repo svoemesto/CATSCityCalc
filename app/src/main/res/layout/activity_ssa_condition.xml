@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ssa.SSA_Condition_Activity">
+
+
+        <LinearLayout
+            android:id="@+id/assacnd_ll_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <ImageButton
+                    android:id="@+id/assacnd_ib_get_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setKey"
+                    />
+
+                <TextView
+                    android:id="@+id/assacnd_tv_key_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="Cond. KEY:"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/assacnd_tv_key_label"
+                    android:layout_alignBottom="@+id/assacnd_tv_key_label"
+                    android:layout_toStartOf="@+id/assacnd_tv_key_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/assacnd_tv_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/assacnd_ib_get_key"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <ImageButton
+                    android:id="@+id/assacnd_ib_get_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setName"
+                    />
+
+                <TextView
+                    android:id="@+id/assacnd_tv_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="Cond. name:"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/assacnd_tv_name_label"
+                    android:layout_alignBottom="@+id/assacnd_tv_name_label"
+                    android:layout_toStartOf="@+id/assacnd_tv_name_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/assacnd_tv_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/jet_brains_mono_regular"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/assacnd_ib_get_name"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/assacnd_tv_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:textSize="30sp"
+                    android:text="██"
+                    />
+
+                <TextView
+                    android:id="@+id/assacnd_tv_color_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/assacnd_tv_color"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@android:color/black"
+                    tools:text="COLOR_KEY"
+                    />
+
+                <TextView
+                    android:id="@+id/assacnd_tv_color_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/assacnd_tv_color"
+                    android:layout_below="@id/assacnd_tv_color_key_value"
+                    android:layout_marginStart="10dp"
+                    android:textSize="12sp"
+                    tools:text="Color name"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/assacnd_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:id="@+id/assacnd_tv_threshold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Threshold"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/assacnd_bt_threshold_minus"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_threshold_plus"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/assacnd_tv_threshold_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="36sp"
+                            android:layout_marginTop="2dp"
+                            android:textSize="28sp"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/jet_brains_mono_regular"
+                            android:gravity="center_horizontal"
+                            tools:text="13"
+                            />
+                    </RelativeLayout>
+
+                    <SeekBar
+                        android:id="@+id/assacnd_sb_threshold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:min="0"
+                        android:max="255"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:id="@+id/assacnd_tv_min_freq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Min frequency"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/assacnd_bt_min_freq_minus10"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_min_freq_minus1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_min_freq_plus1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_min_freq_plus10"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/assacnd_tv_min_freq_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="36sp"
+                            android:layout_marginTop="2dp"
+                            android:textSize="28sp"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/jet_brains_mono_regular"
+                            android:gravity="center_horizontal"
+                            tools:text="0.000"
+                            />
+                    </RelativeLayout>
+
+                    <SeekBar
+                        android:id="@+id/assacnd_sb_min_freq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:min="0"
+                        android:max="100"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:id="@+id/assacnd_tv_max_freq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Max frequency"/>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/assacnd_bt_max_freq_minus10"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_max_freq_minus1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_max_freq_plus1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                            <Button
+                                android:id="@+id/assacnd_bt_max_freq_plus10"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/assacnd_tv_max_freq_value"
+                            android:layout_width="match_parent"
+                            android:layout_height="36sp"
+                            android:layout_marginTop="2dp"
+                            android:textSize="28sp"
+                            android:textColor="#000000"
+                            android:fontFamily="@font/jet_brains_mono_regular"
+                            android:gravity="center_horizontal"
+                            tools:text="0.000"
+                            />
+                    </RelativeLayout>
+
+                    <SeekBar
+                        android:id="@+id/assacnd_sb_max_freq"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:min="0"
+                        android:max="100"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/assacnd_bt_show_areas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/assacnd_ll_layout"
+        android:text="Show areas satisfied condition"
+        android:onClick="showAreasSatisfiedCondition"/>
+
+    <ProgressBar
+        android:id="@+id/assacnd_pb_progress"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        android:layout_below="@id/assacnd_bt_show_areas"
+        />
+
+
+    <ListView
+        android:id="@+id/assacnd_lv_areas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/assacnd_bt_show_areas"
+        />
+
+</RelativeLayout>

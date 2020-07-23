@@ -42,7 +42,6 @@
                 android:id="@+id/assab_btn_areas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:text="Areas"
                 android:onClick="openAreas"
                 />
@@ -51,9 +50,16 @@
                 android:id="@+id/assab_btn_colors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:text="Colors"
                 android:onClick="openColors"
+                />
+
+            <Button
+                android:id="@+id/assab_btn_conditions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Conditions"
+                android:onClick="openConditions"
                 />
 
         </LinearLayout>

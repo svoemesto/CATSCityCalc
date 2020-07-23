@@ -59,6 +59,15 @@ public class SSA_Area implements Serializable, Comparable<SSA_Area> {
         return clone;
     }
 
+    public boolean isSatisfiesCondition(SSA_Screenshot ssaScreenshot, SSA_Condition ssaCondition) {
+        boolean result = false;
+        if (ssaCondition != null) {
+            Bitmap bitmap = this.getAreaBitmap(ssaScreenshot);
+            result = PictureProcessor.isConditionTrue(bitmap, ssaCondition);
+        }
+        return result;
+    }
+
     public Bitmap getAreaBitmap(SSA_Screenshot ssaScreenshot) {
         return getAreaBitmap(ssaScreenshot, null);
     }

@@ -42,7 +42,7 @@ import java.util.List;
 
 public class SSA_Area_Activity extends AppCompatActivity {
 
-    public static SSA_Area ssaArea;
+
     TextView assaae_tv_key_value;
     TextView assaae_tv_name_value;
     TextView assaae_tv_parent_value;
@@ -174,12 +174,12 @@ public class SSA_Area_Activity extends AppCompatActivity {
     Button lssarbt_bt_scale_y_plus1;
     Button lssarbt_bt_scale_y_plus10;
     SeekBar lssarbt_sb_scale_y;
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+    public static SSA_Area ssaArea;
     int cropConditionIndex = 0;
     int rbtConditionIndex = 0;
 
@@ -2091,7 +2091,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
         builder.setCancelable(true);
         builder.setTitle("Areas");
 
-        final SSA_AreasListAdapter arrayAdapter = new SSA_AreasListAdapter(this);
+        final SSA_AreasListAdapter arrayAdapter = new SSA_AreasListAdapter(this, SSA_Areas.getAreasList());
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

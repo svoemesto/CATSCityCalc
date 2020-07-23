@@ -1264,16 +1264,23 @@ public class SSA_Utils {
         SSA_Conditions ssaConditions = new SSA_Conditions();
         Map<String, SSA_Condition> map = new HashMap<>();
         SSA_Condition ssaCondition;
-        SSA_Color ssaColor;
-        
-        ssaCondition = new SSA_Condition("CITY_TIME");
-        ssaCondition.setName("Время до конца игры");
-        ssaCondition.setSsaColor(SSA_Colors.getColor("WHITE"));
+
+        ssaCondition = new SSA_Condition("IS_X2_PRESENT");
+        ssaCondition.setName("Есть желтая скрепка");
+        ssaCondition.setSsaColor(SSA_Colors.getColor("IS_X2"));
         ssaCondition.setThreshold(10);
-        ssaCondition.setMinFrequency(0.00);
-        ssaCondition.setMaxFrequency(1.00);
+        ssaCondition.setMinFrequency(0.001f);
+        ssaCondition.setMaxFrequency(1.000f);
         map.put(ssaCondition.getKey(), ssaCondition);
 
+        ssaCondition = new SSA_Condition("MAY_X2_PRESENT");
+        ssaCondition.setName("Есть серая скрепка");
+        ssaCondition.setSsaColor(SSA_Colors.getColor("MAY_X2"));
+        ssaCondition.setThreshold(5);
+        ssaCondition.setMinFrequency(0.001f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
+        
         ssaConditions.setMap(map);
         return ssaConditions;
     }

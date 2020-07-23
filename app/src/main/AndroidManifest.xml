@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
-        <activity android:name=".ssa.SSA_ColorDetect_Activity"></activity>
+        <activity android:name=".ssa.SSA_Condition_Activity" />
+        <activity android:name=".ssa.SSA_Conditions_Activity" />
+        <activity android:name=".ssa.SSA_ColorDetect_Activity" />
         <activity android:name=".ssa.SSA_Color_Activity" />
         <activity android:name=".ssa.SSA_Colors_Activity" />
         <activity android:name=".ssa.SSA_Area_Activity" />
