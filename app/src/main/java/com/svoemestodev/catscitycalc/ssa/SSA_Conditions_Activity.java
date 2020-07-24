@@ -54,7 +54,7 @@ public class SSA_Conditions_Activity extends AppCompatActivity {
     }
 
     private void displayRecords() {
-        assac_lv_conditions.setAdapter(new ListconditionsAdapter(this));
+        assac_lv_conditions.setAdapter(new ListConditionsAdapter(this));
     }
 
     @Override
@@ -117,9 +117,9 @@ public class SSA_Conditions_Activity extends AppCompatActivity {
 
     }
 
-    private class ListconditionsAdapter extends ArrayAdapter<SSA_Condition> {
+    private class ListConditionsAdapter extends ArrayAdapter<SSA_Condition> {
 
-        public ListconditionsAdapter(@NonNull Context context) {
+        public ListConditionsAdapter(@NonNull Context context) {
             super(context, R.layout.layout_ssa_conditions, SSA_Conditions.getConditionsList());
         }
 

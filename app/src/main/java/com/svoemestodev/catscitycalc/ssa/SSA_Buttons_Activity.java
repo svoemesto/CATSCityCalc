@@ -94,4 +94,12 @@ public class SSA_Buttons_Activity extends AppCompatActivity {
         Intent intent = new Intent(this, SSA_Conditions_Activity.class);
         startActivityForResult(intent, 0);
     }
+
+    public void openRACs(View view) {
+        Intent intent = new Intent(this, SSA_Rules_Area_Condition_Activity.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void openRules(View view) {
+    }
 }

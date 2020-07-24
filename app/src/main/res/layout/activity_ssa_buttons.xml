@@ -62,6 +62,22 @@
                 android:onClick="openConditions"
                 />
 
+            <Button
+                android:id="@+id/assab_btn_racs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rules Area Condition"
+                android:onClick="openRACs"
+                />
+
+            <Button
+                android:id="@+id/assab_btn_rules"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rules"
+                android:onClick="openRules"
+                />
+
         </LinearLayout>
 
     </ScrollView>

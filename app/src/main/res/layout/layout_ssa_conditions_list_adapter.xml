@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="10dp"
+    >
+
+    <TextView
+        android:id="@+id/lssacla_tv_key_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:textColor="@android:color/black"
+        tools:text="CONDITION_KEY"
+        />
+
+    <TextView
+        android:id="@+id/lssacla_tv_name_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/lssacla_tv_key_value"
+        android:layout_marginStart="10dp"
+        android:textSize="12sp"
+        tools:text="Condition name"
+        />
+
+    <TextView
+        android:id="@+id/lssacla_tv_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textSize="30sp"
+        android:text="█"
+        />
+
+    <TextView
+        android:id="@+id/lssacla_tv_threshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/lssacla_tv_color"
+        android:layout_marginEnd="2dp"
+        android:textStyle="italic"
+        android:textColor="@android:color/black"
+        tools:text="TH=10"
+        />
+
+    <TextView
+        android:id="@+id/lssacla_tv_frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/lssacla_tv_color"
+        android:layout_below="@id/lssacla_tv_key_value"
+        android:layout_marginEnd="2dp"
+        android:textStyle="italic"
+        android:textSize="12sp"
+        tools:text="0.000-1.000"
+        />
+
+</RelativeLayout>
+

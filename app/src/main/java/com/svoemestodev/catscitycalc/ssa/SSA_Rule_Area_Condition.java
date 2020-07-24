@@ -8,8 +8,8 @@ public class SSA_Rule_Area_Condition implements Serializable, Comparable<SSA_Rul
 
     private String key;
     private String name;
-    private SSA_Area ssaArea;
-    private SSA_Condition ssaCondition;
+    private SSA_Area ssaArea = new SSA_Area();
+    private SSA_Condition ssaCondition = new SSA_Condition();
 
     public SSA_Rule_Area_Condition() {
         if (SSA_Rules_Area_Condition.ssaRulesAreaCondition != null) {

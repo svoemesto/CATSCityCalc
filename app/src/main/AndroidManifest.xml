@@ -22,6 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="q">
+        <activity android:name=".ssa.SSA_Rule_Area_Condition_Activity"
+            android:label="Rule Area Condition"/>
+        <activity android:name=".ssa.SSA_Rules_Area_Condition_Activity"
+            android:label="RACs"/>
         <activity android:name=".ssa.SSA_Condition_Activity"
                   android:label="Condition"/>
         <activity android:name=".ssa.SSA_Conditions_Activity"
