@@ -1293,6 +1293,9 @@ public class SSA_Utils {
         ssaRuleAreaCondition = new SSA_Rule_Area_Condition("BLD1_IS_X2", "Здание №1 с золотой скрепкой", SSA_Areas.getArea("CITY_BLD1"), SSA_Conditions.getCondition("IS_X2_PRESENT"));
         map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
 
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition("BLD1_MAY_X2", "Здание №1 с серой скрепкой", SSA_Areas.getArea("CITY_BLD1"), SSA_Conditions.getCondition("MAY_X2_PRESENT"));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
         ssaRulesAreaCondition.setMap(map);
         return ssaRulesAreaCondition;
     }
