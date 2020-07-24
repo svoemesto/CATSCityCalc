@@ -1308,8 +1308,12 @@ public class SSA_Utils {
 
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule("RULE_KEY", "RULE_NAME");
+        ssaRule = new SSA_Rule("BLD1_X2", "Здание №1 со скрепкой");
+        listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition("BLD1_IS_X2"));
+        listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition("BLD1_MAY_X2"));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
 
         ssaRules.setMap(map);
         return ssaRules;

@@ -28,6 +28,11 @@ public class SSA_Rule_Area_Condition implements Serializable, Comparable<SSA_Rul
         this.key = key;
     }
 
+    public boolean check(SSA_Screenshot ssaScreenshot) {
+        return this.getSsaArea().isSatisfiesCondition(ssaScreenshot, this.getSsaCondition());
+    }
+
+
     public SSA_Rule_Area_Condition getClone() {
         SSA_Rule_Area_Condition clone = new SSA_Rule_Area_Condition();
         clone.setKey(this.getKey());

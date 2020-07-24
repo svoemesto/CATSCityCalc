@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    tools:context=".ssa.SSA_Rule_Activity">
+
+
+        <LinearLayout
+            android:id="@+id/assarul_ll_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <ImageButton
+                    android:id="@+id/assarul_ib_get_key"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setKey"
+                    />
+
+                <TextView
+                    android:id="@+id/assarul_tv_key_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="Rule KEY:"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/assarul_tv_key_label"
+                    android:layout_alignBottom="@+id/assarul_tv_key_label"
+                    android:layout_toStartOf="@+id/assarul_tv_key_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/assarul_tv_key_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/assarul_ib_get_key"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <ImageButton
+                    android:id="@+id/assarul_ib_get_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_keyboard_24"
+                    android:onClick="setName"
+                    />
+
+                <TextView
+                    android:id="@+id/assarul_tv_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:gravity="center"
+                    android:layout_alignParentStart="true"
+                    android:text="Rule name:"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_toEndOf="@+id/assarul_tv_name_label"
+                    android:layout_alignBottom="@+id/assarul_tv_name_label"
+                    android:layout_toStartOf="@+id/assarul_tv_name_value"
+                    android:background="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/assarul_tv_name_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:textColor="@android:color/black"
+                    android:fontFamily="@font/jet_brains_mono_regular"
+                    android:textSize="18sp"
+                    android:gravity="end|center_vertical"
+                    android:layout_toStartOf="@id/assarul_ib_get_name"
+                    android:layout_marginStart="10dp"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/assarul_ib_add_list_true"
+                            android:text="List True"
+                            android:gravity="center_horizontal"
+                            android:textColor="#FF000000"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/assarul_ib_add_list_true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_round_add_circle_outline_24"
+                            android:onClick="doAddRACToListTrue"
+                            />
+
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/assarul_lv_list_true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/assarul_ib_add_list_false"
+                            android:text="List False"
+                            android:gravity="center_horizontal"
+                            android:textColor="#FF000000"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/assarul_ib_add_list_false"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_round_add_circle_outline_24"
+                            android:onClick="doAddRACToListFalse"/>
+
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/assarul_lv_list_false"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/assarul_ib_add_list_one_true"
+                            android:text="List One True"
+                            android:gravity="center_horizontal"
+                            android:textColor="#FF000000"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/assarul_ib_add_list_one_true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_round_add_circle_outline_24"
+                            android:onClick="doAddRACToListOneTrue"/>
+
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/assarul_lv_list_one_true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/assarul_ib_add_list_any_true"
+                            android:text="List Any True"
+                            android:gravity="center_horizontal"
+                            android:textColor="#FF000000"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/assarul_ib_add_list_any_true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:src="@drawable/ic_round_add_circle_outline_24"
+                            android:onClick="doAddRACToListAnyTrue"/>
+
+
+                    </RelativeLayout>
+
+                    <ListView
+                        android:id="@+id/assarul_lv_list_any_true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</RelativeLayout>

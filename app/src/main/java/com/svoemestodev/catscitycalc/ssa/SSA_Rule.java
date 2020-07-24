@@ -30,6 +30,48 @@ public class SSA_Rule implements Serializable, Comparable<SSA_Rule> {
         this.key = key;
     }
 
+    public boolean check(SSA_Screenshot ssaScreenshot) {
+
+        List<SSA_Rule_Area_Condition> listTrue = this.getListTrue();
+        List<SSA_Rule_Area_Condition> listFalse = this.getListFalse();
+        List<SSA_Rule_Area_Condition> listOneTrue = this.getListOneTrue();
+        List<SSA_Rule_Area_Condition> listAnyTrue = this.getListAnyTrue();
+
+        if (listTrue.size() != 0) {
+            for (SSA_Rule_Area_Condition ssaRAC: listTrue) {
+                boolean flagTemp = ssaRAC.check(ssaScreenshot);
+                if (!flagTemp) return false;
+            }
+        }
+
+        if (listFalse.size() != 0) {
+            for (SSA_Rule_Area_Condition ssaRAC: listFalse) {
+                boolean flagTemp = ssaRAC.check(ssaScreenshot);
+                if (flagTemp) return false;
+            }
+        }
+
+        if (listOneTrue.size() != 0) {
+            int count = 0;
+            for (SSA_Rule_Area_Condition ssaRAC: listOneTrue) {
+                boolean flagTemp = ssaRAC.check(ssaScreenshot);
+                if (flagTemp) count++;
+            }
+            if (count != 1) return false;
+        }
+
+        if (listAnyTrue.size() != 0) {
+            int count = 0;
+            for (SSA_Rule_Area_Condition ssaRAC: listAnyTrue) {
+                boolean flagTemp = ssaRAC.check(ssaScreenshot);
+                if (flagTemp) count++;
+            }
+            if (count == 0) return false;
+        }
+
+        return true;
+    }
+
     public SSA_Rule getClone() {
         SSA_Rule clone = new SSA_Rule();
         clone.setKey(this.getKey());

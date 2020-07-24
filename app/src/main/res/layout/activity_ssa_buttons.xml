@@ -33,52 +33,158 @@
         android:layout_alignParentTop="true">
 
         <LinearLayout
-            android:id="@+id/assab_ll_linear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/assab_btn_areas"
+            <LinearLayout
+                android:id="@+id/assab_ll_linear"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Areas"
-                android:onClick="openAreas"
-                />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/assab_btn_colors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Colors"
-                android:onClick="openColors"
-                />
+                <Button
+                    android:id="@+id/assab_btn_areas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Areas"
+                    android:onClick="openAreas"
+                    />
 
-            <Button
-                android:id="@+id/assab_btn_conditions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Conditions"
-                android:onClick="openConditions"
-                />
+                <Button
+                    android:id="@+id/assab_btn_colors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Colors"
+                    android:onClick="openColors"
+                    />
 
-            <Button
-                android:id="@+id/assab_btn_racs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rules Area Condition"
-                android:onClick="openRACs"
-                />
+                <Button
+                    android:id="@+id/assab_btn_conditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Conditions"
+                    android:onClick="openConditions"
+                    />
 
-            <Button
-                android:id="@+id/assab_btn_rules"
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/assab_ll_linear2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Rules"
-                android:onClick="openRules"
-                />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/assab_btn_racs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rules Area Condition"
+                    android:onClick="openRACs"
+                    />
+
+                <Button
+                    android:id="@+id/assab_btn_rules"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Rules"
+                    android:onClick="openRules"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/assab_ll_linear3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/assab_btn_racs_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Check RACs"
+                    android:onClick="checkRACs"
+                    />
+
+                <Button
+                    android:id="@+id/assab_btn_rules_check"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Check Rules"
+                    android:onClick="checkRules"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/assab_ll_linear4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ProgressBar
+                    android:id="@+id/assab_pb_progress_racs"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    />
+
+                <ProgressBar
+                    android:id="@+id/assab_pb_progress_rules"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/assab_ll_linear5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/assab_tv_list_racs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#FF000000"
+                    android:text="List checked RACs"
+                    android:gravity="center_horizontal"/>
+
+                <TextView
+                    android:id="@+id/assab_tv_list_rules"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#FF000000"
+                    android:text="List checked rules"
+                    android:gravity="center_horizontal"/>
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
     </ScrollView>
 
