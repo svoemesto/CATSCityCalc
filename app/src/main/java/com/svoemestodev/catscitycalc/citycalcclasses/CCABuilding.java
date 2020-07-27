@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import com.svoemestodev.catscitycalc.ssa.SSA_Rules;
+import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 public class CCABuilding extends CityCalcArea {
@@ -26,9 +28,10 @@ public class CCABuilding extends CityCalcArea {
     public CCABuilding() {
     }
 
-
     public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
         super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
+        SSA_Screenshot ssaScr = cityCalc.getSsaScreenshot();
+//        this.isPresent = SSA_Rules.getRule("IS_GAME_BOX_BACK").check(ssaScr);
         this.isPresent = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), 0xFFFFFFFF, 10, 10) > 0.2f;
         if (this.isPresent) {
             this.mayX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[3],10, 10) > 0.02f || PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
