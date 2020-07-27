@@ -24,9 +24,9 @@ public class CityCalc { //extends Activity {
 
     private File fileScreenshot;
     private SSA_Screenshot ssaScreenshot;
-    private Bitmap bmpScreenshot;       // исходный скриншот
-    private int calibrateX;             // сдвиг центра по X
-    private int calibrateY;             // сдвиг центра по Y
+//    private Bitmap bmpScreenshot;       // исходный скриншот
+//    private int calibrateX;             // сдвиг центра по X
+//    private int calibrateY;             // сдвиг центра по Y
     private CityCalcType cityCalcType;
     private String userNIC = "";
     private String userUID = "";
@@ -43,9 +43,10 @@ public class CityCalc { //extends Activity {
         CityCalc clone = new CityCalc();
 
         clone.fileScreenshot = this.fileScreenshot;
-        clone.bmpScreenshot = this.bmpScreenshot;
-        clone.calibrateX = this.calibrateX;
-        clone.calibrateY = this.calibrateY;
+        clone.ssaScreenshot = this.ssaScreenshot.getClone();
+//        clone.bmpScreenshot = this.bmpScreenshot;
+//        clone.calibrateX = this.calibrateX;
+//        clone.calibrateY = this.calibrateY;
         clone.cityCalcType = this.cityCalcType;
         clone.userNIC = this.userNIC;
         clone.userUID = this.userUID;
@@ -97,28 +98,37 @@ public class CityCalc { //extends Activity {
         this.fileScreenshot = fileScreenshot;
     }
 
-    public Bitmap getBmpScreenshot() {
-        return bmpScreenshot;
+//    public Bitmap getBmpScreenshot() {
+//        return bmpScreenshot;
+//    }
+//
+//    public void setBmpScreenshot(Bitmap bmpScreenshot) {
+//        this.bmpScreenshot = bmpScreenshot;
+//    }
+//
+//    public int getCalibrateX() {
+//        return calibrateX;
+//    }
+//
+//    public void setCalibrateX(int calibrateX) {
+//        this.calibrateX = calibrateX;
+//    }
+//
+//    public int getCalibrateY() {
+//        return calibrateY;
+//    }
+//
+//    public void setCalibrateY(int calibrateY) {
+//        this.calibrateY = calibrateY;
+//    }
+
+
+    public SSA_Screenshot getSsaScreenshot() {
+        return ssaScreenshot;
     }
 
-    public void setBmpScreenshot(Bitmap bmpScreenshot) {
-        this.bmpScreenshot = bmpScreenshot;
-    }
-
-    public int getCalibrateX() {
-        return calibrateX;
-    }
-
-    public void setCalibrateX(int calibrateX) {
-        this.calibrateX = calibrateX;
-    }
-
-    public int getCalibrateY() {
-        return calibrateY;
-    }
-
-    public void setCalibrateY(int calibrateY) {
-        this.calibrateY = calibrateY;
+    public void setSsaScreenshot(SSA_Screenshot ssaScreenshot) {
+        this.ssaScreenshot = ssaScreenshot;
     }
 
     public CityCalcType getCityCalcType() {
@@ -169,9 +179,11 @@ public class CityCalc { //extends Activity {
         this.userNIC = userNIC;
     }
     
-    public SSA_Screenshot getSsaScreenshot() {
-        return new SSA_Screenshot(this.bmpScreenshot, this.calibrateX, this.calibrateY);
-    }
+//    public SSA_Screenshot getSsaScreenshot() {
+//        return new SSA_Screenshot(this.bmpScreenshot, this.calibrateX, this.calibrateY);
+//    }
+
+
 
     public boolean isAreaPresent(String areaKey) {
         return isAreaPresent(SSA_Areas.getArea(areaKey));
@@ -270,18 +282,18 @@ public class CityCalc { //extends Activity {
 
         this.cityCalcType = cityCalcType;
         this.fileScreenshot = file;
-        this.calibrateX = calibrateX;
-        this.calibrateY = calibrateY;
+//        this.calibrateX = calibrateX;
+//        this.calibrateY = calibrateY;
 //        this.context = context;
 
         thisCityCalc = this;
 
         if (fileScreenshot != null) {         // если файл не нулл
             if (fileScreenshot.exists()) {    // если файл физически существует
-                bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
-                if (this.bmpScreenshot != null) {
-                    if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) {
-
+                Bitmap bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
+                if (bmpScreenshot != null) {
+                    if (bmpScreenshot.getWidth() > bmpScreenshot.getHeight()) {
+                        this.ssaScreenshot = new SSA_Screenshot(bmpScreenshot, calibrateX, calibrateY);
                         thisCityCalc = new CityCalc(this, false);
 
                         this.mapAreas = thisCityCalc.mapAreas;
@@ -306,19 +318,19 @@ public class CityCalc { //extends Activity {
         this.teamID = teamID;
         this.cityCalcType = CityCalcType.ERROR;
         this.fileScreenshot = file;
-        this.calibrateX = calibrateX;
-        this.calibrateY = calibrateY;
+//        this.calibrateX = calibrateX;
+//        this.calibrateY = calibrateY;
 //        this.context = context;
 
         thisCityCalc = this;
 
         if (fileScreenshot != null) {         // если файл не нулл
             if (fileScreenshot.exists()) {    // если файл физически существует
-                bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
-                if (this.bmpScreenshot != null) {
-                    if (this.bmpScreenshot.getWidth() > this.bmpScreenshot.getHeight()) { //если пропорции экрана правильные - скрин может быть из игры
-
-                        SSA_Screenshot ssaScr = getSsaScreenshot();
+                Bitmap bmpScreenshot = BitmapFactory.decodeFile(fileScreenshot.getAbsolutePath());
+                if (bmpScreenshot != null) {
+                    if (bmpScreenshot.getWidth() > bmpScreenshot.getHeight()) { //если пропорции экрана правильные - скрин может быть из игры
+                        this.ssaScreenshot = new SSA_Screenshot(bmpScreenshot, calibrateX, calibrateY);
+                        SSA_Screenshot ssaScr = this.ssaScreenshot;
 
                         if (SSA_Rules.getRule(SSA_Key.RULE_IS_GAME_BOX_BACK.getKey()).check(ssaScr)) { // если найден квадрат "назад" - скрин из игры
                             if (SSA_Rules.getRule(SSA_Key.RULE_IS_CITY_BOX_INFO.getKey()).check(ssaScr) && SSA_Rules.getRule(SSA_Key.RULE_IS_CITY_BOX_GRAY.getKey()).check(ssaScr)) { // если нашлись красный квадрат с i и серый квадра рядом со времени - скрин из города
@@ -1433,8 +1445,8 @@ public class CityCalc { //extends Activity {
 
         CityCalcType cityCalcType = checkedCityCalc.cityCalcType;
         File file = checkedCityCalc.fileScreenshot;
-        int calibrateX = checkedCityCalc.calibrateX;
-        int calibrateY = checkedCityCalc.calibrateY;
+//        int calibrateX = checkedCityCalc.calibrateX;
+//        int calibrateY = checkedCityCalc.calibrateY;
 //        Context context = checkedCityCalc.context;
 
         this.userNIC = checkedCityCalc.userNIC;
@@ -1442,9 +1454,10 @@ public class CityCalc { //extends Activity {
         this.teamID = checkedCityCalc.teamID;
         this.cityCalcType = cityCalcType;
         this.fileScreenshot = file;
-        this.bmpScreenshot = checkedCityCalc.bmpScreenshot;
-        this.calibrateX = calibrateX;
-        this.calibrateY = calibrateY;
+        this.ssaScreenshot = checkedCityCalc.ssaScreenshot.getClone();
+//        this.bmpScreenshot = checkedCityCalc.bmpScreenshot;
+//        this.calibrateX = calibrateX;
+//        this.calibrateY = calibrateY;
 //        this.context = context;
 
         thisCityCalc = this;

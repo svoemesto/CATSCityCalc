@@ -561,7 +561,7 @@ public class BordersActivity extends AppCompatActivity {
 
         initMap();
         
-        fullBitmap = mainCityCalc.getBmpScreenshot();
+        fullBitmap = mainCityCalc.getSsaScreenshot().getBitmap();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         areaName.set(sharedPreferences.getString(PREF_BORDERS_AREA, String.valueOf(R.string.pref_bordersAreaName_default_value)));

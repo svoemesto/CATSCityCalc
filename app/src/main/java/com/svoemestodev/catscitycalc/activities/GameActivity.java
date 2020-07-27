@@ -598,7 +598,7 @@ public class GameActivity extends AppCompatActivity {
             if (ccaGame != null) {
                 Log.i(TAG, logMsgPref + "создание уведомления: " + ccaGame.getStatus());
 
-                GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, mainCityCalc.getBmpScreenshot());
+                GlobalApplication.mService.createNotification(ccaGame.getStatus(), 0, mainCityCalc.getSsaScreenshot().getBitmap());
 
             }
         }

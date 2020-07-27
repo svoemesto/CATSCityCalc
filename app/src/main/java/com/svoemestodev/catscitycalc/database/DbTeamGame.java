@@ -204,7 +204,7 @@ public class DbTeamGame implements Serializable {
                     try {
 
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        GameActivity.mainCityCalc.getBmpScreenshot().compress(Bitmap.CompressFormat.JPEG, 90, stream);
+                        GameActivity.mainCityCalc.getSsaScreenshot().getBitmap().compress(Bitmap.CompressFormat.JPEG, 90, stream);
                         this.bytesScreenshot = stream.toByteArray();
                         stream.close();
 

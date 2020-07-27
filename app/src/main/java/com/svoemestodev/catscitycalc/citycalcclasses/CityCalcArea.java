@@ -97,7 +97,7 @@ public class CityCalcArea {
             case BRB_PROGRESS:
             default:
                 return CropPosition.CENTER_VERTICAL;
-                
+
         }
     }
 
@@ -194,14 +194,14 @@ public class CityCalcArea {
 
     private Bitmap  cutSrc() {
         if (this.cityCalc != null) {
-            if (this.cityCalc.getBmpScreenshot() != null) {
+            if (this.cityCalc.getSsaScreenshot().getBitmap() != null) {
                 if (!this.isGeneric) {
-                    Bitmap sourceBitmap = this.cityCalc.getBmpScreenshot();
+                    Bitmap sourceBitmap = this.cityCalc.getSsaScreenshot().getBitmap();
                     int widthSource = sourceBitmap.getWidth();      // ширина исходной картинки
                     int heightSource = sourceBitmap.getHeight();   // высота исходной картинки
 
-                    int realCalibrateX = (widthSource / 2) > Math.abs(this.cityCalc.getCalibrateX()) ? this.cityCalc.getCalibrateX() : 0;
-                    int realCalibrateY = (heightSource / 2) > Math.abs(this.cityCalc.getCalibrateY()) ? this.cityCalc.getCalibrateY() : 0;
+                    int realCalibrateX = (widthSource / 2) > Math.abs(this.cityCalc.getSsaScreenshot().getCenterX()) ? this.cityCalc.getSsaScreenshot().getCenterX() : 0;
+                    int realCalibrateY = (heightSource / 2) > Math.abs(this.cityCalc.getSsaScreenshot().getCenterY()) ? this.cityCalc.getSsaScreenshot().getCenterY() : 0;
 
                     // координаты для вырезания картинки информации об игре
                     int x1 = 0, x2 = 0, y1 = 0, y2 = 0;
