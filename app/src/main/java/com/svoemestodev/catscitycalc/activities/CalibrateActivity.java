@@ -20,6 +20,9 @@ import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalc;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalcType;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
+import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 
 import java.util.Objects;
 
@@ -92,7 +95,12 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_x), GameActivity.calibrateX);
                 editor.apply();
-                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
+
+                SSA_Screenshot ssaScreenshot = new SSA_Screenshot(GameActivity.mainCityCalc.getSsaScreenshot().getBitmap(), GameActivity.calibrateX, GameActivity.calibrateY);
+                ivCalibrate.setImageBitmap(SSA_Areas.getArea(SSA_Key.AREA_CITY.getKey()).getAreaBitmap(ssaScreenshot));
+
+
+//                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
 //                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
 //                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
 //                }
@@ -119,7 +127,11 @@ public class CalibrateActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putInt(getString(R.string.pref_calibrate_y), GameActivity.calibrateY);
                 editor.apply();
-                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
+
+                SSA_Screenshot ssaScreenshot = new SSA_Screenshot(GameActivity.mainCityCalc.getSsaScreenshot().getBitmap(), GameActivity.calibrateX, GameActivity.calibrateY);
+                ivCalibrate.setImageBitmap(SSA_Areas.getArea(SSA_Key.AREA_CITY.getKey()).getAreaBitmap(ssaScreenshot));
+
+//                CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
 //                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
 //                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
 //                }
@@ -127,7 +139,10 @@ public class CalibrateActivity extends AppCompatActivity {
             }
         });
 
-        CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
+        SSA_Screenshot ssaScreenshot = new SSA_Screenshot(GameActivity.mainCityCalc.getSsaScreenshot().getBitmap(), GameActivity.calibrateX, GameActivity.calibrateY);
+        ivCalibrate.setImageBitmap(SSA_Areas.getArea(SSA_Key.AREA_CITY.getKey()).getAreaBitmap(ssaScreenshot));
+
+//        CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
 //        if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
 //            ivCalibrate.setImageBitmap(calibrateCityCalc.getMapAreas().get(Area.CITY).getBmpSrc());
 //        }

@@ -60,86 +60,86 @@ public class DbTeamGame implements Serializable {
     private int increaseOur;
     private int increaseEnemy;
 
-    private boolean isPresent_blt;
-    private boolean isPresent_blc;
-    private boolean isPresent_blb;
-    private boolean isPresent_brt;
-    private boolean isPresent_brc;
-    private boolean isPresent_brb;
+    private boolean isPresent_bld1;
+    private boolean isPresent_bld2;
+    private boolean isPresent_bld3;
+    private boolean isPresent_bld4;
+    private boolean isPresent_bld5;
+    private boolean isPresent_bld6;
 
-    private boolean isX2_blt;
-    private boolean isX2_blc;
-    private boolean isX2_blb;
-    private boolean isX2_brt;
-    private boolean isX2_brc;
-    private boolean isX2_brb;
+    private boolean isX2_bld1;
+    private boolean isX2_bld2;
+    private boolean isX2_bld3;
+    private boolean isX2_bld4;
+    private boolean isX2_bld5;
+    private boolean isX2_bld6;
 
-    private boolean mayX2_blt;
-    private boolean mayX2_blc;
-    private boolean mayX2_blb;
-    private boolean mayX2_brt;
-    private boolean mayX2_brc;
-    private boolean mayX2_brb;
+    private boolean mayX2_bld1;
+    private boolean mayX2_bld2;
+    private boolean mayX2_bld3;
+    private boolean mayX2_bld4;
+    private boolean mayX2_bld5;
+    private boolean mayX2_bld6;
 
-    private boolean buildingIsOur_blt;
-    private boolean buildingIsOur_blc;
-    private boolean buildingIsOur_blb;
-    private boolean buildingIsOur_brt;
-    private boolean buildingIsOur_brc;
-    private boolean buildingIsOur_brb;
+    private boolean buildingIsOur_bld1;
+    private boolean buildingIsOur_bld2;
+    private boolean buildingIsOur_bld3;
+    private boolean buildingIsOur_bld4;
+    private boolean buildingIsOur_bld5;
+    private boolean buildingIsOur_bld6;
 
-    private boolean buildingIsEmpty_blt;
-    private boolean buildingIsEmpty_blc;
-    private boolean buildingIsEmpty_blb;
-    private boolean buildingIsEmpty_brt;
-    private boolean buildingIsEmpty_brc;
-    private boolean buildingIsEmpty_brb;
+    private boolean buildingIsEmpty_bld1;
+    private boolean buildingIsEmpty_bld2;
+    private boolean buildingIsEmpty_bld3;
+    private boolean buildingIsEmpty_bld4;
+    private boolean buildingIsEmpty_bld5;
+    private boolean buildingIsEmpty_bld6;
 
-    private boolean buildingIsEnemy_blt;
-    private boolean buildingIsEnemy_blc;
-    private boolean buildingIsEnemy_blb;
-    private boolean buildingIsEnemy_brt;
-    private boolean buildingIsEnemy_brc;
-    private boolean buildingIsEnemy_brb;
+    private boolean buildingIsEnemy_bld1;
+    private boolean buildingIsEnemy_bld2;
+    private boolean buildingIsEnemy_bld3;
+    private boolean buildingIsEnemy_bld4;
+    private boolean buildingIsEnemy_bld5;
+    private boolean buildingIsEnemy_bld6;
 
-    private int our_points_blt;
-    private int our_points_blc;
-    private int our_points_blb;
-    private int our_points_brt;
-    private int our_points_brc;
-    private int our_points_brb;
+    private int our_points_bld1;
+    private int our_points_bld2;
+    private int our_points_bld3;
+    private int our_points_bld4;
+    private int our_points_bld5;
+    private int our_points_bld6;
 
-    private int enemy_points_blt;
-    private int enemy_points_blc;
-    private int enemy_points_blb;
-    private int enemy_points_brt;
-    private int enemy_points_brc;
-    private int enemy_points_brb;
+    private int enemy_points_bld1;
+    private int enemy_points_bld2;
+    private int enemy_points_bld3;
+    private int enemy_points_bld4;
+    private int enemy_points_bld5;
+    private int enemy_points_bld6;
 
-    private int slots_blt;
-    private int slots_blt_our;
-    private int slots_blt_empty;
-    private int slots_blt_enemy;
-    private int slots_blc;
-    private int slots_blc_our;
-    private int slots_blc_empty;
-    private int slots_blc_enemy;
-    private int slots_blb;
-    private int slots_blb_our;
-    private int slots_blb_empty;
-    private int slots_blb_enemy;
-    private int slots_brt;
-    private int slots_brt_our;
-    private int slots_brt_empty;
-    private int slots_brt_enemy;
-    private int slots_brc;
-    private int slots_brc_our;
-    private int slots_brc_empty;
-    private int slots_brc_enemy;
-    private int slots_brb;
-    private int slots_brb_our;
-    private int slots_brb_empty;
-    private int slots_brb_enemy;
+    private int slots_bld1;
+    private int slots_bld1_our;
+    private int slots_bld1_empty;
+    private int slots_bld1_enemy;
+    private int slots_bld2;
+    private int slots_bld2_our;
+    private int slots_bld2_empty;
+    private int slots_bld2_enemy;
+    private int slots_bld3;
+    private int slots_bld3_our;
+    private int slots_bld3_empty;
+    private int slots_bld3_enemy;
+    private int slots_bld4;
+    private int slots_bld4_our;
+    private int slots_bld4_empty;
+    private int slots_bld4_enemy;
+    private int slots_bld5;
+    private int slots_bld5_our;
+    private int slots_bld5_empty;
+    private int slots_bld5_enemy;
+    private int slots_bld6;
+    private int slots_bld6_our;
+    private int slots_bld6_empty;
+    private int slots_bld6_enemy;
 
     private int countOurX2;
     private int countEnemyX2;
@@ -155,37 +155,37 @@ public class DbTeamGame implements Serializable {
     private boolean canWinWithoutX2;
     private boolean canEarlyWin;
     private boolean canEarlyWinWithoutX2;
-    private boolean needToWin_blt;
-    private boolean needToWinWithoutX2_blt;
-    private boolean needToEarlyWin_blt;
-    private boolean needToEarlyWinWithoutX2_blt;
-    private boolean needToWin_blc;
-    private boolean needToWinWithoutX2_blc;
-    private boolean needToEarlyWin_blc;
-    private boolean needToEarlyWinWithoutX2_blc;
-    private boolean needToWin_blb;
-    private boolean needToWinWithoutX2_blb;
-    private boolean needToEarlyWin_blb;
-    private boolean needToEarlyWinWithoutX2_blb;
-    private boolean needToWin_brt;
-    private boolean needToWinWithoutX2_brt;
-    private boolean needToEarlyWin_brt;
-    private boolean needToEarlyWinWithoutX2_brt;
-    private boolean needToWin_brc;
-    private boolean needToWinWithoutX2_brc;
-    private boolean needToEarlyWin_brc;
-    private boolean needToEarlyWinWithoutX2_brc;
-    private boolean needToWin_brb;
-    private boolean needToWinWithoutX2_brb;
-    private boolean needToEarlyWin_brb;
-    private boolean needToEarlyWinWithoutX2_brb;
+    private boolean needToWin_bld1;
+    private boolean needToWinWithoutX2_bld1;
+    private boolean needToEarlyWin_bld1;
+    private boolean needToEarlyWinWithoutX2_bld1;
+    private boolean needToWin_bld2;
+    private boolean needToWinWithoutX2_bld2;
+    private boolean needToEarlyWin_bld2;
+    private boolean needToEarlyWinWithoutX2_bld2;
+    private boolean needToWin_bld3;
+    private boolean needToWinWithoutX2_bld3;
+    private boolean needToEarlyWin_bld3;
+    private boolean needToEarlyWinWithoutX2_bld3;
+    private boolean needToWin_bld4;
+    private boolean needToWinWithoutX2_bld4;
+    private boolean needToEarlyWin_bld4;
+    private boolean needToEarlyWinWithoutX2_bld4;
+    private boolean needToWin_bld5;
+    private boolean needToWinWithoutX2_bld5;
+    private boolean needToEarlyWin_bld5;
+    private boolean needToEarlyWinWithoutX2_bld5;
+    private boolean needToWin_bld6;
+    private boolean needToWinWithoutX2_bld6;
+    private boolean needToEarlyWin_bld6;
+    private boolean needToEarlyWinWithoutX2_bld6;
 
-    private boolean useInForecast_blt = true;
-    private boolean useInForecast_blc = true;
-    private boolean useInForecast_blb = true;
-    private boolean useInForecast_brt = true;
-    private boolean useInForecast_brc = true;
-    private boolean useInForecast_brb = true;
+    private boolean useInForecast_bld1 = true;
+    private boolean useInForecast_bld2 = true;
+    private boolean useInForecast_bld3 = true;
+    private boolean useInForecast_bld4 = true;
+    private boolean useInForecast_bld5 = true;
+    private boolean useInForecast_bld6 = true;
 
     private byte[] bytesScreenshot = null;
 
@@ -310,93 +310,93 @@ public class DbTeamGame implements Serializable {
         key = "increaseOur"; if (map.containsKey(key)) this.increaseOur = ((Long) map.get(key)).intValue();
         key = "increaseEnemy"; if (map.containsKey(key)) this.increaseEnemy = ((Long) map.get(key)).intValue();
 
-        key = "isPresent_blt"; if (map.containsKey(key)) this.isPresent_blt = (boolean) map.get(key);
-        key = "isPresent_blc"; if (map.containsKey(key)) this.isPresent_blc = (boolean) map.get(key);
-        key = "isPresent_blb"; if (map.containsKey(key)) this.isPresent_blb = (boolean) map.get(key);
-        key = "isPresent_brt"; if (map.containsKey(key)) this.isPresent_brt = (boolean) map.get(key);
-        key = "isPresent_brc"; if (map.containsKey(key)) this.isPresent_brc = (boolean) map.get(key);
-        key = "isPresent_brb"; if (map.containsKey(key)) this.isPresent_brb = (boolean) map.get(key);
+        key = "isPresent_bld1"; if (map.containsKey(key)) this.isPresent_bld1 = (boolean) map.get(key);
+        key = "isPresent_bld2"; if (map.containsKey(key)) this.isPresent_bld2 = (boolean) map.get(key);
+        key = "isPresent_bld3"; if (map.containsKey(key)) this.isPresent_bld3 = (boolean) map.get(key);
+        key = "isPresent_bld4"; if (map.containsKey(key)) this.isPresent_bld4 = (boolean) map.get(key);
+        key = "isPresent_bld5"; if (map.containsKey(key)) this.isPresent_bld5 = (boolean) map.get(key);
+        key = "isPresent_bld6"; if (map.containsKey(key)) this.isPresent_bld6 = (boolean) map.get(key);
         
-        key = "isX2_blt"; if (map.containsKey(key)) this.isX2_blt = (boolean) map.get(key);
-        key = "isX2_blc"; if (map.containsKey(key)) this.isX2_blc = (boolean) map.get(key);
-        key = "isX2_blb"; if (map.containsKey(key)) this.isX2_blb = (boolean) map.get(key);
-        key = "isX2_brt"; if (map.containsKey(key)) this.isX2_brt = (boolean) map.get(key);
-        key = "isX2_brc"; if (map.containsKey(key)) this.isX2_brc = (boolean) map.get(key);
-        key = "isX2_brb"; if (map.containsKey(key)) this.isX2_brb = (boolean) map.get(key);
+        key = "isX2_bld1"; if (map.containsKey(key)) this.isX2_bld1 = (boolean) map.get(key);
+        key = "isX2_bld2"; if (map.containsKey(key)) this.isX2_bld2 = (boolean) map.get(key);
+        key = "isX2_bld3"; if (map.containsKey(key)) this.isX2_bld3 = (boolean) map.get(key);
+        key = "isX2_bld4"; if (map.containsKey(key)) this.isX2_bld4 = (boolean) map.get(key);
+        key = "isX2_bld5"; if (map.containsKey(key)) this.isX2_bld5 = (boolean) map.get(key);
+        key = "isX2_bld6"; if (map.containsKey(key)) this.isX2_bld6 = (boolean) map.get(key);
         
-        key = "mayX2_blt"; if (map.containsKey(key)) this.mayX2_blt = (boolean) map.get(key);
-        key = "mayX2_blc"; if (map.containsKey(key)) this.mayX2_blc = (boolean) map.get(key);
-        key = "mayX2_blb"; if (map.containsKey(key)) this.mayX2_blb = (boolean) map.get(key);
-        key = "mayX2_brt"; if (map.containsKey(key)) this.mayX2_brt = (boolean) map.get(key);
-        key = "mayX2_brc"; if (map.containsKey(key)) this.mayX2_brc = (boolean) map.get(key);
-        key = "mayX2_brb"; if (map.containsKey(key)) this.mayX2_brb = (boolean) map.get(key);
+        key = "mayX2_bld1"; if (map.containsKey(key)) this.mayX2_bld1 = (boolean) map.get(key);
+        key = "mayX2_bld2"; if (map.containsKey(key)) this.mayX2_bld2 = (boolean) map.get(key);
+        key = "mayX2_bld3"; if (map.containsKey(key)) this.mayX2_bld3 = (boolean) map.get(key);
+        key = "mayX2_bld4"; if (map.containsKey(key)) this.mayX2_bld4 = (boolean) map.get(key);
+        key = "mayX2_bld5"; if (map.containsKey(key)) this.mayX2_bld5 = (boolean) map.get(key);
+        key = "mayX2_bld6"; if (map.containsKey(key)) this.mayX2_bld6 = (boolean) map.get(key);
         
-        key = "buildingIsOur_blt"; if (map.containsKey(key)) this.buildingIsOur_blt = (boolean) map.get(key);
-        key = "buildingIsOur_blc"; if (map.containsKey(key)) this.buildingIsOur_blc = (boolean) map.get(key);
-        key = "buildingIsOur_blb"; if (map.containsKey(key)) this.buildingIsOur_blb = (boolean) map.get(key);
-        key = "buildingIsOur_brt"; if (map.containsKey(key)) this.buildingIsOur_brt = (boolean) map.get(key);
-        key = "buildingIsOur_brc"; if (map.containsKey(key)) this.buildingIsOur_brc = (boolean) map.get(key);
-        key = "buildingIsOur_brb"; if (map.containsKey(key)) this.buildingIsOur_brb = (boolean) map.get(key);
+        key = "buildingIsOur_bld1"; if (map.containsKey(key)) this.buildingIsOur_bld1 = (boolean) map.get(key);
+        key = "buildingIsOur_bld2"; if (map.containsKey(key)) this.buildingIsOur_bld2 = (boolean) map.get(key);
+        key = "buildingIsOur_bld3"; if (map.containsKey(key)) this.buildingIsOur_bld3 = (boolean) map.get(key);
+        key = "buildingIsOur_bld4"; if (map.containsKey(key)) this.buildingIsOur_bld4 = (boolean) map.get(key);
+        key = "buildingIsOur_bld5"; if (map.containsKey(key)) this.buildingIsOur_bld5 = (boolean) map.get(key);
+        key = "buildingIsOur_bld6"; if (map.containsKey(key)) this.buildingIsOur_bld6 = (boolean) map.get(key);
         
-        key = "buildingIsEmpty_blt"; if (map.containsKey(key)) this.buildingIsEmpty_blt = (boolean) map.get(key);
-        key = "buildingIsEmpty_blc"; if (map.containsKey(key)) this.buildingIsEmpty_blc = (boolean) map.get(key);
-        key = "buildingIsEmpty_blb"; if (map.containsKey(key)) this.buildingIsEmpty_blb = (boolean) map.get(key);
-        key = "buildingIsEmpty_brt"; if (map.containsKey(key)) this.buildingIsEmpty_brt = (boolean) map.get(key);
-        key = "buildingIsEmpty_brc"; if (map.containsKey(key)) this.buildingIsEmpty_brc = (boolean) map.get(key);
-        key = "buildingIsEmpty_brb"; if (map.containsKey(key)) this.buildingIsEmpty_brb = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld1"; if (map.containsKey(key)) this.buildingIsEmpty_bld1 = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld2"; if (map.containsKey(key)) this.buildingIsEmpty_bld2 = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld3"; if (map.containsKey(key)) this.buildingIsEmpty_bld3 = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld4"; if (map.containsKey(key)) this.buildingIsEmpty_bld4 = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld5"; if (map.containsKey(key)) this.buildingIsEmpty_bld5 = (boolean) map.get(key);
+        key = "buildingIsEmpty_bld6"; if (map.containsKey(key)) this.buildingIsEmpty_bld6 = (boolean) map.get(key);
         
         
-        key = "buildingIsEnemy_blt"; if (map.containsKey(key)) this.buildingIsEnemy_blt = (boolean) map.get(key);
-        key = "buildingIsEnemy_blc"; if (map.containsKey(key)) this.buildingIsEnemy_blc = (boolean) map.get(key);
-        key = "buildingIsEnemy_blb"; if (map.containsKey(key)) this.buildingIsEnemy_blb = (boolean) map.get(key);
-        key = "buildingIsEnemy_brt"; if (map.containsKey(key)) this.buildingIsEnemy_brt = (boolean) map.get(key);
-        key = "buildingIsEnemy_brc"; if (map.containsKey(key)) this.buildingIsEnemy_brc = (boolean) map.get(key);
-        key = "buildingIsEnemy_brb"; if (map.containsKey(key)) this.buildingIsEnemy_brb = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld1"; if (map.containsKey(key)) this.buildingIsEnemy_bld1 = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld2"; if (map.containsKey(key)) this.buildingIsEnemy_bld2 = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld3"; if (map.containsKey(key)) this.buildingIsEnemy_bld3 = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld4"; if (map.containsKey(key)) this.buildingIsEnemy_bld4 = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld5"; if (map.containsKey(key)) this.buildingIsEnemy_bld5 = (boolean) map.get(key);
+        key = "buildingIsEnemy_bld6"; if (map.containsKey(key)) this.buildingIsEnemy_bld6 = (boolean) map.get(key);
         
-        key = "our_points_blt"; if (map.containsKey(key)) this.our_points_blt = ((Long) map.get(key)).intValue();
-        key = "our_points_blc"; if (map.containsKey(key)) this.our_points_blc = ((Long) map.get(key)).intValue();
-        key = "our_points_blb"; if (map.containsKey(key)) this.our_points_blb = ((Long) map.get(key)).intValue();
-        key = "our_points_brt"; if (map.containsKey(key)) this.our_points_brt = ((Long) map.get(key)).intValue();
-        key = "our_points_brc"; if (map.containsKey(key)) this.our_points_brc = ((Long) map.get(key)).intValue();
-        key = "our_points_brb"; if (map.containsKey(key)) this.our_points_brb = ((Long) map.get(key)).intValue();
+        key = "our_points_bld1"; if (map.containsKey(key)) this.our_points_bld1 = ((Long) map.get(key)).intValue();
+        key = "our_points_bld2"; if (map.containsKey(key)) this.our_points_bld2 = ((Long) map.get(key)).intValue();
+        key = "our_points_bld3"; if (map.containsKey(key)) this.our_points_bld3 = ((Long) map.get(key)).intValue();
+        key = "our_points_bld4"; if (map.containsKey(key)) this.our_points_bld4 = ((Long) map.get(key)).intValue();
+        key = "our_points_bld5"; if (map.containsKey(key)) this.our_points_bld5 = ((Long) map.get(key)).intValue();
+        key = "our_points_bld6"; if (map.containsKey(key)) this.our_points_bld6 = ((Long) map.get(key)).intValue();
 
-        key = "enemy_points_blt"; if (map.containsKey(key)) this.enemy_points_blt = ((Long) map.get(key)).intValue();
-        key = "enemy_points_blc"; if (map.containsKey(key)) this.enemy_points_blc = ((Long) map.get(key)).intValue();
-        key = "enemy_points_blb"; if (map.containsKey(key)) this.enemy_points_blb = ((Long) map.get(key)).intValue();
-        key = "enemy_points_brt"; if (map.containsKey(key)) this.enemy_points_brt = ((Long) map.get(key)).intValue();
-        key = "enemy_points_brc"; if (map.containsKey(key)) this.enemy_points_brc = ((Long) map.get(key)).intValue();
-        key = "enemy_points_brb"; if (map.containsKey(key)) this.enemy_points_brb = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld1"; if (map.containsKey(key)) this.enemy_points_bld1 = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld2"; if (map.containsKey(key)) this.enemy_points_bld2 = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld3"; if (map.containsKey(key)) this.enemy_points_bld3 = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld4"; if (map.containsKey(key)) this.enemy_points_bld4 = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld5"; if (map.containsKey(key)) this.enemy_points_bld5 = ((Long) map.get(key)).intValue();
+        key = "enemy_points_bld6"; if (map.containsKey(key)) this.enemy_points_bld6 = ((Long) map.get(key)).intValue();
 
         
-        key = "slots_blt"; if (map.containsKey(key)) this.slots_blt = ((Long) map.get(key)).intValue();
-        key = "slots_blt_our"; if (map.containsKey(key)) this.slots_blt_our = ((Long) map.get(key)).intValue();
-        key = "slots_blt_empty"; if (map.containsKey(key)) this.slots_blt_empty = ((Long) map.get(key)).intValue();
-        key = "slots_blt_enemy"; if (map.containsKey(key)) this.slots_blt_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld1"; if (map.containsKey(key)) this.slots_bld1 = ((Long) map.get(key)).intValue();
+        key = "slots_bld1_our"; if (map.containsKey(key)) this.slots_bld1_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld1_empty"; if (map.containsKey(key)) this.slots_bld1_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld1_enemy"; if (map.containsKey(key)) this.slots_bld1_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_blc"; if (map.containsKey(key)) this.slots_blc = ((Long) map.get(key)).intValue();
-        key = "slots_blc_our"; if (map.containsKey(key)) this.slots_blc_our = ((Long) map.get(key)).intValue();
-        key = "slots_blc_empty"; if (map.containsKey(key)) this.slots_blc_empty = ((Long) map.get(key)).intValue();
-        key = "slots_blc_enemy"; if (map.containsKey(key)) this.slots_blc_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld2"; if (map.containsKey(key)) this.slots_bld2 = ((Long) map.get(key)).intValue();
+        key = "slots_bld2_our"; if (map.containsKey(key)) this.slots_bld2_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld2_empty"; if (map.containsKey(key)) this.slots_bld2_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld2_enemy"; if (map.containsKey(key)) this.slots_bld2_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_blb"; if (map.containsKey(key)) this.slots_blb = ((Long) map.get(key)).intValue();
-        key = "slots_blb_our"; if (map.containsKey(key)) this.slots_blb_our = ((Long) map.get(key)).intValue();
-        key = "slots_blb_empty"; if (map.containsKey(key)) this.slots_blb_empty = ((Long) map.get(key)).intValue();
-        key = "slots_blb_enemy"; if (map.containsKey(key)) this.slots_blb_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld3"; if (map.containsKey(key)) this.slots_bld3 = ((Long) map.get(key)).intValue();
+        key = "slots_bld3_our"; if (map.containsKey(key)) this.slots_bld3_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld3_empty"; if (map.containsKey(key)) this.slots_bld3_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld3_enemy"; if (map.containsKey(key)) this.slots_bld3_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brt"; if (map.containsKey(key)) this.slots_brt = ((Long) map.get(key)).intValue();
-        key = "slots_brt_our"; if (map.containsKey(key)) this.slots_brt_our = ((Long) map.get(key)).intValue();
-        key = "slots_brt_empty"; if (map.containsKey(key)) this.slots_brt_empty = ((Long) map.get(key)).intValue();
-        key = "slots_brt_enemy"; if (map.containsKey(key)) this.slots_brt_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld4"; if (map.containsKey(key)) this.slots_bld4 = ((Long) map.get(key)).intValue();
+        key = "slots_bld4_our"; if (map.containsKey(key)) this.slots_bld4_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld4_empty"; if (map.containsKey(key)) this.slots_bld4_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld4_enemy"; if (map.containsKey(key)) this.slots_bld4_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brc"; if (map.containsKey(key)) this.slots_brc = ((Long) map.get(key)).intValue();
-        key = "slots_brc_our"; if (map.containsKey(key)) this.slots_brc_our = ((Long) map.get(key)).intValue();
-        key = "slots_brc_empty"; if (map.containsKey(key)) this.slots_brc_empty = ((Long) map.get(key)).intValue();
-        key = "slots_brc_enemy"; if (map.containsKey(key)) this.slots_brc_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld5"; if (map.containsKey(key)) this.slots_bld5 = ((Long) map.get(key)).intValue();
+        key = "slots_bld5_our"; if (map.containsKey(key)) this.slots_bld5_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld5_empty"; if (map.containsKey(key)) this.slots_bld5_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld5_enemy"; if (map.containsKey(key)) this.slots_bld5_enemy = ((Long) map.get(key)).intValue();
 
-        key = "slots_brb"; if (map.containsKey(key)) this.slots_brb = ((Long) map.get(key)).intValue();
-        key = "slots_brb_our"; if (map.containsKey(key)) this.slots_brb_our = ((Long) map.get(key)).intValue();
-        key = "slots_brb_empty"; if (map.containsKey(key)) this.slots_brb_empty = ((Long) map.get(key)).intValue();
-        key = "slots_brb_enemy"; if (map.containsKey(key)) this.slots_brb_enemy = ((Long) map.get(key)).intValue();
+        key = "slots_bld6"; if (map.containsKey(key)) this.slots_bld6 = ((Long) map.get(key)).intValue();
+        key = "slots_bld6_our"; if (map.containsKey(key)) this.slots_bld6_our = ((Long) map.get(key)).intValue();
+        key = "slots_bld6_empty"; if (map.containsKey(key)) this.slots_bld6_empty = ((Long) map.get(key)).intValue();
+        key = "slots_bld6_enemy"; if (map.containsKey(key)) this.slots_bld6_enemy = ((Long) map.get(key)).intValue();
 
         key = "countOurX2"; if (map.containsKey(key)) this.countOurX2 = ((Long) map.get(key)).intValue();
         key = "countEnemyX2"; if (map.containsKey(key)) this.countEnemyX2 = ((Long) map.get(key)).intValue();
@@ -412,37 +412,37 @@ public class DbTeamGame implements Serializable {
         key = "canWinWithoutX2"; if (map.containsKey(key)) this.canWinWithoutX2 = (boolean) map.get(key);
         key = "canEarlyWin"; if (map.containsKey(key)) this.canEarlyWin = (boolean) map.get(key);
         key = "canEarlyWinWithoutX2"; if (map.containsKey(key)) this.canEarlyWinWithoutX2 = (boolean) map.get(key);
-        key = "needToWin_blt"; if (map.containsKey(key)) this.needToWin_blt = (boolean) map.get(key);
-        key = "needToWinWithoutX2_blt"; if (map.containsKey(key)) this.needToWinWithoutX2_blt = (boolean) map.get(key);
-        key = "needToEarlyWin_blt"; if (map.containsKey(key)) this.needToEarlyWin_blt = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_blt"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blt = (boolean) map.get(key);
-        key = "needToWin_blc"; if (map.containsKey(key)) this.needToWin_blc = (boolean) map.get(key);
-        key = "needToWinWithoutX2_blc"; if (map.containsKey(key)) this.needToWinWithoutX2_blc = (boolean) map.get(key);
-        key = "needToEarlyWin_blc"; if (map.containsKey(key)) this.needToEarlyWin_blc = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_blc"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blc = (boolean) map.get(key);
-        key = "needToWin_blb"; if (map.containsKey(key)) this.needToWin_blb = (boolean) map.get(key);
-        key = "needToWinWithoutX2_blb"; if (map.containsKey(key)) this.needToWinWithoutX2_blb = (boolean) map.get(key);
-        key = "needToEarlyWin_blb"; if (map.containsKey(key)) this.needToEarlyWin_blb = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_blb"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_blb = (boolean) map.get(key);
-        key = "needToWin_brt"; if (map.containsKey(key)) this.needToWin_brt = (boolean) map.get(key);
-        key = "needToWinWithoutX2_brt"; if (map.containsKey(key)) this.needToWinWithoutX2_brt = (boolean) map.get(key);
-        key = "needToEarlyWin_brt"; if (map.containsKey(key)) this.needToEarlyWin_brt = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_brt"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brt = (boolean) map.get(key);
-        key = "needToWin_brc"; if (map.containsKey(key)) this.needToWin_brc = (boolean) map.get(key);
-        key = "needToWinWithoutX2_brc"; if (map.containsKey(key)) this.needToWinWithoutX2_brc = (boolean) map.get(key);
-        key = "needToEarlyWin_brc"; if (map.containsKey(key)) this.needToEarlyWin_brc = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_brc"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brc = (boolean) map.get(key);
-        key = "needToWin_brb"; if (map.containsKey(key)) this.needToWin_brb = (boolean) map.get(key);
-        key = "needToWinWithoutX2_brb"; if (map.containsKey(key)) this.needToWinWithoutX2_brb = (boolean) map.get(key);
-        key = "needToEarlyWin_brb"; if (map.containsKey(key)) this.needToEarlyWin_brb = (boolean) map.get(key);
-        key = "needToEarlyWinWithoutX2_brb"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_brb = (boolean) map.get(key);
+        key = "needToWin_bld1"; if (map.containsKey(key)) this.needToWin_bld1 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld1"; if (map.containsKey(key)) this.needToWinWithoutX2_bld1 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld1"; if (map.containsKey(key)) this.needToEarlyWin_bld1 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld1"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld1 = (boolean) map.get(key);
+        key = "needToWin_bld2"; if (map.containsKey(key)) this.needToWin_bld2 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld2"; if (map.containsKey(key)) this.needToWinWithoutX2_bld2 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld2"; if (map.containsKey(key)) this.needToEarlyWin_bld2 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld2"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld2 = (boolean) map.get(key);
+        key = "needToWin_bld3"; if (map.containsKey(key)) this.needToWin_bld3 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld3"; if (map.containsKey(key)) this.needToWinWithoutX2_bld3 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld3"; if (map.containsKey(key)) this.needToEarlyWin_bld3 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld3"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld3 = (boolean) map.get(key);
+        key = "needToWin_bld4"; if (map.containsKey(key)) this.needToWin_bld4 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld4"; if (map.containsKey(key)) this.needToWinWithoutX2_bld4 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld4"; if (map.containsKey(key)) this.needToEarlyWin_bld4 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld4"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld4 = (boolean) map.get(key);
+        key = "needToWin_bld5"; if (map.containsKey(key)) this.needToWin_bld5 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld5"; if (map.containsKey(key)) this.needToWinWithoutX2_bld5 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld5"; if (map.containsKey(key)) this.needToEarlyWin_bld5 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld5"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld5 = (boolean) map.get(key);
+        key = "needToWin_bld6"; if (map.containsKey(key)) this.needToWin_bld6 = (boolean) map.get(key);
+        key = "needToWinWithoutX2_bld6"; if (map.containsKey(key)) this.needToWinWithoutX2_bld6 = (boolean) map.get(key);
+        key = "needToEarlyWin_bld6"; if (map.containsKey(key)) this.needToEarlyWin_bld6 = (boolean) map.get(key);
+        key = "needToEarlyWinWithoutX2_bld6"; if (map.containsKey(key)) this.needToEarlyWinWithoutX2_bld6 = (boolean) map.get(key);
 
-        key = "useInForecast_blt"; if (map.containsKey(key)) this.useInForecast_blt = (boolean) map.get(key);
-        key = "useInForecast_blc"; if (map.containsKey(key)) this.useInForecast_blc = (boolean) map.get(key);
-        key = "useInForecast_blb"; if (map.containsKey(key)) this.useInForecast_blb = (boolean) map.get(key);
-        key = "useInForecast_brt"; if (map.containsKey(key)) this.useInForecast_brt = (boolean) map.get(key);
-        key = "useInForecast_brc"; if (map.containsKey(key)) this.useInForecast_brc = (boolean) map.get(key);
-        key = "useInForecast_brb"; if (map.containsKey(key)) this.useInForecast_brb = (boolean) map.get(key);
+        key = "useInForecast_bld1"; if (map.containsKey(key)) this.useInForecast_bld1 = (boolean) map.get(key);
+        key = "useInForecast_bld2"; if (map.containsKey(key)) this.useInForecast_bld2 = (boolean) map.get(key);
+        key = "useInForecast_bld3"; if (map.containsKey(key)) this.useInForecast_bld3 = (boolean) map.get(key);
+        key = "useInForecast_bld4"; if (map.containsKey(key)) this.useInForecast_bld4 = (boolean) map.get(key);
+        key = "useInForecast_bld5"; if (map.containsKey(key)) this.useInForecast_bld5 = (boolean) map.get(key);
+        key = "useInForecast_bld6"; if (map.containsKey(key)) this.useInForecast_bld6 = (boolean) map.get(key);
 
     }
     
@@ -461,125 +461,125 @@ public class DbTeamGame implements Serializable {
         this.increaseOur = ccaGame.getIncreaseOur();
         this.increaseEnemy = ccaGame.getIncreaseEnemy();
 
-        this.isPresent_blt = ccaGame.getBuildings()[0].isPresent();
-        this.isPresent_blc = ccaGame.getBuildings()[1].isPresent();
-        this.isPresent_blb = ccaGame.getBuildings()[2].isPresent();
-        this.isPresent_brt = ccaGame.getBuildings()[3].isPresent();
-        this.isPresent_brc = ccaGame.getBuildings()[4].isPresent();
-        this.isPresent_brb = ccaGame.getBuildings()[5].isPresent();
+        this.isPresent_bld1 = ccaGame.getBuildings()[0].isPresent();
+        this.isPresent_bld2 = ccaGame.getBuildings()[1].isPresent();
+        this.isPresent_bld3 = ccaGame.getBuildings()[2].isPresent();
+        this.isPresent_bld4 = ccaGame.getBuildings()[3].isPresent();
+        this.isPresent_bld5 = ccaGame.getBuildings()[4].isPresent();
+        this.isPresent_bld6 = ccaGame.getBuildings()[5].isPresent();
 
-        this.isX2_blt = ccaGame.getBuildings()[0].isX2();
-        this.isX2_blc = ccaGame.getBuildings()[1].isX2();
-        this.isX2_blb = ccaGame.getBuildings()[2].isX2();
-        this.isX2_brt = ccaGame.getBuildings()[3].isX2();
-        this.isX2_brc = ccaGame.getBuildings()[4].isX2();
-        this.isX2_brb = ccaGame.getBuildings()[5].isX2();
+        this.isX2_bld1 = ccaGame.getBuildings()[0].isX2();
+        this.isX2_bld2 = ccaGame.getBuildings()[1].isX2();
+        this.isX2_bld3 = ccaGame.getBuildings()[2].isX2();
+        this.isX2_bld4 = ccaGame.getBuildings()[3].isX2();
+        this.isX2_bld5 = ccaGame.getBuildings()[4].isX2();
+        this.isX2_bld6 = ccaGame.getBuildings()[5].isX2();
 
-        this.mayX2_blt = ccaGame.getBuildings()[0].isMayX2();
-        this.mayX2_blc = ccaGame.getBuildings()[1].isMayX2();
-        this.mayX2_blb = ccaGame.getBuildings()[2].isMayX2();
-        this.mayX2_brt = ccaGame.getBuildings()[3].isMayX2();
-        this.mayX2_brc = ccaGame.getBuildings()[4].isMayX2();
-        this.mayX2_brb = ccaGame.getBuildings()[5].isMayX2();
+        this.mayX2_bld1 = ccaGame.getBuildings()[0].isMayX2();
+        this.mayX2_bld2 = ccaGame.getBuildings()[1].isMayX2();
+        this.mayX2_bld3 = ccaGame.getBuildings()[2].isMayX2();
+        this.mayX2_bld4 = ccaGame.getBuildings()[3].isMayX2();
+        this.mayX2_bld5 = ccaGame.getBuildings()[4].isMayX2();
+        this.mayX2_bld6 = ccaGame.getBuildings()[5].isMayX2();
 
-        this.buildingIsOur_blt = ccaGame.getBuildings()[0].isBuildingIsOur();
-        this.buildingIsOur_blc = ccaGame.getBuildings()[1].isBuildingIsOur();
-        this.buildingIsOur_blb = ccaGame.getBuildings()[2].isBuildingIsOur();
-        this.buildingIsOur_brt = ccaGame.getBuildings()[3].isBuildingIsOur();
-        this.buildingIsOur_brc = ccaGame.getBuildings()[4].isBuildingIsOur();
-        this.buildingIsOur_brb = ccaGame.getBuildings()[5].isBuildingIsOur();
+        this.buildingIsOur_bld1 = ccaGame.getBuildings()[0].isBuildingIsOur();
+        this.buildingIsOur_bld2 = ccaGame.getBuildings()[1].isBuildingIsOur();
+        this.buildingIsOur_bld3 = ccaGame.getBuildings()[2].isBuildingIsOur();
+        this.buildingIsOur_bld4 = ccaGame.getBuildings()[3].isBuildingIsOur();
+        this.buildingIsOur_bld5 = ccaGame.getBuildings()[4].isBuildingIsOur();
+        this.buildingIsOur_bld6 = ccaGame.getBuildings()[5].isBuildingIsOur();
 
-        this.buildingIsEmpty_blt = ccaGame.getBuildings()[0].isBuildingIsEmpty();
-        this.buildingIsEmpty_blc = ccaGame.getBuildings()[1].isBuildingIsEmpty();
-        this.buildingIsEmpty_blb = ccaGame.getBuildings()[2].isBuildingIsEmpty();
-        this.buildingIsEmpty_brt = ccaGame.getBuildings()[3].isBuildingIsEmpty();
-        this.buildingIsEmpty_brc = ccaGame.getBuildings()[4].isBuildingIsEmpty();
-        this.buildingIsEmpty_brb = ccaGame.getBuildings()[5].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld1 = ccaGame.getBuildings()[0].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld2 = ccaGame.getBuildings()[1].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld3 = ccaGame.getBuildings()[2].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld4 = ccaGame.getBuildings()[3].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld5 = ccaGame.getBuildings()[4].isBuildingIsEmpty();
+        this.buildingIsEmpty_bld6 = ccaGame.getBuildings()[5].isBuildingIsEmpty();
 
-        this.buildingIsEnemy_blt = ccaGame.getBuildings()[0].isBuildingIsEnemy();
-        this.buildingIsEnemy_blc = ccaGame.getBuildings()[1].isBuildingIsEnemy();
-        this.buildingIsEnemy_blb = ccaGame.getBuildings()[2].isBuildingIsEnemy();
-        this.buildingIsEnemy_brt = ccaGame.getBuildings()[3].isBuildingIsEnemy();
-        this.buildingIsEnemy_brc = ccaGame.getBuildings()[4].isBuildingIsEnemy();
-        this.buildingIsEnemy_brb = ccaGame.getBuildings()[5].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld1 = ccaGame.getBuildings()[0].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld2 = ccaGame.getBuildings()[1].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld3 = ccaGame.getBuildings()[2].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld4 = ccaGame.getBuildings()[3].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld5 = ccaGame.getBuildings()[4].isBuildingIsEnemy();
+        this.buildingIsEnemy_bld6 = ccaGame.getBuildings()[5].isBuildingIsEnemy();
 
-        this.our_points_blt = ccaGame.getBuildings()[0].getOur_points();
-        this.our_points_blc = ccaGame.getBuildings()[1].getOur_points();
-        this.our_points_blb = ccaGame.getBuildings()[2].getOur_points();
-        this.our_points_brt = ccaGame.getBuildings()[3].getOur_points();
-        this.our_points_brc = ccaGame.getBuildings()[4].getOur_points();
-        this.our_points_brb = ccaGame.getBuildings()[5].getOur_points();
+        this.our_points_bld1 = ccaGame.getBuildings()[0].getOur_points();
+        this.our_points_bld2 = ccaGame.getBuildings()[1].getOur_points();
+        this.our_points_bld3 = ccaGame.getBuildings()[2].getOur_points();
+        this.our_points_bld4 = ccaGame.getBuildings()[3].getOur_points();
+        this.our_points_bld5 = ccaGame.getBuildings()[4].getOur_points();
+        this.our_points_bld6 = ccaGame.getBuildings()[5].getOur_points();
 
-        this.enemy_points_blt = ccaGame.getBuildings()[0].getEnemy_points();
-        this.enemy_points_blc = ccaGame.getBuildings()[1].getEnemy_points();
-        this.enemy_points_blb = ccaGame.getBuildings()[2].getEnemy_points();
-        this.enemy_points_brt = ccaGame.getBuildings()[3].getEnemy_points();
-        this.enemy_points_brc = ccaGame.getBuildings()[4].getEnemy_points();
-        this.enemy_points_brb = ccaGame.getBuildings()[5].getEnemy_points();
+        this.enemy_points_bld1 = ccaGame.getBuildings()[0].getEnemy_points();
+        this.enemy_points_bld2 = ccaGame.getBuildings()[1].getEnemy_points();
+        this.enemy_points_bld3 = ccaGame.getBuildings()[2].getEnemy_points();
+        this.enemy_points_bld4 = ccaGame.getBuildings()[3].getEnemy_points();
+        this.enemy_points_bld5 = ccaGame.getBuildings()[4].getEnemy_points();
+        this.enemy_points_bld6 = ccaGame.getBuildings()[5].getEnemy_points();
 
-        this.slots_blt = ccaGame.getBuildings()[0].getSlots();
-        this.slots_blc = ccaGame.getBuildings()[1].getSlots();
-        this.slots_blb = ccaGame.getBuildings()[2].getSlots();
-        this.slots_brt = ccaGame.getBuildings()[3].getSlots();
-        this.slots_brc = ccaGame.getBuildings()[4].getSlots();
-        this.slots_brb = ccaGame.getBuildings()[5].getSlots();
+        this.slots_bld1 = ccaGame.getBuildings()[0].getSlots();
+        this.slots_bld2 = ccaGame.getBuildings()[1].getSlots();
+        this.slots_bld3 = ccaGame.getBuildings()[2].getSlots();
+        this.slots_bld4 = ccaGame.getBuildings()[3].getSlots();
+        this.slots_bld5 = ccaGame.getBuildings()[4].getSlots();
+        this.slots_bld6 = ccaGame.getBuildings()[5].getSlots();
 
-        this.slots_blt_our = ccaGame.getBuildings()[0].getSlots_our();
-        this.slots_blc_our = ccaGame.getBuildings()[1].getSlots_our();
-        this.slots_blb_our = ccaGame.getBuildings()[2].getSlots_our();
-        this.slots_brt_our = ccaGame.getBuildings()[3].getSlots_our();
-        this.slots_brc_our = ccaGame.getBuildings()[4].getSlots_our();
-        this.slots_brb_our = ccaGame.getBuildings()[5].getSlots_our();
+        this.slots_bld1_our = ccaGame.getBuildings()[0].getSlots_our();
+        this.slots_bld2_our = ccaGame.getBuildings()[1].getSlots_our();
+        this.slots_bld3_our = ccaGame.getBuildings()[2].getSlots_our();
+        this.slots_bld4_our = ccaGame.getBuildings()[3].getSlots_our();
+        this.slots_bld5_our = ccaGame.getBuildings()[4].getSlots_our();
+        this.slots_bld6_our = ccaGame.getBuildings()[5].getSlots_our();
 
-        this.slots_blt_empty = ccaGame.getBuildings()[0].getSlots_empty();
-        this.slots_blc_empty = ccaGame.getBuildings()[1].getSlots_empty();
-        this.slots_blb_empty = ccaGame.getBuildings()[2].getSlots_empty();
-        this.slots_brt_empty = ccaGame.getBuildings()[3].getSlots_empty();
-        this.slots_brc_empty = ccaGame.getBuildings()[4].getSlots_empty();
-        this.slots_brb_empty = ccaGame.getBuildings()[5].getSlots_empty();
+        this.slots_bld1_empty = ccaGame.getBuildings()[0].getSlots_empty();
+        this.slots_bld2_empty = ccaGame.getBuildings()[1].getSlots_empty();
+        this.slots_bld3_empty = ccaGame.getBuildings()[2].getSlots_empty();
+        this.slots_bld4_empty = ccaGame.getBuildings()[3].getSlots_empty();
+        this.slots_bld5_empty = ccaGame.getBuildings()[4].getSlots_empty();
+        this.slots_bld6_empty = ccaGame.getBuildings()[5].getSlots_empty();
 
-        this.slots_blt_enemy = ccaGame.getBuildings()[0].getSlots_enemy();
-        this.slots_blc_enemy = ccaGame.getBuildings()[1].getSlots_enemy();
-        this.slots_blb_enemy = ccaGame.getBuildings()[2].getSlots_enemy();
-        this.slots_brt_enemy = ccaGame.getBuildings()[3].getSlots_enemy();
-        this.slots_brc_enemy = ccaGame.getBuildings()[4].getSlots_enemy();
-        this.slots_brb_enemy = ccaGame.getBuildings()[5].getSlots_enemy();
+        this.slots_bld1_enemy = ccaGame.getBuildings()[0].getSlots_enemy();
+        this.slots_bld2_enemy = ccaGame.getBuildings()[1].getSlots_enemy();
+        this.slots_bld3_enemy = ccaGame.getBuildings()[2].getSlots_enemy();
+        this.slots_bld4_enemy = ccaGame.getBuildings()[3].getSlots_enemy();
+        this.slots_bld5_enemy = ccaGame.getBuildings()[4].getSlots_enemy();
+        this.slots_bld6_enemy = ccaGame.getBuildings()[5].getSlots_enemy();
 
 
-        this.needToWin_blt = ccaGame.getBuildings()[0].isNeedToWin();
-        this.needToWin_blc = ccaGame.getBuildings()[1].isNeedToWin();
-        this.needToWin_blb = ccaGame.getBuildings()[2].isNeedToWin();
-        this.needToWin_brt = ccaGame.getBuildings()[3].isNeedToWin();
-        this.needToWin_brc = ccaGame.getBuildings()[4].isNeedToWin();
-        this.needToWin_brb = ccaGame.getBuildings()[5].isNeedToWin();
+        this.needToWin_bld1 = ccaGame.getBuildings()[0].isNeedToWin();
+        this.needToWin_bld2 = ccaGame.getBuildings()[1].isNeedToWin();
+        this.needToWin_bld3 = ccaGame.getBuildings()[2].isNeedToWin();
+        this.needToWin_bld4 = ccaGame.getBuildings()[3].isNeedToWin();
+        this.needToWin_bld5 = ccaGame.getBuildings()[4].isNeedToWin();
+        this.needToWin_bld6 = ccaGame.getBuildings()[5].isNeedToWin();
 
-        this.needToWinWithoutX2_blt = ccaGame.getBuildings()[0].isNeedToWinWithoutX2();
-        this.needToWinWithoutX2_blc = ccaGame.getBuildings()[1].isNeedToWinWithoutX2();
-        this.needToWinWithoutX2_blb = ccaGame.getBuildings()[2].isNeedToWinWithoutX2();
-        this.needToWinWithoutX2_brt = ccaGame.getBuildings()[3].isNeedToWinWithoutX2();
-        this.needToWinWithoutX2_brc = ccaGame.getBuildings()[4].isNeedToWinWithoutX2();
-        this.needToWinWithoutX2_brb = ccaGame.getBuildings()[5].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld1 = ccaGame.getBuildings()[0].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld2 = ccaGame.getBuildings()[1].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld3 = ccaGame.getBuildings()[2].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld4 = ccaGame.getBuildings()[3].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld5 = ccaGame.getBuildings()[4].isNeedToWinWithoutX2();
+        this.needToWinWithoutX2_bld6 = ccaGame.getBuildings()[5].isNeedToWinWithoutX2();
 
-        this.needToEarlyWin_blt = ccaGame.getBuildings()[0].isNeedToEarlyWin();
-        this.needToEarlyWin_blc = ccaGame.getBuildings()[1].isNeedToEarlyWin();
-        this.needToEarlyWin_blb = ccaGame.getBuildings()[2].isNeedToEarlyWin();
-        this.needToEarlyWin_brt = ccaGame.getBuildings()[3].isNeedToEarlyWin();
-        this.needToEarlyWin_brc = ccaGame.getBuildings()[4].isNeedToEarlyWin();
-        this.needToEarlyWin_brb = ccaGame.getBuildings()[5].isNeedToEarlyWin();
+        this.needToEarlyWin_bld1 = ccaGame.getBuildings()[0].isNeedToEarlyWin();
+        this.needToEarlyWin_bld2 = ccaGame.getBuildings()[1].isNeedToEarlyWin();
+        this.needToEarlyWin_bld3 = ccaGame.getBuildings()[2].isNeedToEarlyWin();
+        this.needToEarlyWin_bld4 = ccaGame.getBuildings()[3].isNeedToEarlyWin();
+        this.needToEarlyWin_bld5 = ccaGame.getBuildings()[4].isNeedToEarlyWin();
+        this.needToEarlyWin_bld6 = ccaGame.getBuildings()[5].isNeedToEarlyWin();
 
-        this.needToEarlyWinWithoutX2_blt = ccaGame.getBuildings()[0].isNeedToEarlyWinWithoutX2();
-        this.needToEarlyWinWithoutX2_blc = ccaGame.getBuildings()[1].isNeedToEarlyWinWithoutX2();
-        this.needToEarlyWinWithoutX2_blb = ccaGame.getBuildings()[2].isNeedToEarlyWinWithoutX2();
-        this.needToEarlyWinWithoutX2_brt = ccaGame.getBuildings()[3].isNeedToEarlyWinWithoutX2();
-        this.needToEarlyWinWithoutX2_brc = ccaGame.getBuildings()[4].isNeedToEarlyWinWithoutX2();
-        this.needToEarlyWinWithoutX2_brb = ccaGame.getBuildings()[5].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld1 = ccaGame.getBuildings()[0].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld2 = ccaGame.getBuildings()[1].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld3 = ccaGame.getBuildings()[2].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld4 = ccaGame.getBuildings()[3].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld5 = ccaGame.getBuildings()[4].isNeedToEarlyWinWithoutX2();
+        this.needToEarlyWinWithoutX2_bld6 = ccaGame.getBuildings()[5].isNeedToEarlyWinWithoutX2();
 
-        this.useInForecast_blt = ccaGame.getBuildings()[0].isUseInForecast();
-        this.useInForecast_blc = ccaGame.getBuildings()[1].isUseInForecast();
-        this.useInForecast_blb = ccaGame.getBuildings()[2].isUseInForecast();
-        this.useInForecast_brt = ccaGame.getBuildings()[3].isUseInForecast();
-        this.useInForecast_brc = ccaGame.getBuildings()[4].isUseInForecast();
-        this.useInForecast_brb = ccaGame.getBuildings()[5].isUseInForecast();
+        this.useInForecast_bld1 = ccaGame.getBuildings()[0].isUseInForecast();
+        this.useInForecast_bld2 = ccaGame.getBuildings()[1].isUseInForecast();
+        this.useInForecast_bld3 = ccaGame.getBuildings()[2].isUseInForecast();
+        this.useInForecast_bld4 = ccaGame.getBuildings()[3].isUseInForecast();
+        this.useInForecast_bld5 = ccaGame.getBuildings()[4].isUseInForecast();
+        this.useInForecast_bld6 = ccaGame.getBuildings()[5].isUseInForecast();
 
         this.countOurX2 = ccaGame.getCountOurX2();
         this.countEnemyX2 = ccaGame.getCountEnemyX2();
@@ -680,86 +680,86 @@ public class DbTeamGame implements Serializable {
         map.put("increaseOur", increaseOur);
         map.put("increaseEnemy", increaseEnemy);
 
-        map.put("isPresent_blt", isPresent_blt);
-        map.put("isPresent_blc", isPresent_blc);
-        map.put("isPresent_blb", isPresent_blb);
-        map.put("isPresent_brt", isPresent_brt);
-        map.put("isPresent_brc", isPresent_brc);
-        map.put("isPresent_brb", isPresent_brb);
+        map.put("isPresent_bld1", isPresent_bld1);
+        map.put("isPresent_bld2", isPresent_bld2);
+        map.put("isPresent_bld3", isPresent_bld3);
+        map.put("isPresent_bld4", isPresent_bld4);
+        map.put("isPresent_bld5", isPresent_bld5);
+        map.put("isPresent_bld6", isPresent_bld6);
 
-        map.put("isX2_blt", isX2_blt);
-        map.put("isX2_blc", isX2_blc);
-        map.put("isX2_blb", isX2_blb);
-        map.put("isX2_brt", isX2_brt);
-        map.put("isX2_brc", isX2_brc);
-        map.put("isX2_brb", isX2_brb);
+        map.put("isX2_bld1", isX2_bld1);
+        map.put("isX2_bld2", isX2_bld2);
+        map.put("isX2_bld3", isX2_bld3);
+        map.put("isX2_bld4", isX2_bld4);
+        map.put("isX2_bld5", isX2_bld5);
+        map.put("isX2_bld6", isX2_bld6);
 
-        map.put("mayX2_blt", mayX2_blt);
-        map.put("mayX2_blc", mayX2_blc);
-        map.put("mayX2_blb", mayX2_blb);
-        map.put("mayX2_brt", mayX2_brt);
-        map.put("mayX2_brc", mayX2_brc);
-        map.put("mayX2_brb", mayX2_brb);
+        map.put("mayX2_bld1", mayX2_bld1);
+        map.put("mayX2_bld2", mayX2_bld2);
+        map.put("mayX2_bld3", mayX2_bld3);
+        map.put("mayX2_bld4", mayX2_bld4);
+        map.put("mayX2_bld5", mayX2_bld5);
+        map.put("mayX2_bld6", mayX2_bld6);
 
-        map.put("buildingIsOur_blt", buildingIsOur_blt);
-        map.put("buildingIsOur_blc", buildingIsOur_blc);
-        map.put("buildingIsOur_blb", buildingIsOur_blb);
-        map.put("buildingIsOur_brt", buildingIsOur_brt);
-        map.put("buildingIsOur_brc", buildingIsOur_brc);
-        map.put("buildingIsOur_brb", buildingIsOur_brb);
+        map.put("buildingIsOur_bld1", buildingIsOur_bld1);
+        map.put("buildingIsOur_bld2", buildingIsOur_bld2);
+        map.put("buildingIsOur_bld3", buildingIsOur_bld3);
+        map.put("buildingIsOur_bld4", buildingIsOur_bld4);
+        map.put("buildingIsOur_bld5", buildingIsOur_bld5);
+        map.put("buildingIsOur_bld6", buildingIsOur_bld6);
 
-        map.put("buildingIsEmpty_blt", buildingIsEmpty_blt);
-        map.put("buildingIsEmpty_blc", buildingIsEmpty_blc);
-        map.put("buildingIsEmpty_blb", buildingIsEmpty_blb);
-        map.put("buildingIsEmpty_brt", buildingIsEmpty_brt);
-        map.put("buildingIsEmpty_brc", buildingIsEmpty_brc);
-        map.put("buildingIsEmpty_brb", buildingIsEmpty_brb);
+        map.put("buildingIsEmpty_bld1", buildingIsEmpty_bld1);
+        map.put("buildingIsEmpty_bld2", buildingIsEmpty_bld2);
+        map.put("buildingIsEmpty_bld3", buildingIsEmpty_bld3);
+        map.put("buildingIsEmpty_bld4", buildingIsEmpty_bld4);
+        map.put("buildingIsEmpty_bld5", buildingIsEmpty_bld5);
+        map.put("buildingIsEmpty_bld6", buildingIsEmpty_bld6);
 
-        map.put("buildingIsEnemy_blt", buildingIsEnemy_blt);
-        map.put("buildingIsEnemy_blc", buildingIsEnemy_blc);
-        map.put("buildingIsEnemy_blb", buildingIsEnemy_blb);
-        map.put("buildingIsEnemy_brt", buildingIsEnemy_brt);
-        map.put("buildingIsEnemy_brc", buildingIsEnemy_brc);
-        map.put("buildingIsEnemy_brb", buildingIsEnemy_brb);
+        map.put("buildingIsEnemy_bld1", buildingIsEnemy_bld1);
+        map.put("buildingIsEnemy_bld2", buildingIsEnemy_bld2);
+        map.put("buildingIsEnemy_bld3", buildingIsEnemy_bld3);
+        map.put("buildingIsEnemy_bld4", buildingIsEnemy_bld4);
+        map.put("buildingIsEnemy_bld5", buildingIsEnemy_bld5);
+        map.put("buildingIsEnemy_bld6", buildingIsEnemy_bld6);
 
-        map.put("our_points_blt", our_points_blt);
-        map.put("our_points_blc", our_points_blc);
-        map.put("our_points_blb", our_points_blb);
-        map.put("our_points_brt", our_points_brt);
-        map.put("our_points_brc", our_points_brc);
-        map.put("our_points_brb", our_points_brb);
+        map.put("our_points_bld1", our_points_bld1);
+        map.put("our_points_bld2", our_points_bld2);
+        map.put("our_points_bld3", our_points_bld3);
+        map.put("our_points_bld4", our_points_bld4);
+        map.put("our_points_bld5", our_points_bld5);
+        map.put("our_points_bld6", our_points_bld6);
 
-        map.put("enemy_points_blt", enemy_points_blt);
-        map.put("enemy_points_blc", enemy_points_blc);
-        map.put("enemy_points_blb", enemy_points_blb);
-        map.put("enemy_points_brt", enemy_points_brt);
-        map.put("enemy_points_brc", enemy_points_brc);
-        map.put("enemy_points_brb", enemy_points_brb);
+        map.put("enemy_points_bld1", enemy_points_bld1);
+        map.put("enemy_points_bld2", enemy_points_bld2);
+        map.put("enemy_points_bld3", enemy_points_bld3);
+        map.put("enemy_points_bld4", enemy_points_bld4);
+        map.put("enemy_points_bld5", enemy_points_bld5);
+        map.put("enemy_points_bld6", enemy_points_bld6);
 
-        map.put("slots_blt", slots_blt);
-        map.put("slots_blt_our", slots_blt_our);
-        map.put("slots_blt_empty", slots_blt_empty);
-        map.put("slots_blt_enemy", slots_blt_enemy);
-        map.put("slots_blc", slots_blc);
-        map.put("slots_blc_our", slots_blc_our);
-        map.put("slots_blc_empty", slots_blc_empty);
-        map.put("slots_blc_enemy", slots_blc_enemy);
-        map.put("slots_blb", slots_blb);
-        map.put("slots_blb_our", slots_blb_our);
-        map.put("slots_blb_empty", slots_blb_empty);
-        map.put("slots_blb_enemy", slots_blb_enemy);
-        map.put("slots_brt", slots_brt);
-        map.put("slots_brt_our", slots_brt_our);
-        map.put("slots_brt_empty", slots_brt_empty);
-        map.put("slots_brt_enemy", slots_brt_enemy);
-        map.put("slots_brc", slots_brc);
-        map.put("slots_brc_our", slots_brc_our);
-        map.put("slots_brc_empty", slots_brc_empty);
-        map.put("slots_brc_enemy", slots_brc_enemy);
-        map.put("slots_brb", slots_brb);
-        map.put("slots_brb_our", slots_brb_our);
-        map.put("slots_brb_empty", slots_brb_empty);
-        map.put("slots_brb_enemy", slots_brb_enemy);
+        map.put("slots_bld1", slots_bld1);
+        map.put("slots_bld1_our", slots_bld1_our);
+        map.put("slots_bld1_empty", slots_bld1_empty);
+        map.put("slots_bld1_enemy", slots_bld1_enemy);
+        map.put("slots_bld2", slots_bld2);
+        map.put("slots_bld2_our", slots_bld2_our);
+        map.put("slots_bld2_empty", slots_bld2_empty);
+        map.put("slots_bld2_enemy", slots_bld2_enemy);
+        map.put("slots_bld3", slots_bld3);
+        map.put("slots_bld3_our", slots_bld3_our);
+        map.put("slots_bld3_empty", slots_bld3_empty);
+        map.put("slots_bld3_enemy", slots_bld3_enemy);
+        map.put("slots_bld4", slots_bld4);
+        map.put("slots_bld4_our", slots_bld4_our);
+        map.put("slots_bld4_empty", slots_bld4_empty);
+        map.put("slots_bld4_enemy", slots_bld4_enemy);
+        map.put("slots_bld5", slots_bld5);
+        map.put("slots_bld5_our", slots_bld5_our);
+        map.put("slots_bld5_empty", slots_bld5_empty);
+        map.put("slots_bld5_enemy", slots_bld5_enemy);
+        map.put("slots_bld6", slots_bld6);
+        map.put("slots_bld6_our", slots_bld6_our);
+        map.put("slots_bld6_empty", slots_bld6_empty);
+        map.put("slots_bld6_enemy", slots_bld6_enemy);
 
         map.put("countOurX2", countOurX2);
         map.put("countEnemyX2", countEnemyX2);
@@ -775,37 +775,37 @@ public class DbTeamGame implements Serializable {
         map.put("canWinWithoutX2", canWinWithoutX2);
         map.put("canEarlyWin", canEarlyWin);
         map.put("canEarlyWinWithoutX2", canEarlyWinWithoutX2);
-        map.put("needToWin_blt", needToWin_blt);
-        map.put("needToWinWithoutX2_blt", needToWinWithoutX2_blt);
-        map.put("needToEarlyWin_blt", needToEarlyWin_blt);
-        map.put("needToEarlyWinWithoutX2_blt", needToEarlyWinWithoutX2_blt);
-        map.put("needToWin_blc", needToWin_blc);
-        map.put("needToWinWithoutX2_blc", needToWinWithoutX2_blc);
-        map.put("needToEarlyWin_blc", needToEarlyWin_blc);
-        map.put("needToEarlyWinWithoutX2_blc", needToEarlyWinWithoutX2_blc);
-        map.put("needToWin_blb", needToWin_blb);
-        map.put("needToWinWithoutX2_blb", needToWinWithoutX2_blb);
-        map.put("needToEarlyWin_blb", needToEarlyWin_blb);
-        map.put("needToEarlyWinWithoutX2_blb", needToEarlyWinWithoutX2_blb);
-        map.put("needToWin_brt", needToWin_brt);
-        map.put("needToWinWithoutX2_brt", needToWinWithoutX2_brt);
-        map.put("needToEarlyWin_brt", needToEarlyWin_brt);
-        map.put("needToEarlyWinWithoutX2_brt", needToEarlyWinWithoutX2_brt);
-        map.put("needToWin_brc", needToWin_brc);
-        map.put("needToWinWithoutX2_brc", needToWinWithoutX2_brc);
-        map.put("needToEarlyWin_brc", needToEarlyWin_brc);
-        map.put("needToEarlyWinWithoutX2_brc", needToEarlyWinWithoutX2_brc);
-        map.put("needToWin_brb", needToWin_brb);
-        map.put("needToWinWithoutX2_brb", needToWinWithoutX2_brb);
-        map.put("needToEarlyWin_brb", needToEarlyWin_brb);
-        map.put("needToEarlyWinWithoutX2_brb", needToEarlyWinWithoutX2_brb);
+        map.put("needToWin_bld1", needToWin_bld1);
+        map.put("needToWinWithoutX2_bld1", needToWinWithoutX2_bld1);
+        map.put("needToEarlyWin_bld1", needToEarlyWin_bld1);
+        map.put("needToEarlyWinWithoutX2_bld1", needToEarlyWinWithoutX2_bld1);
+        map.put("needToWin_bld2", needToWin_bld2);
+        map.put("needToWinWithoutX2_bld2", needToWinWithoutX2_bld2);
+        map.put("needToEarlyWin_bld2", needToEarlyWin_bld2);
+        map.put("needToEarlyWinWithoutX2_bld2", needToEarlyWinWithoutX2_bld2);
+        map.put("needToWin_bld3", needToWin_bld3);
+        map.put("needToWinWithoutX2_bld3", needToWinWithoutX2_bld3);
+        map.put("needToEarlyWin_bld3", needToEarlyWin_bld3);
+        map.put("needToEarlyWinWithoutX2_bld3", needToEarlyWinWithoutX2_bld3);
+        map.put("needToWin_bld4", needToWin_bld4);
+        map.put("needToWinWithoutX2_bld4", needToWinWithoutX2_bld4);
+        map.put("needToEarlyWin_bld4", needToEarlyWin_bld4);
+        map.put("needToEarlyWinWithoutX2_bld4", needToEarlyWinWithoutX2_bld4);
+        map.put("needToWin_bld5", needToWin_bld5);
+        map.put("needToWinWithoutX2_bld5", needToWinWithoutX2_bld5);
+        map.put("needToEarlyWin_bld5", needToEarlyWin_bld5);
+        map.put("needToEarlyWinWithoutX2_bld5", needToEarlyWinWithoutX2_bld5);
+        map.put("needToWin_bld6", needToWin_bld6);
+        map.put("needToWinWithoutX2_bld6", needToWinWithoutX2_bld6);
+        map.put("needToEarlyWin_bld6", needToEarlyWin_bld6);
+        map.put("needToEarlyWinWithoutX2_bld6", needToEarlyWinWithoutX2_bld6);
 
-        map.put("useInForecast_blt", useInForecast_blt);
-        map.put("useInForecast_blc", useInForecast_blc);
-        map.put("useInForecast_blb", useInForecast_blb);
-        map.put("useInForecast_brt", useInForecast_brt);
-        map.put("useInForecast_brc", useInForecast_brc);
-        map.put("useInForecast_brb", useInForecast_brb);
+        map.put("useInForecast_bld1", useInForecast_bld1);
+        map.put("useInForecast_bld2", useInForecast_bld2);
+        map.put("useInForecast_bld3", useInForecast_bld3);
+        map.put("useInForecast_bld4", useInForecast_bld4);
+        map.put("useInForecast_bld5", useInForecast_bld5);
+        map.put("useInForecast_bld6", useInForecast_bld6);
 
         return map;
     }
@@ -906,580 +906,580 @@ public class DbTeamGame implements Serializable {
         this.increaseEnemy = increaseEnemy;
     }
 
-    public boolean isPresent_blt() {
-        return isPresent_blt;
+    public boolean isPresent_bld1() {
+        return isPresent_bld1;
     }
 
-    public void setPresent_blt(boolean present_blt) {
-        isPresent_blt = present_blt;
+    public void setPresent_bld1(boolean present_bld1) {
+        isPresent_bld1 = present_bld1;
     }
 
-    public boolean isPresent_blc() {
-        return isPresent_blc;
+    public boolean isPresent_bld2() {
+        return isPresent_bld2;
     }
 
-    public void setPresent_blc(boolean present_blc) {
-        isPresent_blc = present_blc;
+    public void setPresent_bld2(boolean present_bld2) {
+        isPresent_bld2 = present_bld2;
     }
 
-    public boolean isPresent_blb() {
-        return isPresent_blb;
+    public boolean isPresent_bld3() {
+        return isPresent_bld3;
     }
 
-    public void setPresent_blb(boolean present_blb) {
-        isPresent_blb = present_blb;
+    public void setPresent_bld3(boolean present_bld3) {
+        isPresent_bld3 = present_bld3;
     }
 
-    public boolean isPresent_brt() {
-        return isPresent_brt;
+    public boolean isPresent_bld4() {
+        return isPresent_bld4;
     }
 
-    public void setPresent_brt(boolean present_brt) {
-        isPresent_brt = present_brt;
+    public void setPresent_bld4(boolean present_bld4) {
+        isPresent_bld4 = present_bld4;
     }
 
-    public boolean isPresent_brc() {
-        return isPresent_brc;
+    public boolean isPresent_bld5() {
+        return isPresent_bld5;
     }
 
-    public void setPresent_brc(boolean present_brc) {
-        isPresent_brc = present_brc;
+    public void setPresent_bld5(boolean present_bld5) {
+        isPresent_bld5 = present_bld5;
     }
 
-    public boolean isPresent_brb() {
-        return isPresent_brb;
+    public boolean isPresent_bld6() {
+        return isPresent_bld6;
     }
 
-    public void setPresent_brb(boolean present_brb) {
-        isPresent_brb = present_brb;
+    public void setPresent_bld6(boolean present_bld6) {
+        isPresent_bld6 = present_bld6;
     }
 
-    public boolean isX2_blt() {
-        return isX2_blt;
+    public boolean isX2_bld1() {
+        return isX2_bld1;
     }
 
-    public void setX2_blt(boolean x2_blt) {
-        isX2_blt = x2_blt;
+    public void setX2_bld1(boolean x2_bld1) {
+        isX2_bld1 = x2_bld1;
     }
 
-    public boolean isX2_blc() {
-        return isX2_blc;
+    public boolean isX2_bld2() {
+        return isX2_bld2;
     }
 
-    public void setX2_blc(boolean x2_blc) {
-        isX2_blc = x2_blc;
+    public void setX2_bld2(boolean x2_bld2) {
+        isX2_bld2 = x2_bld2;
     }
 
-    public boolean isX2_blb() {
-        return isX2_blb;
+    public boolean isX2_bld3() {
+        return isX2_bld3;
     }
 
-    public void setX2_blb(boolean x2_blb) {
-        isX2_blb = x2_blb;
+    public void setX2_bld3(boolean x2_bld3) {
+        isX2_bld3 = x2_bld3;
     }
 
-    public boolean isX2_brt() {
-        return isX2_brt;
+    public boolean isX2_bld4() {
+        return isX2_bld4;
     }
 
-    public void setX2_brt(boolean x2_brt) {
-        isX2_brt = x2_brt;
+    public void setX2_bld4(boolean x2_bld4) {
+        isX2_bld4 = x2_bld4;
     }
 
-    public boolean isX2_brc() {
-        return isX2_brc;
+    public boolean isX2_bld5() {
+        return isX2_bld5;
     }
 
-    public void setX2_brc(boolean x2_brc) {
-        isX2_brc = x2_brc;
+    public void setX2_bld5(boolean x2_bld5) {
+        isX2_bld5 = x2_bld5;
     }
 
-    public boolean isX2_brb() {
-        return isX2_brb;
+    public boolean isX2_bld6() {
+        return isX2_bld6;
     }
 
-    public void setX2_brb(boolean x2_brb) {
-        isX2_brb = x2_brb;
+    public void setX2_bld6(boolean x2_bld6) {
+        isX2_bld6 = x2_bld6;
     }
 
-    public boolean isMayX2_blt() {
-        return mayX2_blt;
+    public boolean isMayX2_bld1() {
+        return mayX2_bld1;
     }
 
-    public void setMayX2_blt(boolean mayX2_blt) {
-        this.mayX2_blt = mayX2_blt;
+    public void setMayX2_bld1(boolean mayX2_bld1) {
+        this.mayX2_bld1 = mayX2_bld1;
     }
 
-    public boolean isMayX2_blc() {
-        return mayX2_blc;
+    public boolean isMayX2_bld2() {
+        return mayX2_bld2;
     }
 
-    public void setMayX2_blc(boolean mayX2_blc) {
-        this.mayX2_blc = mayX2_blc;
+    public void setMayX2_bld2(boolean mayX2_bld2) {
+        this.mayX2_bld2 = mayX2_bld2;
     }
 
-    public boolean isMayX2_blb() {
-        return mayX2_blb;
+    public boolean isMayX2_bld3() {
+        return mayX2_bld3;
     }
 
-    public void setMayX2_blb(boolean mayX2_blb) {
-        this.mayX2_blb = mayX2_blb;
+    public void setMayX2_bld3(boolean mayX2_bld3) {
+        this.mayX2_bld3 = mayX2_bld3;
     }
 
-    public boolean isMayX2_brt() {
-        return mayX2_brt;
+    public boolean isMayX2_bld4() {
+        return mayX2_bld4;
     }
 
-    public void setMayX2_brt(boolean mayX2_brt) {
-        this.mayX2_brt = mayX2_brt;
+    public void setMayX2_bld4(boolean mayX2_bld4) {
+        this.mayX2_bld4 = mayX2_bld4;
     }
 
-    public boolean isMayX2_brc() {
-        return mayX2_brc;
+    public boolean isMayX2_bld5() {
+        return mayX2_bld5;
     }
 
-    public void setMayX2_brc(boolean mayX2_brc) {
-        this.mayX2_brc = mayX2_brc;
+    public void setMayX2_bld5(boolean mayX2_bld5) {
+        this.mayX2_bld5 = mayX2_bld5;
     }
 
-    public boolean isMayX2_brb() {
-        return mayX2_brb;
+    public boolean isMayX2_bld6() {
+        return mayX2_bld6;
     }
 
-    public void setMayX2_brb(boolean mayX2_brb) {
-        this.mayX2_brb = mayX2_brb;
+    public void setMayX2_bld6(boolean mayX2_bld6) {
+        this.mayX2_bld6 = mayX2_bld6;
     }
 
-    public boolean isBuildingIsOur_blt() {
-        return buildingIsOur_blt;
+    public boolean isBuildingIsOur_bld1() {
+        return buildingIsOur_bld1;
     }
 
-    public void setBuildingIsOur_blt(boolean buildingIsOur_blt) {
-        this.buildingIsOur_blt = buildingIsOur_blt;
+    public void setBuildingIsOur_bld1(boolean buildingIsOur_bld1) {
+        this.buildingIsOur_bld1 = buildingIsOur_bld1;
     }
 
-    public boolean isBuildingIsOur_blc() {
-        return buildingIsOur_blc;
+    public boolean isBuildingIsOur_bld2() {
+        return buildingIsOur_bld2;
     }
 
-    public void setBuildingIsOur_blc(boolean buildingIsOur_blc) {
-        this.buildingIsOur_blc = buildingIsOur_blc;
+    public void setBuildingIsOur_bld2(boolean buildingIsOur_bld2) {
+        this.buildingIsOur_bld2 = buildingIsOur_bld2;
     }
 
-    public boolean isBuildingIsOur_blb() {
-        return buildingIsOur_blb;
+    public boolean isBuildingIsOur_bld3() {
+        return buildingIsOur_bld3;
     }
 
-    public void setBuildingIsOur_blb(boolean buildingIsOur_blb) {
-        this.buildingIsOur_blb = buildingIsOur_blb;
+    public void setBuildingIsOur_bld3(boolean buildingIsOur_bld3) {
+        this.buildingIsOur_bld3 = buildingIsOur_bld3;
     }
 
-    public boolean isBuildingIsOur_brt() {
-        return buildingIsOur_brt;
+    public boolean isBuildingIsOur_bld4() {
+        return buildingIsOur_bld4;
     }
 
-    public void setBuildingIsOur_brt(boolean buildingIsOur_brt) {
-        this.buildingIsOur_brt = buildingIsOur_brt;
+    public void setBuildingIsOur_bld4(boolean buildingIsOur_bld4) {
+        this.buildingIsOur_bld4 = buildingIsOur_bld4;
     }
 
-    public boolean isBuildingIsOur_brc() {
-        return buildingIsOur_brc;
+    public boolean isBuildingIsOur_bld5() {
+        return buildingIsOur_bld5;
     }
 
-    public void setBuildingIsOur_brc(boolean buildingIsOur_brc) {
-        this.buildingIsOur_brc = buildingIsOur_brc;
+    public void setBuildingIsOur_bld5(boolean buildingIsOur_bld5) {
+        this.buildingIsOur_bld5 = buildingIsOur_bld5;
     }
 
-    public boolean isBuildingIsOur_brb() {
-        return buildingIsOur_brb;
+    public boolean isBuildingIsOur_bld6() {
+        return buildingIsOur_bld6;
     }
 
-    public void setBuildingIsOur_brb(boolean buildingIsOur_brb) {
-        this.buildingIsOur_brb = buildingIsOur_brb;
+    public void setBuildingIsOur_bld6(boolean buildingIsOur_bld6) {
+        this.buildingIsOur_bld6 = buildingIsOur_bld6;
     }
 
-    public boolean isBuildingIsEmpty_blt() {
-        return buildingIsEmpty_blt;
+    public boolean isBuildingIsEmpty_bld1() {
+        return buildingIsEmpty_bld1;
     }
 
-    public void setBuildingIsEmpty_blt(boolean buildingIsEmpty_blt) {
-        this.buildingIsEmpty_blt = buildingIsEmpty_blt;
+    public void setBuildingIsEmpty_bld1(boolean buildingIsEmpty_bld1) {
+        this.buildingIsEmpty_bld1 = buildingIsEmpty_bld1;
     }
 
-    public boolean isBuildingIsEmpty_blc() {
-        return buildingIsEmpty_blc;
+    public boolean isBuildingIsEmpty_bld2() {
+        return buildingIsEmpty_bld2;
     }
 
-    public void setBuildingIsEmpty_blc(boolean buildingIsEmpty_blc) {
-        this.buildingIsEmpty_blc = buildingIsEmpty_blc;
+    public void setBuildingIsEmpty_bld2(boolean buildingIsEmpty_bld2) {
+        this.buildingIsEmpty_bld2 = buildingIsEmpty_bld2;
     }
 
-    public boolean isBuildingIsEmpty_blb() {
-        return buildingIsEmpty_blb;
+    public boolean isBuildingIsEmpty_bld3() {
+        return buildingIsEmpty_bld3;
     }
 
-    public void setBuildingIsEmpty_blb(boolean buildingIsEmpty_blb) {
-        this.buildingIsEmpty_blb = buildingIsEmpty_blb;
+    public void setBuildingIsEmpty_bld3(boolean buildingIsEmpty_bld3) {
+        this.buildingIsEmpty_bld3 = buildingIsEmpty_bld3;
     }
 
-    public boolean isBuildingIsEmpty_brt() {
-        return buildingIsEmpty_brt;
+    public boolean isBuildingIsEmpty_bld4() {
+        return buildingIsEmpty_bld4;
     }
 
-    public void setBuildingIsEmpty_brt(boolean buildingIsEmpty_brt) {
-        this.buildingIsEmpty_brt = buildingIsEmpty_brt;
+    public void setBuildingIsEmpty_bld4(boolean buildingIsEmpty_bld4) {
+        this.buildingIsEmpty_bld4 = buildingIsEmpty_bld4;
     }
 
-    public boolean isBuildingIsEmpty_brc() {
-        return buildingIsEmpty_brc;
+    public boolean isBuildingIsEmpty_bld5() {
+        return buildingIsEmpty_bld5;
     }
 
-    public void setBuildingIsEmpty_brc(boolean buildingIsEmpty_brc) {
-        this.buildingIsEmpty_brc = buildingIsEmpty_brc;
+    public void setBuildingIsEmpty_bld5(boolean buildingIsEmpty_bld5) {
+        this.buildingIsEmpty_bld5 = buildingIsEmpty_bld5;
     }
 
-    public boolean isBuildingIsEmpty_brb() {
-        return buildingIsEmpty_brb;
+    public boolean isBuildingIsEmpty_bld6() {
+        return buildingIsEmpty_bld6;
     }
 
-    public void setBuildingIsEmpty_brb(boolean buildingIsEmpty_brb) {
-        this.buildingIsEmpty_brb = buildingIsEmpty_brb;
+    public void setBuildingIsEmpty_bld6(boolean buildingIsEmpty_bld6) {
+        this.buildingIsEmpty_bld6 = buildingIsEmpty_bld6;
     }
 
-    public boolean isBuildingIsEnemy_blt() {
-        return buildingIsEnemy_blt;
+    public boolean isBuildingIsEnemy_bld1() {
+        return buildingIsEnemy_bld1;
     }
 
-    public void setBuildingIsEnemy_blt(boolean buildingIsEnemy_blt) {
-        this.buildingIsEnemy_blt = buildingIsEnemy_blt;
+    public void setBuildingIsEnemy_bld1(boolean buildingIsEnemy_bld1) {
+        this.buildingIsEnemy_bld1 = buildingIsEnemy_bld1;
     }
 
-    public boolean isBuildingIsEnemy_blc() {
-        return buildingIsEnemy_blc;
+    public boolean isBuildingIsEnemy_bld2() {
+        return buildingIsEnemy_bld2;
     }
 
-    public void setBuildingIsEnemy_blc(boolean buildingIsEnemy_blc) {
-        this.buildingIsEnemy_blc = buildingIsEnemy_blc;
+    public void setBuildingIsEnemy_bld2(boolean buildingIsEnemy_bld2) {
+        this.buildingIsEnemy_bld2 = buildingIsEnemy_bld2;
     }
 
-    public boolean isBuildingIsEnemy_blb() {
-        return buildingIsEnemy_blb;
+    public boolean isBuildingIsEnemy_bld3() {
+        return buildingIsEnemy_bld3;
     }
 
-    public void setBuildingIsEnemy_blb(boolean buildingIsEnemy_blb) {
-        this.buildingIsEnemy_blb = buildingIsEnemy_blb;
+    public void setBuildingIsEnemy_bld3(boolean buildingIsEnemy_bld3) {
+        this.buildingIsEnemy_bld3 = buildingIsEnemy_bld3;
     }
 
-    public boolean isBuildingIsEnemy_brt() {
-        return buildingIsEnemy_brt;
+    public boolean isBuildingIsEnemy_bld4() {
+        return buildingIsEnemy_bld4;
     }
 
-    public void setBuildingIsEnemy_brt(boolean buildingIsEnemy_brt) {
-        this.buildingIsEnemy_brt = buildingIsEnemy_brt;
+    public void setBuildingIsEnemy_bld4(boolean buildingIsEnemy_bld4) {
+        this.buildingIsEnemy_bld4 = buildingIsEnemy_bld4;
     }
 
-    public boolean isBuildingIsEnemy_brc() {
-        return buildingIsEnemy_brc;
+    public boolean isBuildingIsEnemy_bld5() {
+        return buildingIsEnemy_bld5;
     }
 
-    public void setBuildingIsEnemy_brc(boolean buildingIsEnemy_brc) {
-        this.buildingIsEnemy_brc = buildingIsEnemy_brc;
+    public void setBuildingIsEnemy_bld5(boolean buildingIsEnemy_bld5) {
+        this.buildingIsEnemy_bld5 = buildingIsEnemy_bld5;
     }
 
-    public boolean isBuildingIsEnemy_brb() {
-        return buildingIsEnemy_brb;
+    public boolean isBuildingIsEnemy_bld6() {
+        return buildingIsEnemy_bld6;
     }
 
-    public void setBuildingIsEnemy_brb(boolean buildingIsEnemy_brb) {
-        this.buildingIsEnemy_brb = buildingIsEnemy_brb;
+    public void setBuildingIsEnemy_bld6(boolean buildingIsEnemy_bld6) {
+        this.buildingIsEnemy_bld6 = buildingIsEnemy_bld6;
     }
 
-    public int getOur_points_blt() {
-        return our_points_blt;
+    public int getOur_points_bld1() {
+        return our_points_bld1;
     }
 
-    public void setOur_points_blt(int our_points_blt) {
-        this.our_points_blt = our_points_blt;
+    public void setOur_points_bld1(int our_points_bld1) {
+        this.our_points_bld1 = our_points_bld1;
     }
 
-    public int getOur_points_blc() {
-        return our_points_blc;
+    public int getOur_points_bld2() {
+        return our_points_bld2;
     }
 
-    public void setOur_points_blc(int our_points_blc) {
-        this.our_points_blc = our_points_blc;
+    public void setOur_points_bld2(int our_points_bld2) {
+        this.our_points_bld2 = our_points_bld2;
     }
 
-    public int getOur_points_blb() {
-        return our_points_blb;
+    public int getOur_points_bld3() {
+        return our_points_bld3;
     }
 
-    public void setOur_points_blb(int our_points_blb) {
-        this.our_points_blb = our_points_blb;
+    public void setOur_points_bld3(int our_points_bld3) {
+        this.our_points_bld3 = our_points_bld3;
     }
 
-    public int getOur_points_brt() {
-        return our_points_brt;
+    public int getOur_points_bld4() {
+        return our_points_bld4;
     }
 
-    public void setOur_points_brt(int our_points_brt) {
-        this.our_points_brt = our_points_brt;
+    public void setOur_points_bld4(int our_points_bld4) {
+        this.our_points_bld4 = our_points_bld4;
     }
 
-    public int getOur_points_brc() {
-        return our_points_brc;
+    public int getOur_points_bld5() {
+        return our_points_bld5;
     }
 
-    public void setOur_points_brc(int our_points_brc) {
-        this.our_points_brc = our_points_brc;
+    public void setOur_points_bld5(int our_points_bld5) {
+        this.our_points_bld5 = our_points_bld5;
     }
 
-    public int getOur_points_brb() {
-        return our_points_brb;
+    public int getOur_points_bld6() {
+        return our_points_bld6;
     }
 
-    public void setOur_points_brb(int our_points_brb) {
-        this.our_points_brb = our_points_brb;
+    public void setOur_points_bld6(int our_points_bld6) {
+        this.our_points_bld6 = our_points_bld6;
     }
 
-    public int getEnemy_points_blt() {
-        return enemy_points_blt;
+    public int getEnemy_points_bld1() {
+        return enemy_points_bld1;
     }
 
-    public void setEnemy_points_blt(int enemy_points_blt) {
-        this.enemy_points_blt = enemy_points_blt;
+    public void setEnemy_points_bld1(int enemy_points_bld1) {
+        this.enemy_points_bld1 = enemy_points_bld1;
     }
 
-    public int getEnemy_points_blc() {
-        return enemy_points_blc;
+    public int getEnemy_points_bld2() {
+        return enemy_points_bld2;
     }
 
-    public void setEnemy_points_blc(int enemy_points_blc) {
-        this.enemy_points_blc = enemy_points_blc;
+    public void setEnemy_points_bld2(int enemy_points_bld2) {
+        this.enemy_points_bld2 = enemy_points_bld2;
     }
 
-    public int getEnemy_points_blb() {
-        return enemy_points_blb;
+    public int getEnemy_points_bld3() {
+        return enemy_points_bld3;
     }
 
-    public void setEnemy_points_blb(int enemy_points_blb) {
-        this.enemy_points_blb = enemy_points_blb;
+    public void setEnemy_points_bld3(int enemy_points_bld3) {
+        this.enemy_points_bld3 = enemy_points_bld3;
     }
 
-    public int getEnemy_points_brt() {
-        return enemy_points_brt;
+    public int getEnemy_points_bld4() {
+        return enemy_points_bld4;
     }
 
-    public void setEnemy_points_brt(int enemy_points_brt) {
-        this.enemy_points_brt = enemy_points_brt;
+    public void setEnemy_points_bld4(int enemy_points_bld4) {
+        this.enemy_points_bld4 = enemy_points_bld4;
     }
 
-    public int getEnemy_points_brc() {
-        return enemy_points_brc;
+    public int getEnemy_points_bld5() {
+        return enemy_points_bld5;
     }
 
-    public void setEnemy_points_brc(int enemy_points_brc) {
-        this.enemy_points_brc = enemy_points_brc;
+    public void setEnemy_points_bld5(int enemy_points_bld5) {
+        this.enemy_points_bld5 = enemy_points_bld5;
     }
 
-    public int getEnemy_points_brb() {
-        return enemy_points_brb;
+    public int getEnemy_points_bld6() {
+        return enemy_points_bld6;
     }
 
-    public void setEnemy_points_brb(int enemy_points_brb) {
-        this.enemy_points_brb = enemy_points_brb;
+    public void setEnemy_points_bld6(int enemy_points_bld6) {
+        this.enemy_points_bld6 = enemy_points_bld6;
     }
 
-    public int getSlots_blt() {
-        return slots_blt;
+    public int getSlots_bld1() {
+        return slots_bld1;
     }
 
-    public void setSlots_blt(int slots_blt) {
-        this.slots_blt = slots_blt;
+    public void setSlots_bld1(int slots_bld1) {
+        this.slots_bld1 = slots_bld1;
     }
 
-    public int getSlots_blt_our() {
-        return slots_blt_our;
+    public int getSlots_bld1_our() {
+        return slots_bld1_our;
     }
 
-    public void setSlots_blt_our(int slots_blt_our) {
-        this.slots_blt_our = slots_blt_our;
+    public void setSlots_bld1_our(int slots_bld1_our) {
+        this.slots_bld1_our = slots_bld1_our;
     }
 
-    public int getSlots_blt_empty() {
-        return slots_blt_empty;
+    public int getSlots_bld1_empty() {
+        return slots_bld1_empty;
     }
 
-    public void setSlots_blt_empty(int slots_blt_empty) {
-        this.slots_blt_empty = slots_blt_empty;
+    public void setSlots_bld1_empty(int slots_bld1_empty) {
+        this.slots_bld1_empty = slots_bld1_empty;
     }
 
-    public int getSlots_blt_enemy() {
-        return slots_blt_enemy;
+    public int getSlots_bld1_enemy() {
+        return slots_bld1_enemy;
     }
 
-    public void setSlots_blt_enemy(int slots_blt_enemy) {
-        this.slots_blt_enemy = slots_blt_enemy;
+    public void setSlots_bld1_enemy(int slots_bld1_enemy) {
+        this.slots_bld1_enemy = slots_bld1_enemy;
     }
 
-    public int getSlots_blc() {
-        return slots_blc;
+    public int getSlots_bld2() {
+        return slots_bld2;
     }
 
-    public void setSlots_blc(int slots_blc) {
-        this.slots_blc = slots_blc;
+    public void setSlots_bld2(int slots_bld2) {
+        this.slots_bld2 = slots_bld2;
     }
 
-    public int getSlots_blc_our() {
-        return slots_blc_our;
+    public int getSlots_bld2_our() {
+        return slots_bld2_our;
     }
 
-    public void setSlots_blc_our(int slots_blc_our) {
-        this.slots_blc_our = slots_blc_our;
+    public void setSlots_bld2_our(int slots_bld2_our) {
+        this.slots_bld2_our = slots_bld2_our;
     }
 
-    public int getSlots_blc_empty() {
-        return slots_blc_empty;
+    public int getSlots_bld2_empty() {
+        return slots_bld2_empty;
     }
 
-    public void setSlots_blc_empty(int slots_blc_empty) {
-        this.slots_blc_empty = slots_blc_empty;
+    public void setSlots_bld2_empty(int slots_bld2_empty) {
+        this.slots_bld2_empty = slots_bld2_empty;
     }
 
-    public int getSlots_blc_enemy() {
-        return slots_blc_enemy;
+    public int getSlots_bld2_enemy() {
+        return slots_bld2_enemy;
     }
 
-    public void setSlots_blc_enemy(int slots_blc_enemy) {
-        this.slots_blc_enemy = slots_blc_enemy;
+    public void setSlots_bld2_enemy(int slots_bld2_enemy) {
+        this.slots_bld2_enemy = slots_bld2_enemy;
     }
 
-    public int getSlots_blb() {
-        return slots_blb;
+    public int getSlots_bld3() {
+        return slots_bld3;
     }
 
-    public void setSlots_blb(int slots_blb) {
-        this.slots_blb = slots_blb;
+    public void setSlots_bld3(int slots_bld3) {
+        this.slots_bld3 = slots_bld3;
     }
 
-    public int getSlots_blb_our() {
-        return slots_blb_our;
+    public int getSlots_bld3_our() {
+        return slots_bld3_our;
     }
 
-    public void setSlots_blb_our(int slots_blb_our) {
-        this.slots_blb_our = slots_blb_our;
+    public void setSlots_bld3_our(int slots_bld3_our) {
+        this.slots_bld3_our = slots_bld3_our;
     }
 
-    public int getSlots_blb_empty() {
-        return slots_blb_empty;
+    public int getSlots_bld3_empty() {
+        return slots_bld3_empty;
     }
 
-    public void setSlots_blb_empty(int slots_blb_empty) {
-        this.slots_blb_empty = slots_blb_empty;
+    public void setSlots_bld3_empty(int slots_bld3_empty) {
+        this.slots_bld3_empty = slots_bld3_empty;
     }
 
-    public int getSlots_blb_enemy() {
-        return slots_blb_enemy;
+    public int getSlots_bld3_enemy() {
+        return slots_bld3_enemy;
     }
 
-    public void setSlots_blb_enemy(int slots_blb_enemy) {
-        this.slots_blb_enemy = slots_blb_enemy;
+    public void setSlots_bld3_enemy(int slots_bld3_enemy) {
+        this.slots_bld3_enemy = slots_bld3_enemy;
     }
 
-    public int getSlots_brt() {
-        return slots_brt;
+    public int getSlots_bld4() {
+        return slots_bld4;
     }
 
-    public void setSlots_brt(int slots_brt) {
-        this.slots_brt = slots_brt;
+    public void setSlots_bld4(int slots_bld4) {
+        this.slots_bld4 = slots_bld4;
     }
 
-    public int getSlots_brt_our() {
-        return slots_brt_our;
+    public int getSlots_bld4_our() {
+        return slots_bld4_our;
     }
 
-    public void setSlots_brt_our(int slots_brt_our) {
-        this.slots_brt_our = slots_brt_our;
+    public void setSlots_bld4_our(int slots_bld4_our) {
+        this.slots_bld4_our = slots_bld4_our;
     }
 
-    public int getSlots_brt_empty() {
-        return slots_brt_empty;
+    public int getSlots_bld4_empty() {
+        return slots_bld4_empty;
     }
 
-    public void setSlots_brt_empty(int slots_brt_empty) {
-        this.slots_brt_empty = slots_brt_empty;
+    public void setSlots_bld4_empty(int slots_bld4_empty) {
+        this.slots_bld4_empty = slots_bld4_empty;
     }
 
-    public int getSlots_brt_enemy() {
-        return slots_brt_enemy;
+    public int getSlots_bld4_enemy() {
+        return slots_bld4_enemy;
     }
 
-    public void setSlots_brt_enemy(int slots_brt_enemy) {
-        this.slots_brt_enemy = slots_brt_enemy;
+    public void setSlots_bld4_enemy(int slots_bld4_enemy) {
+        this.slots_bld4_enemy = slots_bld4_enemy;
     }
 
-    public int getSlots_brc() {
-        return slots_brc;
+    public int getSlots_bld5() {
+        return slots_bld5;
     }
 
-    public void setSlots_brc(int slots_brc) {
-        this.slots_brc = slots_brc;
+    public void setSlots_bld5(int slots_bld5) {
+        this.slots_bld5 = slots_bld5;
     }
 
-    public int getSlots_brc_our() {
-        return slots_brc_our;
+    public int getSlots_bld5_our() {
+        return slots_bld5_our;
     }
 
-    public void setSlots_brc_our(int slots_brc_our) {
-        this.slots_brc_our = slots_brc_our;
+    public void setSlots_bld5_our(int slots_bld5_our) {
+        this.slots_bld5_our = slots_bld5_our;
     }
 
-    public int getSlots_brc_empty() {
-        return slots_brc_empty;
+    public int getSlots_bld5_empty() {
+        return slots_bld5_empty;
     }
 
-    public void setSlots_brc_empty(int slots_brc_empty) {
-        this.slots_brc_empty = slots_brc_empty;
+    public void setSlots_bld5_empty(int slots_bld5_empty) {
+        this.slots_bld5_empty = slots_bld5_empty;
     }
 
-    public int getSlots_brc_enemy() {
-        return slots_brc_enemy;
+    public int getSlots_bld5_enemy() {
+        return slots_bld5_enemy;
     }
 
-    public void setSlots_brc_enemy(int slots_brc_enemy) {
-        this.slots_brc_enemy = slots_brc_enemy;
+    public void setSlots_bld5_enemy(int slots_bld5_enemy) {
+        this.slots_bld5_enemy = slots_bld5_enemy;
     }
 
-    public int getSlots_brb() {
-        return slots_brb;
+    public int getSlots_bld6() {
+        return slots_bld6;
     }
 
-    public void setSlots_brb(int slots_brb) {
-        this.slots_brb = slots_brb;
+    public void setSlots_bld6(int slots_bld6) {
+        this.slots_bld6 = slots_bld6;
     }
 
-    public int getSlots_brb_our() {
-        return slots_brb_our;
+    public int getSlots_bld6_our() {
+        return slots_bld6_our;
     }
 
-    public void setSlots_brb_our(int slots_brb_our) {
-        this.slots_brb_our = slots_brb_our;
+    public void setSlots_bld6_our(int slots_bld6_our) {
+        this.slots_bld6_our = slots_bld6_our;
     }
 
-    public int getSlots_brb_empty() {
-        return slots_brb_empty;
+    public int getSlots_bld6_empty() {
+        return slots_bld6_empty;
     }
 
-    public void setSlots_brb_empty(int slots_brb_empty) {
-        this.slots_brb_empty = slots_brb_empty;
+    public void setSlots_bld6_empty(int slots_bld6_empty) {
+        this.slots_bld6_empty = slots_bld6_empty;
     }
 
-    public int getSlots_brb_enemy() {
-        return slots_brb_enemy;
+    public int getSlots_bld6_enemy() {
+        return slots_bld6_enemy;
     }
 
-    public void setSlots_brb_enemy(int slots_brb_enemy) {
-        this.slots_brb_enemy = slots_brb_enemy;
+    public void setSlots_bld6_enemy(int slots_bld6_enemy) {
+        this.slots_bld6_enemy = slots_bld6_enemy;
     }
 
     public int getCalibrateX() {
@@ -1610,243 +1610,243 @@ public class DbTeamGame implements Serializable {
         this.canEarlyWinWithoutX2 = canEarlyWinWithoutX2;
     }
 
-    public boolean isNeedToWin_blt() {
-        return needToWin_blt;
+    public boolean isNeedToWin_bld1() {
+        return needToWin_bld1;
     }
 
-    public void setNeedToWin_blt(boolean needToWin_blt) {
-        this.needToWin_blt = needToWin_blt;
+    public void setNeedToWin_bld1(boolean needToWin_bld1) {
+        this.needToWin_bld1 = needToWin_bld1;
     }
 
-    public boolean isNeedToWinWithoutX2_blt() {
-        return needToWinWithoutX2_blt;
+    public boolean isNeedToWinWithoutX2_bld1() {
+        return needToWinWithoutX2_bld1;
     }
 
-    public void setNeedToWinWithoutX2_blt(boolean needToWinWithoutX2_blt) {
-        this.needToWinWithoutX2_blt = needToWinWithoutX2_blt;
+    public void setNeedToWinWithoutX2_bld1(boolean needToWinWithoutX2_bld1) {
+        this.needToWinWithoutX2_bld1 = needToWinWithoutX2_bld1;
     }
 
-    public boolean isNeedToEarlyWin_blt() {
-        return needToEarlyWin_blt;
+    public boolean isNeedToEarlyWin_bld1() {
+        return needToEarlyWin_bld1;
     }
 
-    public void setNeedToEarlyWin_blt(boolean needToEarlyWin_blt) {
-        this.needToEarlyWin_blt = needToEarlyWin_blt;
+    public void setNeedToEarlyWin_bld1(boolean needToEarlyWin_bld1) {
+        this.needToEarlyWin_bld1 = needToEarlyWin_bld1;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_blt() {
-        return needToEarlyWinWithoutX2_blt;
+    public boolean isNeedToEarlyWinWithoutX2_bld1() {
+        return needToEarlyWinWithoutX2_bld1;
     }
 
-    public void setNeedToEarlyWinWithoutX2_blt(boolean needToEarlyWinWithoutX2_blt) {
-        this.needToEarlyWinWithoutX2_blt = needToEarlyWinWithoutX2_blt;
+    public void setNeedToEarlyWinWithoutX2_bld1(boolean needToEarlyWinWithoutX2_bld1) {
+        this.needToEarlyWinWithoutX2_bld1 = needToEarlyWinWithoutX2_bld1;
     }
 
-    public boolean isNeedToWin_blc() {
-        return needToWin_blc;
+    public boolean isNeedToWin_bld2() {
+        return needToWin_bld2;
     }
 
-    public void setNeedToWin_blc(boolean needToWin_blc) {
-        this.needToWin_blc = needToWin_blc;
+    public void setNeedToWin_bld2(boolean needToWin_bld2) {
+        this.needToWin_bld2 = needToWin_bld2;
     }
 
-    public boolean isNeedToWinWithoutX2_blc() {
-        return needToWinWithoutX2_blc;
+    public boolean isNeedToWinWithoutX2_bld2() {
+        return needToWinWithoutX2_bld2;
     }
 
-    public void setNeedToWinWithoutX2_blc(boolean needToWinWithoutX2_blc) {
-        this.needToWinWithoutX2_blc = needToWinWithoutX2_blc;
+    public void setNeedToWinWithoutX2_bld2(boolean needToWinWithoutX2_bld2) {
+        this.needToWinWithoutX2_bld2 = needToWinWithoutX2_bld2;
     }
 
-    public boolean isNeedToEarlyWin_blc() {
-        return needToEarlyWin_blc;
+    public boolean isNeedToEarlyWin_bld2() {
+        return needToEarlyWin_bld2;
     }
 
-    public void setNeedToEarlyWin_blc(boolean needToEarlyWin_blc) {
-        this.needToEarlyWin_blc = needToEarlyWin_blc;
+    public void setNeedToEarlyWin_bld2(boolean needToEarlyWin_bld2) {
+        this.needToEarlyWin_bld2 = needToEarlyWin_bld2;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_blc() {
-        return needToEarlyWinWithoutX2_blc;
+    public boolean isNeedToEarlyWinWithoutX2_bld2() {
+        return needToEarlyWinWithoutX2_bld2;
     }
 
-    public void setNeedToEarlyWinWithoutX2_blc(boolean needToEarlyWinWithoutX2_blc) {
-        this.needToEarlyWinWithoutX2_blc = needToEarlyWinWithoutX2_blc;
+    public void setNeedToEarlyWinWithoutX2_bld2(boolean needToEarlyWinWithoutX2_bld2) {
+        this.needToEarlyWinWithoutX2_bld2 = needToEarlyWinWithoutX2_bld2;
     }
 
-    public boolean isNeedToWin_blb() {
-        return needToWin_blb;
+    public boolean isNeedToWin_bld3() {
+        return needToWin_bld3;
     }
 
-    public void setNeedToWin_blb(boolean needToWin_blb) {
-        this.needToWin_blb = needToWin_blb;
+    public void setNeedToWin_bld3(boolean needToWin_bld3) {
+        this.needToWin_bld3 = needToWin_bld3;
     }
 
-    public boolean isNeedToWinWithoutX2_blb() {
-        return needToWinWithoutX2_blb;
+    public boolean isNeedToWinWithoutX2_bld3() {
+        return needToWinWithoutX2_bld3;
     }
 
-    public void setNeedToWinWithoutX2_blb(boolean needToWinWithoutX2_blb) {
-        this.needToWinWithoutX2_blb = needToWinWithoutX2_blb;
+    public void setNeedToWinWithoutX2_bld3(boolean needToWinWithoutX2_bld3) {
+        this.needToWinWithoutX2_bld3 = needToWinWithoutX2_bld3;
     }
 
-    public boolean isNeedToEarlyWin_blb() {
-        return needToEarlyWin_blb;
+    public boolean isNeedToEarlyWin_bld3() {
+        return needToEarlyWin_bld3;
     }
 
-    public void setNeedToEarlyWin_blb(boolean needToEarlyWin_blb) {
-        this.needToEarlyWin_blb = needToEarlyWin_blb;
+    public void setNeedToEarlyWin_bld3(boolean needToEarlyWin_bld3) {
+        this.needToEarlyWin_bld3 = needToEarlyWin_bld3;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_blb() {
-        return needToEarlyWinWithoutX2_blb;
+    public boolean isNeedToEarlyWinWithoutX2_bld3() {
+        return needToEarlyWinWithoutX2_bld3;
     }
 
-    public void setNeedToEarlyWinWithoutX2_blb(boolean needToEarlyWinWithoutX2_blb) {
-        this.needToEarlyWinWithoutX2_blb = needToEarlyWinWithoutX2_blb;
+    public void setNeedToEarlyWinWithoutX2_bld3(boolean needToEarlyWinWithoutX2_bld3) {
+        this.needToEarlyWinWithoutX2_bld3 = needToEarlyWinWithoutX2_bld3;
     }
 
-    public boolean isNeedToWin_brt() {
-        return needToWin_brt;
+    public boolean isNeedToWin_bld4() {
+        return needToWin_bld4;
     }
 
-    public void setNeedToWin_brt(boolean needToWin_brt) {
-        this.needToWin_brt = needToWin_brt;
+    public void setNeedToWin_bld4(boolean needToWin_bld4) {
+        this.needToWin_bld4 = needToWin_bld4;
     }
 
-    public boolean isNeedToWinWithoutX2_brt() {
-        return needToWinWithoutX2_brt;
+    public boolean isNeedToWinWithoutX2_bld4() {
+        return needToWinWithoutX2_bld4;
     }
 
-    public void setNeedToWinWithoutX2_brt(boolean needToWinWithoutX2_brt) {
-        this.needToWinWithoutX2_brt = needToWinWithoutX2_brt;
+    public void setNeedToWinWithoutX2_bld4(boolean needToWinWithoutX2_bld4) {
+        this.needToWinWithoutX2_bld4 = needToWinWithoutX2_bld4;
     }
 
-    public boolean isNeedToEarlyWin_brt() {
-        return needToEarlyWin_brt;
+    public boolean isNeedToEarlyWin_bld4() {
+        return needToEarlyWin_bld4;
     }
 
-    public void setNeedToEarlyWin_brt(boolean needToEarlyWin_brt) {
-        this.needToEarlyWin_brt = needToEarlyWin_brt;
+    public void setNeedToEarlyWin_bld4(boolean needToEarlyWin_bld4) {
+        this.needToEarlyWin_bld4 = needToEarlyWin_bld4;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_brt() {
-        return needToEarlyWinWithoutX2_brt;
+    public boolean isNeedToEarlyWinWithoutX2_bld4() {
+        return needToEarlyWinWithoutX2_bld4;
     }
 
-    public void setNeedToEarlyWinWithoutX2_brt(boolean needToEarlyWinWithoutX2_brt) {
-        this.needToEarlyWinWithoutX2_brt = needToEarlyWinWithoutX2_brt;
+    public void setNeedToEarlyWinWithoutX2_bld4(boolean needToEarlyWinWithoutX2_bld4) {
+        this.needToEarlyWinWithoutX2_bld4 = needToEarlyWinWithoutX2_bld4;
     }
 
-    public boolean isNeedToWin_brc() {
-        return needToWin_brc;
+    public boolean isNeedToWin_bld5() {
+        return needToWin_bld5;
     }
 
-    public void setNeedToWin_brc(boolean needToWin_brc) {
-        this.needToWin_brc = needToWin_brc;
+    public void setNeedToWin_bld5(boolean needToWin_bld5) {
+        this.needToWin_bld5 = needToWin_bld5;
     }
 
-    public boolean isNeedToWinWithoutX2_brc() {
-        return needToWinWithoutX2_brc;
+    public boolean isNeedToWinWithoutX2_bld5() {
+        return needToWinWithoutX2_bld5;
     }
 
-    public void setNeedToWinWithoutX2_brc(boolean needToWinWithoutX2_brc) {
-        this.needToWinWithoutX2_brc = needToWinWithoutX2_brc;
+    public void setNeedToWinWithoutX2_bld5(boolean needToWinWithoutX2_bld5) {
+        this.needToWinWithoutX2_bld5 = needToWinWithoutX2_bld5;
     }
 
-    public boolean isNeedToEarlyWin_brc() {
-        return needToEarlyWin_brc;
+    public boolean isNeedToEarlyWin_bld5() {
+        return needToEarlyWin_bld5;
     }
 
-    public void setNeedToEarlyWin_brc(boolean needToEarlyWin_brc) {
-        this.needToEarlyWin_brc = needToEarlyWin_brc;
+    public void setNeedToEarlyWin_bld5(boolean needToEarlyWin_bld5) {
+        this.needToEarlyWin_bld5 = needToEarlyWin_bld5;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_brc() {
-        return needToEarlyWinWithoutX2_brc;
+    public boolean isNeedToEarlyWinWithoutX2_bld5() {
+        return needToEarlyWinWithoutX2_bld5;
     }
 
-    public void setNeedToEarlyWinWithoutX2_brc(boolean needToEarlyWinWithoutX2_brc) {
-        this.needToEarlyWinWithoutX2_brc = needToEarlyWinWithoutX2_brc;
+    public void setNeedToEarlyWinWithoutX2_bld5(boolean needToEarlyWinWithoutX2_bld5) {
+        this.needToEarlyWinWithoutX2_bld5 = needToEarlyWinWithoutX2_bld5;
     }
 
-    public boolean isNeedToWin_brb() {
-        return needToWin_brb;
+    public boolean isNeedToWin_bld6() {
+        return needToWin_bld6;
     }
 
-    public void setNeedToWin_brb(boolean needToWin_brb) {
-        this.needToWin_brb = needToWin_brb;
+    public void setNeedToWin_bld6(boolean needToWin_bld6) {
+        this.needToWin_bld6 = needToWin_bld6;
     }
 
-    public boolean isNeedToWinWithoutX2_brb() {
-        return needToWinWithoutX2_brb;
+    public boolean isNeedToWinWithoutX2_bld6() {
+        return needToWinWithoutX2_bld6;
     }
 
-    public void setNeedToWinWithoutX2_brb(boolean needToWinWithoutX2_brb) {
-        this.needToWinWithoutX2_brb = needToWinWithoutX2_brb;
+    public void setNeedToWinWithoutX2_bld6(boolean needToWinWithoutX2_bld6) {
+        this.needToWinWithoutX2_bld6 = needToWinWithoutX2_bld6;
     }
 
-    public boolean isNeedToEarlyWin_brb() {
-        return needToEarlyWin_brb;
+    public boolean isNeedToEarlyWin_bld6() {
+        return needToEarlyWin_bld6;
     }
 
-    public void setNeedToEarlyWin_brb(boolean needToEarlyWin_brb) {
-        this.needToEarlyWin_brb = needToEarlyWin_brb;
+    public void setNeedToEarlyWin_bld6(boolean needToEarlyWin_bld6) {
+        this.needToEarlyWin_bld6 = needToEarlyWin_bld6;
     }
 
-    public boolean isNeedToEarlyWinWithoutX2_brb() {
-        return needToEarlyWinWithoutX2_brb;
+    public boolean isNeedToEarlyWinWithoutX2_bld6() {
+        return needToEarlyWinWithoutX2_bld6;
     }
 
-    public void setNeedToEarlyWinWithoutX2_brb(boolean needToEarlyWinWithoutX2_brb) {
-        this.needToEarlyWinWithoutX2_brb = needToEarlyWinWithoutX2_brb;
+    public void setNeedToEarlyWinWithoutX2_bld6(boolean needToEarlyWinWithoutX2_bld6) {
+        this.needToEarlyWinWithoutX2_bld6 = needToEarlyWinWithoutX2_bld6;
     }
 
-    public boolean isUseInForecast_blt() {
-        return useInForecast_blt;
+    public boolean isUseInForecast_bld1() {
+        return useInForecast_bld1;
     }
 
-    public void setUseInForecast_blt(boolean useInForecast_blt) {
-        this.useInForecast_blt = useInForecast_blt;
+    public void setUseInForecast_bld1(boolean useInForecast_bld1) {
+        this.useInForecast_bld1 = useInForecast_bld1;
     }
 
-    public boolean isUseInForecast_blc() {
-        return useInForecast_blc;
+    public boolean isUseInForecast_bld2() {
+        return useInForecast_bld2;
     }
 
-    public void setUseInForecast_blc(boolean useInForecast_blc) {
-        this.useInForecast_blc = useInForecast_blc;
+    public void setUseInForecast_bld2(boolean useInForecast_bld2) {
+        this.useInForecast_bld2 = useInForecast_bld2;
     }
 
-    public boolean isUseInForecast_blb() {
-        return useInForecast_blb;
+    public boolean isUseInForecast_bld3() {
+        return useInForecast_bld3;
     }
 
-    public void setUseInForecast_blb(boolean useInForecast_blb) {
-        this.useInForecast_blb = useInForecast_blb;
+    public void setUseInForecast_bld3(boolean useInForecast_bld3) {
+        this.useInForecast_bld3 = useInForecast_bld3;
     }
 
-    public boolean isUseInForecast_brt() {
-        return useInForecast_brt;
+    public boolean isUseInForecast_bld4() {
+        return useInForecast_bld4;
     }
 
-    public void setUseInForecast_brt(boolean useInForecast_brt) {
-        this.useInForecast_brt = useInForecast_brt;
+    public void setUseInForecast_bld4(boolean useInForecast_bld4) {
+        this.useInForecast_bld4 = useInForecast_bld4;
     }
 
-    public boolean isUseInForecast_brc() {
-        return useInForecast_brc;
+    public boolean isUseInForecast_bld5() {
+        return useInForecast_bld5;
     }
 
-    public void setUseInForecast_brc(boolean useInForecast_brc) {
-        this.useInForecast_brc = useInForecast_brc;
+    public void setUseInForecast_bld5(boolean useInForecast_bld5) {
+        this.useInForecast_bld5 = useInForecast_bld5;
     }
 
-    public boolean isUseInForecast_brb() {
-        return useInForecast_brb;
+    public boolean isUseInForecast_bld6() {
+        return useInForecast_bld6;
     }
 
-    public void setUseInForecast_brb(boolean useInForecast_brb) {
-        this.useInForecast_brb = useInForecast_brb;
+    public void setUseInForecast_bld6(boolean useInForecast_bld6) {
+        this.useInForecast_bld6 = useInForecast_bld6;
     }
 }

@@ -2526,7 +2526,7 @@ public class GameActivity extends AppCompatActivity {
                             mainCityCalc = new CityCalc(tmpCityCalc, false);
                             mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                             loadDataToViews(true);
-                        } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+                        } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_CITY) || tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_GARAGE)) {
                             CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
 //                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                             fileCarScreenshot = newFile;
@@ -2645,7 +2645,7 @@ public class GameActivity extends AppCompatActivity {
                 if (isResumed) isResumed = false;
                 return 1;
 
-            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_CITY) || tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_GARAGE)) {
                 if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
 //                    ((CCACar) carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
@@ -2738,7 +2738,7 @@ public class GameActivity extends AppCompatActivity {
                                 if (isResumed) isResumed = false;
                                 return 1;
 
-                            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
+                            } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_CITY) || tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR_IN_GARAGE)) {
                                 if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
                                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
 //                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();

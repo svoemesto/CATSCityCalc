@@ -214,9 +214,9 @@ public class CityCalc { //extends Activity {
                         if (isGameBoxBack && isCityBoxInfo && isCityBoxGray && !isCarBoxInCity) {
                             this.cityCalcType = CityCalcType.GAME;
                         } else if (isGameBoxBack && isCarBoxInCity) {
-                            this.cityCalcType = CityCalcType.CAR;
+                            this.cityCalcType = CityCalcType.CAR_IN_CITY;
                         } else if (isGameBoxBack && isGarageHSE && !isCarBoxInCity) {
-                            this.cityCalcType = CityCalcType.CAR;
+                            this.cityCalcType = CityCalcType.CAR_IN_GARAGE;
                         } else {
                             this.cityCalcType = CityCalcType.ERROR;
                         }
@@ -283,17 +283,10 @@ public class CityCalc { //extends Activity {
                             Utils.copyFile(fileScreenshot.getAbsolutePath(), GlobalApplication.pathToCATScalcFolder + "/last_screenshot.PNG");
                         }
 
-                    } else if (cityCalcType.equals(CityCalcType.CAR)) {
-
-                        boolean isCarInCity = SSA_Rules.getRule(SSA_Key.RULE_SCR_IS_CAR_IN_CITY.getKey()).check(this.getSsaScreenshot());
-                        boolean isCarInGarage = SSA_Rules.getRule(SSA_Key.RULE_SCR_IS_CAR_IN_GARAGE.getKey()).check(this.getSsaScreenshot());
-
-                        if (isCarInCity) {
-                            setAreaToMap(SSA_Key.AREA_CAR_PICTURE.getKey());
-                        } else if (isCarInGarage) {
-                            setAreaToMap(SSA_Key.AREA_GARAGE_CAR.getKey());
-                        }
-
+                    } else if (cityCalcType.equals(CityCalcType.CAR_IN_CITY)) {
+                        setAreaToMap(SSA_Key.AREA_CAR_PICTURE.getKey());
+                    } else if (cityCalcType.equals(CityCalcType.CAR_IN_GARAGE)) {
+                        setAreaToMap(SSA_Key.AREA_GARAGE_CAR.getKey());
                     }
 
                 } // кесли файл физически существует
