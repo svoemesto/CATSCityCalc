@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 import android.util.SparseArray;
 import android.graphics.Matrix;
 
@@ -444,7 +445,10 @@ public class PictureProcessor extends Activity {
                 }
             }
         }
-        return result;  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
+        Log.e("OCR","---------------------");
+        Log.e("OCR",result.trim());
+        Log.e("OCR","---------------------");
+        return result.trim();  // возвращаем результат. Если не было ни одного блока или они все были пустыми - результатом будет пустая строка
 
     }
 

@@ -23,7 +23,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.svoemestodev.catscitycalc.R;
-import com.svoemestodev.catscitycalc.activities.BordersActivity;
 import com.svoemestodev.catscitycalc.adapters.ListBuildingAdapter;
 import com.svoemestodev.catscitycalc.classes.Building;
 import com.svoemestodev.catscitycalc.utils.ColorFrequency;

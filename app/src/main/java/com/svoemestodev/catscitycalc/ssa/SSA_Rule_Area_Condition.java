@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.ssa;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 
 public class SSA_Rule_Area_Condition implements Serializable, Comparable<SSA_Rule_Area_Condition> {
@@ -26,6 +28,10 @@ public class SSA_Rule_Area_Condition implements Serializable, Comparable<SSA_Rul
 
     public SSA_Rule_Area_Condition(String key) {
         this.key = key;
+    }
+
+    public boolean check(Bitmap sourceBitmap) {
+        return this.getSsaArea().isSatisfiesCondition(sourceBitmap, this.getSsaCondition());
     }
 
     public boolean check(SSA_Screenshot ssaScreenshot) {

@@ -40,6 +40,7 @@ import com.svoemestodev.catscitycalc.classes.Car;
 import com.svoemestodev.catscitycalc.classes.CarUtils;
 import com.svoemestodev.catscitycalc.database.DbCar;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 import java.util.ArrayList;
@@ -143,13 +144,13 @@ public class WorkBuildingActivity extends AppCompatActivity {
         bldIconsBlue[4] = R.drawable.ic_bld5_blue; bldIconsRed[4] = R.drawable.ic_bld5_red; bldIconsGray[4] = R.drawable.ic_bld5_gray;
         bldIconsBlue[5] = R.drawable.ic_bld6_blue; bldIconsRed[5] = R.drawable.ic_bld6_red; bldIconsGray[5] = R.drawable.ic_bld6_gray;
 
-        Area[] areasBuildings = new Area[6];
-        areasBuildings[0] = Area.BLT;
-        areasBuildings[1] = Area.BLC;
-        areasBuildings[2] = Area.BLB;
-        areasBuildings[3] = Area.BRT;
-        areasBuildings[4] = Area.BRC;
-        areasBuildings[5] = Area.BRB;
+        String[] areasBuildings = new String[6];
+        areasBuildings[0] = SSA_Key.AREA_CITY_BLD1.getKey();
+        areasBuildings[1] = SSA_Key.AREA_CITY_BLD2.getKey();
+        areasBuildings[2] = SSA_Key.AREA_CITY_BLD3.getKey();
+        areasBuildings[3] = SSA_Key.AREA_CITY_BLD4.getKey();
+        areasBuildings[4] = SSA_Key.AREA_CITY_BLD5.getKey();
+        areasBuildings[5] = SSA_Key.AREA_CITY_BLD6.getKey();
 
         ccaBXX = (CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(areasBuildings[mainSlot-1]);
         ccaGame_getSlots_bxx_our = ccaGame.getBuildings()[mainSlot-1].getSlots_our();

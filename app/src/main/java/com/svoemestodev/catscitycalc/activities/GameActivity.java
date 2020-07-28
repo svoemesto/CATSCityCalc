@@ -81,6 +81,7 @@ import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.database.DbUser;
 import com.svoemestodev.catscitycalc.database.UserRole;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.utils.OpenFileDialog;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
@@ -383,10 +384,10 @@ public class GameActivity extends AppCompatActivity {
         fileGameScreenshot = lastScrFile;   // текущий скриншот = последнему файлу в папке
         fileLastScreenshot = lastScrFile;
         mainCityCalc = new CityCalc(tmpCityCalc, false);
-        mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+        mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
         prevCityCalc = mainCityCalc.getClone();
-        prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+        prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
         loadDataToViews(true);
         setDataToCarsViews();
@@ -413,15 +414,15 @@ public class GameActivity extends AppCompatActivity {
         String textEndGameTime;
 //        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
         CCAGame ccaGame = mainCCAGame;
-        CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
-        CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
+        CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey());
+        CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey());
         CCABuilding[] ccabld = new CCABuilding[6];
-        ccabld[0] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
-        ccabld[1] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
-        ccabld[2] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
-        ccabld[3] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
-        ccabld[4] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
-        ccabld[5] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
+        ccabld[0] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1.getKey());
+        ccabld[1] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2.getKey());
+        ccabld[2] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3.getKey());
+        ccabld[3] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4.getKey());
+        ccabld[4] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5.getKey());
+        ccabld[5] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6.getKey());
         String pattern = "dd MMM HH:mm";
 
         if (ccaGame != null && ccaGame.getDateStartGame() != null) {
@@ -809,7 +810,7 @@ public class GameActivity extends AppCompatActivity {
         lgcb_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
 
         try {
-            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
+            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey())).isGameOver()) {
 
                 if (!car1.isFree()) {
                     car1.setStateFree();
@@ -1257,9 +1258,9 @@ public class GameActivity extends AppCompatActivity {
                 CityCalc tmpCityCalc = new CityCalc(fileGameScreenshot, calibrateX, calibrateY, mainUserNIC, mainUserUID, mainTeamID);
                 if (tmpCityCalc.getCityCalcType().equals(CityCalcType.GAME)) {
                     prevCityCalc = mainCityCalc.getClone();
-                    prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                    prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                     mainCityCalc = new CityCalc(tmpCityCalc, false);
-                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                    mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                     loadDataToViews(false);
                 }
             }
@@ -1522,20 +1523,20 @@ public class GameActivity extends AppCompatActivity {
 
                                                                                     car.setBuildingTask(dbCar.getCarBuildingTask());        // устанавливаем новую задачу для локальной машины
                                                                                     // получаем правильную картинку здания для нового задания
-                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                                    CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                                                                                     Bitmap taskBitmap = null;
                                                                                     if (car.getBuildingTask() == 1 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLT).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1_NAME.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 2 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLC).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2_NAME.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 3 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BLB).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3_NAME.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 4 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRT).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4_NAME.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 5 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRC).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5_NAME.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 6 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(Area.BRB).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6_NAME.getKey()).getBmpSrc();
                                                                                     }
                                                                                     car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
                                                                                     car.save();                     // сохраняем локальную машину
@@ -1789,10 +1790,10 @@ public class GameActivity extends AppCompatActivity {
                                                     Toast.makeText(GameActivity.this, getString(R.string.screen_from_server), Toast.LENGTH_LONG).show();
 
                                                     prevCityCalc = mainCityCalc.getClone();
-                                                    prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                                                    prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                                     mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                    mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                    mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                                     Forecaster forecaster = new Forecaster(prevCCAGame, mainCCAGame);
 
@@ -2520,14 +2521,14 @@ public class GameActivity extends AppCompatActivity {
                             fileLastInFolderScreenshot = null;    // сбрасываем последний файл в папке
 
                             prevCityCalc = mainCityCalc.getClone();
-                            prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                            prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                             mainCityCalc = new CityCalc(tmpCityCalc, false);
-                            mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                            mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                             loadDataToViews(true);
                         } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                             CityCalc carCityCalc = new CityCalc(tmpCityCalc, false);
-                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+//                            ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                             fileCarScreenshot = newFile;
 
                         }
@@ -2636,10 +2637,10 @@ public class GameActivity extends AppCompatActivity {
                 Utils.copyFile(fileGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
 
                 prevCityCalc = mainCityCalc.getClone();
-                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
+                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                 mainCityCalc = new CityCalc(tmpCityCalc, true);
-                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                 if (isResumed) isResumed = false;
                 return 1;
@@ -2647,7 +2648,7 @@ public class GameActivity extends AppCompatActivity {
             } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                 if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                    ((CCACar) carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+//                    ((CCACar) carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                     fileCarScreenshot = tmpFileScreenshot;
                     if (isResumed) isResumed = false;
                     return 2;
@@ -2729,10 +2730,10 @@ public class GameActivity extends AppCompatActivity {
                                 }
 
                                 prevCityCalc = mainCityCalc.getClone();
-                                prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(Area.CITY);
+                                prevCCAGame = (CCAGame)prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                 mainCityCalc = new CityCalc(tmpCityCalc, isRealtimeScreenshot);
-                                mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(Area.CITY);
+                                mainCCAGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                 if (isResumed) isResumed = false;
                                 return 1;
@@ -2740,7 +2741,7 @@ public class GameActivity extends AppCompatActivity {
                             } else if (tmpCityCalc.getCityCalcType().equals(CityCalcType.CAR)) {
                                 if (fileCarScreenshot == null || !fileCarScreenshot.equals(tmpFileScreenshot)) {
                                     CityCalc carCityCalc = new CityCalc(tmpCityCalc, true);
-                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
+//                                    ((CCACar)carCityCalc.getMapAreas().get(Area.CAR_IN_CITY_INFO)).parseCar();
                                     fileCarScreenshot = tmpFileScreenshot;
                                 }
                             }
@@ -2799,10 +2800,10 @@ public class GameActivity extends AppCompatActivity {
                                                                 fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
                                                                 prevCityCalc = mainCityCalc.getClone();
-                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                                                 mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                                                                 mainCCAGame.setSource(1);
                                                                 Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                                                                 LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
@@ -2912,10 +2913,10 @@ public class GameActivity extends AppCompatActivity {
                                                                 fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
                                                                 prevCityCalc = mainCityCalc.getClone();
-                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                                                 mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                                                                 mainCCAGame.setSource(1);
                                                                 Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                                                                 LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());
@@ -3012,10 +3013,10 @@ public class GameActivity extends AppCompatActivity {
                                                                 fileGameScreenshot = teamGameScreenshot;   // текущий скриншот = последнему файлу в папке
 
                                                                 prevCityCalc = mainCityCalc.getClone();
-                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(Area.CITY);
+                                                                prevCCAGame = (CCAGame) prevCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
                                                                 mainCityCalc = new CityCalc(tmpCityCalc, false);
-                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+                                                                mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                                                                 mainCCAGame.setSource(1);
                                                                 Utils.copyFile(teamGameScreenshot.getAbsolutePath(), getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name));
                                                                 LastModified.setLastModified(getApplicationContext().getFilesDir().getAbsolutePath() + "/" + getString(R.string.last_screenshot_file_name), loadedDbTeamGame.getDateScreenshot());

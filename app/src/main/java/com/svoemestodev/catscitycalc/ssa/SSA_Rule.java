@@ -1,5 +1,7 @@
 package com.svoemestodev.catscitycalc.ssa;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,48 @@ public class SSA_Rule implements Serializable, Comparable<SSA_Rule> {
 
     public SSA_Rule(String key) {
         this.key = key;
+    }
+
+    public boolean check(Bitmap sourceBitmap) {
+
+        List<SSA_Rule_Area_Condition> listTrue = this.getListTrue();
+        List<SSA_Rule_Area_Condition> listFalse = this.getListFalse();
+        List<SSA_Rule_Area_Condition> listOneTrue = this.getListOneTrue();
+        List<SSA_Rule_Area_Condition> listAnyTrue = this.getListAnyTrue();
+
+        if (listTrue.size() != 0) {
+            for (SSA_Rule_Area_Condition ssaRAC: listTrue) {
+                boolean flagTemp = ssaRAC.check(sourceBitmap);
+                if (!flagTemp) return false;
+            }
+        }
+
+        if (listFalse.size() != 0) {
+            for (SSA_Rule_Area_Condition ssaRAC: listFalse) {
+                boolean flagTemp = ssaRAC.check(sourceBitmap);
+                if (flagTemp) return false;
+            }
+        }
+
+        if (listOneTrue.size() != 0) {
+            int count = 0;
+            for (SSA_Rule_Area_Condition ssaRAC: listOneTrue) {
+                boolean flagTemp = ssaRAC.check(sourceBitmap);
+                if (flagTemp) count++;
+            }
+            if (count != 1) return false;
+        }
+
+        if (listAnyTrue.size() != 0) {
+            int count = 0;
+            for (SSA_Rule_Area_Condition ssaRAC: listAnyTrue) {
+                boolean flagTemp = ssaRAC.check(sourceBitmap);
+                if (flagTemp) count++;
+            }
+            if (count == 0) return false;
+        }
+
+        return true;
     }
 
     public boolean check(SSA_Screenshot ssaScreenshot) {

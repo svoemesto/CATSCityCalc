@@ -12,7 +12,7 @@ public class SSA_RBT_Condition implements Serializable {
     private int type = 0; // 0 - resize, 1 - black/white, 2 - white/black, 3 - transparent
     private float scaleX = 1.0f;
     private float scaleY = 1.0f;
-    private SSA_Color ssaColor = SSA_Colors.getColor("WHITE");
+    private SSA_Color ssaColor = SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey());
     private int threshold = 10;
     private boolean skip = false;
 

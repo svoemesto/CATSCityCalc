@@ -93,9 +93,9 @@ public class CalibrateActivity extends AppCompatActivity {
                 editor.putInt(getString(R.string.pref_calibrate_x), GameActivity.calibrateX);
                 editor.apply();
                 CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
-                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
-                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
-                }
+//                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
+//                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
+//                }
 
             }
         });
@@ -120,17 +120,17 @@ public class CalibrateActivity extends AppCompatActivity {
                 editor.putInt(getString(R.string.pref_calibrate_y), GameActivity.calibrateY);
                 editor.apply();
                 CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
-                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
-                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
-                }
+//                if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
+//                    ivCalibrate.setImageBitmap(Objects.requireNonNull(calibrateCityCalc.getMapAreas().get(Area.CITY)).getBmpSrc());
+//                }
 
             }
         });
 
         CityCalc calibrateCityCalc = new CityCalc(GameActivity.fileLastScreenshot, GameActivity.calibrateX, GameActivity.calibrateY, CityCalcType.CALIBRATE);
-        if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
-            ivCalibrate.setImageBitmap(calibrateCityCalc.getMapAreas().get(Area.CITY).getBmpSrc());
-        }
+//        if (calibrateCityCalc.getMapAreas().get(Area.CITY) != null) {
+//            ivCalibrate.setImageBitmap(calibrateCityCalc.getMapAreas().get(Area.CITY).getBmpSrc());
+//        }
 
     }
 

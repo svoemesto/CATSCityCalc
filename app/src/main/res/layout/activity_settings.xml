@@ -113,22 +113,6 @@
         />
 
     <Button
-        android:id="@+id/st_btn_open_borders_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sett_borders"
-        android:onClick="openBordersSettings"
-        />
-
-    <Button
-        android:id="@+id/st_btn_open_colors_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sett_colors"
-        android:onClick="openColorsdetectSettings"
-        />
-
-    <Button
         android:id="@+id/st_btn_open_ssa_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

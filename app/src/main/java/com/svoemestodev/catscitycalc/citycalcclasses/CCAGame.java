@@ -7,6 +7,8 @@ import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
+import com.svoemestodev.catscitycalc.ssa.SSA_Area;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.File;
@@ -74,8 +76,8 @@ public class CCAGame extends CityCalcArea {
 
     private byte[] bytesScreenshot = null;
 
-    public CCAGame(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
-        super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
+    public CCAGame(CityCalc cityCalc, SSA_Area ssaArea) { //} Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
+        super(cityCalc, ssaArea); //area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
         if (cityCalc.getFileScreenshot() != null) {
             if (cityCalc.getFileScreenshot().exists()) {
 //                this.dateScreenshot = new Date((cityCalc.getFileScreenshot().lastModified() / 60_000) * 60_000); // дата/время создания скриншота с точностью до минуты
@@ -115,18 +117,8 @@ public class CCAGame extends CityCalcArea {
         CCAGame clone = new CCAGame();
 
         clone.setCityCalc(parent);
-        clone.setArea(this.getArea());
+        clone.setSsaArea(this.getSsaArea().getClone());
         clone.setBmpSrc(this.getBmpSrc());
-        clone.setCropPosition(this.getCropPosition());
-        clone.setX1(this.getX1());
-        clone.setX2(this.getX2());
-        clone.setY1(this.getY1());
-        clone.setY2(this.getY2());
-        clone.setColors(this.getColors());
-        clone.setThs(this.getThs());
-        clone.setNeedOcr(this.isNeedOcr());
-        clone.setNeedBW(this.isNeedBW());
-        clone.setGeneric(this.isGeneric());
         clone.setBmpPrc(this.getBmpPrc());
         clone.setOcrText(this.getOcrText());
         clone.setFinText(this.getFinText());
@@ -394,7 +386,6 @@ public class CCAGame extends CityCalcArea {
                 break;
             }
         }
-
         this.canWin = isFound;
         for (int index = 0; index < 6; index++) {
             this.buildings[index].setNeedToWin(isFound && matrix.ccaGame.buildings[index].isBuildingIsOur());
@@ -448,14 +439,14 @@ public class CCAGame extends CityCalcArea {
         boolean[] isOur = new boolean[6];
         CCAGame ccaGame;
 
-        public ForecastMatrix(CCAGame ccaGame, boolean isOur_blt, boolean isOur_blc, boolean isOur_blb, boolean isOur_brt, boolean isOur_brc, boolean isOur_brb) {
+        public ForecastMatrix(CCAGame ccaGame, boolean isOur_bld1, boolean isOur_bld2, boolean isOur_bld3, boolean isOur_bld4, boolean isOur_bld5, boolean isOur_bld6) {
 
-            this.isOur[0] = isOur_blt;
-            this.isOur[1] = isOur_blc;
-            this.isOur[2] = isOur_blb;
-            this.isOur[3] = isOur_brt;
-            this.isOur[4] = isOur_brc;
-            this.isOur[5] = isOur_brb;
+            this.isOur[0] = isOur_bld1;
+            this.isOur[1] = isOur_bld2;
+            this.isOur[2] = isOur_bld3;
+            this.isOur[3] = isOur_bld4;
+            this.isOur[4] = isOur_bld5;
+            this.isOur[5] = isOur_bld6;
             this.ccaGame = ccaGame;
 
             int countCars_our = 0;
@@ -540,11 +531,14 @@ public class CCAGame extends CityCalcArea {
 
     public void calc(boolean isRealtimeScreenshot) {
 
-        CityCalcArea ccaTotalTime = this.getCityCalc().getMapAreas().get(Area.TOTAL_TIME); // время
-        CityCalcArea ccaEarlyWin = this.getCityCalc().getMapAreas().get(Area.EARLY_WIN);   // очки досрочки
+        CityCalcArea ccaTotalTime = this.getCityCalc().getMapAreas().get(SSA_Key.AREA_CITY_TIME.getKey()); // время
+        CityCalcArea ccaEarlyWin = this.getCityCalc().getMapAreas().get(SSA_Key.AREA_CITY_EARLY_WIN.getKey());   // очки досрочки
         int minFromStartToScreenshot = 0;
         
         if (ccaTotalTime != null && ccaEarlyWin != null) {
+
+            ccaTotalTime.setFinText(Utils.parseTime(ccaTotalTime.getOcrText()));
+            ccaEarlyWin.setFinText(Utils.parseNumbers(ccaEarlyWin.getOcrText()));
 
             String[] words = ccaTotalTime.getFinText().split(":"); // разделяем строку на часы и минуты
             if (words.length == 2) {
@@ -552,6 +546,7 @@ public class CCAGame extends CityCalcArea {
             } else {
                 this.isErrorRecognize = true;
             }
+
             this.dateStartGame = Utils.addMinutesToDate(this.dateScreenshot, -minFromStartToScreenshot); // дата начала игры
             this.dateEndGame = Utils.addMinutesToDate(this.dateStartGame, 24*60); // дата конца игры по времени
             this.earlyWin = Integer.parseInt(ccaEarlyWin.getFinText()); // очки до досрочной победы

@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.citycalcclasses.Area;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCABuilding;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
 import java.util.ArrayList;
@@ -44,32 +45,32 @@ public class Building {
         list.add(new Building(-1, PictureProcessor.generateBitmapByOnePixel(0xFF000000,1,1)));
 
         try {
-            if (((CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(Area.BLT)).isPresent()) list.add(new Building(1, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLT)).getBmpSrc()));
+            if (((CCABuilding) GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1.getKey())).isPresent()) list.add(new Building(1, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 
         try {
-            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLC)).isPresent()) list.add(new Building(2, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLC)).getBmpSrc()));
+            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2.getKey())).isPresent()) list.add(new Building(2, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 
         try {
-            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLB)).isPresent()) list.add(new Building(3, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BLB)).getBmpSrc()));
+            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3.getKey())).isPresent()) list.add(new Building(3, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 
         try {
-            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRT)).isPresent()) list.add(new Building(4, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRT)).getBmpSrc()));
+            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4.getKey())).isPresent()) list.add(new Building(4, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 
         try {
-            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRC)).isPresent()) list.add(new Building(5, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRC)).getBmpSrc()));
+            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5.getKey())).isPresent()) list.add(new Building(5, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 
         try {
-            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRB)).isPresent()) list.add(new Building(6, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(Area.BRB)).getBmpSrc()));
+            if (((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6.getKey())).isPresent()) list.add(new Building(6, ((CCABuilding)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6.getKey())).getBmpSrc()));
         } catch (Exception ignored) {
         }
 

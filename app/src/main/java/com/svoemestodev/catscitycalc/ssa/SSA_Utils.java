@@ -19,6 +19,17 @@ public class SSA_Utils {
         SSA_Crop_Condition ssaCropCondition;
         SSA_RBT_Condition ssaRbtCondition;
 
+        ssaArea = new SSA_Area(SSA_Key.AREA_CITY.getKey());
+        ssaArea.setName("Город");
+        parentArea = null;
+        ssaArea.setParentArea(parentArea);
+        ssaArea.setSnap(0);
+        ssaArea.setrX1(-0.560);
+        ssaArea.setrX2(+0.560);
+        ssaArea.setrY1(-0.800);
+        ssaArea.setrY2(-0.450);
+        map.put(ssaArea.getKey(), ssaArea);
+
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_TIME.getKey());
         ssaArea.setName("Время до конца игры");
         parentArea = null;
@@ -30,7 +41,7 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.665);
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -67,18 +78,18 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.640);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.075f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.075f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -95,18 +106,18 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.640);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.075f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.075f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.085f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -122,7 +133,7 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.450);
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
@@ -153,14 +164,14 @@ public class SSA_Utils {
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.070f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.085f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_POINTS_OUR.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_POINTS_OUR.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -192,14 +203,14 @@ public class SSA_Utils {
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.070f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.070f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.700f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_POINTS_ENEMY.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_POINTS_ENEMY.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -248,7 +259,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -272,6 +283,13 @@ public class SSA_Utils {
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
+
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
+
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD1_PROGRESS.getKey());
@@ -329,7 +347,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -354,6 +372,14 @@ public class SSA_Utils {
         listCropConditions.add(ssaCropCondition);
 
         ssaArea.setListCropConditions(listCropConditions);
+
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
+
+
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD2_PROGRESS.getKey());
@@ -411,7 +437,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -436,6 +462,14 @@ public class SSA_Utils {
         listCropConditions.add(ssaCropCondition);
 
         ssaArea.setListCropConditions(listCropConditions);
+
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
+
+
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD3_PROGRESS.getKey());
@@ -493,7 +527,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -516,8 +550,14 @@ public class SSA_Utils {
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
-
         ssaArea.setListCropConditions(listCropConditions);
+
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
+
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD4_PROGRESS.getKey());
@@ -576,7 +616,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -599,8 +639,14 @@ public class SSA_Utils {
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
-
         ssaArea.setListCropConditions(listCropConditions);
+
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
+
         map.put(ssaArea.getKey(), ssaArea);
 
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD5_PROGRESS.getKey());
@@ -659,7 +705,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -683,6 +729,11 @@ public class SSA_Utils {
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
+
+        listRbtConditions = new ArrayList<>();
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+        ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
         ssaArea = new SSA_Area(SSA_Key.AREA_CITY_BLD6_PROGRESS.getKey());
@@ -752,7 +803,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -779,7 +830,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -806,7 +857,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -874,7 +925,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -956,7 +1007,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -983,7 +1034,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 2, SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()), 90, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -1040,7 +1091,7 @@ public class SSA_Utils {
 
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
+//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
 
         map.put(ssaArea.getKey(), ssaArea);
@@ -1289,6 +1340,14 @@ public class SSA_Utils {
         ssaCondition.setMaxFrequency(1.000f);
         map.put(ssaCondition.getKey(), ssaCondition);
 
+        ssaCondition = new SSA_Condition(SSA_Key.COND_WHITE_MORE_30.getKey());
+        ssaCondition.setName("Белый >30%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.300f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
+
         ssaCondition = new SSA_Condition(SSA_Key.COND_IS_X2_PRESENT.getKey());
         ssaCondition.setName("Есть желтая скрепка");
         ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()));
@@ -1302,6 +1361,14 @@ public class SSA_Utils {
         ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()));
         ssaCondition.setThreshold(5);
         ssaCondition.setMinFrequency(0.001f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
+
+        ssaCondition = new SSA_Condition(SSA_Key.COND_HEALBOX_RED_MORE_50.getKey());
+        ssaCondition.setName("Красный хилбокс >50%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_HEALBOX_RED.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.500f);
         ssaCondition.setMaxFrequency(1.000f);
         map.put(ssaCondition.getKey(), ssaCondition);
 
@@ -1369,7 +1436,37 @@ public class SSA_Utils {
         ssaCondition.setMaxFrequency(1.000f);
         map.put(ssaCondition.getKey(), ssaCondition);
 
+        ssaCondition = new SSA_Condition(SSA_Key.COND_ATTACK_RED_LIGHT_MORE_40.getKey());
+        ssaCondition.setName("Атака красный светлый >40%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_ATTACK_RED_LIGHT.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.400f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
 
+        ssaCondition = new SSA_Condition(SSA_Key.COND_ATTACK_RED_DARK_MORE_40.getKey());
+        ssaCondition.setName("Атака красный темный >40%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_ATTACK_RED_DARK.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.400f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
+
+        ssaCondition = new SSA_Condition(SSA_Key.COND_DEFENCE_BLUE_LIGHT_MORE_40.getKey());
+        ssaCondition.setName("Защита синий светлый >40%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_DEFENCE_BLUE_LIGHT.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.400f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
+
+        ssaCondition = new SSA_Condition(SSA_Key.COND_DEFENCE_BLUE_DARK_MORE_40.getKey());
+        ssaCondition.setName("Защита синий темный >40%");
+        ssaCondition.setSsaColor(SSA_Colors.getColor(SSA_Key.COLOR_DEFENCE_BLUE_DARK.getKey()));
+        ssaCondition.setThreshold(10);
+        ssaCondition.setMinFrequency(0.400f);
+        ssaCondition.setMaxFrequency(1.000f);
+        map.put(ssaCondition.getKey(), ssaCondition);
 
         ssaConditions.setMap(map);
         return ssaConditions;
@@ -1480,6 +1577,44 @@ public class SSA_Utils {
         ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey(), "Голубой бокс машины в городе", SSA_Areas.getArea(SSA_Key.AREA_CAR_BOX_IN_CITY.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_CAR_BLUE_BOX_IN_CITY_100.getKey()));
         map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
 
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT1.getKey(), "Машина в городе, слот №1", SSA_Areas.getArea(SSA_Key.AREA_CAR_SLOT1.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT2.getKey(), "Машина в городе, слот №2", SSA_Areas.getArea(SSA_Key.AREA_CAR_SLOT2.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT3.getKey(), "Машина в городе, слот №3", SSA_Areas.getArea(SSA_Key.AREA_CAR_SLOT3.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT1.getKey(), "Машина в гараже, слот №1", SSA_Areas.getArea(SSA_Key.AREA_GARAGE_SLOT1.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT2.getKey(), "Машина в гараже, слот №2", SSA_Areas.getArea(SSA_Key.AREA_GARAGE_SLOT2.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT3.getKey(), "Машина в гараже, слот №3", SSA_Areas.getArea(SSA_Key.AREA_GARAGE_SLOT3.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_CITY_HEALBOX.getKey(), "Машина в городе, есть хилбокс", SSA_Areas.getArea(SSA_Key.AREA_CAR_HEALBOX.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_HEALBOX_RED_MORE_50.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_IN_CITY_DEFENCE_BREAK_BOX.getKey(), "Машина в городе, есть брейкбокс", SSA_Areas.getArea(SSA_Key.AREA_CAR_BOX_DEFENCE_BREAK.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_20.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_CAR_REPAIRING_IN_DEFENCE.getKey(), "Машина в городе, есть ключ починки", SSA_Areas.getArea(SSA_Key.AREA_CAR_REPAIRING_IN_DEFENCE.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_WHITE_MORE_30.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_RED_LIGHT.getKey(), "Экран атаки, светло-красный бокс", SSA_Areas.getArea(SSA_Key.AREA_ATTACK_DEFENCE_BOX.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_ATTACK_RED_LIGHT_MORE_40.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_RED_DARK.getKey(), "Экран атаки, темно-красный бокс", SSA_Areas.getArea(SSA_Key.AREA_ATTACK_DEFENCE_BOX.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_ATTACK_RED_DARK_MORE_40.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_BLUE_LIGHT.getKey(), "Экран атаки, светло-синий бокс", SSA_Areas.getArea(SSA_Key.AREA_ATTACK_DEFENCE_BOX.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_DEFENCE_BLUE_LIGHT_MORE_40.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
+
+        ssaRuleAreaCondition = new SSA_Rule_Area_Condition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_BLUE_DARK.getKey(), "Экран атаки, темно-синий бокс", SSA_Areas.getArea(SSA_Key.AREA_ATTACK_DEFENCE_BOX.getKey()), SSA_Conditions.getCondition(SSA_Key.COND_DEFENCE_BLUE_DARK_MORE_40.getKey()));
+        map.put(ssaRuleAreaCondition.getKey(), ssaRuleAreaCondition);
 
         ssaRulesAreaCondition.setMap(map);
         return ssaRulesAreaCondition;
@@ -1537,46 +1672,83 @@ public class SSA_Utils {
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD1_X2.getKey(), "Здание №1 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD1_MAY_X2.getKey(), "Здание №1 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD1_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD1_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD2_X2.getKey(), "Здание №2 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD2_MAY_X2.getKey(), "Здание №2 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD2_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD2_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD3_X2.getKey(), "Здание №3 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD3_MAY_X2.getKey(), "Здание №3 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD3_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD3_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD4_X2.getKey(), "Здание №4 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD4_MAY_X2.getKey(), "Здание №4 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD4_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD4_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD5_X2.getKey(), "Здание №5 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD5_MAY_X2.getKey(), "Здание №5 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD5_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD5_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
-        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD6_X2.getKey(), "Здание №6 со скрепкой");
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD6_MAY_X2.getKey(), "Здание №6 со скрепкой");
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD6_IS_X2.getKey()));
         listOneTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD6_MAY_X2.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD1_IS_X2.getKey(), "Здание №1 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD1_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD2_IS_X2.getKey(), "Здание №2 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD2_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD3_IS_X2.getKey(), "Здание №3 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD3_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD4_IS_X2.getKey(), "Здание №4 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD4_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD5_IS_X2.getKey(), "Здание №5 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD5_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_BLD6_IS_X2.getKey(), "Здание №6 с золотой скрепкой");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_BLD6_IS_X2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
 
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
         ssaRule = new SSA_Rule(SSA_Key.RULE_IS_GAME_BOX_BACK.getKey(), "Бэкбокс");
@@ -1609,6 +1781,104 @@ public class SSA_Utils {
         listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
         ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_BOX_IN_CITY.getKey(), "Голубой бокс машины в городе");
         listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_SCR_IS_GAME_IN_CITY.getKey(), "Скриншот игры в городе");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_RED.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_YELLOW.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_INFO_RED.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_INFO_WHITE.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_GRAY.getKey()));
+        listFalse.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_SCR_IS_CAR_IN_CITY.getKey(), "Скриншот машины в городе");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_RED.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_YELLOW.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_SCR_IS_CAR_IN_GARAGE.getKey(), "Скриншот машины в гараже");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_RED.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_YELLOW.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_BACKGROUND.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_RED.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_BLUE.getKey()));
+        listFalse.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_CITY_SLOT1.getKey(), "Машина в городе в слоте №1");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT1.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_CITY_SLOT2.getKey(), "Машина в городе в слоте №2");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_CITY_SLOT3.getKey(), "Машина в городе в слоте №3");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_CITY_SLOT3.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_GARAGE_SLOT1.getKey(), "Машина в гараже в слоте №1");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT1.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_GARAGE_SLOT2.getKey(), "Машина в гараже в слоте №2");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT2.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_GARAGE_SLOT3.getKey(), "Машина в гараже в слоте №3");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_GARAGE_SLOT3.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_CITY_HEALBOX.getKey(), "Машина в городе, есть хилбокс");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_CITY_HEALBOX.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_IN_CITY_DEFENCE_BREAK_BOX.getKey(), "Машина в городе, есть брэйкбокс");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_IN_CITY_DEFENCE_BREAK_BOX.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_IS_CAR_REPAIRING_IN_DEFENCE.getKey(), "Машина в городе, есть ключ починки");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_REPAIRING_IN_DEFENCE.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_SCR_IS_ATTACK.getKey(), "Скриншот машины в атаке");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_RED_LIGHT.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_RED_DARK.getKey()));
+        ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
+        map.put(ssaRule.getKey(), ssaRule);
+
+        listTrue = new ArrayList<>(); listFalse = new ArrayList<>(); listOneTrue = new ArrayList<>(); listAnyTrue = new ArrayList<>();
+        ssaRule = new SSA_Rule(SSA_Key.RULE_SCR_IS_DEFENCE.getKey(), "Скриншот машины в защите");
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_BLUE_LIGHT.getKey()));
+        listTrue.add(SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_ATTACK_DEFENCE_BOX_BLUE_DARK.getKey()));
         ssaRule.setListTrue(listTrue); ssaRule.setListFalse(listFalse); ssaRule.setListOneTrue(listOneTrue); ssaRule.setListAnyTrue(listAnyTrue);
         map.put(ssaRule.getKey(), ssaRule);
 

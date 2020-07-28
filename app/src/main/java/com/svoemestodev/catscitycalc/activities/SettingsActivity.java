@@ -49,8 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     Switch st_sw_debug_mode;
     Button st_btn_open_calibrate;
-    Button st_btn_open_borders_settings;
-    Button st_btn_open_colors_settings;
     Button st_btn_open_ssa_buttons;
 
     public Context context;
@@ -100,8 +98,6 @@ public class SettingsActivity extends AppCompatActivity {
         st_tv_whatsapp_folder = findViewById(R.id.st_tv_whatsapp_folder);
         st_sw_debug_mode = findViewById(R.id.st_sw_debug_mode);
         st_btn_open_calibrate = findViewById(R.id.st_btn_open_calibrate);
-        st_btn_open_borders_settings = findViewById(R.id.st_btn_open_borders_settings);
-        st_btn_open_colors_settings = findViewById(R.id.st_btn_open_colors_settings);
         st_btn_open_ssa_buttons = findViewById(R.id.st_btn_open_ssa_buttons);
 
         context = st_tv_screenshot_folder.getContext();
@@ -119,8 +115,6 @@ public class SettingsActivity extends AppCompatActivity {
         st_sw_debug_mode.setChecked(GameActivity.isDebugMode);
 
         st_btn_open_calibrate.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
-        st_btn_open_borders_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
-        st_btn_open_colors_settings.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
         st_btn_open_ssa_buttons.setVisibility(st_sw_debug_mode.isChecked() ? View.VISIBLE : View.INVISIBLE);
 
         st_btn_select_data_folder.setEnabled(GameActivity.isListenDataFolder);
@@ -210,8 +204,6 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.apply();
                 GameActivity.isDebugMode = isChecked;
                 st_btn_open_calibrate.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
-                st_btn_open_borders_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
-                st_btn_open_colors_settings.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
                 st_btn_open_ssa_buttons.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
             }
         });
@@ -249,15 +241,6 @@ public class SettingsActivity extends AppCompatActivity {
         startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
     }
 
-    public void openBordersSettings(View view) {
-        Intent intent = new Intent(this, BordersActivity.class);   // создаем интент активики Настроек
-        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
-    }
-
-    public void openColorsdetectSettings(View view) {
-        Intent intent = new Intent(this, ColorsdetectActivity.class);   // создаем интент активики Настроек
-        startActivityForResult(intent, 0);               // стартуем его и будем отслеживать REQUEST_CODE_SECOND_ACTIVITY после возвращения в текущую активити
-    }
 
     public void selectDataFolder(View view) {
         // создаем диалог выбора папки, инициализируем его текущим значением папки скриншотов

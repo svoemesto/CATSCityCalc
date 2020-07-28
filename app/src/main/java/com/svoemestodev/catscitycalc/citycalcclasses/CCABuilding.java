@@ -1,5 +1,11 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
+import android.graphics.Bitmap;
+
+import com.svoemestodev.catscitycalc.ssa.SSA_Area;
+import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
+import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.ssa.SSA_Rules;
 import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
@@ -7,6 +13,7 @@ import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 public class CCABuilding extends CityCalcArea {
 
     private String name;
+    private int index;
     private int slots;
     private int slots_our;
     private int slots_enemy;
@@ -28,28 +35,110 @@ public class CCABuilding extends CityCalcArea {
     public CCABuilding() {
     }
 
-    public CCABuilding(CityCalc cityCalc, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
-        super(cityCalc, area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
+    public CCABuilding(CityCalc cityCalc, SSA_Area ssaArea) { //}, Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOCR, boolean needBW) {
+        super(cityCalc, ssaArea); //area, x1, x2, y1, y2, colors, ths, needOCR, needBW);
         SSA_Screenshot ssaScr = cityCalc.getSsaScreenshot();
-//        this.isPresent = SSA_Rules.getRule("IS_GAME_BOX_BACK").check(ssaScr);
-        this.isPresent = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), 0xFFFFFFFF, 10, 10) > 0.2f;
-        if (this.isPresent) {
-            this.mayX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[3],10, 10) > 0.02f || PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
-            this.isX2 = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[4],10, 10) > 0.01f;
-            this.buildingIsOur = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[0],10, 10) > 0.01f;
-            this.buildingIsEnemy = PictureProcessor.frequencyPixelInBitmap(this.getBmpSrc(), this.getColors()[1],10, 10) > 0.01f;
-            this.buildingIsEmpty = !this.buildingIsOur && !this.buildingIsEnemy;
-            this.setNeedOcr(needOCR);
-            this.setNeedBW(needBW);
-            if (this.buildingIsOur) {
-                this.doOCR(0, 0, 1, true, 6.0f, 4.0f);
-            } else if (this.buildingIsEnemy) {
-                this.doOCR(1, 2, 3, true, 6.0f, 4.0f);
-            } else {
-                this.doOCR(2, 4, 5, true, 6.0f, 4.0f);
-            }
-            this.setFinText(this.getOcrText().trim());
+
+        int index = 0;
+        String keyAreaBldName = "";
+        String keyAreaBldSlots = "";
+        String keyAreaBldProgress = "";
+        String keyRuleBldIsPresent = "";
+        String keyRuleBldIsX2 = "";
+        String keyRuleBldMayX2 = "";
+        
+        if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD1.getKey())) {
+            index = 1;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD1_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD1_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD1_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD1_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD1_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD1_MAY_X2.getKey();
+        } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD2.getKey())) {
+            index = 2;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD2_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD2_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD2_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD2_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD2_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD2_MAY_X2.getKey();
+        } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD3.getKey())) {
+            index = 3;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD3_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD3_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD3_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD3_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD3_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD3_MAY_X2.getKey();
+        } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD4.getKey())) {
+            index = 4;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD4_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD4_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD4_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD4_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD4_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD4_MAY_X2.getKey();
+        } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD5.getKey())) {
+            index = 5;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD5_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD5_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD5_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD5_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD5_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD5_MAY_X2.getKey();
+        } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_BLD6.getKey())) {
+            index = 6;
+            keyAreaBldName = SSA_Key.AREA_CITY_BLD6_NAME.getKey();
+            keyAreaBldSlots = SSA_Key.AREA_CITY_BLD6_SLOTS.getKey();
+            keyAreaBldProgress = SSA_Key.AREA_CITY_BLD6_PROGRESS.getKey();
+            keyRuleBldIsPresent = SSA_Key.RULE_BLD6_PRESENT.getKey();
+            keyRuleBldIsX2 = SSA_Key.RULE_BLD6_IS_X2.getKey();
+            keyRuleBldMayX2 = SSA_Key.RULE_BLD6_MAY_X2.getKey();
         }
+
+        Bitmap bldBitmap = this.getBmpSrc();
+        Bitmap bldNameBitmap = SSA_Areas.getArea(keyAreaBldName).getAreaBitmap(bldBitmap);
+        Bitmap bldSlotsBitmap = SSA_Areas.getArea(keyAreaBldSlots).getAreaBitmap(bldBitmap);
+
+        this.isPresent = SSA_Rules.getRule(keyRuleBldIsPresent).check(bldBitmap);
+        this.index = index;
+
+        if (this.isPresent) {
+            this.mayX2 = SSA_Rules.getRule(keyRuleBldMayX2).check(bldBitmap);
+            this.isX2 = SSA_Rules.getRule(keyRuleBldIsX2).check(bldBitmap);
+            this.name = SSA_Areas.getArea(keyAreaBldName).getOCR(bldNameBitmap).trim();
+            this.slots = Integer.parseInt(SSA_Areas.getArea(keyAreaBldSlots).getOCR(bldSlotsBitmap));
+
+            int[] colors = new int[]{SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_OUR.getKey()).getColor(), SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_ENEMY.getKey()).getColor(), SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_EMPTY.getKey()).getColor()};
+            long[] countColors = PictureProcessor.countPixelInBitmap(SSA_Areas.getArea(keyAreaBldProgress).getAreaBitmap(ssaScr), colors,10, 10);
+            long countPixelsOur = countColors[0];
+            long countPixelsEnemy = countColors[1];
+            long countPixelsEmpty = countColors[2];
+            long countPixelsTotal = countPixelsOur + countPixelsEnemy + countPixelsEmpty;
+            float frqOurSlots = (float) countPixelsOur / countPixelsTotal;
+            float frqEnemySlots = (float) countPixelsEnemy / countPixelsTotal;
+            float frqEmptySlots = (float) countPixelsEmpty / countPixelsTotal;
+            this.slots_our = (int)Math.round((float)this.slots * frqOurSlots);
+            this.slots_enemy = (int)Math.round((float)this.slots * frqEnemySlots);
+            this.slots_empty = (int)Math.round((float)this.slots * frqEmptySlots);
+
+            this.buildingIsOur = this.slots_our >= (this.slots/2 + 1);
+            this.buildingIsEnemy = this.slots_enemy >= (this.slots/2 + 1);
+            this.buildingIsEmpty = this.slots_empty >= (this.slots/2 + 1);
+
+            int[] counts = new int[]{this.slots_our, this.slots_enemy, this.slots_empty};
+            this.our_points = this.buildingIsOur ? this.slots * (this.isX2 ? 2 : 1) : 0;
+            this.enemy_points = this.buildingIsEnemy ? this.slots * (this.isX2 ? 2 : 1) : 0;
+
+            this.setBmpSrc(bldNameBitmap);
+        }
+
+        CCAGame ccaGame = (CCAGame) cityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
+        CCABuilding[] buildings = ccaGame.getBuildings();
+        buildings[index-1] = this;
+        ccaGame.setBuildings(buildings);
+
     }
 
     public CCABuilding getClone(CityCalc parent) {
@@ -57,18 +146,9 @@ public class CCABuilding extends CityCalcArea {
         CCABuilding clone = new CCABuilding();
 
         clone.setCityCalc(parent);
-        clone.setArea(this.getArea());
+        clone.setIndex(this.getIndex());
+        clone.setSsaArea(this.getSsaArea().getClone());
         clone.setBmpSrc(this.getBmpSrc());
-        clone.setCropPosition(this.getCropPosition());
-        clone.setX1(this.getX1());
-        clone.setX2(this.getX2());
-        clone.setY1(this.getY1());
-        clone.setY2(this.getY2());
-        clone.setColors(this.getColors());
-        clone.setThs(this.getThs());
-        clone.setNeedOcr(this.isNeedOcr());
-        clone.setNeedBW(this.isNeedBW());
-        clone.setGeneric(this.isGeneric());
         clone.setBmpPrc(this.getBmpPrc());
         clone.setOcrText(this.getOcrText());
         clone.setFinText(this.getFinText());
@@ -94,38 +174,13 @@ public class CCABuilding extends CityCalcArea {
         return clone;
     }
 
-    public void calc(CityCalcArea ccaBuildingSlots, CityCalcArea ccaBuildingProgress) {
 
-        if (this.isPresent) {
-            this.slots = Integer.parseInt(ccaBuildingSlots.getFinText());
-            int[] colors = new int[]{ccaBuildingProgress.getColors()[0], ccaBuildingProgress.getColors()[1], ccaBuildingProgress.getColors()[2]};
-            long[] countColors = PictureProcessor.countPixelInBitmap(ccaBuildingProgress.getBmpSrc(), colors,10, 10);
-            long countPixelsOur = countColors[0];
-            long countPixelsEnemy = countColors[1];
-            long countPixelsEmpty = countColors[2];
-            long countPixelsTotal = countPixelsOur + countPixelsEnemy + countPixelsEmpty;
-            float frqOurSlots = (float) countPixelsOur / countPixelsTotal;
-            float frqEnemySlots = (float) countPixelsEnemy / countPixelsTotal;
-            float frqEmptySlots = (float) countPixelsEmpty / countPixelsTotal;
-            this.slots_our = (int)Math.round((float)this.slots * frqOurSlots);
-            this.slots_enemy = (int)Math.round((float)this.slots * frqEnemySlots);
-            this.slots_empty = (int)Math.round((float)this.slots * frqEmptySlots);
+    public int getIndex() {
+        return index;
+    }
 
-            this.buildingIsOur = this.slots_our >= (this.slots/2 + 1);
-            this.buildingIsEnemy = this.slots_enemy >= (this.slots/2 + 1);
-            this.buildingIsEmpty = this.slots_empty >= (this.slots/2 + 1);
-
-            int[] counts = new int[]{this.slots_our, this.slots_enemy, this.slots_empty};
-
-//            float frqOurSlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[0],10, 10);
-//            float frqEnemySlots = PictureProcessor.frequencyPixelInBitmap(ccaBuildingProgress.getBmpSrc(), ccaBuildingProgress.getColors()[1],10, 10);
-//            this.slots_our = (int)Math.ceil((float)this.slots * frqOurSlots);
-//            this.slots_enemy = (int)Math.ceil((float)this.slots * frqEnemySlots);
-//            this.slots_empty = this.slots - this.slots_our - this.slots_enemy;
-            this.our_points = this.buildingIsOur ? this.slots * (this.isX2 ? 2 : 1) : 0;
-            this.enemy_points = this.buildingIsEnemy ? this.slots * (this.isX2 ? 2 : 1) : 0;
-        }
-
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public int getSlots() {

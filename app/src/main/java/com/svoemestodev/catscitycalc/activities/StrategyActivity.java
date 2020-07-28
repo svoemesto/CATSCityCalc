@@ -27,6 +27,7 @@ import com.svoemestodev.catscitycalc.citycalcclasses.CCAGame;
 import com.svoemestodev.catscitycalc.citycalcclasses.CCATeam;
 import com.svoemestodev.catscitycalc.citycalcclasses.CityCalc;
 import com.svoemestodev.catscitycalc.R;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
@@ -144,7 +145,7 @@ public class StrategyActivity extends AppCompatActivity {
 //        context = sa_tv_start_game_time.getContext();
 
         mainCityCalc = GameActivity.mainCityCalc.getClone();
-        mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+        mainCCAGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
         CCAGame ccaGame = mainCCAGame;
 
         sa_iv_calc_timed_win.setImageDrawable(getDrawable(ccaGame.isCanWin() ? R.drawable.ic_can_win_with_x2_true : R.drawable.ic_can_win_with_x2_false));
@@ -248,7 +249,7 @@ public class StrategyActivity extends AppCompatActivity {
         
         if (mainCityCalc != null) {
 
-            CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
+            CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
             int countCars_our = 0;
             int countCars_enemy = 0;
@@ -341,15 +342,15 @@ public class StrategyActivity extends AppCompatActivity {
         String textEndGameTime;
 //        CCAGame ccaGame = (CCAGame) mainCityCalc.getMapAreas().get(Area.CITY);
         CCAGame ccaGame = mainCCAGame;
-        CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_OUR);
-        CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(Area.TEAM_NAME_ENEMY);
+        CCATeam ccaOurTeam = (CCATeam) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey());
+        CCATeam ccaEnemyTeam = (CCATeam) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey());
         CCABuilding[] ccabld = new CCABuilding[6];
-        ccabld[0] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLT);
-        ccabld[1] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLC);
-        ccabld[2] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BLB);
-        ccabld[3] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRT);
-        ccabld[4] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRC);
-        ccabld[5] = (CCABuilding) mainCityCalc.getMapAreas().get(Area.BRB);
+        ccabld[0] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1.getKey());
+        ccabld[1] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2.getKey());
+        ccabld[2] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3.getKey());
+        ccabld[3] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4.getKey());
+        ccabld[4] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5.getKey());
+        ccabld[5] = (CCABuilding) mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6.getKey());
         String pattern = "dd MMM HH:mm";
 
         if (ccaGame != null && ccaGame.getDateStartGame() != null) {

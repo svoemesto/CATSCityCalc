@@ -54,6 +54,7 @@ import com.svoemestodev.catscitycalc.database.DbTeam;
 import com.svoemestodev.catscitycalc.database.DbTeamUser;
 import com.svoemestodev.catscitycalc.R;
 import com.svoemestodev.catscitycalc.database.UserRole;
+import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -394,15 +395,15 @@ public class WorkTeamActivity extends AppCompatActivity {
                             ltu_tv_car1_name.setText(car1.getName());
                             ltu_tv_car1_health_shield.setText(car1.getHealth() + "/" + car1.getShield());
 
-                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
+                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
-                            Area[] areasBuildings = new Area[6];
-                            areasBuildings[0] = Area.BLT;
-                            areasBuildings[1] = Area.BLC;
-                            areasBuildings[2] = Area.BLB;
-                            areasBuildings[3] = Area.BRT;
-                            areasBuildings[4] = Area.BRC;
-                            areasBuildings[5] = Area.BRB;
+                            String[] areasBuildings = new String[6];
+                            areasBuildings[0] = SSA_Key.AREA_CITY_BLD1.getKey();
+                            areasBuildings[1] = SSA_Key.AREA_CITY_BLD2.getKey();
+                            areasBuildings[2] = SSA_Key.AREA_CITY_BLD3.getKey();
+                            areasBuildings[3] = SSA_Key.AREA_CITY_BLD4.getKey();
+                            areasBuildings[4] = SSA_Key.AREA_CITY_BLD5.getKey();
+                            areasBuildings[5] = SSA_Key.AREA_CITY_BLD6.getKey();
 
                             Bitmap taskBitmap = null;
                             Bitmap bldBitmap = null;
@@ -420,7 +421,7 @@ public class WorkTeamActivity extends AppCompatActivity {
                             }
 
                             
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey())).isGameOver()) {
                                 if (!car1.isFree()) {
                                     car1.setStateFree();
                                     if (userUID.equals(GameActivity.fbUser.getUid())) {
@@ -572,15 +573,15 @@ public class WorkTeamActivity extends AppCompatActivity {
                             ltu_tv_car2_name.setText(car2.getName());
                             ltu_tv_car2_health_shield.setText(car2.getHealth() + "/" + car2.getShield());
 
-                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
+                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
-                            Area[] areasBuildings = new Area[6];
-                            areasBuildings[0] = Area.BLT;
-                            areasBuildings[1] = Area.BLC;
-                            areasBuildings[2] = Area.BLB;
-                            areasBuildings[3] = Area.BRT;
-                            areasBuildings[4] = Area.BRC;
-                            areasBuildings[5] = Area.BRB;
+                            String[] areasBuildings = new String[6];
+                            areasBuildings[0] = SSA_Key.AREA_CITY_BLD1.getKey();
+                            areasBuildings[1] = SSA_Key.AREA_CITY_BLD2.getKey();
+                            areasBuildings[2] = SSA_Key.AREA_CITY_BLD3.getKey();
+                            areasBuildings[3] = SSA_Key.AREA_CITY_BLD4.getKey();
+                            areasBuildings[4] = SSA_Key.AREA_CITY_BLD5.getKey();
+                            areasBuildings[5] = SSA_Key.AREA_CITY_BLD6.getKey();
 
                             Bitmap taskBitmap = null;
                             Bitmap bldBitmap = null;
@@ -599,7 +600,7 @@ public class WorkTeamActivity extends AppCompatActivity {
 
 
 
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey())).isGameOver()) {
                                 if (!car2.isFree()) {
                                     car2.setStateFree();
                                     if (userUID.equals(GameActivity.fbUser.getUid())) {
@@ -749,15 +750,15 @@ public class WorkTeamActivity extends AppCompatActivity {
                             ltu_tv_car3_name.setText(car3.getName());
                             ltu_tv_car3_health_shield.setText(car3.getHealth() + "/" + car3.getShield());
 
-                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY);
+                            CCAGame ccaGame = (CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
 
-                            Area[] areasBuildings = new Area[6];
-                            areasBuildings[0] = Area.BLT;
-                            areasBuildings[1] = Area.BLC;
-                            areasBuildings[2] = Area.BLB;
-                            areasBuildings[3] = Area.BRT;
-                            areasBuildings[4] = Area.BRC;
-                            areasBuildings[5] = Area.BRB;
+                            String[] areasBuildings = new String[6];
+                            areasBuildings[0] = SSA_Key.AREA_CITY_BLD1.getKey();
+                            areasBuildings[1] = SSA_Key.AREA_CITY_BLD2.getKey();
+                            areasBuildings[2] = SSA_Key.AREA_CITY_BLD3.getKey();
+                            areasBuildings[3] = SSA_Key.AREA_CITY_BLD4.getKey();
+                            areasBuildings[4] = SSA_Key.AREA_CITY_BLD5.getKey();
+                            areasBuildings[5] = SSA_Key.AREA_CITY_BLD6.getKey();
 
                             Bitmap taskBitmap = null;
                             Bitmap bldBitmap = null;
@@ -776,7 +777,7 @@ public class WorkTeamActivity extends AppCompatActivity {
 
 
 
-                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(Area.CITY)).isGameOver()) {
+                            if (((CCAGame)GameActivity.mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey())).isGameOver()) {
                                 if (!car3.isFree()) {
                                     car3.setStateFree();
                                     if (userUID.equals(GameActivity.fbUser.getUid())) {

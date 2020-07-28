@@ -108,14 +108,6 @@
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.ColorsdetectActivity"
-            android:label="@string/sett_colors"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.BordersActivity"
-            android:label="@string/sett_borders"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.CalibrateActivity"
             android:label="@string/sett_calibrate_center_screen"
             android:screenOrientation="portrait" />
