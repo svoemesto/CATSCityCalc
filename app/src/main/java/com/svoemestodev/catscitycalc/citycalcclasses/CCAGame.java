@@ -219,6 +219,82 @@ public class CCAGame extends CityCalcArea {
         this.setBuildings(ccaBuildings);
     }
 
+    public CCAGame getCloneSimple(CityCalc parent) {
+
+        CCAGame clone = new CCAGame();
+
+        clone.setCityCalc(parent);
+//        clone.setSsaArea(this.getSsaArea().getClone());
+
+        clone.dateStartGame = this.dateStartGame;
+        clone.dateScreenshot = this.dateScreenshot;
+        clone.dateCurrent = this.dateCurrent;
+        clone.dateEarlyWin = this.dateEarlyWin;
+        clone.dateEndGame = this.dateEndGame;
+        clone.dateFinal = this.dateFinal;
+        clone.earlyWin = this.earlyWin;
+        clone.source = this.source;
+        clone.userNIC = this.userNIC;
+        clone.userUID = this.userUID;
+        clone.teamID = this.teamID;
+        clone.screenshotFile = this.screenshotFile;
+        clone.pointsOurInScreenshot = this.pointsOurInScreenshot;
+        clone.pointsEnemyInScreenshot = this.pointsEnemyInScreenshot;
+        clone.increaseOur = this.increaseOur;
+        clone.increaseEnemy = this.increaseEnemy;
+
+        for (int index = 0; index < 6; index++) {
+            clone.buildings[index].setPresent(this.buildings[index].isPresent());
+            clone.buildings[index].setName(this.buildings[index].getName());
+            clone.buildings[index].setX2(this.buildings[index].isX2());
+            clone.buildings[index].setMayX2(this.buildings[index].isMayX2());
+            clone.buildings[index].setBuildingIsOur(this.buildings[index].isBuildingIsOur());
+            clone.buildings[index].setBuildingIsEnemy(this.buildings[index].isBuildingIsEnemy());
+            clone.buildings[index].setBuildingIsEmpty(this.buildings[index].isBuildingIsEmpty());
+            clone.buildings[index].setOur_points(this.buildings[index].getOur_points());
+            clone.buildings[index].setEnemy_points(this.buildings[index].getEnemy_points());
+            clone.buildings[index].setSlots(this.buildings[index].getSlots());
+            clone.buildings[index].setSlots_our(this.buildings[index].getSlots_our());
+            clone.buildings[index].setSlots_enemy(this.buildings[index].getSlots_enemy());
+            clone.buildings[index].setSlots_empty(this.buildings[index].getSlots_empty());
+            clone.buildings[index].setNeedToWin(this.buildings[index].isNeedToWin());
+            clone.buildings[index].setNeedToWinWithoutX2(this.buildings[index].isNeedToWinWithoutX2());
+            clone.buildings[index].setNeedToEarlyWin(this.buildings[index].isNeedToEarlyWin());
+            clone.buildings[index].setNeedToEarlyWinWithoutX2(this.buildings[index].isNeedToEarlyWinWithoutX2());
+            clone.buildings[index].setUseInForecast(this.buildings[index].isUseInForecast());
+        }
+
+
+        clone.isGameOver = this.isGameOver;
+        clone.isGameOverEarly = this.isGameOverEarly;
+        clone.isWinOur = this.isWinOur;
+        clone.isWinEnemy = this.isWinEnemy;
+        clone.isWinNobody = this.isWinNobody;
+        clone.isErrorRecognize = this.isErrorRecognize;
+        clone.willEarlyWin = this.willEarlyWin;
+        clone.willOurWin = this.willOurWin;
+        clone.willEnemyWin = this.willEnemyWin;
+        clone.willNobodyWin = this.willNobodyWin;
+        clone.differentPoints = this.differentPoints;
+        clone.countOurX2 = this.countOurX2;
+        clone.countEnemyX2 = this.countEnemyX2;
+        clone.countX2 = this.countX2;
+        clone.personsOur = this.personsOur;
+        clone.personsEnemy = this.personsEnemy;
+        clone.personsTotal = this.personsTotal;
+        clone.slotsTotal = this.slotsTotal;
+        clone.slotsOur = this.slotsOur;
+        clone.slotsEnemy = this.slotsEnemy;
+        clone.status = this.status;
+        clone.bytesScreenshot = this.bytesScreenshot;
+        clone.canWin = this.canWin;
+        clone.canWinWithoutX2 = this.canWinWithoutX2;
+        clone.canEarlyWin = this.canEarlyWin;
+        clone.canEarlyWinWithoutX2 = this.canEarlyWinWithoutX2;
+
+        return clone;
+    }
+
     public CCAGame getClone(CityCalc parent) {
         
         CCAGame clone = new CCAGame();
@@ -458,13 +534,16 @@ public class CCAGame extends CityCalcArea {
 
         CityCalc cityCalcClone = this.getCityCalc().getClone();
 
+
         for (int x1 = 0; x1 <= 1; x1++) {
             for (int x2 = 0; x2 <= 1; x2++) {
                 for (int x3 = 0; x3 <= 1; x3++) {
                     for (int x4 = 0; x4 <= 1; x4++) {
                         for (int x5 = 0; x5 <= 1; x5++) {
                             for (int x6 = 0; x6 <= 1; x6++) {
-                                CCAGame ccaGame = this.getClone(cityCalcClone);
+
+                                CCAGame ccaGame = this.getCloneSimple(cityCalcClone);
+//                                CCAGame ccaGame = this;
 
                                 list.add(new ForecastMatrix(ccaGame,
                                         x1==1 && ccaGame.buildings[0].isUseInForecast(),

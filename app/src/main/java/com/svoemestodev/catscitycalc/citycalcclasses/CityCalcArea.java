@@ -45,11 +45,6 @@ public class CityCalcArea {
 
         this.cityCalc = cityCalc;
         this.ssaArea = ssaArea;
-//        this.bmpSrc = ssaArea.getAreaBitmap(cityCalc.getSsaScreenshot());
-//        this.bmpPrc = ssaArea.getAreaBitmapRBT(cityCalc.getSsaScreenshot());
-//        this.ocrText = ssaArea.getOCR(cityCalc.getSsaScreenshot());
-//        this.finText = this.ocrText;
-
 
     }
 
