@@ -159,7 +159,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_NUMBERS_OUR.getKey()),0,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),5,0.760f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),5,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
@@ -198,7 +198,7 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_NUMBERS_ENEMY.getKey()),0,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),5,0.760f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),5,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 

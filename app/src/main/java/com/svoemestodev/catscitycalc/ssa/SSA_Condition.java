@@ -10,7 +10,7 @@ public class SSA_Condition implements Serializable, Comparable<SSA_Condition> {
 
     private String key;
     private String name;
-    private SSA_Color ssaColor = SSA_Colors.getColor("WHITE");
+    private SSA_Color ssaColor = SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey());
     private int threshold = 10;
     private float minFrequency = 0.001f;
     private float maxFrequency = 1.000f;
