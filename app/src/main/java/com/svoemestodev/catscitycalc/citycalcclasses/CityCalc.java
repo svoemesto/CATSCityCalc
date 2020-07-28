@@ -12,6 +12,7 @@ import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
 import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
 import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.ssa.SSA_Rules;
+import com.svoemestodev.catscitycalc.ssa.SSA_Rules_Area_Condition;
 import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 import com.svoemestodev.catscitycalc.utils.PictureProcessorDirection;
@@ -182,20 +183,39 @@ public class CityCalc { //extends Activity {
                     if (bmpScreenshot.getWidth() > bmpScreenshot.getHeight()) { //если пропорции экрана правильные - скрин может быть из игры
                         this.ssaScreenshot = new SSA_Screenshot(bmpScreenshot, calibrateX, calibrateY);
 
-//                        setAreaToMap(SSA_Key.AREA_GAME_BOX_BACK.getKey());
-//                        setAreaToMap(SSA_Key.AREA_CITY_BOX_INFO.getKey());
-//                        setAreaToMap(SSA_Key.AREA_CITY_BOX_GRAY.getKey());
-//                        setAreaToMap(SSA_Key.AREA_CAR_BOX_IN_CITY.getKey());
-//                        setAreaToMap(SSA_Key.AREA_GARAGE_HEALTH_SHIELD_ENERGY.getKey());
-//
+                        setAreaToMap(SSA_Key.AREA_GAME_BOX_BACK.getKey());
+                        setAreaToMap(SSA_Key.AREA_CITY_BOX_INFO.getKey());
+                        setAreaToMap(SSA_Key.AREA_CITY_BOX_GRAY.getKey());
+                        setAreaToMap(SSA_Key.AREA_CAR_BOX_IN_CITY.getKey());
+                        setAreaToMap(SSA_Key.AREA_GARAGE_HEALTH_SHIELD_ENERGY.getKey());
+
+                        Bitmap gameBoxBackBitmap = mapAreas.get(SSA_Key.AREA_GAME_BOX_BACK.getKey()).getBmpSrc();
+                        Bitmap cityBoxInfoBitmap = mapAreas.get(SSA_Key.AREA_CITY_BOX_INFO.getKey()).getBmpSrc();
+                        Bitmap cityBoxGrayBitmap = mapAreas.get(SSA_Key.AREA_CITY_BOX_GRAY.getKey()).getBmpSrc();
+                        Bitmap carBoxInCityBitmap = mapAreas.get(SSA_Key.AREA_CAR_BOX_IN_CITY.getKey()).getBmpSrc();
+                        Bitmap garageHSEBitmap = mapAreas.get(SSA_Key.AREA_GARAGE_HEALTH_SHIELD_ENERGY.getKey()).getBmpSrc();
+
+                        boolean isGameBoxBack = SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_RED.getKey()).check(gameBoxBackBitmap) &&
+                                SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GAME_BOX_BACK_YELLOW.getKey()).check(gameBoxBackBitmap);
+
+                        boolean isCityBoxInfo = SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_INFO_RED.getKey()).check(cityBoxInfoBitmap) &&
+                                SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_INFO_WHITE.getKey()).check(cityBoxInfoBitmap);
+
+                        boolean isCityBoxGray = SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CITY_BOX_GRAY.getKey()).check(cityBoxGrayBitmap);
+
+                        boolean isCarBoxInCity = SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_CAR_BOX_IN_CITY.getKey()).check(carBoxInCityBitmap);
+
+                        boolean isGarageHSE = SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_BACKGROUND.getKey()).check(garageHSEBitmap) &&
+                                SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_BLUE.getKey()).check(garageHSEBitmap) &&
+                                SSA_Rules_Area_Condition.getRuleAreaCondition(SSA_Key.RAC_IS_GARAGE_HSE_RED.getKey()).check(garageHSEBitmap);
 
                         SSA_Screenshot ssaScr = this.ssaScreenshot;
 
-                        if (SSA_Rules.getRule(SSA_Key.RULE_SCR_IS_GAME_IN_CITY.getKey()).check(ssaScr)) {
+                        if (isGameBoxBack && isCityBoxInfo && isCityBoxGray && !isCarBoxInCity) {
                             this.cityCalcType = CityCalcType.GAME;
-                        } else if (SSA_Rules.getRule(SSA_Key.RULE_SCR_IS_CAR_IN_CITY.getKey()).check(ssaScr)) {
+                        } else if (isGameBoxBack && isCarBoxInCity) {
                             this.cityCalcType = CityCalcType.CAR;
-                        } else if (SSA_Rules.getRule(SSA_Key.RULE_SCR_IS_CAR_IN_GARAGE.getKey()).check(ssaScr)) {
+                        } else if (isGameBoxBack && isGarageHSE && !isCarBoxInCity) {
                             this.cityCalcType = CityCalcType.CAR;
                         } else {
                             this.cityCalcType = CityCalcType.ERROR;
