@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc.citycalcclasses;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.svoemestodev.catscitycalc.ssa.SSA_Area;
 import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
@@ -9,6 +10,7 @@ import com.svoemestodev.catscitycalc.ssa.SSA_Key;
 import com.svoemestodev.catscitycalc.ssa.SSA_Rules;
 import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
+import com.svoemestodev.catscitycalc.utils.Utils;
 
 public class CCABuilding extends CityCalcArea {
 
@@ -108,7 +110,14 @@ public class CCABuilding extends CityCalcArea {
             this.mayX2 = SSA_Rules.getRule(keyRuleBldMayX2).check(bldBitmap);
             this.isX2 = SSA_Rules.getRule(keyRuleBldIsX2).check(bldBitmap);
             this.name = SSA_Areas.getArea(keyAreaBldName).getOCR(bldNameBitmap).trim();
-            this.slots = Integer.parseInt(SSA_Areas.getArea(keyAreaBldSlots).getOCR(bldSlotsBitmap));
+            String slotsText = Utils.parseNumbers(SSA_Areas.getArea(keyAreaBldSlots).getOCR(bldSlotsBitmap));
+            if (slotsText.equals("")) {
+                Log.e("CCABuilding", "Распозналось пустое количество слотов");
+                this.slots = 1;
+            } else {
+                this.slots = Integer.parseInt(slotsText);
+            }
+
 
             int[] colors = new int[]{SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_OUR.getKey()).getColor(), SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_ENEMY.getKey()).getColor(), SSA_Colors.getColor(SSA_Key.COLOR_PROGRESS_EMPTY.getKey()).getColor()};
             long[] countColors = PictureProcessor.countPixelInBitmap(SSA_Areas.getArea(keyAreaBldProgress).getAreaBitmap(ssaScr), colors,10, 10);
@@ -134,10 +143,10 @@ public class CCABuilding extends CityCalcArea {
             this.setBmpSrc(bldNameBitmap);
         }
 
-        CCAGame ccaGame = (CCAGame) cityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
-        CCABuilding[] buildings = ccaGame.getBuildings();
-        buildings[index-1] = this;
-        ccaGame.setBuildings(buildings);
+//        CCAGame ccaGame = (CCAGame) cityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
+//        CCABuilding[] buildings = ccaGame.getBuildings();
+//        buildings[index-1] = this;
+//        ccaGame.setBuildings(buildings);
 
     }
 

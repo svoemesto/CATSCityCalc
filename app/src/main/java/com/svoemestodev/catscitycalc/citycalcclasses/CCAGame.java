@@ -8,7 +8,9 @@ import com.svoemestodev.catscitycalc.activities.GameActivity;
 import com.svoemestodev.catscitycalc.classes.LastModified;
 import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.ssa.SSA_Area;
+import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
 import com.svoemestodev.catscitycalc.ssa.SSA_Key;
+import com.svoemestodev.catscitycalc.ssa.SSA_Screenshot;
 import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.io.File;
@@ -16,7 +18,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CCAGame extends CityCalcArea {
 
@@ -78,6 +82,7 @@ public class CCAGame extends CityCalcArea {
 
     public CCAGame(CityCalc cityCalc, SSA_Area ssaArea) { //} Area area, float x1, float x2, float y1, float y2, int[] colors, int[] ths, boolean needOcr, boolean needBW) {
         super(cityCalc, ssaArea); //area, x1, x2, y1, y2, colors, ths, needOcr, needBW);
+        SSA_Screenshot ssaScr = cityCalc.getSsaScreenshot();
         if (cityCalc.getFileScreenshot() != null) {
             if (cityCalc.getFileScreenshot().exists()) {
 //                this.dateScreenshot = new Date((cityCalc.getFileScreenshot().lastModified() / 60_000) * 60_000); // дата/время создания скриншота с точностью до минуты
@@ -95,11 +100,113 @@ public class CCAGame extends CityCalcArea {
             }
         }
 
-        CCABuilding[] ccaBuildings = new CCABuilding[6];
-        for (int buildingIndex = 0; buildingIndex < 6; buildingIndex++) {
-            ccaBuildings[buildingIndex] = new CCABuilding();
+        String strTime = Utils.parseTime(SSA_Areas.getArea(SSA_Key.AREA_CITY_TIME.getKey()).getOCR(ssaScr));
+        String strEarlyWin = Utils.parseNumbers(SSA_Areas.getArea(SSA_Key.AREA_CITY_EARLY_WIN.getKey()).getOCR(ssaScr));
+
+        int minFromStartToScreenshot = 0;
+        String[] words = strTime.split(":"); // разделяем строку на часы и минуты
+        if (words.length == 2) {
+            minFromStartToScreenshot = 24*60 - (Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]));// прошло минут с начала игры по скриншоту
+        } else {
+            this.isErrorRecognize = true;
         }
+        this.dateStartGame = Utils.addMinutesToDate(this.dateScreenshot, -minFromStartToScreenshot); // дата начала игры
+        this.dateEndGame = Utils.addMinutesToDate(this.dateStartGame, 24*60); // дата конца игры по времени
+        this.earlyWin = Integer.parseInt(strEarlyWin); // очки до досрочной победы
+
+        CCATeam ccaTeamOur = new CCATeam(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey()));
+        CCATeam ccaTeamEnemy = new CCATeam(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey()));
+        this.pointsOurInScreenshot = ccaTeamOur.getCcatPointsInScreenshot();
+        this.pointsEnemyInScreenshot = ccaTeamEnemy.getCcatPointsInScreenshot();
+
+        CCABuilding[] ccaBuildings = new CCABuilding[6];
+        ccaBuildings[0] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD1.getKey()));
+        ccaBuildings[1] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD2.getKey()));
+        ccaBuildings[2] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD3.getKey()));
+        ccaBuildings[3] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD4.getKey()));
+        ccaBuildings[4] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD5.getKey()));
+        ccaBuildings[5] = new CCABuilding(cityCalc, SSA_Areas.getArea(SSA_Key.AREA_CITY_BLD6.getKey()));
         this.setBuildings(ccaBuildings);
+
+        Map<String, CityCalcArea> mapAreas = cityCalc.getMapAreas();
+        mapAreas.put(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey(), ccaTeamOur);
+        mapAreas.put(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey(), ccaTeamEnemy);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD1.getKey(), ccaBuildings[0]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD1.getKey(), ccaBuildings[0]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD2.getKey(), ccaBuildings[1]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD3.getKey(), ccaBuildings[2]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD4.getKey(), ccaBuildings[3]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD5.getKey(), ccaBuildings[4]);
+        mapAreas.put(SSA_Key.AREA_CITY_BLD6.getKey(), ccaBuildings[5]);
+        cityCalc.setMapAreas(mapAreas);
+
+        this.increaseOur =
+                        (this.buildings[0].isPresent() ? this.buildings[0].getOur_points() : 0) +
+                        (this.buildings[1].isPresent() ? this.buildings[1].getOur_points() : 0) +
+                        (this.buildings[2].isPresent() ? this.buildings[2].getOur_points() : 0) +
+                        (this.buildings[3].isPresent() ? this.buildings[3].getOur_points() : 0) +
+                        (this.buildings[4].isPresent() ? this.buildings[4].getOur_points() : 0) +
+                        (this.buildings[5].isPresent() ? this.buildings[5].getOur_points() : 0);
+
+        this.increaseEnemy =
+                        (this.buildings[0].isPresent() ? this.buildings[0].getEnemy_points() : 0) +
+                        (this.buildings[1].isPresent() ? this.buildings[1].getEnemy_points() : 0) +
+                        (this.buildings[2].isPresent() ? this.buildings[2].getEnemy_points() : 0) +
+                        (this.buildings[3].isPresent() ? this.buildings[3].getEnemy_points() : 0) +
+                        (this.buildings[4].isPresent() ? this.buildings[4].getEnemy_points() : 0) +
+                        (this.buildings[5].isPresent() ? this.buildings[5].getEnemy_points() : 0);
+
+        this.countOurX2 =
+                ((this.buildings[0].isPresent() && this.buildings[0].isMayX2() && this.buildings[0].isBuildingIsOur()) ? 1 : 0) +
+                ((this.buildings[1].isPresent() && this.buildings[1].isMayX2() && this.buildings[1].isBuildingIsOur()) ? 1 : 0) +
+                ((this.buildings[2].isPresent() && this.buildings[2].isMayX2() && this.buildings[2].isBuildingIsOur()) ? 1 : 0) +
+                ((this.buildings[3].isPresent() && this.buildings[3].isMayX2() && this.buildings[3].isBuildingIsOur()) ? 1 : 0) +
+                ((this.buildings[4].isPresent() && this.buildings[4].isMayX2() && this.buildings[4].isBuildingIsOur()) ? 1 : 0) +
+                ((this.buildings[5].isPresent() && this.buildings[5].isMayX2() && this.buildings[5].isBuildingIsOur()) ? 1 : 0);
+
+        this.countEnemyX2 =
+                ((this.buildings[0].isPresent() && this.buildings[0].isMayX2() && this.buildings[0].isBuildingIsEnemy()) ? 1 : 0) +
+                ((this.buildings[1].isPresent() && this.buildings[1].isMayX2() && this.buildings[1].isBuildingIsEnemy()) ? 1 : 0) +
+                ((this.buildings[2].isPresent() && this.buildings[2].isMayX2() && this.buildings[2].isBuildingIsEnemy()) ? 1 : 0) +
+                ((this.buildings[3].isPresent() && this.buildings[3].isMayX2() && this.buildings[3].isBuildingIsEnemy()) ? 1 : 0) +
+                ((this.buildings[4].isPresent() && this.buildings[4].isMayX2() && this.buildings[4].isBuildingIsEnemy()) ? 1 : 0) +
+                ((this.buildings[5].isPresent() && this.buildings[5].isMayX2() && this.buildings[5].isBuildingIsEnemy()) ? 1 : 0);
+
+        this.countX2 =
+                ((this.buildings[0].isPresent() && this.buildings[0].isMayX2()) ? 1 : 0) +
+                ((this.buildings[1].isPresent() && this.buildings[1].isMayX2()) ? 1 : 0) +
+                ((this.buildings[2].isPresent() && this.buildings[2].isMayX2()) ? 1 : 0) +
+                ((this.buildings[3].isPresent() && this.buildings[3].isMayX2()) ? 1 : 0) +
+                ((this.buildings[4].isPresent() && this.buildings[4].isMayX2()) ? 1 : 0) +
+                ((this.buildings[5].isPresent() && this.buildings[5].isMayX2()) ? 1 : 0);
+
+        this.slotsTotal =
+                (this.buildings[0].isPresent() ? this.buildings[0].getSlots() : 0) +
+                (this.buildings[1].isPresent() ? this.buildings[1].getSlots() : 0) +
+                (this.buildings[2].isPresent() ? this.buildings[2].getSlots() : 0) +
+                (this.buildings[3].isPresent() ? this.buildings[3].getSlots() : 0) +
+                (this.buildings[4].isPresent() ? this.buildings[4].getSlots() : 0) +
+                (this.buildings[5].isPresent() ? this.buildings[5].getSlots() : 0);
+
+        this.slotsOur =
+                (this.buildings[0].isPresent() ? this.buildings[0].getSlots_our() : 0) +
+                (this.buildings[1].isPresent() ? this.buildings[1].getSlots_our() : 0) +
+                (this.buildings[2].isPresent() ? this.buildings[2].getSlots_our() : 0) +
+                (this.buildings[3].isPresent() ? this.buildings[3].getSlots_our() : 0) +
+                (this.buildings[4].isPresent() ? this.buildings[4].getSlots_our() : 0) +
+                (this.buildings[5].isPresent() ? this.buildings[5].getSlots_our() : 0);
+
+        this.slotsEnemy =
+                (this.buildings[0].isPresent() ? this.buildings[0].getSlots_enemy() : 0) +
+                (this.buildings[1].isPresent() ? this.buildings[1].getSlots_enemy() : 0) +
+                (this.buildings[2].isPresent() ? this.buildings[2].getSlots_enemy() : 0) +
+                (this.buildings[3].isPresent() ? this.buildings[3].getSlots_enemy() : 0) +
+                (this.buildings[4].isPresent() ? this.buildings[4].getSlots_enemy() : 0) +
+                (this.buildings[5].isPresent() ? this.buildings[5].getSlots_enemy() : 0);
+
+        this.personsOur = (int)Math.ceil (this.slotsOur / 3.0d);
+        this.personsEnemy = (int)Math.ceil (this.slotsEnemy / 3.0d);
+        this.personsTotal = (int)Math.ceil (this.slotsTotal / 3.0d);
 
     }
 
@@ -528,79 +635,6 @@ public class CCAGame extends CityCalcArea {
         }
     }
 
-
-    public void calc(boolean isRealtimeScreenshot) {
-
-        CityCalcArea ccaTotalTime = this.getCityCalc().getMapAreas().get(SSA_Key.AREA_CITY_TIME.getKey()); // время
-        CityCalcArea ccaEarlyWin = this.getCityCalc().getMapAreas().get(SSA_Key.AREA_CITY_EARLY_WIN.getKey());   // очки досрочки
-        int minFromStartToScreenshot = 0;
-        
-        if (ccaTotalTime != null && ccaEarlyWin != null) {
-
-            ccaTotalTime.setFinText(Utils.parseTime(ccaTotalTime.getOcrText()));
-            ccaEarlyWin.setFinText(Utils.parseNumbers(ccaEarlyWin.getOcrText()));
-
-            String[] words = ccaTotalTime.getFinText().split(":"); // разделяем строку на часы и минуты
-            if (words.length == 2) {
-                minFromStartToScreenshot = 24*60 - (Integer.parseInt(words[0])* 60 + Integer.parseInt(words[1]));// прошло минут с начала игры по скриншоту
-            } else {
-                this.isErrorRecognize = true;
-            }
-
-            this.dateStartGame = Utils.addMinutesToDate(this.dateScreenshot, -minFromStartToScreenshot); // дата начала игры
-            this.dateEndGame = Utils.addMinutesToDate(this.dateStartGame, 24*60); // дата конца игры по времени
-            this.earlyWin = Integer.parseInt(ccaEarlyWin.getFinText()); // очки до досрочной победы
-
-            this.countOurX2 = ((this.buildings[0].isPresent() && this.buildings[0].isMayX2() && this.buildings[0].isBuildingIsOur()) ? 1 : 0) +
-                    ((this.buildings[1].isPresent() && this.buildings[1].isMayX2() && this.buildings[1].isBuildingIsOur()) ? 1 : 0) +
-                    ((this.buildings[2].isPresent() && this.buildings[2].isMayX2() && this.buildings[2].isBuildingIsOur()) ? 1 : 0) +
-                    ((this.buildings[3].isPresent() && this.buildings[3].isMayX2() && this.buildings[3].isBuildingIsOur()) ? 1 : 0) +
-                    ((this.buildings[4].isPresent() && this.buildings[4].isMayX2() && this.buildings[4].isBuildingIsOur()) ? 1 : 0) +
-                    ((this.buildings[5].isPresent() && this.buildings[5].isMayX2() && this.buildings[5].isBuildingIsOur()) ? 1 : 0);
-
-            this.countEnemyX2 = ((this.buildings[0].isPresent() && this.buildings[0].isMayX2() && this.buildings[0].isBuildingIsEnemy()) ? 1 : 0) +
-                    ((this.buildings[1].isPresent() && this.buildings[1].isMayX2() && this.buildings[1].isBuildingIsEnemy()) ? 1 : 0) +
-                    ((this.buildings[2].isPresent() && this.buildings[2].isMayX2() && this.buildings[2].isBuildingIsEnemy()) ? 1 : 0) +
-                    ((this.buildings[3].isPresent() && this.buildings[3].isMayX2() && this.buildings[3].isBuildingIsEnemy()) ? 1 : 0) +
-                    ((this.buildings[4].isPresent() && this.buildings[4].isMayX2() && this.buildings[4].isBuildingIsEnemy()) ? 1 : 0) +
-                    ((this.buildings[5].isPresent() && this.buildings[5].isMayX2() && this.buildings[5].isBuildingIsEnemy()) ? 1 : 0);
-            
-            this.countX2 = ((this.buildings[0].isPresent() && this.buildings[0].isMayX2()) ? 1 : 0) +
-                    ((this.buildings[1].isPresent() && this.buildings[1].isMayX2()) ? 1 : 0) +
-                    ((this.buildings[2].isPresent() && this.buildings[2].isMayX2()) ? 1 : 0) +
-                    ((this.buildings[3].isPresent() && this.buildings[3].isMayX2()) ? 1 : 0) +
-                    ((this.buildings[4].isPresent() && this.buildings[4].isMayX2()) ? 1 : 0) +
-                    ((this.buildings[5].isPresent() && this.buildings[5].isMayX2()) ? 1 : 0);
-
-            this.slotsTotal = (this.buildings[0].isPresent() ? this.buildings[0].getSlots() : 0) +
-                    (this.buildings[1].isPresent() ? this.buildings[1].getSlots() : 0) +
-                    (this.buildings[2].isPresent() ? this.buildings[2].getSlots() : 0) +
-                    (this.buildings[3].isPresent() ? this.buildings[3].getSlots() : 0) +
-                    (this.buildings[4].isPresent() ? this.buildings[4].getSlots() : 0) +
-                    (this.buildings[5].isPresent() ? this.buildings[5].getSlots() : 0);
-
-            this.slotsOur = (this.buildings[0].isPresent() ? this.buildings[0].getSlots_our() : 0) +
-                    (this.buildings[1].isPresent() ? this.buildings[1].getSlots_our() : 0) +
-                    (this.buildings[2].isPresent() ? this.buildings[2].getSlots_our() : 0) +
-                    (this.buildings[3].isPresent() ? this.buildings[3].getSlots_our() : 0) +
-                    (this.buildings[4].isPresent() ? this.buildings[4].getSlots_our() : 0) +
-                    (this.buildings[5].isPresent() ? this.buildings[5].getSlots_our() : 0);
-
-            this.slotsEnemy = (this.buildings[0].isPresent() ? this.buildings[0].getSlots_enemy() : 0) +
-                    (this.buildings[1].isPresent() ? this.buildings[1].getSlots_enemy() : 0) +
-                    (this.buildings[2].isPresent() ? this.buildings[2].getSlots_enemy() : 0) +
-                    (this.buildings[3].isPresent() ? this.buildings[3].getSlots_enemy() : 0) +
-                    (this.buildings[4].isPresent() ? this.buildings[4].getSlots_enemy() : 0) +
-                    (this.buildings[5].isPresent() ? this.buildings[5].getSlots_enemy() : 0);
-
-            this.personsOur = (int)Math.ceil (this.slotsOur / 3.0d);
-            this.personsEnemy = (int)Math.ceil (this.slotsEnemy / 3.0d);
-            this.personsTotal = (int)Math.ceil (this.slotsTotal / 3.0d);
-            
-        }
-        if (isRealtimeScreenshot) new DbTeamGame(this);
-
-    }
 
     public int getMinutesToFinalGame() {
         int minutes = Utils.getMinutesBetweenDates(this.dateCurrent, this.dateFinal);

@@ -1944,7 +1944,7 @@ public class SSA_Area_Activity extends AppCompatActivity {
         lssarbt_sb_threshold.setEnabled(rbtConditionIndex != 0);
         lssarbt_sb_scale_x.setEnabled(rbtConditionIndex != 0);
         lssarbt_sb_scale_y.setEnabled(rbtConditionIndex != 0);
-        lssarbt_ll_layout.setVisibility(cropConditionIndex != 0 ? View.VISIBLE : View.INVISIBLE);
+        lssarbt_ll_layout.setVisibility(rbtConditionIndex != 0 ? View.VISIBLE : View.INVISIBLE);
 
         if (rbtConditionIndex > 0) {
             SSA_RBT_Condition item = ssaArea.getListRBTConditions().get(rbtConditionIndex-1);

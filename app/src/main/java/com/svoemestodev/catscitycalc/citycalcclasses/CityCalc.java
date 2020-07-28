@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.svoemestodev.catscitycalc.GlobalApplication;
+import com.svoemestodev.catscitycalc.database.DbTeamGame;
 import com.svoemestodev.catscitycalc.ssa.SSA_Area;
 import com.svoemestodev.catscitycalc.ssa.SSA_Areas;
 import com.svoemestodev.catscitycalc.ssa.SSA_Colors;
@@ -255,42 +256,7 @@ public class CityCalc { //extends Activity {
 
                     if (cityCalcType.equals(CityCalcType.GAME)) {
                         setAreaToMap(SSA_Key.AREA_CITY.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_TIME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_EARLY_WIN.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_POINTS_OUR.getKey()); //?
-                        setAreaToMap(SSA_Key.AREA_CITY_POINTS_ENEMY.getKey()); //?
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD1.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD2.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD3.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD4.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD5.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD6.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD1_NAME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD2_NAME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD3_NAME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD4_NAME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD5_NAME.getKey());
-                        setAreaToMap(SSA_Key.AREA_CITY_BLD6_NAME.getKey());
-
-                        ((CCAGame)mapAreas.get(SSA_Key.AREA_CITY.getKey())).setIncreaseOur(
-                                (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD1.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD1.getKey())).getOur_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD2.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD2.getKey())).getOur_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD3.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD3.getKey())).getOur_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD4.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD4.getKey())).getOur_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD5.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD5.getKey())).getOur_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD6.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD6.getKey())).getOur_points() : 0));
-                        
-                        ((CCAGame)mapAreas.get(SSA_Key.AREA_CITY.getKey())).setIncreaseEnemy(
-                                (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD1.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD1.getKey())).getEnemy_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD2.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD2.getKey())).getEnemy_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD3.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD3.getKey())).getEnemy_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD4.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD4.getKey())).getEnemy_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD5.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD5.getKey())).getEnemy_points() : 0) +
-                                        (((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD6.getKey())).isPresent() ? ((CCABuilding)mapAreas.get(SSA_Key.AREA_CITY_BLD6.getKey())).getEnemy_points() : 0));
-
-                        ((CCAGame)mapAreas.get(SSA_Key.AREA_CITY.getKey())).calc(isRealtimeScreenshot);
+                        if (isRealtimeScreenshot) new DbTeamGame((CCAGame)mapAreas.get(SSA_Key.AREA_CITY.getKey()));
                         ((CCAGame)mapAreas.get(SSA_Key.AREA_CITY.getKey())).calcWin(true);
 
                         if (!fileScreenshot.getAbsolutePath().equals(GlobalApplication.pathToCATScalcFolder + "/last_screenshot.PNG")) {

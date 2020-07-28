@@ -14,13 +14,10 @@ public class CCATeam extends CityCalcArea {
 
         super(cityCalc, ssaArea); //, x1, x2, y1, y2, colors, ths, needOcr, needBW);
         this.name = this.getFinText();
-        CCAGame ccaGame = (CCAGame) cityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
         if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_TEAM_NAME_OUR.getKey())) {
-            int pointsOur = Integer.parseInt(Utils.parseNumbers(SSA_Areas.getArea(SSA_Key.AREA_CITY_POINTS_OUR.getKey()).getOCR(cityCalc.getSsaScreenshot())));
-            ccaGame.setPointsOurInScreenshot(pointsOur);
+            this.ccatPointsInScreenshot = Integer.parseInt(Utils.parseNumbers(SSA_Areas.getArea(SSA_Key.AREA_CITY_POINTS_OUR.getKey()).getOCR(cityCalc.getSsaScreenshot())));
         } else if (ssaArea.getKey().equals(SSA_Key.AREA_CITY_TEAM_NAME_ENEMY.getKey())) {
-            int pointsEnemy = Integer.parseInt(Utils.parseNumbers(SSA_Areas.getArea(SSA_Key.AREA_CITY_POINTS_ENEMY.getKey()).getOCR(cityCalc.getSsaScreenshot())));
-            ccaGame.setPointsEnemyInScreenshot(pointsEnemy);
+            this.ccatPointsInScreenshot = Integer.parseInt(Utils.parseNumbers(SSA_Areas.getArea(SSA_Key.AREA_CITY_POINTS_ENEMY.getKey()).getOCR(cityCalc.getSsaScreenshot())));
         }
 
     }
