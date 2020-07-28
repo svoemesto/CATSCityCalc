@@ -33,6 +33,7 @@ import com.svoemestodev.catscitycalc.utils.Utils;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class StrategyActivity extends AppCompatActivity {
 
@@ -748,12 +749,14 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanWin()) {
 
-            int bld1_progress = ccaGame.getBuildings()[0].isNeedToWin() ? 0 : 2;
-            int bld2_progress = ccaGame.getBuildings()[1].isNeedToWin() ? 0 : 2;
-            int bld3_progress = ccaGame.getBuildings()[2].isNeedToWin() ? 0 : 2;
-            int bld4_progress = ccaGame.getBuildings()[3].isNeedToWin() ? 0 : 2;
-            int bld5_progress = ccaGame.getBuildings()[4].isNeedToWin() ? 0 : 2;
-            int bld6_progress = ccaGame.getBuildings()[5].isNeedToWin() ? 0 : 2;
+            CCABuilding[] buildings = ccaGame.getBuildings();
+
+            int bld1_progress = buildings[0].isNeedToWin() ? 0 : 2;
+            int bld2_progress = buildings[1].isNeedToWin() ? 0 : 2;
+            int bld3_progress = buildings[2].isNeedToWin() ? 0 : 2;
+            int bld4_progress = buildings[3].isNeedToWin() ? 0 : 2;
+            int bld5_progress = buildings[4].isNeedToWin() ? 0 : 2;
+            int bld6_progress = buildings[5].isNeedToWin() ? 0 : 2;
 
             needUpdateSlots = false;
             lsc_sb_bld[0].setProgress(bld1_progress);
@@ -761,7 +764,7 @@ public class StrategyActivity extends AppCompatActivity {
             lsc_sb_bld[2].setProgress(bld3_progress);
             lsc_sb_bld[3].setProgress(bld4_progress);
             lsc_sb_bld[4].setProgress(bld5_progress);
-            lsc_sb_bld[0].setProgress(bld6_progress);
+            lsc_sb_bld[5].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -778,12 +781,14 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanWinWithoutX2()) {
 
-            int bld1_progress = ccaGame.getBuildings()[0].isNeedToWinWithoutX2() ? 0 : 2;
-            int bld2_progress = ccaGame.getBuildings()[1].isNeedToWinWithoutX2() ? 0 : 2;
-            int bld3_progress = ccaGame.getBuildings()[2].isNeedToWinWithoutX2() ? 0 : 2;
-            int bld4_progress = ccaGame.getBuildings()[3].isNeedToWinWithoutX2() ? 0 : 2;
-            int bld5_progress = ccaGame.getBuildings()[4].isNeedToWinWithoutX2() ? 0 : 2;
-            int bld6_progress = ccaGame.getBuildings()[5].isNeedToWinWithoutX2() ? 0 : 2;
+            CCABuilding[] buildings = ccaGame.getBuildings();
+
+            int bld1_progress = buildings[0].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld2_progress = buildings[1].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld3_progress = buildings[2].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld4_progress = buildings[3].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld5_progress = buildings[4].isNeedToWinWithoutX2() ? 0 : 2;
+            int bld6_progress = buildings[5].isNeedToWinWithoutX2() ? 0 : 2;
 
             needUpdateSlots = false;
             lsc_sb_bld[0].setProgress(bld1_progress);
@@ -791,7 +796,7 @@ public class StrategyActivity extends AppCompatActivity {
             lsc_sb_bld[2].setProgress(bld3_progress);
             lsc_sb_bld[3].setProgress(bld4_progress);
             lsc_sb_bld[4].setProgress(bld5_progress);
-            lsc_sb_bld[0].setProgress(bld6_progress);
+            lsc_sb_bld[5].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -807,12 +812,14 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanEarlyWin()) {
 
-            int bld1_progress = ccaGame.getBuildings()[0].isNeedToEarlyWin() ? 0 : 2;
-            int bld2_progress = ccaGame.getBuildings()[1].isNeedToEarlyWin() ? 0 : 2;
-            int bld3_progress = ccaGame.getBuildings()[2].isNeedToEarlyWin() ? 0 : 2;
-            int bld4_progress = ccaGame.getBuildings()[3].isNeedToEarlyWin() ? 0 : 2;
-            int bld5_progress = ccaGame.getBuildings()[4].isNeedToEarlyWin() ? 0 : 2;
-            int bld6_progress = ccaGame.getBuildings()[5].isNeedToEarlyWin() ? 0 : 2;
+            CCABuilding[] buildings = ccaGame.getBuildings();
+
+            int bld1_progress = buildings[0].isNeedToEarlyWin() ? 0 : 2;
+            int bld2_progress = buildings[1].isNeedToEarlyWin() ? 0 : 2;
+            int bld3_progress = buildings[2].isNeedToEarlyWin() ? 0 : 2;
+            int bld4_progress = buildings[3].isNeedToEarlyWin() ? 0 : 2;
+            int bld5_progress = buildings[4].isNeedToEarlyWin() ? 0 : 2;
+            int bld6_progress = buildings[5].isNeedToEarlyWin() ? 0 : 2;
 
             needUpdateSlots = false;
             lsc_sb_bld[0].setProgress(bld1_progress);
@@ -820,7 +827,7 @@ public class StrategyActivity extends AppCompatActivity {
             lsc_sb_bld[2].setProgress(bld3_progress);
             lsc_sb_bld[3].setProgress(bld4_progress);
             lsc_sb_bld[4].setProgress(bld5_progress);
-            lsc_sb_bld[0].setProgress(bld6_progress);
+            lsc_sb_bld[5].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
@@ -835,12 +842,14 @@ public class StrategyActivity extends AppCompatActivity {
 
         if (ccaGame.isCanEarlyWinWithoutX2()) {
 
-            int bld1_progress = ccaGame.getBuildings()[0].isNeedToEarlyWinWithoutX2() ? 0 : 2;
-            int bld2_progress = ccaGame.getBuildings()[1].isNeedToEarlyWinWithoutX2() ? 0 : 2;
-            int bld3_progress = ccaGame.getBuildings()[2].isNeedToEarlyWinWithoutX2() ? 0 : 2;
-            int bld4_progress = ccaGame.getBuildings()[3].isNeedToEarlyWinWithoutX2() ? 0 : 2;
-            int bld5_progress = ccaGame.getBuildings()[4].isNeedToEarlyWinWithoutX2() ? 0 : 2;
-            int bld6_progress = ccaGame.getBuildings()[5].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            CCABuilding[] buildings = ccaGame.getBuildings();
+
+            int bld1_progress = buildings[0].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld2_progress = buildings[1].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld3_progress = buildings[2].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld4_progress = buildings[3].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld5_progress = buildings[4].isNeedToEarlyWinWithoutX2() ? 0 : 2;
+            int bld6_progress = buildings[5].isNeedToEarlyWinWithoutX2() ? 0 : 2;
 
             needUpdateSlots = false;
             lsc_sb_bld[0].setProgress(bld1_progress);
@@ -848,7 +857,7 @@ public class StrategyActivity extends AppCompatActivity {
             lsc_sb_bld[2].setProgress(bld3_progress);
             lsc_sb_bld[3].setProgress(bld4_progress);
             lsc_sb_bld[4].setProgress(bld5_progress);
-            lsc_sb_bld[0].setProgress(bld6_progress);
+            lsc_sb_bld[5].setProgress(bld6_progress);
             needUpdateSlots = true;
 
             setCarsInBuildings();
