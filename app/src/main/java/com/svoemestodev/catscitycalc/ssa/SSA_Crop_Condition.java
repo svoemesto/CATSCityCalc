@@ -15,11 +15,11 @@ public class SSA_Crop_Condition implements Serializable {
     private String key = UUID.randomUUID().toString();
     private String areaKey;
     private PictureProcessorDirection direction = PictureProcessorDirection.FROM_LEFT_TO_RIGHT;
-    private SSA_Color ssaColorStart = SSA_Colors.getColor("WHITE");
+    private SSA_Color ssaColorStart = SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey());
     private int thresholdStart = 0;
     private float minFrequencyStart = 1.0f;
     private float maxFrequencyStart = 1.0f;
-    private SSA_Color ssaColorEnd = SSA_Colors.getColor("WHITE");
+    private SSA_Color ssaColorEnd = SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey());
     private int thresholdEnd = 0;
     private float minFrequencyEnd = 0.0f;
     private float maxFrequencyEnd = 0.9f;
