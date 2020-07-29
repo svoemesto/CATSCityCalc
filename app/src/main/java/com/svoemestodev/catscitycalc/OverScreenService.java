@@ -398,7 +398,7 @@ public class OverScreenService extends Service implements View.OnTouchListener {
             public void onClick(View v) {
 
                 Log.e("OverlayShowingService","ivTakeScreenshot onClick TakeScreenshot");
-                showToast("Click Take Screenshot");
+//                showToast("Click Take Screenshot");
 
                 startCapture();
 
@@ -419,7 +419,7 @@ public class OverScreenService extends Service implements View.OnTouchListener {
 
                 Log.e("OverlayShowingService","onClick Close");
 
-                showToast("Click Close");
+//                showToast("Click Close");
                 hideOverlayLayout();
 
             }
