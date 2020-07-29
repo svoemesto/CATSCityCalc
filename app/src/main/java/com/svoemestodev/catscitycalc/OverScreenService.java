@@ -12,6 +12,7 @@ import android.hardware.display.VirtualDisplay;
 import android.media.MediaScannerConnection;
 import android.media.projection.MediaProjection;
 import android.media.projection.MediaProjectionManager;
+import android.os.AsyncTask;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Handler;
@@ -67,6 +68,7 @@ public class OverScreenService extends Service implements View.OnTouchListener {
     private int resultCode;
     private Intent resultData;
     private boolean waitingScreenshot;
+    private boolean screenshotWasDone;
 
     private boolean isLongPressed;
 
@@ -91,39 +93,112 @@ public class OverScreenService extends Service implements View.OnTouchListener {
 
     private void startCapture() {
 
-        overlayLayout.setVisibility(View.INVISIBLE);
+//        overlayLayout.setVisibility(View.INVISIBLE);
+//
+//        waitingScreenshot = true;
+//
+//        mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, resultData);
+//        capturedImageTransmogrifier = new CapturedImageTransmogrifier(this);
+//
+//        MediaProjection.Callback cb = new MediaProjection.Callback() {
+//            @Override
+//            public void onStop() {
+//                virtualDisplay.release();
+//            }
+//        };
+//
+//        virtualDisplay = mediaProjection.createVirtualDisplay("catscitycalc",
+//                capturedImageTransmogrifier.getWidth(),
+//                capturedImageTransmogrifier.getHeight(),
+//                getResources().getDisplayMetrics().densityDpi,
+//                VIRT_DISPLAY_FLAGS,
+//                capturedImageTransmogrifier.getSurface(),
+//                null,
+//                handler);
+//
+//        mediaProjection.registerCallback(cb, handler);
 
-
-        waitingScreenshot = true;
-
-        mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, resultData);
-        capturedImageTransmogrifier = new CapturedImageTransmogrifier(this);
-
-        MediaProjection.Callback cb = new MediaProjection.Callback() {
-            @Override
-            public void onStop() {
-                virtualDisplay.release();
-            }
-        };
-
-        virtualDisplay = mediaProjection.createVirtualDisplay("catscitycalc",
-                capturedImageTransmogrifier.getWidth(),
-                capturedImageTransmogrifier.getHeight(),
-                getResources().getDisplayMetrics().densityDpi,
-                VIRT_DISPLAY_FLAGS,
-                capturedImageTransmogrifier.getSurface(),
-                null,
-                handler);
-
-        mediaProjection.registerCallback(cb, handler);
+        TakeScreenshot takeScreenshot = new TakeScreenshot();
+        takeScreenshot.execute();
 
     }
 
+    class TakeScreenshot extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            overlayLayout.setVisibility(View.INVISIBLE);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            while (waitingScreenshot) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            overlayLayout.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            waitingScreenshot = true;
+            screenshotWasDone = false;
+
+            while (overlayLayout.getVisibility() == View.VISIBLE) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            mediaProjection = mediaProjectionManager.getMediaProjection(resultCode, resultData);
+            capturedImageTransmogrifier = new CapturedImageTransmogrifier(OverScreenService.this);
+
+            MediaProjection.Callback cb = new MediaProjection.Callback() {
+                @Override
+                public void onStop() {
+                    virtualDisplay.release();
+                    waitingScreenshot = false;
+                }
+            };
+
+            virtualDisplay = mediaProjection.createVirtualDisplay("catscitycalc",
+                    capturedImageTransmogrifier.getWidth(),
+                    capturedImageTransmogrifier.getHeight(),
+                    getResources().getDisplayMetrics().densityDpi,
+                    VIRT_DISPLAY_FLAGS,
+                    capturedImageTransmogrifier.getSurface(),
+                    null,
+                    handler);
+
+            mediaProjection.registerCallback(cb, handler);
+
+
+
+            return null;
+        }
+    }
+
+
     void processImage(final byte[] png) {
 
-        if (waitingScreenshot) {
+        if (waitingScreenshot && !screenshotWasDone) {
 
-            waitingScreenshot = false;
+//            waitingScreenshot = false;
+
             new Thread() {
                 @Override
                 public void run() {
@@ -145,13 +220,15 @@ public class OverScreenService extends Service implements View.OnTouchListener {
                         Log.e(getClass().getSimpleName(), "Exception writing out screenshot", e);
                     }
 
-                    Handler handler = new Handler(getBaseContext().getMainLooper());
-                    handler.post( new Runnable() {
-                        @Override
-                        public void run() {
-                            overlayLayout.setVisibility(View.VISIBLE);
-                        }
-                    } );
+                    screenshotWasDone = true;
+
+//                    Handler handler = new Handler(getBaseContext().getMainLooper());
+//                    handler.post( new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            overlayLayout.setVisibility(View.VISIBLE);
+//                        }
+//                    } );
 
                     GameActivity.mainGameActivity.doRealtimeScreenshot();
                 }

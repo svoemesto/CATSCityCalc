@@ -75,22 +75,6 @@
     <string name="color_code">Код RGB</string>
     <string name="sett_default">По-умолчанию</string>
 
-    <string name="pref_bordersAreaName">Название области</string>
-    <string name="pref_bordersAreaName_dialog_title">Выберите область</string>
-    <string name="pref_bordersAreaName_default_value">City</string>
-    <string name="pref_bordersAreaName_summary">City</string>
-
-    <string name="pref_colorsAreaName">Название области</string>
-    <string name="pref_colorsAreaName_dialog_title">Выберите область</string>
-
-    <string name="pref_languageInterfaceAreaName">Язык интерфейса</string>
-    <string name="pref_languageInterfaceAreaName_dialog_title">Выберите язык интерфейса</string>
-    <string name="pref_languageInterfaceAreaName_default_value">en</string>
-    <string name="pref_languageInterfaceAreaName_summary">English</string>
-    <string name="pref_languageScreenshotAreaName">Язык скриншота</string>
-    <string name="pref_languageScreenshotAreaName_dialog_title">Выберите язык скриншота</string>
-    <string name="pref_languageScreenshotAreaName_default_value">eng</string>
-    <string name="pref_languageScreenshotAreaName_summary">English</string>
 
     <string name="sett_strategy">Стратегия</string>
     <string name="there_no_options">Вариантов не найдено</string>

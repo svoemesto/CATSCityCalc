@@ -106,10 +106,6 @@ public class WorkBuildingActivity extends AppCompatActivity {
 
         Context context = getApplicationContext();
 
-        SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
-        int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));
-        int color_bxx_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_isX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_isX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_isX2), 16)));
-
         int slots = 0, slots_our = 0, slots_empty = 0, slots_enemy = 0;
 
         CCAGame ccaGame = GameActivity.mainCCAGame;
@@ -171,12 +167,15 @@ public class WorkBuildingActivity extends AppCompatActivity {
         res_bxx_gray = bldIconsGray[mainSlot-1];
 
 
-        int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
-        int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
-        int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
         int progressBitmapWidth = 300;
         int progressBitmapHeight = 20;
-        
+
+        int color_progress_our = getColor(R.color.colorOurLight);
+        int color_progress_our_dark = getColor(R.color.colorOurDark);
+        int color_progress_enemy = getColor(R.color.colorEnemyLight);
+        int color_progress_enemy_dark = getColor(R.color.colorEnemyDark);
+        int color_progress_empty = getColor(R.color.colorEmptyDark);
+
         if (ccaBXX != null) wb_iv_bxx_name.setImageBitmap(ccaBXX.getBmpSrc());
 
         wb_iv_bxx_progress.setImageBitmap(PictureProcessor.getProgressBitmap(progressBitmapWidth, progressBitmapHeight,
@@ -190,11 +189,11 @@ public class WorkBuildingActivity extends AppCompatActivity {
 
         if (ccaGame_isBuildingIsOur_bxx) {
             wb_tv_bxx_points.setText("+" + ccaGame_getOur_points_bxx);
-            wb_tv_bxx_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_our_main),16));
+            wb_tv_bxx_points.setBackgroundColor(color_progress_our_dark);
             wb_iv_bxx_icon.setImageDrawable(getDrawable(res_bxx_blue));
         } else if (ccaGame_isBuildingIsEnemy_bxx) {
             wb_tv_bxx_points.setText("+" + ccaGame_getEnemy_points_bxx);
-            wb_tv_bxx_points.setBackgroundColor((int)Long.parseLong(context.getString(R.string.def_rgb_points_enemy_main),16));
+            wb_tv_bxx_points.setBackgroundColor(color_progress_enemy_dark);
             wb_iv_bxx_icon.setImageDrawable(getDrawable(res_bxx_red));
         } else if (ccaGame_isBuildingIsEmpty_bxx) {
             wb_tv_bxx_points.setText("");
@@ -203,11 +202,11 @@ public class WorkBuildingActivity extends AppCompatActivity {
         }
         if (ccaGame_isX2_bxx) {
             wb_tv_bxx_x2.setText("X2");
-            wb_tv_bxx_x2.setBackgroundColor(color_bxx_isX2);
+            wb_tv_bxx_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_isx2));
         } else {
             if (ccaGame_isMayX2_bxx) {
                 wb_tv_bxx_x2.setText("X2");
-                wb_tv_bxx_x2.setBackgroundColor(color_bxx_mayX2);
+                wb_tv_bxx_x2.setBackground(getDrawable(R.drawable.rounded_small_corner_color_empty_light));
             } else {
                 wb_tv_bxx_x2.setText("");
                 wb_tv_bxx_x2.setBackgroundColor(0xFFFFFFFF);

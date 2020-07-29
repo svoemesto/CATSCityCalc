@@ -491,14 +491,6 @@ public class GameActivity extends AppCompatActivity {
 
             }
 
-            Context context = getApplicationContext();
-
-            SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.pref_preferences_file), MODE_PRIVATE);
-            int color_bxx_mayX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_mayX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_mayX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_mayX2), 16)));
-            int color_bxx_isX2 = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_isX2_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_isX2_main), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_isX2), 16)));
-//            int color_progress_our = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_our_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_our), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_our_main), 16)));
-//            int color_progress_enemy = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_enemy_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_enemy), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_enemy_main), 16)));
-//            int color_progress_empty = sharedPreferences.getInt(context.getString(R.string.pref_rgb_bxx_progress_empty_main),sharedPreferences.getInt(context.getString(R.string.pref_def_rgb_bxx_progress_empty), (int)Long.parseLong(context.getString(R.string.def_rgb_bxx_progress_empty_main), 16)));
             int color_progress_our = getColor(R.color.colorOurLight);
             int color_progress_enemy = getColor(R.color.colorEnemyLight);
             int color_progress_empty = getColor(R.color.colorEmptyDark);
@@ -1526,17 +1518,17 @@ public class GameActivity extends AppCompatActivity {
                                                                                     CCAGame ccaGame = (CCAGame)mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY.getKey());
                                                                                     Bitmap taskBitmap = null;
                                                                                     if (car.getBuildingTask() == 1 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD1.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 2 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD2.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 3 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD3.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 4 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD4.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 5 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD5.getKey()).getBmpSrc();
                                                                                     } else if (car.getBuildingTask() == 6 && ccaGame.getBuildings()[car.getBuildingTask()-1].isPresent()) {
-                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6_NAME.getKey()).getBmpSrc();
+                                                                                        taskBitmap = mainCityCalc.getMapAreas().get(SSA_Key.AREA_CITY_BLD6.getKey()).getBmpSrc();
                                                                                     }
                                                                                     car.setTaskPicture(taskBitmap); // обновляем картинку здания задания для локальной машины
                                                                                     car.save();                     // сохраняем локальную машину
