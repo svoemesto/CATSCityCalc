@@ -41,7 +41,7 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.665);
         listRbtConditions = new ArrayList<>();
         listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 0, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 10, 7.0f, 5.0f));
-//        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
+        listRbtConditions.add(new SSA_RBT_Condition(ssaArea.getKey(), 1, SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()), 20, 1.0f, 1.0f));
         ssaArea.setListRBTConditions(listRbtConditions);
         map.put(ssaArea.getKey(), ssaArea);
 
