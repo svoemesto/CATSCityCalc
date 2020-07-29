@@ -1,6 +1,7 @@
 package com.svoemestodev.catscitycalc.ssa;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 import com.svoemestodev.catscitycalc.utils.PictureProcessor;
 
@@ -171,10 +172,12 @@ public class SSA_Area implements Serializable, Comparable<SSA_Area> {
     }
 
     public String getOCR(Bitmap sourceBitmap) {
+        Log.e("Start OCR", "Based on bitmap. Area: " + this.getKey());
         return PictureProcessor.doOCR(sourceBitmap);
     }
 
     public String getOCR(SSA_Screenshot ssaScreenshot) {
+        Log.e("Start OCR", "Based on screenshot. Area: " + this.getKey());
         return PictureProcessor.doOCR(getAreaBitmapRBT(ssaScreenshot));
     }
 

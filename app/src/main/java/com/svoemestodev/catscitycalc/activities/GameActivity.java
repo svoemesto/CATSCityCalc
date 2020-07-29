@@ -522,6 +522,8 @@ public class GameActivity extends AppCompatActivity {
                 lgb_tv_bld_slots_empty[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
                 lgb_tv_bld_slots_enemy[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
                 lgb_iv_bld_progress[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_iv_bld_can_win_with_x2[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
+                lgb_iv_bld_can_early_win_with_x2[buildingIndex].setVisibility(ccaGame.getBuildings()[buildingIndex].isPresent() ? View.VISIBLE : View.INVISIBLE);
 
                 if (ccaGame.getBuildings()[buildingIndex].isPresent()) {
 
@@ -771,14 +773,18 @@ public class GameActivity extends AppCompatActivity {
             lgb_bt_bld[buildingIndex].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    doOnClickBuilding(finalBuildingIndex + 1);
+                    if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
+                        doOnClickBuilding(finalBuildingIndex + 1);
+                    }
                 }
             });
 
             lgb_bt_bld[buildingIndex].setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    doOnLongClickBuilding(finalBuildingIndex + 1);
+                    if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
+                        doOnLongClickBuilding(finalBuildingIndex + 1);
+                    }
                     return true;
                 }
             });

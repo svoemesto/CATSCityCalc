@@ -101,7 +101,7 @@ public class CCABuilding extends CityCalcArea {
 
         Bitmap bldBitmap = this.getBmpSrc();
         Bitmap bldNameBitmap = SSA_Areas.getArea(keyAreaBldName).getAreaBitmap(bldBitmap);
-        Bitmap bldSlotsBitmap = SSA_Areas.getArea(keyAreaBldSlots).getAreaBitmap(bldBitmap);
+        Bitmap bldSlotsBitmap = SSA_Areas.getArea(keyAreaBldSlots).getAreaBitmapRBT(bldBitmap);
 
         this.isPresent = SSA_Rules.getRule(keyRuleBldIsPresent).check(bldBitmap);
         this.index = index;
