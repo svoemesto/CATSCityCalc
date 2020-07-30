@@ -78,12 +78,12 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.640);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -106,12 +106,12 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.640);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.750f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.850f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.750f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -237,22 +237,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -274,13 +274,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -325,22 +325,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -362,13 +362,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaArea.setListCropConditions(listCropConditions);
@@ -415,22 +415,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -452,13 +452,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaArea.setListCropConditions(listCropConditions);
@@ -505,22 +505,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -542,13 +542,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -593,22 +593,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
@@ -631,13 +631,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -682,22 +682,22 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),0,0.000f,0.000f,true,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,true,true);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_MAY_X2.getKey()),15,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(),PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),5,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_IS_X2.getKey()),105,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
@@ -720,13 +720,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_SLOTS.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.000f,0.950f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.950f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
@@ -791,12 +791,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_HEALTH_RED_LIGHT.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_HEALTH_RED_LIGHT.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -818,12 +818,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BLUE.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BLUE.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_ENERGY_YELLOW_LIGHT.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_ENERGY_YELLOW_LIGHT.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -845,12 +845,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_ENERGY_YELLOW_LIGHT.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_ENERGY_YELLOW_LIGHT.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),1,0.000f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,0.000f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -918,7 +918,7 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.830);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GRAY_CITY_EARLY_WIN.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -995,12 +995,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+0.440);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_HEALTH_RED_LIGHT.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_HEALTH_RED_LIGHT.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -1022,12 +1022,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+0.440);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_SHIELD_BROWN.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_GARAGE_INFO_BACKGROUND.getKey()),10,1.000f,1.000f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -1079,13 +1079,13 @@ public class SSA_Utils {
         ssaArea.setrY2(-0.480);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.001f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),55,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_TIMELINE_BLUE.getKey()),1,0.001f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_TIMELINE_BLUE.getKey()),0,0.000f,0.000f,false,true);
+                SSA_Colors.getColor(SSA_Key.COLOR_TIMELINE_BLUE.getKey()),10,0.001f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_TIMELINE_BLUE.getKey()),10,0.000f,0.000f,false,true);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
