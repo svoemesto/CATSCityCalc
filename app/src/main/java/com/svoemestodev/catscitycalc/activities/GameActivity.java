@@ -773,17 +773,22 @@ public class GameActivity extends AppCompatActivity {
             lgb_bt_bld[buildingIndex].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
-                        doOnClickBuilding(finalBuildingIndex + 1);
+                    if (mainCCAGame != null) {
+                        if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
+                            doOnClickBuilding(finalBuildingIndex + 1);
+                        }
                     }
+
                 }
             });
 
             lgb_bt_bld[buildingIndex].setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
-                        doOnLongClickBuilding(finalBuildingIndex + 1);
+                    if (mainCCAGame != null) {
+                        if (mainCCAGame.getBuildings()[finalBuildingIndex] != null) {
+                            doOnLongClickBuilding(finalBuildingIndex + 1);
+                        }
                     }
                     return true;
                 }
