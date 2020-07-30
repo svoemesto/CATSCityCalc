@@ -159,12 +159,12 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),5,0.760f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),5,0.000f,0.000f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),10,0.760f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_OUR.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_LEFT_TO_RIGHT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
                 SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
@@ -198,13 +198,13 @@ public class SSA_Utils {
         ssaArea.setrY2(+1.000);
         listCropConditions = new ArrayList<>();
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),5,0.760f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),5,0.000f,0.000f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),10,0.760f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_INCREASE_PLATE_ENEMY.getKey()),10,0.000f,0.000f,false,false);
         listCropConditions.add(ssaCropCondition);
 
         ssaCropCondition = new SSA_Crop_Condition(ssaArea.getKey(), PictureProcessorDirection.FROM_RIGHT_TO_LEFT,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),1,0.700f,1.000f,
-                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.700f,false,false);
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.850f,1.000f,
+                SSA_Colors.getColor(SSA_Key.COLOR_WHITE.getKey()),10,0.000f,0.850f,false,false);
         listCropConditions.add(ssaCropCondition);
         ssaArea.setListCropConditions(listCropConditions);
 
